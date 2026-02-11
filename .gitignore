@@ -1,0 +1,6 @@
+/target/
+.env
+*.sqlite
+*.sqlite-journal
+*.db
+.DS_Store

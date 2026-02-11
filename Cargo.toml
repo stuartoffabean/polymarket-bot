@@ -1,0 +1,67 @@
+[package]
+name = "polymarket-bot"
+version = "0.1.0"
+edition = "2021"
+description = "Stuart's autonomous Polymarket trading bot — survive or die"
+
+[[bin]]
+name = "bot"
+path = "src/main.rs"
+
+[[bin]]
+name = "server"
+path = "src/server.rs"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# HTTP
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+
+# WebSocket
+tokio-tungstenite = { version = "0.24", features = ["rustls-tls-native-roots"] }
+futures-util = "0.3"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Ethereum/Polygon signing
+alloy = { version = "0.9", features = ["full"] }
+
+# Web server for dashboard API
+axum = { version = "0.8", features = ["ws", "json"] }
+tower = "0.5"
+tower-http = { version = "0.6", features = ["cors", "fs"] }
+
+# Error handling
+eyre = "0.6"
+color-eyre = "0.6"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Database
+sqlx = { version = "0.8", features = ["runtime-tokio", "sqlite", "chrono"] }
+
+# Config
+dotenvy = "0.15"
+
+# HMAC for Polymarket L2 auth
+hmac = "0.12"
+sha2 = "0.10"
+base64 = "0.22"
+
+# Async trait
+async-trait = "0.1"
+
+# UUID for order IDs
+uuid = { version = "1", features = ["v4"] }
+
+# Channels
+crossbeam-channel = "0.5"
