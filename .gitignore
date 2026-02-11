@@ -4,3 +4,4 @@
 *.sqlite-journal
 *.db
 .DS_Store
+.env
