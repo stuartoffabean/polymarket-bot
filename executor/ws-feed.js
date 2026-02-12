@@ -1,6 +1,6 @@
 /**
  * Polymarket WebSocket Price Feed + Circuit Breakers + Auto-Execute
- * v2 — Full directive compliance
+ * v3 — Full directive compliance + integrated scanners
  * 
  * Features:
  * - Real-time price updates via Polymarket WSS
@@ -12,12 +12,16 @@
  * - Rate limit detection (429 backoff)
  * - Manual position injection for untracked trades
  * - Auto-reconnect with exponential backoff
+ * - Integrated arb scanner (every 15 min) → arb-results.json
+ * - Resolving markets scanner (every 30 min) → resolving-markets.json
  * 
  * Port 3003 HTTP API:
  *   GET  /health
  *   GET  /prices          — live prices + P&L for all positions
  *   GET  /alerts          — recent alert history
  *   GET  /status          — full system status
+ *   GET  /arb-results     — latest arb scanner results
+ *   GET  /resolving       — markets resolving in 6-12h
  *   POST /set-trigger     — { assetId, stopLoss, takeProfit }
  *   POST /add-position    — { assetId, market, outcome, avgPrice, size } (manual inject)
  *   POST /reset-circuit-breaker
@@ -39,6 +43,15 @@ const RECONNECT_BASE = 2000;
 const RECONNECT_MAX = 60000;
 const POSITION_SYNC_INTERVAL = 5 * 60 * 1000;
 const FEE_CHECK_INTERVAL = 60 * 60 * 1000; // check fees hourly
+
+// Scanner config
+const GAMMA_API = "https://gamma-api.polymarket.com";
+const PROXY_API = "https://proxy-rosy-sigma-25.vercel.app";
+const ARB_THRESHOLD = 0.025; // 2.5% deviation
+const ARB_RESULTS_FILE = path.join(__dirname, "..", "arb-results.json");
+const RESOLVING_FILE = path.join(__dirname, "..", "resolving-markets.json");
+const ARB_SCAN_INTERVAL = 15 * 60 * 1000;       // 15 min
+const RESOLVING_SCAN_INTERVAL = 30 * 60 * 1000;  // 30 min
 
 // Thresholds (Directive v2 §risk, v3 §7)
 const STARTING_CAPITAL = 433;
@@ -508,6 +521,24 @@ async function apiHandler(req, res) {
       return send(res, 200, { alerts: alertLog.slice(-50) });
     }
 
+    if (url === "/arb-results") {
+      try {
+        const data = JSON.parse(fs.readFileSync(ARB_RESULTS_FILE, "utf8"));
+        return send(res, 200, data);
+      } catch (e) {
+        return send(res, 200, { error: "No arb results yet", timestamp: null });
+      }
+    }
+
+    if (url === "/resolving") {
+      try {
+        const data = JSON.parse(fs.readFileSync(RESOLVING_FILE, "utf8"));
+        return send(res, 200, data);
+      } catch (e) {
+        return send(res, 200, { error: "No resolving markets data yet", timestamp: null });
+      }
+    }
+
     if (url === "/status") {
       const state = loadTradingState();
       return send(res, 200, {
@@ -617,6 +648,166 @@ function parseBody(req) {
   });
 }
 
+// === ARB SCANNER (integrated from arb-scanner.js) ===
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function fetchJSON(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status} from ${url}`);
+  return res.json();
+}
+
+async function runArbScan() {
+  log("ARB", "Starting arb scan...");
+  try {
+    const events = await fetchJSON(`${GAMMA_API}/events?limit=100&active=true&closed=false&order=volume24hr&ascending=false`);
+    const negRisk = events.filter(e => e.negRisk || e.enableNegRisk);
+    log("ARB", `Found ${negRisk.length} NegRisk events out of ${events.length} total`);
+
+    const opportunities = [];
+
+    for (const event of negRisk) {
+      const markets = (event.markets || []).filter(m => m.active && !m.closed);
+      if (markets.length < 2) continue;
+
+      // Sum mid YES prices from Gamma data
+      let midSum = 0;
+      const outcomes = [];
+
+      for (const m of markets) {
+        let yesPrice = 0;
+        try {
+          const prices = typeof m.outcomePrices === "string" ? JSON.parse(m.outcomePrices) : m.outcomePrices;
+          yesPrice = parseFloat(prices[0]) || 0;
+        } catch (e) {}
+
+        let tokenId = null;
+        try {
+          const tokens = typeof m.clobTokenIds === "string" ? JSON.parse(m.clobTokenIds) : m.clobTokenIds;
+          tokenId = tokens[0];
+        } catch (e) {}
+
+        midSum += yesPrice;
+        if (yesPrice > 0.001) {
+          outcomes.push({ name: (m.question || "").slice(0, 60), yesPrice, tokenId });
+        }
+      }
+
+      const deviation = Math.abs(midSum - 1.0);
+      if (deviation < ARB_THRESHOLD) continue;
+
+      // Skip events with too many outcomes (thin markets)
+      if (outcomes.length > 20) {
+        log("ARB", `SKIPPED: ${event.title.slice(0, 60)} | ${outcomes.length} outcomes (too many) | MidSum: ${midSum.toFixed(4)}`);
+        continue;
+      }
+      log("ARB", `FLAGGED: ${event.title.slice(0, 60)} | MidSum: ${midSum.toFixed(4)} | Dev: ${(deviation * 100).toFixed(1)}%`);
+
+      let execSum = 0;
+      let allOk = true;
+      for (const o of outcomes) {
+        if (!o.tokenId) { allOk = false; continue; }
+        try {
+          await sleep(700); // rate limit
+          const d = await fetchJSON(`${PROXY_API}/price?token_id=${o.tokenId}&side=buy`);
+          o.execPrice = parseFloat(d.price) || 0;
+          execSum += o.execPrice;
+        } catch (e) {
+          o.execPrice = 0;
+          allOk = false;
+        }
+      }
+
+      const type = midSum > 1.0 ? "SHORT" : "LONG";
+      const execDev = Math.abs(execSum - 1.0);
+      const profit = type === "SHORT" ? (execSum - 1.0) * 100 : (1.0 - execSum) * 100;
+
+      opportunities.push({
+        event: event.title,
+        slug: event.slug,
+        type,
+        outcomes: outcomes.length,
+        midSum: +midSum.toFixed(4),
+        execSum: allOk ? +execSum.toFixed(4) : null,
+        deviation: +(deviation * 100).toFixed(2),
+        execDeviation: allOk ? +(execDev * 100).toFixed(2) : null,
+        profitPer100: +profit.toFixed(2),
+        viable: profit > 0 && allOk,
+        details: outcomes.map(o => ({ name: o.name, mid: o.yesPrice, exec: o.execPrice, token: o.tokenId })),
+      });
+    }
+
+    const output = {
+      timestamp: new Date().toISOString(),
+      summary: {
+        total: events.length,
+        negRisk: negRisk.length,
+        flagged: opportunities.length,
+        viable: opportunities.filter(o => o.viable).length,
+      },
+      opportunities: opportunities.sort((a, b) => b.profitPer100 - a.profitPer100),
+    };
+
+    fs.writeFileSync(ARB_RESULTS_FILE, JSON.stringify(output, null, 2));
+    log("ARB", `✅ Scan complete — Flagged: ${opportunities.length} | Viable: ${output.summary.viable} → ${ARB_RESULTS_FILE}`);
+  } catch (e) {
+    log("ARB", `❌ Scan failed: ${e.message}`);
+  }
+}
+
+// === RESOLVING MARKETS SCANNER ===
+async function runResolvingScan() {
+  log("RESOLVE", "Fetching markets resolving in 6-12h...");
+  try {
+    const now = new Date();
+    const min6h = new Date(now.getTime() + 6 * 60 * 60 * 1000);
+    const max12h = new Date(now.getTime() + 12 * 60 * 60 * 1000);
+
+    // Gamma API: fetch markets closing soon
+    // Use end_date_min/end_date_max to filter resolution window
+    const url = `${GAMMA_API}/markets?closed=false&active=true&end_date_min=${min6h.toISOString()}&end_date_max=${max12h.toISOString()}&limit=100&order=volume&ascending=false`;
+    const markets = await fetchJSON(url);
+
+    const results = [];
+    for (const m of markets) {
+      let yesPrice = null, noPrice = null;
+      try {
+        const prices = typeof m.outcomePrices === "string" ? JSON.parse(m.outcomePrices) : m.outcomePrices;
+        yesPrice = parseFloat(prices[0]) || null;
+        noPrice = parseFloat(prices[1]) || null;
+      } catch (e) {}
+
+      results.push({
+        slug: m.slug || m.conditionId,
+        question: m.question || m.title || "Unknown",
+        yesPrice,
+        noPrice,
+        endDate: m.endDate || m.end_date_iso || null,
+        volume: parseFloat(m.volume) || 0,
+        volume24hr: parseFloat(m.volume24hr) || 0,
+        liquidity: parseFloat(m.liquidity) || 0,
+        conditionId: m.conditionId || null,
+      });
+    }
+
+    // Sort by volume descending
+    results.sort((a, b) => b.volume - a.volume);
+
+    const output = {
+      timestamp: new Date().toISOString(),
+      windowStart: min6h.toISOString(),
+      windowEnd: max12h.toISOString(),
+      count: results.length,
+      markets: results,
+    };
+
+    fs.writeFileSync(RESOLVING_FILE, JSON.stringify(output, null, 2));
+    log("RESOLVE", `✅ Found ${results.length} markets resolving in 6-12h → ${RESOLVING_FILE}`);
+  } catch (e) {
+    log("RESOLVE", `❌ Resolving scan failed: ${e.message}`);
+  }
+}
+
 // === DAILY RESET ===
 function scheduleDailyReset() {
   const now = new Date();
@@ -645,7 +836,7 @@ function scheduleDailyReset() {
 async function main() {
   console.log("╔══════════════════════════════════════════╗");
   console.log("║  Polymarket WS Feed + Circuit Breakers   ║");
-  console.log("║  v2 — Full Directive Compliance          ║");
+  console.log("║  v3 — Integrated Scanners                ║");
   console.log("╚══════════════════════════════════════════╝");
   console.log();
   log("INIT", `Executor: ${EXECUTOR_URL}`);
@@ -655,6 +846,7 @@ async function main() {
   log("INIT", `Daily drawdown limit: ${MAX_DAILY_DRAWDOWN * 100}%`);
   log("INIT", `Survival: <$${(STARTING_CAPITAL * SURVIVAL_THRESHOLD).toFixed(0)} | Emergency: <$${(STARTING_CAPITAL * EMERGENCY_THRESHOLD).toFixed(0)}`);
   log("INIT", `Auto-execute: ${autoExecuteEnabled}`);
+  log("INIT", `Arb scanner: every ${ARB_SCAN_INTERVAL / 60000}min | Resolving scanner: every ${RESOLVING_SCAN_INTERVAL / 60000}min`);
   console.log();
 
   // Load persisted state
@@ -697,6 +889,18 @@ async function main() {
   }
   checkFees();
   setInterval(checkFees, FEE_CHECK_INTERVAL);
+
+  // Arb scanner — runs every 15 min, first run after 30s startup delay
+  setTimeout(() => {
+    runArbScan();
+    setInterval(runArbScan, ARB_SCAN_INTERVAL);
+  }, 30 * 1000);
+
+  // Resolving markets scanner — runs every 30 min, first run after 60s
+  setTimeout(() => {
+    runResolvingScan();
+    setInterval(runResolvingScan, RESOLVING_SCAN_INTERVAL);
+  }, 60 * 1000);
 
   // Daily reset
   scheduleDailyReset();
