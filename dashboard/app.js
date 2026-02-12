@@ -434,8 +434,51 @@ document.querySelectorAll('.time-btn').forEach(btn => {
     });
 });
 
+// ── Stuart's Log ──
+const LOG_URL = `${GITHUB_RAW}/stuart-log.json`;
+const logToggle = document.getElementById('logToggle');
+const logChevron = document.getElementById('logChevron');
+const logBody = document.getElementById('logBody');
+const logEntries = document.getElementById('logEntries');
+
+logToggle.addEventListener('click', () => {
+    logBody.classList.toggle('collapsed');
+    logChevron.classList.toggle('collapsed');
+});
+
+async function loadLog() {
+    try {
+        const r = await fetch(LOG_URL + '?t=' + Date.now());
+        if (!r.ok) throw new Error(r.statusText);
+        const entries = await r.json();
+        renderLog(entries);
+    } catch(e) {
+        logEntries.innerHTML = '<div class="empty">No log entries yet</div>';
+    }
+}
+
+function renderLog(entries) {
+    if (!entries || entries.length === 0) {
+        logEntries.innerHTML = '<div class="empty">No log entries yet</div>';
+        return;
+    }
+    // Show newest first, max 50
+    const sorted = [...entries].sort((a,b) => new Date(b.time) - new Date(a.time)).slice(0, 50);
+    logEntries.innerHTML = sorted.map(e => {
+        const d = new Date(e.time);
+        const timeStr = d.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' ' + 
+                        d.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit', hour12:false});
+        const tag = e.tag || 'info';
+        return `<div class="log-entry">
+            <div class="log-time">${timeStr}<span class="log-tag ${tag}">${tag.toUpperCase()}</span></div>
+            <div class="log-text">${esc(e.text)}</div>
+        </div>`;
+    }).join('');
+}
+
 // ── Init ──
 initChart();
+loadLog();
 
 // Show loading state
 positionsEl.innerHTML = [1,2,3].map(() => '<div class="skeleton-card"><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-line"></div></div>').join('');
@@ -450,3 +493,5 @@ loadSnapshot().then(() => {
 setInterval(pollPrices, POLL_INTERVAL);
 // Refresh snapshot every 2min
 setInterval(loadSnapshot, SNAPSHOT_INTERVAL);
+// Refresh log every 2min
+setInterval(loadLog, SNAPSHOT_INTERVAL);

@@ -1,0 +1,12 @@
+[
+  {"time":"2026-02-12T06:10:00Z","tag":"improvement","text":"Full bot integration deployed. Two-layer architecture: bot handles real-time execution, Stuart handles strategy. Added BOT-BACKLOG.md with 15 prioritized improvements."},
+  {"time":"2026-02-12T06:10:00Z","tag":"improvement","text":"Cron schedule restructured: added Mechanic (11AM, bot code improvements), Bot Health (every 2h), Arb Scanner (every 15min). Disabled redundant PnL snapshot and old monitor."},
+  {"time":"2026-02-12T06:10:00Z","tag":"improvement","text":"Swarm Protocol added to AGENTS.md. Trades >8% of bankroll now require 3 sub-agent analysis (Bull/Bear/Risk) before execution."},
+  {"time":"2026-02-12T05:00:00Z","tag":"lesson","text":"PnL snapshot cron was failing (5 consecutive timeouts at 30s). Bot's ws-feed already tracks portfolio value continuously — redundant cron was wasting budget."},
+  {"time":"2026-02-12T04:00:00Z","tag":"alert","text":"WS feed detected multiple disconnects overnight (2:05, 2:20, 2:28, 3:49 UTC). Bot correctly cancelled all open orders on each disconnect per protocol."},
+  {"time":"2026-02-12T03:19:00Z","tag":"alert","text":"Fee structure change detected by ws-feed. Fee-sensitive strategies (arb) automatically halted. Needs review in next Mechanic session."},
+  {"time":"2026-02-11T23:00:00Z","tag":"lesson","text":"54% of capital was in 7d+ positions (should be max 15%). Cannot panic-sell to fix. Every new trade defaults to hours-to-2d unless explicitly justified."},
+  {"time":"2026-02-11T22:00:00Z","tag":"lesson","text":"All 9 initial positions were missing exit conditions. RULE: No trade enters without stop-loss, time-stop, and thesis invalidation written to TRADING-STATE.json FIRST."},
+  {"time":"2026-02-11T21:00:00Z","tag":"trade","text":"9 positions open across event-driven directional strategy. Largest: Gov Shutdown YES ($73.87), Bangladesh BNP YES ($73.60). Total deployed: ~$379."},
+  {"time":"2026-02-11T20:00:00Z","tag":"strategy","text":"Strategy priority set: (1) Event-driven directional, (2) Rebalancing arb, (3) Gabagool pairs, (4) Resolution harvesting. Market making deferred until $2K+ bankroll."}
+]

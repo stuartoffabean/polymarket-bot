@@ -14,6 +14,34 @@
       "pnlPct": null,
       "message": "Cancelled all open orders on disconnect",
       "timestamp": "2026-02-12T02:20:01.841Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-12T02:28:00.332Z"
+    },
+    {
+      "type": "FEE_CHANGE_DETECTED",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
+      "timestamp": "2026-02-12T03:19:18.878Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-12T03:49:03.943Z"
+    },
+    {
+      "type": "FEE_CHANGE_DETECTED",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
+      "timestamp": "2026-02-12T04:19:18.906Z"
     }
   ],
   "circuitBreakerTripped": false,

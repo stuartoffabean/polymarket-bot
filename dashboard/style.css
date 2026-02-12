@@ -122,6 +122,26 @@ td .side-sell{color:var(--red)}
 .strategy-card .stats{display:flex;gap:12px;font-family:var(--font-mono);font-size:.7rem;color:var(--dim)}
 .strategy-card .stats span{color:var(--text)}
 
+/* ── Stuart's Log ── */
+.log-header{cursor:pointer;user-select:none}
+.log-header:hover{background:rgba(255,255,255,.02)}
+.log-chevron{color:var(--dim);font-size:.7rem;transition:transform .2s}
+.log-chevron.collapsed{transform:rotate(-90deg)}
+.log-body{max-height:400px;overflow-y:auto;transition:max-height .3s ease}
+.log-body.collapsed{max-height:0;overflow:hidden}
+.log-entries{padding:0}
+.log-entry{padding:10px 14px;border-bottom:1px solid var(--border);font-size:.75rem;line-height:1.5}
+.log-entry:last-child{border-bottom:0}
+.log-entry .log-time{font-family:var(--font-mono);font-size:.6rem;color:var(--dim);margin-bottom:2px}
+.log-entry .log-tag{font-family:var(--font-mono);font-size:.55rem;font-weight:600;letter-spacing:.06em;padding:1px 5px;border-radius:2px;margin-left:6px}
+.log-tag.trade{background:rgba(0,255,136,.1);color:var(--green)}
+.log-tag.lesson{background:rgba(255,170,0,.1);color:var(--yellow)}
+.log-tag.improvement{background:rgba(100,149,237,.1);color:cornflowerblue}
+.log-tag.alert{background:rgba(255,68,68,.1);color:var(--red)}
+.log-tag.strategy{background:rgba(168,85,247,.1);color:#a855f7}
+.log-tag.info{background:rgba(255,255,255,.05);color:var(--dim)}
+.log-entry .log-text{color:var(--text)}
+
 /* ── Activity Feed ── */
 .activity-section{margin-bottom:0}
 .activity-feed{
