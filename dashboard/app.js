@@ -54,8 +54,8 @@ const fmtUptime = (seconds) => {
 
 // ── API ──
 // Data sources: GitHub raw for static data, local /api for live executor data
-const GITHUB_RAW = 'https://raw.githubusercontent.com/stuartoffabean/stuart-workspace-backup/main/polymarket-bot';
-const STATE_URL = `${GITHUB_RAW}/TRADING-STATE.json`;
+const GITHUB_RAW = 'https://raw.githubusercontent.com/stuartoffabean/polymarket-bot/main';
+const STATE_URL = `${GITHUB_RAW}/live-snapshot.json`;
 const PNL_URL = `${GITHUB_RAW}/pnl-history.json`;
 
 async function api(path) {
@@ -74,18 +74,30 @@ async function api(path) {
         try {
             const r = await fetch(STATE_URL + '?t=' + Date.now());
             if (!r.ok) throw new Error(r.statusText);
-            const state = await r.json();
+            const snap = await r.json();
+            const portfolio = snap.portfolio || {};
+            const risk = snap.risk || {};
+            let mode = 'NORMAL';
+            if (risk.emergencyMode) mode = 'EMERGENCY';
+            else if (risk.survivalMode) mode = 'SURVIVAL';
+            else if (risk.circuitBreakerTripped) mode = 'PAUSED';
+            const totalValue = (snap.positions || []).reduce((s, p) => s + (parseFloat(p.currentValue) || 0), 0);
+            const totalCost = (snap.positions || []).reduce((s, p) => s + (parseFloat(p.costBasis) || 0), 0);
             return {
-                status: 'ok',
-                mode: state.mode || 'NORMAL',
-                bankroll: (state.liquidBalance || 0) + (state.totalDeployed || 0),
-                pnl_today: state.dailyPnL || 0,
-                pnl_total: ((state.liquidBalance || 0) + (state.totalDeployed || 0)) - (state.startingCapital || 496),
-                uptime_seconds: null,
-                strategies_active: (state.strategiesActive || []).length
+                status: risk.emergencyMode ? 'halted' : 'active',
+                mode,
+                bankroll: portfolio.startingCapital || 433,
+                portfolio_value: totalValue,
+                pnl_today: 0,
+                pnl_total: totalValue - totalCost,
+                uptime_seconds: snap.infrastructure?.uptime || null,
+                strategies_active: snap.positions?.length || 0,
+                wsConnected: snap.infrastructure?.wsConnected,
+                autoExecute: risk.autoExecuteEnabled,
+                lastSnapshot: snap.timestamp,
             };
         } catch(e) {
-            console.warn('Status fetch from GitHub failed:', e.message);
+            console.warn('Status fetch failed:', e.message);
             return null;
         }
     }
@@ -93,15 +105,18 @@ async function api(path) {
         try {
             const r = await fetch(STATE_URL + '?t=' + Date.now());
             if (!r.ok) throw new Error(r.statusText);
-            const state = await r.json();
-            return (state.positions || []).map(p => ({
-                market: p.market,
-                side: p.side,
-                size: p.shares,
-                entry_price: p.entry,
-                current_price: p.entry, // updated on next snapshot
-                unrealized_pnl: 0,
-                cost: p.cost
+            const snap = await r.json();
+            return (snap.positions || []).map(p => ({
+                market: p.outcome,
+                side: p.outcome,
+                size: p.size,
+                entry_price: p.avgPrice,
+                current_price: p.currentBid || p.avgPrice,
+                unrealized_pnl: parseFloat(p.pnl) || 0,
+                pnlPct: p.pnlPct,
+                cost: parseFloat(p.costBasis) || 0,
+                stopLoss: p.stopLoss,
+                takeProfit: p.takeProfit,
             }));
         } catch(e) { return null; }
     }

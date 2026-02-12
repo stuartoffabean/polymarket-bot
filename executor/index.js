@@ -186,7 +186,7 @@ async function handler(req, res) {
           status: "ok", 
           positions, 
           orders,
-          startingCapital: 496,
+          startingCapital: 433,
           timestamp: new Date().toISOString()
         });
       }
@@ -201,17 +201,126 @@ async function handler(req, res) {
         return send(res, 400, { error: "Missing tokenID, price, size, or side" });
       }
 
-      console.log(`Placing order: ${side} ${size} @ ${price} on ${tokenID.slice(0, 20)}...`);
+      const orderType = body.orderType || "GTC"; // GTC, GTD, FOK
+      console.log(`Placing ${orderType} order: ${side} ${size} @ ${price} on ${tokenID.slice(0, 20)}...`);
       
-      const order = await client.createAndPostOrder({
+      const orderOpts = {
         tokenID,
         price: parseFloat(price),
         size: parseFloat(size),
         side: side === "BUY" ? Side.BUY : Side.SELL,
-      });
+      };
+
+      // FOK = Fill or Kill (for arb trades — v3 §4)
+      if (orderType === "FOK") orderOpts.orderType = "FOK";
+      else if (orderType === "GTD" && body.expiration) orderOpts.expiration = body.expiration;
+
+      const order = await client.createAndPostOrder(orderOpts);
 
       console.log(`Order result:`, JSON.stringify(order));
       return send(res, 200, order);
+    }
+
+    // POST /market-sell — sell position at best bid (emergency exit)
+    if (method === "POST" && path === "/market-sell") {
+      const body = await parseBody(req);
+      const { tokenID, size } = body;
+      if (!tokenID || !size) return send(res, 400, { error: "Missing tokenID or size" });
+
+      // Get current best bid
+      const book = await client.getOrderBook(tokenID);
+      const bestBid = book.bids && book.bids.length > 0 
+        ? parseFloat(book.bids[book.bids.length - 1].price) 
+        : null;
+      
+      if (!bestBid) return send(res, 400, { error: "No bids available" });
+
+      console.log(`🚨 MARKET SELL: ${size} @ ${bestBid} (best bid) on ${tokenID.slice(0, 20)}...`);
+      
+      const order = await client.createAndPostOrder({
+        tokenID,
+        price: bestBid,
+        size: parseFloat(size),
+        side: Side.SELL,
+      });
+
+      console.log(`Sell result:`, JSON.stringify(order));
+      return send(res, 200, { ...order, executedPrice: bestBid });
+    }
+
+    // POST /arb — execute both legs of an arbitrage simultaneously (FOK)
+    // v3 §4: Always use FOK for simultaneous legs
+    // v3 §7: Partial fill → immediately unwind filled leg
+    if (method === "POST" && path === "/arb") {
+      const body = await parseBody(req);
+      const { legs } = body; // [{ tokenID, price, size, side }, ...]
+      
+      if (!legs || legs.length < 2) return send(res, 400, { error: "Need at least 2 legs" });
+
+      console.log(`⚡ ARB: Executing ${legs.length} legs simultaneously (FOK)`);
+      
+      const results = await Promise.allSettled(
+        legs.map(leg => 
+          client.createAndPostOrder({
+            tokenID: leg.tokenID,
+            price: parseFloat(leg.price),
+            size: parseFloat(leg.size),
+            side: leg.side === "BUY" ? Side.BUY : Side.SELL,
+            orderType: "FOK",
+          })
+        )
+      );
+
+      const filled = [];
+      const failed = [];
+      results.forEach((r, i) => {
+        if (r.status === "fulfilled" && r.value && !r.value.error) {
+          filled.push({ leg: i, result: r.value });
+        } else {
+          failed.push({ leg: i, error: r.reason?.message || r.value?.error || "Unknown" });
+        }
+      });
+
+      // v3 §7: If partial fill, unwind
+      if (filled.length > 0 && failed.length > 0) {
+        console.log(`🚨 PARTIAL FILL: ${filled.length}/${legs.length} legs filled — UNWINDING`);
+        
+        const unwindResults = [];
+        for (const f of filled) {
+          const leg = legs[f.leg];
+          try {
+            // Sell what we bought, buy back what we sold
+            const unwindSide = leg.side === "BUY" ? Side.SELL : Side.BUY;
+            const book = await client.getOrderBook(leg.tokenID);
+            const unwindPrice = unwindSide === Side.SELL 
+              ? (book.bids?.length > 0 ? parseFloat(book.bids[book.bids.length - 1].price) : null)
+              : (book.asks?.length > 0 ? parseFloat(book.asks[0].price) : null);
+            
+            if (unwindPrice) {
+              const unwind = await client.createAndPostOrder({
+                tokenID: leg.tokenID,
+                price: unwindPrice,
+                size: parseFloat(leg.size),
+                side: unwindSide,
+              });
+              unwindResults.push({ leg: f.leg, price: unwindPrice, result: unwind });
+            }
+          } catch (e) {
+            unwindResults.push({ leg: f.leg, error: e.message });
+          }
+        }
+        
+        return send(res, 200, { 
+          status: "PARTIAL_FILL_UNWOUND",
+          filled, failed, unwindResults,
+          warning: "Arbitrage incomplete — filled legs unwound"
+        });
+      }
+
+      return send(res, 200, { 
+        status: filled.length === legs.length ? "ALL_FILLED" : "ALL_FAILED",
+        filled, failed 
+      });
     }
 
     // DELETE /order — cancel specific order
