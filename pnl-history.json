@@ -50,6 +50,14 @@
       "pnl": 2.43,
       "pnlPct": 0.73,
       "positions": 5
+    },
+    {
+      "timestamp": "2026-02-12T03:15:28.076Z",
+      "positionValue": 323,
+      "totalCost": 320.57,
+      "pnl": 2.43,
+      "pnlPct": 0.76,
+      "positions": 6
     }
   ],
   "startingCapital": 433
