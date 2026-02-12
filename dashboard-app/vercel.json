@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "regions": ["hnd1"],
+  "rewrites": [
+    { "source": "/api/balances", "destination": "/api/balances" },
+    { "source": "/api/bot-status", "destination": "/api/bot-status" },
+    { "source": "/api/orders", "destination": "/api/orders" },
+    { "source": "/api/positions", "destination": "/api/positions" },
+    { "source": "/api/activity", "destination": "/api/activity" }
+  ]
+}

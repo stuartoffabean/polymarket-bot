@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-02-11T23:31:49.524Z",
+  "summary": {
+    "total": 100,
+    "negRisk": 55,
+    "flagged": 2,
+    "viable": 2
+  },
+  "opportunities": [
+    {
+      "event": "What will be the top US Netflix show this week?",
+      "slug": "what-will-be-the-top-us-netflix-show-this-week-444",
+      "type": "LONG",
+      "outcomes": 6,
+      "midSum": 0.8125,
+      "execSum": 0.559,
+      "deviation": 18.75,
+      "execDeviation": 44.1,
+      "profitPer100": 44.1,
+      "viable": true,
+      "details": [
+        {
+          "name": "Will \"Star Search\" be the top US Netflix show this week?",
+          "mid": 0.0135,
+          "exec": 0.006,
+          "token": "11593258389701475218028794956980200183658188265776174588405807001042417616637"
+        },
+        {
+          "name": "Will \"Bridgerton: Season 4\" be the top US Netflix show this ",
+          "mid": 0.054,
+          "exec": 0.013,
+          "token": "67778897957686797188783910779239785286010753808425027763365203901569066268434"
+        },
+        {
+          "name": "Will \"Love is Blind: Season 10\" be the top US Netflix show t",
+          "mid": 0.205,
+          "exec": 0.19,
+          "token": "16480792314671748750434197298324665587257533014676135358357269809918240903997"
+        },
+        {
+          "name": "Will \"How to Get to Heaven from Belfast\" be the top US Netfl",
+          "mid": 0.1655,
+          "exec": 0.011,
+          "token": "563826424210739171089402278329138869204240605494652205216724498140555608526"
+        },
+        {
+          "name": "Will \"The Lincoln Lawyer: Season 4\" be the top US Netflix sh",
+          "mid": 0.355,
+          "exec": 0.33,
+          "token": "79162655892303852583720588952903991417568071104410448735975869429528097723984"
+        },
+        {
+          "name": "Will \"Is It Cake? Valentines\" be the top US Netflix show thi",
+          "mid": 0.0195,
+          "exec": 0.009,
+          "token": "88723315689747418827912037978007001483483329297353913678355194006008477900749"
+        }
+      ]
+    },
+    {
+      "event": "# of views on Bad Bunny halftime show (YouTube) in week 1?",
+      "slug": "of-views-on-bad-bunny-halftime-show-youtube-in-week-1",
+      "type": "LONG",
+      "outcomes": 5,
+      "midSum": 0.975,
+      "execSum": 0.939,
+      "deviation": 2.5,
+      "execDeviation": 6.1,
+      "profitPer100": 6.1,
+      "viable": true,
+      "details": [
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+          "mid": 0.585,
+          "exec": 0.57,
+          "token": "16680383807036024154663222348300164487828801908390056508639441371141589139909"
+        },
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+          "mid": 0.046,
+          "exec": 0.045,
+          "token": "45898979561776724675674269540705289853904297480687405423030789870584323984150"
+        },
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "89206389819547973544701352135591964017536183508908587819816505920342975202467"
+        },
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get a",
+          "mid": 0.016,
+          "exec": 0.013,
+          "token": "57385942856155711847230446373369941486584487930706621877050702770993063538064"
+        },
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+          "mid": 0.325,
+          "exec": 0.31,
+          "token": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
+        }
+      ]
+    }
+  ]
+}

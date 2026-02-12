@@ -1,0 +1,50 @@
+{
+  "startingCapital": 496,
+  "wallet": "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D",
+  "positions": [
+    {
+      "market": "Gov Shutdown Feb 14",
+      "side": "YES",
+      "shares": 89,
+      "entry": 0.83,
+      "cost": 73.87,
+      "tokenId": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
+      "resolves": "2026-02-14",
+      "stopLoss": 0.65,
+      "thesis": "Gov reopened after Jan 31 shutdown. New shutdown likely before Feb 14 deadline."
+    },
+    {
+      "market": "Bangladesh BNP Election",
+      "side": "YES",
+      "shares": 92,
+      "entry": 0.80,
+      "cost": 73.60,
+      "tokenId": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
+      "resolves": "2026-02-12",
+      "stopLoss": 0.65,
+      "thesis": "BNP heavy favorite. Resolves tomorrow."
+    },
+    {
+      "market": "Anthropic Best AI Model Feb",
+      "side": "YES",
+      "shares": 80,
+      "entry": 0.62,
+      "cost": 49.60,
+      "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
+      "resolves": "2026-02-28",
+      "stopLoss": 0.50,
+      "thesis": "Claude leads LMArena. No rival launch imminent."
+    }
+  ],
+  "pendingOrders": [],
+  "totalDeployed": 197.07,
+  "liquidBalance": 298.94,
+  "lastUpdated": "2026-02-11T23:30:00Z",
+  "dailyPnL": -0.06,
+  "mode": "NORMAL",
+  "strategiesActive": ["event-driven-directional", "arb-scanner"],
+  "strategiesPipeline": ["market-making-15min", "news-momentum", "cross-platform-arb"],
+  "arbScannerStatus": "operational",
+  "lastArbScan": "2026-02-11T23:30:00Z",
+  "arbResults": { "flagged": 2, "viable": 2, "bestProfit": 44.10 }
+}

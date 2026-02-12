@@ -1,0 +1,257 @@
+/**
+ * Polymarket Order Executor — Node.js sidecar
+ * Uses official @polymarket/clob-client for proper EIP712 order signing
+ * 
+ * HTTP API on port 3002:
+ *   GET  /health
+ *   GET  /balance
+ *   GET  /positions
+ *   GET  /orders
+ *   GET  /price?token_id=XXX
+ *   GET  /book?token_id=XXX
+ *   POST /order  { tokenID, price, size, side: "BUY"|"SELL" }
+ *   DELETE /order { orderID }
+ *   DELETE /orders (cancel all)
+ */
+
+const http = require("http");
+const { ClobClient, Side } = require("@polymarket/clob-client");
+const { Wallet } = require("ethers");
+
+const HOST = process.env.CLOB_PROXY_URL || "https://clob.polymarket.com";
+const CHAIN_ID = 137;
+const PORT = parseInt(process.env.EXECUTOR_PORT || "3002");
+
+let client;
+
+async function init() {
+  const pk = process.env.PRIVATE_KEY;
+  if (!pk) throw new Error("PRIVATE_KEY not set");
+
+  const signer = new Wallet(pk);
+  console.log(`Wallet: ${signer.address}`);
+
+  // Create temp client to derive API creds
+  const apiCreds = {
+    key: process.env.POLYMARKET_API_KEY,
+    secret: process.env.POLYMARKET_SECRET,
+    passphrase: process.env.POLYMARKET_PASSPHRASE,
+  };
+
+  // Signature type 0 = EOA
+  client = new ClobClient(HOST, CHAIN_ID, signer, apiCreds, 0);
+  console.log("CLOB client initialized (EOA mode)");
+}
+
+function parseBody(req) {
+  return new Promise((resolve, reject) => {
+    let data = "";
+    req.on("data", (c) => (data += c));
+    req.on("end", () => {
+      try { resolve(data ? JSON.parse(data) : {}); }
+      catch (e) { reject(e); }
+    });
+  });
+}
+
+function parseQuery(url) {
+  const q = {};
+  const idx = url.indexOf("?");
+  if (idx >= 0) {
+    url.slice(idx + 1).split("&").forEach((p) => {
+      const [k, v] = p.split("=");
+      q[decodeURIComponent(k)] = decodeURIComponent(v || "");
+    });
+  }
+  return q;
+}
+
+async function handler(req, res) {
+  const url = req.url;
+  const path = url.split("?")[0];
+  const method = req.method;
+  const query = parseQuery(url);
+
+  res.setHeader("Content-Type", "application/json");
+
+  try {
+    // Health check
+    if (path === "/health") {
+      return send(res, 200, { ok: true, wallet: client ? "ready" : "not initialized" });
+    }
+
+    if (!client) return send(res, 503, { error: "Client not initialized" });
+
+    // GET endpoints
+    if (method === "GET") {
+      if (path === "/price" && query.token_id) {
+        const price = await client.getPrice(query.token_id);
+        return send(res, 200, { price });
+      }
+      if (path === "/midpoint" && query.token_id) {
+        const mid = await client.getMidpoint(query.token_id);
+        return send(res, 200, { mid });
+      }
+      if (path === "/book" && query.token_id) {
+        const book = await client.getOrderBook(query.token_id);
+        return send(res, 200, book);
+      }
+      if (path === "/orders") {
+        const orders = await client.getOpenOrders();
+        return send(res, 200, { orders });
+      }
+      if (path === "/positions") {
+        // Get trade history to derive OUR positions
+        // In trades, if trader_side=MAKER, look at our specific maker_order entries
+        // If trader_side=TAKER, the top-level trade is ours
+        const trades = await client.getTrades();
+        const posMap = {};
+        const OUR_ADDR = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+        
+        for (const t of trades) {
+          if (t.trader_side === "TAKER") {
+            // Top-level trade is ours
+            const key = t.asset_id;
+            if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: t.outcome, size: 0, totalCost: 0 };
+            const qty = parseFloat(t.size);
+            const px = parseFloat(t.price);
+            if (t.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
+            else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
+          } else if (t.trader_side === "MAKER" && t.maker_orders) {
+            // Find our specific maker fills
+            for (const mo of t.maker_orders) {
+              if (mo.maker_address && mo.maker_address.toLowerCase() === OUR_ADDR) {
+                const key = mo.asset_id;
+                if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: mo.outcome, size: 0, totalCost: 0 };
+                const qty = parseFloat(mo.matched_amount);
+                const px = parseFloat(mo.price);
+                if (mo.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
+                else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
+              }
+            }
+          }
+        }
+        const positions = Object.values(posMap).filter(p => p.size > 0).map(p => ({
+          ...p,
+          avgPrice: p.size > 0 ? (p.totalCost / p.size).toFixed(4) : 0
+        }));
+        return send(res, 200, { positions });
+      }
+      if (path === "/trades") {
+        const trades = await client.getTrades();
+        return send(res, 200, { trades });
+      }
+      if (path === "/api/pnl" || path === "/pnl") {
+        // Read P&L history from snapshots file
+        const pnlPath = require("path").join(__dirname, "..", "pnl-history.json");
+        try {
+          const data = require("fs").readFileSync(pnlPath, "utf8");
+          return send(res, 200, JSON.parse(data));
+        } catch(e) {
+          return send(res, 200, { points: [], startingCapital: 496 });
+        }
+      }
+      if (path === "/api/snapshot" || path === "/snapshot") {
+        // Return current state for dashboard
+        const positions = [];
+        const OUR_ADDR = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+        try {
+          const trades = await client.getTrades();
+          const posMap = {};
+          for (const t of trades) {
+            if (t.trader_side === "TAKER") {
+              const key = t.asset_id;
+              if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: t.outcome, size: 0, totalCost: 0 };
+              const qty = parseFloat(t.size); const px = parseFloat(t.price);
+              if (t.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
+              else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
+            } else if (t.trader_side === "MAKER" && t.maker_orders) {
+              for (const mo of t.maker_orders) {
+                if (mo.maker_address && mo.maker_address.toLowerCase() === OUR_ADDR) {
+                  const key = mo.asset_id;
+                  if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: mo.outcome, size: 0, totalCost: 0 };
+                  const qty = parseFloat(mo.matched_amount); const px = parseFloat(mo.price);
+                  if (mo.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
+                  else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
+                }
+              }
+            }
+          }
+          Object.values(posMap).filter(p => p.size > 0).forEach(p => {
+            positions.push({ ...p, avgPrice: (p.totalCost / p.size).toFixed(4) });
+          });
+        } catch(e) {}
+        const orders = await client.getOpenOrders();
+        return send(res, 200, { 
+          status: "ok", 
+          positions, 
+          orders,
+          startingCapital: 496,
+          timestamp: new Date().toISOString()
+        });
+      }
+    }
+
+    // POST /order — place order
+    if (method === "POST" && path === "/order") {
+      const body = await parseBody(req);
+      const { tokenID, price, size, side } = body;
+      
+      if (!tokenID || !price || !size || !side) {
+        return send(res, 400, { error: "Missing tokenID, price, size, or side" });
+      }
+
+      console.log(`Placing order: ${side} ${size} @ ${price} on ${tokenID.slice(0, 20)}...`);
+      
+      const order = await client.createAndPostOrder({
+        tokenID,
+        price: parseFloat(price),
+        size: parseFloat(size),
+        side: side === "BUY" ? Side.BUY : Side.SELL,
+      });
+
+      console.log(`Order result:`, JSON.stringify(order));
+      return send(res, 200, order);
+    }
+
+    // DELETE /order — cancel specific order
+    if (method === "DELETE" && path === "/order") {
+      const body = await parseBody(req);
+      const { orderID } = body;
+      if (!orderID) return send(res, 400, { error: "Missing orderID" });
+      
+      const result = await client.cancelOrder(orderID);
+      return send(res, 200, { success: true, result });
+    }
+
+    // DELETE /orders — cancel all
+    if (method === "DELETE" && path === "/orders") {
+      const result = await client.cancelAll();
+      return send(res, 200, { success: true, result });
+    }
+
+    send(res, 404, { error: "Not found" });
+  } catch (err) {
+    console.error("Error:", err.message);
+    send(res, 500, { error: err.message });
+  }
+}
+
+function send(res, status, data) {
+  res.writeHead(status);
+  res.end(JSON.stringify(data));
+}
+
+async function main() {
+  await init();
+  
+  const server = http.createServer(handler);
+  server.listen(PORT, () => {
+    console.log(`Executor API running on http://0.0.0.0:${PORT}`);
+  });
+}
+
+main().catch((err) => {
+  console.error("Fatal:", err);
+  process.exit(1);
+});

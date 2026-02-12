@@ -53,7 +53,59 @@ const fmtUptime = (seconds) => {
 };
 
 // ── API ──
+// Data sources: GitHub raw for static data, local /api for live executor data
+const GITHUB_RAW = 'https://raw.githubusercontent.com/stuartoffabean/stuart-workspace-backup/main/polymarket-bot';
+const STATE_URL = `${GITHUB_RAW}/TRADING-STATE.json`;
+const PNL_URL = `${GITHUB_RAW}/pnl-history.json`;
+
 async function api(path) {
+    // Route P&L and snapshot to GitHub-hosted static files
+    if (path.startsWith('/api/pnl')) {
+        try {
+            const r = await fetch(PNL_URL + '?t=' + Date.now());
+            if (!r.ok) throw new Error(r.statusText);
+            return await r.json();
+        } catch(e) {
+            console.warn('PNL fetch from GitHub failed:', e.message);
+            return null;
+        }
+    }
+    if (path === '/api/status') {
+        try {
+            const r = await fetch(STATE_URL + '?t=' + Date.now());
+            if (!r.ok) throw new Error(r.statusText);
+            const state = await r.json();
+            return {
+                status: 'ok',
+                mode: state.mode || 'NORMAL',
+                bankroll: (state.liquidBalance || 0) + (state.totalDeployed || 0),
+                pnl_today: state.dailyPnL || 0,
+                pnl_total: ((state.liquidBalance || 0) + (state.totalDeployed || 0)) - (state.startingCapital || 496),
+                uptime_seconds: null,
+                strategies_active: (state.strategiesActive || []).length
+            };
+        } catch(e) {
+            console.warn('Status fetch from GitHub failed:', e.message);
+            return null;
+        }
+    }
+    if (path === '/api/positions') {
+        try {
+            const r = await fetch(STATE_URL + '?t=' + Date.now());
+            if (!r.ok) throw new Error(r.statusText);
+            const state = await r.json();
+            return (state.positions || []).map(p => ({
+                market: p.market,
+                side: p.side,
+                size: p.shares,
+                entry_price: p.entry,
+                current_price: p.entry, // updated on next snapshot
+                unrealized_pnl: 0,
+                cost: p.cost
+            }));
+        } catch(e) { return null; }
+    }
+    // Fallback to relative API paths
     try {
         const r = await fetch(path);
         if (!r.ok) throw new Error(r.statusText);

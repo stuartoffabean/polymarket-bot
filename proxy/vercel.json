@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "regions": ["hnd1"],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/proxy" }
+  ]
+}
