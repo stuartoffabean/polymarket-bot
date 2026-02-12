@@ -14,8 +14,8 @@ if [ -z "$SNAPSHOT" ]; then
   exit 1
 fi
 
-# Read trading state for trade history
-STATE=$(cat TRADING-STATE.json 2>/dev/null || echo "[]")
+# STRUCTURAL FIX: Read from executor (single source of truth), not TRADING-STATE.json
+EXEC_POSITIONS=$(curl -s localhost:3002/positions 2>/dev/null || echo '{"positions":[]}')
 ALERTS=$(curl -s localhost:3003/alerts 2>/dev/null || echo '{"alerts":[]}')
 WSPROXY=$(curl -s https://polymarket-dashboard-ws-production.up.railway.app/prices 2>/dev/null || echo '{"prices":{}}')
 
@@ -24,7 +24,7 @@ node -e "
 const prices = $SNAPSHOT;
 const status = $STATUS;
 const orders = $ORDERS;
-const state = $STATE;
+const execPositions = $EXEC_POSITIONS;
 const alerts = $ALERTS;
 const wsProxy = $WSPROXY;
 const livePriceCache = wsProxy.prices || {};
@@ -37,30 +37,28 @@ const positions = Object.entries(prices.prices || {}).map(([id, p]) => ({
   pnl: p.pnl, pnlPct: p.pnlPct, stopLoss: p.stopLoss, takeProfit: p.takeProfit,
 }));
 
-// Derive trades from state (each position entry = a trade)
-const stateArr = Array.isArray(state) ? state : state.positions || [];
-// Match by tokenId prefix (positions use truncated IDs)
-const trades = stateArr.map(p => {
-  const livePos = positions.find(pp => {
-    if (!p.tokenId || !pp.fullAssetId) return false;
-    return p.tokenId.startsWith(pp.fullAssetId) || pp.fullAssetId.startsWith(p.tokenId.slice(0,20));
-  });
-  // Also try WS proxy for real-time price
-  const wsPrice = livePriceCache[p.tokenId];
+// STRUCTURAL FIX: Derive trades from EXECUTOR, not TRADING-STATE.json
+// Executor is the single source of truth for position data
+const execPos = execPositions.positions || [];
+const trades = execPos.filter(p => p.size > 0).map(p => {
+  // Find live price from ws-feed
+  const livePos = positions.find(pp => pp.fullAssetId === p.asset_id);
+  const wsPrice = livePriceCache[p.asset_id];
   const currentBid = livePos?.currentBid || wsPrice?.bid || null;
-  const pnl = currentBid && p.entry && p.shares ? (currentBid - p.entry) * p.shares : 0;
+  const pnl = currentBid && p.avgPrice && p.size ? (currentBid - parseFloat(p.avgPrice)) * p.size : 0;
+  const costBasis = p.totalCost || (parseFloat(p.avgPrice) * p.size);
   return {
     timestamp: new Date().toISOString(),
-    market: p.market,
-    outcome: p.side,
+    market: p.market || 'Unknown',
+    outcome: p.outcome,
     side: 'buy',
-    price: p.entry,
-    size: p.cost,
-    shares: p.shares,
+    price: parseFloat(p.avgPrice),
+    size: costBasis,
+    shares: p.size,
     currentPrice: currentBid,
     pnl: parseFloat(pnl.toFixed(2)),
-    pnlPct: p.cost > 0 ? ((pnl / p.cost) * 100).toFixed(1) + '%' : null,
-    tokenId: p.tokenId,
+    pnlPct: costBasis > 0 ? ((pnl / costBasis) * 100).toFixed(1) + '%' : null,
+    tokenId: p.asset_id,
   };
 });
 

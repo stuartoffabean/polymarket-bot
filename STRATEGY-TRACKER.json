@@ -59,12 +59,56 @@
       "positions": [],
       "trades": 0,
       "notes": "Scanned 1000+ markets. No viable arbs at $433 scale. Tail outcomes illiquid. Revisit at $5K+."
+    },
+    "crypto-15min": {
+      "name": "15-Minute Crypto Binary Arb",
+      "status": "RESEARCH",
+      "positions": [],
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "open": 0,
+      "totalPnl": 0,
+      "notes": "BTC/ETH UP/DN binaries resolving every 15 min. Edge: exchange price lag vs Polymarket. Needs: Binance WS feed for signal, fast execution. Taker fees exist (1.56% max at 50%, 0.06% at extremes). Reference: someone turned $313→$414K. dr-manhattan-ts has findCryptoHourlyMarket(). Risk: HFT-dominated, need speed advantage. Research phase: evaluate feasibility at $500 scale."
+    },
+    "cross-platform-arb": {
+      "name": "Cross-Platform Arbitrage (Polymarket↔Kalshi)",
+      "status": "UNBLOCKED",
+      "positions": [],
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "open": 0,
+      "totalPnl": 0,
+      "notes": "Previously BLOCKED (no Kalshi access). dr-manhattan-ts provides read-only Kalshi API access. Step 1: Install dr-manhattan-ts, scan for price divergences. Step 2: If profitable spreads found, get Kalshi API key for execution. Someone built a working Kalshi↔Polymarket arb bot (reddit r/algotrading). Predly tool also detects cross-platform pricing errors."
+    },
+    "weather-forecast-arb": {
+      "name": "Weather Forecast Arbitrage (NOAA/ECMWF)",
+      "status": "RESEARCH",
+      "positions": [],
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "open": 0,
+      "totalPnl": 0,
+      "notes": "Intel 2026-02-12: Trade weather markets (temperature ranges, precipitation) using free NOAA forecast data as edge. Markets lag forecast updates by minutes. Temperature ranges must sum to 100% but retail misprices them to 105-115%. 24h resolution = extreme capital velocity. Reported results: 73% win rate over 1300+ trades. Step 1: Manual scan of Polymarket weather markets vs Weather.gov. Step 2: If edge confirmed, build NOAA API feed into bot. Step 3: Automate. NOAA API is free, no key needed. ArbAlert.ai also monitors this."
+    },
+    "systematic-no": {
+      "name": "Systematic NO Farming",
+      "status": "RESEARCH",
+      "positions": [],
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "open": 0,
+      "totalPnl": 0,
+      "notes": "~70% of prediction markets resolve NO. Crowd systematically overpays for exciting YES outcomes. Strategy: systematically bet NO on overpriced YES markets. Partially overlaps with safe-yield strategy but with systematic market selection. Research: need historical resolution data to validate the 70% claim on Polymarket specifically."
     }
   },
   "pipeline": {
     "next_review": "2026-02-17",
     "new_strategy_deadline": "2026-02-17",
-    "notes": "v2 mandates at least 1 new strategy entering pipeline every Monday"
+    "notes": "v2 mandates at least 1 new strategy entering pipeline every Monday. 3 new strategies added from night research 2026-02-12."
   },
-  "lastUpdated": "2026-02-12T03:30:00Z"
+  "lastUpdated": "2026-02-12T11:00:00Z"
 }

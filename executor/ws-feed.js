@@ -320,10 +320,14 @@ function handlePriceChange(data) {
 // === TRIGGER ENGINE ===
 function checkTriggers(assetId, asset) {
   if (!asset.avgPrice || !asset.size) return;
-  if (emergencyMode) return; // no trading in emergency
 
   const currentPrice = asset.currentBid;
   if (!currentPrice) return;
+
+  // Always update portfolio (even in emergency — needed for mode recovery)
+  updatePortfolioValue();
+
+  if (emergencyMode) return; // no trading in emergency
 
   const costBasis = asset.avgPrice * asset.size;
   const currentValue = currentPrice * asset.size;
@@ -360,8 +364,6 @@ function checkTriggers(assetId, asset) {
     }
   }
 
-  // Update portfolio
-  updatePortfolioValue();
 }
 
 async function executeSell(assetId, asset, reason) {
@@ -374,6 +376,11 @@ async function executeSell(assetId, asset, reason) {
     log("EXEC", `Sell result: ${JSON.stringify(result)}`);
     pushAlert("SELL_EXECUTED", assetId, asset, result.executedPrice, null, 
       `${reason}: Sold ${asset.size} @ ${result.executedPrice}`);
+    
+    // STRUCTURAL FIX: Sync positions from executor after sell
+    // This ensures ws-feed removes sold positions and stays in sync with executor
+    log("SYNC", "Post-sell position sync...");
+    await syncPositions();
   } catch (e) {
     log("EXEC", `❌ Auto-sell FAILED: ${e.message}`);
     pushAlert("SELL_FAILED", assetId, asset, null, null, `${reason} sell failed: ${e.message}`);
@@ -422,6 +429,9 @@ function updatePortfolioValue() {
       pushAlert("SURVIVAL_MODE", null, null, null, null, 
         `⚠️ Balance $${totalValue.toFixed(2)} below 25% of $${STARTING_CAPITAL} — SURVIVAL MODE`);
       log("RISK", `⚠️ SURVIVAL MODE ACTIVATED — balance: $${totalValue.toFixed(2)}`);
+    } else if (survivalMode && totalValue >= STARTING_CAPITAL * SURVIVAL_THRESHOLD) {
+      survivalMode = false;
+      log("RISK", `✅ SURVIVAL MODE CLEARED — balance: $${totalValue.toFixed(2)}`);
     }
 
     // EMERGENCY MODE (v3 §7: balance < 10% of starting)
@@ -431,6 +441,10 @@ function updatePortfolioValue() {
       pushAlert("EMERGENCY_MODE", null, null, null, null, 
         `🚨 EMERGENCY: Balance $${totalValue.toFixed(2)} below 10% of $${STARTING_CAPITAL} — ALL TRADING HALTED`);
       log("RISK", `🚨 EMERGENCY MODE — ALL TRADING HALTED`);
+    } else if (emergencyMode && totalValue >= STARTING_CAPITAL * EMERGENCY_THRESHOLD) {
+      emergencyMode = false;
+      autoExecuteEnabled = true;
+      log("RISK", `✅ EMERGENCY MODE CLEARED — balance: $${totalValue.toFixed(2)}, auto-execute re-enabled`);
     }
   }
 }
@@ -482,8 +496,24 @@ async function syncPositions() {
     const { positions } = await httpGet("/positions");
     const alerts = loadAlerts();
 
+    // STRUCTURAL FIX: Remove sold positions (not in executor anymore)
+    const executorAssetIds = new Set(positions.map(p => p.asset_id));
+    for (const [assetId, _] of subscribedAssets) {
+      if (!executorAssetIds.has(assetId)) {
+        subscribedAssets.delete(assetId);
+        log("SYNC", `Removed sold position: ${assetId.slice(0,20)}`);
+      }
+    }
+
     const newAssetIds = [];
     for (const pos of positions) {
+      // Skip positions with zero size
+      if (pos.size === 0) {
+        subscribedAssets.delete(pos.asset_id);
+        log("SYNC", `Skipped zero-size position: ${pos.asset_id.slice(0,20)}`);
+        continue;
+      }
+      
       const existing = subscribedAssets.get(pos.asset_id) || {};
       subscribedAssets.set(pos.asset_id, {
         ...existing,
