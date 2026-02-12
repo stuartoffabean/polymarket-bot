@@ -175,13 +175,14 @@ async function api(path) {
             const r = await fetch(PNL_URL + '?t=' + Date.now());
             if (!r.ok) throw new Error(r.statusText);
             const data = await r.json();
-            return {
-                points: (data.points || []).map(p => ({
+            const points = (data.points || [])
+                .filter(p => p.timestamp && p.positionValue > 0)
+                .map(p => ({
                     time: p.timestamp,
-                    value: p.pnl || 0,
-                })),
-                startingCapital: data.startingCapital || 433,
-            };
+                    value: p.positionValue || 0,
+                    pnl: p.pnl || 0,
+                }));
+            return { points, startingCapital: data.startingCapital || 433 };
         } catch(e) { return null; }
     }
     // Fallback

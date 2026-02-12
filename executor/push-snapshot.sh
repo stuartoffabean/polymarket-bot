@@ -17,6 +17,7 @@ fi
 # Read trading state for trade history
 STATE=$(cat TRADING-STATE.json 2>/dev/null || echo "[]")
 ALERTS=$(curl -s localhost:3003/alerts 2>/dev/null || echo '{"alerts":[]}')
+WSPROXY=$(curl -s https://polymarket-dashboard-ws-production.up.railway.app/prices 2>/dev/null || echo '{"prices":{}}')
 
 # Combine into dashboard-ready JSON
 node -e "
@@ -25,6 +26,8 @@ const status = $STATUS;
 const orders = $ORDERS;
 const state = $STATE;
 const alerts = $ALERTS;
+const wsProxy = $WSPROXY;
+const livePriceCache = wsProxy.prices || {};
 
 // Build strategies from position data
 const positions = Object.entries(prices.prices || {}).map(([id, p]) => ({
@@ -36,8 +39,16 @@ const positions = Object.entries(prices.prices || {}).map(([id, p]) => ({
 
 // Derive trades from state (each position entry = a trade)
 const stateArr = Array.isArray(state) ? state : state.positions || [];
+// Match by tokenId prefix (positions use truncated IDs)
 const trades = stateArr.map(p => {
-  const livePos = positions.find(pp => pp.fullAssetId === p.tokenId || (pp.outcome === p.side && Math.abs(pp.avgPrice - p.entry) < 0.02));
+  const livePos = positions.find(pp => {
+    if (!p.tokenId || !pp.fullAssetId) return false;
+    return p.tokenId.startsWith(pp.fullAssetId) || pp.fullAssetId.startsWith(p.tokenId.slice(0,20));
+  });
+  // Also try WS proxy for real-time price
+  const wsPrice = livePriceCache[p.tokenId];
+  const currentBid = livePos?.currentBid || wsPrice?.bid || null;
+  const pnl = currentBid && p.entry && p.shares ? (currentBid - p.entry) * p.shares : 0;
   return {
     timestamp: new Date().toISOString(),
     market: p.market,
@@ -45,23 +56,25 @@ const trades = stateArr.map(p => {
     side: 'buy',
     price: p.entry,
     size: p.cost,
-    currentPrice: livePos ? livePos.currentBid : null,
-    pnl: livePos ? parseFloat(livePos.pnl) || 0 : 0,
-    pnlPct: livePos ? livePos.pnlPct : null,
+    shares: p.shares,
+    currentPrice: currentBid,
+    pnl: parseFloat(pnl.toFixed(2)),
+    pnlPct: p.cost > 0 ? ((pnl / p.cost) * 100).toFixed(1) + '%' : null,
+    tokenId: p.tokenId,
   };
 });
 
-// Derive strategies
+// Derive strategies from computed trades
 const strategyMap = {};
-for (const p of stateArr) {
-  const type = p.entry >= 0.85 ? 'Safe Yield' : p.entry >= 0.60 ? 'Event-Driven' : 'Speculative';
-  if (!strategyMap[type]) strategyMap[type] = { name: type, trades: 0, pnl: 0, enabled: true };
+for (const t of trades) {
+  const type = t.price >= 0.85 ? 'Safe Yield' : t.price >= 0.60 ? 'Event-Driven' : 'Speculative';
+  if (!strategyMap[type]) strategyMap[type] = { name: type, trades: 0, pnl: 0, wins: 0, enabled: true };
   strategyMap[type].trades++;
-  const pos = positions.find(pp => pp.outcome === p.side && Math.abs(pp.avgPrice - p.entry) < 0.02);
-  if (pos) strategyMap[type].pnl += parseFloat(pos.pnl) || 0;
+  strategyMap[type].pnl += t.pnl || 0;
+  if (t.pnl > 0) strategyMap[type].wins++;
 }
 const strategies = Object.values(strategyMap).map(s => ({
-  ...s, winRate: s.pnl >= 0 ? 0.6 : 0.4,
+  ...s, winRate: s.trades > 0 ? s.wins / s.trades : 0,
 }));
 
 // Recent activity from alerts

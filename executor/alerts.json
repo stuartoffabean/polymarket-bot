@@ -7,6 +7,13 @@
       "pnlPct": null,
       "message": "Cancelled all open orders on disconnect",
       "timestamp": "2026-02-12T02:05:00.870Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-12T02:20:01.841Z"
     }
   ],
   "circuitBreakerTripped": false,
