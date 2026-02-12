@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-12T02:58:27.124Z",
+  "timestamp": "2026-02-12T03:13:27.007Z",
   "portfolio": {
     "trackedPositions": 4,
-    "portfolioValue": 286.23,
+    "portfolioValue": 287.34000000000003,
     "dailyStartValue": 48.96,
     "startingCapital": 433
   },
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 5948.254433482
+    "uptime": 6848.117843281
   },
   "positions": [
     {
@@ -31,12 +31,12 @@
       "outcome": "Yes",
       "size": 139,
       "avgPrice": 0.83,
-      "currentBid": 0.81,
+      "currentBid": 0.82,
       "currentAsk": 0.83,
       "costBasis": "115.37",
-      "currentValue": "112.59",
-      "pnl": "-2.78",
-      "pnlPct": "-2.4%",
+      "currentValue": "113.98",
+      "pnl": "-1.39",
+      "pnlPct": "-1.2%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -46,12 +46,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.663,
-      "currentAsk": 0.664,
+      "currentBid": 0.671,
+      "currentAsk": 0.681,
       "costBasis": "49.60",
-      "currentValue": "53.04",
-      "pnl": "3.44",
-      "pnlPct": "6.9%",
+      "currentValue": "53.68",
+      "pnl": "4.08",
+      "pnlPct": "8.2%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -61,12 +61,12 @@
       "outcome": "Yes",
       "size": 92,
       "avgPrice": 0.8,
-      "currentBid": 0.8,
-      "currentAsk": 0.82,
+      "currentBid": 0.79,
+      "currentAsk": 0.81,
       "costBasis": "73.60",
-      "currentValue": "73.60",
-      "pnl": "0.00",
-      "pnlPct": "0.0%",
+      "currentValue": "72.68",
+      "pnl": "-0.92",
+      "pnlPct": "-1.3%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -89,46 +89,46 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-12T02:58:27.123Z",
+      "timestamp": "2026-02-12T03:13:27.007Z",
       "market": "Gov Shutdown Feb 14",
       "outcome": "YES",
       "side": "buy",
       "price": 0.83,
       "size": 115.37,
       "shares": 139,
-      "currentPrice": 0.81,
-      "pnl": -2.78,
-      "pnlPct": "-2.4%",
+      "currentPrice": 0.82,
+      "pnl": -1.39,
+      "pnlPct": "-1.2%",
       "tokenId": "7648925155044397287047798308912067661131447591491670430094875295487039626662"
     },
     {
-      "timestamp": "2026-02-12T02:58:27.124Z",
+      "timestamp": "2026-02-12T03:13:27.007Z",
       "market": "Bangladesh BNP Election",
       "outcome": "YES",
       "side": "buy",
       "price": 0.8,
       "size": 73.6,
       "shares": 92,
-      "currentPrice": 0.8,
-      "pnl": 0,
-      "pnlPct": "0.0%",
+      "currentPrice": 0.79,
+      "pnl": -0.92,
+      "pnlPct": "-1.3%",
       "tokenId": "77587680906182806497450061873126722297392583495948543397251590274471719007220"
     },
     {
-      "timestamp": "2026-02-12T02:58:27.124Z",
+      "timestamp": "2026-02-12T03:13:27.007Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "YES",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
       "shares": 80,
-      "currentPrice": 0.663,
-      "pnl": 3.44,
-      "pnlPct": "6.9%",
+      "currentPrice": 0.671,
+      "pnl": 4.08,
+      "pnlPct": "8.2%",
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     },
     {
-      "timestamp": "2026-02-12T02:58:27.124Z",
+      "timestamp": "2026-02-12T03:13:27.007Z",
       "market": "Fed March 25bps Cut",
       "outcome": "NO",
       "side": "buy",
@@ -141,7 +141,7 @@
       "tokenId": "89036168105179001192755120118050209760422683300339582903158940882158509550672"
     },
     {
-      "timestamp": "2026-02-12T02:58:27.124Z",
+      "timestamp": "2026-02-12T03:13:27.007Z",
       "market": "Norway Most Gold Medals Winter Olympics",
       "outcome": "YES",
       "side": "buy",
@@ -158,7 +158,7 @@
     {
       "name": "Event-Driven",
       "trades": 3,
-      "pnl": 0.6600000000000001,
+      "pnl": 1.77,
       "wins": 1,
       "enabled": true,
       "winRate": 0.3333333333333333
