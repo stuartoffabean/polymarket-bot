@@ -53,10 +53,15 @@ const fmtUptime = (seconds) => {
 };
 
 // ── API ──
-// Data sources: GitHub raw for static data, local /api for live executor data
+// Data sources: GitHub raw for static data, WS proxy for real-time prices
 const GITHUB_RAW = 'https://raw.githubusercontent.com/stuartoffabean/polymarket-bot/main';
 const STATE_URL = `${GITHUB_RAW}/live-snapshot.json`;
 const PNL_URL = `${GITHUB_RAW}/pnl-history.json`;
+const WS_PROXY = 'wss://polymarket-dashboard-ws-production.up.railway.app';
+const WS_PROXY_HTTP = 'https://polymarket-dashboard-ws-production.up.railway.app';
+
+// Live price cache from WebSocket
+let livePriceCache = {};
 
 async function api(path) {
     // Route P&L and snapshot to GitHub-hosted static files
@@ -314,17 +319,54 @@ async function updateOrders() {
 
 // ── Activity Feed (WebSocket) ──
 function connectWs() {
-    const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
-    ws = new WebSocket(`${proto}//${location.host}/api/ws`);
-    ws.onopen = () => { wsBadge.className = 'ws-badge connected'; wsBadge.textContent = '● LIVE'; wsRetryMs = 1000; };
+    ws = new WebSocket(WS_PROXY);
+    ws.onopen = () => { wsBadge.className = 'ws-badge connected'; wsBadge.textContent = '● LIVE'; wsRetryMs = 1000; addActivity({ text: 'Connected to real-time feed', type: 'info' }); };
     ws.onclose = () => { wsBadge.className = 'ws-badge'; wsBadge.textContent = '● OFF'; setTimeout(connectWs, wsRetryMs); wsRetryMs = Math.min(wsRetryMs * 2, 30000); };
     ws.onerror = () => ws.close();
     ws.onmessage = (e) => {
         try {
             const msg = JSON.parse(e.data);
+            if (msg.type === 'prices' || msg.type === 'snapshot') {
+                // Update live price cache
+                livePriceCache = msg.prices || {};
+                // Update positions with real-time data
+                updatePositionsFromWs();
+                // Update status bar P&L
+                updateLivePnl();
+                return;
+            }
             addActivity(msg);
         } catch { addActivity({ text: e.data }); }
     };
+}
+
+function updatePositionsFromWs() {
+    const prices = Object.values(livePriceCache).filter(p => p.market);
+    if (prices.length === 0) return;
+    positionsEl.innerHTML = prices.map(p => {
+        const upnl = fmtPnl(p.pnl);
+        const currentPrice = p.bid || 0;
+        return `<div class="position-card">
+            <div class="market">${esc(p.market || '—')}</div>
+            <div>
+                <div class="detail">Side: <span class="${(p.outcome || '').toLowerCase() === 'yes' ? 'green' : 'red'}">${(p.outcome || '—').toUpperCase()}</span></div>
+                <div class="detail">Size: <span>${p.size || 0} shares</span> ($${(p.costBasis || 0).toFixed(2)})</div>
+                <div class="detail">Entry: <span>${(p.avgPrice * 100).toFixed(0)}¢</span> → Now: <span>${(currentPrice * 100).toFixed(0)}¢</span></div>
+            </div>
+            <div class="upnl ${upnl.cls}">${upnl.text}</div>
+        </div>`;
+    }).join('') || '<div class="empty">No positions</div>';
+}
+
+function updateLivePnl() {
+    const prices = Object.values(livePriceCache).filter(p => p.market);
+    let totalPnl = 0;
+    for (const p of prices) {
+        totalPnl += p.pnl || 0;
+    }
+    const pnl = fmtPnl(totalPnl);
+    pnlTotalEl.textContent = pnl.text;
+    pnlTotalEl.className = 'stat-value mono ' + pnl.cls;
 }
 
 function addActivity(msg) {
