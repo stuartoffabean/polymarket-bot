@@ -317,22 +317,67 @@ async function updateOrders() {
     }).join('') || '<div class="empty">No open orders</div>';
 }
 
+// ── Real-Time State ──
+let prevPriceCache = {};
+let wsConnected = false;
+let firstDataReceived = false;
+const overlay = document.getElementById('connectingOverlay');
+
+// Show loading skeletons on startup
+function showSkeletons() {
+    positionsEl.innerHTML = [1,2,3].map(() => `
+        <div class="skeleton-card">
+            <div class="skeleton skeleton-line"></div>
+            <div class="skeleton skeleton-line"></div>
+            <div class="skeleton skeleton-line"></div>
+        </div>
+    `).join('');
+    strategiesEl.innerHTML = [1,2].map(() => `
+        <div class="skeleton-card">
+            <div class="skeleton skeleton-line"></div>
+            <div class="skeleton skeleton-line"></div>
+        </div>
+    `).join('');
+    ordersEl.innerHTML = `<div class="skeleton-card"><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-line"></div></div>`;
+}
+
 // ── Activity Feed (WebSocket) ──
 function connectWs() {
     ws = new WebSocket(WS_PROXY);
-    ws.onopen = () => { wsBadge.className = 'ws-badge connected'; wsBadge.textContent = '● LIVE'; wsRetryMs = 1000; addActivity({ text: 'Connected to real-time feed', type: 'info' }); };
-    ws.onclose = () => { wsBadge.className = 'ws-badge'; wsBadge.textContent = '● OFF'; setTimeout(connectWs, wsRetryMs); wsRetryMs = Math.min(wsRetryMs * 2, 30000); };
+    ws.onopen = () => {
+        wsConnected = true;
+        wsBadge.className = 'ws-badge connected';
+        wsBadge.textContent = '● LIVE';
+        wsRetryMs = 1000;
+        statusDot.className = 'status-dot active';
+        statusLabel.textContent = 'LIVE';
+        addActivity({ text: 'Connected to real-time feed', type: 'info' });
+    };
+    ws.onclose = () => {
+        wsConnected = false;
+        wsBadge.className = 'ws-badge';
+        wsBadge.textContent = '● OFF';
+        statusDot.className = 'status-dot';
+        statusLabel.textContent = 'RECONNECTING';
+        setTimeout(connectWs, wsRetryMs);
+        wsRetryMs = Math.min(wsRetryMs * 2, 30000);
+    };
     ws.onerror = () => ws.close();
     ws.onmessage = (e) => {
         try {
             const msg = JSON.parse(e.data);
             if (msg.type === 'prices' || msg.type === 'snapshot') {
-                // Update live price cache
+                prevPriceCache = { ...livePriceCache };
                 livePriceCache = msg.prices || {};
-                // Update positions with real-time data
                 updatePositionsFromWs();
-                // Update status bar P&L
                 updateLivePnl();
+
+                // Hide overlay on first data
+                if (!firstDataReceived) {
+                    firstDataReceived = true;
+                    overlay.classList.add('hidden');
+                    setTimeout(() => overlay.style.display = 'none', 500);
+                }
                 return;
             }
             addActivity(msg);
@@ -341,32 +386,110 @@ function connectWs() {
 }
 
 function updatePositionsFromWs() {
-    const prices = Object.values(livePriceCache).filter(p => p.market);
-    if (prices.length === 0) return;
-    positionsEl.innerHTML = prices.map(p => {
+    const prices = Object.values(livePriceCache);
+    const prevPrices = Object.values(prevPriceCache);
+    const withMarket = prices.filter(p => p.market);
+    if (withMarket.length === 0) return;
+
+    // Build lookup for flash detection
+    const prevMap = {};
+    for (const [id, p] of Object.entries(prevPriceCache)) {
+        prevMap[id] = p;
+    }
+
+    // Update or create position cards smoothly
+    const existingCards = positionsEl.querySelectorAll('.position-card');
+    const needsRebuild = existingCards.length !== withMarket.length || existingCards.length === 0;
+
+    if (needsRebuild) {
+        positionsEl.innerHTML = '';
+    }
+
+    Object.entries(livePriceCache).forEach(([id, p], i) => {
+        if (!p.market) return;
+        const prev = prevMap[id];
+        const priceChanged = prev && prev.bid !== p.bid;
+        const priceUp = prev && p.bid > prev.bid;
+        const priceDown = prev && p.bid < prev.bid;
         const upnl = fmtPnl(p.pnl);
         const currentPrice = p.bid || 0;
-        return `<div class="position-card">
-            <div class="market">${esc(p.market || '—')}</div>
-            <div>
-                <div class="detail">Side: <span class="${(p.outcome || '').toLowerCase() === 'yes' ? 'green' : 'red'}">${(p.outcome || '—').toUpperCase()}</span></div>
-                <div class="detail">Size: <span>${p.size || 0} shares</span> ($${(p.costBasis || 0).toFixed(2)})</div>
-                <div class="detail">Entry: <span>${(p.avgPrice * 100).toFixed(0)}¢</span> → Now: <span>${(currentPrice * 100).toFixed(0)}¢</span></div>
-            </div>
-            <div class="upnl ${upnl.cls}">${upnl.text}</div>
-        </div>`;
-    }).join('') || '<div class="empty">No positions</div>';
+        const pnlPositive = (p.pnl || 0) >= 0;
+
+        let card = needsRebuild ? null : positionsEl.children[i];
+
+        if (!card || needsRebuild) {
+            card = document.createElement('div');
+            card.className = `position-card ${pnlPositive ? 'positive' : 'negative'}`;
+            card.dataset.assetId = id;
+            card.innerHTML = `
+                <div class="market">${esc(p.market)}</div>
+                <div>
+                    <div class="detail">Side: <span class="${(p.outcome || '').toLowerCase() === 'yes' ? 'green' : 'red'}">${(p.outcome || '—').toUpperCase()}</span></div>
+                    <div class="detail">Size: <span>${p.size || 0} shares</span> ($${(p.costBasis || 0).toFixed(2)})</div>
+                    <div class="detail">Entry: <span>${((p.avgPrice || 0) * 100).toFixed(0)}¢</span> → Now: <span class="live-price">${(currentPrice * 100).toFixed(1)}¢</span></div>
+                </div>
+                <div class="upnl ${upnl.cls}">${upnl.text}</div>
+            `;
+            positionsEl.appendChild(card);
+        } else {
+            // Smooth update — only change values, don't rebuild DOM
+            const priceEl = card.querySelector('.live-price');
+            const upnlEl = card.querySelector('.upnl');
+
+            if (priceEl) {
+                const newText = `${(currentPrice * 100).toFixed(1)}¢`;
+                if (priceEl.textContent !== newText) {
+                    priceEl.textContent = newText;
+                }
+            }
+            if (upnlEl) {
+                upnlEl.textContent = upnl.text;
+                upnlEl.className = `upnl ${upnl.cls}`;
+            }
+            card.className = `position-card ${pnlPositive ? 'positive' : 'negative'}`;
+
+            // Flash on price change
+            if (priceChanged) {
+                card.classList.remove('flash-up', 'flash-down');
+                void card.offsetWidth; // force reflow
+                card.classList.add(priceUp ? 'flash-up' : 'flash-down');
+                addActivity({
+                    text: `${p.market}: ${(prev.bid * 100).toFixed(1)}¢ → ${(currentPrice * 100).toFixed(1)}¢`,
+                    type: priceUp ? 'trade' : 'alert',
+                    time: new Date().toISOString()
+                });
+            }
+        }
+    });
+}
+
+function smoothUpdate(el, newText, newClass) {
+    if (el.textContent === newText && (!newClass || el.className.includes(newClass))) return;
+    el.classList.add('value-updating');
+    requestAnimationFrame(() => {
+        el.textContent = newText;
+        if (newClass) el.className = newClass;
+        requestAnimationFrame(() => {
+            el.classList.remove('value-updating');
+            el.classList.add('value-updated');
+        });
+    });
 }
 
 function updateLivePnl() {
     const prices = Object.values(livePriceCache).filter(p => p.market);
     let totalPnl = 0;
+    let totalValue = 0;
     for (const p of prices) {
         totalPnl += p.pnl || 0;
+        totalValue += p.currentValue || 0;
     }
     const pnl = fmtPnl(totalPnl);
-    pnlTotalEl.textContent = pnl.text;
-    pnlTotalEl.className = 'stat-value mono ' + pnl.cls;
+    smoothUpdate(pnlTotalEl, pnl.text, 'stat-value mono ' + pnl.cls);
+    bankrollEl.textContent = fmtUsd(433);
+
+    // Count positions for uptime slot (repurpose)
+    uptimeEl.textContent = `${prices.length} positions`;
 }
 
 function addActivity(msg) {
@@ -441,7 +564,11 @@ function pollAll() {
     updateOrders();
 }
 
+// ── Init ──
+showSkeletons();
 initChart();
-pollAll();
 connectWs();
-setInterval(pollAll, 5000);
+// Poll GitHub data less frequently now (trades, strategies, orders, chart)
+// Positions update in real-time via WebSocket
+pollAll();
+setInterval(pollAll, 30000);

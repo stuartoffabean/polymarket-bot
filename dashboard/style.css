@@ -138,6 +138,55 @@ td .side-sell{color:var(--red)}
 /* ── Empty State ── */
 .empty{color:var(--dim);font-size:.8rem;padding:24px 0;text-align:center}
 
+/* ── Loading Skeleton ── */
+.skeleton{
+  background:linear-gradient(90deg,rgba(255,255,255,.03) 25%,rgba(255,255,255,.06) 50%,rgba(255,255,255,.03) 75%);
+  background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite;
+  border-radius:4px;color:transparent!important;user-select:none;
+}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skeleton-line{height:14px;margin:6px 0;border-radius:4px}
+.skeleton-card{padding:12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px}
+.skeleton-card .skeleton-line:first-child{width:60%}
+.skeleton-card .skeleton-line:nth-child(2){width:80%}
+.skeleton-card .skeleton-line:nth-child(3){width:40%}
+
+/* ── Value Transitions ── */
+.stat-value,.upnl,.position-card .detail span{
+  transition:color .3s ease,opacity .2s ease;
+}
+
+/* ── Price Flash ── */
+@keyframes flash-green{0%{background:rgba(0,255,136,.15)}100%{background:transparent}}
+@keyframes flash-red{0%{background:rgba(255,68,68,.15)}100%{background:transparent}}
+.flash-up{animation:flash-green .6s ease-out}
+.flash-down{animation:flash-red .6s ease-out}
+
+/* ── Position Card Smooth ── */
+.position-card{transition:border-color .3s ease,box-shadow .3s ease}
+.position-card.positive{border-color:rgba(0,255,136,.15)}
+.position-card.negative{border-color:rgba(255,68,68,.15)}
+
+/* ── Connecting Overlay ── */
+.connecting-overlay{
+  position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;
+  background:rgba(10,10,15,.85);backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;transition:opacity .5s ease;
+}
+.connecting-overlay.hidden{opacity:0;pointer-events:none}
+.connecting-spinner{
+  width:32px;height:32px;border:3px solid var(--border);
+  border-top-color:var(--green);border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.connecting-text{font-family:var(--font-mono);font-size:.85rem;color:var(--dim);letter-spacing:.06em}
+
+/* ── Smooth number update ── */
+.value-updating{opacity:.6;transition:opacity .1s}
+.value-updated{opacity:1;transition:opacity .3s}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-track{background:transparent}
