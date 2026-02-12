@@ -1,22 +1,23 @@
 #!/usr/bin/env node
 /**
  * PnL Snapshot Recorder
- * Appends current portfolio value to pnl-history.json for charting
- * Run via cron every hour
+ * Fetches live prices from CLOB for all positions and records to pnl-history.json
+ * Run via cron every 15 min
  */
 
-const http = require("http");
+const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
 const PNL_FILE = path.join(__dirname, "..", "pnl-history.json");
-const STARTING_CAPITAL = 433;
+const SNAPSHOT_FILE = path.join(__dirname, "..", "live-snapshot.json");
+const PROXY = "https://proxy-rosy-sigma-25.vercel.app";
 
-function httpGet(url) {
+function httpsGet(url) {
   return new Promise((resolve, reject) => {
-    http.get(url, (res) => {
+    https.get(url, (res) => {
       let data = "";
-      res.on("data", (c) => data += c);
+      res.on("data", c => data += c);
       res.on("end", () => {
         try { resolve(JSON.parse(data)); } catch (e) { reject(e); }
       });
@@ -24,48 +25,71 @@ function httpGet(url) {
   });
 }
 
+async function getLivePrice(tokenId) {
+  try {
+    const r = await httpsGet(`${PROXY}/price?token_id=${tokenId}&side=buy`);
+    return parseFloat(r.price) || 0;
+  } catch { return 0; }
+}
+
 async function main() {
-  const prices = await httpGet("http://localhost:3003/prices");
-  
+  // Read snapshot for position data (trades have all 5 positions with tokenIds)
+  let snap;
+  try {
+    snap = JSON.parse(fs.readFileSync(SNAPSHOT_FILE, "utf8"));
+  } catch (e) {
+    console.error("No snapshot file, skipping");
+    process.exit(0);
+  }
+
+  const trades = snap.trades || [];
+  if (trades.length === 0) {
+    console.log("No trades in snapshot, skipping");
+    process.exit(0);
+  }
+
+  // Fetch live prices for all positions
   let totalValue = 0;
   let totalCost = 0;
-  const posDetails = [];
+  const details = [];
 
-  for (const [id, p] of Object.entries(prices.prices || {})) {
-    const value = parseFloat(p.currentValue) || 0;
-    const cost = parseFloat(p.costBasis) || 0;
+  for (const t of trades) {
+    if (!t.tokenId) continue;
+    const bid = await getLivePrice(t.tokenId);
+    const shares = parseInt(t.shares) || 0;
+    const cost = parseFloat(t.size) || 0;
+    const value = shares * bid;
     totalValue += value;
     totalCost += cost;
-    posDetails.push({ outcome: p.outcome, bid: p.bid, size: p.size, value, cost });
+    details.push({ market: t.market, bid, shares, value: +value.toFixed(2), cost });
   }
 
   const snapshot = {
     timestamp: new Date().toISOString(),
-    positionValue: totalValue,
-    totalCost,
-    pnl: totalValue - totalCost,
-    pnlPct: totalCost > 0 ? ((totalValue - totalCost) / totalCost * 100) : 0,
-    positions: posDetails.length,
-    circuitBreakerTripped: prices.circuitBreakerTripped || false,
+    positionValue: +totalValue.toFixed(2),
+    totalCost: +totalCost.toFixed(2),
+    pnl: +(totalValue - totalCost).toFixed(2),
+    pnlPct: totalCost > 0 ? +((totalValue - totalCost) / totalCost * 100).toFixed(2) : 0,
+    positions: details.length,
   };
 
   // Load existing history
   let history;
   try {
     history = JSON.parse(fs.readFileSync(PNL_FILE, "utf8"));
-  } catch (e) {
-    history = { startingCapital: STARTING_CAPITAL, points: [] };
+  } catch {
+    history = { startingCapital: 433, points: [] };
   }
 
   history.points.push(snapshot);
-  
-  // Keep last 720 points (30 days at hourly)
-  if (history.points.length > 720) {
-    history.points = history.points.slice(-720);
+
+  // Keep last 2880 points (~30 days at 15min intervals)
+  if (history.points.length > 2880) {
+    history.points = history.points.slice(-2880);
   }
 
   fs.writeFileSync(PNL_FILE, JSON.stringify(history, null, 2));
-  console.log(`PnL recorded: $${snapshot.pnl.toFixed(2)} (${snapshot.pnlPct.toFixed(1)}%) | ${snapshot.positions} positions | Value: $${totalValue.toFixed(2)}`);
+  console.log(`PnL: ${snapshot.pnl >= 0 ? '+' : ''}$${snapshot.pnl} (${snapshot.pnlPct}%) | ${snapshot.positions} positions | Value: $${snapshot.positionValue}`);
 }
 
 main().catch(err => {

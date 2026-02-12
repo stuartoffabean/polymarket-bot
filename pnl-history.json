@@ -26,6 +26,14 @@
       "pnlPct": 1.1084996667485267,
       "positions": 4,
       "circuitBreakerTripped": false
+    },
+    {
+      "timestamp": "2026-02-12T02:54:11.485Z",
+      "positionValue": 333.62,
+      "totalCost": 331.07,
+      "pnl": 2.55,
+      "pnlPct": 0.77,
+      "positions": 5
     }
   ],
   "startingCapital": 433
