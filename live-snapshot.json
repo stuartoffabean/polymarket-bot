@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-12T02:13:26.592Z",
+  "timestamp": "2026-02-12T02:22:48.382Z",
   "portfolio": {
     "trackedPositions": 4,
-    "portfolioValue": 288.78999999999996,
+    "portfolioValue": 286.76,
     "dailyStartValue": 48.96,
     "startingCapital": 433
   },
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 3247.816224161
+    "uptime": 3809.503420574
   },
   "positions": [
     {
@@ -31,12 +31,12 @@
       "outcome": "Yes",
       "size": 139,
       "avgPrice": 0.83,
-      "currentBid": 0.83,
-      "currentAsk": 0.84,
+      "currentBid": 0.82,
+      "currentAsk": 0.83,
       "costBasis": "115.37",
-      "currentValue": "115.37",
-      "pnl": "0.00",
-      "pnlPct": "0.0%",
+      "currentValue": "113.98",
+      "pnl": "-1.39",
+      "pnlPct": "-1.2%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -46,12 +46,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.678,
-      "currentAsk": 0.679,
+      "currentBid": 0.67,
+      "currentAsk": 0.673,
       "costBasis": "49.60",
-      "currentValue": "54.24",
-      "pnl": "4.64",
-      "pnlPct": "9.4%",
+      "currentValue": "53.60",
+      "pnl": "4.00",
+      "pnlPct": "8.1%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -89,80 +89,97 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-12T02:13:26.591Z",
+      "timestamp": "2026-02-12T02:22:48.381Z",
       "market": "Gov Shutdown Feb 14",
       "outcome": "YES",
       "side": "buy",
       "price": 0.83,
       "size": 115.37,
-      "currentPrice": 0.83,
-      "pnl": 0,
-      "pnlPct": "0.0%"
+      "shares": 139,
+      "currentPrice": 0.82,
+      "pnl": -1.39,
+      "pnlPct": "-1.2%",
+      "tokenId": "7648925155044397287047798308912067661131447591491670430094875295487039626662"
     },
     {
-      "timestamp": "2026-02-12T02:13:26.592Z",
+      "timestamp": "2026-02-12T02:22:48.382Z",
       "market": "Bangladesh BNP Election",
       "outcome": "YES",
       "side": "buy",
       "price": 0.8,
       "size": 73.6,
+      "shares": 92,
       "currentPrice": 0.79,
       "pnl": -0.92,
-      "pnlPct": "-1.3%"
+      "pnlPct": "-1.3%",
+      "tokenId": "77587680906182806497450061873126722297392583495948543397251590274471719007220"
     },
     {
-      "timestamp": "2026-02-12T02:13:26.592Z",
+      "timestamp": "2026-02-12T02:22:48.382Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "YES",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
-      "currentPrice": 0.678,
-      "pnl": 4.64,
-      "pnlPct": "9.4%"
+      "shares": 80,
+      "currentPrice": 0.67,
+      "pnl": 4,
+      "pnlPct": "8.1%",
+      "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     },
     {
-      "timestamp": "2026-02-12T02:13:26.592Z",
+      "timestamp": "2026-02-12T02:22:48.382Z",
       "market": "Fed March 25bps Cut",
       "outcome": "NO",
       "side": "buy",
       "price": 0.93,
       "size": 46.5,
+      "shares": 50,
       "currentPrice": 0.93,
       "pnl": 0,
-      "pnlPct": "0.0%"
+      "pnlPct": "0.0%",
+      "tokenId": "89036168105179001192755120118050209760422683300339582903158940882158509550672"
     },
     {
-      "timestamp": "2026-02-12T02:13:26.592Z",
+      "timestamp": "2026-02-12T02:22:48.382Z",
       "market": "Norway Most Gold Medals Winter Olympics",
       "outcome": "YES",
       "side": "buy",
       "price": 0.92,
       "size": 46,
-      "currentPrice": null,
+      "shares": 50,
+      "currentPrice": 0.92,
       "pnl": 0,
-      "pnlPct": null
+      "pnlPct": "0.0%",
+      "tokenId": "37951513621735784471651257045517975893424565554701830077103055531806326097100"
     }
   ],
   "strategies": [
     {
       "name": "Event-Driven",
       "trades": 3,
-      "pnl": 0,
+      "pnl": 1.69,
+      "wins": 1,
       "enabled": true,
-      "winRate": 0.6
+      "winRate": 0.3333333333333333
     },
     {
       "name": "Safe Yield",
       "trades": 2,
       "pnl": 0,
+      "wins": 0,
       "enabled": true,
-      "winRate": 0.6
+      "winRate": 0
     }
   ],
   "activity": [
     {
       "time": "2026-02-12T02:05:00.870Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
+    },
+    {
+      "time": "2026-02-12T02:20:01.841Z",
       "type": "WS_DISCONNECT",
       "message": "Cancelled all open orders on disconnect"
     }

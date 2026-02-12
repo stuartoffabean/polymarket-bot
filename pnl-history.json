@@ -1,24 +1,6 @@
 {
   "points": [
     {
-      "ts": 1770853786440,
-      "time": "2026-02-11T23:49:46.440Z",
-      "liquid": 370.71,
-      "positions": 123.47,
-      "total": 494.18,
-      "pnl": -1.82,
-      "value": 494.18
-    },
-    {
-      "ts": 1770856126950,
-      "time": "2026-02-12T00:28:46.950Z",
-      "liquid": 235.71,
-      "positions": 123.47,
-      "total": 359.18,
-      "pnl": -136.82,
-      "value": 359.18
-    },
-    {
       "timestamp": "2026-02-12T01:18:30.923Z",
       "positionValue": 284.9,
       "totalCost": 285.07,
@@ -35,7 +17,16 @@
       "pnlPct": -0.8664538534394959,
       "positions": 4,
       "circuitBreakerTripped": false
+    },
+    {
+      "timestamp": "2026-02-12T02:21:55.995Z",
+      "positionValue": 288.23,
+      "totalCost": 285.07,
+      "pnl": 3.160000000000025,
+      "pnlPct": 1.1084996667485267,
+      "positions": 4,
+      "circuitBreakerTripped": false
     }
   ],
-  "startingCapital": 496
+  "startingCapital": 433
 }
