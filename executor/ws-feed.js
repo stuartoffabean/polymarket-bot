@@ -29,6 +29,7 @@
 
 const WebSocket = require("ws");
 const http = require("http");
+const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
@@ -44,6 +45,20 @@ const RECONNECT_MAX = 60000;
 const POSITION_SYNC_INTERVAL = 5 * 60 * 1000;
 const FEE_CHECK_INTERVAL = 60 * 60 * 1000; // check fees hourly
 
+// Telegram alerts
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "";
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || "";
+const TELEGRAM_ALERT_TYPES = new Set([
+  "STOP_LOSS", "TAKE_PROFIT", "SELL_EXECUTED", "SELL_FAILED",
+  "CIRCUIT_BREAKER", "CIRCUIT_BREAKER_RESUMED",
+  "SURVIVAL_MODE", "EMERGENCY_MODE",
+  "WS_DISCONNECT", "SINGLE_TRADE_LOSS",
+]);
+
+// PnL history
+const PNL_HISTORY_FILE = path.join(__dirname, "..", "pnl-history.json");
+const PNL_RECORD_INTERVAL = 5 * 60 * 1000; // 5 min
+
 // Scanner config
 const GAMMA_API = "https://gamma-api.polymarket.com";
 const PROXY_API = "https://proxy-rosy-sigma-25.vercel.app";
@@ -54,7 +69,7 @@ const ARB_SCAN_INTERVAL = 15 * 60 * 1000;       // 15 min
 const RESOLVING_SCAN_INTERVAL = 30 * 60 * 1000;  // 30 min
 
 // Thresholds (Directive v2 §risk, v3 §7)
-const STARTING_CAPITAL = 433;
+const STARTING_CAPITAL = parseFloat(process.env.STARTING_CAPITAL) || 433;
 const MAX_DAILY_DRAWDOWN = 0.15;      // 15% → pause 2hrs
 const DEFAULT_STOP_LOSS = 0.30;       // 30% loss per position
 const DEFAULT_TAKE_PROFIT = 0.50;     // 50% gain per position
@@ -173,6 +188,34 @@ function handleRateLimit() {
       log("RATE", "Rate limit backoff ended");
     }, 10 * 60 * 1000);
   }
+}
+
+// === TELEGRAM ALERTS ===
+function sendTelegramAlert(text) {
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
+  const payload = JSON.stringify({
+    chat_id: TELEGRAM_CHAT_ID,
+    text,
+    parse_mode: "HTML",
+    disable_notification: false,
+  });
+  const req = https.request({
+    hostname: "api.telegram.org",
+    path: `/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(payload) },
+  }, (res) => {
+    let data = "";
+    res.on("data", (c) => data += c);
+    res.on("end", () => {
+      if (res.statusCode !== 200) {
+        log("TG", `Alert send failed (${res.statusCode}): ${data.slice(0, 200)}`);
+      }
+    });
+  });
+  req.on("error", (e) => log("TG", `Alert error: ${e.message}`));
+  req.write(payload);
+  req.end();
 }
 
 // === WEBSOCKET ===
@@ -411,6 +454,13 @@ function pushAlert(type, assetId, asset, price, pnlPct, message) {
   alertLog.push(alert);
   if (alertLog.length > 200) alertLog = alertLog.slice(-100);
 
+  // Send Telegram alert for critical types
+  if (TELEGRAM_ALERT_TYPES.has(type)) {
+    const emoji = type.includes("EMERGENCY") ? "🚨" : type.includes("SURVIVAL") ? "⚠️" : type.includes("STOP") ? "🔴" : type.includes("TAKE_PROFIT") || type.includes("SELL_EXECUTED") ? "💰" : type.includes("CIRCUIT") ? "⚡" : "📡";
+    const tgText = `${emoji} <b>Stuart Bot — ${type}</b>\n${asset?.market ? `Market: ${asset.market}\n` : ""}${asset?.outcome ? `Outcome: ${asset.outcome}\n` : ""}${price ? `Price: ${price}\n` : ""}${pnlPct != null ? `P&L: ${(pnlPct * 100).toFixed(1)}%\n` : ""}${message || ""}`;
+    sendTelegramAlert(tgText);
+  }
+
   // Persist
   const alerts = loadAlerts();
   if (!alerts.pending) alerts.pending = [];
@@ -648,6 +698,37 @@ function parseBody(req) {
   });
 }
 
+// === PNL HISTORY RECORDING ===
+function recordPnlSnapshot() {
+  if (currentPortfolioValue == null) return;
+  
+  const state = loadTradingState();
+  const liquid = state?.liquidBalance || 0;
+  const totalValue = currentPortfolioValue + liquid;
+  
+  const snapshot = {
+    timestamp: new Date().toISOString(),
+    positionValue: +currentPortfolioValue.toFixed(2),
+    liquidBalance: +liquid.toFixed(2),
+    totalValue: +totalValue.toFixed(2),
+    trackedPositions: subscribedAssets.size,
+    circuitBreakerTripped,
+    survivalMode,
+    emergencyMode,
+  };
+
+  try {
+    let history = [];
+    try { history = JSON.parse(fs.readFileSync(PNL_HISTORY_FILE, "utf8")); } catch (e) {}
+    history.push(snapshot);
+    // Keep last 2000 entries (~7 days at 5 min intervals)
+    if (history.length > 2000) history = history.slice(-2000);
+    fs.writeFileSync(PNL_HISTORY_FILE, JSON.stringify(history, null, 2));
+  } catch (e) {
+    log("PNL", `Failed to record snapshot: ${e.message}`);
+  }
+}
+
 // === ARB SCANNER (integrated from arb-scanner.js) ===
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -847,6 +928,8 @@ async function main() {
   log("INIT", `Survival: <$${(STARTING_CAPITAL * SURVIVAL_THRESHOLD).toFixed(0)} | Emergency: <$${(STARTING_CAPITAL * EMERGENCY_THRESHOLD).toFixed(0)}`);
   log("INIT", `Auto-execute: ${autoExecuteEnabled}`);
   log("INIT", `Arb scanner: every ${ARB_SCAN_INTERVAL / 60000}min | Resolving scanner: every ${RESOLVING_SCAN_INTERVAL / 60000}min`);
+  log("INIT", `Telegram alerts: ${TELEGRAM_BOT_TOKEN ? "ENABLED" : "DISABLED (set TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID)"}`);
+  log("INIT", `PnL history: every ${PNL_RECORD_INTERVAL / 60000}min → ${PNL_HISTORY_FILE}`);
   console.log();
 
   // Load persisted state
@@ -889,6 +972,9 @@ async function main() {
   }
   checkFees();
   setInterval(checkFees, FEE_CHECK_INTERVAL);
+
+  // PnL history recording — every 5 min
+  setInterval(recordPnlSnapshot, PNL_RECORD_INTERVAL);
 
   // Arb scanner — runs every 15 min, first run after 30s startup delay
   setTimeout(() => {
