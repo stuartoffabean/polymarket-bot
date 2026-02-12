@@ -1,0 +1,70 @@
+{
+  "strategies": {
+    "event-driven": {
+      "name": "Event-Driven Momentum",
+      "status": "ACTIVE",
+      "positions": ["Gov Shutdown Feb 14", "Bangladesh BNP Election", "Anthropic Best AI Model Feb"],
+      "trades": 3,
+      "wins": 0,
+      "losses": 0,
+      "open": 3,
+      "totalPnl": 0,
+      "unrealizedPnl": 2.21,
+      "avgReturn": null,
+      "winRate": null,
+      "notes": "Core strategy. Manual news research → position entry. Need to automate news scanning."
+    },
+    "safe-yield": {
+      "name": "Safe Yield / High Probability",
+      "status": "ACTIVE",
+      "positions": ["Fed March 25bps Cut", "Norway Most Gold Medals Winter Olympics"],
+      "trades": 2,
+      "wins": 0,
+      "losses": 0,
+      "open": 2,
+      "totalPnl": 0,
+      "unrealizedPnl": 0,
+      "avgReturn": null,
+      "winRate": null,
+      "notes": "90%+ probability outcomes. Low return per trade but very safe. Need more volume."
+    },
+    "mechanical-ranges": {
+      "name": "Mechanical Range Bets (Small Positions)",
+      "status": "ACTIVE",
+      "positions": ["BTC wont drop to $50K Feb", "BTC wont hit $85K Feb", "BTC wont drop to $55K Feb", "Norway Most Total Medals Winter Olympics"],
+      "trades": 4,
+      "wins": 0,
+      "losses": 0,
+      "open": 4,
+      "totalPnl": 0,
+      "unrealizedPnl": 0,
+      "avgReturn": null,
+      "winRate": null,
+      "notes": "Small bets on extreme ranges. High probability NO bets. Template for scaling."
+    },
+    "gabagool": {
+      "name": "Asymmetric Pair Trading (Gabagool)",
+      "status": "PIPELINE",
+      "positions": [],
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "open": 0,
+      "totalPnl": 0,
+      "notes": "NOT YET ACTIVE. Need to start logging YES+NO prices on 10-20 markets to find entry points."
+    },
+    "rebalancing-arb": {
+      "name": "Rebalancing Arbitrage",
+      "status": "EVALUATED",
+      "positions": [],
+      "trades": 0,
+      "notes": "Scanned 1000+ markets. No viable arbs at $433 scale. Tail outcomes illiquid. Revisit at $5K+."
+    }
+  },
+  "pipeline": {
+    "next_review": "2026-02-17",
+    "new_strategy_deadline": "2026-02-17",
+    "notes": "v2 mandates at least 1 new strategy entering pipeline every Monday"
+  },
+  "lastUpdated": "2026-02-12T03:30:00Z"
+}
