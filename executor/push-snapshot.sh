@@ -36,15 +36,20 @@ const positions = Object.entries(prices.prices || {}).map(([id, p]) => ({
 
 // Derive trades from state (each position entry = a trade)
 const stateArr = Array.isArray(state) ? state : state.positions || [];
-const trades = stateArr.map(p => ({
-  timestamp: new Date().toISOString(),
-  market: p.market,
-  outcome: p.side,
-  side: 'buy',
-  price: p.entry,
-  size: p.cost,
-  pnl: 0,
-}));
+const trades = stateArr.map(p => {
+  const livePos = positions.find(pp => pp.fullAssetId === p.tokenId || (pp.outcome === p.side && Math.abs(pp.avgPrice - p.entry) < 0.02));
+  return {
+    timestamp: new Date().toISOString(),
+    market: p.market,
+    outcome: p.side,
+    side: 'buy',
+    price: p.entry,
+    size: p.cost,
+    currentPrice: livePos ? livePos.currentBid : null,
+    pnl: livePos ? parseFloat(livePos.pnl) || 0 : 0,
+    pnlPct: livePos ? livePos.pnlPct : null,
+  };
+});
 
 // Derive strategies
 const strategyMap = {};
