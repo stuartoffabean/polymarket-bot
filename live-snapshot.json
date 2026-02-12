@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-12T01:50:13.456Z",
+  "timestamp": "2026-02-12T01:58:27.004Z",
   "portfolio": {
     "trackedPositions": 4,
-    "portfolioValue": 282.28,
+    "portfolioValue": 282.52,
     "dailyStartValue": 48.96,
     "startingCapital": 433
   },
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 1854.652315516
+    "uptime": 2348.081328366
   },
   "positions": [
     {
@@ -46,12 +46,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.614,
-      "currentAsk": 0.618,
+      "currentBid": 0.617,
+      "currentAsk": 0.62,
       "costBasis": "49.60",
-      "currentValue": "49.12",
-      "pnl": "-0.48",
-      "pnlPct": "-1.0%",
+      "currentValue": "49.36",
+      "pnl": "-0.24",
+      "pnlPct": "-0.5%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -62,7 +62,7 @@
       "size": 92,
       "avgPrice": 0.8,
       "currentBid": 0.79,
-      "currentAsk": 0.8,
+      "currentAsk": 0.99,
       "costBasis": "73.60",
       "currentValue": "72.68",
       "pnl": "-0.92",
@@ -108,7 +108,7 @@
   ],
   "trades": [
     {
-      "timestamp": "2026-02-12T01:50:13.456Z",
+      "timestamp": "2026-02-12T01:58:27.003Z",
       "market": "Gov Shutdown Feb 14",
       "outcome": "YES",
       "side": "buy",
@@ -119,7 +119,7 @@
       "pnlPct": "-1.2%"
     },
     {
-      "timestamp": "2026-02-12T01:50:13.456Z",
+      "timestamp": "2026-02-12T01:58:27.003Z",
       "market": "Bangladesh BNP Election",
       "outcome": "YES",
       "side": "buy",
@@ -130,18 +130,18 @@
       "pnlPct": "-1.3%"
     },
     {
-      "timestamp": "2026-02-12T01:50:13.456Z",
+      "timestamp": "2026-02-12T01:58:27.003Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "YES",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
-      "currentPrice": 0.614,
-      "pnl": -0.48,
-      "pnlPct": "-1.0%"
+      "currentPrice": 0.617,
+      "pnl": -0.24,
+      "pnlPct": "-0.5%"
     },
     {
-      "timestamp": "2026-02-12T01:50:13.456Z",
+      "timestamp": "2026-02-12T01:58:27.004Z",
       "market": "Fed March 25bps Cut",
       "outcome": "NO",
       "side": "buy",
@@ -152,7 +152,7 @@
       "pnlPct": "0.0%"
     },
     {
-      "timestamp": "2026-02-12T01:50:13.456Z",
+      "timestamp": "2026-02-12T01:58:27.004Z",
       "market": "Norway Most Gold Medals Winter Olympics",
       "outcome": "YES",
       "side": "buy",
