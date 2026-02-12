@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-12T01:28:26.755Z",
+  "timestamp": "2026-02-12T01:36:27.130Z",
   "portfolio": {
     "trackedPositions": 4,
-    "portfolioValue": 284.74,
+    "portfolioValue": 286.21,
     "dailyStartValue": 48.96,
     "startingCapital": 433
   },
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 547.98997024
+    "uptime": 1028.334537905
   },
   "positions": [
     {
@@ -31,12 +31,12 @@
       "outcome": "Yes",
       "size": 139,
       "avgPrice": 0.83,
-      "currentBid": 0.84,
+      "currentBid": 0.85,
       "currentAsk": 0.86,
       "costBasis": "115.37",
-      "currentValue": "116.76",
-      "pnl": "1.39",
-      "pnlPct": "1.2%",
+      "currentValue": "118.15",
+      "pnl": "2.78",
+      "pnlPct": "2.4%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -46,12 +46,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.61,
-      "currentAsk": 0.611,
+      "currentBid": 0.611,
+      "currentAsk": 0.613,
       "costBasis": "49.60",
-      "currentValue": "48.80",
-      "pnl": "-0.80",
-      "pnlPct": "-1.6%",
+      "currentValue": "48.88",
+      "pnl": "-0.72",
+      "pnlPct": "-1.5%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -89,39 +89,87 @@
   "orders": [
     {
       "id": "0xe27006f54daeaf0b1ded7ede765f711b64200be065e53c97ccb1c08dcc331785",
-      "status": "LIVE",
-      "owner": "5b2d03d4-0cdb-fe2b-108f-7c1414b93896",
-      "maker_address": "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D",
-      "market": "0x9dde2865d61deaeae5e1ed23c3cc2d3645f354f807d46d8108df293f8681b9a2",
       "asset_id": "37951513621735784471651257045517975893424565554701830077103055531806326097100",
       "side": "BUY",
+      "price": "0.92",
       "original_size": "50",
       "size_matched": "0",
-      "price": "0.92",
-      "outcome": "Yes",
-      "expiration": "0",
-      "order_type": "GTC",
-      "associate_trades": [],
-      "created_at": 1770859326
+      "status": "LIVE"
     },
     {
       "id": "0xe3d90718ba689deb1ef6e940f8878f3f51b3075859cc08f645760a110df9d1bd",
-      "status": "LIVE",
-      "owner": "5b2d03d4-0cdb-fe2b-108f-7c1414b93896",
-      "maker_address": "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D",
-      "market": "0xd6c49a94948e365aa74c09eef54d907b7ca534b243c387c375305d5cdd1afef3",
       "asset_id": "89036168105179001192755120118050209760422683300339582903158940882158509550672",
       "side": "BUY",
+      "price": "0.93",
       "original_size": "50",
       "size_matched": "0",
-      "price": "0.93",
-      "outcome": "No",
-      "expiration": "0",
-      "order_type": "GTC",
-      "associate_trades": [],
-      "created_at": 1770857167
+      "status": "LIVE"
     }
   ],
+  "trades": [
+    {
+      "timestamp": "2026-02-12T01:36:27.130Z",
+      "market": "Gov Shutdown Feb 14",
+      "outcome": "YES",
+      "side": "buy",
+      "price": 0.83,
+      "size": 115.37,
+      "pnl": 0
+    },
+    {
+      "timestamp": "2026-02-12T01:36:27.130Z",
+      "market": "Bangladesh BNP Election",
+      "outcome": "YES",
+      "side": "buy",
+      "price": 0.8,
+      "size": 73.6,
+      "pnl": 0
+    },
+    {
+      "timestamp": "2026-02-12T01:36:27.130Z",
+      "market": "Anthropic Best AI Model Feb",
+      "outcome": "YES",
+      "side": "buy",
+      "price": 0.62,
+      "size": 49.6,
+      "pnl": 0
+    },
+    {
+      "timestamp": "2026-02-12T01:36:27.130Z",
+      "market": "Fed March 25bps Cut",
+      "outcome": "NO",
+      "side": "buy",
+      "price": 0.93,
+      "size": 46.5,
+      "pnl": 0
+    },
+    {
+      "timestamp": "2026-02-12T01:36:27.130Z",
+      "market": "Norway Most Gold Medals Winter Olympics",
+      "outcome": "YES",
+      "side": "buy",
+      "price": 0.92,
+      "size": 46,
+      "pnl": 0
+    }
+  ],
+  "strategies": [
+    {
+      "name": "Event-Driven",
+      "trades": 3,
+      "pnl": 0,
+      "enabled": true,
+      "winRate": 0.6
+    },
+    {
+      "name": "Safe Yield",
+      "trades": 2,
+      "pnl": 0,
+      "enabled": true,
+      "winRate": 0.6
+    }
+  ],
+  "activity": [],
   "circuitBreakerTripped": false,
   "survivalMode": false,
   "emergencyMode": false
