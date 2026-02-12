@@ -97,18 +97,44 @@ ${generatePriorities(positions, risk)}`;
 
 function generatePriorities(positions, risk) {
   const priorities = [];
+  const fs = require("fs");
+  const path = require("path");
   
-  // Check for positions resolving soon
-  // (would need resolution dates — for now, static priorities)
-  priorities.push("• Monitor Bangladesh BNP resolution (voting today)");
-  priorities.push("• Deploy idle capital if >30% uninvested");
-  priorities.push("• Scan for new opportunities (NegRisk arb, event-driven)");
-  
-  if (risk.circuitBreakerTripped) {
-    priorities.unshift("• 🔴 CIRCUIT BREAKER TRIPPED — review positions, wait for resume");
+  // Risk-based priorities (highest urgency first)
+  if (risk.emergencyMode) {
+    priorities.push("• 🚨 EMERGENCY MODE — ALL trading halted, notify Micky immediately");
   }
   if (risk.survivalMode) {
-    priorities.unshift("• ⚠️ SURVIVAL MODE — max 5% per position, proven strategies only");
+    priorities.push("• ⚠️ SURVIVAL MODE — max 5% per position, proven strategies only");
+  }
+  if (risk.circuitBreakerTripped) {
+    priorities.push("• 🔴 CIRCUIT BREAKER — review all positions, wait for auto-resume");
+  }
+  
+  // Check for losing positions
+  for (const [id, p] of positions) {
+    const pnl = parseFloat(p.pnl);
+    if (pnl < -5) priorities.push(`• 🔴 ${p.outcome}: losing $${Math.abs(pnl).toFixed(2)} — review thesis`);
+  }
+
+  // Capital deployment
+  try {
+    const state = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "TRADING-STATE.json"), "utf8"));
+    const posArray = Array.isArray(state) ? state : state.positions || [];
+    const totalDeployed = posArray.reduce((s, p) => s + (p.cost || 0), 0);
+    const idlePct = ((STARTING_CAPITAL - totalDeployed) / STARTING_CAPITAL * 100).toFixed(0);
+    if (idlePct > 30) {
+      priorities.push(`• 💰 ${idlePct}% capital idle — deploy to reduce below 30%`);
+    }
+  } catch (e) {}
+
+  // Standard operational
+  priorities.push("• Scan for new opportunities (NegRisk arb, event-driven, news)");
+  priorities.push("• Review open orders — cancel stale ones");
+  priorities.push("• Check approaching resolutions — position ahead of outcome");
+  
+  if (!risk.autoExecuteEnabled) {
+    priorities.push("• ⚠️ Auto-execute is OFF — re-enable or monitor manually");
   }
 
   return priorities.join("\n");

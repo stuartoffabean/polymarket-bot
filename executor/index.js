@@ -248,6 +248,34 @@ async function handler(req, res) {
       return send(res, 200, { ...order, executedPrice: bestBid });
     }
 
+    // POST /batch-orders — submit multiple orders concurrently (v3 §4: speed)
+    if (method === "POST" && path === "/batch-orders") {
+      const body = await parseBody(req);
+      const { orders: orderList } = body; // [{ tokenID, price, size, side, orderType }]
+      if (!orderList || !Array.isArray(orderList)) return send(res, 400, { error: "Need orders array" });
+
+      console.log(`⚡ BATCH: Submitting ${orderList.length} orders concurrently`);
+      const results = await Promise.allSettled(
+        orderList.map(o => client.createAndPostOrder({
+          tokenID: o.tokenID,
+          price: parseFloat(o.price),
+          size: parseFloat(o.size),
+          side: o.side === "BUY" ? Side.BUY : Side.SELL,
+          ...(o.orderType === "FOK" ? { orderType: "FOK" } : {}),
+        }))
+      );
+
+      const summary = results.map((r, i) => ({
+        index: i,
+        status: r.status,
+        result: r.status === "fulfilled" ? r.value : null,
+        error: r.status === "rejected" ? r.reason?.message : null,
+      }));
+      const filled = summary.filter(s => s.status === "fulfilled").length;
+      console.log(`BATCH: ${filled}/${orderList.length} succeeded`);
+      return send(res, 200, { total: orderList.length, filled, results: summary });
+    }
+
     // POST /arb — execute both legs of an arbitrage simultaneously (FOK)
     // v3 §4: Always use FOK for simultaneous legs
     // v3 §7: Partial fill → immediately unwind filled leg

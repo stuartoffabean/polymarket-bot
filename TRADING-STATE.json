@@ -59,6 +59,22 @@
     "fedMarchNO": 0.94
   },
   "mode": "NORMAL",
+  "riskAudit": {
+    "timestamp": "2026-02-12T01:10:00Z",
+    "portfolioValue": 480.61,
+    "vsStarting": "111%",
+    "capitalMode": "NORMAL",
+    "idleCapitalPct": 40.4,
+    "violations": [
+      "Gov Shutdown position at 24% exceeds 15% single position limit",
+      "US fiscal/political correlated exposure at 33.7% exceeds 30% limit"
+    ],
+    "recommendations": [
+      "Trim Gov Shutdown position by ~$40 to bring under 15%",
+      "Monitor Bangladesh BNP — resolves today",
+      "Watch for surprise AI model launches (Anthropic position)"
+    ]
+  },
   "strategiesActive": [
     "event-driven-directional",
     "arb-scanner"

@@ -38,6 +38,7 @@ const PING_INTERVAL = 10000;
 const RECONNECT_BASE = 2000;
 const RECONNECT_MAX = 60000;
 const POSITION_SYNC_INTERVAL = 5 * 60 * 1000;
+const FEE_CHECK_INTERVAL = 60 * 60 * 1000; // check fees hourly
 
 // Thresholds (Directive v2 §risk, v3 §7)
 const STARTING_CAPITAL = 433;
@@ -670,6 +671,32 @@ async function main() {
 
   // Periodic sync
   setInterval(syncPositions, POSITION_SYNC_INTERVAL);
+
+  // Fee change detection (v3 §7)
+  let lastKnownFees = null;
+  async function checkFees() {
+    try {
+      const https = require("https");
+      const feeData = await new Promise((resolve, reject) => {
+        https.get("https://docs.polymarket.com/polymarket-learn/trading/maker-rebates-program", (res) => {
+          let data = "";
+          res.on("data", (c) => data += c);
+          res.on("end", () => resolve(data));
+        }).on("error", reject);
+      });
+      const feeHash = require("crypto").createHash("md5").update(feeData).digest("hex");
+      if (lastKnownFees && feeHash !== lastKnownFees) {
+        pushAlert("FEE_CHANGE_DETECTED", null, null, null, null, 
+          "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.");
+        log("FEES", "🚨 Fee structure change detected!");
+      }
+      lastKnownFees = feeHash;
+    } catch (e) {
+      log("FEES", `Fee check failed: ${e.message}`);
+    }
+  }
+  checkFees();
+  setInterval(checkFees, FEE_CHECK_INTERVAL);
 
   // Daily reset
   scheduleDailyReset();
