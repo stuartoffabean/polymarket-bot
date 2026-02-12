@@ -15,103 +15,96 @@
 <!-- Top Bar -->
 <header class="top-bar">
     <div class="top-bar-left">
-        <div class="bot-name">
-            <span class="status-dot" id="statusDot"></span>
-            <span class="name">STUART</span>
-            <span class="status-label" id="statusLabel">CONNECTING</span>
-        </div>
-    </div>
-    <div class="top-bar-stats">
-        <div class="stat">
-            <span class="stat-label">Bankroll</span>
-            <span class="stat-value mono" id="bankroll">—</span>
-        </div>
-        <div class="stat">
-            <span class="stat-label">Position Value</span>
-            <span class="stat-value mono" id="pnlToday">—</span>
-        </div>
-        <div class="stat">
-            <span class="stat-label">Unrealized P&L</span>
-            <span class="stat-value mono" id="pnlTotal">—</span>
-        </div>
-        <div class="stat">
-            <span class="stat-label">Deployed</span>
-            <span class="stat-value mono" id="uptime">—</span>
-        </div>
+        <span class="status-dot" id="statusDot"></span>
+        <span class="bot-name">STUART</span>
+        <span class="status-label" id="statusLabel">CONNECTING</span>
+        <span class="ws-badge" id="wsBadge">●</span>
     </div>
     <div class="top-bar-right">
-        <button class="kill-btn" id="killBtn">⏻ KILL SWITCH</button>
+        <button class="kill-btn" id="killBtn">⏻</button>
     </div>
 </header>
 
-<!-- Main Grid -->
-<main class="grid">
-    <!-- Left Column -->
-    <div class="col-left">
-        <!-- P&L Chart -->
-        <section class="card">
-            <div class="card-header">
-                <h2>P&L</h2>
-                <div class="time-selector">
-                    <button class="time-btn active" data-range="1h">1H</button>
-                    <button class="time-btn" data-range="24h">24H</button>
-                    <button class="time-btn" data-range="7d">7D</button>
-                    <button class="time-btn" data-range="all">ALL</button>
-                </div>
-            </div>
-            <div class="chart-wrap">
-                <canvas id="pnlChart"></canvas>
-            </div>
-        </section>
+<!-- Stats Row -->
+<div class="stats-row">
+    <div class="stat-card">
+        <span class="stat-label">Bankroll</span>
+        <span class="stat-value mono" id="bankroll">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Position Value</span>
+        <span class="stat-value mono" id="pnlToday">—</span>
+    </div>
+    <div class="stat-card accent">
+        <span class="stat-label">Unrealized P&L</span>
+        <span class="stat-value mono" id="pnlTotal">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Deployed</span>
+        <span class="stat-value mono" id="uptime">—</span>
+    </div>
+</div>
 
-        <!-- Recent Trades -->
-        <section class="card">
-            <div class="card-header"><h2>Recent Trades</h2></div>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Market</th>
-                            <th>Side</th>
-                            <th class="r">Price</th>
-                            <th class="r">Cost</th>
-                            <th class="r">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tradesBody"></tbody>
-                </table>
-            </div>
+<!-- Positions Grid (always visible, no scroll) -->
+<section class="section">
+    <h2 class="section-title">Active Positions</h2>
+    <div id="positions" class="positions-grid"></div>
+</section>
+
+<!-- P&L Chart -->
+<section class="section">
+    <div class="section-header">
+        <h2 class="section-title">P&L</h2>
+        <div class="time-selector">
+            <button class="time-btn active" data-range="1h">1H</button>
+            <button class="time-btn" data-range="24h">24H</button>
+            <button class="time-btn" data-range="7d">7D</button>
+            <button class="time-btn" data-range="all">ALL</button>
+        </div>
+    </div>
+    <div class="chart-wrap">
+        <canvas id="pnlChart"></canvas>
+    </div>
+</section>
+
+<!-- Two Column: Trades + Orders/Strategies -->
+<div class="two-col">
+    <section class="section">
+        <h2 class="section-title">Recent Trades</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Market</th>
+                        <th class="r">Entry</th>
+                        <th class="r">Cost</th>
+                        <th class="r">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tradesBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="stacked">
+        <section class="section">
+            <h2 class="section-title">Open Orders</h2>
+            <div id="orders" class="section-body"></div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">Strategies</h2>
+            <div id="strategies" class="section-body"></div>
         </section>
     </div>
-
-    <!-- Right Column -->
-    <div class="col-right">
-        <!-- Active Positions -->
-        <section class="card">
-            <div class="card-header"><h2>Active Positions</h2></div>
-            <div id="positions" class="card-body scroll"></div>
-        </section>
-
-        <!-- Strategy Status -->
-        <section class="card">
-            <div class="card-header"><h2>Strategies</h2></div>
-            <div id="strategies" class="card-body scroll"></div>
-        </section>
-
-        <!-- Open Orders -->
-        <section class="card">
-            <div class="card-header"><h2>Open Orders</h2></div>
-            <div id="orders" class="card-body scroll"></div>
-        </section>
-    </div>
-</main>
+</div>
 
 <!-- Activity Feed -->
-<footer class="card activity-card">
-    <div class="card-header"><h2>Live Activity</h2><span class="ws-badge" id="wsBadge">●</span></div>
+<section class="section activity-section">
+    <div class="section-header">
+        <h2 class="section-title">Live Activity</h2>
+    </div>
     <div id="activityFeed" class="activity-feed"></div>
-</footer>
+</section>
 
 <!-- Connecting Overlay -->
 <div class="connecting-overlay" id="connectingOverlay">

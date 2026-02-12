@@ -15,8 +15,8 @@ let killArmed = false;
 let killTimer = null;
 let snapshot = null;
 let livePrices = {}; // tokenId -> { bid, ask }
-let pnlTimeline = []; // {time, totalValue, totalPnl} for live chart
-const MAX_TIMELINE = 720; // 6hrs at 30s intervals
+let pnlTimeline = JSON.parse(localStorage.getItem('stuart_pnl_timeline') || '[]');
+const MAX_TIMELINE = 2880; // 24hrs at 30s intervals
 
 // DOM
 const $ = s => document.querySelector(s);
@@ -190,10 +190,11 @@ function recordPnlPoint() {
     if (totalValue === 0) return;
     pnlTimeline.push({
         time: new Date().toISOString(),
-        value: totalValue,
-        pnl: totalPnl
+        value: totalValue
     });
     if (pnlTimeline.length > MAX_TIMELINE) pnlTimeline.shift();
+    // Persist to localStorage so data survives refresh
+    try { localStorage.setItem('stuart_pnl_timeline', JSON.stringify(pnlTimeline)); } catch(e) {}
 }
 
 // ── Render positions with live prices ──
@@ -206,16 +207,26 @@ function renderPositions() {
     
     positionsEl.innerHTML = positions.map(p => {
         const upnl = fmtPnl(p.pnl);
-        const priceChange = livePrices[p.tokenId] ? '' : ' (stale)';
-        const positive = p.pnl >= 0;
-        return `<div class="position-card ${positive ? 'positive' : 'negative'}">
-            <div class="market">${esc(p.market)}</div>
-            <div>
-                <div class="detail">Side: <span class="${(p.outcome||'').toLowerCase()==='yes'?'green':'red'}">${(p.outcome||'—').toUpperCase()}</span></div>
-                <div class="detail">Size: <span>${p.size} shares</span> (${fmtUsd(p.costBasis)})</div>
-                <div class="detail">Entry: <span>${(p.avgPrice*100).toFixed(0)}¢</span> → Now: <span class="live-price">${(p.currentBid*100).toFixed(1)}¢${priceChange}</span></div>
+        const cls = p.pnl > 0.01 ? 'positive' : p.pnl < -0.01 ? 'negative' : 'flat';
+        const sideColor = (p.outcome||'').toLowerCase() === 'yes' ? 'green' : 'red';
+        return `<div class="pos-card ${cls}">
+            <div class="pos-header">
+                <div class="pos-market">${esc(p.market)}</div>
+                <div class="pos-pnl ${upnl.cls}">${upnl.text}</div>
             </div>
-            <div class="upnl ${upnl.cls}">${upnl.text} (${p.pnlPct}%)</div>
+            <div class="pos-price-row">
+                <span class="${sideColor}">${(p.outcome||'—').toUpperCase()}</span>
+                <span>${p.size}sh</span>
+                <span class="pos-arrow">·</span>
+                <span>${(p.avgPrice*100).toFixed(0)}¢</span>
+                <span class="pos-arrow">→</span>
+                <span class="pos-live ${upnl.cls}">${(p.currentBid*100).toFixed(1)}¢</span>
+            </div>
+            <div class="pos-details">
+                <div>Cost: <span>${fmtUsd(p.costBasis)}</span></div>
+                <div>Value: <span>${fmtUsd(p.currentValue)}</span></div>
+                <div>P&L: <span class="${upnl.cls}">${p.pnlPct}%</span></div>
+            </div>
         </div>`;
     }).join('');
 }
@@ -243,19 +254,14 @@ function renderTrades() {
     if (!snapshot) return;
     const trades = snapshot.trades || [];
     tradesBody.innerHTML = trades.map(t => {
-        // Only show realized P&L (from closed trades). Open positions = no P&L here.
         const isOpen = !t.closed;
-        const realizedPnl = t.closed ? (parseFloat(t.realizedPnl) || 0) : null;
-        const p = realizedPnl != null ? fmtPnl(realizedPnl) : {text: 'OPEN', cls: 'open'};
         return `<tr>
-            <td>${fmtTime(t.timestamp)}</td>
             <td>${esc(t.market || '—')}</td>
-            <td><span class="side-${(t.side||'buy').toLowerCase()}">${(t.side||'BUY').toUpperCase()}</span></td>
             <td class="r">${((parseFloat(t.price)||0)*100).toFixed(0)}¢</td>
-            <td class="r">${t.shares || 0} × ${((parseFloat(t.price)||0)*100).toFixed(0)}¢ = ${fmtUsd(t.size || t.cost)}</td>
-            <td class="r" style="color:${isOpen ? '#888' : (realizedPnl >= 0 ? '#00ff88' : '#ff4444')}">${p.text}</td>
+            <td class="r">${fmtUsd(t.size || t.cost)}</td>
+            <td class="r"><span class="open-badge">${isOpen ? 'OPEN' : 'CLOSED'}</span></td>
         </tr>`;
-    }).join('') || '<tr><td colspan="6" class="empty">No trades yet</td></tr>';
+    }).join('') || '<tr><td colspan="4" class="empty">No trades yet</td></tr>';
 }
 
 // ── Strategies ──
