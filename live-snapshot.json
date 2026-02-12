@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-12T01:13:10.690Z",
+  "timestamp": "2026-02-12T01:23:50.324Z",
   "portfolio": {
     "trackedPositions": 4,
-    "portfolioValue": 283.43,
-    "dailyStartValue": 48.72,
+    "portfolioValue": 286.05,
+    "dailyStartValue": 48.96,
     "startingCapital": 433
   },
   "risk": {
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 228.612714718
+    "uptime": 271.559104226
   },
   "positions": [
     {
@@ -31,12 +31,12 @@
       "outcome": "Yes",
       "size": 139,
       "avgPrice": 0.83,
-      "currentBid": 0.83,
-      "currentAsk": 0.84,
+      "currentBid": 0.85,
+      "currentAsk": 0.86,
       "costBasis": "115.37",
-      "currentValue": "115.37",
-      "pnl": "0.00",
-      "pnlPct": "0.0%",
+      "currentValue": "118.15",
+      "pnl": "2.78",
+      "pnlPct": "2.4%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -46,12 +46,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.611,
-      "currentAsk": 0.613,
+      "currentBid": 0.609,
+      "currentAsk": 0.611,
       "costBasis": "49.60",
-      "currentValue": "48.88",
-      "pnl": "-0.72",
-      "pnlPct": "-1.5%",
+      "currentValue": "48.72",
+      "pnl": "-0.88",
+      "pnlPct": "-1.8%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -67,7 +67,7 @@
       "currentValue": "72.68",
       "pnl": "-0.92",
       "pnlPct": "-1.3%",
-      "stopLoss": 0.35,
+      "stopLoss": 0.3,
       "takeProfit": 0.5
     },
     {
@@ -82,11 +82,28 @@
       "currentValue": "46.50",
       "pnl": "0.00",
       "pnlPct": "0.0%",
-      "stopLoss": 0.15,
+      "stopLoss": 0.3,
       "takeProfit": 0.5
     }
   ],
   "orders": [
+    {
+      "id": "0xe27006f54daeaf0b1ded7ede765f711b64200be065e53c97ccb1c08dcc331785",
+      "status": "LIVE",
+      "owner": "5b2d03d4-0cdb-fe2b-108f-7c1414b93896",
+      "maker_address": "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D",
+      "market": "0x9dde2865d61deaeae5e1ed23c3cc2d3645f354f807d46d8108df293f8681b9a2",
+      "asset_id": "37951513621735784471651257045517975893424565554701830077103055531806326097100",
+      "side": "BUY",
+      "original_size": "50",
+      "size_matched": "0",
+      "price": "0.92",
+      "outcome": "Yes",
+      "expiration": "0",
+      "order_type": "GTC",
+      "associate_trades": [],
+      "created_at": 1770859326
+    },
     {
       "id": "0xe3d90718ba689deb1ef6e940f8878f3f51b3075859cc08f645760a110df9d1bd",
       "status": "LIVE",

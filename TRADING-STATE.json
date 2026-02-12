@@ -1,94 +1,57 @@
-{
-  "startingCapital": 433,
-  "wallet": "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D",
-  "positions": [
-    {
-      "market": "Gov Shutdown Feb 14",
-      "side": "YES",
-      "shares": 139,
-      "entry": 0.83,
-      "cost": 115.37,
-      "tokenId": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
-      "resolves": "2026-02-14",
-      "stopLoss": 0.65,
-      "thesis": "Gov reopened after Jan 31 shutdown. New shutdown likely before Feb 14 deadline."
-    },
-    {
-      "market": "Bangladesh BNP Election",
-      "side": "YES",
-      "shares": 92,
-      "entry": 0.8,
-      "cost": 73.6,
-      "tokenId": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
-      "resolves": "2026-02-12",
-      "stopLoss": 0.65,
-      "thesis": "BNP heavy favorite. Resolves tomorrow."
-    },
-    {
-      "market": "Anthropic Best AI Model Feb",
-      "side": "YES",
-      "shares": 80,
-      "entry": 0.62,
-      "cost": 49.6,
-      "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
-      "resolves": "2026-02-28",
-      "stopLoss": 0.5,
-      "thesis": "Claude leads LMArena. No rival launch imminent."
-    },
-    {
-      "market": "Fed March 25bps Cut",
-      "side": "NO",
-      "shares": 50,
-      "entry": 0.93,
-      "cost": 46.5,
-      "tokenId": "89036168105179001192755120118050209760422683300339582903158940882158509550672",
-      "resolves": "2026-03-19",
-      "stopLoss": 0.85,
-      "thesis": "CME FedWatch 95%+ no cut. Sticky inflation, strong employment."
-    }
-  ],
-  "pendingOrders": [],
-  "totalDeployed": 285.07,
-  "liquidBalance": 194.21,
-  "lastUpdated": "2026-02-12T01:10:00Z",
-  "dailyPnL": 0,
-  "lastPrices": {
-    "anthropic": 0.613,
-    "govShutdown": 0.84,
-    "bangladeshBNP": 0.8,
-    "fedMarchNO": 0.94
+[
+  {
+    "market": "Gov Shutdown Feb 14",
+    "side": "YES",
+    "shares": 139,
+    "entry": 0.83,
+    "cost": 115.37,
+    "tokenId": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
+    "resolves": "2026-02-14",
+    "stopLoss": 0.65,
+    "thesis": "Gov reopened after Jan 31 shutdown. New shutdown likely before Feb 14 deadline."
   },
-  "mode": "NORMAL",
-  "riskAudit": {
-    "timestamp": "2026-02-12T01:10:00Z",
-    "portfolioValue": 480.61,
-    "vsStarting": "111%",
-    "capitalMode": "NORMAL",
-    "idleCapitalPct": 40.4,
-    "violations": [
-      "Gov Shutdown position at 24% exceeds 15% single position limit",
-      "US fiscal/political correlated exposure at 33.7% exceeds 30% limit"
-    ],
-    "recommendations": [
-      "Trim Gov Shutdown position by ~$40 to bring under 15%",
-      "Monitor Bangladesh BNP — resolves today",
-      "Watch for surprise AI model launches (Anthropic position)"
-    ]
+  {
+    "market": "Bangladesh BNP Election",
+    "side": "YES",
+    "shares": 92,
+    "entry": 0.8,
+    "cost": 73.6,
+    "tokenId": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
+    "resolves": "2026-02-12",
+    "stopLoss": 0.65,
+    "thesis": "BNP heavy favorite. Resolves tomorrow."
   },
-  "strategiesActive": [
-    "event-driven-directional",
-    "arb-scanner"
-  ],
-  "strategiesPipeline": [
-    "market-making-15min",
-    "news-momentum",
-    "cross-platform-arb"
-  ],
-  "arbScannerStatus": "operational",
-  "lastArbScan": "2026-02-11T23:30:00Z",
-  "arbResults": {
-    "flagged": 2,
-    "viable": 2,
-    "bestProfit": 44.1
+  {
+    "market": "Anthropic Best AI Model Feb",
+    "side": "YES",
+    "shares": 80,
+    "entry": 0.62,
+    "cost": 49.6,
+    "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
+    "resolves": "2026-02-28",
+    "stopLoss": 0.5,
+    "thesis": "Claude leads LMArena. No rival launch imminent."
+  },
+  {
+    "market": "Fed March 25bps Cut",
+    "side": "NO",
+    "shares": 50,
+    "entry": 0.93,
+    "cost": 46.5,
+    "tokenId": "89036168105179001192755120118050209760422683300339582903158940882158509550672",
+    "resolves": "2026-03-19",
+    "stopLoss": 0.85,
+    "thesis": "CME FedWatch 95%+ no cut. Sticky inflation, strong employment."
+  },
+  {
+    "market": "Norway Most Gold Medals Winter Olympics",
+    "side": "YES",
+    "shares": 50,
+    "entry": 0.92,
+    "cost": 46,
+    "tokenId": "37951513621735784471651257045517975893424565554701830077103055531806326097100",
+    "resolves": "2026-02-22",
+    "stopLoss": 0.8,
+    "thesis": "Norway leads 7-4 gold on Day 5. Historically dominant. Cross-country/biathlon ahead."
   }
-}
+]
