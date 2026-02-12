@@ -120,5 +120,8 @@
       "takeProfit": 1.0,
       "notes": "Needs 18% crash. Exit if BTC breaks $60K."
     }
-  ]
+  ],
+  "lastReview": "2026-02-12T18:00:00Z",
+  "reviewNotes": "Executor session: No new trades. All positions within bounds. Bangladesh resolving today, DHS shutdown by Friday. Hot CPI strengthens Fed NO thesis. Arb scan: no viable opportunities (London temp resolving, deportation illiquid). Portfolio value ~$400.",
+  "capitalMode": "NORMAL"
 }
