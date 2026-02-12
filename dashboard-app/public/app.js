@@ -269,6 +269,46 @@ document.querySelectorAll('.time-btn').forEach(btn => {
 // ── XSS escape ──
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
+// ── Stuart's Log ──
+const LOG_URL = 'https://raw.githubusercontent.com/stuartoffabean/polymarket-bot/main/stuart-log.json';
+const logToggle = document.getElementById('logToggle');
+const logChevron = document.getElementById('logChevron');
+const logBody = document.getElementById('logBody');
+const logEntries = document.getElementById('logEntries');
+
+if (logToggle) {
+    logToggle.addEventListener('click', () => {
+        logBody.classList.toggle('collapsed');
+        logChevron.classList.toggle('collapsed');
+    });
+}
+
+async function loadLog() {
+    try {
+        const r = await fetch(LOG_URL + '?t=' + Date.now());
+        if (!r.ok) throw new Error(r.statusText);
+        const entries = await r.json();
+        if (!logEntries) return;
+        if (!entries || entries.length === 0) {
+            logEntries.innerHTML = '<div style="color:var(--dim);padding:20px;text-align:center;font-size:.78rem">No log entries yet</div>';
+            return;
+        }
+        const sorted = [...entries].sort((a, b) => new Date(b.time) - new Date(a.time)).slice(0, 50);
+        logEntries.innerHTML = sorted.map(e => {
+            const d = new Date(e.time);
+            const timeStr = d.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' ' +
+                d.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit', hour12:false});
+            const tag = e.tag || 'info';
+            return `<div class="log-entry">
+                <div class="log-time">${timeStr}<span class="log-tag ${tag}">${tag.toUpperCase()}</span></div>
+                <div class="log-text">${esc(e.text)}</div>
+            </div>`;
+        }).join('');
+    } catch (e) {
+        if (logEntries) logEntries.innerHTML = '<div style="color:var(--dim);padding:20px;text-align:center;font-size:.78rem">No log entries yet</div>';
+    }
+}
+
 // ── Init ──
 function pollAll() {
     updateStatus();
@@ -281,5 +321,7 @@ function pollAll() {
 
 initChart();
 pollAll();
+loadLog();
 connectWs();
 setInterval(pollAll, 5000);
+setInterval(loadLog, 120000);
