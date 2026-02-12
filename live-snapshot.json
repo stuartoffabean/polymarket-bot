@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-12T21:00:04.290Z",
+  "timestamp": "2026-02-12T21:15:42.305Z",
   "portfolio": {
     "trackedPositions": 9,
-    "portfolioValue": 454.029,
+    "portfolioValue": 454.683,
     "dailyStartValue": 132.328,
     "startingCapital": 433
   },
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 2958.844149992
+    "uptime": 3896.847879544
   },
   "positions": [
     {
@@ -46,12 +46,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.92,
-      "currentBid": 0.904,
-      "currentAsk": 0.91,
+      "currentBid": 0.914,
+      "currentAsk": 0.918,
       "costBasis": "23.00",
-      "currentValue": "22.60",
-      "pnl": "-0.40",
-      "pnlPct": "-1.7%",
+      "currentValue": "22.85",
+      "pnl": "-0.15",
+      "pnlPct": "-0.7%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -76,12 +76,12 @@
       "outcome": "Yes",
       "size": 139,
       "avgPrice": 0.83,
-      "currentBid": 0.951,
-      "currentAsk": 0.955,
+      "currentBid": 0.947,
+      "currentAsk": 0.948,
       "costBasis": "115.37",
-      "currentValue": "132.19",
-      "pnl": "16.82",
-      "pnlPct": "14.6%",
+      "currentValue": "131.63",
+      "pnl": "16.26",
+      "pnlPct": "14.1%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -91,12 +91,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.685,
-      "currentAsk": 0.687,
+      "currentBid": 0.69,
+      "currentAsk": 0.693,
       "costBasis": "49.60",
-      "currentValue": "54.80",
-      "pnl": "5.20",
-      "pnlPct": "10.5%",
+      "currentValue": "55.20",
+      "pnl": "5.60",
+      "pnlPct": "11.3%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -121,12 +121,12 @@
       "outcome": "YES",
       "size": 50,
       "avgPrice": 0.92,
-      "currentBid": 0.86,
-      "currentAsk": 0.87,
+      "currentBid": 0.87,
+      "currentAsk": 0.88,
       "costBasis": "46.00",
-      "currentValue": "43.00",
-      "pnl": "-3.00",
-      "pnlPct": "-6.5%",
+      "currentValue": "43.50",
+      "pnl": "-2.50",
+      "pnlPct": "-5.4%",
       "stopLoss": 0.75,
       "takeProfit": 1
     },
@@ -151,12 +151,12 @@
       "outcome": "NO",
       "size": 15,
       "avgPrice": 0.82,
-      "currentBid": 0.774,
-      "currentAsk": 0.782,
+      "currentBid": 0.778,
+      "currentAsk": 0.783,
       "costBasis": "12.30",
-      "currentValue": "11.61",
-      "pnl": "-0.69",
-      "pnlPct": "-5.6%",
+      "currentValue": "11.67",
+      "pnl": "-0.63",
+      "pnlPct": "-5.1%",
       "stopLoss": 0.6,
       "takeProfit": 1
     }
@@ -164,20 +164,20 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "Gov Shutdown Feb 14",
       "outcome": "YES",
       "side": "buy",
       "price": 0.83,
       "size": 73.87,
       "shares": 89,
-      "currentPrice": 0.951,
-      "pnl": 10.77,
-      "pnlPct": "14.6%",
+      "currentPrice": 0.947,
+      "pnl": 10.41,
+      "pnlPct": "14.1%",
       "tokenId": "7648925155044397287047798308912067661131447591491670430094875295487039626662"
     },
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "Bangladesh BNP Election",
       "outcome": "YES",
       "side": "buy",
@@ -190,20 +190,20 @@
       "tokenId": "77587680906182806497450061873126722297392583495948543397251590274471719007220"
     },
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "YES",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
       "shares": 80,
-      "currentPrice": 0.685,
-      "pnl": 5.2,
-      "pnlPct": "10.5%",
+      "currentPrice": 0.69,
+      "pnl": 5.6,
+      "pnlPct": "11.3%",
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     },
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "Fed March 25bps Cut",
       "outcome": "NO",
       "side": "buy",
@@ -216,20 +216,20 @@
       "tokenId": "89036168105179001192755120118050209760422683300339582903158940882158509550672"
     },
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "Norway Most Gold Medals Winter Olympics",
       "outcome": "YES",
       "side": "buy",
       "price": 0.92,
       "size": 46,
       "shares": 50,
-      "currentPrice": 0.86,
-      "pnl": -3,
-      "pnlPct": "-6.5%",
+      "currentPrice": 0.87,
+      "pnl": -2.5,
+      "pnlPct": "-5.4%",
       "tokenId": "37951513621735784471651257045517975893424565554701830077103055531806326097100"
     },
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "YES",
       "side": "buy",
@@ -242,20 +242,20 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "BTC wont drop to $50K Feb",
       "outcome": "NO",
       "side": "buy",
       "price": 0.92,
       "size": 23,
       "shares": 25,
-      "currentPrice": 0.904,
-      "pnl": -0.4,
-      "pnlPct": "-1.7%",
+      "currentPrice": 0.914,
+      "pnl": -0.15,
+      "pnlPct": "-0.7%",
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "BTC wont hit $85K Feb",
       "outcome": "NO",
       "side": "buy",
@@ -268,16 +268,16 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-12T21:00:04.290Z",
+      "timestamp": "2026-02-12T21:15:42.305Z",
       "market": "BTC wont drop to $55K Feb",
       "outcome": "NO",
       "side": "buy",
       "price": 0.82,
       "size": 12.3,
       "shares": 15,
-      "currentPrice": 0.774,
-      "pnl": -0.69,
-      "pnlPct": "-5.6%",
+      "currentPrice": 0.778,
+      "pnl": -0.63,
+      "pnlPct": "-5.1%",
       "tokenId": "14508138056322224915688949573192229922802851672435344101150518068118489796467"
     }
   ],
@@ -285,7 +285,7 @@
     {
       "name": "Event-Driven",
       "trades": 5,
-      "pnl": 30.26,
+      "pnl": 30.360000000000003,
       "wins": 3,
       "enabled": true,
       "winRate": 0.6
@@ -293,13 +293,19 @@
     {
       "name": "Safe Yield",
       "trades": 4,
-      "pnl": -3.15,
+      "pnl": -2.4,
       "wins": 1,
       "enabled": true,
       "winRate": 0.25
     }
   ],
-  "activity": [],
+  "activity": [
+    {
+      "time": "2026-02-12T21:10:45.543Z",
+      "type": "FEE_CHANGE_DETECTED",
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies."
+    }
+  ],
   "circuitBreakerTripped": false,
   "survivalMode": false,
   "emergencyMode": false
