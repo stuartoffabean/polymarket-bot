@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-12T23:36:26.336Z",
+  "timestamp": "2026-02-12T23:45:04.528Z",
   "portfolio": {
     "trackedPositions": 6,
     "portfolioValue": 153.635,
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 338.398238453
+    "uptime": 856.549403639
   },
   "positions": [
     {
@@ -47,7 +47,7 @@
       "size": 40,
       "avgPrice": 0.031,
       "currentBid": 0.024,
-      "currentAsk": 0.027,
+      "currentAsk": 0.028,
       "costBasis": "1.24",
       "currentValue": "0.96",
       "pnl": "-0.28",
@@ -129,7 +129,7 @@
   ],
   "trades": [
     {
-      "timestamp": "2026-02-12T23:36:26.335Z",
+      "timestamp": "2026-02-12T23:45:04.528Z",
       "market": "0xf95dfcdf72d98c59381df5b2d015e67aa7b7caf59258881c549d79400490a579",
       "outcome": "Yes",
       "side": "buy",
@@ -142,7 +142,7 @@
       "tokenId": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
     },
     {
-      "timestamp": "2026-02-12T23:36:26.335Z",
+      "timestamp": "2026-02-12T23:45:04.528Z",
       "market": "0x2749c8d903eb43d4be7ec2c3dc9608613089175450dab63022bf2dab042544f6",
       "outcome": "Yes",
       "side": "buy",
@@ -155,7 +155,7 @@
       "tokenId": "45898979561776724675674269540705289853904297480687405423030789870584323984150"
     },
     {
-      "timestamp": "2026-02-12T23:36:26.335Z",
+      "timestamp": "2026-02-12T23:45:04.528Z",
       "market": "0x7f72e2af09127b4ffd41b7b83d2d6c92fd8238e638d1bfaacbbdae356b4bf720",
       "outcome": "No",
       "side": "buy",
@@ -168,7 +168,7 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-12T23:36:26.335Z",
+      "timestamp": "2026-02-12T23:45:04.528Z",
       "market": "0xa31754e4e3d25202e95d88d99c52340ab5f4fcf03deb3006972fb2102af12c8d",
       "outcome": "No",
       "side": "buy",
@@ -181,7 +181,7 @@
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-12T23:36:26.335Z",
+      "timestamp": "2026-02-12T23:45:04.528Z",
       "market": "0xdeaa7932b51ce74186dc0fb1af2c20294d58d6ace29e4c15e0f8ad13a2d5191d",
       "outcome": "Yes",
       "side": "buy",
@@ -194,7 +194,7 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-12T23:36:26.335Z",
+      "timestamp": "2026-02-12T23:45:04.528Z",
       "market": "0xcbf9e16f0ad8bef39c3860dda598df8c4906f737bbed4dc1c65f7e0c07675ab3",
       "outcome": "Yes",
       "side": "buy",
