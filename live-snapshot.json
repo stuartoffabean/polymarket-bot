@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-12T03:13:27.007Z",
+  "timestamp": "2026-02-12T03:15:19.528Z",
   "portfolio": {
     "trackedPositions": 4,
-    "portfolioValue": 287.34000000000003,
+    "portfolioValue": 287.5,
     "dailyStartValue": 48.96,
     "startingCapital": 433
   },
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 6848.117843281
+    "uptime": 6960.675153626
   },
   "positions": [
     {
@@ -46,12 +46,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.671,
-      "currentAsk": 0.681,
+      "currentBid": 0.673,
+      "currentAsk": 0.682,
       "costBasis": "49.60",
-      "currentValue": "53.68",
-      "pnl": "4.08",
-      "pnlPct": "8.2%",
+      "currentValue": "53.84",
+      "pnl": "4.24",
+      "pnlPct": "8.5%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -86,23 +86,33 @@
       "takeProfit": 0.5
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "id": "0xaf753b87e90e53f122eb887c0fbba720bc72e261ea398fe822b243367c289041",
+      "asset_id": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
+      "side": "SELL",
+      "price": "0.83",
+      "original_size": "50",
+      "size_matched": "0",
+      "status": "LIVE"
+    }
+  ],
   "trades": [
     {
-      "timestamp": "2026-02-12T03:13:27.007Z",
+      "timestamp": "2026-02-12T03:15:19.528Z",
       "market": "Gov Shutdown Feb 14",
       "outcome": "YES",
       "side": "buy",
       "price": 0.83,
-      "size": 115.37,
-      "shares": 139,
+      "size": 73.87,
+      "shares": 89,
       "currentPrice": 0.82,
-      "pnl": -1.39,
+      "pnl": -0.89,
       "pnlPct": "-1.2%",
       "tokenId": "7648925155044397287047798308912067661131447591491670430094875295487039626662"
     },
     {
-      "timestamp": "2026-02-12T03:13:27.007Z",
+      "timestamp": "2026-02-12T03:15:19.528Z",
       "market": "Bangladesh BNP Election",
       "outcome": "YES",
       "side": "buy",
@@ -115,20 +125,20 @@
       "tokenId": "77587680906182806497450061873126722297392583495948543397251590274471719007220"
     },
     {
-      "timestamp": "2026-02-12T03:13:27.007Z",
+      "timestamp": "2026-02-12T03:15:19.528Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "YES",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
       "shares": 80,
-      "currentPrice": 0.671,
-      "pnl": 4.08,
-      "pnlPct": "8.2%",
+      "currentPrice": 0.673,
+      "pnl": 4.24,
+      "pnlPct": "8.5%",
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     },
     {
-      "timestamp": "2026-02-12T03:13:27.007Z",
+      "timestamp": "2026-02-12T03:15:19.528Z",
       "market": "Fed March 25bps Cut",
       "outcome": "NO",
       "side": "buy",
@@ -141,7 +151,7 @@
       "tokenId": "89036168105179001192755120118050209760422683300339582903158940882158509550672"
     },
     {
-      "timestamp": "2026-02-12T03:13:27.007Z",
+      "timestamp": "2026-02-12T03:15:19.528Z",
       "market": "Norway Most Gold Medals Winter Olympics",
       "outcome": "YES",
       "side": "buy",
@@ -152,16 +162,29 @@
       "pnl": 0,
       "pnlPct": "0.0%",
       "tokenId": "37951513621735784471651257045517975893424565554701830077103055531806326097100"
+    },
+    {
+      "timestamp": "2026-02-12T03:15:19.528Z",
+      "market": "Norway Most Total Medals Winter Olympics",
+      "outcome": "YES",
+      "side": "buy",
+      "price": 0.62,
+      "size": 31,
+      "shares": 50,
+      "currentPrice": null,
+      "pnl": 0,
+      "pnlPct": "0.0%",
+      "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     }
   ],
   "strategies": [
     {
       "name": "Event-Driven",
-      "trades": 3,
-      "pnl": 1.77,
+      "trades": 4,
+      "pnl": 2.43,
       "wins": 1,
       "enabled": true,
-      "winRate": 0.3333333333333333
+      "winRate": 0.25
     },
     {
       "name": "Safe Yield",
