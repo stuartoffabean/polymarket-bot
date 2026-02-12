@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-12T01:23:50.324Z",
+  "timestamp": "2026-02-12T01:28:26.755Z",
   "portfolio": {
     "trackedPositions": 4,
-    "portfolioValue": 286.05,
+    "portfolioValue": 284.74,
     "dailyStartValue": 48.96,
     "startingCapital": 433
   },
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 271.559104226
+    "uptime": 547.98997024
   },
   "positions": [
     {
@@ -31,12 +31,12 @@
       "outcome": "Yes",
       "size": 139,
       "avgPrice": 0.83,
-      "currentBid": 0.85,
+      "currentBid": 0.84,
       "currentAsk": 0.86,
       "costBasis": "115.37",
-      "currentValue": "118.15",
-      "pnl": "2.78",
-      "pnlPct": "2.4%",
+      "currentValue": "116.76",
+      "pnl": "1.39",
+      "pnlPct": "1.2%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -46,12 +46,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.609,
+      "currentBid": 0.61,
       "currentAsk": 0.611,
       "costBasis": "49.60",
-      "currentValue": "48.72",
-      "pnl": "-0.88",
-      "pnlPct": "-1.8%",
+      "currentValue": "48.80",
+      "pnl": "-0.80",
+      "pnlPct": "-1.6%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
