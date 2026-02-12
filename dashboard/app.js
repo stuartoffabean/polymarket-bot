@@ -120,15 +120,68 @@ async function api(path) {
             }));
         } catch(e) { return null; }
     }
-    // Fallback to relative API paths
-    try {
-        const r = await fetch(path);
-        if (!r.ok) throw new Error(r.statusText);
-        return await r.json();
-    } catch (e) {
-        console.warn(`API ${path}:`, e.message);
-        return null;
+    if (path === '/api/orders') {
+        try {
+            const r = await fetch(STATE_URL + '?t=' + Date.now());
+            if (!r.ok) throw new Error(r.statusText);
+            const snap = await r.json();
+            return (snap.orders || []).map(o => ({
+                id: o.id || o.order_id,
+                market: o.asset_id?.slice(0, 16) + '...',
+                side: o.side?.toLowerCase() || 'buy',
+                price: parseFloat(o.price) * 100,
+                size: parseFloat(o.original_size || o.size || 0),
+                status: o.status || 'LIVE',
+            }));
+        } catch(e) { return null; }
     }
+    if (path === '/api/trades') {
+        try {
+            const r = await fetch(STATE_URL + '?t=' + Date.now());
+            if (!r.ok) throw new Error(r.statusText);
+            const snap = await r.json();
+            return (snap.trades || []).map(t => ({
+                time: t.timestamp || t.time,
+                market: t.market || t.outcome || '—',
+                side: t.side?.toLowerCase() || 'buy',
+                price: parseFloat(t.price) * 100,
+                size: parseFloat(t.size || t.cost || 0),
+                pnl: parseFloat(t.pnl) || 0,
+            }));
+        } catch(e) { return null; }
+    }
+    if (path === '/api/strategies') {
+        try {
+            const r = await fetch(STATE_URL + '?t=' + Date.now());
+            if (!r.ok) throw new Error(r.statusText);
+            const snap = await r.json();
+            return (snap.strategies || []).map(s => ({
+                id: s.name,
+                name: s.name,
+                trades: s.trades || 0,
+                win_rate: s.winRate || 0,
+                pnl: s.pnl || 0,
+                enabled: s.enabled !== false,
+            }));
+        } catch(e) { return null; }
+    }
+    if (path.startsWith('/api/pnl')) {
+        try {
+            const r = await fetch(PNL_URL + '?t=' + Date.now());
+            if (!r.ok) throw new Error(r.statusText);
+            const data = await r.json();
+            return {
+                points: (data.points || []).map(p => ({
+                    time: p.timestamp,
+                    value: p.pnl || 0,
+                })),
+                startingCapital: data.startingCapital || 433,
+            };
+        } catch(e) { return null; }
+    }
+    // Fallback
+    console.warn(`API ${path}: no handler, skipping`);
+    return null;
 }
 
 // ── Status ──
