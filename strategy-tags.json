@@ -141,5 +141,11 @@
     "market": "Ankara 9°C 2026-02-13",
     "conditionId": "0xc4c9c9d00b49a98d0c0698df4af359e2ac6f040929baa64dd325edd323e3374c",
     "city": "ankara"
+  },
+  "44121016434409049375380848402136057678738655013936501174241083709908786149012": {
+    "strategy": "resolution",
+    "taggedAt": "2026-02-13T06:46:23.578Z",
+    "market": "Will the highest temperature in Atlanta be between 56-57°F o",
+    "conditionId": "0xee706fa96fd66c3a8d260db7aed4d90bce5889d04ebeae87ad640f9e0d75d1c6"
   }
 }

@@ -383,6 +383,56 @@ async function confirmOrder(orderID, strategy, expectedPrice, cancelAfterMs, lab
   return { status: "unfilled", sizeMatched: 0, originalSize: finalOriginal, fillPrice, slippage, orderID };
 }
 
+// === ORDER BOOK DEPTH CHECK ===
+// Walk ask side to determine realistic fill. Returns { sizeWithinTol, avgFillPrice, bestAsk }.
+// CLOB asks are sorted DESCENDING — best (lowest) ask is LAST.
+const DEPTH_SLIPPAGE_TOL = 0.02;  // 2% max slippage from best ask
+const DEPTH_MIN_SHARES = 5;
+
+function checkBookDepth(book, intendedSize, label) {
+  if (!book?.asks?.length) {
+    log("DEPTH", `${label}: no asks in book — skipping`);
+    return { skip: true, reason: "no asks" };
+  }
+
+  // Sort asks ascending (cheapest first) for walk
+  const asks = book.asks
+    .map(a => ({ price: parseFloat(a.price), size: parseFloat(a.size) }))
+    .sort((a, b) => a.price - b.price);
+
+  const bestAsk = asks[0].price;
+  const maxPrice = bestAsk * (1 + DEPTH_SLIPPAGE_TOL);
+
+  let filled = 0;
+  let totalCost = 0;
+
+  for (const level of asks) {
+    if (level.price > maxPrice) break;
+    const canTake = Math.min(level.size, intendedSize - filled);
+    filled += canTake;
+    totalCost += canTake * level.price;
+    if (filled >= intendedSize) break;
+  }
+
+  const avgFillPrice = filled > 0 ? totalCost / filled : bestAsk;
+  const slippagePct = ((avgFillPrice - bestAsk) / bestAsk * 100).toFixed(2);
+
+  if (filled >= intendedSize) {
+    log("DEPTH", `${label}: ${intendedSize}sh fillable within ${DEPTH_SLIPPAGE_TOL * 100}% of best ask ${bestAsk} (avg fill ${avgFillPrice.toFixed(4)}, slippage ${slippagePct}%)`);
+    return { skip: false, size: intendedSize, bestAsk, avgFillPrice, slippage: parseFloat(slippagePct) };
+  }
+
+  // Not enough depth — size down
+  const availableSize = Math.floor(filled);
+  if (availableSize < DEPTH_MIN_SHARES) {
+    log("DEPTH", `${label}: only ${availableSize}sh available within ${DEPTH_SLIPPAGE_TOL * 100}% tolerance — skipping`);
+    return { skip: true, reason: `only ${availableSize}sh within tolerance`, bestAsk, availableSize };
+  }
+
+  log("DEPTH", `${label}: wanted ${intendedSize}sh, book has ${availableSize}sh within ${DEPTH_SLIPPAGE_TOL * 100}% of best ask ${bestAsk}, sizing down`);
+  return { skip: false, size: availableSize, bestAsk, avgFillPrice, slippage: parseFloat(slippagePct), reduced: true };
+}
+
 // === TELEGRAM ALERTS ===
 function sendTelegramAlert(text) {
   if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
@@ -1199,7 +1249,31 @@ async function runArbScan() {
           break; // stop trying more arbs this cycle
         }
 
-        log("ARB", `🎯 AUTO-EXEC: "${opp.event.slice(0,50)}" — ${sets} sets @ $${opp.execSum.toFixed(3)}/set = $${totalSpend} spend, $${totalProfit} profit`);
+        // Depth check across all legs — find minimum fillable sets
+        let minDepthSets = sets;
+        let depthCheckFailed = false;
+        try {
+          for (const d of opp.details.filter(dd => dd.token && dd.exec > 0)) {
+            const legBook = await httpGet(`/book?token_id=${d.token}`);
+            const legDepth = checkBookDepth(legBook, sets, `ARB-leg: ${d.name?.slice(0,30) || d.token.slice(0,12)}`);
+            if (legDepth.skip) { depthCheckFailed = true; break; }
+            if (legDepth.size < minDepthSets) minDepthSets = legDepth.size;
+            await sleep(300); // rate limit between leg checks
+          }
+        } catch (e) {
+          log("ARB", `Depth check failed: ${e.message}`);
+          depthCheckFailed = true;
+        }
+        if (depthCheckFailed || minDepthSets < DEPTH_MIN_SHARES) {
+          log("ARB", `Skipping "${opp.event.slice(0,40)}" — insufficient depth across legs`);
+          continue;
+        }
+
+        const depthAdjustedSets = minDepthSets;
+        const adjTotalSpend = (depthAdjustedSets * opp.execSum).toFixed(2);
+        const adjTotalProfit = (depthAdjustedSets * profitPerSet).toFixed(2);
+
+        log("ARB", `🎯 AUTO-EXEC: "${opp.event.slice(0,50)}" — ${depthAdjustedSets} sets @ $${opp.execSum.toFixed(3)}/set = $${adjTotalSpend} spend, $${adjTotalProfit} profit${depthAdjustedSets < sets ? ` (depth-reduced from ${sets})` : ""}`);
 
         try {
           // Build legs for the arb endpoint
@@ -1208,7 +1282,7 @@ async function runArbScan() {
             .map(d => ({
               tokenID: d.token,
               price: d.exec,
-              size: sets,
+              size: depthAdjustedSets,
               side: "BUY",
             }));
 
@@ -1225,7 +1299,7 @@ async function runArbScan() {
           arbStrat.submitted++;
           if (arbResult.status === "ALL_FILLED") {
             arbStrat.filled++;
-            sendTelegramAlert(`✅ ARB FILLED: "${opp.event.slice(0,50)}"\n${sets} sets @ $${opp.execSum.toFixed(3)}/set\nSpend: $${totalSpend} | Expected profit: $${totalProfit}\nLegs: ${legs.length}`);
+            sendTelegramAlert(`✅ ARB FILLED: "${opp.event.slice(0,50)}"\n${depthAdjustedSets} sets @ $${opp.execSum.toFixed(3)}/set\nSpend: $${adjTotalSpend} | Expected profit: $${adjTotalProfit}\nLegs: ${legs.length}`);
           } else if (arbResult.status === "PARTIAL_FILL_UNWOUND") {
             arbStrat.partial++;
             sendTelegramAlert(`⚠️ ARB PARTIAL (unwound): "${opp.event.slice(0,50)}"\n${arbResult.filled?.length}/${legs.length} legs filled — remainder unwound`);
@@ -1438,13 +1512,16 @@ async function runResolutionHunter() {
         break; // stop trying more RH trades this cycle
       }
 
-      // Get order book to verify depth
+      // Get order book and check depth
       try {
         const book = await httpGet(`/book?token_id=${c.tokenId}`);
-        // CLOB book: asks sorted descending — best (lowest) ask is last
-        const bestAsk = book.asks && book.asks.length > 0 ? parseFloat(book.asks[book.asks.length - 1].price) : null;
-        
-        if (!bestAsk || bestAsk > RH_MAX_PRICE) {
+        const depth = checkBookDepth(book, size, `RH: ${c.market.slice(0,40)}`);
+        if (depth.skip) continue;
+
+        const bestAsk = depth.bestAsk;
+        size = depth.size; // may be reduced by depth check
+
+        if (bestAsk > RH_MAX_PRICE) {
           log("RH", `${c.market.slice(0,40)}: best ask ${bestAsk} too high — skip`);
           continue;
         }
@@ -1647,32 +1724,6 @@ async function runWeatherExecutor() {
         continue;
       }
 
-      // Get order book to verify current price
-      const book = await httpGet(`/book?token_id=${tokenId}`);
-      // CLOB book: asks sorted descending — best (lowest) ask is last
-      const bestAsk = book.asks && book.asks.length > 0 ? parseFloat(book.asks[book.asks.length - 1].price) : null;
-      // Depth near best ask (last 3 levels)
-      const askDepth = book.asks ? book.asks.slice(-3).reduce((s, o) => s + parseFloat(o.size), 0) : 0;
-
-      if (!bestAsk) {
-        log("WX", `No asks for ${signal.city} ${signal.bucket} — skip`);
-        continue;
-      }
-
-      // Check ask depth can fill our order (at least 10 shares within 2¢ of best ask)
-      if (askDepth < 10) {
-        log("WX", `${signal.city} ${signal.bucket}: insufficient ask depth (${askDepth.toFixed(0)} shares) — skip`);
-        continue;
-      }
-
-      // Check that price hasn't moved against us since scan
-      // For BUY_YES: askPrice should still be cheap (not much higher than scan price)
-      // For BUY_NO: askPrice of NO token — we need to check
-      if (signal.signal === "BUY_YES" && bestAsk > signal.marketPrice * 1.5 + 0.02) {
-        log("WX", `${signal.city} ${signal.bucket}: price moved (was ${signal.marketPrice}, now ask ${bestAsk}) — skip`);
-        continue;
-      }
-
       // Global auto-capital cap check (before sizing)
       const wxCapCheck = checkAutoCapBudget("weather", Math.min(signal.kellySize || WX_MAX_TRADE_SIZE, WX_MAX_TRADE_SIZE));
       if (!wxCapCheck.allowed) {
@@ -1680,27 +1731,40 @@ async function runWeatherExecutor() {
         break; // stop trying more weather trades this cycle
       }
 
-      // Calculate size using Kelly or cap
+      // Calculate intended size using Kelly or cap
       const kellyDollars = Math.min(signal.kellySize || WX_MAX_TRADE_SIZE, WX_MAX_TRADE_SIZE);
       const remainingBudget = WX_MAX_TOTAL_EXPOSURE - totalSpent;
       const spendDollars = Math.min(kellyDollars, remainingBudget);
-      let size = Math.floor(spendDollars / bestAsk);
 
-      if (size < 5) { // minimum 5 shares
+      // Get order book and check depth
+      const wxLabel = `WX: ${signal.city} ${signal.bucket}°${signal.unit}`;
+      const book = await httpGet(`/book?token_id=${tokenId}`);
+
+      // Preliminary best ask for sizing
+      const sortedAsks = (book.asks || []).map(a => ({ price: parseFloat(a.price), size: parseFloat(a.size) })).sort((a, b) => a.price - b.price);
+      const bestAsk = sortedAsks.length > 0 ? sortedAsks[0].price : null;
+
+      if (!bestAsk) {
+        log("WX", `No asks for ${signal.city} ${signal.bucket} — skip`);
+        continue;
+      }
+
+      // Check that price hasn't moved against us since scan
+      if (signal.signal === "BUY_YES" && bestAsk > signal.marketPrice * 1.5 + 0.02) {
+        log("WX", `${signal.city} ${signal.bucket}: price moved (was ${signal.marketPrice}, now ask ${bestAsk}) — skip`);
+        continue;
+      }
+
+      let size = Math.floor(spendDollars / bestAsk);
+      if (size < 5) {
         log("WX", `${signal.city} ${signal.bucket}: size too small (${size} shares) — skip`);
         continue;
       }
 
-      // Don't try to buy more than available depth (would get worse fill)
-      if (size > askDepth * 0.8) {
-        const cappedSize = Math.floor(askDepth * 0.8);
-        if (cappedSize < 5) {
-          log("WX", `${signal.city} ${signal.bucket}: would exceed book depth (${size} > ${askDepth.toFixed(0)}) — skip`);
-          continue;
-        }
-        log("WX", `${signal.city} ${signal.bucket}: capping size ${size} → ${cappedSize} (book depth: ${askDepth.toFixed(0)})`);
-        size = cappedSize;
-      }
+      // Depth check — walk book, size down if thin
+      const depth = checkBookDepth(book, size, wxLabel);
+      if (depth.skip) continue;
+      size = depth.size; // may be reduced
 
       // Execute!
       log("WX", `🌤️ BUYING: ${size} ${signal.signal === "BUY_YES" ? "YES" : "NO"} @ ${bestAsk} on "${signal.city} ${signal.bucket}°${signal.unit}" (edge: ${(signal.edge*100).toFixed(1)}¢, conf: ${((signal.ensembleConfidence||0)*100).toFixed(0)}%)`);
@@ -1717,7 +1781,6 @@ async function runWeatherExecutor() {
       log("WX", `Order submitted: ${JSON.stringify(orderResult).slice(0, 200)}`);
 
       // Confirm fill (cancel unfilled after 60s — stale weather orders are dangerous)
-      const wxLabel = `WX: ${signal.city} ${signal.bucket}°${signal.unit}`;
       const confirm = await confirmOrder(orderID, "weather", bestAsk, 60000, wxLabel);
 
       if (confirm.status === "unfilled") {
