@@ -284,6 +284,105 @@ function handleRateLimit() {
   }
 }
 
+// === ORDER CONFIRMATION & FILL TRACKING ===
+// After submitting an order, verify actual fill status via CLOB
+const FILL_STATS_FILE = path.join(__dirname, "..", "fill-stats.json");
+let fillStats = { weather: { submitted: 0, filled: 0, partial: 0, unfilled: 0 }, resolution: { submitted: 0, filled: 0, partial: 0, unfilled: 0 }, arb: { submitted: 0, filled: 0, partial: 0, unfilled: 0 } };
+try { fillStats = JSON.parse(fs.readFileSync(FILL_STATS_FILE, "utf8")); } catch {}
+function saveFillStats() { try { fs.writeFileSync(FILL_STATS_FILE, JSON.stringify(fillStats, null, 2)); } catch {} }
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+/**
+ * Confirm an order's fill status. Returns:
+ * { status: 'filled'|'partial'|'unfilled'|'error', sizeMatched, originalSize, fillPrice, slippage, orderID }
+ * 
+ * @param {string} orderID - CLOB order ID  
+ * @param {string} strategy - 'weather'|'resolution'|'arb'
+ * @param {number} expectedPrice - price model assumed for slippage calc
+ * @param {number} cancelAfterMs - cancel unfilled remainder after this many ms (0 = immediate)
+ * @param {string} label - human label for logging (e.g. "NYC 34-35°F")
+ */
+async function confirmOrder(orderID, strategy, expectedPrice, cancelAfterMs, label) {
+  if (!orderID) return { status: "error", reason: "no orderID returned" };
+  
+  const strat = fillStats[strategy] || (fillStats[strategy] = { submitted: 0, filled: 0, partial: 0, unfilled: 0 });
+  strat.submitted++;
+  
+  // Wait 5s for initial fill
+  await sleep(5000);
+  
+  let order;
+  try {
+    order = await httpGet(`/get-order?id=${orderID}`);
+  } catch (e) {
+    log("CONFIRM", `Failed to fetch order ${orderID}: ${e.message}`);
+    return { status: "error", reason: e.message };
+  }
+  
+  const originalSize = parseFloat(order.original_size || 0);
+  const sizeMatched = parseFloat(order.size_matched || 0);
+  const fillPrice = parseFloat(order.price || expectedPrice);
+  const slippage = fillPrice - expectedPrice;
+  
+  // Fully filled
+  if (order.status === "MATCHED" || (originalSize > 0 && sizeMatched >= originalSize * 0.99)) {
+    strat.filled++;
+    saveFillStats();
+    const slipBps = ((slippage / expectedPrice) * 10000).toFixed(0);
+    log("CONFIRM", `✅ FILLED: ${label} — ${sizeMatched}/${originalSize} @ ${fillPrice} (expected ${expectedPrice}, slippage ${slipBps}bps)`);
+    return { status: "filled", sizeMatched, originalSize, fillPrice, slippage, orderID };
+  }
+  
+  // Partially filled or unfilled — wait for cancelAfterMs then re-check
+  if (cancelAfterMs > 0) {
+    const remainingWait = Math.max(cancelAfterMs - 5000, 0);
+    if (remainingWait > 0) await sleep(remainingWait);
+    
+    // Re-check
+    try {
+      order = await httpGet(`/get-order?id=${orderID}`);
+    } catch (e) {
+      log("CONFIRM", `Failed to re-fetch order ${orderID}: ${e.message}`);
+    }
+  }
+  
+  const finalMatched = parseFloat(order.size_matched || 0);
+  const finalOriginal = parseFloat(order.original_size || 0);
+  
+  if (order.status === "MATCHED" || (finalOriginal > 0 && finalMatched >= finalOriginal * 0.99)) {
+    strat.filled++;
+    saveFillStats();
+    const slipBps = ((slippage / expectedPrice) * 10000).toFixed(0);
+    log("CONFIRM", `✅ FILLED (late): ${label} — ${finalMatched}/${finalOriginal} @ ${fillPrice} (slippage ${slipBps}bps)`);
+    return { status: "filled", sizeMatched: finalMatched, originalSize: finalOriginal, fillPrice, slippage, orderID };
+  }
+  
+  // Cancel the unfilled/partial remainder
+  const shouldCancel = order.status !== "MATCHED" && order.status !== "CANCELLED";
+  if (shouldCancel) {
+    try {
+      await httpPost("/cancel-order", { orderID });
+      log("CONFIRM", `🗑️ Cancelled unfilled order ${orderID}`);
+    } catch (e) {
+      log("CONFIRM", `Failed to cancel ${orderID}: ${e.message}`);
+    }
+  }
+  
+  if (finalMatched > 0 && finalMatched < finalOriginal * 0.99) {
+    strat.partial++;
+    saveFillStats();
+    log("CONFIRM", `⚠️ PARTIAL: ${label} — ${finalMatched}/${finalOriginal} filled, remainder cancelled`);
+    return { status: "partial", sizeMatched: finalMatched, originalSize: finalOriginal, fillPrice, slippage, orderID };
+  }
+  
+  // Completely unfilled
+  strat.unfilled++;
+  saveFillStats();
+  log("CONFIRM", `❌ UNFILLED: ${label} — 0/${finalOriginal}, order cancelled`);
+  return { status: "unfilled", sizeMatched: 0, originalSize: finalOriginal, fillPrice, slippage, orderID };
+}
+
 // === TELEGRAM ALERTS ===
 function sendTelegramAlert(text) {
   if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
@@ -750,6 +849,19 @@ async function apiHandler(req, res) {
       }
     }
 
+    if (url === "/fill-stats") {
+      const total = { submitted: 0, filled: 0, partial: 0, unfilled: 0 };
+      for (const s of Object.values(fillStats)) {
+        total.submitted += s.submitted; total.filled += s.filled;
+        total.partial += s.partial; total.unfilled += s.unfilled;
+      }
+      return send(res, 200, {
+        byStrategy: fillStats,
+        total,
+        fillRate: total.submitted > 0 ? ((total.filled / total.submitted) * 100).toFixed(1) + "%" : "N/A",
+      });
+    }
+
     if (url === "/weather-trades") {
       try {
         const data = JSON.parse(fs.readFileSync(WEATHER_TRADES_FILE, "utf8"));
@@ -937,7 +1049,7 @@ function recordPnlSnapshot() {
 }
 
 // === ARB SCANNER (integrated from arb-scanner.js) ===
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+// sleep() defined near line 294
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -1108,7 +1220,24 @@ async function runArbScan() {
           const arbResult = await httpPost("/arb", { legs });
           log("ARB", `Arb result: ${JSON.stringify(arbResult).slice(0, 300)}`);
 
-          sendTelegramAlert(`🎯 ARB EXECUTED: "${opp.event.slice(0,50)}"\n${sets} sets @ $${opp.execSum.toFixed(3)}/set\nSpend: $${totalSpend} | Expected profit: $${totalProfit}\nLegs: ${legs.length}`);
+          // Arbs use FOK — fill tracking from executor response
+          const arbStrat = fillStats.arb || (fillStats.arb = { submitted: 0, filled: 0, partial: 0, unfilled: 0 });
+          arbStrat.submitted++;
+          if (arbResult.status === "ALL_FILLED") {
+            arbStrat.filled++;
+            sendTelegramAlert(`✅ ARB FILLED: "${opp.event.slice(0,50)}"\n${sets} sets @ $${opp.execSum.toFixed(3)}/set\nSpend: $${totalSpend} | Expected profit: $${totalProfit}\nLegs: ${legs.length}`);
+          } else if (arbResult.status === "PARTIAL_FILL_UNWOUND") {
+            arbStrat.partial++;
+            sendTelegramAlert(`⚠️ ARB PARTIAL (unwound): "${opp.event.slice(0,50)}"\n${arbResult.filled?.length}/${legs.length} legs filled — remainder unwound`);
+            saveFillStats();
+            continue; // don't tag or persist — position was unwound
+          } else {
+            arbStrat.unfilled++;
+            sendTelegramAlert(`❌ ARB FAILED: "${opp.event.slice(0,50)}" — all legs rejected (FOK)`);
+            saveFillStats();
+            continue; // don't tag or persist
+          }
+          saveFillStats();
           
           // Tag all legs with arb strategy
           for (const leg of legs) {
@@ -1330,14 +1459,28 @@ async function runResolutionHunter() {
           orderType: "GTC",
         });
 
-        log("RH", `Order result: ${JSON.stringify(orderResult).slice(0,200)}`);
+        log("RH", `Order submitted: ${JSON.stringify(orderResult).slice(0,200)}`);
+        const orderID = orderResult.orderID || orderResult.id;
+        
+        // Confirm fill (cancel unfilled after 60s — stale RH orders are dangerous)
+        const confirm = await confirmOrder(orderID, "resolution", bestAsk, 60000, `RH: ${c.market.slice(0,40)}`);
+        
+        if (confirm.status === "unfilled") {
+          log("RH", `Order unfilled and cancelled — NOT counting as deployed`);
+          continue; // don't count, don't tag, don't persist
+        }
+
+        const actualSize = confirm.status === "partial" ? confirm.sizeMatched : size;
+        const actualSpend = (bestAsk * actualSize).toFixed(2);
         
         executed.push({
           ...c,
           executedPrice: bestAsk,
-          executedSize: size,
-          spend: (bestAsk * size).toFixed(2),
-          orderResult: orderResult.orderID || orderResult.status || "submitted",
+          executedSize: actualSize,
+          spend: actualSpend,
+          fillStatus: confirm.status,
+          slippage: confirm.slippage?.toFixed(4) || "0",
+          orderID,
         });
 
         // Auto-register market name for dashboard
@@ -1351,9 +1494,6 @@ async function runResolutionHunter() {
         saveRhExecuted();
 
         tradesThisCycle++;
-
-        // Small delay between orders
-        await new Promise(r => setTimeout(r, 1000));
       } catch (e) {
         log("RH", `❌ Failed to execute ${c.market.slice(0,40)}: ${e.message}`);
       }
@@ -1371,7 +1511,8 @@ async function runResolutionHunter() {
 
     if (executed.length > 0) {
       log("RH", `✅ Executed ${executed.length} resolution trades`);
-      sendTelegramAlert(`🎯 Resolution Hunter: ${executed.length} trades executed\n${executed.map(e => `  ${e.outcome} ${e.executedSize}sh @ ${e.executedPrice} → "${e.market.slice(0,40)}"`).join("\n")}`);
+      const rhFillSummary = executed.map(e => `  ${e.fillStatus === "partial" ? "⚠️" : "✅"} ${e.outcome} ${e.executedSize}sh @ ${e.executedPrice} → "${e.market.slice(0,40)}"${e.fillStatus === "partial" ? " PARTIAL" : ""}`).join("\n");
+      sendTelegramAlert(`🎯 Resolution Hunter: ${executed.length} confirmed fills\n${rhFillSummary}`);
     } else {
       log("RH", `Scan complete: ${candidates.length} candidates, 0 executed`);
     }
@@ -1572,7 +1713,20 @@ async function runWeatherExecutor() {
         orderType: "GTC",
       });
 
-      const spend = (bestAsk * size).toFixed(2);
+      const orderID = orderResult.orderID || orderResult.id;
+      log("WX", `Order submitted: ${JSON.stringify(orderResult).slice(0, 200)}`);
+
+      // Confirm fill (cancel unfilled after 60s — stale weather orders are dangerous)
+      const wxLabel = `WX: ${signal.city} ${signal.bucket}°${signal.unit}`;
+      const confirm = await confirmOrder(orderID, "weather", bestAsk, 60000, wxLabel);
+
+      if (confirm.status === "unfilled") {
+        log("WX", `${wxLabel} — order unfilled and cancelled, NOT counting as deployed`);
+        continue; // don't count, don't tag, don't persist
+      }
+
+      const actualSize = confirm.status === "partial" ? confirm.sizeMatched : size;
+      const spend = (bestAsk * actualSize).toFixed(2);
       totalSpent += parseFloat(spend);
       tradesThisCycle++;
       weatherTradesExecuted.add(signal.conditionId);
@@ -1585,7 +1739,7 @@ async function runWeatherExecutor() {
         unit: signal.unit,
         signal: signal.signal,
         tokenId,
-        size,
+        size: actualSize,
         price: bestAsk,
         spend,
         edge: signal.edge,
@@ -1593,13 +1747,13 @@ async function runWeatherExecutor() {
         ensembleMean: signal.ensembleMean,
         ensembleStdDev: signal.ensembleStdDev,
         forecastProb: signal.forecastProb,
-        orderID: orderResult.orderID || null,
-        status: orderResult.status || orderResult.error || "submitted",
+        orderID,
+        fillStatus: confirm.status,
+        slippage: confirm.slippage?.toFixed(4) || "0",
         question: signal.question?.slice(0, 100),
       };
 
       executed.push(trade);
-      log("WX", `Order result: ${JSON.stringify(orderResult).slice(0, 200)}`);
 
       // Auto-register market name for dashboard
       const wxName = `${signal.city} ${signal.bucket}°${signal.unit} ${signal.date}`.replace(/\b\w/g, c => c.toUpperCase()).slice(0, 40);
@@ -1607,9 +1761,6 @@ async function runWeatherExecutor() {
 
       // Tag strategy
       tagStrategy(tokenId, 'weather', { market: wxName, conditionId: signal.conditionId, city: signal.city });
-
-      // Rate limit
-      await new Promise(r => setTimeout(r, 1500));
 
     } catch (e) {
       log("WX", `❌ Failed: ${signal.city} ${signal.bucket}: ${e.message}`);
@@ -1620,7 +1771,8 @@ async function runWeatherExecutor() {
   if (executed.length > 0) {
     saveWeatherTrades(executed);
     log("WX", `✅ ${executed.length} weather trades executed, $${totalSpent.toFixed(2)} deployed`);
-    sendTelegramAlert(`🌤️ Weather Executor: ${executed.length} trades, $${totalSpent.toFixed(2)} deployed\n${executed.map(e => `  ${e.signal} ${e.size}sh @ ${e.price} → ${e.city} ${e.bucket}°${e.unit} (edge ${(e.edge*100).toFixed(0)}¢)`).join("\n")}`);
+    const fillSummary = executed.map(e => `  ${e.fillStatus === "partial" ? "⚠️" : "✅"} ${e.signal} ${e.size}sh @ ${e.price} → ${e.city} ${e.bucket}°${e.unit} (edge ${(e.edge*100).toFixed(0)}¢${e.fillStatus === "partial" ? " PARTIAL" : ""})`).join("\n");
+    sendTelegramAlert(`🌤️ Weather Executor: ${executed.length} trades, $${totalSpent.toFixed(2)} deployed\n${fillSummary}`);
   } else {
     log("WX", `Scan complete: ${actionable.length} actionable, 0 executed`);
   }

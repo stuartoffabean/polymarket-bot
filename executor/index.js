@@ -612,6 +612,23 @@ async function handler(req, res) {
       });
     }
 
+    // GET /get-order?id=... — fetch order status from CLOB
+    if (method === "GET" && path === "/get-order") {
+      const orderID = query.id;
+      if (!orderID) return send(res, 400, { error: "Missing id param" });
+      const order = await client.getOrder(orderID);
+      return send(res, 200, order);
+    }
+
+    // POST /cancel-order — cancel specific order (used by ws-feed confirmOrder)
+    if (method === "POST" && path === "/cancel-order") {
+      const body = await parseBody(req);
+      const { orderID } = body;
+      if (!orderID) return send(res, 400, { error: "Missing orderID" });
+      const result = await client.cancelOrder(orderID);
+      return send(res, 200, { success: true, result });
+    }
+
     // DELETE /order — cancel specific order
     if (method === "DELETE" && path === "/order") {
       const body = await parseBody(req);

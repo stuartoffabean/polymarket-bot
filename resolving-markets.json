@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-02-13T06:33:28.729Z",
-  "windowStart": "2026-02-13T12:33:28.039Z",
-  "windowEnd": "2026-02-13T18:33:28.039Z",
+  "timestamp": "2026-02-13T06:40:37.457Z",
+  "windowStart": "2026-02-13T12:40:36.780Z",
+  "windowEnd": "2026-02-13T18:40:36.780Z",
   "count": 100,
   "markets": [
     {
       "slug": "elon-musk-of-tweets-february-6-february-13-360-379",
       "question": "Will Elon Musk post 360-379 tweets from February 6 to February 13, 2026?",
-      "yesPrice": 0.419,
-      "noPrice": 0.581,
+      "yesPrice": 0.2815,
+      "noPrice": 0.7185,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 890242.201371,
+      "volume": 902065.140154,
       "volume24hr": 375711.1003859996,
-      "liquidity": 16782.38915,
+      "liquidity": 18730.94729,
       "conditionId": "0x2e56abf38080f33fb82ce3676c03989b7f93fddd6b3deea492e5a523609297a8"
     },
     {
       "slug": "elon-musk-of-tweets-february-6-february-13-380-399",
       "question": "Will Elon Musk post 380-399 tweets from February 6 to February 13, 2026?",
-      "yesPrice": 0.3295,
-      "noPrice": 0.6705,
+      "yesPrice": 0.4115,
+      "noPrice": 0.5885,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 709643.493031,
+      "volume": 720970.913178,
       "volume24hr": 251152.50870900005,
-      "liquidity": 18028.24556,
+      "liquidity": 17955.14125,
       "conditionId": "0xbfe3cbce151bc2998ab7fc5c571bee622da5bca634ea911882adfd545b189eb6"
     },
     {
@@ -32,20 +32,20 @@
       "yesPrice": 0.0005,
       "noPrice": 0.9995,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 660974.11717,
+      "volume": 661680.93717,
       "volume24hr": 208864.830328,
-      "liquidity": 35037.19529,
+      "liquidity": 33591.17751,
       "conditionId": "0x633e17ced7692c48d79f15fd3dfb182b3cbd06895d70d4b6d641c558160b77ce"
     },
     {
       "slug": "elon-musk-of-tweets-february-6-february-13-520-539",
       "question": "Will Elon Musk post 520-539 tweets from February 6 to February 13, 2026?",
-      "yesPrice": 0.0005,
-      "noPrice": 0.9995,
+      "yesPrice": 0.001,
+      "noPrice": 0.999,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 649169.764386,
+      "volume": 657064.874386,
       "volume24hr": 238890.20325200004,
-      "liquidity": 46599.16854,
+      "liquidity": 44724.10317,
       "conditionId": "0x071eeb403c962005612e82fe1e462a23408e5294a6538c9488ece048a94bdf64"
     },
     {
@@ -54,31 +54,31 @@
       "yesPrice": 0.0015,
       "noPrice": 0.9985,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 625161.896133,
+      "volume": 628943.302873,
       "volume24hr": 173108.8647580001,
-      "liquidity": 51736.38807,
+      "liquidity": 56137.02697,
       "conditionId": "0xb87712a1029cd62e6f1622a6860047f9783744eca2c96cdfb184f89385dfa304"
     },
     {
       "slug": "elon-musk-of-tweets-february-6-february-13-400-419",
       "question": "Will Elon Musk post 400-419 tweets from February 6 to February 13, 2026?",
-      "yesPrice": 0.1255,
-      "noPrice": 0.8745,
+      "yesPrice": 0.171,
+      "noPrice": 0.829,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 616818.405793,
+      "volume": 621753.926134,
       "volume24hr": 210217.79392299976,
-      "liquidity": 17075.80203,
+      "liquidity": 16733.6618,
       "conditionId": "0x1f25449e1d10ac6139f395358479939300f7d355b15d4ec1e26ea5005b175bb3"
     },
     {
       "slug": "elon-musk-of-tweets-february-6-february-13-420-439",
       "question": "Will Elon Musk post 420-439 tweets from February 6 to February 13, 2026?",
-      "yesPrice": 0.0395,
-      "noPrice": 0.9605,
+      "yesPrice": 0.0595,
+      "noPrice": 0.9405,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 581346.008854,
+      "volume": 584965.945854,
       "volume24hr": 185561.78885900025,
-      "liquidity": 14304.25143,
+      "liquidity": 14103.9114,
       "conditionId": "0xf44be44443ce01401fd5f2f90fe8564d22ac66c513d059ad6e1d204cbcf1246b"
     },
     {
@@ -87,43 +87,32 @@
       "yesPrice": 0.0005,
       "noPrice": 0.9995,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 554091.555129,
+      "volume": 554798.375129,
       "volume24hr": 202153.4942900001,
-      "liquidity": 52619.047,
+      "liquidity": 52043.75365,
       "conditionId": "0xe10bf738ee7b4d3c2dcd285b0a94d18bf629cf5f86edd9f72b2f816a89154721"
     },
     {
       "slug": "elon-musk-of-tweets-february-6-february-13-460-479",
       "question": "Will Elon Musk post 460-479 tweets from February 6 to February 13, 2026?",
-      "yesPrice": 0.0065,
-      "noPrice": 0.9935,
+      "yesPrice": 0.01,
+      "noPrice": 0.99,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 545871.329826,
+      "volume": 548539.862048,
       "volume24hr": 201108.66996300008,
-      "liquidity": 18411.7659,
+      "liquidity": 16732.78543,
       "conditionId": "0x8c0f109eeacbeeb6f7c9e86f940b887e8868c19d0d3e59fa70603ced21829f7f"
     },
     {
       "slug": "elon-musk-of-tweets-february-6-february-13-480-499",
       "question": "Will Elon Musk post 480-499 tweets from February 6 to February 13, 2026?",
-      "yesPrice": 0.0015,
-      "noPrice": 0.9985,
+      "yesPrice": 0.0035,
+      "noPrice": 0.9965,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 545365.67686,
+      "volume": 548511.77886,
       "volume24hr": 183595.30249499992,
-      "liquidity": 23465.27566,
+      "liquidity": 21183.10053,
       "conditionId": "0x0644799bb478568238ebf79633378e5e1d87463c5b09bf3fe40f05fbb28249aa"
-    },
-    {
-      "slug": "elon-musk-of-tweets-february-6-february-13-440-459",
-      "question": "Will Elon Musk post 440-459 tweets from February 6 to February 13, 2026?",
-      "yesPrice": 0.021,
-      "noPrice": 0.979,
-      "endDate": "2026-02-13T17:00:00Z",
-      "volume": 533523.003232,
-      "volume24hr": 219386.0818130003,
-      "liquidity": 14651.31442,
-      "conditionId": "0x814bf672aa616cd0c702d242e0e894799649a7041fd9ed62756a7d8157912c31"
     },
     {
       "slug": "bitcoin-above-72k-on-february-13",
@@ -131,10 +120,21 @@
       "yesPrice": 0.0015,
       "noPrice": 0.9985,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 533116.509384,
+      "volume": 542621.696384,
       "volume24hr": 175335.26775099998,
-      "liquidity": 74954.76667,
+      "liquidity": 66714.19503,
       "conditionId": "0x58c931c00e31fd20d02aade0c1e287e46a15b6da514c3ac3624e956e41bc45d0"
+    },
+    {
+      "slug": "elon-musk-of-tweets-february-6-february-13-440-459",
+      "question": "Will Elon Musk post 440-459 tweets from February 6 to February 13, 2026?",
+      "yesPrice": 0.046,
+      "noPrice": 0.954,
+      "endDate": "2026-02-13T17:00:00Z",
+      "volume": 537407.26603,
+      "volume24hr": 219386.0818130003,
+      "liquidity": 14362.85844,
+      "conditionId": "0x814bf672aa616cd0c702d242e0e894799649a7041fd9ed62756a7d8157912c31"
     },
     {
       "slug": "bitcoin-above-74k-on-february-13",
@@ -144,7 +144,7 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 494589.124667,
       "volume24hr": 350900.25771699985,
-      "liquidity": 41255.5586,
+      "liquidity": 41255.7604,
       "conditionId": "0x09b12ce0abe06c7167ffedc12ad126e631a61d28e7f8cd9d1a61d39bd9da4866"
     },
     {
@@ -153,9 +153,9 @@
       "yesPrice": 0.835,
       "noPrice": 0.165,
       "endDate": "2026-02-13T14:00:00Z",
-      "volume": 473388.226398,
+      "volume": 473620.107341,
       "volume24hr": 161492.277796,
-      "liquidity": 98505.9755,
+      "liquidity": 98827.7557,
       "conditionId": "0x8d6074e6527ba2e386414fd2a53515f7863b634d87cc2ae70cb4266aecb71f80"
     },
     {
@@ -164,31 +164,42 @@
       "yesPrice": 0.0005,
       "noPrice": 0.9995,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 468819.054089,
+      "volume": 470552.874089,
       "volume24hr": 186936.79322500006,
-      "liquidity": 60039.444,
+      "liquidity": 58242.81282,
       "conditionId": "0x3b61d50f88b421336d47712e100b402a164fe4a3c79566affeef52c4a0bcc47a"
+    },
+    {
+      "slug": "bitcoin-above-68k-on-february-13",
+      "question": "Will the price of Bitcoin be above $68,000 on February 13?",
+      "yesPrice": 0.09,
+      "noPrice": 0.91,
+      "endDate": "2026-02-13T17:00:00Z",
+      "volume": 407643.659826,
+      "volume24hr": 223517.48403600004,
+      "liquidity": 25623.66,
+      "conditionId": "0x02330ccbfc1a90b7330ed35f27fadb01b64f5e523bfaaa5329ff0da249f836c1"
     },
     {
       "slug": "ethereum-above-1800-on-february-13",
       "question": "Will the price of Ethereum be above $1,800 on February 13?",
-      "yesPrice": 0.975,
-      "noPrice": 0.025,
+      "yesPrice": 0.9745,
+      "noPrice": 0.0255,
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 95919.029404,
       "volume24hr": 30372.951204999983,
-      "liquidity": 17126.99279,
+      "liquidity": 17079.04987,
       "conditionId": "0x260682db2c9ee67607a14d0dc074dec0aa96ec2c4a83ba471662b768f366ba7a"
     },
     {
       "slug": "ethereum-above-2100-on-february-13",
       "question": "Will the price of Ethereum be above $2,100 on February 13?",
-      "yesPrice": 0.008,
-      "noPrice": 0.992,
+      "yesPrice": 0.0055,
+      "noPrice": 0.9945,
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 85107.743026,
       "volume24hr": 25844.555439999993,
-      "liquidity": 21088.82794,
+      "liquidity": 20878.43003,
       "conditionId": "0x39eaac19958bb2627f56a1c9522d4989a28d382977dce994638ea3eebefe50ef"
     },
     {
@@ -197,9 +208,9 @@
       "yesPrice": 0.9995,
       "noPrice": 0.0005,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 78394.318917,
+      "volume": 79399.318917,
       "volume24hr": 35274.295249999996,
-      "liquidity": 24746.08908,
+      "liquidity": 23742.09408,
       "conditionId": "0xf56e39f6c36c40a3e7db26a284713db27933d4897fc615560988bad8beeeccaa"
     },
     {
@@ -208,9 +219,9 @@
       "yesPrice": 0.992,
       "noPrice": 0.008,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 71344.676697,
+      "volume": 74584.676697,
       "volume24hr": 17366.535064000007,
-      "liquidity": 19401.87142,
+      "liquidity": 19604.57453,
       "conditionId": "0x2608346a6dc4bec293b31cf52e9f7fb8908b45f4c29b47bc6d800ec4d7d5f9be"
     },
     {
@@ -227,12 +238,12 @@
     {
       "slug": "val-dfm1-t1-2026-02-13",
       "question": "Valorant: DetonatioN FocusMe vs T1 (BO3) - VCT Pacific Kickoff Playoffs",
-      "yesPrice": 0.315,
-      "noPrice": 0.685,
+      "yesPrice": 0.31,
+      "noPrice": 0.69,
       "endDate": "2026-02-13T13:00:00Z",
-      "volume": 69083.633267,
+      "volume": 70401.565942,
       "volume24hr": 57111.522215999925,
-      "liquidity": 21585.3133,
+      "liquidity": 33925.873,
       "conditionId": "0x7e37855e9e6bd88c37ebb0e2369a93db2472a7ae2b5320733f64fb4c2440167e"
     },
     {
@@ -243,18 +254,18 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 61183.99076,
       "volume24hr": 34306.059671,
-      "liquidity": 81391.7641,
+      "liquidity": 81191.9641,
       "conditionId": "0xcbef27c6b86cb2648182dfac1d75321e38afe9bfcaea36dece8d72a08e51ad81"
     },
     {
       "slug": "will-the-price-of-ethereum-be-between-2200-2300-on-february-13",
       "question": "Will the price of Ethereum be between $2,200 and $2,300 on February 13?",
-      "yesPrice": 0.003,
-      "noPrice": 0.997,
+      "yesPrice": 0.0025,
+      "noPrice": 0.9975,
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 55405.420946,
       "volume24hr": 2770.381817,
-      "liquidity": 10553.09029,
+      "liquidity": 10989.21029,
       "conditionId": "0x2a6f9fdb19e00688543e5c1231187dafebb04bc6285d002342bafd141da8d5e0"
     },
     {
@@ -263,7 +274,7 @@
       "yesPrice": 0.998,
       "noPrice": 0.002,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 52877.258576,
+      "volume": 52983.834576,
       "volume24hr": 21694.146999999997,
       "liquidity": 16286.33942,
       "conditionId": "0x3419e78e530e9cd4d442539b1cc33d2b9e4ef0626a5d8e729b7c791ddfb5f50a"
@@ -271,12 +282,12 @@
     {
       "slug": "will-the-price-of-bitcoin-be-between-66000-68000-on-february-13",
       "question": "Will the price of Bitcoin be between $66,000 and $68,000 on February 13?",
-      "yesPrice": 0.44,
-      "noPrice": 0.56,
+      "yesPrice": 0.445,
+      "noPrice": 0.555,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 49561.812748,
+      "volume": 49878.322748,
       "volume24hr": 38845.624276999995,
-      "liquidity": 16316.91,
+      "liquidity": 16356.5104,
       "conditionId": "0x25c3ab24482dec3293dd5150108c5195fd201b02a3e63f136af2aab9b9904696"
     },
     {
@@ -287,18 +298,18 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 48176.658179,
       "volume24hr": 3701.6447040000003,
-      "liquidity": 25629.65562,
+      "liquidity": 25429.85562,
       "conditionId": "0x441edbfe670b915ce413d0a56df16c78cbf43cf01e6ab7c0448c57d232210aff"
     },
     {
       "slug": "will-the-price-of-bitcoin-be-less-than-60000-on-february-13",
       "question": "Will the price of Bitcoin be less than $60,000 on February 13?",
-      "yesPrice": 0.005,
-      "noPrice": 0.995,
+      "yesPrice": 0.0065,
+      "noPrice": 0.9935,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 47750.336947,
+      "volume": 47756.636947,
       "volume24hr": 15861.988954000002,
-      "liquidity": 16893.26817,
+      "liquidity": 15871.50949,
       "conditionId": "0xddc15a03bc8493c55f61b9f678fbfb7fe6bf078667aed1500a50062f6c1f3149"
     },
     {
@@ -311,17 +322,6 @@
       "volume24hr": 23226.648026999996,
       "liquidity": 31944.30941,
       "conditionId": "0xe7162acafcfb08287fe979312fb35023174d07a26a5c18c6e141cd6985af63d3"
-    },
-    {
-      "slug": "tur-gal-eyu-2026-02-13-eyu",
-      "question": "Will Eyüpspor win on 2026-02-13?",
-      "yesPrice": 0.0405,
-      "noPrice": 0.9595,
-      "endDate": "2026-02-13T17:00:00Z",
-      "volume": 9856.073999,
-      "volume24hr": 3004.67957,
-      "liquidity": 69191.46231,
-      "conditionId": "0x09b1ed7dada2f40c0554b1867fd096cd3b4b574d85ad822a085c6596810f2711"
     },
     {
       "slug": "will-the-price-of-ethereum-be-greater-than-2500-on-february-13",
@@ -359,12 +359,12 @@
     {
       "slug": "will-the-price-of-ethereum-be-between-1800-1900-on-february-13",
       "question": "Will the price of Ethereum be between $1,800 and $1,900 on February 13?",
-      "yesPrice": 0.26,
-      "noPrice": 0.74,
+      "yesPrice": 0.27,
+      "noPrice": 0.73,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 8707.819264,
+      "volume": 8717.819264,
       "volume24hr": 5550.301003000001,
-      "liquidity": 9016.531,
+      "liquidity": 8977.827,
       "conditionId": "0xd257661ba82947bc9df3c25f6033a9c7630d6bb21e1c39ea00b5a3d3db7c620b"
     },
     {
@@ -388,6 +388,17 @@
       "volume24hr": 636.8465,
       "liquidity": 15370.97632,
       "conditionId": "0x049afce77832424920c12d301bf5fd362294ee598475f9cb485b15b36ed57e15"
+    },
+    {
+      "slug": "xrp-above-1pt3-on-february-13",
+      "question": "Will the price of XRP be above $1.30 on February 13?",
+      "yesPrice": 0.86,
+      "noPrice": 0.14,
+      "endDate": "2026-02-13T17:00:00Z",
+      "volume": 8265.753088,
+      "volume24hr": 5726.2395060000035,
+      "liquidity": 11681.6268,
+      "conditionId": "0x36a4a930738749fa2ea2a76f382f64fefeacfaa2355d00fc1b4e826ed7eecbb7"
     },
     {
       "slug": "euroleague-kaunas-aviv-2026-02-13",
@@ -419,7 +430,7 @@
       "endDate": "2026-02-13T13:55:00Z",
       "volume": 6942.420645,
       "volume24hr": 3088.112943,
-      "liquidity": 82937.027,
+      "liquidity": 82941.1983,
       "conditionId": "0x651a807072f9b55b2dc120c57a6644bfc03c85ff8ce034e2c7ef09c25425815c"
     },
     {
@@ -434,6 +445,17 @@
       "conditionId": "0xade35a1d8b9c394623dab7502ab1742fcf2e8496c0f25be882ceec5448abda41"
     },
     {
+      "slug": "solana-above-40-on-february-13",
+      "question": "Will the price of Solana be above $40 on February 13?",
+      "yesPrice": 0.9995,
+      "noPrice": 0.0005,
+      "endDate": "2026-02-13T17:00:00Z",
+      "volume": 6692.840888,
+      "volume24hr": 5,
+      "liquidity": 41927.70628,
+      "conditionId": "0x77808be0efaf85da799301d49ebca5ef258e71a09f395f23a3039328489862dd"
+    },
+    {
       "slug": "spl-sha-ahl-2026-02-13-sha",
       "question": "Will Al Shabab Saudi Club win on 2026-02-13?",
       "yesPrice": 0.175,
@@ -441,19 +463,8 @@
       "endDate": "2026-02-13T13:55:00Z",
       "volume": 6615.091433,
       "volume24hr": 3738.0600210000002,
-      "liquidity": 90289.7668,
+      "liquidity": 90346.9095,
       "conditionId": "0xb3257390dcd36f4898f30045c3e1a7e7903684f7449c5a95ed07332f27017bd2"
-    },
-    {
-      "slug": "xrp-above-1pt3-on-february-13",
-      "question": "Will the price of XRP be above $1.30 on February 13?",
-      "yesPrice": 0.87,
-      "noPrice": 0.13,
-      "endDate": "2026-02-13T17:00:00Z",
-      "volume": 6513.753088,
-      "volume24hr": 5726.2395060000035,
-      "liquidity": 11643.2268,
-      "conditionId": "0x36a4a930738749fa2ea2a76f382f64fefeacfaa2355d00fc1b4e826ed7eecbb7"
     },
     {
       "slug": "will-the-price-of-solana-be-between-60-70-on-february-13",
@@ -463,7 +474,7 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 6377.957599,
       "volume24hr": 3561.869289,
-      "liquidity": 7231.39803,
+      "liquidity": 7235.14803,
       "conditionId": "0x9e173be326b5f57e34a586b09e27348ebe44c477c34d74f91b7557cb5f97f1c4"
     },
     {
@@ -474,8 +485,19 @@
       "endDate": "2026-02-13T15:25:00Z",
       "volume": 6283.03192,
       "volume24hr": 1139.5423859999996,
-      "liquidity": 63849.8305,
+      "liquidity": 65299.9056,
       "conditionId": "0xbb1e6daf17bdeb0243b1301321303a049216738a969a1dfed181fa09a3ac62b3"
+    },
+    {
+      "slug": "spl-hil-ett-2026-02-13-ett",
+      "question": "Will Al Ettifaq Saudi Club win on 2026-02-13?",
+      "yesPrice": 0.065,
+      "noPrice": 0.935,
+      "endDate": "2026-02-13T15:25:00Z",
+      "volume": 6191.266367,
+      "volume24hr": 1433.853401,
+      "liquidity": 69104.1556,
+      "conditionId": "0xd6ac0933a97c994118a34a8ba9c340e06b72ef226629ea8ba6782bc05dc75f81"
     },
     {
       "slug": "cs2-all-vpp-2026-02-13",
@@ -500,17 +522,6 @@
       "conditionId": "0x7b02af8110338c7a9c486baadbafc242aeb2fb1e5064c2ddc127e9206bd0a935"
     },
     {
-      "slug": "solana-above-40-on-february-13",
-      "question": "Will the price of Solana be above $40 on February 13?",
-      "yesPrice": 0.9995,
-      "noPrice": 0.0005,
-      "endDate": "2026-02-13T17:00:00Z",
-      "volume": 5692.840888,
-      "volume24hr": 5,
-      "liquidity": 42926.70628,
-      "conditionId": "0x77808be0efaf85da799301d49ebca5ef258e71a09f395f23a3039328489862dd"
-    },
-    {
       "slug": "will-the-price-of-solana-be-between-100-110-on-february-13",
       "question": "Will the price of Solana be between $100 and $110 on February 13?",
       "yesPrice": 0.0005,
@@ -522,25 +533,14 @@
       "conditionId": "0xac99bd2652000ed63436ce56246ae8cf1e8f9e1cb06475bc929d94a678b3b768"
     },
     {
-      "slug": "spl-hil-ett-2026-02-13-ett",
-      "question": "Will Al Ettifaq Saudi Club win on 2026-02-13?",
-      "yesPrice": 0.06,
-      "noPrice": 0.94,
-      "endDate": "2026-02-13T15:25:00Z",
-      "volume": 5236.266367,
-      "volume24hr": 1433.853401,
-      "liquidity": 70236.2958,
-      "conditionId": "0xd6ac0933a97c994118a34a8ba9c340e06b72ef226629ea8ba6782bc05dc75f81"
-    },
-    {
       "slug": "xrp-up-or-down-on-february-13",
       "question": "XRP Up or Down on February 13?",
-      "yesPrice": 0.515,
-      "noPrice": 0.485,
+      "yesPrice": 0.51,
+      "noPrice": 0.49,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 4823.58597,
+      "volume": 4858.719206,
       "volume24hr": 2876.154974,
-      "liquidity": 14058.9534,
+      "liquidity": 14412.7534,
       "conditionId": "0xd059c4dae5e0cd7aa4486fa1c612265b43806b693d46cd2eec229ade0a0a74a4"
     },
     {
@@ -551,18 +551,18 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 4605.451391,
       "volume24hr": 2994.1517899999994,
-      "liquidity": 12160.48065,
+      "liquidity": 12132.11065,
       "conditionId": "0x9243d310f301ff52c9ec17045d3154769d213fcca83700fa5f0220a028af9823"
     },
     {
       "slug": "lol-koia-flk-2026-02-13",
       "question": "LoL: Movistar KOI Fénix vs FALKE Esports (BO1) - LES Kick-off Group A",
-      "yesPrice": 0.905,
-      "noPrice": 0.095,
+      "yesPrice": 0.9,
+      "noPrice": 0.1,
       "endDate": "2026-02-13T17:00:00Z",
-      "volume": 4281.576295,
+      "volume": 4292.565295,
       "volume24hr": 16.566665,
-      "liquidity": 22020.1785,
+      "liquidity": 21068.4152,
       "conditionId": "0xee46a3237d552b2529c50cfff4143b8e98de3e97867542b76ae0f1178480998e"
     },
     {
@@ -579,12 +579,12 @@
     {
       "slug": "will-the-price-of-solana-be-between-80-90-on-february-13",
       "question": "Will the price of Solana be between $80 and $90 on February 13?",
-      "yesPrice": 0.22,
-      "noPrice": 0.78,
+      "yesPrice": 0.245,
+      "noPrice": 0.755,
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 993.826376,
       "volume24hr": 533.418087,
-      "liquidity": 6935.538,
+      "liquidity": 7288.4384,
       "conditionId": "0xb81da28569fc4f8376da517f8bd4df467274afc2db1478e292fccb55fb1cae40"
     },
     {
@@ -595,18 +595,18 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 960.926664,
       "volume24hr": 259.00111,
-      "liquidity": 112461.4093,
+      "liquidity": 67327.8836,
       "conditionId": "0x8a60a7abdfe79a7b72f3a87bed44412adcd650dbc2df7ce2a5e6cb3a8d3d3bf1"
     },
     {
       "slug": "will-the-price-of-xrp-be-between-1pt20-1pt30-on-february-13",
       "question": "Will the price of XRP be between $1.20 and $1.30 on February 13?",
-      "yesPrice": 0.105,
-      "noPrice": 0.895,
+      "yesPrice": 0.115,
+      "noPrice": 0.885,
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 911.301825,
       "volume24hr": 757.52405,
-      "liquidity": 6916.546,
+      "liquidity": 6979.646,
       "conditionId": "0x5e3fe0fef19340763d9dd63134555a1df6f9e780eb0a29013747d0ddd00b9889"
     },
     {
@@ -617,7 +617,7 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 871.523951,
       "volume24hr": 11.581394,
-      "liquidity": 66117.35,
+      "liquidity": 66119.75,
       "conditionId": "0x9ba8870e2191674399a03cb491ae14d2f89ac921c1e0d906914d362b138cfad9"
     },
     {
@@ -628,7 +628,7 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 796.652672,
       "volume24hr": 632.8528369999999,
-      "liquidity": 94695.5851,
+      "liquidity": 94783.9526,
       "conditionId": "0x5598be0abb5e5678fb86a85045cf43915465f281638f9239d32e3e88ee6e3e58"
     },
     {
@@ -661,7 +661,7 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 773.505919,
       "volume24hr": 346.604778,
-      "liquidity": 63168.3659,
+      "liquidity": 63246.5726,
       "conditionId": "0x59df28c43bc29ccc04086e0694171fb3be9204e298883e13e39c2ec2f868f536"
     },
     {
@@ -672,7 +672,7 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 750.793756,
       "volume24hr": 0,
-      "liquidity": 65785.0576,
+      "liquidity": 65787.4576,
       "conditionId": "0xce6b69c89590ff0b0d488e348969684801a0d5bcfbca94504d220bf2a6015087"
     },
     {
@@ -683,7 +683,7 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 709.650142,
       "volume24hr": 210,
-      "liquidity": 35389.2379,
+      "liquidity": 35614.3879,
       "conditionId": "0xd817e382a80f5350f0dc114b8fe8b9d47da255289a600ad8b16cf3557065cca0"
     },
     {
@@ -705,7 +705,7 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 596.575196,
       "volume24hr": 557.335506,
-      "liquidity": 64727.1967,
+      "liquidity": 64777.2667,
       "conditionId": "0x7d400632be3d850aebd2ae723dcbd33c22e20018862ccb3fdd360e2ecd5dde72"
     },
     {
@@ -727,18 +727,18 @@
       "endDate": "2026-02-13T18:30:00Z",
       "volume": 562.7416,
       "volume24hr": 239.63559999999998,
-      "liquidity": 1068.39128,
+      "liquidity": 1024.24233,
       "conditionId": "0xe4adf1a63eeb67ade07310df41ac7671fb8a664263c9de065dc6cce2b4fccc10"
     },
     {
       "slug": "bl2-dus-mun-2026-02-13-spread-away-2pt5",
       "question": "Spread: SC Preußen Münster (-2.5)",
-      "yesPrice": 0.3545,
-      "noPrice": 0.6455,
+      "yesPrice": 0.3495,
+      "noPrice": 0.6505,
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 555.897352,
       "volume24hr": 196.60585199999997,
-      "liquidity": 164.47889,
+      "liquidity": 165.76713,
       "conditionId": "0xd5017d84afe6f0c84b5889e06bfb0e949e016d52b692a724731ca704eea07699"
     },
     {
@@ -749,7 +749,7 @@
       "endDate": "2026-02-13T18:30:00Z",
       "volume": 550.753173,
       "volume24hr": 353.06522,
-      "liquidity": 70315.0018,
+      "liquidity": 70337.7518,
       "conditionId": "0x1bf08075060ea0367169c628d3ed645a56e918be4bfa504d7a5d889064bc6060"
     },
     {
@@ -771,7 +771,7 @@
       "endDate": "2026-02-13T18:00:00Z",
       "volume": 537.16526,
       "volume24hr": 440.271723,
-      "liquidity": 9819.4663,
+      "liquidity": 9774.2523,
       "conditionId": "0x2e0adf1e5007869955878eaa07afdc120f19d40f20d8c653fcf0a2b828d7b954"
     },
     {
@@ -799,12 +799,12 @@
     {
       "slug": "spl-hil-ett-2026-02-13-total-4pt5",
       "question": "Al Hilal Saudi Club vs. Al Ettifaq Saudi Club: O/U 4.5",
-      "yesPrice": 0.335,
-      "noPrice": 0.665,
+      "yesPrice": 0.33,
+      "noPrice": 0.67,
       "endDate": "2026-02-13T15:25:00Z",
       "volume": 449.909145,
       "volume24hr": 0,
-      "liquidity": 58503.3963,
+      "liquidity": 58504.6363,
       "conditionId": "0x9cbcb0e300d9be23b378dc2147e428962c8442b2aa45716d69ecb5460c241d05"
     },
     {
@@ -815,7 +815,7 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 435.428563,
       "volume24hr": 0,
-      "liquidity": 58348.9773,
+      "liquidity": 58351.3773,
       "conditionId": "0xabbdec57abd8a35dd6f2b4852fa0fcdccfde2bfa421602bc581868a7e838ca8e"
     },
     {
@@ -830,15 +830,15 @@
       "conditionId": "0x6855540ba02e8528f03c71dadd1e3b6a812359b3a945059584e985d4cf901a9e"
     },
     {
-      "slug": "den-ran-vbk-2026-02-13-total-2pt5",
-      "question": "Randers FC vs. Vejle BK: O/U 2.5",
-      "yesPrice": 0.485,
-      "noPrice": 0.515,
+      "slug": "den-ran-vbk-2026-02-13-vbk",
+      "question": "Will Vejle BK win on 2026-02-13?",
+      "yesPrice": 0.175,
+      "noPrice": 0.825,
       "endDate": "2026-02-13T18:00:00Z",
-      "volume": 99.340335,
-      "volume24hr": 0,
-      "liquidity": 6177.4332,
-      "conditionId": "0xabd3eaabf6c959e0e302651348fa16937011cf4fbe482e80eeba64c7c0273ea6"
+      "volume": 407.82717,
+      "volume24hr": 60.984328,
+      "liquidity": 32396.1845,
+      "conditionId": "0x87c6682afe34100d58b1b3d1ccb54281dbf917758ef527b8e8b2d43ab6c1979f"
     },
     {
       "slug": "spl-hil-ett-2026-02-13-total-3pt5",
@@ -848,7 +848,7 @@
       "endDate": "2026-02-13T15:25:00Z",
       "volume": 95.70755,
       "volume24hr": 9.017856,
-      "liquidity": 59602.6717,
+      "liquidity": 59563.8917,
       "conditionId": "0xcbee60bb983792a78b2e31bea0083aaadf037da2dad88d3f7b0c9687691ef79c"
     },
     {
@@ -859,7 +859,7 @@
       "endDate": "2026-02-13T17:10:00Z",
       "volume": 90.590193,
       "volume24hr": 90.590193,
-      "liquidity": 6230.2625,
+      "liquidity": 6227.2125,
       "conditionId": "0x77eb3bb86300cea13281bdce15fb0ac409540b35eea0f7a026d4af7556b7f740"
     },
     {
@@ -870,7 +870,7 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 74.89,
       "volume24hr": 74.89,
-      "liquidity": 67392.7508,
+      "liquidity": 59751.2023,
       "conditionId": "0x6a805c2ce8cedcada63f06b17743005677faad9aa0fde6cde9aa9dc6907d5379"
     },
     {
@@ -881,7 +881,7 @@
       "endDate": "2026-02-13T13:00:00Z",
       "volume": 74.761899,
       "volume24hr": 0,
-      "liquidity": 1962.8811,
+      "liquidity": 1962.8814,
       "conditionId": "0xd9d52bfa7550205f9778b3889dc61e40284d9eab6071f93f9815a2ba51767501"
     },
     {
@@ -892,7 +892,7 @@
       "endDate": "2026-02-13T18:00:00Z",
       "volume": 70.658448,
       "volume24hr": 0,
-      "liquidity": 299.252,
+      "liquidity": 301.652,
       "conditionId": "0x6d1a762e481c9ce58735c3b414d77f8cb09b992953c40a2993cc2fd7ee171a4c"
     },
     {
@@ -903,7 +903,7 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 67.862896,
       "volume24hr": 57.002896,
-      "liquidity": 71951.6421,
+      "liquidity": 58344.4193,
       "conditionId": "0xae119fac2720cebe59ce46b0cb445e49ceab82c7656eb8bf961251255b93b917"
     },
     {
@@ -914,7 +914,7 @@
       "endDate": "2026-02-13T14:00:00Z",
       "volume": 67.763866,
       "volume24hr": 0,
-      "liquidity": 1465.7382,
+      "liquidity": 1479.0682,
       "conditionId": "0x5737b1b731dd47c886dd0e3633b048148466550818c86c268955d9559230ecb5"
     },
     {
@@ -925,18 +925,18 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 63.291665,
       "volume24hr": 0,
-      "liquidity": 55729.5702,
+      "liquidity": 55788.487,
       "conditionId": "0x3a1b3bad0d301fee89d80c82f05235642acb42916bbae7e4c45879434cdecc67"
     },
     {
       "slug": "val-dfm1-t1-2026-02-13-game1",
       "question": "Valorant: DetonatioN FocusMe vs T1 - Map 1 Winner",
-      "yesPrice": 0.215,
-      "noPrice": 0.785,
+      "yesPrice": 0.345,
+      "noPrice": 0.655,
       "endDate": "2026-02-13T13:00:00Z",
       "volume": 59.283456,
       "volume24hr": 0,
-      "liquidity": 801.0439,
+      "liquidity": 4355.3568,
       "conditionId": "0x4b31c04c8b435a8fa103f58f84b12402d3f4065fbc590b618b26d0fb9d30b712"
     },
     {
@@ -947,7 +947,7 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 57.860029,
       "volume24hr": 52.860029,
-      "liquidity": 63646.2752,
+      "liquidity": 58245.6352,
       "conditionId": "0xa8ad88268167c460604d58359734e898901e0935ab1eb92d3a3eb0c2ea123277"
     },
     {
@@ -964,12 +964,12 @@
     {
       "slug": "spl-sha-ahl-2026-02-13-total-2pt5",
       "question": "Al Shabab Saudi Club vs. Al Ahli Saudi Club: O/U 2.5",
-      "yesPrice": 0.545,
-      "noPrice": 0.455,
+      "yesPrice": 0.55,
+      "noPrice": 0.45,
       "endDate": "2026-02-13T13:55:00Z",
       "volume": 55,
       "volume24hr": 10,
-      "liquidity": 38196.6968,
+      "liquidity": 38094.0929,
       "conditionId": "0x7cd52563072c8b26e9e1eb4d749a685bf17854bc2aa68c26dcb0a2ceb3bd81e3"
     },
     {
@@ -980,7 +980,7 @@
       "endDate": "2026-02-13T17:00:00Z",
       "volume": 48.98,
       "volume24hr": 48.980000000000004,
-      "liquidity": 3211.8265,
+      "liquidity": 3114.5905,
       "conditionId": "0x3796401cd812cdba9b1d1e514eea2540c07110a85ac86a88fc39461881153b9e"
     },
     {
@@ -1013,8 +1013,19 @@
       "endDate": "2026-02-13T17:30:00Z",
       "volume": 9.166665,
       "volume24hr": 5,
-      "liquidity": 54310.8292,
+      "liquidity": 54317.8131,
       "conditionId": "0x9ca5426d9461e034b26bff19369bf3176e0d7cb6c03d3086cccaf2809decf0e2"
+    },
+    {
+      "slug": "btc-updown-15m-1770988500",
+      "question": "Bitcoin Up or Down - February 13, 8:15AM-8:30AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T13:30:00Z",
+      "volume": 8.921566,
+      "volume24hr": 0,
+      "liquidity": 20618.4499,
+      "conditionId": "0x4708907d833e028bb112352d1e0a3570b171ba31ad2c313293c5305be71b313b"
     },
     {
       "slug": "khl-avt-hcd-2026-02-13",
@@ -1024,19 +1035,8 @@
       "endDate": "2026-02-13T14:00:00Z",
       "volume": 8.620688,
       "volume24hr": 0,
-      "liquidity": 1386.0719,
+      "liquidity": 1411.5519,
       "conditionId": "0xe1b34be08b68490a8d32220b220e73c49569aca2139fcd80f44f79955cc27e0b"
-    },
-    {
-      "slug": "btc-updown-15m-1770988500",
-      "question": "Bitcoin Up or Down - February 13, 8:15AM-8:30AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T13:30:00Z",
-      "volume": 6.960783,
-      "volume24hr": 0,
-      "liquidity": 20619.4152,
-      "conditionId": "0x4708907d833e028bb112352d1e0a3570b171ba31ad2c313293c5305be71b313b"
     },
     {
       "slug": "eth-updown-15m-1771006500",
@@ -1057,19 +1057,8 @@
       "endDate": "2026-02-13T13:00:00Z",
       "volume": 6.134327,
       "volume24hr": 0,
-      "liquidity": 40.7459,
+      "liquidity": 4291.0853,
       "conditionId": "0xb697a9abf4363cf89a518fad78a4fab23facdbe2f7c3c855678cf0f310b782c9"
-    },
-    {
-      "slug": "bitcoin-up-or-down-february-13-7am-et",
-      "question": "Bitcoin Up or Down - February 13, 7AM ET",
-      "yesPrice": 0.505,
-      "noPrice": 0.495,
-      "endDate": "2026-02-13T13:00:00Z",
-      "volume": 5,
-      "volume24hr": 0,
-      "liquidity": 5203.16,
-      "conditionId": "0xec98c95f7996785d616433d51e1891637f351468ec3a2528d3f883b33bfd23b6"
     },
     {
       "slug": "cs2-all-vpp-2026-02-13-map-handicap-away-1pt5",
@@ -1081,6 +1070,17 @@
       "volume24hr": 5,
       "liquidity": 11882.0999,
       "conditionId": "0xabcfcec721a82ad55ba22ff38b2b8b99690dd3b8c26886ddc8c41caf0be40b31"
+    },
+    {
+      "slug": "bitcoin-up-or-down-february-13-7am-et",
+      "question": "Bitcoin Up or Down - February 13, 7AM ET",
+      "yesPrice": 0.505,
+      "noPrice": 0.495,
+      "endDate": "2026-02-13T13:00:00Z",
+      "volume": 5,
+      "volume24hr": 0,
+      "liquidity": 5213.1594,
+      "conditionId": "0xec98c95f7996785d616433d51e1891637f351468ec3a2528d3f883b33bfd23b6"
     },
     {
       "slug": "btc-updown-15m-1770995700",

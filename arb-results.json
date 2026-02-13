@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-13T06:33:58.103Z",
+  "timestamp": "2026-02-13T06:41:12.005Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
-    "flagged": 4,
+    "flagged": 5,
     "viable": 2
   },
   "opportunities": [
@@ -12,9 +12,9 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.805,
+      "midSum": 0.806,
       "execSum": 0.742,
-      "deviation": 19.5,
+      "deviation": 19.4,
       "execDeviation": 25.8,
       "grossProfitPer100": 25.8,
       "feesPer100": 0,
@@ -41,7 +41,7 @@
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.0505,
+          "mid": 0.05,
           "exec": 0.049,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
@@ -77,7 +77,7 @@
         },
         {
           "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
-          "mid": 0.01,
+          "mid": 0.0115,
           "exec": 0.01,
           "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
         },
@@ -148,9 +148,9 @@
       "slug": "how-many-people-will-trump-deport-in-2025",
       "type": "LONG",
       "outcomes": 9,
-      "midSum": 0.9545,
+      "midSum": 0.955,
       "execSum": 0.911,
-      "deviation": 4.55,
+      "deviation": 4.5,
       "execDeviation": 8.9,
       "grossProfitPer100": 8.9,
       "feesPer100": 0,
@@ -171,7 +171,7 @@
         },
         {
           "name": "Will Trump deport 500,000-750,000- people?",
-          "mid": 0.0345,
+          "mid": 0.035,
           "exec": 0.012,
           "token": "100074770378634056601572485653252702850363676459996771990439989989293515601975"
         },
@@ -218,19 +218,19 @@
       "slug": "how-many-fed-rate-cuts-in-2026",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.026,
-      "execSum": 0.997,
-      "deviation": 2.6,
-      "execDeviation": 0.3,
-      "grossProfitPer100": -0.3,
+      "midSum": 1.0285,
+      "execSum": 0.999,
+      "deviation": 2.85,
+      "execDeviation": 0.1,
+      "grossProfitPer100": -0.1,
       "feesPer100": 0,
-      "profitPer100": -0.3,
+      "profitPer100": -0.1,
       "viable": false,
       "details": [
         {
           "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.0645,
-          "exec": 0.064,
+          "mid": 0.0665,
+          "exec": 0.065,
           "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
         {
@@ -265,8 +265,8 @@
         },
         {
           "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.0285,
-          "exec": 0.028,
+          "mid": 0.029,
+          "exec": 0.029,
           "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
         },
         {
@@ -386,6 +386,52 @@
           "mid": 0.0015,
           "exec": 0.001,
           "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
+        }
+      ]
+    },
+    {
+      "event": "# of views on Bad Bunny halftime show (YouTube) in week 1?",
+      "slug": "of-views-on-bad-bunny-halftime-show-youtube-in-week-1",
+      "type": "SHORT",
+      "outcomes": 5,
+      "midSum": 1.033,
+      "execSum": 0.939,
+      "deviation": 3.3,
+      "execDeviation": 6.1,
+      "grossProfitPer100": -6.1,
+      "feesPer100": 0,
+      "profitPer100": -6.1,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+          "mid": 0.3435,
+          "exec": 0.312,
+          "token": "16680383807036024154663222348300164487828801908390056508639441371141589139909"
+        },
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+          "mid": 0.0415,
+          "exec": 0.037,
+          "token": "45898979561776724675674269540705289853904297480687405423030789870584323984150"
+        },
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get a",
+          "mid": 0.0105,
+          "exec": 0.01,
+          "token": "57385942856155711847230446373369941486584487930706621877050702770993063538064"
+        },
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video not b",
+          "mid": 0.0015,
+          "exec": 0,
+          "token": "39476152874187390028742729952537366565958886906066970961716461951681866380936"
+        },
+        {
+          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+          "mid": 0.635,
+          "exec": 0.58,
+          "token": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
         }
       ]
     }
