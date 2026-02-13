@@ -279,8 +279,30 @@ function renderLedger() {
 
     if (currentLedgerTab === 'open') {
         ledgerHead.innerHTML = `<tr><th>Market</th><th class="r">Side</th><th class="r">Size</th><th class="r">Entry</th><th class="r">Current</th><th class="r">P&L</th></tr>`;
-        const {positions} = computePortfolio();
-        ledgerBody.innerHTML = positions.map(p => {
+        // Use ledger openPositions (includes personal wallet) enriched with live prices
+        const ledgerOpen = ledger.openPositions || [];
+        const {positions: livePositions} = computePortfolio();
+        
+        // Build merged list: ledger positions with live price overlay
+        const rows = ledgerOpen.map(lp => {
+            const prefix = (lp.asset_id || '').slice(0, 20);
+            // Find matching live position for current price
+            const live = livePositions.find(p => p.tokenId && p.tokenId.slice(0, 20) === prefix);
+            const wsPos = (snapshot.positions || []).find(p => p.fullAssetId && p.fullAssetId.slice(0, 20) === prefix);
+            
+            const avgPrice = parseFloat(lp.avgPrice) || 0;
+            const size = lp.size || 0;
+            const costBasis = parseFloat(lp.costBasis) || (size * avgPrice);
+            const currentBid = live?.currentBid || (wsPos ? parseFloat(wsPos.currentBid) : null) || findLivePrice(lp.asset_id) || avgPrice;
+            const currentValue = size * currentBid;
+            const pnl = currentValue - costBasis;
+            const pnlPct = costBasis > 0 ? ((pnl / costBasis) * 100).toFixed(1) : '0.0';
+            const src = lp.source === 'personal_wallet' ? ' 👤' : '';
+            
+            return { market: lp.market + src, outcome: lp.outcome, size, avgPrice, currentBid, pnl, pnlPct };
+        });
+        
+        ledgerBody.innerHTML = rows.map(p => {
             const pnl = fmtPnl(p.pnl);
             const sideColor = (p.outcome||'').toLowerCase() === 'yes' ? 'green' : 'red';
             return `<tr>
