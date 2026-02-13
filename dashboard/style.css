@@ -88,6 +88,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-sans);min-hei
   cursor:pointer;font-weight:600;transition:all .15s;
 }
 .time-btn.active,.time-btn:hover{color:var(--green);border-color:var(--green)}
+.ledger-tab{
+  background:transparent;color:var(--dim);border:1px solid var(--border);
+  padding:3px 10px;border-radius:3px;font-size:.65rem;font-family:var(--font-mono);
+  cursor:pointer;font-weight:600;transition:all .15s;
+}
+.ledger-tab.active,.ledger-tab:hover{color:var(--green);border-color:var(--green)}
 
 /* ── Two Column Layout ── */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}

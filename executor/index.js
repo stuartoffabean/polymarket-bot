@@ -141,6 +141,109 @@ async function handler(req, res) {
         const trades = await client.getTrades();
         return send(res, 200, { trades });
       }
+      if (path === "/trade-ledger") {
+        // Full trade ledger: open + closed positions with realized P&L
+        const trades = await client.getTrades();
+        const OUR_ADDR = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+        const posMap = {};
+        const tradeLog = []; // every individual fill
+
+        for (const t of trades) {
+          if (t.trader_side === "TAKER") {
+            const key = t.asset_id;
+            if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: t.outcome, buys: [], sells: [], size: 0, totalBuyCost: 0, totalSellProceeds: 0 };
+            const qty = parseFloat(t.size);
+            const px = parseFloat(t.price);
+            const ts = t.created_at || t.timestamp;
+            if (t.side === "BUY") {
+              posMap[key].size += qty;
+              posMap[key].totalBuyCost += qty * px;
+              posMap[key].buys.push({ size: qty, price: px, time: ts });
+            } else {
+              posMap[key].size -= qty;
+              posMap[key].totalSellProceeds += qty * px;
+              posMap[key].sells.push({ size: qty, price: px, time: ts });
+            }
+            tradeLog.push({ asset_id: key, market: t.market, outcome: t.outcome, side: t.side, size: qty, price: px, time: ts });
+          } else if (t.trader_side === "MAKER" && t.maker_orders) {
+            for (const mo of t.maker_orders) {
+              if (mo.maker_address && mo.maker_address.toLowerCase() === OUR_ADDR) {
+                const key = mo.asset_id;
+                if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: mo.outcome, buys: [], sells: [], size: 0, totalBuyCost: 0, totalSellProceeds: 0 };
+                const qty = parseFloat(mo.matched_amount);
+                const px = parseFloat(mo.price);
+                const ts = t.created_at || t.timestamp;
+                if (mo.side === "BUY") {
+                  posMap[key].size += qty;
+                  posMap[key].totalBuyCost += qty * px;
+                  posMap[key].buys.push({ size: qty, price: px, time: ts });
+                } else {
+                  posMap[key].size -= qty;
+                  posMap[key].totalSellProceeds += qty * px;
+                  posMap[key].sells.push({ size: qty, price: px, time: ts });
+                }
+                tradeLog.push({ asset_id: key, market: t.market, outcome: mo.outcome, side: mo.side, size: qty, price: px, time: ts });
+              }
+            }
+          }
+        }
+
+        const openPositions = [];
+        const closedPositions = [];
+        let totalRealizedPnl = 0;
+
+        for (const p of Object.values(posMap)) {
+          const avgBuyPrice = p.buys.length > 0 ? p.totalBuyCost / p.buys.reduce((s, b) => s + b.size, 0) : 0;
+          const totalBought = p.buys.reduce((s, b) => s + b.size, 0);
+          const totalSold = p.sells.reduce((s, b) => s + b.size, 0);
+          const realizedPnl = p.totalSellProceeds - (totalSold * avgBuyPrice);
+
+          if (p.size > 0.01) {
+            openPositions.push({
+              asset_id: p.asset_id,
+              market: p.market,
+              outcome: p.outcome,
+              size: Math.round(p.size * 100) / 100,
+              avgPrice: avgBuyPrice.toFixed(4),
+              costBasis: (p.size * avgBuyPrice).toFixed(2),
+              totalBought,
+              totalSold,
+              realizedPnl: realizedPnl.toFixed(2),
+              status: "OPEN",
+              firstBuy: p.buys[0]?.time,
+              lastTrade: [...p.buys, ...p.sells].sort((a, b) => new Date(b.time) - new Date(a.time))[0]?.time,
+            });
+          } else {
+            const closed = {
+              asset_id: p.asset_id,
+              market: p.market,
+              outcome: p.outcome,
+              totalBought,
+              totalSold,
+              avgBuyPrice: avgBuyPrice.toFixed(4),
+              avgSellPrice: totalSold > 0 ? (p.totalSellProceeds / totalSold).toFixed(4) : "0",
+              totalCost: p.totalBuyCost.toFixed(2),
+              totalProceeds: p.totalSellProceeds.toFixed(2),
+              realizedPnl: realizedPnl.toFixed(2),
+              realizedPnlPct: p.totalBuyCost > 0 ? ((realizedPnl / p.totalBuyCost) * 100).toFixed(1) : "0",
+              status: "CLOSED",
+              firstBuy: p.buys[0]?.time,
+              lastTrade: [...p.buys, ...p.sells].sort((a, b) => new Date(b.time) - new Date(a.time))[0]?.time,
+            };
+            closedPositions.push(closed);
+            totalRealizedPnl += realizedPnl;
+          }
+        }
+
+        return send(res, 200, {
+          openPositions,
+          closedPositions,
+          totalRealizedPnl: totalRealizedPnl.toFixed(2),
+          tradeCount: tradeLog.length,
+          tradeLog: tradeLog.sort((a, b) => new Date(b.time) - new Date(a.time)).slice(0, 50),
+          timestamp: new Date().toISOString(),
+        });
+      }
       if (path === "/api/pnl" || path === "/pnl") {
         // Read P&L history from snapshots file
         const pnlPath = require("path").join(__dirname, "..", "pnl-history.json");

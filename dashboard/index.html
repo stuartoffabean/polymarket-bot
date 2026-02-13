@@ -28,19 +28,23 @@
 <!-- Stats Row -->
 <div class="stats-row">
     <div class="stat-card">
-        <span class="stat-label">Bankroll</span>
+        <span class="stat-label">Portfolio Value</span>
         <span class="stat-value mono" id="bankroll">—</span>
-    </div>
-    <div class="stat-card">
-        <span class="stat-label">Position Value</span>
-        <span class="stat-value mono" id="pnlToday">—</span>
     </div>
     <div class="stat-card accent">
         <span class="stat-label">Unrealized P&L</span>
         <span class="stat-value mono" id="pnlTotal">—</span>
     </div>
     <div class="stat-card">
-        <span class="stat-label">Deployed</span>
+        <span class="stat-label">Realized P&L</span>
+        <span class="stat-value mono" id="realizedPnl">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Total P&L</span>
+        <span class="stat-value mono" id="totalPnl">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Positions</span>
         <span class="stat-value mono" id="uptime">—</span>
     </div>
 </div>
@@ -67,35 +71,43 @@
     </div>
 </section>
 
-<!-- Two Column: Trades + Orders/Strategies -->
+<!-- Trade Ledger: Full history -->
+<section class="section">
+    <div class="section-header">
+        <h2 class="section-title">Trade Ledger</h2>
+        <div class="time-selector">
+            <button class="ledger-tab active" data-tab="open">Open</button>
+            <button class="ledger-tab" data-tab="closed">Closed</button>
+            <button class="ledger-tab" data-tab="log">Trade Log</button>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead id="ledgerHead">
+                <tr>
+                    <th>Market</th>
+                    <th class="r">Side</th>
+                    <th class="r">Size</th>
+                    <th class="r">Entry</th>
+                    <th class="r">Current</th>
+                    <th class="r">P&L</th>
+                </tr>
+            </thead>
+            <tbody id="ledgerBody"></tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Two Column: Orders + Strategies -->
 <div class="two-col">
     <section class="section">
-        <h2 class="section-title">Recent Trades</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Market</th>
-                        <th class="r">Entry</th>
-                        <th class="r">Cost</th>
-                        <th class="r">Status</th>
-                    </tr>
-                </thead>
-                <tbody id="tradesBody"></tbody>
-            </table>
-        </div>
+        <h2 class="section-title">Open Orders</h2>
+        <div id="orders" class="section-body"></div>
     </section>
-
-    <div class="stacked">
-        <section class="section">
-            <h2 class="section-title">Open Orders</h2>
-            <div id="orders" class="section-body"></div>
-        </section>
-        <section class="section">
-            <h2 class="section-title">Strategies</h2>
-            <div id="strategies" class="section-body"></div>
-        </section>
-    </div>
+    <section class="section">
+        <h2 class="section-title">Strategies</h2>
+        <div id="strategies" class="section-body"></div>
+    </section>
 </div>
 
 <!-- Stuart's Log -->

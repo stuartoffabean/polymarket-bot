@@ -17,6 +17,7 @@ fi
 # STRUCTURAL FIX: Read from executor (single source of truth), not TRADING-STATE.json
 EXEC_POSITIONS=$(curl -s localhost:3002/positions 2>/dev/null || echo '{"positions":[]}')
 ALERTS=$(curl -s localhost:3003/alerts 2>/dev/null || echo '{"alerts":[]}')
+LEDGER=$(curl -s localhost:3002/trade-ledger 2>/dev/null || echo '{"openPositions":[],"closedPositions":[],"totalRealizedPnl":"0","tradeLog":[]}')
 WSPROXY=$(curl -s https://polymarket-dashboard-ws-production.up.railway.app/prices 2>/dev/null || echo '{"prices":{}}')
 
 # Combine into dashboard-ready JSON
@@ -26,6 +27,7 @@ const status = $STATUS;
 const orders = $ORDERS;
 const execPositions = $EXEC_POSITIONS;
 const alerts = $ALERTS;
+const ledger = $LEDGER;
 const wsProxy = $WSPROXY;
 const livePriceCache = wsProxy.prices || {};
 
@@ -97,6 +99,13 @@ const snapshot = {
   trades,
   strategies,
   activity,
+  ledger: {
+    openPositions: ledger.openPositions || [],
+    closedPositions: ledger.closedPositions || [],
+    totalRealizedPnl: ledger.totalRealizedPnl || '0',
+    tradeCount: ledger.tradeCount || 0,
+    tradeLog: (ledger.tradeLog || []).slice(0, 20),
+  },
   circuitBreakerTripped: prices.circuitBreakerTripped,
   survivalMode: prices.survivalMode,
   emergencyMode: prices.emergencyMode,

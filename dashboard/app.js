@@ -27,7 +27,7 @@ const pnlTodayEl = $('#pnlToday');
 const pnlTotalEl = $('#pnlTotal');
 const uptimeEl = $('#uptime');
 const killBtn = $('#killBtn');
-const tradesBody = $('#tradesBody');
+const ledgerBody = $('#ledgerBody');
 const positionsEl = $('#positions');
 const strategiesEl = $('#strategies');
 const ordersEl = $('#orders');
@@ -54,7 +54,7 @@ async function loadSnapshot() {
         const r = await fetch(STATE_URL + '?t=' + Date.now());
         if (!r.ok) throw new Error(r.statusText);
         snapshot = await r.json();
-        renderTrades();
+        renderLedger();
         renderStrategies();
         renderOrders();
         addActivity({text: 'Snapshot refreshed', type: 'info'});
@@ -234,35 +234,98 @@ function renderPositions() {
 // ── Update top bar stats ──
 function updateTopBar() {
     const {totalValue, totalCost, totalPnl, positions} = computePortfolio();
-    bankrollEl.textContent = fmtUsd(433);
-    
-    // Position value
-    pnlTodayEl.textContent = fmtUsd(totalValue);
-    pnlTodayEl.className = 'stat-value mono';
+    const ledger = snapshot?.ledger || {};
+    const realizedPnl = parseFloat(ledger.totalRealizedPnl) || 0;
+    const combinedPnl = totalPnl + realizedPnl;
+
+    // Portfolio value (current position value)
+    bankrollEl.textContent = fmtUsd(totalValue);
     
     // Unrealized P&L
-    const total = fmtPnl(totalPnl);
-    pnlTotalEl.textContent = total.text;
-    pnlTotalEl.className = 'stat-value mono ' + total.cls;
+    const unrealized = fmtPnl(totalPnl);
+    pnlTotalEl.textContent = unrealized.text;
+    pnlTotalEl.className = 'stat-value mono ' + unrealized.cls;
     
-    // Deployed capital
-    uptimeEl.textContent = fmtUsd(totalCost) + ` (${positions.length})`;
+    // Realized P&L
+    const realizedEl = document.getElementById('realizedPnl');
+    if (realizedEl) {
+        const rPnl = fmtPnl(realizedPnl);
+        realizedEl.textContent = rPnl.text;
+        realizedEl.className = 'stat-value mono ' + rPnl.cls;
+    }
+
+    // Total P&L (realized + unrealized)
+    const totalPnlEl = document.getElementById('totalPnl');
+    if (totalPnlEl) {
+        const tPnl = fmtPnl(combinedPnl);
+        totalPnlEl.textContent = tPnl.text;
+        totalPnlEl.className = 'stat-value mono ' + tPnl.cls;
+    }
+
+    // Positions count
+    const closedCount = (ledger.closedPositions || []).length;
+    uptimeEl.textContent = `${positions.length} open · ${closedCount} closed`;
 }
 
-// ── Trades ──
-function renderTrades() {
+// ── Trade Ledger ──
+let currentLedgerTab = 'open';
+
+function renderLedger() {
     if (!snapshot) return;
-    const trades = snapshot.trades || [];
-    tradesBody.innerHTML = trades.map(t => {
-        const isOpen = !t.closed;
-        return `<tr>
-            <td>${esc(t.market || '—')}</td>
-            <td class="r">${((parseFloat(t.price)||0)*100).toFixed(0)}¢</td>
-            <td class="r">${fmtUsd(t.size || t.cost)}</td>
-            <td class="r"><span class="open-badge">${isOpen ? 'OPEN' : 'CLOSED'}</span></td>
-        </tr>`;
-    }).join('') || '<tr><td colspan="4" class="empty">No trades yet</td></tr>';
+    const ledger = snapshot.ledger || {};
+    const ledgerBody = document.getElementById('ledgerBody');
+    const ledgerHead = document.getElementById('ledgerHead');
+    if (!ledgerBody) return;
+
+    if (currentLedgerTab === 'open') {
+        ledgerHead.innerHTML = `<tr><th>Market</th><th class="r">Side</th><th class="r">Size</th><th class="r">Entry</th><th class="r">Current</th><th class="r">P&L</th></tr>`;
+        const {positions} = computePortfolio();
+        ledgerBody.innerHTML = positions.map(p => {
+            const pnl = fmtPnl(p.pnl);
+            const sideColor = (p.outcome||'').toLowerCase() === 'yes' ? 'green' : 'red';
+            return `<tr>
+                <td>${esc(p.market)}</td>
+                <td class="r"><span class="${sideColor}">${(p.outcome||'—').toUpperCase()}</span></td>
+                <td class="r">${p.size}sh</td>
+                <td class="r">${(p.avgPrice*100).toFixed(0)}¢</td>
+                <td class="r">${(p.currentBid*100).toFixed(1)}¢</td>
+                <td class="r"><span class="${pnl.cls}">${pnl.text} (${p.pnlPct}%)</span></td>
+            </tr>`;
+        }).join('') || '<tr><td colspan="6" class="empty">No open positions</td></tr>';
+    } else if (currentLedgerTab === 'closed') {
+        ledgerHead.innerHTML = `<tr><th>Market</th><th class="r">Side</th><th class="r">Bought</th><th class="r">Avg Buy</th><th class="r">Avg Sell</th><th class="r">Realized P&L</th></tr>`;
+        const closed = ledger.closedPositions || [];
+        ledgerBody.innerHTML = closed.map(p => {
+            const pnl = fmtPnl(parseFloat(p.realizedPnl));
+            const sideColor = (p.outcome||'').toLowerCase() === 'yes' ? 'green' : 'red';
+            return `<tr>
+                <td>${esc(p.market || p.asset_id?.slice(0,12)+'...')}</td>
+                <td class="r"><span class="${sideColor}">${(p.outcome||'—').toUpperCase()}</span></td>
+                <td class="r">${p.totalBought}sh</td>
+                <td class="r">${(parseFloat(p.avgBuyPrice)*100).toFixed(0)}¢</td>
+                <td class="r">${(parseFloat(p.avgSellPrice)*100).toFixed(0)}¢</td>
+                <td class="r"><span class="${pnl.cls}">${pnl.text} (${p.realizedPnlPct}%)</span></td>
+            </tr>`;
+        }).join('') || '<tr><td colspan="6" class="empty">No closed trades yet</td></tr>';
+    } else if (currentLedgerTab === 'log') {
+        ledgerHead.innerHTML = `<tr><th>Time</th><th>Market</th><th class="r">Side</th><th class="r">Size</th><th class="r">Price</th><th class="r">Action</th></tr>`;
+        const log = ledger.tradeLog || [];
+        ledgerBody.innerHTML = log.map(t => {
+            const sideClass = t.side === 'BUY' ? 'green' : 'red';
+            return `<tr>
+                <td>${fmtTime(t.time)}</td>
+                <td>${esc(t.market || t.asset_id?.slice(0,12)+'...')}</td>
+                <td class="r"><span class="${(t.outcome||'').toLowerCase() === 'yes' ? 'green' : 'red'}">${(t.outcome||'—').toUpperCase()}</span></td>
+                <td class="r">${t.size}</td>
+                <td class="r">${(t.price*100).toFixed(1)}¢</td>
+                <td class="r"><span class="${sideClass}">${t.side}</span></td>
+            </tr>`;
+        }).join('') || '<tr><td colspan="6" class="empty">No trade log entries</td></tr>';
+    }
 }
+
+// Legacy compat
+function renderTrades() { renderLedger(); }
 
 // ── Strategies ──
 function renderStrategies() {
@@ -431,6 +494,16 @@ document.querySelectorAll('.time-btn').forEach(btn => {
         btn.classList.add('active');
         currentRange = btn.dataset.range;
         updateChart();
+    });
+});
+
+// ── Ledger tab buttons ──
+document.querySelectorAll('.ledger-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.ledger-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentLedgerTab = btn.dataset.tab;
+        renderLedger();
     });
 });
 
