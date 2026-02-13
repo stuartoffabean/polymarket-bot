@@ -1130,6 +1130,123 @@ async function handler(req, res) {
         }
       }
 
+      if (path === "/trade-history") {
+        // Fetch full trade history from Polymarket data-api
+        // This includes all trades with market names, used for accurate P&L calculation
+        const https = require("https");
+        const addr = OUR_ADDR || "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+        
+        try {
+          const trades = await new Promise((resolve, reject) => {
+            const url = `https://data-api.polymarket.com/activity?user=${addr}&limit=500&type=TRADE`;
+            https.get(url, (res) => {
+              let data = "";
+              res.on("data", c => data += c);
+              res.on("end", () => {
+                try {
+                  resolve(JSON.parse(data));
+                } catch(e) {
+                  reject(e);
+                }
+              });
+            }).on("error", reject);
+          });
+
+          if (!Array.isArray(trades)) {
+            return send(res, 500, { error: "Unexpected data-api response" });
+          }
+
+          // Calculate P&L by position
+          const positions = {};
+          for (const t of trades) {
+            const key = t.asset || t.conditionId;
+            if (!positions[key]) {
+              positions[key] = {
+                asset_id: key,
+                conditionId: t.conditionId,
+                market: t.title || t.slug || "Unknown",
+                outcome: t.outcome || "Yes",
+                buys: [],
+                sells: [],
+                totalBought: 0,
+                totalSold: 0,
+                totalBuyCost: 0,
+                totalSellProceeds: 0,
+              };
+            }
+            const p = positions[key];
+            const size = parseFloat(t.size || 0);
+            const price = parseFloat(t.price || 0);
+            
+            if (t.side === "BUY") {
+              p.buys.push({ size, price, time: new Date(t.timestamp * 1000).toISOString() });
+              p.totalBought += size;
+              p.totalBuyCost += size * price;
+            } else if (t.side === "SELL") {
+              p.sells.push({ size, price, time: new Date(t.timestamp * 1000).toISOString() });
+              p.totalSold += size;
+              p.totalSellProceeds += size * price;
+            }
+          }
+
+          // Calculate realized and unrealized P&L
+          let totalRealizedPnl = 0;
+          const openPositions = [];
+          const closedPositions = [];
+
+          for (const p of Object.values(positions)) {
+            const remaining = p.totalBought - p.totalSold;
+            const avgBuyPrice = p.totalBought > 0 ? p.totalBuyCost / p.totalBought : 0;
+            const avgSellPrice = p.totalSold > 0 ? p.totalSellProceeds / p.totalSold : 0;
+            const tradePnl = p.totalSellProceeds - (p.totalSold * avgBuyPrice);
+
+            if (remaining > 0.01) {
+              // Open position
+              openPositions.push({
+                asset_id: p.asset_id,
+                market: p.market,
+                outcome: p.outcome,
+                size: Math.round(remaining * 100) / 100,
+                avgPrice: avgBuyPrice.toFixed(4),
+                costBasis: (remaining * avgBuyPrice).toFixed(2),
+                totalBought: p.totalBought,
+                totalSold: p.totalSold,
+                realizedPnl: tradePnl.toFixed(2),
+                status: "OPEN",
+              });
+            } else {
+              // Closed position
+              closedPositions.push({
+                asset_id: p.asset_id,
+                market: p.market,
+                outcome: p.outcome,
+                totalBought: p.totalBought,
+                totalSold: p.totalSold,
+                avgBuyPrice: avgBuyPrice.toFixed(4),
+                avgSellPrice: avgSellPrice.toFixed(4),
+                totalCost: p.totalBuyCost.toFixed(2),
+                totalProceeds: p.totalSellProceeds.toFixed(2),
+                realizedPnl: tradePnl.toFixed(2),
+                realizedPnlPct: p.totalBuyCost > 0 ? ((tradePnl / p.totalBuyCost) * 100).toFixed(1) : "0",
+                status: "CLOSED",
+              });
+              totalRealizedPnl += tradePnl;
+            }
+          }
+
+          return send(res, 200, {
+            timestamp: new Date().toISOString(),
+            totalTrades: trades.length,
+            openPositions,
+            closedPositions,
+            totalRealizedPnl: totalRealizedPnl.toFixed(2),
+            source: "data-api",
+          });
+        } catch(e) {
+          return send(res, 500, { error: e.message });
+        }
+      }
+
       if (path === "/risk-check") {
         const tokenID = query.token_id;
         const price = parseFloat(query.price || "0");

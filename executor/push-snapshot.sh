@@ -18,6 +18,7 @@ fi
 EXEC_POSITIONS=$(curl -s localhost:3002/positions 2>/dev/null || echo '{"positions":[]}')
 ALERTS=$(curl -s localhost:3003/alerts 2>/dev/null || echo '{"alerts":[]}')
 LEDGER=$(curl -s localhost:3002/trade-ledger 2>/dev/null || echo '{"openPositions":[],"closedPositions":[],"totalRealizedPnl":"0","tradeLog":[]}')
+TRADE_HISTORY=$(curl -s localhost:3002/trade-history 2>/dev/null || echo '{"openPositions":[],"closedPositions":[],"totalRealizedPnl":"0","totalTrades":0}')
 BALANCE=$(curl -s localhost:3002/balance 2>/dev/null || echo '{"balance":0}')
 WSPROXY=$(curl -s https://polymarket-dashboard-ws-production.up.railway.app/prices 2>/dev/null || echo '{"prices":{}}')
 
@@ -29,6 +30,7 @@ const orders = $ORDERS;
 const execPositions = $EXEC_POSITIONS;
 const alerts = $ALERTS;
 const ledger = $LEDGER;
+const tradeHistory = $TRADE_HISTORY;
 const balanceData = $BALANCE;
 const wsProxy = $WSPROXY;
 const livePriceCache = wsProxy.prices || {};
@@ -141,6 +143,13 @@ const snapshot = {
     totalRealizedPnl: ledger.totalRealizedPnl || '0',
     tradeCount: ledger.tradeCount || 0,
     tradeLog: (ledger.tradeLog || []).slice(0, 20),
+  },
+  tradeHistory: {
+    openPositions: tradeHistory.openPositions || [],
+    closedPositions: tradeHistory.closedPositions || [],
+    totalRealizedPnl: tradeHistory.totalRealizedPnl || '0',
+    totalTrades: tradeHistory.totalTrades || 0,
+    source: tradeHistory.source || 'unknown',
   },
   circuitBreakerTripped: prices.circuitBreakerTripped,
   survivalMode: prices.survivalMode,

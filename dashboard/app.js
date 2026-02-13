@@ -235,8 +235,10 @@ function renderPositions() {
 function updateTopBar() {
     const {totalValue, totalCost, totalPnl, positions} = computePortfolio();
     const ledger = snapshot?.ledger || {};
+    const tradeHistory = snapshot?.tradeHistory || {};
     const cash = snapshot?.cash || 0;
-    const realizedPnl = parseFloat(ledger.totalRealizedPnl) || 0;
+    // Use tradeHistory (from data-api) for realized P&L — it has complete trade history
+    const realizedPnl = parseFloat(tradeHistory.totalRealizedPnl) || parseFloat(ledger.totalRealizedPnl) || 0;
     const combinedPnl = totalPnl + realizedPnl;
     const totalPortfolio = totalValue + cash;
 
