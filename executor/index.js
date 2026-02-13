@@ -212,6 +212,22 @@ const TRADE_CACHE_TTL = 30000; // 30s TTL
 
 function invalidateTradeCache() { _tradeCache = null; _tradeCacheTime = 0; }
 
+// Auto-push snapshot to GitHub after trades (debounced 5s so batch sells don't spam)
+const { execFile } = require("child_process");
+let _snapshotTimer = null;
+function triggerSnapshotPush() {
+  if (_snapshotTimer) clearTimeout(_snapshotTimer);
+  _snapshotTimer = setTimeout(() => {
+    console.log("📸 Auto-pushing snapshot after trade...");
+    execFile("bash", ["/data/workspace/polymarket-bot/executor/push-snapshot.sh"], 
+      { cwd: "/data/workspace/polymarket-bot", timeout: 30000 },
+      (err, stdout, stderr) => {
+        if (err) console.error("Snapshot push failed:", err.message);
+        else console.log("📸 Snapshot pushed to GitHub");
+      });
+  }, 5000);
+}
+
 async function getCachedPositions() {
   if (_tradeCache && (Date.now() - _tradeCacheTime) < TRADE_CACHE_TTL) return _tradeCache;
 
@@ -687,6 +703,7 @@ async function handler(req, res) {
 
       const order = await client.createAndPostOrder(orderOpts, undefined, orderType, false, postOnly);
       invalidateTradeCache();
+      triggerSnapshotPush();
 
       console.log(`Order result:`, JSON.stringify(order));
       return send(res, 200, order);
@@ -718,6 +735,7 @@ async function handler(req, res) {
 
       console.log(`Sell result:`, JSON.stringify(order));
       invalidateTradeCache();
+      triggerSnapshotPush();
       return send(res, 200, { ...order, executedPrice: bestBid });
     }
 
