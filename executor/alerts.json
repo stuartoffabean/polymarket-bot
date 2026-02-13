@@ -2626,6 +2626,63 @@
       "pnlPct": "-54.4%",
       "message": "Daily drawdown 54.4% exceeds 15% — PAUSED for 2 hours",
       "timestamp": "2026-02-13T21:10:49.582Z"
+    },
+    {
+      "type": "CIRCUIT_BREAKER",
+      "price": null,
+      "pnlPct": "-54.5%",
+      "message": "Daily drawdown 54.5% exceeds 15% — PAUSED for 2 hours",
+      "timestamp": "2026-02-13T21:17:09.722Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "61128604990087042122",
+      "outcome": "Yes",
+      "market": "0xc0e068aa0ffc2ce40170b1fb688871242fdc5ff518e83af7ef59db6e496abdbd",
+      "price": 0.35,
+      "pnlPct": "-47.0%",
+      "size": 10,
+      "avgPrice": 0.66,
+      "message": "AUTO-SELLING [weather]",
+      "timestamp": "2026-02-13T21:22:20.073Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "61128604990087042122",
+      "outcome": "Yes",
+      "market": "0xc0e068aa0ffc2ce40170b1fb688871242fdc5ff518e83af7ef59db6e496abdbd",
+      "price": 0.01,
+      "pnlPct": "-98.5%",
+      "size": 10,
+      "avgPrice": 0.66,
+      "message": "AUTO-SELLING [weather]",
+      "timestamp": "2026-02-13T21:50:24.367Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "61128604990087042122",
+      "outcome": "Yes",
+      "market": "0xc0e068aa0ffc2ce40170b1fb688871242fdc5ff518e83af7ef59db6e496abdbd",
+      "price": 0.01,
+      "pnlPct": null,
+      "size": 10,
+      "avgPrice": 0.66,
+      "message": "STOP_LOSS: Sold 10 @ 0.01",
+      "timestamp": "2026-02-13T21:50:26.141Z"
+    },
+    {
+      "type": "CIRCUIT_BREAKER",
+      "price": null,
+      "pnlPct": "-53.3%",
+      "message": "Daily drawdown 53.3% exceeds 15% — PAUSED for 2 hours",
+      "timestamp": "2026-02-13T21:50:38.198Z"
+    },
+    {
+      "type": "CIRCUIT_BREAKER",
+      "price": null,
+      "pnlPct": "-54.7%",
+      "message": "Daily drawdown 54.7% exceeds 15% — PAUSED for 2 hours",
+      "timestamp": "2026-02-13T22:00:32.479Z"
     }
   ],
   "circuitBreakerTripped": true,

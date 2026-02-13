@@ -1,39 +1,24 @@
 {
-  "timestamp": "2026-02-13T21:16:16.473Z",
+  "timestamp": "2026-02-13T21:54:50.712Z",
   "summary": {
     "total": 100,
     "negRisk": 52,
     "flagged": 3,
-    "viable": 2
+    "viable": 1
   },
   "opportunities": [
-    {
-      "event": "Elon Musk # tweets February 6 - February 13, 2026?",
-      "slug": "elon-musk-of-tweets-february-6-february-13",
-      "type": "LONG",
-      "outcomes": 0,
-      "midSum": 0.005,
-      "execSum": 0,
-      "deviation": 99.5,
-      "execDeviation": 100,
-      "grossProfitPer100": 100,
-      "feesPer100": 0,
-      "profitPer100": 100,
-      "viable": true,
-      "details": []
-    },
     {
       "event": "Nobel Peace Prize Winner 2026",
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.8215,
-      "execSum": 0.749,
-      "deviation": 17.85,
-      "execDeviation": 25.1,
-      "grossProfitPer100": 25.1,
+      "midSum": 0.8165,
+      "execSum": 0.743,
+      "deviation": 18.35,
+      "execDeviation": 25.7,
+      "grossProfitPer100": 25.7,
       "feesPer100": 0,
-      "profitPer100": 25.1,
+      "profitPer100": 25.7,
       "viable": true,
       "details": [
         {
@@ -50,14 +35,14 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.041,
-          "exec": 0.04,
+          "mid": 0.0365,
+          "exec": 0.035,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.0605,
-          "exec": 0.06,
+          "mid": 0.0595,
+          "exec": 0.059,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -140,7 +125,7 @@
         },
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
-          "mid": 0.0055,
+          "mid": 0.006,
           "exec": 0.003,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
@@ -163,18 +148,18 @@
       "slug": "how-many-fed-rate-cuts-in-2026",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.027,
-      "execSum": 0.996,
-      "deviation": 2.7,
-      "execDeviation": 0.4,
-      "grossProfitPer100": -0.4,
+      "midSum": 1.028,
+      "execSum": 0.997,
+      "deviation": 2.8,
+      "execDeviation": 0.3,
+      "grossProfitPer100": -0.3,
       "feesPer100": 0,
-      "profitPer100": -0.4,
+      "profitPer100": -0.3,
       "viable": false,
       "details": [
         {
           "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.067,
+          "mid": 0.0665,
           "exec": 0.066,
           "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
@@ -216,8 +201,8 @@
         },
         {
           "name": "Will 7 Fed rate cuts happen in 2026?",
-          "mid": 0.0075,
-          "exec": 0.006,
+          "mid": 0.0095,
+          "exec": 0.008,
           "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
         },
         {
@@ -246,9 +231,103 @@
         },
         {
           "name": "Will 12 or more Fed rate cuts happen in 2026?",
-          "mid": 0.0245,
-          "exec": 0.024,
+          "mid": 0.024,
+          "exec": 0.023,
           "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
+        }
+      ]
+    },
+    {
+      "event": "2026 ICC T20 Men’s World Cup Winner",
+      "slug": "2026-icc-t20-mens-world-cup-winner",
+      "type": "SHORT",
+      "outcomes": 13,
+      "midSum": 1.057,
+      "execSum": 0.968,
+      "deviation": 5.7,
+      "execDeviation": 3.2,
+      "grossProfitPer100": -3.2,
+      "feesPer100": 0,
+      "profitPer100": -3.2,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will India win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.415,
+          "exec": 0.4,
+          "token": "36190803750786635844165995661794551716343290080007015981336350366434982775233"
+        },
+        {
+          "name": "Will Australia win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.11,
+          "exec": 0.1,
+          "token": "28877596836825284906528825532184866109967770098921566662217924845975491268438"
+        },
+        {
+          "name": "Will England win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.1,
+          "exec": 0.09,
+          "token": "109446023657991202179869549612292567035455071214919100932024261718229181547214"
+        },
+        {
+          "name": "Will South Africa win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.155,
+          "exec": 0.14,
+          "token": "54644802007454240937143078370147159297869876341797598982143095655493911125903"
+        },
+        {
+          "name": "Will Pakistan win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.094,
+          "exec": 0.083,
+          "token": "76190129244386305771969693888683878935433573905105493954956506404783670380035"
+        },
+        {
+          "name": "Will New Zealand win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.0815,
+          "exec": 0.067,
+          "token": "65008518571572657271211632870860379070221892511688233911018004120158193148414"
+        },
+        {
+          "name": "Will West Indies win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.057,
+          "exec": 0.056,
+          "token": "95028549383885752097876461063574302577289253561522211568257489843435069990371"
+        },
+        {
+          "name": "Will Afghanistan win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.0025,
+          "exec": 0.001,
+          "token": "100224797595385678276742510521942077883901127206633934091955319005396903527705"
+        },
+        {
+          "name": "Will Sri Lanka win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.0265,
+          "exec": 0.022,
+          "token": "103630786762206584738662636102754367864881412668966849731168337708616533672029"
+        },
+        {
+          "name": "Will the United States win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.004,
+          "exec": 0.003,
+          "token": "72610582151460304801138152928941305632024243447678281544143361919620548389053"
+        },
+        {
+          "name": "Will Zimbabwe win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.005,
+          "exec": 0.004,
+          "token": "18067098618874461124880148778379554146494289244719071744515218581410050482940"
+        },
+        {
+          "name": "Will the Netherlands win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "110995730324353310474388888350657560190561241699451861835369264223240054351664"
+        },
+        {
+          "name": "Will Nepal win the 2026 ICC Men’s T20 World Cup?",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
         }
       ]
     }

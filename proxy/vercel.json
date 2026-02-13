@@ -2,6 +2,7 @@
   "version": 2,
   "regions": ["hnd1"],
   "rewrites": [
+    { "source": "/data-api/(.*)", "destination": "/api/data?/$1" },
     { "source": "/(.*)", "destination": "/api/proxy" }
   ]
 }

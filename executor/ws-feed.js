@@ -1029,6 +1029,33 @@ async function apiHandler(req, res) {
       }
     }
 
+    if (url === "/report") {
+      // On-demand performance report generation
+      try {
+        const reporter = require("./trade-reporter.js");
+        const data = await reporter.collectData();
+        const analysis = reporter.analyzePerformance(data);
+        const tracker = reporter.generateStrategyTracker(analysis);
+        // Write files
+        const botDir = path.join(__dirname, "..");
+        const wsDir = path.join(__dirname, "..", "..");
+        fs.writeFileSync(path.join(botDir, "STRATEGY-TRACKER.json"), JSON.stringify(tracker, null, 2));
+        fs.writeFileSync(path.join(wsDir, "STRATEGY-TRACKER.json"), JSON.stringify(tracker, null, 2));
+        const tradesMd = reporter.generateTradesMd(analysis);
+        fs.writeFileSync(path.join(wsDir, "TRADES.md"), tradesMd);
+        // Save daily snapshot
+        const reportsDir = path.join(botDir, "daily-reports");
+        if (!fs.existsSync(reportsDir)) fs.mkdirSync(reportsDir, { recursive: true });
+        const dateStr = new Date().toISOString().split("T")[0];
+        fs.writeFileSync(path.join(reportsDir, `${dateStr}.json`), JSON.stringify(analysis, null, 2));
+        log("REPORT", `Performance report generated: P&L=$${analysis.summary.totalPnl?.toFixed(2)}, WR=${analysis.summary.overallWinRate}%`);
+        return send(res, 200, { ok: true, summary: analysis.summary, strategies: tracker.strategies });
+      } catch (e) {
+        log("REPORT", `Report generation failed: ${e.message}`);
+        return send(res, 500, { error: e.message });
+      }
+    }
+
     if (url === "/status") {
       const state = loadTradingState();
       return send(res, 200, {
@@ -2267,6 +2294,46 @@ async function main() {
     http.get("http://localhost:3002/check-resolutions", () => {}).on("error", () => {});
     http.get("http://localhost:3002/reconcile", () => {}).on("error", () => {});
   }, 120 * 1000);
+
+  // Daily performance report — runs at midnight UTC and on first startup after 5min
+  const DAILY_REPORT_HOUR_UTC = 0; // midnight UTC
+  function scheduleDailyReport() {
+    const now = new Date();
+    const next = new Date(now);
+    next.setUTCHours(DAILY_REPORT_HOUR_UTC, 5, 0, 0); // 00:05 UTC
+    if (next <= now) next.setUTCDate(next.getUTCDate() + 1);
+    const msUntil = next - now;
+    log("REPORT", `Daily report scheduled for ${next.toISOString()} (${(msUntil / 3600000).toFixed(1)}h from now)`);
+    setTimeout(async () => {
+      try {
+        const reporter = require("./trade-reporter.js");
+        await reporter.main();
+        log("REPORT", "Daily performance report generated and sent");
+      } catch (e) {
+        log("REPORT", `Daily report failed: ${e.message}`);
+      }
+      scheduleDailyReport(); // schedule next day
+    }, msUntil);
+  }
+  scheduleDailyReport();
+  // Also generate a report 5 minutes after startup for immediate visibility
+  setTimeout(async () => {
+    try {
+      const reporter = require("./trade-reporter.js");
+      const data = await reporter.collectData();
+      const analysis = reporter.analyzePerformance(data);
+      const tracker = reporter.generateStrategyTracker(analysis);
+      const botDir = path.join(__dirname, "..");
+      const wsDir = path.join(__dirname, "..", "..");
+      fs.writeFileSync(path.join(botDir, "STRATEGY-TRACKER.json"), JSON.stringify(tracker, null, 2));
+      fs.writeFileSync(path.join(wsDir, "STRATEGY-TRACKER.json"), JSON.stringify(tracker, null, 2));
+      const tradesMd = reporter.generateTradesMd(analysis);
+      fs.writeFileSync(path.join(wsDir, "TRADES.md"), tradesMd);
+      log("REPORT", `Startup report: P&L=$${analysis.summary.totalPnl?.toFixed(2)}, ${analysis.summary.totalTrades} trades, WR=${analysis.summary.overallWinRate}%`);
+    } catch (e) {
+      log("REPORT", `Startup report failed: ${e.message}`);
+    }
+  }, 5 * 60 * 1000);
 
   // Daily reset
   scheduleDailyReset();

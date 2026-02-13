@@ -1,114 +1,191 @@
 {
-  "strategies": {
-    "event-driven": {
-      "name": "Event-Driven Momentum",
-      "status": "ACTIVE",
-      "positions": ["Gov Shutdown Feb 14", "Bangladesh BNP Election", "Anthropic Best AI Model Feb"],
-      "trades": 3,
-      "wins": 0,
-      "losses": 0,
-      "open": 3,
-      "totalPnl": 0,
-      "unrealizedPnl": 2.21,
-      "avgReturn": null,
-      "winRate": null,
-      "notes": "Core strategy. Manual news research → position entry. Need to automate news scanning."
-    },
-    "safe-yield": {
-      "name": "Safe Yield / High Probability",
-      "status": "ACTIVE",
-      "positions": ["Fed March 25bps Cut", "Norway Most Gold Medals Winter Olympics"],
-      "trades": 2,
-      "wins": 0,
-      "losses": 0,
-      "open": 2,
-      "totalPnl": 0,
-      "unrealizedPnl": 0,
-      "avgReturn": null,
-      "winRate": null,
-      "notes": "90%+ probability outcomes. Low return per trade but very safe. Need more volume."
-    },
-    "mechanical-ranges": {
-      "name": "Mechanical Range Bets (Small Positions)",
-      "status": "ACTIVE",
-      "positions": ["BTC wont drop to $50K Feb", "BTC wont hit $85K Feb", "BTC wont drop to $55K Feb", "Norway Most Total Medals Winter Olympics"],
-      "trades": 4,
-      "wins": 0,
-      "losses": 0,
-      "open": 4,
-      "totalPnl": 0,
-      "unrealizedPnl": 0,
-      "avgReturn": null,
-      "winRate": null,
-      "notes": "Small bets on extreme ranges. High probability NO bets. Template for scaling."
-    },
-    "gabagool": {
-      "name": "Asymmetric Pair Trading (Gabagool)",
-      "status": "PIPELINE",
-      "positions": [],
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "open": 0,
-      "totalPnl": 0,
-      "notes": "NOT YET ACTIVE. Need to start logging YES+NO prices on 10-20 markets to find entry points."
-    },
-    "rebalancing-arb": {
-      "name": "Rebalancing Arbitrage",
-      "status": "EVALUATED",
-      "positions": [],
-      "trades": 0,
-      "notes": "Scanned 1000+ markets. No viable arbs at $433 scale. Tail outcomes illiquid. Revisit at $5K+."
-    },
-    "crypto-15min": {
-      "name": "15-Minute Crypto Binary Arb",
-      "status": "RESEARCH",
-      "positions": [],
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "open": 0,
-      "totalPnl": 0,
-      "notes": "BTC/ETH UP/DN binaries resolving every 15 min. Edge: exchange price lag vs Polymarket. Needs: Binance WS feed for signal, fast execution. Taker fees exist (1.56% max at 50%, 0.06% at extremes). Reference: someone turned $313→$414K. dr-manhattan-ts has findCryptoHourlyMarket(). Risk: HFT-dominated, need speed advantage. Research phase: evaluate feasibility at $500 scale."
-    },
-    "cross-platform-arb": {
-      "name": "Cross-Platform Arbitrage (Polymarket↔Kalshi)",
-      "status": "UNBLOCKED",
-      "positions": [],
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "open": 0,
-      "totalPnl": 0,
-      "notes": "UPGRADED 2026-02-13: Expand beyond Kalshi to Opinion + Probable (both blockchain-based, both running airdrop points programs). Delta-neutral: buy YES on one platform, NO on another for same event. Typical spreads 1-3%, ~1%/wk claimed. AIRDROP OVERLAY: Opinion + Probable have weekly points epochs — volume generates airdrop tokens on top of arb profit. Probable points credited Mondays 00:00 UTC. AlertPilot ($100/mo) scans Polymarket+Opinion+Probable with Telegram alerts + AI rule-conflict detection. Risk: different resolution rules across platforms. Next steps: (1) Get Opinion + Probable API access, (2) manually scan 5 matched events for spread, (3) if viable, build cross-platform price monitor. CertiK reports 60% artificial volume on some platforms during airdrop periods = lots of competition but also confirms edge exists."
-    },
-    "weather-forecast-arb": {
-      "name": "Weather Forecast Arbitrage (NOAA/ECMWF)",
-      "status": "RESEARCH",
-      "positions": [],
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "open": 0,
-      "totalPnl": 0,
-      "notes": "Intel 2026-02-12: Trade weather markets (temperature ranges, precipitation) using free NOAA forecast data as edge. Markets lag forecast updates by minutes. Temperature ranges must sum to 100% but retail misprices them to 105-115%. 24h resolution = extreme capital velocity. Reported results: 73% win rate over 1300+ trades. Step 1: Manual scan of Polymarket weather markets vs Weather.gov. Step 2: If edge confirmed, build NOAA API feed into bot. Step 3: Automate. NOAA API is free, no key needed. ArbAlert.ai also monitors this."
-    },
-    "systematic-no": {
-      "name": "Systematic NO Farming",
-      "status": "RESEARCH",
-      "positions": [],
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "open": 0,
-      "totalPnl": 0,
-      "notes": "~70% of prediction markets resolve NO. Crowd systematically overpays for exciting YES outcomes. Strategy: systematically bet NO on overpriced YES markets. Partially overlaps with safe-yield strategy but with systematic market selection. Research: need historical resolution data to validate the 70% claim on Polymarket specifically."
+  "lastUpdated": "2026-02-13T22:05:27.367Z",
+  "generatedBy": "trade-reporter.js v1.0",
+  "portfolio": {
+    "totalValue": 448.00975500000004,
+    "positionValue": 203.0702,
+    "cashBalance": 244.939555,
+    "trackedPositions": 10,
+    "idlePct": "54.7"
+  },
+  "summary": {
+    "totalRealizedPnl": -26.48,
+    "totalUnrealizedPnl": 14.8,
+    "totalPnl": -11.68,
+    "totalTrades": 48,
+    "totalWins": 12,
+    "totalLosses": 24,
+    "overallWinRate": 31.6,
+    "portfolioValue": 448.00975500000004,
+    "cashBalance": 244.939555,
+    "idlePct": "54.7",
+    "activeStrategies": 5,
+    "fillStats": {
+      "weather": {
+        "submitted": 0,
+        "filled": 0,
+        "partial": 0,
+        "unfilled": 0
+      },
+      "resolution": {
+        "submitted": 1,
+        "filled": 1,
+        "partial": 0,
+        "unfilled": 0
+      },
+      "arb": {
+        "submitted": 3,
+        "filled": 3,
+        "partial": 0,
+        "unfilled": 0
+      }
     }
   },
-  "pipeline": {
-    "next_review": "2026-02-17",
-    "new_strategy_deadline": "2026-02-17",
-    "notes": "v2 mandates at least 1 new strategy entering pipeline every Monday. 3 new strategies added from night research 2026-02-12."
-  },
-  "lastUpdated": "2026-02-13T20:00:00Z"
+  "strategies": {
+    "weather": {
+      "status": "COMPLETED",
+      "totalTrades": 19,
+      "openPositions": 0,
+      "closedPositions": 19,
+      "wins": 4,
+      "losses": 14,
+      "winRate": "21.1%",
+      "realizedPnl": "$-34.56",
+      "unrealizedPnl": "$0.00",
+      "totalPnl": "$-34.56",
+      "totalDeployed": "$103.62",
+      "currentDeployed": "$0.00",
+      "expectancy": "$-1.82",
+      "profitFactor": "0.11",
+      "avgWin": "$1.06",
+      "avgLoss": "$-2.77",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "London 8°C Feb 13",
+        "pnl": 2.06,
+        "pnlPct": "50.9"
+      },
+      "worstTrade": {
+        "market": "Buenos Aires ≤27°C 2026-02-13",
+        "pnl": -6.6,
+        "pnlPct": "-73.3"
+      }
+    },
+    "unknown": {
+      "status": "ACTIVE",
+      "totalTrades": 16,
+      "openPositions": 6,
+      "closedPositions": 10,
+      "wins": 6,
+      "losses": 4,
+      "winRate": "60%",
+      "realizedPnl": "$10.93",
+      "unrealizedPnl": "$7.47",
+      "totalPnl": "$18.40",
+      "totalDeployed": "$196.04",
+      "currentDeployed": "$112.65",
+      "expectancy": "$1.09",
+      "profitFactor": "2.24",
+      "avgWin": "$3.29",
+      "avgLoss": "$-2.21",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Gov Shutdown Feb 14",
+        "pnl": 18.07,
+        "pnlPct": "15.7"
+      },
+      "worstTrade": {
+        "market": "Bad Bunny Halftime Views",
+        "pnl": -6.8,
+        "pnlPct": "-31.5"
+      }
+    },
+    "arb": {
+      "status": "ACTIVE",
+      "totalTrades": 8,
+      "openPositions": 1,
+      "closedPositions": 7,
+      "wins": 1,
+      "losses": 5,
+      "winRate": "14.3%",
+      "realizedPnl": "$-1.08",
+      "unrealizedPnl": "$7.00",
+      "totalPnl": "$5.92",
+      "totalDeployed": "$3.47",
+      "currentDeployed": "$31.00",
+      "expectancy": "$-0.15",
+      "profitFactor": "0.06",
+      "avgWin": "$0.07",
+      "avgLoss": "$-0.23",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "0xb67faadf0c0d3ce177f996359849f5ea46961f7ef34872e5948ab25eb6a49168",
+        "pnl": 0.07,
+        "pnlPct": "53.8"
+      },
+      "worstTrade": {
+        "market": "0x27c9827d0da9e1dc91a2c497afe10e8ba852e72e68d7efbe1b7a677542eb31a1",
+        "pnl": -0.6,
+        "pnlPct": "-33.3"
+      }
+    },
+    "resolution": {
+      "status": "ACTIVE",
+      "totalTrades": 4,
+      "openPositions": 3,
+      "closedPositions": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100%",
+      "realizedPnl": "$0.07",
+      "unrealizedPnl": "$0.33",
+      "totalPnl": "$0.40",
+      "totalDeployed": "$14.87",
+      "currentDeployed": "$44.63",
+      "expectancy": "$0.07",
+      "profitFactor": "∞",
+      "avgWin": "$0.07",
+      "avgLoss": "$0.00",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Will the highest temperature in Toronto be 3°C or higher on February 13?",
+        "pnl": 0.07,
+        "pnlPct": "0.5"
+      },
+      "worstTrade": {
+        "market": "Will the highest temperature in Toronto be 3°C or higher on February 13?",
+        "pnl": 0.07,
+        "pnlPct": "0.5"
+      }
+    },
+    "manual": {
+      "status": "COMPLETED",
+      "totalTrades": 1,
+      "openPositions": 0,
+      "closedPositions": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0%",
+      "realizedPnl": "$-1.84",
+      "unrealizedPnl": "$0.00",
+      "totalPnl": "$-1.84",
+      "totalDeployed": "$73.60",
+      "currentDeployed": "$0.00",
+      "expectancy": "$-1.84",
+      "profitFactor": "0.00",
+      "avgWin": "$0.00",
+      "avgLoss": "$-1.84",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Bangladesh BNP Election Win",
+        "pnl": -1.84,
+        "pnlPct": "-2.5"
+      },
+      "worstTrade": {
+        "market": "Bangladesh BNP Election Win",
+        "pnl": -1.84,
+        "pnlPct": "-2.5"
+      }
+    }
+  }
 }
