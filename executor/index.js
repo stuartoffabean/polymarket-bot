@@ -116,6 +116,78 @@ async function checkResolutions() {
     req.setTimeout(15000, () => { req.destroy(); reject(new Error("timeout")); });
   });
 }
+/**
+ * Position reconciliation: cross-check manual-positions.json against actual on-chain holdings.
+ * Flags phantom positions (we think we hold shares but actually don't).
+ */
+async function reconcilePositions() {
+  const https = require("https");
+  const addr = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+
+  // 1. Get actual positions from data API
+  const actual = await new Promise((resolve, reject) => {
+    const req = https.get(`https://data-api.polymarket.com/positions?user=${addr}&limit=200&sizeThreshold=0`, (res) => {
+      let d = ""; res.on("data", c => d += c);
+      res.on("end", () => { try { resolve(JSON.parse(d)); } catch(e) { reject(e); } });
+    });
+    req.on("error", reject);
+    req.setTimeout(15000, () => { req.destroy(); reject(new Error("timeout")); });
+  });
+  if (!Array.isArray(actual)) return { error: "unexpected response" };
+
+  // Build map of actual holdings: asset_id -> { size, curPrice, title }
+  const actualMap = {};
+  for (const p of actual) {
+    if (p.size > 0.001) {
+      actualMap[p.asset] = { size: p.size, curPrice: p.curPrice, title: p.title, redeemable: p.redeemable };
+    }
+  }
+
+  // 2. Load manual positions
+  const manualPath = path.join(__dirname, "manual-positions.json");
+  let manual = {};
+  try { manual = JSON.parse(fs.readFileSync(manualPath, "utf8")); } catch(e) { return { error: "no manual-positions.json" }; }
+
+  // 3. Compare
+  const phantoms = [];
+  const mismatches = [];
+  for (const [assetId, mp] of Object.entries(manual)) {
+    if (!mp.size || mp.size <= 0) continue;
+    const onChain = actualMap[assetId];
+    if (!onChain) {
+      // PHANTOM: we think we hold it but on-chain says NO
+      phantoms.push({ assetId, market: mp.market, trackedSize: mp.size, actualSize: 0 });
+    } else if (Math.abs(onChain.size - mp.size) > 0.5) {
+      // SIZE MISMATCH: significant difference
+      mismatches.push({ assetId, market: mp.market, trackedSize: mp.size, actualSize: onChain.size, diff: mp.size - onChain.size });
+    }
+  }
+
+  // 4. Auto-fix phantoms: remove from manual-positions.json and alert
+  if (phantoms.length > 0) {
+    for (const p of phantoms) {
+      delete manual[p.assetId];
+      // Remove from ws-feed tracking too
+      http.request({ hostname: "localhost", port: 3003, path: "/remove-position", method: "POST",
+        headers: { "Content-Type": "application/json" }
+      }, () => {}).on("error", () => {}).end(JSON.stringify({ assetId: p.assetId }));
+    }
+    fs.writeFileSync(manualPath, JSON.stringify(manual, null, 2));
+
+    const phantomList = phantoms.map(p => `• ${p.market || p.assetId.slice(0,20)} (tracked ${p.trackedSize}sh, actual 0)`).join("\n");
+    sendTelegramAlert(`🚨 <b>PHANTOM POSITIONS DETECTED & REMOVED</b>\n${phantomList}\n\nThese positions were in tracking but NOT on-chain. Auto-cleaned.`);
+    console.log(`[RECONCILE] Removed ${phantoms.length} phantom positions`);
+  }
+
+  if (mismatches.length > 0) {
+    const mismatchList = mismatches.map(m => `• ${m.market || m.assetId.slice(0,20)} (tracked ${m.trackedSize}sh, actual ${m.actualSize}sh)`).join("\n");
+    sendTelegramAlert(`⚠️ <b>POSITION SIZE MISMATCHES</b>\n${mismatchList}`);
+    console.log(`[RECONCILE] ${mismatches.length} size mismatches found`);
+  }
+
+  return { phantoms, mismatches, manualCount: Object.keys(manual).length, onChainCount: Object.keys(actualMap).length };
+}
+
 const ENTRY_EXEMPT_STRATEGIES = ["resolution", "arb"]; // RH has own validated params
 
 // === FEATURE 5: DEPTH CHECK FOR MANUAL ORDERS ===
@@ -1025,6 +1097,15 @@ async function handler(req, res) {
       }
       // GET /risk-check?token_id=XXX&price=0.50&size=100&side=BUY
       // Preview risk check without placing order
+      if (path === "/reconcile") {
+        try {
+          const result = await reconcilePositions();
+          return send(res, 200, result);
+        } catch(e) {
+          return send(res, 500, { error: e.message });
+        }
+      }
+
       if (path === "/check-resolutions") {
         try {
           const result = await checkResolutions();

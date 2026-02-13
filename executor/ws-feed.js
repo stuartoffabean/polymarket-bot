@@ -2205,9 +2205,31 @@ async function main() {
     req.setTimeout(15000, () => req.destroy());
   }, 5 * 60 * 1000);
 
+  // Position reconciliation — check every 5 minutes for phantom positions
+  setInterval(() => {
+    const req = http.get("http://localhost:3002/reconcile", (res) => {
+      let d = ""; res.on("data", c => d += c);
+      res.on("end", () => {
+        try {
+          const result = JSON.parse(d);
+          if (result.phantoms && result.phantoms.length > 0) {
+            log("RECONCILE", `Removed ${result.phantoms.length} phantom positions: ${result.phantoms.map(p => p.market?.slice(0,30)).join(", ")}`);
+            for (const p of result.phantoms) subscribedAssets.delete(p.assetId);
+          }
+          if (result.mismatches && result.mismatches.length > 0) {
+            log("RECONCILE", `${result.mismatches.length} size mismatches detected`);
+          }
+        } catch(e) {}
+      });
+    });
+    req.on("error", () => {});
+    req.setTimeout(15000, () => req.destroy());
+  }, 5 * 60 * 1000);
+
   // Run once at startup after warmup
   setTimeout(() => {
     http.get("http://localhost:3002/check-resolutions", () => {}).on("error", () => {});
+    http.get("http://localhost:3002/reconcile", () => {}).on("error", () => {});
   }, 120 * 1000);
 
   // Daily reset
