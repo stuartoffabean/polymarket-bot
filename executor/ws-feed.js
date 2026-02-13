@@ -183,6 +183,13 @@ let autoExecuteEnabled = true;
 let rateLimitBackoff = false;
 let rateLimitResumeAt = null;
 
+// === STARTUP WARMUP SYSTEM ===
+// Prevents false emergency/survival triggers on restart.
+// systemReady stays false until: (1) syncPositions completed at least once AND
+// (2) ≥80% of tracked positions have received a price update (WS or REST).
+let systemReady = false;
+let syncCompletedOnce = false;
+
 // === HELPERS ===
 function log(tag, msg) {
   console.log(`[${new Date().toISOString()}] [${tag}] ${msg}`);
@@ -592,6 +599,7 @@ function checkTriggers(assetId, asset) {
   // Always update portfolio (even in emergency — needed for mode recovery)
   updatePortfolioValue();
 
+  if (!systemReady) return; // skip triggers during warmup
   if (emergencyMode) return; // no trading in emergency
 
   const costBasis = asset.avgPrice * asset.size;
@@ -662,13 +670,46 @@ async function executeSell(assetId, asset, reason) {
   }
 }
 
-function updatePortfolioValue() {
-  let positionValue = 0;
-  for (const [id, asset] of subscribedAssets) {
-    if (asset.size && asset.currentBid) {
-      positionValue += asset.currentBid * asset.size;
-    }
+function checkSystemReady() {
+  if (systemReady) return true;
+  if (!syncCompletedOnce) return false;
+
+  const total = subscribedAssets.size;
+  if (total === 0) return false;
+
+  let priced = 0;
+  for (const [, asset] of subscribedAssets) {
+    if (asset.currentBid !== undefined && asset.currentBid !== null) priced++;
   }
+
+  const pct = priced / total;
+  if (pct >= 0.8) {
+    systemReady = true;
+    log("INIT", `✅ System ready — ${priced}/${total} positions priced (${(pct * 100).toFixed(0)}%). Monitoring active.`);
+    // Set dailyStartValue NOW from accurate portfolio data
+    const posVal = computePositionValue();
+    const state = loadTradingState();
+    const liquid = state?.liquidBalance || 0;
+    currentPortfolioValue = posVal;
+    dailyStartValue = posVal;
+    log("INIT", `dailyStartValue set to $${posVal.toFixed(2)} (liquid: $${liquid.toFixed(2)}, total: $${(posVal + liquid).toFixed(2)})`);
+    return true;
+  }
+
+  log("WARMUP", `System warming up — ${priced}/${total} positions priced (${(pct * 100).toFixed(0)}%), waiting...`);
+  return false;
+}
+
+function computePositionValue() {
+  let v = 0;
+  for (const [, asset] of subscribedAssets) {
+    if (asset.size && asset.currentBid) v += asset.currentBid * asset.size;
+  }
+  return v;
+}
+
+function updatePortfolioValue() {
+  const positionValue = computePositionValue();
 
   // Load liquid balance from trading state
   const state = loadTradingState();
@@ -677,6 +718,9 @@ function updatePortfolioValue() {
 
   if (positionValue > 0) {
     currentPortfolioValue = positionValue;
+
+    // Skip all risk checks until system is warmed up
+    if (!checkSystemReady()) return;
 
     if (!dailyStartValue) dailyStartValue = positionValue;
 
@@ -822,6 +866,10 @@ async function syncPositions() {
 
     if (newAssetIds.length > 0) subscribe(newAssetIds);
     log("SYNC", `Tracking ${subscribedAssets.size} positions (${positions.length} from executor)`);
+    if (!syncCompletedOnce) {
+      syncCompletedOnce = true;
+      log("INIT", `First sync complete — ${subscribedAssets.size} positions loaded, waiting for price data...`);
+    }
   } catch (e) {
     log("SYNC", `Failed: ${e.message}`);
   }
@@ -846,6 +894,7 @@ async function apiHandler(req, res) {
         wsConnected: ws?.readyState === WebSocket.OPEN,
         wsLastMessageAgo: wsSilentSec ? `${wsSilentSec}s` : "never",
         trackedAssets: subscribedAssets.size,
+        systemReady,
         circuitBreakerTripped,
         survivalMode,
         emergencyMode,
@@ -882,6 +931,7 @@ async function apiHandler(req, res) {
         prices,
         portfolioValue: currentPortfolioValue,
         dailyStartValue,
+        systemReady,
         circuitBreakerTripped,
         circuitBreakerResumeAt,
         survivalMode,
@@ -1237,7 +1287,7 @@ async function runArbScan() {
     log("ARB", `✅ Scan complete — Flagged: ${opportunities.length} | Viable: ${output.summary.viable} → ${ARB_RESULTS_FILE}`);
 
     // === ARB AUTO-EXECUTION ===
-    if (!circuitBreakerTripped && !emergencyMode && !survivalMode && autoExecuteEnabled) {
+    if (systemReady && !circuitBreakerTripped && !emergencyMode && !survivalMode && autoExecuteEnabled) {
       const ARB_MIN_PROFIT = 5;     // min 5% profit per $100
       const ARB_MAX_OUTCOMES = 10;  // max 10 legs
       const ARB_MAX_SPEND = 20;     // max $20 per arb
@@ -1447,6 +1497,7 @@ function saveRhExecuted() {
 }
 
 async function runResolutionHunter() {
+  if (!systemReady) { log("RH", "Skipping — system warming up"); return; }
   if (circuitBreakerTripped || emergencyMode || survivalMode) {
     log("RH", "Skipping — risk mode active");
     return;
