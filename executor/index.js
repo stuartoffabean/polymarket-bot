@@ -24,6 +24,184 @@ console.log(`CLOB HOST: ${HOST}`);
 const CHAIN_ID = 137;
 const PORT = parseInt(process.env.EXECUTOR_PORT || "3002");
 
+// === PRE-TRADE RISK GATE ===
+// Enforces position sizing limits BEFORE orders reach the CLOB.
+// This is the programmatic fix for the recurring position sizing violations
+// documented in LESSONS.md (Feb 11: 17.1% Gov Shutdown, 17% Bangladesh;
+// Feb 13: 26.6% Gov Shutdown — all exceeded the 15% max).
+const RISK_MAX_SINGLE_POSITION_PCT = 0.15; // 15% of portfolio per position
+const RISK_CASH_RESERVE_PCT = 0.10;        // Always keep 10% uninvested
+const RISK_MIN_LIQUIDITY_DEPTH = 5;        // Minimum 5 shares of depth at best price
+const RISK_MAX_SPREAD_PCT = 0.15;          // 15% spread = skip (illiquid trap)
+
+async function getPortfolioValue() {
+  // Try ws-feed first (has live prices)
+  try {
+    const data = await new Promise((resolve, reject) => {
+      const req = http.get("http://localhost:3003/status", (res) => {
+        let d = ""; res.on("data", c => d += c);
+        res.on("end", () => { try { resolve(JSON.parse(d)); } catch(e) { reject(e); } });
+      });
+      req.on("error", reject);
+      req.setTimeout(3000, () => { req.destroy(); reject(new Error("timeout")); });
+    });
+    if (data.portfolio && data.portfolio.positionValue > 0) {
+      return {
+        positionValue: data.portfolio.positionValue,
+        liquidBalance: data.portfolio.liquidBalance || 0,
+        totalValue: data.portfolio.totalValue || data.portfolio.positionValue,
+        source: "ws-feed"
+      };
+    }
+  } catch (e) { /* ws-feed unavailable, fallback */ }
+
+  // Fallback: get on-chain balance + position cost basis
+  try {
+    const { ethers } = require("ethers");
+    const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com");
+    const USDC_E = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
+    const erc20Abi = ["function balanceOf(address) view returns (uint256)"];
+    const usdc = new ethers.Contract(USDC_E, erc20Abi, provider);
+    const bal = await usdc.balanceOf(OUR_ADDR);
+    const balance = parseFloat(ethers.utils.formatUnits(bal, 6));
+    
+    const cached = await getCachedPositions();
+    const posValue = cached.openPositions.reduce((sum, p) => sum + p.totalCost, 0);
+    
+    return {
+      positionValue: posValue,
+      liquidBalance: balance,
+      totalValue: balance + posValue,
+      source: "chain+cache"
+    };
+  } catch (e) {
+    return { positionValue: 0, liquidBalance: 0, totalValue: 0, source: "error: " + e.message };
+  }
+}
+
+async function getExistingExposure(tokenID) {
+  // Check if we already hold a position in this token
+  try {
+    const cached = await getCachedPositions();
+    const existing = cached.openPositions.find(p => p.asset_id === tokenID);
+    if (existing) {
+      return { size: existing.size, costBasis: existing.totalCost, avgPrice: parseFloat(existing.avgPrice) };
+    }
+  } catch (e) { /* ignore */ }
+  return { size: 0, costBasis: 0, avgPrice: 0 };
+}
+
+/**
+ * Pre-trade risk validation. Returns { allowed, reason, details } 
+ * Checks: max single position %, cash reserve, spread, existing exposure.
+ * Pass force:true to bypass (logged + alerted).
+ */
+async function preTradeRiskCheck(tokenID, price, size, side, force = false) {
+  // Only validate BUY orders (SELL is always allowed — exiting risk)
+  if (side === "SELL") return { allowed: true, reason: "sell_always_allowed" };
+
+  const orderValue = price * size;
+  const portfolio = await getPortfolioValue();
+  const totalValue = portfolio.totalValue;
+
+  // If portfolio is unknown/zero, use a conservative floor
+  const effectivePortfolio = totalValue > 10 ? totalValue : 500;
+  
+  const checks = [];
+  let blocked = false;
+
+  // 1. Single position size check (including existing exposure)
+  const existing = await getExistingExposure(tokenID);
+  const totalExposure = existing.costBasis + orderValue;
+  const exposurePct = totalExposure / effectivePortfolio;
+  
+  if (exposurePct > RISK_MAX_SINGLE_POSITION_PCT) {
+    blocked = true;
+    checks.push({
+      check: "MAX_SINGLE_POSITION",
+      status: "BLOCKED",
+      detail: `Total exposure $${totalExposure.toFixed(2)} = ${(exposurePct * 100).toFixed(1)}% of $${effectivePortfolio.toFixed(2)} portfolio (max ${RISK_MAX_SINGLE_POSITION_PCT * 100}%)`,
+      existing: existing.costBasis > 0 ? `Already hold $${existing.costBasis.toFixed(2)} in this token` : null,
+    });
+  } else {
+    checks.push({ check: "MAX_SINGLE_POSITION", status: "OK", pct: (exposurePct * 100).toFixed(1) + "%" });
+  }
+
+  // 2. Cash reserve check
+  const cashAfter = portfolio.liquidBalance - orderValue;
+  const reserveRequired = effectivePortfolio * RISK_CASH_RESERVE_PCT;
+  if (cashAfter < reserveRequired) {
+    blocked = true;
+    checks.push({
+      check: "CASH_RESERVE",
+      status: "BLOCKED",
+      detail: `Cash after trade: $${cashAfter.toFixed(2)}, reserve required: $${reserveRequired.toFixed(2)} (${RISK_CASH_RESERVE_PCT * 100}% of portfolio)`,
+    });
+  } else {
+    checks.push({ check: "CASH_RESERVE", status: "OK", cashAfter: "$" + cashAfter.toFixed(2) });
+  }
+
+  // 3. Spread / liquidity check (only for non-trivial orders)
+  if (orderValue > 2) {
+    try {
+      const book = await client.getOrderBook(tokenID);
+      const bestBid = book.bids?.length > 0 ? parseFloat(book.bids[book.bids.length - 1].price) : null;
+      const bestAsk = book.asks?.length > 0 ? parseFloat(book.asks[0].price) : null;
+      
+      if (bestBid && bestAsk) {
+        const spread = (bestAsk - bestBid) / bestAsk;
+        if (spread > RISK_MAX_SPREAD_PCT) {
+          blocked = true;
+          checks.push({
+            check: "SPREAD",
+            status: "BLOCKED",
+            detail: `Spread ${(spread * 100).toFixed(1)}% (bid=${bestBid}, ask=${bestAsk}) exceeds max ${RISK_MAX_SPREAD_PCT * 100}%`,
+          });
+        } else {
+          checks.push({ check: "SPREAD", status: "OK", spread: (spread * 100).toFixed(1) + "%" });
+        }
+      }
+      
+      // Check depth at best ask
+      if (book.asks?.length > 0) {
+        const topAskSize = parseFloat(book.asks[0].size || 0);
+        if (topAskSize < RISK_MIN_LIQUIDITY_DEPTH) {
+          checks.push({
+            check: "DEPTH",
+            status: "WARNING",
+            detail: `Only ${topAskSize} shares at best ask — thin liquidity`,
+          });
+        }
+      }
+    } catch (e) {
+      checks.push({ check: "BOOK", status: "SKIP", detail: "Could not fetch order book: " + e.message });
+    }
+  }
+
+  // Force override
+  if (blocked && force) {
+    console.log(`⚠️ RISK GATE OVERRIDDEN (force=true): ${checks.filter(c => c.status === "BLOCKED").map(c => c.check).join(", ")}`);
+    return {
+      allowed: true,
+      reason: "force_override",
+      overridden: checks.filter(c => c.status === "BLOCKED").map(c => c.check),
+      checks,
+      portfolio: { total: effectivePortfolio, liquid: portfolio.liquidBalance, source: portfolio.source },
+    };
+  }
+
+  if (blocked) {
+    console.log(`🚫 RISK GATE BLOCKED: ${checks.filter(c => c.status === "BLOCKED").map(c => c.detail).join(" | ")}`);
+  }
+
+  return {
+    allowed: !blocked,
+    reason: blocked ? "risk_check_failed" : "all_checks_passed",
+    checks,
+    portfolio: { total: effectivePortfolio, liquid: portfolio.liquidBalance, source: portfolio.source },
+  };
+}
+
 let client;
 
 // === TRADE CACHE — compute position derivation once, invalidate on new trade ===
@@ -435,6 +613,17 @@ async function handler(req, res) {
           return send(res, 200, { points: [] });
         }
       }
+      // GET /risk-check?token_id=XXX&price=0.50&size=100&side=BUY
+      // Preview risk check without placing order
+      if (path === "/risk-check") {
+        const tokenID = query.token_id;
+        const price = parseFloat(query.price || "0");
+        const size = parseFloat(query.size || "0");
+        const side = query.side || "BUY";
+        if (!tokenID || !price || !size) return send(res, 400, { error: "Need token_id, price, size params" });
+        const result = await preTradeRiskCheck(tokenID, price, size, side, false);
+        return send(res, 200, result);
+      }
       if (path === "/api/snapshot" || path === "/snapshot") {
         const cached = await getCachedPositions();
         const orders = await client.getOpenOrders();
@@ -447,13 +636,36 @@ async function handler(req, res) {
       }
     }
 
-    // POST /order — place order
+    // POST /order — place order (with pre-trade risk validation)
     if (method === "POST" && path === "/order") {
       const body = await parseBody(req);
       const { tokenID, price, size, side } = body;
       
       if (!tokenID || !price || !size || !side) {
         return send(res, 400, { error: "Missing tokenID, price, size, or side" });
+      }
+
+      // === PRE-TRADE RISK GATE ===
+      // Validates position sizing, cash reserve, spread before execution.
+      // Pass force:true to bypass (logged). skipRiskCheck:true for internal
+      // auto-execution paths (ws-feed) that have their own risk checks.
+      const skipRisk = body.skipRiskCheck === true;
+      const forceRisk = body.force === true;
+      
+      if (!skipRisk) {
+        const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, forceRisk);
+        if (!riskResult.allowed) {
+          console.log(`🚫 ORDER REJECTED by risk gate: ${side} ${size} @ ${price}`);
+          return send(res, 422, {
+            error: "Order rejected by pre-trade risk check",
+            riskResult,
+            hint: "Pass force:true to override (will be logged), or reduce position size",
+          });
+        }
+        // Log risk check result for audit
+        if (riskResult.overridden) {
+          console.log(`⚠️ RISK OVERRIDE: ${riskResult.overridden.join(", ")}`);
+        }
       }
 
       const orderType = body.orderType || "GTC"; // GTC, GTD, FOK

@@ -1549,7 +1549,7 @@ async function runResolutionHunter() {
           continue;
         }
 
-        // Place limit order at best ask
+        // Place limit order at best ask (skipRiskCheck — ws-feed has its own checkAutoCapBudget)
         log("RH", `🎯 BUYING: ${size} ${c.outcome} @ ${bestAsk} on "${c.market.slice(0,50)}"`);
         const orderResult = await httpPost("/order", {
           tokenID: c.tokenId,
@@ -1557,6 +1557,7 @@ async function runResolutionHunter() {
           size,
           side: "BUY",
           orderType: "GTC",
+          skipRiskCheck: true,
         });
 
         log("RH", `Order submitted: ${JSON.stringify(orderResult).slice(0,200)}`);
@@ -1798,6 +1799,7 @@ async function runWeatherExecutor() {
         size,
         side: "BUY",
         orderType: "GTC",
+        skipRiskCheck: true,
       });
 
       const orderID = orderResult.orderID || orderResult.id;
