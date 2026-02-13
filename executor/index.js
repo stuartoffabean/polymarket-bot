@@ -45,6 +45,9 @@ const ENTRY_EXEMPT_STRATEGIES = ["resolution", "arb"]; // RH has own validated p
 const DEPTH_SLIPPAGE_TOL_MANUAL = 0.02;  // 2% max slippage
 const DEPTH_MIN_SHARES_MANUAL = 5;       // Don't bother with <5 shares
 
+const fs = require("fs");
+const path = require("path");
+
 // === DAILY CONVICTION BUDGET ===
 // Max 30% of bankroll in NEW manual positions per day. Resets at midnight UTC.
 // Resolution Hunter exempt (validated strategy with own limits).
@@ -74,9 +77,6 @@ function recordDailyBudgetSpend(orderValue, market) {
   saveDailyBudget(budget);
   return budget;
 }
-
-const fs = require("fs");
-const path = require("path");
 
 // === FEATURE 3: THESIS TRACKING ===
 const THESES_DIR = path.join(__dirname, "..", "theses");
