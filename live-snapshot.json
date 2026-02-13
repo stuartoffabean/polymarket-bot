@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-13T00:45:04.608Z",
+  "timestamp": "2026-02-13T00:45:31.369Z",
   "portfolio": {
     "trackedPositions": 10,
     "portfolioValue": 362.754,
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 2374.920323811
+    "uptime": 2401.645531569
   },
   "positions": [
     {
@@ -167,7 +167,7 @@
       "size": 40,
       "avgPrice": 0.35,
       "currentBid": 0.31,
-      "currentAsk": 0.34,
+      "currentAsk": 0.341,
       "costBasis": "14.00",
       "currentValue": "12.40",
       "pnl": "-1.60",
@@ -179,7 +179,7 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-13T00:45:04.608Z",
+      "timestamp": "2026-02-13T00:45:31.368Z",
       "market": "0xe210052575420133d6b2fd2a160803e58fbf0b861bd7a22d0951ef25d0c2eac4",
       "outcome": "Yes",
       "side": "buy",
@@ -192,7 +192,7 @@
       "tokenId": "16680383807036024154663222348300164487828801908390056508639441371141589139909"
     },
     {
-      "timestamp": "2026-02-13T00:45:04.608Z",
+      "timestamp": "2026-02-13T00:45:31.369Z",
       "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
       "outcome": "Yes",
       "side": "buy",
@@ -205,7 +205,7 @@
       "tokenId": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
     },
     {
-      "timestamp": "2026-02-13T00:45:04.608Z",
+      "timestamp": "2026-02-13T00:45:31.369Z",
       "market": "Will Bitcoin reach $85,000 in February?",
       "outcome": "No",
       "side": "buy",
@@ -218,7 +218,7 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-13T00:45:04.608Z",
+      "timestamp": "2026-02-13T00:45:31.369Z",
       "market": "Will Bitcoin dip to $50,000 in February?",
       "outcome": "No",
       "side": "buy",
@@ -231,8 +231,8 @@
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-13T00:45:04.608Z",
-      "market": "0xdeaa7932b51ce74186dc0fb1af2c20294d58d6ace29e4c15e0f8ad13a2d5191d",
+      "timestamp": "2026-02-13T00:45:31.369Z",
+      "market": "Unknown",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.62,
@@ -244,8 +244,8 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-13T00:45:04.608Z",
-      "market": "0xcbf9e16f0ad8bef39c3860dda598df8c4906f737bbed4dc1c65f7e0c07675ab3",
+      "timestamp": "2026-02-13T00:45:31.369Z",
+      "market": "Unknown",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.62,
