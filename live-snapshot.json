@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-13T00:30:04.785Z",
+  "timestamp": "2026-02-13T00:44:52.405Z",
   "portfolio": {
-    "trackedPositions": 9,
-    "portfolioValue": 349.469,
+    "trackedPositions": 10,
+    "portfolioValue": 363.03,
     "dailyStartValue": 55.44,
     "startingCapital": 433
   },
@@ -22,7 +22,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 1475.044720371
+    "uptime": 2362.856954925
   },
   "positions": [
     {
@@ -31,12 +31,12 @@
       "outcome": "YES",
       "size": 92,
       "avgPrice": 0.8,
-      "currentBid": 0.992,
-      "currentAsk": 0.993,
+      "currentBid": 0.99,
+      "currentAsk": 0.992,
       "costBasis": "73.60",
-      "currentValue": "91.26",
-      "pnl": "17.66",
-      "pnlPct": "24.0%",
+      "currentValue": "91.08",
+      "pnl": "17.48",
+      "pnlPct": "23.7%",
       "stopLoss": 0.6,
       "takeProfit": 1
     },
@@ -47,7 +47,7 @@
       "size": 50,
       "avgPrice": 0.92,
       "currentBid": 0.86,
-      "currentAsk": 0.88,
+      "currentAsk": 0.87,
       "costBasis": "46.00",
       "currentValue": "43.00",
       "pnl": "-3.00",
@@ -76,12 +76,12 @@
       "outcome": "NO",
       "size": 15,
       "avgPrice": 0.82,
-      "currentBid": 0.8,
-      "currentAsk": 0.806,
+      "currentBid": 0.801,
+      "currentAsk": 0.805,
       "costBasis": "12.30",
-      "currentValue": "12.00",
-      "pnl": "-0.30",
-      "pnlPct": "-2.4%",
+      "currentValue": "12.02",
+      "pnl": "-0.28",
+      "pnlPct": "-2.3%",
       "stopLoss": 0.6,
       "takeProfit": 1
     },
@@ -91,12 +91,12 @@
       "outcome": "Yes",
       "size": 40,
       "avgPrice": 0.54,
-      "currentBid": 0.59,
-      "currentAsk": 0.63,
+      "currentBid": 0.62,
+      "currentAsk": 0.66,
       "costBasis": "21.60",
-      "currentValue": "23.60",
-      "pnl": "2.00",
-      "pnlPct": "9.3%",
+      "currentValue": "24.80",
+      "pnl": "3.20",
+      "pnlPct": "14.8%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -121,12 +121,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.92,
-      "currentBid": 0.911,
+      "currentBid": 0.913,
       "currentAsk": 0.914,
       "costBasis": "23.00",
-      "currentValue": "22.78",
-      "pnl": "-0.22",
-      "pnlPct": "-1.0%",
+      "currentValue": "22.82",
+      "pnl": "-0.18",
+      "pnlPct": "-0.8%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -151,12 +151,27 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.701,
-      "currentAsk": 0.709,
+      "currentBid": 0.702,
+      "currentAsk": 0.708,
       "costBasis": "49.60",
-      "currentValue": "56.08",
-      "pnl": "6.48",
-      "pnlPct": "13.1%",
+      "currentValue": "56.16",
+      "pnl": "6.56",
+      "pnlPct": "13.2%",
+      "stopLoss": 0.3,
+      "takeProfit": 0.5
+    },
+    {
+      "id": "16680383807036024154",
+      "fullAssetId": "16680383807036024154663222348300164487828801908390056508639441371141589139909",
+      "outcome": "Yes",
+      "size": 40,
+      "avgPrice": 0.35,
+      "currentBid": 0.31,
+      "currentAsk": 0.345,
+      "costBasis": "14.00",
+      "currentValue": "12.40",
+      "pnl": "-1.60",
+      "pnlPct": "-11.4%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     }
@@ -164,34 +179,34 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-13T00:30:04.785Z",
+      "timestamp": "2026-02-13T00:44:52.404Z",
       "market": "0xe210052575420133d6b2fd2a160803e58fbf0b861bd7a22d0951ef25d0c2eac4",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.35,
       "size": 14,
       "shares": 40,
-      "currentPrice": null,
-      "pnl": 0,
-      "pnlPct": "0.0%",
+      "currentPrice": 0.31,
+      "pnl": -1.6,
+      "pnlPct": "-11.4%",
       "tokenId": "16680383807036024154663222348300164487828801908390056508639441371141589139909"
     },
     {
-      "timestamp": "2026-02-13T00:30:04.785Z",
-      "market": "0xf95dfcdf72d98c59381df5b2d015e67aa7b7caf59258881c549d79400490a579",
+      "timestamp": "2026-02-13T00:44:52.405Z",
+      "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.54,
       "size": 21.6,
       "shares": 40,
-      "currentPrice": 0.59,
-      "pnl": 2,
-      "pnlPct": "9.3%",
+      "currentPrice": 0.62,
+      "pnl": 3.2,
+      "pnlPct": "14.8%",
       "tokenId": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
     },
     {
-      "timestamp": "2026-02-13T00:30:04.785Z",
-      "market": "0x7f72e2af09127b4ffd41b7b83d2d6c92fd8238e638d1bfaacbbdae356b4bf720",
+      "timestamp": "2026-02-13T00:44:52.405Z",
+      "market": "Will Bitcoin reach $85,000 in February?",
       "outcome": "No",
       "side": "buy",
       "price": 0.94,
@@ -203,20 +218,20 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-13T00:30:04.785Z",
-      "market": "0xa31754e4e3d25202e95d88d99c52340ab5f4fcf03deb3006972fb2102af12c8d",
+      "timestamp": "2026-02-13T00:44:52.405Z",
+      "market": "Will Bitcoin dip to $50,000 in February?",
       "outcome": "No",
       "side": "buy",
       "price": 0.92,
       "size": 23,
       "shares": 25,
-      "currentPrice": 0.911,
-      "pnl": -0.23,
-      "pnlPct": "-1.0%",
+      "currentPrice": 0.913,
+      "pnl": -0.18,
+      "pnlPct": "-0.8%",
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-13T00:30:04.785Z",
+      "timestamp": "2026-02-13T00:44:52.405Z",
       "market": "0xdeaa7932b51ce74186dc0fb1af2c20294d58d6ace29e4c15e0f8ad13a2d5191d",
       "outcome": "Yes",
       "side": "buy",
@@ -229,16 +244,16 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-13T00:30:04.785Z",
+      "timestamp": "2026-02-13T00:44:52.405Z",
       "market": "0xcbf9e16f0ad8bef39c3860dda598df8c4906f737bbed4dc1c65f7e0c07675ab3",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
       "shares": 80,
-      "currentPrice": 0.701,
-      "pnl": 6.48,
-      "pnlPct": "13.1%",
+      "currentPrice": 0.702,
+      "pnl": 6.56,
+      "pnlPct": "13.2%",
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     }
   ],
@@ -246,7 +261,7 @@
     {
       "name": "Speculative",
       "trades": 2,
-      "pnl": 2,
+      "pnl": 1.6,
       "wins": 1,
       "enabled": true,
       "winRate": 0.5
@@ -254,7 +269,7 @@
     {
       "name": "Safe Yield",
       "trades": 2,
-      "pnl": 0.01999999999999999,
+      "pnl": 0.07,
       "wins": 1,
       "enabled": true,
       "winRate": 0.5
@@ -262,7 +277,7 @@
     {
       "name": "Event-Driven",
       "trades": 2,
-      "pnl": 5.98,
+      "pnl": 6.06,
       "wins": 1,
       "enabled": true,
       "winRate": 0.5
@@ -273,7 +288,7 @@
     "openPositions": [
       {
         "asset_id": "16680383807036024154663222348300164487828801908390056508639441371141589139909",
-        "market": "0xe210052575420133d6b2fd2a160803e58fbf0b861bd7a22d0951ef25d0c2eac4",
+        "market": "Bad Bunny 75-100M Views (7 days)",
         "outcome": "Yes",
         "size": 40,
         "avgPrice": "0.3500",
@@ -285,7 +300,7 @@
       },
       {
         "asset_id": "28797566188952595754532249233237210079260595405997354963532548251029768750444",
-        "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+        "market": "Bad Bunny Halftime Views",
         "outcome": "Yes",
         "size": 40,
         "avgPrice": "0.5400",
@@ -297,7 +312,7 @@
       },
       {
         "asset_id": "33054682002199540688068637861453447841161181160056075050144022025869914494787",
-        "market": "Will Bitcoin reach $85,000 in February?",
+        "market": "BTC $85K Feb",
         "outcome": "No",
         "size": 25,
         "avgPrice": "0.9400",
@@ -309,7 +324,7 @@
       },
       {
         "asset_id": "98962310013708175438981041248552227092865649064538992475816299839295243294252",
-        "market": "Will Bitcoin dip to $50,000 in February?",
+        "market": "BTC $50K Feb",
         "outcome": "No",
         "size": 25,
         "avgPrice": "0.9200",
@@ -342,6 +357,66 @@
         "totalSold": 0,
         "realizedPnl": "0.00",
         "status": "OPEN"
+      },
+      {
+        "asset_id": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
+        "market": "Bangladesh BNP Election",
+        "outcome": "YES",
+        "size": 92,
+        "avgPrice": "0.8000",
+        "costBasis": "73.60",
+        "totalBought": 92,
+        "totalSold": 0,
+        "realizedPnl": "0.00",
+        "status": "OPEN",
+        "source": "personal_wallet",
+        "firstBuy": "2026-02-13T00:05:16.048Z",
+        "lastTrade": "2026-02-13T00:05:16.048Z"
+      },
+      {
+        "asset_id": "37951513621735784471651257045517975893424565554701830077103055531806326097100",
+        "market": "Norway Most Gold Medals Winter Olympics",
+        "outcome": "YES",
+        "size": 50,
+        "avgPrice": "0.9200",
+        "costBasis": "46.00",
+        "totalBought": 50,
+        "totalSold": 0,
+        "realizedPnl": "0.00",
+        "status": "OPEN",
+        "source": "personal_wallet",
+        "firstBuy": "2026-02-13T00:05:16.063Z",
+        "lastTrade": "2026-02-13T00:05:16.063Z"
+      },
+      {
+        "asset_id": "89036168105179001192755120118050209760422683300339582903158940882158509550672",
+        "market": "Fed March 25bps Cut",
+        "outcome": "NO",
+        "size": 50,
+        "avgPrice": "0.9300",
+        "costBasis": "46.50",
+        "totalBought": 50,
+        "totalSold": 0,
+        "realizedPnl": "0.00",
+        "status": "OPEN",
+        "source": "personal_wallet",
+        "firstBuy": "2026-02-13T00:05:16.079Z",
+        "lastTrade": "2026-02-13T00:05:16.079Z"
+      },
+      {
+        "asset_id": "14508138056322224915688949573192229922802851672435344101150518068118489796467",
+        "market": "BTC wont drop to $55K Feb",
+        "outcome": "NO",
+        "size": 15,
+        "avgPrice": "0.8200",
+        "costBasis": "12.30",
+        "totalBought": 15,
+        "totalSold": 0,
+        "realizedPnl": "0.00",
+        "status": "OPEN",
+        "source": "personal_wallet",
+        "firstBuy": "2026-02-13T00:05:16.095Z",
+        "lastTrade": "2026-02-13T00:05:16.095Z"
       }
     ],
     "closedPositions": [
@@ -375,7 +450,7 @@
       },
       {
         "asset_id": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
-        "market": "Another US government shutdown by February 14?",
+        "market": "Gov Shutdown Feb 14",
         "outcome": "Yes",
         "totalBought": 139,
         "totalSold": 139,
@@ -389,7 +464,7 @@
       },
       {
         "asset_id": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
-        "market": "Will Bangladesh Nationalist Party win the most seats in the ",
+        "market": "Bangladesh BNP Election Win",
         "outcome": "Yes",
         "totalBought": 92,
         "totalSold": 92,
@@ -407,7 +482,7 @@
     "tradeLog": [
       {
         "asset_id": "16680383807036024154663222348300164487828801908390056508639441371141589139909",
-        "market": "0xe210052575420133d6b2fd2a160803e58fbf0b861bd7a22d0951ef25d0c2eac4",
+        "market": "Bad Bunny 75-100M Views (7 days)",
         "outcome": "Yes",
         "side": "BUY",
         "size": 40,
@@ -439,7 +514,7 @@
       },
       {
         "asset_id": "28797566188952595754532249233237210079260595405997354963532548251029768750444",
-        "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
+        "market": "Bad Bunny Halftime Views",
         "outcome": "Yes",
         "side": "BUY",
         "size": 40,
@@ -487,7 +562,7 @@
       },
       {
         "asset_id": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
-        "market": "Another US government shutdown by February 14?",
+        "market": "Gov Shutdown Feb 14",
         "outcome": "Yes",
         "side": "SELL",
         "size": 50,
@@ -495,7 +570,7 @@
       },
       {
         "asset_id": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
-        "market": "Another US government shutdown by February 14?",
+        "market": "Gov Shutdown Feb 14",
         "outcome": "Yes",
         "side": "SELL",
         "size": 5.54,
@@ -503,7 +578,7 @@
       },
       {
         "asset_id": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
-        "market": "Another US government shutdown by February 14?",
+        "market": "Gov Shutdown Feb 14",
         "outcome": "Yes",
         "side": "SELL",
         "size": 83.46,
@@ -511,7 +586,7 @@
       },
       {
         "asset_id": "33054682002199540688068637861453447841161181160056075050144022025869914494787",
-        "market": "Will Bitcoin reach $85,000 in February?",
+        "market": "BTC $85K Feb",
         "outcome": "No",
         "side": "BUY",
         "size": 25,
@@ -519,7 +594,7 @@
       },
       {
         "asset_id": "98962310013708175438981041248552227092865649064538992475816299839295243294252",
-        "market": "Will Bitcoin dip to $50,000 in February?",
+        "market": "BTC $50K Feb",
         "outcome": "No",
         "side": "BUY",
         "size": 17.51,
@@ -527,7 +602,7 @@
       },
       {
         "asset_id": "98962310013708175438981041248552227092865649064538992475816299839295243294252",
-        "market": "Will Bitcoin dip to $50,000 in February?",
+        "market": "BTC $50K Feb",
         "outcome": "No",
         "side": "BUY",
         "size": 7.49,
@@ -543,7 +618,7 @@
       },
       {
         "asset_id": "7648925155044397287047798308912067661131447591491670430094875295487039626662",
-        "market": "Another US government shutdown by February 14?",
+        "market": "Gov Shutdown Feb 14",
         "outcome": "Yes",
         "side": "BUY",
         "size": 50,
@@ -551,7 +626,7 @@
       },
       {
         "asset_id": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
-        "market": "Will Bangladesh Nationalist Party win the most seats in the ",
+        "market": "Bangladesh BNP Election Win",
         "outcome": "Yes",
         "side": "SELL",
         "size": 92,
