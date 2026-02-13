@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-13T06:51:18.014Z",
+  "timestamp": "2026-02-13T12:31:25.796Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
-    "flagged": 5,
-    "viable": 3
+    "flagged": 2,
+    "viable": 1
   },
   "opportunities": [
     {
@@ -12,13 +12,13 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.8055,
-      "execSum": 0.742,
-      "deviation": 19.45,
-      "execDeviation": 25.8,
-      "grossProfitPer100": 25.8,
+      "midSum": 0.8195,
+      "execSum": 0.755,
+      "deviation": 18.05,
+      "execDeviation": 24.5,
+      "grossProfitPer100": 24.5,
       "feesPer100": 0,
-      "profitPer100": 25.8,
+      "profitPer100": 24.5,
       "viable": true,
       "details": [
         {
@@ -35,38 +35,38 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.0325,
-          "exec": 0.031,
+          "mid": 0.0335,
+          "exec": 0.032,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.05,
-          "exec": 0.049,
+          "mid": 0.0625,
+          "exec": 0.061,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
           "name": "Will António Guterres win the Nobel Peace Prize in 2026?",
-          "mid": 0.006,
-          "exec": 0.005,
+          "mid": 0.0055,
+          "exec": 0.004,
           "token": "23342261653888694132200522593527487238848562692306851598440649086435121500976"
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
           "mid": 0.112,
-          "exec": 0.104,
+          "exec": 0.105,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
         {
           "name": "Will Khaled Mashal win the Nobel Peace Prize in 2026?",
-          "mid": 0.0145,
-          "exec": 0.014,
+          "mid": 0.0115,
+          "exec": 0.009,
           "token": "4817558919700430121831697879056774909752184660255737582917693916506064447935"
         },
         {
           "name": "Will Recep Tayyip Erdoğan win the Nobel Peace Prize in 2026?",
-          "mid": 0.009,
-          "exec": 0.008,
+          "mid": 0.0075,
+          "exec": 0.007,
           "token": "85146181675473345857517501170400200068194836865848336579180316943778562621184"
         },
         {
@@ -77,7 +77,7 @@
         },
         {
           "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
-          "mid": 0.0115,
+          "mid": 0.012,
           "exec": 0.01,
           "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
         },
@@ -95,20 +95,20 @@
         },
         {
           "name": "Will Elon Musk win the Nobel Peace Prize in 2026?",
-          "mid": 0.0185,
-          "exec": 0.018,
+          "mid": 0.0165,
+          "exec": 0.016,
           "token": "75607128808577269329357564425293012652006155264327001987967114873720422847762"
         },
         {
           "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.095,
-          "exec": 0.085,
+          "mid": 0.097,
+          "exec": 0.084,
           "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
         },
         {
           "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.113,
-          "exec": 0.102,
+          "mid": 0.1185,
+          "exec": 0.113,
           "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
         },
         {
@@ -126,7 +126,7 @@
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
           "mid": 0.0055,
-          "exec": 0.004,
+          "exec": 0.003,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
         {
@@ -137,125 +137,9 @@
         },
         {
           "name": "Will Narendra Modi win the Nobel Peace Prize in 2026?",
-          "mid": 0.018,
-          "exec": 0.017,
+          "mid": 0.0175,
+          "exec": 0.016,
           "token": "95036065107529622997025744213041265776694292492123977042470465876649211394600"
-        }
-      ]
-    },
-    {
-      "event": "How many people will Trump deport in 2025?",
-      "slug": "how-many-people-will-trump-deport-in-2025",
-      "type": "LONG",
-      "outcomes": 9,
-      "midSum": 0.955,
-      "execSum": 0.912,
-      "deviation": 4.5,
-      "execDeviation": 8.8,
-      "grossProfitPer100": 8.8,
-      "feesPer100": 0,
-      "profitPer100": 8.8,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will Trump deport less than 250,000?",
-          "mid": 0.0395,
-          "exec": 0.029,
-          "token": "101676997363687199724245607342877036148401850938023978421879460310389391082353"
-        },
-        {
-          "name": "Will Trump deport 250,000-500,000 people?",
-          "mid": 0.854,
-          "exec": 0.853,
-          "token": "13244681086321087932946246027856416106585284024824496763706748621681543444582"
-        },
-        {
-          "name": "Will Trump deport 500,000-750,000- people?",
-          "mid": 0.035,
-          "exec": 0.012,
-          "token": "100074770378634056601572485653252702850363676459996771990439989989293515601975"
-        },
-        {
-          "name": "Will Trump deport 750,000-1,000,000 people?",
-          "mid": 0.0115,
-          "exec": 0.007,
-          "token": "49194009556504828848509244326501559253829462790583873936160989575507522044057"
-        },
-        {
-          "name": "Will Trump deport 1,000,000-1,250,000 people?",
-          "mid": 0.004,
-          "exec": 0.003,
-          "token": "13018971792603393862521629014128024641178044618205296260525674415067194037856"
-        },
-        {
-          "name": "Will Trump deport 1,750,000-2,000,000 people?",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "24682525479474221428144937281315825971983904267399062415430320764754931667953"
-        },
-        {
-          "name": "Will Trump deport 1,250,000-1,500,000 people?",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "73414222381656326204771753454630063673548497164758947581648273905027617570612"
-        },
-        {
-          "name": "Will Trump deport 1,500,000-1,750,000 people?",
-          "mid": 0.004,
-          "exec": 0.003,
-          "token": "72354723612769247426741660426331235762851940382312402276325808095604519806766"
-        },
-        {
-          "name": "Will Trump deport 2,000,000 or more people?",
-          "mid": 0.003,
-          "exec": 0.002,
-          "token": "72012724360700510767037780555710363830014634797787940282136454146828040926557"
-        }
-      ]
-    },
-    {
-      "event": "# of views on Bad Bunny halftime show (YouTube) in week 1?",
-      "slug": "of-views-on-bad-bunny-halftime-show-youtube-in-week-1",
-      "type": "LONG",
-      "outcomes": 5,
-      "midSum": 0.943,
-      "execSum": 0.925,
-      "deviation": 5.7,
-      "execDeviation": 7.5,
-      "grossProfitPer100": 7.5,
-      "feesPer100": 0,
-      "profitPer100": 7.5,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
-          "mid": 0.335,
-          "exec": 0.323,
-          "token": "16680383807036024154663222348300164487828801908390056508639441371141589139909"
-        },
-        {
-          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
-          "mid": 0.0395,
-          "exec": 0.037,
-          "token": "45898979561776724675674269540705289853904297480687405423030789870584323984150"
-        },
-        {
-          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get a",
-          "mid": 0.006,
-          "exec": 0.005,
-          "token": "57385942856155711847230446373369941486584487930706621877050702770993063538064"
-        },
-        {
-          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video not b",
-          "mid": 0.0015,
-          "exec": 0,
-          "token": "39476152874187390028742729952537366565958886906066970961716461951681866380936"
-        },
-        {
-          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
-          "mid": 0.56,
-          "exec": 0.56,
-          "token": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
         }
       ]
     },
@@ -264,19 +148,19 @@
       "slug": "how-many-fed-rate-cuts-in-2026",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.028,
-      "execSum": 0.997,
-      "deviation": 2.8,
-      "execDeviation": 0.3,
-      "grossProfitPer100": -0.3,
+      "midSum": 1.0275,
+      "execSum": 0.992,
+      "deviation": 2.75,
+      "execDeviation": 0.8,
+      "grossProfitPer100": -0.8,
       "feesPer100": 0,
-      "profitPer100": -0.3,
+      "profitPer100": -0.8,
       "viable": false,
       "details": [
         {
           "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.066,
-          "exec": 0.065,
+          "mid": 0.0765,
+          "exec": 0.075,
           "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
         {
@@ -299,8 +183,8 @@
         },
         {
           "name": "Will 4 Fed rate cuts happen in 2026?",
-          "mid": 0.135,
-          "exec": 0.13,
+          "mid": 0.12,
+          "exec": 0.11,
           "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
         },
         {
@@ -311,20 +195,20 @@
         },
         {
           "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.029,
-          "exec": 0.028,
+          "mid": 0.0345,
+          "exec": 0.034,
           "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
         },
         {
           "name": "Will 7 Fed rate cuts happen in 2026?",
-          "mid": 0.0135,
-          "exec": 0.013,
+          "mid": 0.0145,
+          "exec": 0.014,
           "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
         },
         {
           "name": "Will 8 Fed rate cuts happen in 2026?",
-          "mid": 0.0115,
-          "exec": 0.01,
+          "mid": 0.009,
+          "exec": 0.008,
           "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
         },
         {
@@ -350,88 +234,6 @@
           "mid": 0.0185,
           "exec": 0.018,
           "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
-        }
-      ]
-    },
-    {
-      "event": "2026 ICC T20 Men’s World Cup Winner",
-      "slug": "2026-icc-t20-mens-world-cup-winner",
-      "type": "SHORT",
-      "outcomes": 11,
-      "midSum": 1.043,
-      "execSum": 0.981,
-      "deviation": 4.3,
-      "execDeviation": 1.9,
-      "grossProfitPer100": -1.9,
-      "feesPer100": 0,
-      "profitPer100": -1.9,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will India win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.4,
-          "exec": 0.39,
-          "token": "36190803750786635844165995661794551716343290080007015981336350366434982775233"
-        },
-        {
-          "name": "Will Australia win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.15,
-          "exec": 0.14,
-          "token": "28877596836825284906528825532184866109967770098921566662217924845975491268438"
-        },
-        {
-          "name": "Will England win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.08,
-          "exec": 0.07,
-          "token": "109446023657991202179869549612292567035455071214919100932024261718229181547214"
-        },
-        {
-          "name": "Will South Africa win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.16,
-          "exec": 0.15,
-          "token": "54644802007454240937143078370147159297869876341797598982143095655493911125903"
-        },
-        {
-          "name": "Will Pakistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.082,
-          "exec": 0.077,
-          "token": "76190129244386305771969693888683878935433573905105493954956506404783670380035"
-        },
-        {
-          "name": "Will New Zealand win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.089,
-          "exec": 0.081,
-          "token": "65008518571572657271211632870860379070221892511688233911018004120158193148414"
-        },
-        {
-          "name": "Will West Indies win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.036,
-          "exec": 0.035,
-          "token": "95028549383885752097876461063574302577289253561522211568257489843435069990371"
-        },
-        {
-          "name": "Will Afghanistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0045,
-          "exec": 0.004,
-          "token": "100224797595385678276742510521942077883901127206633934091955319005396903527705"
-        },
-        {
-          "name": "Will Sri Lanka win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.032,
-          "exec": 0.031,
-          "token": "103630786762206584738662636102754367864881412668966849731168337708616533672029"
-        },
-        {
-          "name": "Will the United States win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0035,
-          "exec": 0.002,
-          "token": "72610582151460304801138152928941305632024243447678281544143361919620548389053"
-        },
-        {
-          "name": "Will Nepal win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
         }
       ]
     }

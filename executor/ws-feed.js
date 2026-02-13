@@ -2056,11 +2056,15 @@ async function main() {
     setInterval(runResolutionHunter, RESOLUTION_HUNTER_INTERVAL);
   }, 90 * 1000);
 
-  // Weather signal executor — runs every 15 min, first run after 120s
-  setTimeout(() => {
-    runWeatherExecutor().catch(e => log("WX", `❌ Uncaught error: ${e.message}`));
-    setInterval(() => runWeatherExecutor().catch(e => log("WX", `❌ Uncaught error: ${e.message}`)), WEATHER_EXECUTOR_INTERVAL);
-  }, 120 * 1000);
+  // Weather signal executor — PERMANENTLY DISABLED (2026-02-13)
+  // Backtest showed NEGATIVE EDGE: 52.7% hit rate, -$234.74 simulated P&L on 129 signals.
+  // Ensemble forecasts catastrophically miscalibrated at bucket granularity.
+  // Code retained in repo for future reference if better data source found.
+  // See weather-backtest.json for full results.
+  // setTimeout(() => {
+  //   runWeatherExecutor().catch(e => log("WX", `❌ Uncaught error: ${e.message}`));
+  //   setInterval(() => runWeatherExecutor().catch(e => log("WX", `❌ Uncaught error: ${e.message}`)), WEATHER_EXECUTOR_INTERVAL);
+  // }, 120 * 1000);
 
   // Daily reset
   scheduleDailyReset();

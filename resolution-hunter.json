@@ -1,114 +1,63 @@
 {
-  "timestamp": "2026-02-13T06:46:23.998Z",
-  "candidates": 8,
-  "executed": 1,
-  "trades": [
-    {
-      "market": "Will the highest temperature in Atlanta be between 56-57°F on February 13?",
-      "outcome": "No",
-      "price": 0.9915,
-      "tokenId": "44121016434409049375380848402136057678738655013936501174241083709908786149012",
-      "liquidity": 9424.06053,
-      "vol24h": 6728.926301000001,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.13",
-      "conditionId": "0xee706fa96fd66c3a8d260db7aed4d90bce5889d04ebeae87ad640f9e0d75d1c6",
-      "executedPrice": 0.992,
-      "executedSize": 15,
-      "spend": "14.88",
-      "fillStatus": "filled",
-      "slippage": "0.0000",
-      "orderID": "0x768a9b543403acd76a931804249e857f0a0ba032e06e13ea95b98b79f29e9665"
-    }
-  ],
+  "timestamp": "2026-02-13T12:31:51.513Z",
+  "candidates": 5,
+  "executed": 0,
+  "trades": [],
   "topCandidates": [
     {
-      "market": "Will the highest temperature in Atlanta be between 56-57°F on February 13?",
+      "market": "Will the price of Ethereum be above $2,100 on February 13?",
       "outcome": "No",
-      "price": 0.9915,
-      "tokenId": "44121016434409049375380848402136057678738655013936501174241083709908786149012",
-      "liquidity": 9424.06053,
-      "vol24h": 6728.926301000001,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.13",
-      "conditionId": "0xee706fa96fd66c3a8d260db7aed4d90bce5889d04ebeae87ad640f9e0d75d1c6"
+      "price": 0.995,
+      "tokenId": "107595196637131754748222103665020899154509181842365407663635191354510872478929",
+      "liquidity": 22337.50684,
+      "vol24h": 47641.89624299999,
+      "endDate": "2026-02-13T17:00:00Z",
+      "expectedProfit": "$0.08",
+      "conditionId": "0x39eaac19958bb2627f56a1c9522d4989a28d382977dce994638ea3eebefe50ef"
     },
     {
-      "market": "Will the highest temperature in Miami be between 72-73°F on February 13?",
+      "market": "Will the price of XRP be above $1.50 on February 13?",
       "outcome": "No",
-      "price": 0.9905,
-      "tokenId": "15423385434865987682978868698737701596735074678456622196151311185597416660946",
-      "liquidity": 1016.12339,
-      "vol24h": 2711.0757660000004,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.14",
-      "conditionId": "0x0c62a7baaa4395ada487289b2af30157dc15464d2c11bea821ffa3ff07355f8c"
+      "price": 0.9935,
+      "tokenId": "69615299729353929925095714694524682239179977664119093113139674132704987242252",
+      "liquidity": 12585.20491,
+      "vol24h": 5790.691153999999,
+      "endDate": "2026-02-13T17:00:00Z",
+      "expectedProfit": "$0.10",
+      "conditionId": "0x9243d310f301ff52c9ec17045d3154769d213fcca83700fa5f0220a028af9823"
     },
     {
-      "market": "Will the highest temperature in Chicago be between 44-45°F on February 13?",
+      "market": "Will the price of XRP be between $1.60 and $1.70 on February 13?",
       "outcome": "No",
-      "price": 0.9905,
-      "tokenId": "51503537920404633431180213870797713703431706144559394844438473428019572749669",
-      "liquidity": 4813.53673,
-      "vol24h": 1812.368504,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.14",
-      "conditionId": "0x932129620e23f92e14a35fcc81bfbcffbd51fe1d49e9f00fbfce807a5853ec1d"
+      "price": 0.9935,
+      "tokenId": "87882827191920310645574113289762172664763490803010627117172272469681634368045",
+      "liquidity": 11898.41682,
+      "vol24h": 2523.489,
+      "endDate": "2026-02-13T17:00:00Z",
+      "expectedProfit": "$0.10",
+      "conditionId": "0xccf2222a55814c83f658f6ef0ca1c506ed33fda3fd96a8d9ea1e6b7697a971b6"
     },
     {
-      "market": "Will the highest temperature in Miami be between 74-75°F on February 13?",
+      "market": "Will the price of Bitcoin be less than $60,000 on February 13?",
       "outcome": "No",
-      "price": 0.9895,
-      "tokenId": "99985961234431197624419223195962158714097433429315677188219266860875736285624",
-      "liquidity": 1776.98816,
-      "vol24h": 3104.747693,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.16",
-      "conditionId": "0x80ba90e90db808c7950320d8df3ed3a0d097fb1c267b11d4d25a68f51105d4dd"
+      "price": 0.992,
+      "tokenId": "26807609793601107614054895842436870782046099560739811344362935379033270011644",
+      "liquidity": 17424.44555,
+      "vol24h": 24786.787087999994,
+      "endDate": "2026-02-13T17:00:00Z",
+      "expectedProfit": "$0.12",
+      "conditionId": "0xddc15a03bc8493c55f61b9f678fbfb7fe6bf078667aed1500a50062f6c1f3149"
     },
     {
-      "market": "Will the highest temperature in Ankara be 13°C on February 13?",
+      "market": "Will Elon Musk post 420-439 tweets from February 6 to February 13, 2026?",
       "outcome": "No",
-      "price": 0.9895,
-      "tokenId": "7340112073555222453704760842525649718617418327394825093976073523054585350682",
-      "liquidity": 528.98335,
-      "vol24h": 1634.510646,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.16",
-      "conditionId": "0xee192e2875d2a3088106dc681281e973ba0950a651edb95c5b3fac91c69b9d70"
-    },
-    {
-      "market": "Will the highest temperature in New York City be between 42-43°F on February 13?",
-      "outcome": "No",
-      "price": 0.989,
-      "tokenId": "163753302602334382041940165066379168856500423857432279946373957328934308182",
-      "liquidity": 2403.55083,
-      "vol24h": 4021.762501000001,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.17",
-      "conditionId": "0xf709caa22e0eb963bd6f9a015361b1aa108698fc1934566c5f8f4241658284bf"
-    },
-    {
-      "market": "Will the highest temperature in Toronto be 3°C or higher on February 13?",
-      "outcome": "No",
-      "price": 0.9865,
-      "tokenId": "85072480840170610142487235940817834178094029385695822892183652933465713216387",
-      "liquidity": 1423.79089,
-      "vol24h": 2403.912666,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.21",
-      "conditionId": "0xbaf32eb7e3c4a31d82e5ab317923f81b2f1996537637e86f5f875f7d5d0c1deb"
-    },
-    {
-      "market": "Will the highest temperature in Ankara be 8°C or below on February 13?",
-      "outcome": "No",
-      "price": 0.975,
-      "tokenId": "99061775755514011122839144868274414760909785541337449819904901089597133008938",
-      "liquidity": 694.43866,
-      "vol24h": 2457.93935,
-      "endDate": "2026-02-13T12:00:00Z",
-      "expectedProfit": "$0.38",
-      "conditionId": "0x92bb8eea53775caf50baee96af4f2b8d38b2e03d1683e623cbf823054f630e48"
+      "price": 0.9835,
+      "tokenId": "26931935981849487432974092272149465194193124280855613375789384756197153004430",
+      "liquidity": 16178.8138,
+      "vol24h": 237614.29732899994,
+      "endDate": "2026-02-13T17:00:00Z",
+      "expectedProfit": "$0.25",
+      "conditionId": "0xf44be44443ce01401fd5f2f90fe8564d22ac66c513d059ad6e1d204cbcf1246b"
     }
   ]
 }

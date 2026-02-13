@@ -1,17 +1,330 @@
 {
-  "timestamp": "2026-02-13T04:04:20.339Z",
-  "runtime": "33.2s",
+  "timestamp": "2026-02-13T12:00:57.121Z",
+  "runtime": "43.3s",
   "stats": {
     "kalshiEvents": 980,
     "polyEvents": 600,
-    "eventPairs": 709,
+    "eventPairs": 733,
     "kMarketsChecked": 100,
-    "totalPairs": 4,
-    "signals": 0,
-    "aligned": 4
+    "totalPairs": 17,
+    "signals": 11,
+    "aligned": 6
   },
-  "signals": [],
+  "signals": [
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-T0.1",
+        "yesPrice": 0.02,
+        "askPrice": 0.13,
+        "volume": 0
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B4.8",
+        "yesPrice": 0.02,
+        "askPrice": 0.07,
+        "volume": 523
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B4.3",
+        "yesPrice": 0.02,
+        "askPrice": 0.07,
+        "volume": 2459
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B0.8",
+        "yesPrice": 0.02,
+        "askPrice": 0.1,
+        "volume": 0
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B0.3",
+        "yesPrice": 0.02,
+        "askPrice": 0.1,
+        "volume": 0
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B1.3",
+        "yesPrice": 0.03,
+        "askPrice": 0.1,
+        "volume": 14
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.24,
+      "absDiff": 0.24,
+      "pct": 800,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B3.3",
+        "yesPrice": 0.04,
+        "askPrice": 0.13,
+        "volume": 195
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.23,
+      "absDiff": 0.23,
+      "pct": 575,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B1.8",
+        "yesPrice": 0.04,
+        "askPrice": 0.15,
+        "volume": 0
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.23,
+      "absDiff": 0.23,
+      "pct": 575,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B3.8",
+        "yesPrice": 0.08,
+        "askPrice": 0.13,
+        "volume": 662
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.19,
+      "absDiff": 0.19,
+      "pct": 237.5,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B2.8",
+        "yesPrice": 0.13,
+        "askPrice": 0.21,
+        "volume": 66
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.14,
+      "absDiff": 0.14,
+      "pct": 107.7,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B2.3",
+        "yesPrice": 0.17,
+        "askPrice": 0.22,
+        "volume": 673
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.1,
+      "absDiff": 0.1,
+      "pct": 58.8,
+      "signal": "POLY_EXPENSIVE"
+    }
+  ],
   "aligned": [
+    {
+      "eventScore": 0.726,
+      "marketScore": 0.429,
+      "combined": 0.577,
+      "kalshi": {
+        "event": "Ohio Governor winner?",
+        "eventTicker": "GOVPARTYOH-26",
+        "title": "Will the Democratic party win the governorship in Ohio",
+        "ticker": "GOVPARTYOH-26-D",
+        "yesPrice": 0.36,
+        "askPrice": 0.38,
+        "volume": 60735
+      },
+      "poly": {
+        "event": "Ohio Governor Election Winner",
+        "title": "Will the Democrats win the Ohio governor race in 2026?",
+        "slug": "will-the-democrats-win-the-ohio-governor-race-in-2026",
+        "yesPrice": 0.38,
+        "volume24h": 5604.76,
+        "liquidity": 41308.9685
+      },
+      "diff": -0.02,
+      "absDiff": 0.02,
+      "pct": 5.6,
+      "signal": "ALIGNED"
+    },
     {
       "eventScore": 0.715,
       "marketScore": 0.541,
@@ -23,19 +336,45 @@
         "ticker": "KXJPNPM-26FEB08-STAK",
         "yesPrice": 0.98,
         "askPrice": 0.99,
-        "volume": 33716
+        "volume": 33766
       },
       "poly": {
         "event": "Prime Minister of Japan after snap election?",
         "title": "Will Sanae Takaichi be the Prime Minister of Japan as a result of the 2026 snap election?",
         "slug": "will-sanae-takaichi-be-the-prime-minister-of-japan-as-a-result-of-the-2026-snap-election",
-        "yesPrice": 0.9995,
-        "volume24h": 46953.18012100002,
-        "liquidity": 70501.15265
+        "yesPrice": 0.9985,
+        "volume24h": 27182.818699999996,
+        "liquidity": 73116.81529
       },
-      "diff": -0.0195,
-      "absDiff": 0.0195,
-      "pct": 2,
+      "diff": -0.0185,
+      "absDiff": 0.0185,
+      "pct": 1.9,
+      "signal": "ALIGNED"
+    },
+    {
+      "eventScore": 0.756,
+      "marketScore": 0.383,
+      "combined": 0.569,
+      "kalshi": {
+        "event": "Will the Supreme Court rule in favor of Trump's tariffs?",
+        "eventTicker": "KXDJTVOSTARIFFS",
+        "title": "Will the Supreme Court rule in favor of Trump in V.O.S. Selections, Inc. v. Trump",
+        "ticker": "KXDJTVOSTARIFFS",
+        "yesPrice": 0.27,
+        "askPrice": 0.28,
+        "volume": 5051873
+      },
+      "poly": {
+        "event": "Supreme Court rules in favor of Trump's tariffs?",
+        "title": "Supreme Court rules in favor of Trump's tariffs?",
+        "slug": "will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
+        "yesPrice": 0.285,
+        "volume24h": 42863.41016200001,
+        "liquidity": 66442.3735
+      },
+      "diff": -0.015,
+      "absDiff": 0.015,
+      "pct": 5.6,
       "signal": "ALIGNED"
     },
     {
@@ -49,19 +388,19 @@
         "ticker": "KXFEDCHAIRNOM-29-JS",
         "yesPrice": 0.03,
         "askPrice": 0.04,
-        "volume": 74963296
+        "volume": 75434889
       },
       "poly": {
         "event": "Who will Trump nominate as Fed Chair?",
         "title": "Will Trump nominate Judy Shelton as the next Fed chair?",
         "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
-        "yesPrice": 0.0435,
-        "volume24h": 2129129.0666129994,
-        "liquidity": 1407410.20485
+        "yesPrice": 0.0425,
+        "volume24h": 2214228.1774809994,
+        "liquidity": 2122055.52422
       },
-      "diff": -0.0135,
-      "absDiff": 0.0135,
-      "pct": 45,
+      "diff": -0.0125,
+      "absDiff": 0.0125,
+      "pct": 41.7,
       "signal": "ALIGNED"
     },
     {
@@ -75,50 +414,362 @@
         "ticker": "KXFEDCHAIRNOM-29-KW",
         "yesPrice": 0.94,
         "askPrice": 0.95,
-        "volume": 26571450
+        "volume": 26628437
       },
       "poly": {
         "event": "Who will Trump nominate as Fed Chair?",
         "title": "Will Trump nominate Kevin Warsh as the next Fed chair?",
         "slug": "will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
-        "yesPrice": 0.945,
-        "volume24h": 675234.5181730011,
-        "liquidity": 375098.43318
+        "yesPrice": 0.942,
+        "volume24h": 564494.9945510011,
+        "liquidity": 540956.12925
       },
-      "diff": -0.005,
-      "absDiff": 0.005,
-      "pct": 0.5,
+      "diff": -0.002,
+      "absDiff": 0.002,
+      "pct": 0.2,
       "signal": "ALIGNED"
     },
     {
-      "eventScore": 0.756,
-      "marketScore": 0.383,
-      "combined": 0.569,
+      "eventScore": 0.726,
+      "marketScore": 0.441,
+      "combined": 0.583,
       "kalshi": {
-        "event": "Will the Supreme Court rule in favor of Trump's tariffs?",
-        "eventTicker": "KXDJTVOSTARIFFS",
-        "title": "Will the Supreme Court rule in favor of Trump in V.O.S. Selections, Inc. v. Trump",
-        "ticker": "KXDJTVOSTARIFFS",
-        "yesPrice": 0.26,
-        "askPrice": 0.27,
-        "volume": 5046686
+        "event": "Ohio Governor winner?",
+        "eventTicker": "GOVPARTYOH-26",
+        "title": "Will the Republican party win the governorship in Ohio",
+        "ticker": "GOVPARTYOH-26-R",
+        "yesPrice": 0.62,
+        "askPrice": 0.63,
+        "volume": 54786
       },
       "poly": {
-        "event": "Supreme Court rules in favor of Trump's tariffs?",
-        "title": "Supreme Court rules in favor of Trump's tariffs?",
-        "slug": "will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
-        "yesPrice": 0.265,
-        "volume24h": 17582.903298,
-        "liquidity": 74126.0452
+        "event": "Ohio Governor Election Winner",
+        "title": "Will the Republicans win the Ohio governor race in 2026?",
+        "slug": "will-the-republicans-win-the-ohio-governor-race-in-2026",
+        "yesPrice": 0.62,
+        "volume24h": 1048.011601,
+        "liquidity": 46940.9781
       },
-      "diff": -0.005,
-      "absDiff": 0.005,
-      "pct": 1.9,
+      "diff": 0,
+      "absDiff": 0,
+      "pct": 0,
       "signal": "ALIGNED"
     }
   ],
   "all": [
     {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-T0.1",
+        "yesPrice": 0.02,
+        "askPrice": 0.13,
+        "volume": 0
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B4.8",
+        "yesPrice": 0.02,
+        "askPrice": 0.07,
+        "volume": 523
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B4.3",
+        "yesPrice": 0.02,
+        "askPrice": 0.07,
+        "volume": 2459
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B0.8",
+        "yesPrice": 0.02,
+        "askPrice": 0.1,
+        "volume": 0
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B0.3",
+        "yesPrice": 0.02,
+        "askPrice": 0.1,
+        "volume": 0
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.25,
+      "absDiff": 0.25,
+      "pct": 1250,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B1.3",
+        "yesPrice": 0.03,
+        "askPrice": 0.1,
+        "volume": 14
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.24,
+      "absDiff": 0.24,
+      "pct": 800,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B3.3",
+        "yesPrice": 0.04,
+        "askPrice": 0.13,
+        "volume": 195
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.23,
+      "absDiff": 0.23,
+      "pct": 575,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B1.8",
+        "yesPrice": 0.04,
+        "askPrice": 0.15,
+        "volume": 0
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.23,
+      "absDiff": 0.23,
+      "pct": 575,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B3.8",
+        "yesPrice": 0.08,
+        "askPrice": 0.13,
+        "volume": 662
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.19,
+      "absDiff": 0.19,
+      "pct": 237.5,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B2.8",
+        "yesPrice": 0.13,
+        "askPrice": 0.21,
+        "volume": 66
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.14,
+      "absDiff": 0.14,
+      "pct": 107.7,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.9,
+      "marketScore": 0.626,
+      "combined": 0.763,
+      "kalshi": {
+        "event": "GDP growth in 2026?",
+        "eventTicker": "KXGDPYEAR-26",
+        "title": "GDP growth in 2026?",
+        "ticker": "KXGDPYEAR-26-B2.3",
+        "yesPrice": 0.17,
+        "askPrice": 0.22,
+        "volume": 673
+      },
+      "poly": {
+        "event": "UK GDP growth in Q1 2026?",
+        "title": "Will UK GDP growth in Q1 2026 be negative?",
+        "slug": "will-uk-gdp-growth-in-q1-2026-be-negative-986",
+        "yesPrice": 0.27,
+        "volume24h": 400,
+        "liquidity": 1106.7197
+      },
+      "diff": -0.1,
+      "absDiff": 0.1,
+      "pct": 58.8,
+      "signal": "POLY_EXPENSIVE"
+    },
+    {
+      "eventScore": 0.726,
+      "marketScore": 0.429,
+      "combined": 0.577,
+      "kalshi": {
+        "event": "Ohio Governor winner?",
+        "eventTicker": "GOVPARTYOH-26",
+        "title": "Will the Democratic party win the governorship in Ohio",
+        "ticker": "GOVPARTYOH-26-D",
+        "yesPrice": 0.36,
+        "askPrice": 0.38,
+        "volume": 60735
+      },
+      "poly": {
+        "event": "Ohio Governor Election Winner",
+        "title": "Will the Democrats win the Ohio governor race in 2026?",
+        "slug": "will-the-democrats-win-the-ohio-governor-race-in-2026",
+        "yesPrice": 0.38,
+        "volume24h": 5604.76,
+        "liquidity": 41308.9685
+      },
+      "diff": -0.02,
+      "absDiff": 0.02,
+      "pct": 5.6,
+      "signal": "ALIGNED"
+    },
+    {
       "eventScore": 0.715,
       "marketScore": 0.541,
       "combined": 0.628,
@@ -129,19 +780,45 @@
         "ticker": "KXJPNPM-26FEB08-STAK",
         "yesPrice": 0.98,
         "askPrice": 0.99,
-        "volume": 33716
+        "volume": 33766
       },
       "poly": {
         "event": "Prime Minister of Japan after snap election?",
         "title": "Will Sanae Takaichi be the Prime Minister of Japan as a result of the 2026 snap election?",
         "slug": "will-sanae-takaichi-be-the-prime-minister-of-japan-as-a-result-of-the-2026-snap-election",
-        "yesPrice": 0.9995,
-        "volume24h": 46953.18012100002,
-        "liquidity": 70501.15265
+        "yesPrice": 0.9985,
+        "volume24h": 27182.818699999996,
+        "liquidity": 73116.81529
       },
-      "diff": -0.0195,
-      "absDiff": 0.0195,
-      "pct": 2,
+      "diff": -0.0185,
+      "absDiff": 0.0185,
+      "pct": 1.9,
+      "signal": "ALIGNED"
+    },
+    {
+      "eventScore": 0.756,
+      "marketScore": 0.383,
+      "combined": 0.569,
+      "kalshi": {
+        "event": "Will the Supreme Court rule in favor of Trump's tariffs?",
+        "eventTicker": "KXDJTVOSTARIFFS",
+        "title": "Will the Supreme Court rule in favor of Trump in V.O.S. Selections, Inc. v. Trump",
+        "ticker": "KXDJTVOSTARIFFS",
+        "yesPrice": 0.27,
+        "askPrice": 0.28,
+        "volume": 5051873
+      },
+      "poly": {
+        "event": "Supreme Court rules in favor of Trump's tariffs?",
+        "title": "Supreme Court rules in favor of Trump's tariffs?",
+        "slug": "will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
+        "yesPrice": 0.285,
+        "volume24h": 42863.41016200001,
+        "liquidity": 66442.3735
+      },
+      "diff": -0.015,
+      "absDiff": 0.015,
+      "pct": 5.6,
       "signal": "ALIGNED"
     },
     {
@@ -155,19 +832,19 @@
         "ticker": "KXFEDCHAIRNOM-29-JS",
         "yesPrice": 0.03,
         "askPrice": 0.04,
-        "volume": 74963296
+        "volume": 75434889
       },
       "poly": {
         "event": "Who will Trump nominate as Fed Chair?",
         "title": "Will Trump nominate Judy Shelton as the next Fed chair?",
         "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
-        "yesPrice": 0.0435,
-        "volume24h": 2129129.0666129994,
-        "liquidity": 1407410.20485
+        "yesPrice": 0.0425,
+        "volume24h": 2214228.1774809994,
+        "liquidity": 2122055.52422
       },
-      "diff": -0.0135,
-      "absDiff": 0.0135,
-      "pct": 45,
+      "diff": -0.0125,
+      "absDiff": 0.0125,
+      "pct": 41.7,
       "signal": "ALIGNED"
     },
     {
@@ -181,45 +858,45 @@
         "ticker": "KXFEDCHAIRNOM-29-KW",
         "yesPrice": 0.94,
         "askPrice": 0.95,
-        "volume": 26571450
+        "volume": 26628437
       },
       "poly": {
         "event": "Who will Trump nominate as Fed Chair?",
         "title": "Will Trump nominate Kevin Warsh as the next Fed chair?",
         "slug": "will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
-        "yesPrice": 0.945,
-        "volume24h": 675234.5181730011,
-        "liquidity": 375098.43318
+        "yesPrice": 0.942,
+        "volume24h": 564494.9945510011,
+        "liquidity": 540956.12925
       },
-      "diff": -0.005,
-      "absDiff": 0.005,
-      "pct": 0.5,
+      "diff": -0.002,
+      "absDiff": 0.002,
+      "pct": 0.2,
       "signal": "ALIGNED"
     },
     {
-      "eventScore": 0.756,
-      "marketScore": 0.383,
-      "combined": 0.569,
+      "eventScore": 0.726,
+      "marketScore": 0.441,
+      "combined": 0.583,
       "kalshi": {
-        "event": "Will the Supreme Court rule in favor of Trump's tariffs?",
-        "eventTicker": "KXDJTVOSTARIFFS",
-        "title": "Will the Supreme Court rule in favor of Trump in V.O.S. Selections, Inc. v. Trump",
-        "ticker": "KXDJTVOSTARIFFS",
-        "yesPrice": 0.26,
-        "askPrice": 0.27,
-        "volume": 5046686
+        "event": "Ohio Governor winner?",
+        "eventTicker": "GOVPARTYOH-26",
+        "title": "Will the Republican party win the governorship in Ohio",
+        "ticker": "GOVPARTYOH-26-R",
+        "yesPrice": 0.62,
+        "askPrice": 0.63,
+        "volume": 54786
       },
       "poly": {
-        "event": "Supreme Court rules in favor of Trump's tariffs?",
-        "title": "Supreme Court rules in favor of Trump's tariffs?",
-        "slug": "will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
-        "yesPrice": 0.265,
-        "volume24h": 17582.903298,
-        "liquidity": 74126.0452
+        "event": "Ohio Governor Election Winner",
+        "title": "Will the Republicans win the Ohio governor race in 2026?",
+        "slug": "will-the-republicans-win-the-ohio-governor-race-in-2026",
+        "yesPrice": 0.62,
+        "volume24h": 1048.011601,
+        "liquidity": 46940.9781
       },
-      "diff": -0.005,
-      "absDiff": 0.005,
-      "pct": 1.9,
+      "diff": 0,
+      "absDiff": 0,
+      "pct": 0,
       "signal": "ALIGNED"
     }
   ]
