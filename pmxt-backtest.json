@@ -1,0 +1,52 @@
+{
+  "validation_date": "2026-02-13T12:48:00Z",
+  "verdict": "KILL_THE_CRON",
+  "confidence": "HIGH",
+  "summary": "PMXT scanner produces ZERO valid signals. 100% of divergence signals are false positives from bad fuzzy matching.",
+  "analysis": {
+    "total_pairs_found": 17,
+    "false_positive_signals": 11,
+    "legitimate_pairs": 6,
+    "legitimate_pairs_with_divergence": 0,
+    "false_positive_rate": "100%",
+    "details": {
+      "false_matches": [
+        {
+          "issue": "US GDP growth brackets matched to UK GDP Q1 negative — completely different markets, different countries, different question types",
+          "count": 11,
+          "all_signals_from_this_one_bad_match": true
+        }
+      ],
+      "legitimate_matches": [
+        { "market": "Ohio Governor winner", "diff": "0-2¢", "signal": "ALIGNED" },
+        { "market": "Japan Prime Minister", "diff": "1.85¢", "signal": "ALIGNED" },
+        { "market": "Supreme Court Trump tariffs", "diff": "1.5¢", "signal": "ALIGNED" },
+        { "market": "Trump Fed Chair nominee (Shelton)", "diff": "1.25¢", "signal": "ALIGNED", "match_quality": 0.948 },
+        { "market": "Trump Fed Chair nominee (Warsh)", "diff": "0.2¢", "signal": "ALIGNED", "match_quality": 0.947 }
+      ]
+    }
+  },
+  "root_causes": [
+    "Fuzzy matching thresholds too low (0.30 event, 0.35 market) — lets through garbage pairs",
+    "No semantic validation — matches US GDP to UK GDP because words overlap",
+    "Kalshi has many bracket markets (>X%, <Y%) that match to binary Polymarket questions",
+    "cross-platform-results.json even worse: matched 'Senate Control' to 'Grenell leading Venezuela'",
+    "Only 17 pairs found out of 980×600 possible — scanner coverage is tiny even before quality issues"
+  ],
+  "recommendation": {
+    "action": "DISABLE_CRON_IMMEDIATELY",
+    "reasoning": [
+      "Zero valid divergence signals in current output",
+      "The 6 legitimate pairs all show alignment (<3¢ diff), proving markets agree when properly matched",
+      "Scanner burns compute/tokens every 4 hours for nothing",
+      "Even if matching were perfect, the legitimate pairs show Kalshi and Polymarket price nearly identically — no exploitable edge"
+    ],
+    "if_revisiting_later": [
+      "Need curated pair mapping (manual or LLM-verified), not fuzzy string matching",
+      "Focus on high-overlap categories: politics, Fed, major events",
+      "Require match confidence >0.85 before generating signals",
+      "Add entity-level validation (same country, same time period, same question type)"
+    ]
+  },
+  "backtest_feasibility": "NOT_POSSIBLE — no historical divergence data exists because the scanner has never produced a valid signal to track. The 6 legitimate pairs are all aligned, confirming there's no cross-platform edge to exploit."
+}

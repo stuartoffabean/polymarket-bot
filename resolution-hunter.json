@@ -1,62 +1,51 @@
 {
-  "timestamp": "2026-02-13T12:31:51.513Z",
-  "candidates": 5,
+  "timestamp": "2026-02-13T12:53:18.104Z",
+  "candidates": 4,
   "executed": 0,
   "trades": [],
   "topCandidates": [
     {
-      "market": "Will the price of Ethereum be above $2,100 on February 13?",
+      "market": "Will the price of XRP be between $1.60 and $1.70 on February 13?",
       "outcome": "No",
       "price": 0.995,
+      "tokenId": "87882827191920310645574113289762172664763490803010627117172272469681634368045",
+      "liquidity": 11888.35542,
+      "vol24h": 2523.489,
+      "endDate": "2026-02-13T17:00:00Z",
+      "expectedProfit": "$0.08",
+      "conditionId": "0xccf2222a55814c83f658f6ef0ca1c506ed33fda3fd96a8d9ea1e6b7697a971b6"
+    },
+    {
+      "market": "Will the price of Ethereum be above $2,100 on February 13?",
+      "outcome": "No",
+      "price": 0.9945,
       "tokenId": "107595196637131754748222103665020899154509181842365407663635191354510872478929",
-      "liquidity": 22337.50684,
+      "liquidity": 21752.55942,
       "vol24h": 47641.89624299999,
       "endDate": "2026-02-13T17:00:00Z",
       "expectedProfit": "$0.08",
       "conditionId": "0x39eaac19958bb2627f56a1c9522d4989a28d382977dce994638ea3eebefe50ef"
     },
     {
-      "market": "Will the price of XRP be above $1.50 on February 13?",
+      "market": "Will Elon Musk post 440-459 tweets from February 6 to February 13, 2026?",
       "outcome": "No",
-      "price": 0.9935,
-      "tokenId": "69615299729353929925095714694524682239179977664119093113139674132704987242252",
-      "liquidity": 12585.20491,
-      "vol24h": 5790.691153999999,
+      "price": 0.994,
+      "tokenId": "31390482353732948423156014713174956709029974894266397465545283196377558418180",
+      "liquidity": 22535.5959,
+      "vol24h": 263472.35059700004,
       "endDate": "2026-02-13T17:00:00Z",
-      "expectedProfit": "$0.10",
-      "conditionId": "0x9243d310f301ff52c9ec17045d3154769d213fcca83700fa5f0220a028af9823"
-    },
-    {
-      "market": "Will the price of XRP be between $1.60 and $1.70 on February 13?",
-      "outcome": "No",
-      "price": 0.9935,
-      "tokenId": "87882827191920310645574113289762172664763490803010627117172272469681634368045",
-      "liquidity": 11898.41682,
-      "vol24h": 2523.489,
-      "endDate": "2026-02-13T17:00:00Z",
-      "expectedProfit": "$0.10",
-      "conditionId": "0xccf2222a55814c83f658f6ef0ca1c506ed33fda3fd96a8d9ea1e6b7697a971b6"
-    },
-    {
-      "market": "Will the price of Bitcoin be less than $60,000 on February 13?",
-      "outcome": "No",
-      "price": 0.992,
-      "tokenId": "26807609793601107614054895842436870782046099560739811344362935379033270011644",
-      "liquidity": 17424.44555,
-      "vol24h": 24786.787087999994,
-      "endDate": "2026-02-13T17:00:00Z",
-      "expectedProfit": "$0.12",
-      "conditionId": "0xddc15a03bc8493c55f61b9f678fbfb7fe6bf078667aed1500a50062f6c1f3149"
+      "expectedProfit": "$0.09",
+      "conditionId": "0x814bf672aa616cd0c702d242e0e894799649a7041fd9ed62756a7d8157912c31"
     },
     {
       "market": "Will Elon Musk post 420-439 tweets from February 6 to February 13, 2026?",
       "outcome": "No",
-      "price": 0.9835,
+      "price": 0.9825,
       "tokenId": "26931935981849487432974092272149465194193124280855613375789384756197153004430",
-      "liquidity": 16178.8138,
+      "liquidity": 23359.27809,
       "vol24h": 237614.29732899994,
       "endDate": "2026-02-13T17:00:00Z",
-      "expectedProfit": "$0.25",
+      "expectedProfit": "$0.27",
       "conditionId": "0xf44be44443ce01401fd5f2f90fe8564d22ac66c513d059ad6e1d204cbcf1246b"
     }
   ]

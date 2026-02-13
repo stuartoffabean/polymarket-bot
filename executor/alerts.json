@@ -1596,9 +1596,81 @@
       "avgPrice": -0.0125,
       "message": "STOP_LOSS: Sold 52.51381900000001 @ 0.004",
       "timestamp": "2026-02-13T12:36:48.944Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "86069854998126295712",
+      "outcome": "Yes",
+      "market": "0x06673e5550e928446020a6b6474ab19501b7abc250934535776844caa8ef682a",
+      "price": 0.02,
+      "pnlPct": "-74.5%",
+      "size": 15.105499999999992,
+      "avgPrice": 0.0783,
+      "message": "AUTO-SELLING [weather]",
+      "timestamp": "2026-02-13T12:37:02.367Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "86069854998126295712",
+      "outcome": "Yes",
+      "market": "0x06673e5550e928446020a6b6474ab19501b7abc250934535776844caa8ef682a",
+      "price": 0.02,
+      "pnlPct": null,
+      "size": 15.105499999999992,
+      "avgPrice": 0.0783,
+      "message": "STOP_LOSS: Sold 15.105499999999992 @ 0.02",
+      "timestamp": "2026-02-13T12:37:03.238Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "89850023208665827912",
+      "outcome": "Yes",
+      "market": "0x905107460e444247972c1ad28fe208ab1d1be09ed180327828dce6cbcd9c19c8",
+      "price": 0.041,
+      "pnlPct": "-100.0%",
+      "size": 0.004775000000007523,
+      "avgPrice": 193.5292,
+      "message": "AUTO-SELLING [weather]",
+      "timestamp": "2026-02-13T12:37:03.673Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "89850023208665827912",
+      "outcome": "Yes",
+      "market": "0x905107460e444247972c1ad28fe208ab1d1be09ed180327828dce6cbcd9c19c8",
+      "price": 0.041,
+      "pnlPct": null,
+      "size": 0.004775000000007523,
+      "avgPrice": 193.5292,
+      "message": "STOP_LOSS: Sold 0.004775000000007523 @ 0.041",
+      "timestamp": "2026-02-13T12:37:04.491Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "28321426810817884323",
+      "outcome": "No",
+      "market": "0x1509e483198a3810002d69b28e3039dfc1ad645313b072c80d7b40666a5fbbfa",
+      "price": 0.13,
+      "pnlPct": "-99.7%",
+      "size": 0.009999999999999787,
+      "avgPrice": 44.79,
+      "message": "AUTO-SELLING [weather]",
+      "timestamp": "2026-02-13T12:37:05.617Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "28321426810817884323",
+      "outcome": "No",
+      "market": "0x1509e483198a3810002d69b28e3039dfc1ad645313b072c80d7b40666a5fbbfa",
+      "price": 0.13,
+      "pnlPct": null,
+      "size": 0.009999999999999787,
+      "avgPrice": 44.79,
+      "message": "STOP_LOSS: Sold 0.009999999999999787 @ 0.13",
+      "timestamp": "2026-02-13T12:37:06.430Z"
     }
   ],
   "circuitBreakerTripped": false,
-  "survivalMode": true,
+  "survivalMode": false,
   "emergencyMode": false
 }

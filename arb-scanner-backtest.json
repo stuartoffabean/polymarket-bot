@@ -1,0 +1,55 @@
+{
+  "backtestDate": "2026-02-13T12:48:00Z",
+  "methodology": {
+    "description": "Analyzed closed NegRisk events from Gamma API to estimate pre-resolution YES price sums and identify arb opportunities",
+    "priceEstimation": "Used (finalPrice - oneDayPriceChange) to estimate pre-resolution mid prices since historical order books are unavailable",
+    "thresholds": {
+      "flaggedDeviation": 0.025,
+      "viableArbProfit": 0.05,
+      "minAbsoluteProfit": 0.50,
+      "maxTradeSize": 20
+    }
+  },
+  "dataCoverage": {
+    "totalEventsScanned": 850,
+    "dateRange": "2026-02-12 to 2026-02-13 (~1 day)",
+    "negRiskEventsWith3PlusMarkets": 42,
+    "note": "API returns events by closedTime descending; ~850 events/day due to high-frequency crypto and sports markets. 30-day scan would require ~25,000 API calls, impractical."
+  },
+  "results": {
+    "viableArbs_sumBelow0.95": 0,
+    "flaggedEvents_sumBelow0.975": 0,
+    "closestToArb": {
+      "title": "Once Caldas vs. CDP Junior FC",
+      "prePriceSum": 0.984,
+      "deviation": 0.016,
+      "volume": 6391,
+      "note": "Low volume sports market, 1.6% deviation — below 5% threshold"
+    },
+    "medianPrePriceSum": 1.047,
+    "averagePrePriceSum": 1.138,
+    "distribution": {
+      "below_0.95": 0,
+      "between_0.95_and_1.0": 3,
+      "between_1.0_and_1.05": 5,
+      "between_1.05_and_1.1": 3,
+      "above_1.1": 9
+    }
+  },
+  "keyFindings": [
+    "ZERO viable arb opportunities found across 42 NegRisk events in ~1 day of data",
+    "Most NegRisk events have YES sums ABOVE 1.0 (median 1.047), meaning the market overprices outcomes — the opposite of an arb opportunity",
+    "The 3 events with sums below 1.0 had deviations of only 0.6%, 1.5%, and 1.6% — well below the 5% threshold",
+    "Low-deviation events were low-volume sports markets ($6k-$183k), not exploitable at meaningful size",
+    "Weather markets and high-volume sports consistently showed sums above 1.0 (vig/overround built in)"
+  ],
+  "limitations": [
+    "Cannot access historical order book snapshots — only post-resolution prices with 1-day change estimates",
+    "1-day price change is an UPPER BOUND on deviation since it includes the resolution move itself",
+    "Only ~1 day of data covered due to API pagination limits vs high event volume",
+    "Ask prices (what you'd actually pay) are higher than mid prices, making real execution even worse",
+    "FOK fill rates unknown — partial fills on illiquid legs would create directional risk"
+  ],
+  "recommendation": "DISABLE_ARB_AUTO_EXECUTION",
+  "reasoning": "The NegRisk arb strategy assumes markets frequently misprice multi-outcome events with YES sums below $0.95. In practice, Polymarket NegRisk markets show the OPPOSITE pattern: the built-in overround/vig means YES sums typically exceed $1.00. Even using generous pre-resolution estimates, zero opportunities exceeded the 5% threshold. The strategy has no edge at current parameter settings and would never execute."
+}

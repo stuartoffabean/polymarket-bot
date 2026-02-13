@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-13T12:31:25.796Z",
+  "timestamp": "2026-02-13T12:52:49.835Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
     "flagged": 2,
-    "viable": 1
+    "viable": 2
   },
   "opportunities": [
     {
@@ -12,13 +12,13 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.8195,
-      "execSum": 0.755,
-      "deviation": 18.05,
-      "execDeviation": 24.5,
-      "grossProfitPer100": 24.5,
+      "midSum": 0.8155,
+      "execSum": 0.752,
+      "deviation": 18.45,
+      "execDeviation": 24.8,
+      "grossProfitPer100": 24.8,
       "feesPer100": 0,
-      "profitPer100": 24.5,
+      "profitPer100": 24.8,
       "viable": true,
       "details": [
         {
@@ -35,14 +35,14 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.0335,
-          "exec": 0.032,
+          "mid": 0.032,
+          "exec": 0.031,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.0625,
-          "exec": 0.061,
+          "mid": 0.0605,
+          "exec": 0.059,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -53,7 +53,7 @@
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.112,
+          "mid": 0.1115,
           "exec": 0.105,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
@@ -144,96 +144,78 @@
       ]
     },
     {
-      "event": "How many Fed rate cuts in 2026?",
-      "slug": "how-many-fed-rate-cuts-in-2026",
-      "type": "SHORT",
-      "outcomes": 13,
-      "midSum": 1.0275,
-      "execSum": 0.992,
-      "deviation": 2.75,
-      "execDeviation": 0.8,
-      "grossProfitPer100": -0.8,
+      "event": "Elon Musk # tweets February 12 - February 14, 2026?",
+      "slug": "elon-musk-of-tweets-february-12-february-14",
+      "type": "LONG",
+      "outcomes": 10,
+      "midSum": 0.9545,
+      "execSum": 0.922,
+      "deviation": 4.55,
+      "execDeviation": 7.8,
+      "grossProfitPer100": 7.8,
       "feesPer100": 0,
-      "profitPer100": -0.8,
-      "viable": false,
+      "profitPer100": 7.8,
+      "viable": true,
       "details": [
         {
-          "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.0765,
-          "exec": 0.075,
-          "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
+          "name": "Will Elon Musk post 240+ tweets from February 12 to February",
+          "mid": 0.004,
+          "exec": 0.002,
+          "token": "15034215811456036040764278458175248051748617668317505703784824112629572872623"
         },
         {
-          "name": "Will 1 Fed rate cut happen in 2026?",
-          "mid": 0.185,
-          "exec": 0.18,
-          "token": "113379839734351069617987084078322474966003108854908079701423911002443710490196"
+          "name": "Will Elon Musk post 40-64 tweets from February 12 to Februar",
+          "mid": 0.268,
+          "exec": 0.267,
+          "token": "19160696202182641569221548842553238846261739954089635121321811350693102881692"
         },
         {
-          "name": "Will 2 Fed rate cuts happen in 2026?",
-          "mid": 0.255,
-          "exec": 0.25,
-          "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
+          "name": "Will Elon Musk post 115-139 tweets from February 12 to Febru",
+          "mid": 0.065,
+          "exec": 0.06,
+          "token": "79141348498154610869711763517359858283096073835629175956943035939212249740025"
         },
         {
-          "name": "Will 3 Fed rate cuts happen in 2026?",
-          "mid": 0.245,
-          "exec": 0.24,
-          "token": "95835705062472305459663741402900736177330733688944910993896545106260819635212"
+          "name": "Will Elon Musk post 140-164 tweets from February 12 to Febru",
+          "mid": 0.0245,
+          "exec": 0.021,
+          "token": "25138700007518255169733220174010858299639620152049125875379405583652485696742"
         },
         {
-          "name": "Will 4 Fed rate cuts happen in 2026?",
-          "mid": 0.12,
-          "exec": 0.11,
-          "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
+          "name": "Will Elon Musk post 165-189 tweets from February 12 to Febru",
+          "mid": 0.013,
+          "exec": 0.011,
+          "token": "54334899525658175201298870146327190676678802829019336950532850893136954707611"
         },
         {
-          "name": "Will 5 Fed rate cuts happen in 2026?",
-          "mid": 0.055,
-          "exec": 0.05,
-          "token": "29213252446661789250484965446100709214117256176608501943249094649759520097655"
+          "name": "Will Elon Musk post 190-214 tweets from February 12 to Febru",
+          "mid": 0.004,
+          "exec": 0.003,
+          "token": "30836670145539355582839471359688902101341973319407683130497170933609025408928"
         },
         {
-          "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.0345,
-          "exec": 0.034,
-          "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
+          "name": "Will Elon Musk post <40 tweets from February 12 to February ",
+          "mid": 0.05,
+          "exec": 0.044,
+          "token": "25099567166111281846302244039860015689241816252363247441459396207876081288557"
         },
         {
-          "name": "Will 7 Fed rate cuts happen in 2026?",
-          "mid": 0.0145,
-          "exec": 0.014,
-          "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
+          "name": "Will Elon Musk post 65-89 tweets from February 12 to Februar",
+          "mid": 0.36,
+          "exec": 0.35,
+          "token": "101737982205729137869548634259137456035523623969460170960358162453586274812342"
         },
         {
-          "name": "Will 8 Fed rate cuts happen in 2026?",
-          "mid": 0.009,
-          "exec": 0.008,
-          "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
+          "name": "Will Elon Musk post 90-114 tweets from February 12 to Februa",
+          "mid": 0.16,
+          "exec": 0.16,
+          "token": "115034918305454824214295954991450505325341522461190524009674971926101814878692"
         },
         {
-          "name": "Will 9 Fed rate cuts happen in 2026?",
-          "mid": 0.0055,
-          "exec": 0.005,
-          "token": "23126031577449775652876745717301519312850542565907124407036782701549610893044"
-        },
-        {
-          "name": "Will 10 Fed rate cuts happen in 2026?",
-          "mid": 0.0045,
+          "name": "Will Elon Musk post 215-239 tweets from February 12 to Febru",
+          "mid": 0.006,
           "exec": 0.004,
-          "token": "101699865858660601590309838387762714166224752219273014726406345404403204943713"
-        },
-        {
-          "name": "Will 11 Fed rate cuts happen in 2026?",
-          "mid": 0.0045,
-          "exec": 0.004,
-          "token": "56345349743779788266710915561914531858285418844567819631705863717318287635981"
-        },
-        {
-          "name": "Will 12 or more Fed rate cuts happen in 2026?",
-          "mid": 0.0185,
-          "exec": 0.018,
-          "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
+          "token": "13056891492049623062155969471801682689874473544031899896391783479847146002407"
         }
       ]
     }

@@ -1,0 +1,15 @@
+ARB AUTO-EXECUTION DISABLED
+============================
+Date: 2026-02-13T12:48:00Z
+Reason: Backtest found ZERO viable arb opportunities
+
+Backtest scanned 42 NegRisk events (~1 day of data).
+- 0 events had pre-resolution YES sum < 0.95 (5% profit threshold)
+- 0 events had pre-resolution YES sum < 0.975 (2.5% flag threshold)
+- Median YES sum was 1.047 (markets OVERPRICED, not underpriced)
+
+The NegRisk arb strategy has no edge at current parameters.
+Market maker vig ensures YES sums >= 1.0 in most cases.
+
+To re-enable: delete this file and restart arb scanner.
+See arb-scanner-backtest.json for full analysis.

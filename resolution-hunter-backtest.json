@@ -1,0 +1,124 @@
+{
+  "parameters": {
+    "RH_MIN": 0.95,
+    "RH_MAX": 0.995,
+    "RH_SPEND": 15.0,
+    "days": 30
+  },
+  "summary": {
+    "total_markets_analyzed": 9075,
+    "total_trades": 679,
+    "wins": 651,
+    "losses": 28,
+    "hit_rate_pct": 95.88,
+    "gross_pnl": -205.43,
+    "net_pnl": -205.43,
+    "avg_win": 0.3296,
+    "avg_loss": -15.0,
+    "wins_needed_per_loss": 45.5
+  },
+  "tier_breakdown": {
+    "95-96": {
+      "trades": 77,
+      "wins": 76,
+      "losses": 1,
+      "pnl": 39.41
+    },
+    "96-97": {
+      "trades": 97,
+      "wins": 94,
+      "losses": 3,
+      "pnl": 7.94
+    },
+    "97-98": {
+      "trades": 121,
+      "wins": 120,
+      "losses": 1,
+      "pnl": 32.17
+    },
+    "98-99": {
+      "trades": 161,
+      "wins": 157,
+      "losses": 4,
+      "pnl": -21.78
+    },
+    "99-99.5": {
+      "trades": 223,
+      "wins": 204,
+      "losses": 19,
+      "pnl": -263.17
+    }
+  },
+  "category_breakdown": {
+    "unknown": {
+      "trades": 679,
+      "wins": 651,
+      "losses": 28,
+      "pnl": -205.43
+    }
+  },
+  "worst_losses": [
+    {
+      "market": "Will Stephen Miran be the first to leave the Trump Cabinet before 2027?",
+      "outcome": "NO",
+      "price": 0.9615,
+      "pnl": -15.0
+    },
+    {
+      "market": "Will Stephen Miran be the first to leave the Trump Cabinet before 2027?",
+      "outcome": "NO",
+      "price": 0.9615,
+      "pnl": -15.0
+    },
+    {
+      "market": "Was Ilhan Omar sprayed with pure water?",
+      "outcome": "YES",
+      "price": 0.9845,
+      "pnl": -15.0
+    },
+    {
+      "market": "Will Martina Sablikova (CZE) win the gold medal for Winter Olympics 2026: Speed Skating - Women's 3000m at the 2026 Mila",
+      "outcome": "YES",
+      "price": 0.9805,
+      "pnl": -15.0
+    },
+    {
+      "market": "Will Sandrine Tas (BEL) win the gold medal for Winter Olympics 2026: Speed Skating - Women's 3000m at the 2026 Milano Co",
+      "outcome": "YES",
+      "price": 0.9945,
+      "pnl": -15.0
+    },
+    {
+      "market": "Will Josie Hofmann (GER) win the gold medal for Winter Olympics 2026: Speed Skating - Women's 3000m at the 2026 Milano C",
+      "outcome": "YES",
+      "price": 0.9945,
+      "pnl": -15.0
+    },
+    {
+      "market": "Will Josie Hofmann (GER) win the gold medal for Winter Olympics 2026: Speed Skating - Women's 3000m at the 2026 Milano C",
+      "outcome": "YES",
+      "price": 0.9945,
+      "pnl": -15.0
+    },
+    {
+      "market": "Sierra vs. Rakhimova: Set 1 Games O/U 10.5",
+      "outcome": "YES",
+      "price": 0.96,
+      "pnl": -15.0
+    },
+    {
+      "market": "Passaro vs. Kicker: Match O/U 22.5",
+      "outcome": "YES",
+      "price": 0.995,
+      "pnl": -15.0
+    },
+    {
+      "market": "Efremova vs. Zolotareva: Set 1 Games O/U 10.5",
+      "outcome": "YES",
+      "price": 0.995,
+      "pnl": -15.0
+    }
+  ],
+  "recommendation": "DISABLE",
+  "timestamp": "2026-02-13T12:49:34.999320+00:00"
+}
