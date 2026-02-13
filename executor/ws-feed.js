@@ -672,9 +672,12 @@ async function executeSell(assetId, asset, reason) {
       const manualPositions = loadManualPositions();
       delete manualPositions[assetId];
       saveManualPositions(manualPositions);
-      subscribedAssets.delete(assetId);
       log("MANUAL", `Sold manual position — removed from persistence: ${assetId.slice(0,20)}`);
     }
+
+    // ALWAYS remove sold position from tracking immediately
+    subscribedAssets.delete(assetId);
+    log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)}`);
     
     // STRUCTURAL FIX: Sync positions from executor after sell
     log("SYNC", "Post-sell position sync...");
