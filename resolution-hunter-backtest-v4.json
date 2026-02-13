@@ -1,0 +1,178 @@
+{
+  "version": "v4",
+  "parameters": {
+    "RH_MIN": 0.96,
+    "RH_MAX": 0.98,
+    "RH_SPEND": 10.0,
+    "days": 30
+  },
+  "summary": {
+    "total_markets_analyzed": 9040,
+    "total_trades": 103,
+    "wins": 102,
+    "losses": 1,
+    "hit_rate_pct": 99.03,
+    "net_pnl": 21.23,
+    "avg_win": 0.3061,
+    "avg_loss": -10.0,
+    "wins_needed_per_loss": 32.7
+  },
+  "filter_stats": {
+    "total_filtered": 139,
+    "by_type": {
+      "category": 0,
+      "slug": 114,
+      "question": 25
+    },
+    "sampled_filtered_wins": 30,
+    "sampled_filtered_losses": 0,
+    "sampled_filtered_pnl": 9.32,
+    "filter_examples": [
+      {
+        "market": "Superform FDV above $20M one day after launch?",
+        "reason": "question:Superform FDV above $20M one day after launch?",
+        "price": 0.9785,
+        "won": true,
+        "pnl": 0.22
+      },
+      {
+        "market": "Seeker FDV above $800M one day after launch?",
+        "reason": "question:Seeker FDV above $800M one day after launch?",
+        "price": 0.978,
+        "won": true,
+        "pnl": 0.22
+      },
+      {
+        "market": "Seeker FDV above $1B one day after launch?",
+        "reason": "question:Seeker FDV above $1B one day after launch?",
+        "price": 0.975,
+        "won": true,
+        "pnl": 0.26
+      },
+      {
+        "market": "Superform FDV above $100M one day after launch?",
+        "reason": "question:Superform FDV above $100M one day after launch?",
+        "price": 0.9605,
+        "won": true,
+        "pnl": 0.41
+      },
+      {
+        "market": "Sentient FDV above $600M one day after launch?",
+        "reason": "question:Sentient FDV above $600M one day after launch?",
+        "price": 0.973,
+        "won": true,
+        "pnl": 0.28
+      },
+      {
+        "market": "ETHGAS FDV above $100M one day after launch?",
+        "reason": "question:ETHGAS FDV above $100M one day after launch?",
+        "price": 0.9635,
+        "won": true,
+        "pnl": 0.38
+      },
+      {
+        "market": "Sentient FDV above $2B one day after launch?",
+        "reason": "question:Sentient FDV above $2B one day after launch?",
+        "price": 0.9685,
+        "won": true,
+        "pnl": 0.33
+      },
+      {
+        "market": "Fogo FDV above $300M one day after launch?",
+        "reason": "question:Fogo FDV above $300M one day after launch?",
+        "price": 0.9735,
+        "won": true,
+        "pnl": 0.27
+      },
+      {
+        "market": "Superform FDV above $100M one day after launch?",
+        "reason": "question:Superform FDV above $100M one day after launch?",
+        "price": 0.9605,
+        "won": true,
+        "pnl": 0.41
+      },
+      {
+        "market": "Sentient FDV above $600M one day after launch?",
+        "reason": "question:Sentient FDV above $600M one day after launch?",
+        "price": 0.973,
+        "won": true,
+        "pnl": 0.28
+      },
+      {
+        "market": "Zama FDV above $300M one day after launch?",
+        "reason": "question:Zama FDV above $300M one day after launch?",
+        "price": 0.975,
+        "won": true,
+        "pnl": 0.26
+      },
+      {
+        "market": "Will Jannik Sinner win a calendar Grand Slam in 2026?",
+        "reason": "slug:will-jannik-sinner-win-a-calendar-grand-",
+        "price": 0.9605,
+        "won": true,
+        "pnl": 0.41
+      },
+      {
+        "market": "Will Jannik Sinner win a calendar Grand Slam in 2026?",
+        "reason": "slug:will-jannik-sinner-win-a-calendar-grand-",
+        "price": 0.9605,
+        "won": true,
+        "pnl": 0.41
+      },
+      {
+        "market": "Will Emma Betsinger get engaged on Love is Blind: Ohio?",
+        "reason": "slug:will-emma-betsinger-get-engaged-on-love-",
+        "price": 0.9675,
+        "won": true,
+        "pnl": 0.34
+      },
+      {
+        "market": "Will F1: The Movie win Best Cinematography at the 98th Academy Awards?",
+        "reason": "slug:will-f1-the-movie-win-best-cinematograph",
+        "price": 0.9795,
+        "won": true,
+        "pnl": 0.21
+      }
+    ]
+  },
+  "tier_breakdown": {
+    "96-97": {
+      "trades": 46,
+      "wins": 45,
+      "losses": 1,
+      "pnl": 6.88
+    },
+    "97-98": {
+      "trades": 55,
+      "wins": 55,
+      "losses": 0,
+      "pnl": 13.93
+    },
+    "98": {
+      "trades": 2,
+      "wins": 2,
+      "losses": 0,
+      "pnl": 0.41
+    }
+  },
+  "category_breakdown": {
+    "unknown": {
+      "trades": 103,
+      "wins": 102,
+      "losses": 1,
+      "pnl": 21.23
+    }
+  },
+  "worst_losses": [
+    {
+      "market": "Will Stephen Miran be the first to leave the Trump Cabinet before 2027?",
+      "outcome": "NO",
+      "price": 0.9615,
+      "pnl": -10.0,
+      "slug": "will-stephen-miran-be-the-first-to-leave-the-trump-cabinet-b",
+      "category": "unknown"
+    }
+  ],
+  "recommendation": "ENABLE",
+  "timestamp": "2026-02-13T14:46:33.304266+00:00"
+}

@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-13T13:08:09.945Z",
+  "timestamp": "2026-02-13T15:20:18.631Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
-    "flagged": 4,
-    "viable": 3
+    "flagged": 3,
+    "viable": 2
   },
   "opportunities": [
     {
@@ -12,13 +12,13 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.8255,
-      "execSum": 0.762,
-      "deviation": 17.45,
-      "execDeviation": 23.8,
-      "grossProfitPer100": 23.8,
+      "midSum": 0.8175,
+      "execSum": 0.745,
+      "deviation": 18.25,
+      "execDeviation": 25.5,
+      "grossProfitPer100": 25.5,
       "feesPer100": 0,
-      "profitPer100": 23.8,
+      "profitPer100": 25.5,
       "viable": true,
       "details": [
         {
@@ -35,32 +35,32 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.032,
-          "exec": 0.031,
+          "mid": 0.035,
+          "exec": 0.034,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.062,
-          "exec": 0.063,
+          "mid": 0.0615,
+          "exec": 0.062,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
           "name": "Will António Guterres win the Nobel Peace Prize in 2026?",
           "mid": 0.0055,
-          "exec": 0.004,
+          "exec": 0.003,
           "token": "23342261653888694132200522593527487238848562692306851598440649086435121500976"
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.1145,
-          "exec": 0.109,
+          "mid": 0.111,
+          "exec": 0.103,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
         {
           "name": "Will Khaled Mashal win the Nobel Peace Prize in 2026?",
-          "mid": 0.012,
-          "exec": 0.009,
+          "mid": 0.011,
+          "exec": 0.006,
           "token": "4817558919700430121831697879056774909752184660255737582917693916506064447935"
         },
         {
@@ -71,19 +71,19 @@
         },
         {
           "name": "Will Ahmed al-Sharaa win the Nobel Peace Prize in 2026?",
-          "mid": 0.014,
-          "exec": 0.012,
+          "mid": 0.013,
+          "exec": 0.011,
           "token": "29384252153498040908016173010534270095096285030713208216637067996773126537603"
         },
         {
           "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
-          "mid": 0.012,
-          "exec": 0.01,
+          "mid": 0.011,
+          "exec": 0.009,
           "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
         },
         {
           "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.074,
+          "mid": 0.0735,
           "exec": 0.068,
           "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
         },
@@ -95,20 +95,20 @@
         },
         {
           "name": "Will Elon Musk win the Nobel Peace Prize in 2026?",
-          "mid": 0.0165,
-          "exec": 0.016,
+          "mid": 0.0155,
+          "exec": 0.015,
           "token": "75607128808577269329357564425293012652006155264327001987967114873720422847762"
         },
         {
           "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.097,
-          "exec": 0.084,
+          "mid": 0.098,
+          "exec": 0.085,
           "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
         },
         {
           "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.1185,
-          "exec": 0.113,
+          "mid": 0.115,
+          "exec": 0.108,
           "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
         },
         {
@@ -125,14 +125,14 @@
         },
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
-          "mid": 0.0055,
-          "exec": 0.004,
+          "mid": 0.006,
+          "exec": 0.003,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
         {
           "name": "Will Charlie Kirk win the Nobel Peace Prize in 2026?",
-          "mid": 0.019,
-          "exec": 0.016,
+          "mid": 0.0185,
+          "exec": 0.015,
           "token": "41901357708237118584313729261027657874621373325486663648640954008517926947624"
         },
         {
@@ -144,124 +144,84 @@
       ]
     },
     {
-      "event": "Elon Musk # tweets February 12 - February 14, 2026?",
-      "slug": "elon-musk-of-tweets-february-12-february-14",
+      "event": "Venezuela leader end of 2026?",
+      "slug": "venezuela-leader-end-of-2026",
       "type": "LONG",
-      "outcomes": 10,
-      "midSum": 0.9645,
-      "execSum": 0.927,
-      "deviation": 3.55,
-      "execDeviation": 7.3,
-      "grossProfitPer100": 7.3,
+      "outcomes": 11,
+      "midSum": 0.9745,
+      "execSum": 0.954,
+      "deviation": 2.55,
+      "execDeviation": 4.6,
+      "grossProfitPer100": 4.6,
       "feesPer100": 0,
-      "profitPer100": 7.3,
+      "profitPer100": 4.6,
       "viable": true,
       "details": [
         {
-          "name": "Will Elon Musk post 240+ tweets from February 12 to February",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "15034215811456036040764278458175248051748617668317505703784824112629572872623"
+          "name": "Will María Corina Machado be the leader of Venezuela end of ",
+          "mid": 0.095,
+          "exec": 0.09,
+          "token": "111206023652925249192617904527998565944558514529537236601741996492948632883698"
         },
         {
-          "name": "Will Elon Musk post 40-64 tweets from February 12 to Februar",
-          "mid": 0.272,
-          "exec": 0.27,
-          "token": "19160696202182641569221548842553238846261739954089635121321811350693102881692"
-        },
-        {
-          "name": "Will Elon Musk post 115-139 tweets from February 12 to Febru",
-          "mid": 0.07,
-          "exec": 0.06,
-          "token": "79141348498154610869711763517359858283096073835629175956943035939212249740025"
-        },
-        {
-          "name": "Will Elon Musk post 140-164 tweets from February 12 to Febru",
-          "mid": 0.031,
+          "name": "Will Diosdado Cabello Rondón be the leader of Venezuela end ",
+          "mid": 0.026,
           "exec": 0.025,
-          "token": "25138700007518255169733220174010858299639620152049125875379405583652485696742"
+          "token": "112746945158746257741635529019662641558199388176511485763810876768315276888838"
         },
         {
-          "name": "Will Elon Musk post 165-189 tweets from February 12 to Febru",
-          "mid": 0.0175,
-          "exec": 0.013,
-          "token": "54334899525658175201298870146327190676678802829019336950532850893136954707611"
+          "name": "Will Dinorah Figuera be the leader of Venezuela end of 2026?",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "63520322965196077858161646392631185222879535067184355961912182985450749868276"
         },
         {
-          "name": "Will Elon Musk post 190-214 tweets from February 12 to Febru",
-          "mid": 0.005,
-          "exec": 0.003,
-          "token": "30836670145539355582839471359688902101341973319407683130497170933609025408928"
+          "name": "Will Vladimir Padrino López be the leader of Venezuela end o",
+          "mid": 0.027,
+          "exec": 0.025,
+          "token": "54906963185407778588520250373893528650769447293260978407024082288131033892651"
         },
         {
-          "name": "Will Elon Musk post <40 tweets from February 12 to February ",
-          "mid": 0.042,
+          "name": "Will Jorge Rodríguez be the leader of Venezuela end of 2026?",
+          "mid": 0.007,
+          "exec": 0.006,
+          "token": "42727638766042850249414793956193305049964960783968960523056590290643557215679"
+        },
+        {
+          "name": "Will there be no head of state of Venezuela end of 2026?",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "17704927682411404638982382980949594324217253655714867278953651574552110090318"
+        },
+        {
+          "name": "Will Edmundo González be the leader of Venezuela end of 2026",
+          "mid": 0.055,
           "exec": 0.05,
-          "token": "25099567166111281846302244039860015689241816252363247441459396207876081288557"
+          "token": "85482789936744260311999371350699987044247644306653001528276695717482676507600"
         },
         {
-          "name": "Will Elon Musk post 65-89 tweets from February 12 to Februar",
-          "mid": 0.36,
-          "exec": 0.35,
-          "token": "101737982205729137869548634259137456035523623969460170960358162453586274812342"
+          "name": "Will Delcy Rodríguez be the leader of Venezuela end of 2026?",
+          "mid": 0.665,
+          "exec": 0.66,
+          "token": "38667196958602416137463628517439560119304765709104570192447644733106171420112"
         },
         {
-          "name": "Will Elon Musk post 90-114 tweets from February 12 to Februa",
-          "mid": 0.16,
-          "exec": 0.15,
-          "token": "115034918305454824214295954991450505325341522461190524009674971926101814878692"
+          "name": "Will Nicolás Maduro be the leader of Venezuela end of 2026?",
+          "mid": 0.086,
+          "exec": 0.09,
+          "token": "37090128566507509913630589460372620352013766554886380785463533062224343545231"
         },
         {
-          "name": "Will Elon Musk post 215-239 tweets from February 12 to Febru",
+          "name": "Will Donald Trump be the leader of Venezuela end of 2026?",
+          "mid": 0.0035,
+          "exec": 0.003,
+          "token": "14211065675584872409434951928382202221234755265148030622924500315944266691558"
+        },
+        {
+          "name": "Will Marco Rubio be the leader of Venezuela end of 2026?",
           "mid": 0.0045,
-          "exec": 0.004,
-          "token": "13056891492049623062155969471801682689874473544031899896391783479847146002407"
-        }
-      ]
-    },
-    {
-      "event": "2026 Winter Olympics: Most Medals",
-      "slug": "2026-winter-olympics-most-medals",
-      "type": "LONG",
-      "outcomes": 5,
-      "midSum": 0.9665,
-      "execSum": 0.955,
-      "deviation": 3.35,
-      "execDeviation": 4.5,
-      "grossProfitPer100": 4.5,
-      "feesPer100": 0,
-      "profitPer100": 4.5,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will Austria win the most medals in the 2026 Winter Olympics",
-          "mid": 0.002,
-          "exec": 0.001,
-          "token": "32913970980151912338709408787347975401666190851973193394368477630531376305300"
-        },
-        {
-          "name": "Will Germany win the most medals in the 2026 Winter Olympics",
-          "mid": 0.002,
-          "exec": 0.001,
-          "token": "101712910572402512590283498860352772596318173558564598801167849103398831367984"
-        },
-        {
-          "name": "Will Norway win the most medals in the 2026 Winter Olympics?",
-          "mid": 0.705,
-          "exec": 0.71,
-          "token": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
-        },
-        {
-          "name": "Will Italy win the most medals in the 2026 Winter Olympics?",
-          "mid": 0.034,
-          "exec": 0.033,
-          "token": "19244830563353029156820916829799158659728550740152956971626445435150732003803"
-        },
-        {
-          "name": "Will the United States win the most medals in the 2026 Winte",
-          "mid": 0.22,
-          "exec": 0.21,
-          "token": "59592458272795269751135156838957871846215950681303118579370928325544984039115"
+          "exec": 0.003,
+          "token": "86169745307861674090452043379261530418870357324952931974995649343490068237899"
         }
       ]
     },
@@ -270,42 +230,42 @@
       "slug": "how-many-fed-rate-cuts-in-2026",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.0265,
-      "execSum": 0.991,
-      "deviation": 2.65,
-      "execDeviation": 0.9,
-      "grossProfitPer100": -0.9,
+      "midSum": 1.0255,
+      "execSum": 0.986,
+      "deviation": 2.55,
+      "execDeviation": 1.4,
+      "grossProfitPer100": -1.4,
       "feesPer100": 0,
-      "profitPer100": -0.9,
+      "profitPer100": -1.4,
       "viable": false,
       "details": [
         {
           "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.0755,
-          "exec": 0.074,
+          "mid": 0.069,
+          "exec": 0.07,
           "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
         {
           "name": "Will 1 Fed rate cut happen in 2026?",
-          "mid": 0.19,
-          "exec": 0.18,
+          "mid": 0.18,
+          "exec": 0.17,
           "token": "113379839734351069617987084078322474966003108854908079701423911002443710490196"
         },
         {
           "name": "Will 2 Fed rate cuts happen in 2026?",
-          "mid": 0.255,
-          "exec": 0.25,
+          "mid": 0.265,
+          "exec": 0.26,
           "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
         },
         {
           "name": "Will 3 Fed rate cuts happen in 2026?",
-          "mid": 0.245,
-          "exec": 0.24,
+          "mid": 0.255,
+          "exec": 0.25,
           "token": "95835705062472305459663741402900736177330733688944910993896545106260819635212"
         },
         {
           "name": "Will 4 Fed rate cuts happen in 2026?",
-          "mid": 0.115,
+          "mid": 0.12,
           "exec": 0.11,
           "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
         },
@@ -317,20 +277,20 @@
         },
         {
           "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.034,
-          "exec": 0.034,
+          "mid": 0.027,
+          "exec": 0.026,
           "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
         },
         {
           "name": "Will 7 Fed rate cuts happen in 2026?",
-          "mid": 0.0145,
-          "exec": 0.014,
+          "mid": 0.0085,
+          "exec": 0.007,
           "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
         },
         {
           "name": "Will 8 Fed rate cuts happen in 2026?",
-          "mid": 0.009,
-          "exec": 0.008,
+          "mid": 0.0075,
+          "exec": 0.007,
           "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
         },
         {
@@ -353,8 +313,8 @@
         },
         {
           "name": "Will 12 or more Fed rate cuts happen in 2026?",
-          "mid": 0.0185,
-          "exec": 0.018,
+          "mid": 0.0235,
+          "exec": 0.023,
           "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
         }
       ]

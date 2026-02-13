@@ -1,0 +1,296 @@
+{
+  "version": "v3",
+  "filter": "sports/esports excluded + crypto up/down excluded from scan",
+  "parameters": {
+    "RH_MIN": 0.95,
+    "RH_MAX": 0.98,
+    "RH_SPEND": 10.0,
+    "days": 30
+  },
+  "summary": {
+    "total_markets_scanned": 79026,
+    "resolved_markets": 77710,
+    "total_qualifying_before_filter": 2926,
+    "sports_filtered_out": 2299,
+    "total_trades": 627,
+    "wins": 611,
+    "losses": 16,
+    "hit_rate_pct": 97.45,
+    "net_pnl": 42.48,
+    "avg_win": 0.3314,
+    "avg_loss": -10.0
+  },
+  "tier_breakdown": {
+    "95-96": {
+      "trades": 145,
+      "wins": 138,
+      "losses": 7,
+      "pnl": -0.43
+    },
+    "96-97": {
+      "trades": 124,
+      "wins": 122,
+      "losses": 2,
+      "pnl": 27.48
+    },
+    "97-98": {
+      "trades": 358,
+      "wins": 351,
+      "losses": 7,
+      "pnl": 15.43
+    }
+  },
+  "remaining_losses": [
+    {
+      "market": "Will Penske Automotive Group (PAG) beat quarterly earnings?",
+      "slug": "pag-quarterly-earnings-gaap-eps-02-11-2026-3pt02",
+      "outcome_label": "Yes",
+      "price": 0.95,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Ethereum ETF Flows on February 6?",
+      "slug": "ethereum-etf-flows-on-february-6",
+      "outcome_label": "Positive",
+      "price": 0.95,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will Roblox say \"Daily Active User\" during earnings call?",
+      "slug": "will-roblox-say-daily-active-user-during-earnings-call",
+      "outcome_label": "Yes",
+      "price": 0.95,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will Haras El Hodood SC win on 2026-02-05?",
+      "slug": "egy1-heh-phf-2026-02-05-heh",
+      "outcome_label": "Yes",
+      "price": 0.96,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Ethereum ETF Flows on January 29?",
+      "slug": "ethereum-etf-flows-on-january-29",
+      "outcome_label": "Positive",
+      "price": 0.98,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will the price of Case Index be above $3.80 on January 26?",
+      "slug": "case-above-3pt8-on-january-26",
+      "outcome_label": "Yes",
+      "price": 0.98,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will Johnson & Johnson say \"Darzalex Faspro\" during earnings call?",
+      "slug": "earnings-mentions-johnson-johnson-2026-01-21-darzalex-faspro-1-times",
+      "outcome_label": "Yes",
+      "price": 0.95,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will Meta (META) close above $620 on January 21?",
+      "slug": "meta-close-above-620-on-january-21-2026",
+      "outcome_label": "Yes",
+      "price": 0.98,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will United Airlines say \"Weather\" during earnings call?",
+      "slug": "will-united-airlines-say-weather-during-earnings-call",
+      "outcome_label": "Yes",
+      "price": 0.96,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Series BBL Esports Rounds Handicap (-6.5)",
+      "slug": "val-pcfic-bbl1-2026-01-21-round-handicap-home-6pt5",
+      "outcome_label": "BBL Esports",
+      "price": 0.97,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will Jack Sock win the 2026 Carvana Masters Men's Singles tournament?",
+      "slug": "will-jack-sock-win-the-2026-carvana-masters-mens-singles-tournament",
+      "outcome_label": "Yes",
+      "price": 0.959,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will the price of Ethereum be between $3,200 and $3,300 on January 18?",
+      "slug": "will-the-price-of-ethereum-be-between-3200-3300-on-january-18",
+      "outcome_label": "Yes",
+      "price": 0.95,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will Oblivion win the Apex Legends Global Series 2026 Championship?",
+      "slug": "will-oblivion-win-the-apex-legends-global-series-2026-championship",
+      "outcome_label": "No",
+      "price": 0.98,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will Palantir (PLTR) finish week of January 12 above $172?",
+      "slug": "pltr-above-172-on-january-16-2026",
+      "outcome_label": "Yes",
+      "price": 0.97,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will no couples marry by the end of Love is Blind: Germany: Season 2?",
+      "slug": "will-no-couples-marry-by-the-end-of-love-is-blind-germany-season-2",
+      "outcome_label": "Yes",
+      "price": 0.95,
+      "pnl": -10.0,
+      "win": false
+    },
+    {
+      "market": "Will Bank of America say \"Recession\" during earnings call?",
+      "slug": "earnings-mentions-bank-of-america-2026-01-14-recession-1-times",
+      "outcome_label": "Yes",
+      "price": 0.98,
+      "pnl": -10.0,
+      "win": false
+    }
+  ],
+  "sports_filter_impact": {
+    "trades_removed": 2299,
+    "of_which_wins": 2025,
+    "of_which_losses": 274,
+    "examples": [
+      {
+        "market": "Total Kills Over/Under 44.5 in Game 2?",
+        "slug": "lol-dk-drx-2026-02-13-game2-kill-over-44pt5",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "South Alabama Jaguars vs. Appalachian State Mountaineers (W)",
+        "slug": "cwbb-sala-applst-2026-01-29",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "Jacquemot vs. Erjavec: Match O/U 21.5",
+        "slug": "wta-jacquem-erjavec-2026-02-13-match-total-21pt5",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "LoL: EKO Esports vs GMBLERS ESPORTS (BO5) - LIT Playoffs",
+        "slug": "lol-eko-gmb-2026-02-12",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "LoL: EKO Esports vs GMBLERS ESPORTS - Game 4 Winner",
+        "slug": "lol-eko-gmb-2026-02-12-game4",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "California Golden Bears vs. Syracuse Orange",
+        "slug": "cbb-cah-syra-2026-02-10",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "Mavericks vs. Lakers: O/U 236.5",
+        "slug": "nba-dal-lal-2026-02-12-total-236pt5",
+        "price": 0.97,
+        "win": true,
+        "pnl": 0.3093
+      },
+      {
+        "market": "Spread: UC Irvine Anteaters (-6.5)",
+        "slug": "cbb-ucirv-calpol-2026-02-12-spread-away-6pt5",
+        "price": 0.95,
+        "win": true,
+        "pnl": 0.5263
+      },
+      {
+        "market": "Counter-Strike: Team Aether vs FarmVille (BO3) - Dust2.us Eagle Masters Group St",
+        "slug": "cs2-ta-farmvi-2026-02-13",
+        "price": 0.96,
+        "win": true,
+        "pnl": 0.4167
+      },
+      {
+        "market": "UC Davis Aggies vs. California-San Diego Tritons: O/U 150.5",
+        "slug": "cbb-ucdv-ucsd-2026-02-12-total-150pt5",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "Spread: California-San Diego Tritons (-6.5)",
+        "slug": "cbb-ucdv-ucsd-2026-02-12-spread-home-6pt5",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "Memphis Tigers vs. North Texas Mean Green",
+        "slug": "cbb-mphs-ntx-2026-02-12",
+        "price": 0.98,
+        "win": true,
+        "pnl": 0.2041
+      },
+      {
+        "market": "UT Arlington Mavericks vs. Abilene Christian Wildcats",
+        "slug": "cbb-txa-abchr-2026-02-12",
+        "price": 0.971,
+        "win": true,
+        "pnl": 0.2987
+      },
+      {
+        "market": "1H Spread: Lakers (-3.5)",
+        "slug": "nba-dal-lal-2026-02-12-1h-spread-home-3pt5",
+        "price": 0.98,
+        "win": false,
+        "pnl": -10.0
+      },
+      {
+        "market": "Kevin Porter Jr.: Assists O/U 7.5",
+        "slug": "nba-mil-okc-2026-02-12-assists-kevin-porter-jr-7pt5",
+        "price": 0.97,
+        "win": true,
+        "pnl": 0.3093
+      }
+    ]
+  },
+  "comparison_to_v2": {
+    "v2_trades": 311,
+    "v3_trades": 627,
+    "v2_losses": 4,
+    "v3_losses": 16,
+    "v2_pnl": 69.01,
+    "v3_pnl": 42.48,
+    "v2_hit_rate": 98.71,
+    "v3_hit_rate": 97.45
+  },
+  "timestamp": "2026-02-13T13:43:17.729134+00:00"
+}

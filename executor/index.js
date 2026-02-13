@@ -45,6 +45,36 @@ const ENTRY_EXEMPT_STRATEGIES = ["resolution", "arb"]; // RH has own validated p
 const DEPTH_SLIPPAGE_TOL_MANUAL = 0.02;  // 2% max slippage
 const DEPTH_MIN_SHARES_MANUAL = 5;       // Don't bother with <5 shares
 
+// === DAILY CONVICTION BUDGET ===
+// Max 30% of bankroll in NEW manual positions per day. Resets at midnight UTC.
+// Resolution Hunter exempt (validated strategy with own limits).
+const DAILY_CONVICTION_BUDGET_PCT = 0.30;
+const DAILY_BUDGET_FILE = path.join(__dirname, "daily-conviction-budget.json");
+
+function loadDailyBudget() {
+  try {
+    const data = JSON.parse(fs.readFileSync(DAILY_BUDGET_FILE, "utf8"));
+    const today = new Date().toISOString().slice(0, 10);
+    if (data.date === today) return data;
+    // New day — reset
+    return { date: today, deployed: 0, trades: [] };
+  } catch {
+    return { date: new Date().toISOString().slice(0, 10), deployed: 0, trades: [] };
+  }
+}
+
+function saveDailyBudget(budget) {
+  fs.writeFileSync(DAILY_BUDGET_FILE, JSON.stringify(budget, null, 2));
+}
+
+function recordDailyBudgetSpend(orderValue, market) {
+  const budget = loadDailyBudget();
+  budget.deployed += orderValue;
+  budget.trades.push({ market, value: orderValue, time: new Date().toISOString() });
+  saveDailyBudget(budget);
+  return budget;
+}
+
 const fs = require("fs");
 const path = require("path");
 
@@ -61,6 +91,38 @@ function saveThesis(tokenID, thesis) {
 function loadThesis(tokenID) {
   const file = path.join(THESES_DIR, `${tokenID.slice(0, 20)}.json`);
   try { return JSON.parse(fs.readFileSync(file, "utf8")); } catch { return null; }
+}
+
+/**
+ * Entry quality score (1-10). Higher = better entry.
+ * Factors: price (lower=better), time to resolution (shorter=better), edge magnitude
+ */
+function computeEntryQuality(price, hoursToResolution, edge) {
+  let score = 5; // baseline
+  
+  // Price: ideal entry is 50-70¢. Penalize >85¢ heavily
+  if (price <= 0.50) score += 2;
+  else if (price <= 0.65) score += 1.5;
+  else if (price <= 0.75) score += 1;
+  else if (price <= 0.82) score += 0.5;
+  else if (price <= 0.85) score += 0;
+  else if (price <= 0.90) score -= 1;
+  else score -= 2;
+
+  // Time: shorter = higher capital velocity
+  const hrs = hoursToResolution ? parseFloat(hoursToResolution) : null;
+  if (hrs && hrs <= 6) score += 1.5;
+  else if (hrs && hrs <= 24) score += 1;
+  else if (hrs && hrs <= 48) score += 0.5;
+  else if (hrs && hrs > 168) score -= 1; // >7 days
+
+  // Edge: higher = better
+  const edgeNum = edge ? parseFloat(String(edge).replace("%", "")) / 100 : null;
+  if (edgeNum && edgeNum > 0.30) score += 1.5;
+  else if (edgeNum && edgeNum > 0.15) score += 1;
+  else if (edgeNum && edgeNum > 0.05) score += 0.5;
+
+  return Math.max(1, Math.min(10, Math.round(score)));
 }
 
 function loadAllTheses() {
@@ -227,6 +289,25 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts
     }
   } else if (!isAutoStrategy) {
     checks.push({ check: "ENTRY_QUALITY", status: "OK", price: price });
+  }
+
+  // === CHECK 3.5: Daily conviction budget (30% max new manual per day) ===
+  if (!isAutoStrategy) {
+    const budget = loadDailyBudget();
+    const budgetLimit = effectivePortfolio * DAILY_CONVICTION_BUDGET_PCT;
+    const newTotal = budget.deployed + orderValue;
+    if (newTotal > budgetLimit) {
+      blocked = true;
+      const headroom = Math.max(0, budgetLimit - budget.deployed);
+      checks.push({
+        check: "DAILY_CONVICTION_BUDGET",
+        status: "BLOCKED",
+        detail: `Daily budget: $${budget.deployed.toFixed(2)} deployed + $${orderValue.toFixed(2)} = $${newTotal.toFixed(2)} exceeds $${budgetLimit.toFixed(2)} (30% of portfolio). Headroom: $${headroom.toFixed(2)}. Trades today: ${budget.trades.length}`,
+        todaysTrades: budget.trades,
+      });
+    } else {
+      checks.push({ check: "DAILY_CONVICTION_BUDGET", status: "OK", deployed: `$${budget.deployed.toFixed(2)}/$${budgetLimit.toFixed(2)}`, remaining: `$${(budgetLimit - budget.deployed - orderValue).toFixed(2)}` });
+    }
   }
 
   // === CHECK 4: Cash reserve (10% minimum) ===
@@ -846,6 +927,22 @@ async function handler(req, res) {
         const result = await preTradeRiskCheck(tokenID, price, size, side, false, riskOpts);
         return send(res, 200, result);
       }
+      // GET /daily-budget — current daily conviction budget status
+      if (path === "/daily-budget") {
+        const budget = loadDailyBudget();
+        const portfolio = await getPortfolioValue();
+        const eff = portfolio.totalValue > 10 ? portfolio.totalValue : 500;
+        const limit = eff * DAILY_CONVICTION_BUDGET_PCT;
+        return send(res, 200, {
+          date: budget.date,
+          deployed: budget.deployed,
+          limit: parseFloat(limit.toFixed(2)),
+          remaining: parseFloat(Math.max(0, limit - budget.deployed).toFixed(2)),
+          pctUsed: ((budget.deployed / limit) * 100).toFixed(1) + "%",
+          trades: budget.trades,
+          portfolioValue: eff.toFixed(2),
+        });
+      }
       // GET /theses — list all active theses
       if (path === "/theses") {
         return send(res, 200, { theses: loadAllTheses() });
@@ -885,6 +982,8 @@ async function handler(req, res) {
           totalDirectionalExposure: totalDirectional.toFixed(2),
           directionalHeadroom: directionalHeadroom.toFixed(2),
           entryQualityGate: p > ENTRY_MAX_PRICE_LONG_HORIZON ? "⚠️ Price above 85¢ — need hoursToResolution < 24 to pass entry gate" : "✅ OK",
+          dailyBudget: (() => { const b = loadDailyBudget(); const lim = eff * DAILY_CONVICTION_BUDGET_PCT; return { deployed: b.deployed.toFixed(2), limit: lim.toFixed(2), remaining: Math.max(0, lim - b.deployed).toFixed(2), tradesCount: b.trades.length }; })(),
+          entryQualityScore: computeEntryQuality(p, parseFloat(query.hoursToResolution || "0") || null, query.edge || null),
         });
       }
       if (path === "/api/snapshot" || path === "/snapshot") {
@@ -940,6 +1039,97 @@ async function handler(req, res) {
       sendTelegramAlert(msg);
       console.log(`📢 Opportunity alert sent: ${market}`);
       return send(res, 200, { ok: true, alertSent: true });
+    }
+
+    // POST /execute-opportunity — fast-path: validate all gates + execute in one call
+    // Used by scanner crons for immediate execution of high-conviction opportunities
+    if (method === "POST" && path === "/execute-opportunity") {
+      const body = await parseBody(req);
+      const { tokenID, price, size, side, market, thesis, invalidation, hoursToResolution, edge, slug } = body;
+      
+      if (!tokenID || !price || !size || !side) {
+        return send(res, 400, { error: "Missing tokenID, price, size, or side" });
+      }
+      if (!thesis) {
+        return send(res, 400, { error: "Thesis required for directional trades" });
+      }
+
+      console.log(`⚡ FAST-PATH EXECUTION: ${market || tokenID.slice(0, 20)}`);
+
+      // Step 1: Run all risk gates
+      const riskOpts = {
+        strategy: body.strategy || "directional",
+        hoursToResolution: hoursToResolution != null ? parseFloat(hoursToResolution) : null,
+      };
+      const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, false, riskOpts);
+      
+      if (!riskResult.allowed) {
+        console.log(`🚫 FAST-PATH BLOCKED: ${riskResult.checks.filter(c => c.status === "BLOCKED").map(c => c.check).join(", ")}`);
+        // Still send Telegram about the blocked opportunity
+        sendTelegramAlert(
+          `🚫 <b>OPPORTUNITY BLOCKED</b>\n\n` +
+          `<b>Market:</b> ${market || tokenID.slice(0, 20)}\n` +
+          `<b>Edge:</b> ${edge || "?"}\n` +
+          `<b>Blocked by:</b> ${riskResult.checks.filter(c => c.status === "BLOCKED").map(c => c.check).join(", ")}\n` +
+          `<b>Thesis:</b> ${thesis}`
+        );
+        return send(res, 422, { error: "Blocked by risk gates", riskResult });
+      }
+
+      // Step 2: Save thesis
+      const thesisObj = {
+        market: market || tokenID.slice(0, 20),
+        tokenID,
+        side,
+        entryPrice: parseFloat(price),
+        size: parseFloat(size),
+        thesis,
+        invalidation: invalidation || "N/A",
+        hoursToResolution: hoursToResolution || null,
+        edge: edge || null,
+        slug: slug || null,
+        entryTime: new Date().toISOString(),
+        entryQualityScore: computeEntryQuality(parseFloat(price), hoursToResolution, edge),
+        status: "OPEN",
+      };
+      saveThesis(tokenID, thesisObj);
+
+      // Step 3: Execute
+      const orderOpts = {
+        tokenID,
+        price: parseFloat(price),
+        size: parseFloat(size),
+        side: side === "BUY" ? Side.BUY : Side.SELL,
+      };
+      
+      try {
+        const order = await client.createAndPostOrder(orderOpts, undefined, "GTC");
+        invalidateTradeCache();
+        triggerSnapshotPush();
+
+        // Record daily budget
+        if (side === "BUY") {
+          recordDailyBudgetSpend(parseFloat(price) * parseFloat(size), market || tokenID.slice(0, 20));
+        }
+
+        // Telegram notification
+        sendTelegramAlert(
+          `⚡ <b>FAST-PATH TRADE EXECUTED</b>\n\n` +
+          `<b>${side}</b> ${size}sh @ $${parseFloat(price).toFixed(2)}\n` +
+          `<b>Market:</b> ${market || tokenID.slice(0, 20)}\n` +
+          `<b>Edge:</b> ${edge || "?"}\n` +
+          `<b>Thesis:</b> ${thesis}\n` +
+          `<b>Invalidation:</b> ${invalidation || "N/A"}\n` +
+          `<b>Entry quality:</b> ${thesisObj.entryQualityScore}/10\n` +
+          (slug ? `\n🔗 polymarket.com/event/${slug}` : "")
+        );
+
+        console.log(`⚡ FAST-PATH SUCCESS: ${order.orderID || order.id}`);
+        return send(res, 200, { order, thesis: thesisObj, riskResult });
+      } catch (e) {
+        console.error(`⚡ FAST-PATH ORDER FAILED: ${e.message}`);
+        return send(res, 500, { error: e.message, thesis: thesisObj, riskResult });
+      }
     }
 
     // POST /order — place order (with pre-trade risk validation)
@@ -1000,6 +1190,29 @@ async function handler(req, res) {
       triggerSnapshotPush();
 
       console.log(`Order result:`, JSON.stringify(order));
+
+      // Record daily budget spend for manual strategies
+      const orderStrategy = body.strategy || "unknown";
+      if (!ENTRY_EXEMPT_STRATEGIES.includes(orderStrategy) && side === "BUY") {
+        const marketName = body.market || tokenID.slice(0, 20);
+        recordDailyBudgetSpend(parseFloat(price) * parseFloat(size), marketName);
+      }
+
+      // Informational Telegram notification for all trades
+      {
+        const marketName = body.market || tokenID.slice(0, 20);
+        const strat = body.strategy || "manual";
+        const emoji = side === "BUY" ? "🟢" : "🔴";
+        sendTelegramAlert(
+          `${emoji} <b>TRADE EXECUTED</b>\n\n` +
+          `<b>${side}</b> ${size}sh @ $${parseFloat(price).toFixed(2)}\n` +
+          `<b>Market:</b> ${marketName}\n` +
+          `<b>Strategy:</b> ${strat}\n` +
+          `<b>Value:</b> $${(parseFloat(price) * parseFloat(size)).toFixed(2)}\n` +
+          `<b>Order:</b> ${order.orderID || order.id || "pending"}`
+        );
+      }
+
       return send(res, 200, order);
     }
 
