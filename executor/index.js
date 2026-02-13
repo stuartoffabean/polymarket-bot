@@ -26,6 +26,57 @@ const PORT = parseInt(process.env.EXECUTOR_PORT || "3002");
 
 let client;
 
+// === TRADE CACHE — compute position derivation once, invalidate on new trade ===
+const OUR_ADDR = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+let _tradeCache = null;
+let _tradeCacheTime = 0;
+const TRADE_CACHE_TTL = 30000; // 30s TTL
+
+function invalidateTradeCache() { _tradeCache = null; _tradeCacheTime = 0; }
+
+async function getCachedPositions() {
+  if (_tradeCache && (Date.now() - _tradeCacheTime) < TRADE_CACHE_TTL) return _tradeCache;
+
+  const trades = await client.getTrades();
+  const posMap = {};
+
+  for (const t of trades) {
+    if (t.trader_side === "TAKER") {
+      const key = t.asset_id;
+      if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: t.outcome, size: 0, totalCost: 0, trades: [] };
+      const qty = parseFloat(t.size);
+      const px = parseFloat(t.price);
+      if (t.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
+      else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
+      posMap[key].trades.push(t);
+    } else if (t.trader_side === "MAKER" && t.maker_orders) {
+      for (const mo of t.maker_orders) {
+        if (mo.maker_address && mo.maker_address.toLowerCase() === OUR_ADDR) {
+          const key = mo.asset_id;
+          if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: mo.outcome, size: 0, totalCost: 0, trades: [] };
+          const qty = parseFloat(mo.matched_amount);
+          const px = parseFloat(mo.price);
+          if (mo.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
+          else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
+          posMap[key].trades.push({ ...t, _makerFill: mo });
+        }
+      }
+    }
+  }
+
+  const openPositions = Object.values(posMap).filter(p => p.size > 0.001).map(p => ({
+    asset_id: p.asset_id, market: p.market, outcome: p.outcome,
+    size: p.size, totalCost: p.totalCost,
+    avgPrice: p.size > 0 ? (p.totalCost / p.size).toFixed(4) : "0",
+  }));
+
+  const allPositions = Object.values(posMap); // includes closed (size <= 0)
+
+  _tradeCache = { trades, posMap, openPositions, allPositions };
+  _tradeCacheTime = Date.now();
+  return _tradeCache;
+}
+
 async function init() {
   const pk = process.env.PRIVATE_KEY;
   if (!pk) throw new Error("PRIVATE_KEY not set");
@@ -130,50 +181,17 @@ async function handler(req, res) {
         return send(res, 200, { orders });
       }
       if (path === "/positions") {
-        // Get trade history to derive OUR positions
-        // In trades, if trader_side=MAKER, look at our specific maker_order entries
-        // If trader_side=TAKER, the top-level trade is ours
-        const trades = await client.getTrades();
-        const posMap = {};
-        const OUR_ADDR = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
-        
-        for (const t of trades) {
-          if (t.trader_side === "TAKER") {
-            // Top-level trade is ours
-            const key = t.asset_id;
-            if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: t.outcome, size: 0, totalCost: 0 };
-            const qty = parseFloat(t.size);
-            const px = parseFloat(t.price);
-            if (t.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
-            else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
-          } else if (t.trader_side === "MAKER" && t.maker_orders) {
-            // Find our specific maker fills
-            for (const mo of t.maker_orders) {
-              if (mo.maker_address && mo.maker_address.toLowerCase() === OUR_ADDR) {
-                const key = mo.asset_id;
-                if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: mo.outcome, size: 0, totalCost: 0 };
-                const qty = parseFloat(mo.matched_amount);
-                const px = parseFloat(mo.price);
-                if (mo.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
-                else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
-              }
-            }
-          }
-        }
-        const positions = Object.values(posMap).filter(p => p.size > 0).map(p => ({
-          ...p,
-          avgPrice: p.size > 0 ? (p.totalCost / p.size).toFixed(4) : 0
-        }));
-        return send(res, 200, { positions });
+        const cached = await getCachedPositions();
+        return send(res, 200, { positions: cached.openPositions });
       }
       if (path === "/trades") {
         const trades = await client.getTrades();
         return send(res, 200, { trades });
       }
       if (path === "/trade-ledger") {
-        // Full trade ledger: open + closed positions with realized P&L
-        const trades = await client.getTrades();
-        const OUR_ADDR = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+        // Full trade ledger: uses cached trades to avoid re-fetching
+        const cached = await getCachedPositions();
+        const trades = cached.trades;
         
         // Load market name mappings
         let marketNames = {};
@@ -321,39 +339,11 @@ async function handler(req, res) {
         }
       }
       if (path === "/api/snapshot" || path === "/snapshot") {
-        // Return current state for dashboard
-        const positions = [];
-        const OUR_ADDR = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
-        try {
-          const trades = await client.getTrades();
-          const posMap = {};
-          for (const t of trades) {
-            if (t.trader_side === "TAKER") {
-              const key = t.asset_id;
-              if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: t.outcome, size: 0, totalCost: 0 };
-              const qty = parseFloat(t.size); const px = parseFloat(t.price);
-              if (t.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
-              else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
-            } else if (t.trader_side === "MAKER" && t.maker_orders) {
-              for (const mo of t.maker_orders) {
-                if (mo.maker_address && mo.maker_address.toLowerCase() === OUR_ADDR) {
-                  const key = mo.asset_id;
-                  if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: mo.outcome, size: 0, totalCost: 0 };
-                  const qty = parseFloat(mo.matched_amount); const px = parseFloat(mo.price);
-                  if (mo.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
-                  else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
-                }
-              }
-            }
-          }
-          Object.values(posMap).filter(p => p.size > 0).forEach(p => {
-            positions.push({ ...p, avgPrice: (p.totalCost / p.size).toFixed(4) });
-          });
-        } catch(e) {}
+        const cached = await getCachedPositions();
         const orders = await client.getOpenOrders();
         return send(res, 200, { 
           status: "ok", 
-          positions, 
+          positions: cached.openPositions, 
           orders,
           timestamp: new Date().toISOString()
         });
@@ -387,6 +377,7 @@ async function handler(req, res) {
       if (postOnly) console.log("  → Post-only (maker) order");
 
       const order = await client.createAndPostOrder(orderOpts, undefined, orderType, false, postOnly);
+      invalidateTradeCache();
 
       console.log(`Order result:`, JSON.stringify(order));
       return send(res, 200, order);
@@ -400,6 +391,7 @@ async function handler(req, res) {
 
       // Get current best bid
       const book = await client.getOrderBook(tokenID);
+      // CLOB REST API returns bids ascending (lowest first, best/highest last)
       const bestBid = book.bids && book.bids.length > 0 
         ? parseFloat(book.bids[book.bids.length - 1].price) 
         : null;
@@ -416,6 +408,7 @@ async function handler(req, res) {
       });
 
       console.log(`Sell result:`, JSON.stringify(order));
+      invalidateTradeCache();
       return send(res, 200, { ...order, executedPrice: bestBid });
     }
 

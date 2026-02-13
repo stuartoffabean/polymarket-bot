@@ -311,8 +311,9 @@ function handleMessage(data) {
 function handleBook(data) {
   const asset = subscribedAssets.get(data.asset_id);
   if (!asset) return;
+  // CLOB book: bids ascending (best=last), asks descending (best=last)
   asset.currentBid = data.bids?.length > 0 ? parseFloat(data.bids[data.bids.length - 1].price) : null;
-  asset.currentAsk = data.asks?.length > 0 ? parseFloat(data.asks[0].price) : null;
+  asset.currentAsk = data.asks?.length > 0 ? parseFloat(data.asks[data.asks.length - 1].price) : null;
   asset.lastUpdate = Date.now();
   checkTriggers(data.asset_id, asset);
 }
@@ -947,6 +948,10 @@ async function runArbScan() {
       const ARB_MAX_OUTCOMES = 10;  // max 10 legs
       const ARB_MAX_SPEND = 20;     // max $20 per arb
       const ARB_MIN_PROFIT_FLAT = 0.50; // min $0.50 absolute profit
+      // Persist executed arb slugs to survive restarts
+      const ARB_EXECUTED_FILE = path.join(__dirname, "..", "arb-executed.json");
+      let arbExecutedSlugs;
+      try { arbExecutedSlugs = new Set(JSON.parse(fs.readFileSync(ARB_EXECUTED_FILE, "utf8"))); } catch { arbExecutedSlugs = new Set(); }
 
       for (const opp of opportunities) {
         if (!opp.viable) continue;
@@ -954,6 +959,7 @@ async function runArbScan() {
         if (opp.profitPer100 < ARB_MIN_PROFIT) continue;
         if (opp.outcomes > ARB_MAX_OUTCOMES) continue;
         if (!opp.execSum || opp.execSum >= 1.0) continue;
+        if (arbExecutedSlugs.has(opp.slug)) continue; // already executed this arb
 
         // Calculate size: buy 1 share of each outcome costs execSum
         // Profit per set = 1.00 - execSum
@@ -987,6 +993,10 @@ async function runArbScan() {
           log("ARB", `Arb result: ${JSON.stringify(arbResult).slice(0, 300)}`);
 
           sendTelegramAlert(`🎯 ARB EXECUTED: "${opp.event.slice(0,50)}"\n${sets} sets @ $${opp.execSum.toFixed(3)}/set\nSpend: $${totalSpend} | Expected profit: $${totalProfit}\nLegs: ${legs.length}`);
+          
+          // Persist to prevent re-executing after restart
+          arbExecutedSlugs.add(opp.slug);
+          try { fs.writeFileSync(ARB_EXECUTED_FILE, JSON.stringify([...arbExecutedSlugs])); } catch {}
         } catch (e) {
           log("ARB", `❌ Arb execution failed: ${e.message}`);
         }
@@ -1069,12 +1079,20 @@ function registerMarketName(conditionId, name) {
 // === RESOLUTION HUNTER (auto-buy near-resolved markets) ===
 const RESOLUTION_HUNTER_INTERVAL = 15 * 60 * 1000; // every 15 min
 const RESOLUTION_HUNTER_FILE = path.join(__dirname, "..", "resolution-hunter.json");
+const RH_EXECUTED_FILE = path.join(__dirname, "..", "rh-executed.json");
 const RH_MIN_PRICE = 0.95;      // only buy outcomes priced 95¢+
 const RH_MAX_PRICE = 0.995;     // don't buy at 99.5¢+ (not worth fees)
 const RH_MAX_SPEND = 15;        // max $15 per resolution trade
 const RH_MIN_LIQUIDITY = 500;   // min $500 liquidity
 const RH_RESOLUTION_WINDOW_H = 6; // markets resolving within 6 hours
 const RH_MIN_VOLUME_24H = 1000; // min $1K 24h volume (filters illiquid junk)
+
+// Persist executed conditionIds to survive restarts
+let rhExecutedIds = new Set();
+try { rhExecutedIds = new Set(JSON.parse(fs.readFileSync(RH_EXECUTED_FILE, "utf8"))); } catch {}
+function saveRhExecuted() {
+  try { fs.writeFileSync(RH_EXECUTED_FILE, JSON.stringify([...rhExecutedIds])); } catch {}
+}
 
 async function runResolutionHunter() {
   if (circuitBreakerTripped || emergencyMode || survivalMode) {
@@ -1140,10 +1158,13 @@ async function runResolutionHunter() {
     for (const c of candidates) {
       if (tradesThisCycle >= MAX_TRADES_PER_CYCLE) break;
 
-      // Check if we already hold this position
+      // Check if we already hold this position or previously executed
       if (subscribedAssets.has(c.tokenId)) {
         log("RH", `Already holding ${c.market.slice(0,40)} — skip`);
         continue;
+      }
+      if (rhExecutedIds.has(c.conditionId)) {
+        continue; // silently skip — already traded this market
       }
 
       // Calculate size: spend up to RH_MAX_SPEND
@@ -1153,7 +1174,8 @@ async function runResolutionHunter() {
       // Get order book to verify depth
       try {
         const book = await httpGet(`/book?token_id=${c.tokenId}`);
-        const bestAsk = book.asks && book.asks.length > 0 ? parseFloat(book.asks[0].price) : null;
+        // CLOB book: asks sorted descending — best (lowest) ask is last
+        const bestAsk = book.asks && book.asks.length > 0 ? parseFloat(book.asks[book.asks.length - 1].price) : null;
         
         if (!bestAsk || bestAsk > RH_MAX_PRICE) {
           log("RH", `${c.market.slice(0,40)}: best ask ${bestAsk} too high — skip`);
@@ -1182,6 +1204,10 @@ async function runResolutionHunter() {
 
         // Auto-register market name for dashboard
         registerMarketName(c.conditionId, c.market);
+
+        // Persist to prevent re-buying after restart
+        rhExecutedIds.add(c.conditionId);
+        saveRhExecuted();
 
         tradesThisCycle++;
 
@@ -1337,8 +1363,10 @@ async function runWeatherExecutor() {
 
       // Get order book to verify current price
       const book = await httpGet(`/book?token_id=${tokenId}`);
-      const bestAsk = book.asks && book.asks.length > 0 ? parseFloat(book.asks[0].price) : null;
-      const askDepth = book.asks ? book.asks.slice(0, 3).reduce((s, o) => s + parseFloat(o.size), 0) : 0;
+      // CLOB book: asks sorted descending — best (lowest) ask is last
+      const bestAsk = book.asks && book.asks.length > 0 ? parseFloat(book.asks[book.asks.length - 1].price) : null;
+      // Depth near best ask (last 3 levels)
+      const askDepth = book.asks ? book.asks.slice(-3).reduce((s, o) => s + parseFloat(o.size), 0) : 0;
 
       if (!bestAsk) {
         log("WX", `No asks for ${signal.city} ${signal.bucket} — skip`);
@@ -1443,28 +1471,7 @@ async function runWeatherExecutor() {
   }
 }
 
-// Helper: POST to executor
-async function httpPost(path, body) {
-  return new Promise((resolve, reject) => {
-    const data = JSON.stringify(body);
-    const req = require("http").request({
-      hostname: "localhost",
-      port: 3002,
-      path,
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(data) },
-    }, (res) => {
-      let d = "";
-      res.on("data", c => d += c);
-      res.on("end", () => {
-        try { resolve(JSON.parse(d)); } catch (e) { resolve({ raw: d }); }
-      });
-    });
-    req.on("error", reject);
-    req.write(data);
-    req.end();
-  });
-}
+// httpPost is defined at top of file (line ~147) with rate limit handling — do not duplicate
 
 // === REST PRICE POLLING (fallback for NegRisk tokens that don't get WS updates) ===
 const REST_POLL_INTERVAL = 60 * 1000; // every 60 seconds
