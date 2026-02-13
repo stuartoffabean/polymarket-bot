@@ -1,10 +1,9 @@
 {
-  "timestamp": "2026-02-13T01:45:05.420Z",
+  "timestamp": "2026-02-13T02:00:05.042Z",
   "portfolio": {
     "trackedPositions": 6,
-    "portfolioValue": 169.975,
-    "dailyStartValue": 55.44,
-    "startingCapital": 433
+    "portfolioValue": 172.255,
+    "dailyStartValue": 55.919999999999995
   },
   "risk": {
     "circuitBreakerTripped": false,
@@ -22,21 +21,36 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 5975.379676813
+    "uptime": 226.376782313
   },
   "positions": [
+    {
+      "id": "16680383807036024154",
+      "fullAssetId": "16680383807036024154663222348300164487828801908390056508639441371141589139909",
+      "outcome": "Yes",
+      "size": 40,
+      "avgPrice": 0.35,
+      "currentBid": 0.446,
+      "currentAsk": 0.454,
+      "costBasis": "14.00",
+      "currentValue": "17.84",
+      "pnl": "3.84",
+      "pnlPct": "27.4%",
+      "stopLoss": 0.3,
+      "takeProfit": 0.5
+    },
     {
       "id": "28797566188952595754",
       "fullAssetId": "28797566188952595754532249233237210079260595405997354963532548251029768750444",
       "outcome": "Yes",
       "size": 40,
       "avgPrice": 0.54,
-      "currentBid": 0.55,
-      "currentAsk": 0.6,
+      "currentBid": 0.52,
+      "currentAsk": 0.54,
       "costBasis": "21.60",
-      "currentValue": "22.00",
-      "pnl": "0.40",
-      "pnlPct": "1.9%",
+      "currentValue": "20.80",
+      "pnl": "-0.80",
+      "pnlPct": "-3.7%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -62,7 +76,7 @@
       "size": 25,
       "avgPrice": 0.92,
       "currentBid": 0.921,
-      "currentAsk": 0.922,
+      "currentAsk": 0.923,
       "costBasis": "23.00",
       "currentValue": "23.03",
       "pnl": "0.03",
@@ -91,27 +105,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.696,
-      "currentAsk": 0.698,
+      "currentBid": 0.698,
+      "currentAsk": 0.7,
       "costBasis": "49.60",
-      "currentValue": "55.68",
-      "pnl": "6.08",
-      "pnlPct": "12.3%",
-      "stopLoss": 0.3,
-      "takeProfit": 0.5
-    },
-    {
-      "id": "16680383807036024154",
-      "fullAssetId": "16680383807036024154663222348300164487828801908390056508639441371141589139909",
-      "outcome": "Yes",
-      "size": 40,
-      "avgPrice": 0.35,
-      "currentBid": 0.363,
-      "currentAsk": 0.388,
-      "costBasis": "14.00",
-      "currentValue": "14.52",
-      "pnl": "0.52",
-      "pnlPct": "3.7%",
+      "currentValue": "55.84",
+      "pnl": "6.24",
+      "pnlPct": "12.6%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     }
@@ -119,33 +118,33 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-13T01:45:05.420Z",
+      "timestamp": "2026-02-13T02:00:05.042Z",
       "market": "Bad Bunny 75-100M Views (7 days)",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.35,
       "size": 14,
       "shares": 40,
-      "currentPrice": 0.363,
-      "pnl": 0.52,
-      "pnlPct": "3.7%",
+      "currentPrice": 0.446,
+      "pnl": 3.84,
+      "pnlPct": "27.4%",
       "tokenId": "16680383807036024154663222348300164487828801908390056508639441371141589139909"
     },
     {
-      "timestamp": "2026-02-13T01:45:05.420Z",
+      "timestamp": "2026-02-13T02:00:05.042Z",
       "market": "Bad Bunny Halftime Views",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.54,
       "size": 21.6,
       "shares": 40,
-      "currentPrice": 0.55,
-      "pnl": 0.4,
-      "pnlPct": "1.9%",
+      "currentPrice": 0.52,
+      "pnl": -0.8,
+      "pnlPct": "-3.7%",
       "tokenId": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
     },
     {
-      "timestamp": "2026-02-13T01:45:05.420Z",
+      "timestamp": "2026-02-13T02:00:05.042Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
@@ -158,7 +157,7 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-13T01:45:05.420Z",
+      "timestamp": "2026-02-13T02:00:05.042Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
@@ -171,7 +170,7 @@
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-13T01:45:05.420Z",
+      "timestamp": "2026-02-13T02:00:05.042Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "Yes",
       "side": "buy",
@@ -184,16 +183,16 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-13T01:45:05.420Z",
+      "timestamp": "2026-02-13T02:00:05.042Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
       "shares": 80,
-      "currentPrice": 0.696,
-      "pnl": 6.08,
-      "pnlPct": "12.3%",
+      "currentPrice": 0.698,
+      "pnl": 6.24,
+      "pnlPct": "12.6%",
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     }
   ],
@@ -201,10 +200,10 @@
     {
       "name": "Speculative",
       "trades": 2,
-      "pnl": 0.92,
-      "wins": 2,
+      "pnl": 3.04,
+      "wins": 1,
       "enabled": true,
-      "winRate": 1
+      "winRate": 0.5
     },
     {
       "name": "Safe Yield",
@@ -217,7 +216,7 @@
     {
       "name": "Event-Driven",
       "trades": 2,
-      "pnl": 6.08,
+      "pnl": 6.24,
       "wins": 1,
       "enabled": true,
       "winRate": 0.5
@@ -225,19 +224,9 @@
   ],
   "activity": [
     {
-      "time": "2026-02-13T01:05:29.444Z",
-      "type": "FEE_CHANGE_DETECTED",
-      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies."
-    },
-    {
-      "time": "2026-02-13T01:22:57.438Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-13T01:44:51.899Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
+      "time": "2026-02-13T01:56:18.193Z",
+      "type": "SURVIVAL_MODE",
+      "message": "⚠️ Position value $55.92 below $100 — SURVIVAL MODE"
     }
   ],
   "cash": 214.170184,
