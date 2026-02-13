@@ -3,26 +3,78 @@
 ║  v3 — Integrated Scanners                ║
 ╚══════════════════════════════════════════╝
 
-[2026-02-13T00:05:28.753Z] [INIT] Executor: http://localhost:3002
-[2026-02-13T00:05:28.753Z] [INIT] Feed API: port 3003
-[2026-02-13T00:05:28.753Z] [INIT] Starting capital: $433
-[2026-02-13T00:05:28.753Z] [INIT] Stop-loss: 30% | Take-profit: 50%
-[2026-02-13T00:05:28.754Z] [INIT] Daily drawdown limit: 15%
-[2026-02-13T00:05:28.754Z] [INIT] Survival: <$108 | Emergency: <$43
-[2026-02-13T00:05:28.754Z] [INIT] Auto-execute: true
-[2026-02-13T00:05:28.754Z] [INIT] Arb scanner: every 15min | Resolving scanner: every 30min
-[2026-02-13T00:05:28.754Z] [INIT] Telegram alerts: ENABLED
-[2026-02-13T00:05:28.754Z] [INIT] PnL history: every 5min → /data/workspace/polymarket-bot/pnl-history.json
+[2026-02-13T02:17:12.954Z] [INIT] Executor: http://localhost:3002
+[2026-02-13T02:17:12.954Z] [INIT] Feed API: port 3003
+[2026-02-13T02:17:12.954Z] [INIT] P&L: chain-truth only (no hardcoded starting capital)
+[2026-02-13T02:17:12.954Z] [INIT] Stop-loss: 30% | Take-profit: 50%
+[2026-02-13T02:17:12.954Z] [INIT] Daily drawdown limit: 15%
+[2026-02-13T02:17:12.954Z] [INIT] Survival: <$100 | Emergency: <$50
+[2026-02-13T02:17:12.954Z] [INIT] Auto-execute: true
+[2026-02-13T02:17:12.955Z] [INIT] Arb scanner: every 15min | Resolving scanner: every 30min
+[2026-02-13T02:17:12.955Z] [INIT] Telegram alerts: ENABLED
+[2026-02-13T02:17:12.955Z] [INIT] PnL history: every 5min → /data/workspace/polymarket-bot/pnl-history.json
 
-[2026-02-13T00:05:29.336Z] [SYNC] Loaded manual position from file: YES 92 @ 0.8
-[2026-02-13T00:05:29.336Z] [SYNC] Loaded manual position from file: YES 50 @ 0.92
-[2026-02-13T00:05:29.336Z] [SYNC] Loaded manual position from file: NO 50 @ 0.93
-[2026-02-13T00:05:29.336Z] [SYNC] Loaded manual position from file: NO 15 @ 0.82
-[2026-02-13T00:05:29.336Z] [SYNC] Tracking 9 positions (5 from executor)
-[2026-02-13T00:05:29.336Z] [WS] Connecting to wss://ws-subscriptions-clob.polymarket.com/ws/market...
-[2026-02-13T00:05:29.352Z] [DAILY] Next reset in 23.9h
-[2026-02-13T00:05:29.356Z] [INIT] Feed API running on port 3003
-[2026-02-13T00:05:29.684Z] [WS] Connected!
-[2026-02-13T00:05:29.685Z] [WS] Subscribed to 9 assets
-[2026-02-13T00:05:30.332Z] [RISK] ✅ EMERGENCY MODE CLEARED — balance: $55.44, auto-execute re-enabled
-[2026-02-13T00:05:30.827Z] [RISK] ✅ SURVIVAL MODE CLEARED — balance: $114.05
+[2026-02-13T02:17:13.322Z] [SYNC] Loaded manual position from file: YES 92 @ 0.8
+[2026-02-13T02:17:13.322Z] [SYNC] Loaded manual position from file: YES 50 @ 0.92
+[2026-02-13T02:17:13.322Z] [SYNC] Loaded manual position from file: NO 50 @ 0.93
+[2026-02-13T02:17:13.322Z] [SYNC] Loaded manual position from file: NO 15 @ 0.82
+[2026-02-13T02:17:13.322Z] [SYNC] Tracking 10 positions (6 from executor)
+[2026-02-13T02:17:13.322Z] [WS] Connecting to wss://ws-subscriptions-clob.polymarket.com/ws/market...
+[2026-02-13T02:17:13.340Z] [DAILY] Next reset in 21.7h
+[2026-02-13T02:17:13.343Z] [INIT] Feed API running on port 3003
+[2026-02-13T02:17:13.648Z] [WS] Connected!
+[2026-02-13T02:17:13.649Z] [WS] Subscribed to 10 assets
+[2026-02-13T02:17:14.078Z] [ALERT] SURVIVAL_MODE: ⚠️ Position value $31.00 below $100 — SURVIVAL MODE
+[2026-02-13T02:17:14.082Z] [RISK] ⚠️ SURVIVAL MODE ACTIVATED — position value: $31.00
+[2026-02-13T02:17:14.082Z] [ALERT] EMERGENCY_MODE: 🚨 EMERGENCY: Position value $31.00 below $50 — ALL TRADING HALTED
+[2026-02-13T02:17:14.121Z] [RISK] 🚨 EMERGENCY MODE — ALL TRADING HALTED
+[2026-02-13T02:17:14.274Z] [RISK] ✅ EMERGENCY MODE CLEARED — position value: $59.05, auto-execute re-enabled
+[2026-02-13T02:17:14.837Z] [RISK] ✅ SURVIVAL MODE CLEARED — position value: $136.33
+[2026-02-13T02:17:28.653Z] [REST] First price for Bangladesh BNP Election Win...: bid=0.993 ask=0.998
+[2026-02-13T02:17:28.976Z] [REST] First price for 0x7f72e2af09127b4ffd41b7b83d2d6c92fd8238e638d1bfaacbbdae356b4bf720...: bid=0.95 ask=0.96
+[2026-02-13T02:17:43.341Z] [ARB] Starting arb scan...
+[2026-02-13T02:17:44.667Z] [ARB] Found 56 NegRisk events out of 100 total
+[2026-02-13T02:17:44.669Z] [ARB] SKIPPED: Presidential Election Winner 2028 | 33 outcomes (too many) | MidSum: 0.9570
+[2026-02-13T02:17:44.669Z] [ARB] FLAGGED: Elon Musk # tweets February 6 - February 13, 2026? | MidSum: 0.9620 | Dev: 3.8%
+[2026-02-13T02:17:55.836Z] [ARB] SKIPPED: 2026 NBA Champion | 30 outcomes (too many) | MidSum: 1.0270
+[2026-02-13T02:17:55.836Z] [ARB] SKIPPED: UEFA Champions League Winner  | 23 outcomes (too many) | MidSum: 1.0365
+[2026-02-13T02:17:55.837Z] [ARB] SKIPPED: 2026 NHL Stanley Cup Champion  | 32 outcomes (too many) | MidSum: 1.0330
+[2026-02-13T02:17:55.838Z] [ARB] FLAGGED: How many people will Trump deport in 2025? | MidSum: 0.9705 | Dev: 3.0%
+[2026-02-13T02:18:06.024Z] [ARB] SKIPPED: Elon Musk # tweets February 13 - February 20, 2026? | 25 outcomes (too many) | MidSum: 1.0555
+[2026-02-13T02:18:06.025Z] [ARB] SKIPPED: Eurovision Winner 2026 | 35 outcomes (too many) | MidSum: 1.0425
+[2026-02-13T02:18:06.025Z] [ARB] SKIPPED: US next strikes Iran on...? | 33 outcomes (too many) | MidSum: 1.0345
+[2026-02-13T02:18:06.026Z] [ARB] SKIPPED: MLB World Series Champion 2026 | 30 outcomes (too many) | MidSum: 1.0385
+[2026-02-13T02:18:06.026Z] [ARB] FLAGGED: 2026 ICC T20 Men’s World Cup Winner | MidSum: 1.0490 | Dev: 4.9%
+[2026-02-13T02:18:13.340Z] [RESOLVE] Fetching markets resolving in 6-12h...
+[2026-02-13T02:18:13.704Z] [RESOLVE] ✅ Found 100 markets resolving in 6-12h → /data/workspace/polymarket-bot/resolving-markets.json
+[2026-02-13T02:18:18.305Z] [ARB] FLAGGED: Nobel Peace Prize Winner 2026 | MidSum: 0.8060 | Dev: 19.4%
+[2026-02-13T02:18:40.502Z] [ARB] FLAGGED: How many Fed rate cuts in 2026? | MidSum: 1.0275 | Dev: 2.7%
+[2026-02-13T02:18:55.252Z] [ARB] ✅ Scan complete — Flagged: 5 | Viable: 3 → /data/workspace/polymarket-bot/arb-results.json
+[2026-02-13T02:22:13.341Z] [PNL] Failed to record snapshot: history.push is not a function
+[2026-02-13T02:22:13.512Z] [WS] Subscribed to 6 new assets
+[2026-02-13T02:22:13.512Z] [SYNC] Tracking 10 positions (6 from executor)
+[2026-02-13T02:27:13.341Z] [PNL] Failed to record snapshot: history.push is not a function
+[2026-02-13T02:27:13.676Z] [WS] Subscribed to 6 new assets
+[2026-02-13T02:27:13.676Z] [SYNC] Tracking 10 positions (6 from executor)
+[2026-02-13T02:32:13.341Z] [PNL] Failed to record snapshot: history.push is not a function
+[2026-02-13T02:32:13.520Z] [WS] Subscribed to 6 new assets
+[2026-02-13T02:32:13.520Z] [SYNC] Tracking 10 positions (6 from executor)
+[2026-02-13T02:32:43.380Z] [ARB] Starting arb scan...
+[2026-02-13T02:32:44.325Z] [ARB] Found 56 NegRisk events out of 100 total
+[2026-02-13T02:32:44.326Z] [ARB] SKIPPED: Presidential Election Winner 2028 | 33 outcomes (too many) | MidSum: 0.9565
+[2026-02-13T02:32:44.326Z] [ARB] SKIPPED: 2026 NBA Champion | 30 outcomes (too many) | MidSum: 1.0280
+[2026-02-13T02:32:44.326Z] [ARB] SKIPPED: UEFA Champions League Winner  | 23 outcomes (too many) | MidSum: 1.0365
+[2026-02-13T02:32:44.327Z] [ARB] SKIPPED: 2026 NHL Stanley Cup Champion  | 32 outcomes (too many) | MidSum: 1.0380
+[2026-02-13T02:32:44.328Z] [ARB] SKIPPED: Elon Musk # tweets February 13 - February 20, 2026? | 25 outcomes (too many) | MidSum: 1.0555
+[2026-02-13T02:32:44.328Z] [ARB] SKIPPED: Eurovision Winner 2026 | 35 outcomes (too many) | MidSum: 1.0430
+[2026-02-13T02:32:44.329Z] [ARB] SKIPPED: MLB World Series Champion 2026 | 30 outcomes (too many) | MidSum: 1.0395
+[2026-02-13T02:32:44.329Z] [ARB] FLAGGED: 2026 ICC T20 Men’s World Cup Winner | MidSum: 1.0570 | Dev: 5.7%
+[2026-02-13T02:32:58.676Z] [ARB] FLAGGED: Nobel Peace Prize Winner 2026 | MidSum: 0.8075 | Dev: 19.3%
+[2026-02-13T02:33:23.599Z] [ARB] FLAGGED: How many Fed rate cuts in 2026? | MidSum: 1.0300 | Dev: 3.0%
+[2026-02-13T02:33:39.482Z] [ARB] ✅ Scan complete — Flagged: 3 | Viable: 1 → /data/workspace/polymarket-bot/arb-results.json
+[2026-02-13T02:37:13.341Z] [PNL] Failed to record snapshot: history.push is not a function
+[2026-02-13T02:37:13.666Z] [WS] Subscribed to 6 new assets
+[2026-02-13T02:37:13.667Z] [SYNC] Tracking 10 positions (6 from executor)
+[2026-02-13T02:42:13.341Z] [PNL] Failed to record snapshot: history.push is not a function
+[2026-02-13T02:42:13.671Z] [WS] Subscribed to 6 new assets
+[2026-02-13T02:42:13.671Z] [SYNC] Tracking 10 positions (6 from executor)

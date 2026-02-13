@@ -1,0 +1,1450 @@
+{
+  "timestamp": "2026-02-13T03:03:10.839Z",
+  "kalshiEvents": 600,
+  "polymarketMarkets": 200,
+  "comparisons": 49,
+  "signals": 26,
+  "topSignals": [
+    {
+      "category": "Senate Control 2026",
+      "kalshi": {
+        "title": "Will Republicans win the U.S. Senate in 2026?",
+        "ticker": "CONTROLS-2026-R",
+        "yesBid": 0.63,
+        "yesAsk": 0.64,
+        "volume": 627911
+      },
+      "polymarket": {
+        "title": "Will Richard Grenell be the leader of Venezuela end of 2026?",
+        "slug": "will-richard-grenell-be-the-leader-of-venezuela-end-of-2026",
+        "yesPrice": 0.0005,
+        "volume24h": 899647.4800000001,
+        "liquidity": 147022.92463
+      },
+      "priceDiff": 0.6295,
+      "priceDiffPct": 125900,
+      "matchQuality": 0.43,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Senate Control 2026",
+      "kalshi": {
+        "title": "Will Democrats win the U.S. Senate in 2026?",
+        "ticker": "CONTROLS-2026-D",
+        "yesBid": 0.36,
+        "yesAsk": 0.37,
+        "volume": 634627
+      },
+      "polymarket": {
+        "title": "Will Richard Grenell be the leader of Venezuela end of 2026?",
+        "slug": "will-richard-grenell-be-the-leader-of-venezuela-end-of-2026",
+        "yesPrice": 0.0005,
+        "volume24h": 899647.4800000001,
+        "liquidity": 147022.92463
+      },
+      "priceDiff": 0.3595,
+      "priceDiffPct": 71900,
+      "matchQuality": 0.43,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by >25bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-H26",
+        "yesBid": 0.01,
+        "yesAsk": 0.02,
+        "volume": 164
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.915,
+      "priceDiffPct": 9150,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 25bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-H25",
+        "yesBid": 0.01,
+        "yesAsk": 0.02,
+        "volume": 126
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.915,
+      "priceDiffPct": 9150,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Trump Resign",
+      "kalshi": {
+        "title": "Will President Trump resign before his term is up?",
+        "ticker": "KXTRUMPRESIGN",
+        "yesBid": 0.18,
+        "yesAsk": 0.2,
+        "volume": 148607
+      },
+      "polymarket": {
+        "title": "Will Trump nominate no one before 2027?",
+        "slug": "will-trump-nominate-no-one-before-2027",
+        "yesPrice": 0.0025,
+        "volume24h": 807178.6356649997,
+        "liquidity": 743440.00766
+      },
+      "priceDiff": 0.1775,
+      "priceDiffPct": 7100,
+      "matchQuality": 0.38,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Presidential Party",
+      "kalshi": {
+        "title": "Will Democratic win the Presidency in 2028?",
+        "ticker": "KXPRESPARTY-2028-D",
+        "yesBid": 0.53,
+        "yesAsk": 0.55,
+        "volume": 97284
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.522,
+      "priceDiffPct": 6525,
+      "matchQuality": 0.5,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Presidential Party",
+      "kalshi": {
+        "title": "Will Republican win the Presidency in 2028?",
+        "ticker": "KXPRESPARTY-2028-R",
+        "yesBid": 0.45,
+        "yesAsk": 0.46,
+        "volume": 132036
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.442,
+      "priceDiffPct": 5525,
+      "matchQuality": 0.5,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by >25bps at their January 2028 meeting?",
+        "ticker": "KXFEDDECISION-28JAN-H26",
+        "yesBid": 0.03,
+        "yesAsk": 0.13,
+        "volume": 1310
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.895,
+      "priceDiffPct": 2983.3,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-JVAN",
+        "yesBid": 0.24,
+        "yesAsk": 0.25,
+        "volume": 958501
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.232,
+      "priceDiffPct": 2900,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-GNEWS",
+        "yesBid": 0.2,
+        "yesAsk": 0.21,
+        "volume": 1212176
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.192,
+      "priceDiffPct": 2400,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-MRUB",
+        "yesBid": 0.08,
+        "yesAsk": 0.09,
+        "volume": 982999
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.072,
+      "priceDiffPct": 900,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 25bps at their January 2028 meeting?",
+        "ticker": "KXFEDDECISION-28JAN-H25",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 254
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by >25bps at their January 2028 meeting?",
+        "ticker": "KXFEDDECISION-28JAN-C26",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 283
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by >25bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-C26",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 113
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by >25bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-H26",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 210
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 25bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-H25",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 62
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by >25bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-C26",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 210
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by 25bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-C25",
+        "yesBid": 0.14,
+        "yesAsk": 0.24,
+        "volume": 0
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.785,
+      "priceDiffPct": 560.7,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by 25bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-C25",
+        "yesBid": 0.15,
+        "yesAsk": 0.25,
+        "volume": 0
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.775,
+      "priceDiffPct": 516.7,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "fuzzy-match",
+      "kalshi": {
+        "title": "Will Elon Musk visit Mars in his lifetime?",
+        "ticker": "KXELONMARS-99",
+        "yesBid": 0.07,
+        "volume": 44273
+      },
+      "polymarket": {
+        "title": "Will Elon Musk post 340-359 tweets from February 6 to February 13, 2026?",
+        "slug": "elon-musk-of-tweets-february-6-february-13-340-359",
+        "yesPrice": 0.012,
+        "volume24h": 901038.4576710007
+      },
+      "priceDiff": 0.058,
+      "priceDiffPct": 483.3,
+      "matchQuality": 0.5,
+      "signal": "POLY_UNDERPRICED"
+    }
+  ],
+  "allComparisons": [
+    {
+      "category": "Senate Control 2026",
+      "kalshi": {
+        "title": "Will Republicans win the U.S. Senate in 2026?",
+        "ticker": "CONTROLS-2026-R",
+        "yesBid": 0.63,
+        "yesAsk": 0.64,
+        "volume": 627911
+      },
+      "polymarket": {
+        "title": "Will Richard Grenell be the leader of Venezuela end of 2026?",
+        "slug": "will-richard-grenell-be-the-leader-of-venezuela-end-of-2026",
+        "yesPrice": 0.0005,
+        "volume24h": 899647.4800000001,
+        "liquidity": 147022.92463
+      },
+      "priceDiff": 0.6295,
+      "priceDiffPct": 125900,
+      "matchQuality": 0.43,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Senate Control 2026",
+      "kalshi": {
+        "title": "Will Democrats win the U.S. Senate in 2026?",
+        "ticker": "CONTROLS-2026-D",
+        "yesBid": 0.36,
+        "yesAsk": 0.37,
+        "volume": 634627
+      },
+      "polymarket": {
+        "title": "Will Richard Grenell be the leader of Venezuela end of 2026?",
+        "slug": "will-richard-grenell-be-the-leader-of-venezuela-end-of-2026",
+        "yesPrice": 0.0005,
+        "volume24h": 899647.4800000001,
+        "liquidity": 147022.92463
+      },
+      "priceDiff": 0.3595,
+      "priceDiffPct": 71900,
+      "matchQuality": 0.43,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by >25bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-H26",
+        "yesBid": 0.01,
+        "yesAsk": 0.02,
+        "volume": 164
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.915,
+      "priceDiffPct": 9150,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 25bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-H25",
+        "yesBid": 0.01,
+        "yesAsk": 0.02,
+        "volume": 126
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.915,
+      "priceDiffPct": 9150,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Trump Resign",
+      "kalshi": {
+        "title": "Will President Trump resign before his term is up?",
+        "ticker": "KXTRUMPRESIGN",
+        "yesBid": 0.18,
+        "yesAsk": 0.2,
+        "volume": 148607
+      },
+      "polymarket": {
+        "title": "Will Trump nominate no one before 2027?",
+        "slug": "will-trump-nominate-no-one-before-2027",
+        "yesPrice": 0.0025,
+        "volume24h": 807178.6356649997,
+        "liquidity": 743440.00766
+      },
+      "priceDiff": 0.1775,
+      "priceDiffPct": 7100,
+      "matchQuality": 0.38,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Presidential Party",
+      "kalshi": {
+        "title": "Will Democratic win the Presidency in 2028?",
+        "ticker": "KXPRESPARTY-2028-D",
+        "yesBid": 0.53,
+        "yesAsk": 0.55,
+        "volume": 97284
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.522,
+      "priceDiffPct": 6525,
+      "matchQuality": 0.5,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Presidential Party",
+      "kalshi": {
+        "title": "Will Republican win the Presidency in 2028?",
+        "ticker": "KXPRESPARTY-2028-R",
+        "yesBid": 0.45,
+        "yesAsk": 0.46,
+        "volume": 132036
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.442,
+      "priceDiffPct": 5525,
+      "matchQuality": 0.5,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "fuzzy-match",
+      "kalshi": {
+        "title": "Who will be the next new Prime Minister of Israel?",
+        "ticker": "KXNEXTISRAELPM-45JAN01",
+        "yesBid": 0.02,
+        "volume": 774
+      },
+      "polymarket": {
+        "title": "Will Taro Kono be the Prime Minister of Japan as a result of the 2026 snap elect",
+        "slug": "will-taro-kono-be-the-prime-minister-of-japan-as-a-result-of-the-2026-snap-election",
+        "yesPrice": 0.0005,
+        "volume24h": 733755.46
+      },
+      "priceDiff": 0.0195,
+      "priceDiffPct": 3900,
+      "matchQuality": 0.6,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by >25bps at their January 2028 meeting?",
+        "ticker": "KXFEDDECISION-28JAN-H26",
+        "yesBid": 0.03,
+        "yesAsk": 0.13,
+        "volume": 1310
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.895,
+      "priceDiffPct": 2983.3,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-JVAN",
+        "yesBid": 0.24,
+        "yesAsk": 0.25,
+        "volume": 958501
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.232,
+      "priceDiffPct": 2900,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-GNEWS",
+        "yesBid": 0.2,
+        "yesAsk": 0.21,
+        "volume": 1212176
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.192,
+      "priceDiffPct": 2400,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-MRUB",
+        "yesBid": 0.08,
+        "yesAsk": 0.09,
+        "volume": 982999
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.072,
+      "priceDiffPct": 900,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "fuzzy-match",
+      "kalshi": {
+        "title": "Will Andrew Tate's party win a seat in the next UK election?",
+        "ticker": "KXBRUVSEAT-35",
+        "yesBid": 0.03,
+        "volume": 15369
+      },
+      "polymarket": {
+        "title": "Will Bangladesh Jamaat-e-Islami win the most seats in the Bangladesh parliamenta",
+        "slug": "will-bangladesh-jamaat-e-islami-win-the-most-seats-in-the-bangladesh-parliamentary-election",
+        "yesPrice": 0.003,
+        "volume24h": 577802.6777550011
+      },
+      "priceDiff": 0.027,
+      "priceDiffPct": 900,
+      "matchQuality": 0.43,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 25bps at their January 2028 meeting?",
+        "ticker": "KXFEDDECISION-28JAN-H25",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 254
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by >25bps at their January 2028 meeting?",
+        "ticker": "KXFEDDECISION-28JAN-C26",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 283
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by >25bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-C26",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 113
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by >25bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-H26",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 210
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 25bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-H25",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 62
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by >25bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-C26",
+        "yesBid": 0.1,
+        "yesAsk": 0.1,
+        "volume": 210
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.825,
+      "priceDiffPct": 825,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by 25bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-C25",
+        "yesBid": 0.14,
+        "yesAsk": 0.24,
+        "volume": 0
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.785,
+      "priceDiffPct": 560.7,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-AOCA",
+        "yesBid": 0.05,
+        "yesAsk": 0.06,
+        "volume": 671927
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.042,
+      "priceDiffPct": 525,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by 25bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-C25",
+        "yesBid": 0.15,
+        "yesAsk": 0.25,
+        "volume": 0
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.775,
+      "priceDiffPct": 516.7,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "fuzzy-match",
+      "kalshi": {
+        "title": "Will Zohran Mamdani become President of the United States before 2045?",
+        "ticker": "KXPERSONPRESMAM-45",
+        "yesBid": 0.05,
+        "volume": 14501
+      },
+      "polymarket": {
+        "title": "Will Zohran Mamdani win the 2028 US Presidential Election?",
+        "slug": "will-zohran-mamdani-win-the-2028-us-presidential-election",
+        "yesPrice": 0.0085,
+        "volume24h": 586671.7652579999
+      },
+      "priceDiff": 0.0415,
+      "priceDiffPct": 488.2,
+      "matchQuality": 0.44,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "fuzzy-match",
+      "kalshi": {
+        "title": "Will Elon Musk visit Mars in his lifetime?",
+        "ticker": "KXELONMARS-99",
+        "yesBid": 0.07,
+        "volume": 44273
+      },
+      "polymarket": {
+        "title": "Will Elon Musk post 340-359 tweets from February 6 to February 13, 2026?",
+        "slug": "elon-musk-of-tweets-february-6-february-13-340-359",
+        "yesPrice": 0.012,
+        "volume24h": 901038.4576710007
+      },
+      "priceDiff": 0.058,
+      "priceDiffPct": 483.3,
+      "matchQuality": 0.5,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Cut rates by 25bps at their January 2028 meeting?",
+        "ticker": "KXFEDDECISION-28JAN-C25",
+        "yesBid": 0.17,
+        "yesAsk": 0.21,
+        "volume": 585
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.755,
+      "priceDiffPct": 444.1,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-JSHA",
+        "yesBid": 0.04,
+        "yesAsk": 0.05,
+        "volume": 526923
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.032,
+      "priceDiffPct": 400,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-JOSS",
+        "yesBid": 0.03,
+        "yesAsk": 0.04,
+        "volume": 554480
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.022,
+      "priceDiffPct": 275,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-KHAR",
+        "yesBid": 0.03,
+        "yesAsk": 0.04,
+        "volume": 685172
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.022,
+      "priceDiffPct": 275,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-DTRU",
+        "yesBid": 0.03,
+        "yesAsk": 0.04,
+        "volume": 991772
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.022,
+      "priceDiffPct": 275,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-PBUT",
+        "yesBid": 0.03,
+        "yesAsk": 0.04,
+        "volume": 394790
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.022,
+      "priceDiffPct": 275,
+      "matchQuality": 0.71,
+      "signal": "POLY_UNDERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-WMOO",
+        "yesBid": 0.02,
+        "yesAsk": 0.03,
+        "volume": 270293
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.012,
+      "priceDiffPct": 150,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-JPRI",
+        "yesBid": 0.02,
+        "yesAsk": 0.03,
+        "volume": 649017
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.012,
+      "priceDiffPct": 150,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-GWHI",
+        "yesBid": 0.02,
+        "yesAsk": 0.03,
+        "volume": 345923
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.012,
+      "priceDiffPct": 150,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-ABES",
+        "yesBid": 0.02,
+        "yesAsk": 0.03,
+        "volume": 353592
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.012,
+      "priceDiffPct": 150,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "OpenAI vs Anthropic IPO",
+      "kalshi": {
+        "title": "Will OpenAI or Anthropic IPO first?",
+        "ticker": "KXOAIANTH-40-OAI",
+        "yesBid": 0.4,
+        "yesAsk": 0.44,
+        "volume": 21083
+      },
+      "polymarket": {
+        "title": "Will SOLV Energy, Inc.'s market cap be greater than $5.4B at market close on IPO",
+        "slug": "will-solv-energy-incs-market-cap-be-greater-than-5pt4b-at-market-close-on-ipo-day",
+        "yesPrice": 0.9995,
+        "volume24h": 1643801.3472360002,
+        "liquidity": 597391.91789
+      },
+      "priceDiff": 0.5995,
+      "priceDiffPct": 149.9,
+      "matchQuality": 0.4,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 0bps at their December 2027 meeting?",
+        "ticker": "KXFEDDECISION-27DEC-H0",
+        "yesBid": 0.59,
+        "yesAsk": 0.68,
+        "volume": 116
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.335,
+      "priceDiffPct": 56.8,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "OpenAI vs Anthropic IPO",
+      "kalshi": {
+        "title": "Will Open AI or Anthropic IPO first?",
+        "ticker": "KXOAIANTH-40-ANTH",
+        "yesBid": 0.64,
+        "yesAsk": 0.7,
+        "volume": 22276
+      },
+      "polymarket": {
+        "title": "Will SOLV Energy, Inc.'s market cap be greater than $5.4B at market close on IPO",
+        "slug": "will-solv-energy-incs-market-cap-be-greater-than-5pt4b-at-market-close-on-ipo-day",
+        "yesPrice": 0.9995,
+        "volume24h": 1643801.3472360002,
+        "liquidity": 597391.91789
+      },
+      "priceDiff": 0.3595,
+      "priceDiffPct": 56.2,
+      "matchQuality": 0.4,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 0bps at their January 2028 meeting?",
+        "ticker": "KXFEDDECISION-28JAN-H0",
+        "yesBid": 0.6,
+        "yesAsk": 0.65,
+        "volume": 799
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.325,
+      "priceDiffPct": 54.2,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "Fed Rate Decision",
+      "kalshi": {
+        "title": "Will the Federal Reserve Hike rates by 0bps at their October 2027 meeting?",
+        "ticker": "KXFEDDECISION-27OCT-H0",
+        "yesBid": 0.6,
+        "yesAsk": 0.7,
+        "volume": 0
+      },
+      "polymarket": {
+        "title": "Will there be no change in Fed interest rates after the March 2026 meeting?",
+        "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-march-2026-meeting",
+        "yesPrice": 0.925,
+        "volume24h": 966485.2781819995,
+        "liquidity": 974337.9953
+      },
+      "priceDiff": 0.325,
+      "priceDiffPct": 54.2,
+      "matchQuality": 0.36,
+      "signal": "POLY_OVERPRICED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-JDIM",
+        "yesBid": 0.01,
+        "yesAsk": 0.01,
+        "volume": 282250
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-TWAL",
+        "yesBid": 0.01,
+        "yesAsk": 0.01,
+        "volume": 56860
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-VRAM",
+        "yesBid": 0.01,
+        "yesAsk": 0.01,
+        "volume": 109527
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-TGAB",
+        "yesBid": 0.01,
+        "yesAsk": 0.01,
+        "volume": 252232
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-SSMI",
+        "yesBid": 0.01,
+        "yesAsk": 0.01,
+        "volume": 202401
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-RDES",
+        "yesBid": 0.01,
+        "yesAsk": 0.02,
+        "volume": 601950
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-NHAL",
+        "yesBid": 0.01,
+        "yesAsk": 0.01,
+        "volume": 62990
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-GYOU",
+        "yesBid": 0.01,
+        "yesAsk": 0.02,
+        "volume": 431708
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-GABB",
+        "yesBid": 0.01,
+        "yesAsk": 0.01,
+        "volume": 55507
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    },
+    {
+      "category": "President 2028",
+      "kalshi": {
+        "title": "Who will win the next presidential election?",
+        "ticker": "KXPRESPERSON-28-DTRUJR",
+        "yesBid": 0.01,
+        "yesAsk": 0.02,
+        "volume": 221838
+      },
+      "polymarket": {
+        "title": "Will Michelle Obama win the 2028 US Presidential Election?",
+        "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+        "yesPrice": 0.008,
+        "volume24h": 659112.105983,
+        "liquidity": 623272.06209
+      },
+      "priceDiff": 0.002,
+      "priceDiffPct": 25,
+      "matchQuality": 0.71,
+      "signal": "ALIGNED"
+    }
+  ]
+}

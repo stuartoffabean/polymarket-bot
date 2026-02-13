@@ -71,13 +71,14 @@ const ARB_SCAN_INTERVAL = 15 * 60 * 1000;       // 15 min
 const RESOLVING_SCAN_INTERVAL = 30 * 60 * 1000;  // 30 min
 
 // Thresholds (Directive v2 §risk, v3 §7)
-const STARTING_CAPITAL = parseFloat(process.env.STARTING_CAPITAL) || 433;
-const MAX_DAILY_DRAWDOWN = 0.15;      // 15% → pause 2hrs
+// P&L is chain-truth only — no hardcoded starting capital. Survival/emergency
+// thresholds use absolute dollar floors instead of % of arbitrary number.
+const MAX_DAILY_DRAWDOWN = 0.15;      // 15% → pause 2hrs (relative to daily start)
 const DEFAULT_STOP_LOSS = 0.30;       // 30% loss per position
 const DEFAULT_TAKE_PROFIT = 0.50;     // 50% gain per position
-const SURVIVAL_THRESHOLD = 0.25;      // 25% of starting capital
-const EMERGENCY_THRESHOLD = 0.10;     // 10% of starting capital
-const SINGLE_TRADE_LOSS_LIMIT = 0.05; // 5% of bankroll per trade loss → halt strategy
+const SURVIVAL_FLOOR = 100;           // $100 total value → survival mode
+const EMERGENCY_FLOOR = 50;           // $50 total value → emergency mode
+const SINGLE_TRADE_LOSS_LIMIT_USD = 20; // $20 single trade loss → halt strategy
 const DRAWDOWN_PAUSE_MS = 2 * 60 * 60 * 1000; // 2 hour pause
 
 // === STATE ===
@@ -348,8 +349,8 @@ function checkTriggers(assetId, asset) {
   const stopLoss = asset.stopLoss || DEFAULT_STOP_LOSS;
   const takeProfit = asset.takeProfit || DEFAULT_TAKE_PROFIT;
 
-  // Single trade loss > 5% of bankroll (v3 §7)
-  if (pnlAbs < 0 && Math.abs(pnlAbs) > STARTING_CAPITAL * SINGLE_TRADE_LOSS_LIMIT) {
+  // Single trade loss > $20 (v3 §7)
+  if (pnlAbs < 0 && Math.abs(pnlAbs) > SINGLE_TRADE_LOSS_LIMIT_USD) {
     if (!asset._singleLossAlerted) {
       pushAlert("SINGLE_TRADE_LOSS", assetId, asset, currentPrice, pnlPct, 
         `Loss $${Math.abs(pnlAbs).toFixed(2)} exceeds 5% of bankroll`);
@@ -442,28 +443,28 @@ function updatePortfolioValue() {
       }, DRAWDOWN_PAUSE_MS);
     }
 
-    // SURVIVAL MODE (v3 §7: balance < 25% of starting)
-    if (totalValue > 0 && totalValue < STARTING_CAPITAL * SURVIVAL_THRESHOLD && !survivalMode) {
+    // SURVIVAL MODE: position value < $100
+    if (totalValue > 0 && totalValue < SURVIVAL_FLOOR && !survivalMode) {
       survivalMode = true;
       pushAlert("SURVIVAL_MODE", null, null, null, null, 
-        `⚠️ Balance $${totalValue.toFixed(2)} below 25% of $${STARTING_CAPITAL} — SURVIVAL MODE`);
-      log("RISK", `⚠️ SURVIVAL MODE ACTIVATED — balance: $${totalValue.toFixed(2)}`);
-    } else if (survivalMode && totalValue >= STARTING_CAPITAL * SURVIVAL_THRESHOLD) {
+        `⚠️ Position value $${totalValue.toFixed(2)} below $${SURVIVAL_FLOOR} — SURVIVAL MODE`);
+      log("RISK", `⚠️ SURVIVAL MODE ACTIVATED — position value: $${totalValue.toFixed(2)}`);
+    } else if (survivalMode && totalValue >= SURVIVAL_FLOOR) {
       survivalMode = false;
-      log("RISK", `✅ SURVIVAL MODE CLEARED — balance: $${totalValue.toFixed(2)}`);
+      log("RISK", `✅ SURVIVAL MODE CLEARED — position value: $${totalValue.toFixed(2)}`);
     }
 
-    // EMERGENCY MODE (v3 §7: balance < 10% of starting)
-    if (totalValue > 0 && totalValue < STARTING_CAPITAL * EMERGENCY_THRESHOLD && !emergencyMode) {
+    // EMERGENCY MODE: position value < $50
+    if (totalValue > 0 && totalValue < EMERGENCY_FLOOR && !emergencyMode) {
       emergencyMode = true;
-      autoExecuteEnabled = false; // no more auto-sells, everything frozen
+      autoExecuteEnabled = false;
       pushAlert("EMERGENCY_MODE", null, null, null, null, 
-        `🚨 EMERGENCY: Balance $${totalValue.toFixed(2)} below 10% of $${STARTING_CAPITAL} — ALL TRADING HALTED`);
+        `🚨 EMERGENCY: Position value $${totalValue.toFixed(2)} below $${EMERGENCY_FLOOR} — ALL TRADING HALTED`);
       log("RISK", `🚨 EMERGENCY MODE — ALL TRADING HALTED`);
-    } else if (emergencyMode && totalValue >= STARTING_CAPITAL * EMERGENCY_THRESHOLD) {
+    } else if (emergencyMode && totalValue >= EMERGENCY_FLOOR) {
       emergencyMode = false;
       autoExecuteEnabled = true;
-      log("RISK", `✅ EMERGENCY MODE CLEARED — balance: $${totalValue.toFixed(2)}, auto-execute re-enabled`);
+      log("RISK", `✅ EMERGENCY MODE CLEARED — position value: $${totalValue.toFixed(2)}, auto-execute re-enabled`);
     }
   }
 }
@@ -652,6 +653,24 @@ async function apiHandler(req, res) {
       }
     }
 
+    if (url === "/resolution-hunter") {
+      try {
+        const data = JSON.parse(fs.readFileSync(RESOLUTION_HUNTER_FILE, "utf8"));
+        return send(res, 200, data);
+      } catch (e) {
+        return send(res, 200, { error: "No resolution hunter data yet", timestamp: null });
+      }
+    }
+
+    if (url === "/weather-trades") {
+      try {
+        const data = JSON.parse(fs.readFileSync(WEATHER_TRADES_FILE, "utf8"));
+        return send(res, 200, data);
+      } catch (e) {
+        return send(res, 200, { error: "No weather trades yet", timestamp: null });
+      }
+    }
+
     if (url === "/status") {
       const state = loadTradingState();
       return send(res, 200, {
@@ -665,7 +684,7 @@ async function apiHandler(req, res) {
           trackedPositions: subscribedAssets.size,
           portfolioValue: currentPortfolioValue,
           dailyStartValue,
-          startingCapital: STARTING_CAPITAL,
+          // No startingCapital — P&L is chain-truth only
         },
         risk: {
           circuitBreakerTripped,
@@ -921,6 +940,60 @@ async function runArbScan() {
 
     fs.writeFileSync(ARB_RESULTS_FILE, JSON.stringify(output, null, 2));
     log("ARB", `✅ Scan complete — Flagged: ${opportunities.length} | Viable: ${output.summary.viable} → ${ARB_RESULTS_FILE}`);
+
+    // === ARB AUTO-EXECUTION ===
+    if (!circuitBreakerTripped && !emergencyMode && !survivalMode && autoExecuteEnabled) {
+      const ARB_MIN_PROFIT = 5;     // min 5% profit per $100
+      const ARB_MAX_OUTCOMES = 10;  // max 10 legs
+      const ARB_MAX_SPEND = 20;     // max $20 per arb
+      const ARB_MIN_PROFIT_FLAT = 0.50; // min $0.50 absolute profit
+
+      for (const opp of opportunities) {
+        if (!opp.viable) continue;
+        if (opp.type !== "LONG") continue; // only buy-all-YES arbs for now
+        if (opp.profitPer100 < ARB_MIN_PROFIT) continue;
+        if (opp.outcomes > ARB_MAX_OUTCOMES) continue;
+        if (!opp.execSum || opp.execSum >= 1.0) continue;
+
+        // Calculate size: buy 1 share of each outcome costs execSum
+        // Profit per set = 1.00 - execSum
+        const profitPerSet = 1.0 - opp.execSum;
+        const maxSets = Math.floor(ARB_MAX_SPEND / opp.execSum);
+        const sets = Math.min(maxSets, 50); // cap at 50 sets
+        const totalSpend = (sets * opp.execSum).toFixed(2);
+        const totalProfit = (sets * profitPerSet).toFixed(2);
+
+        if (parseFloat(totalProfit) < ARB_MIN_PROFIT_FLAT) continue;
+
+        log("ARB", `🎯 AUTO-EXEC: "${opp.event.slice(0,50)}" — ${sets} sets @ $${opp.execSum.toFixed(3)}/set = $${totalSpend} spend, $${totalProfit} profit`);
+
+        try {
+          // Build legs for the arb endpoint
+          const legs = opp.details
+            .filter(d => d.token && d.exec > 0)
+            .map(d => ({
+              tokenID: d.token,
+              price: d.exec,
+              size: sets,
+              side: "BUY",
+            }));
+
+          if (legs.length !== opp.outcomes) {
+            log("ARB", `⚠️ Leg count mismatch (${legs.length} vs ${opp.outcomes}) — skipping`);
+            continue;
+          }
+
+          const arbResult = await httpPost("/arb", { legs });
+          log("ARB", `Arb result: ${JSON.stringify(arbResult).slice(0, 300)}`);
+
+          sendTelegramAlert(`🎯 ARB EXECUTED: "${opp.event.slice(0,50)}"\n${sets} sets @ $${opp.execSum.toFixed(3)}/set\nSpend: $${totalSpend} | Expected profit: $${totalProfit}\nLegs: ${legs.length}`);
+        } catch (e) {
+          log("ARB", `❌ Arb execution failed: ${e.message}`);
+        }
+
+        break; // only execute 1 arb per cycle
+      }
+    }
   } catch (e) {
     log("ARB", `❌ Scan failed: ${e.message}`);
   }
@@ -979,6 +1052,460 @@ async function runResolvingScan() {
   }
 }
 
+// === AUTO-NAME REGISTRATION ===
+const MARKET_NAMES_FILE = path.join(__dirname, "market-names.json");
+function registerMarketName(conditionId, name) {
+  if (!conditionId || !name) return;
+  try {
+    let names = {};
+    try { names = JSON.parse(fs.readFileSync(MARKET_NAMES_FILE, "utf8")); } catch {}
+    if (names[conditionId]) return; // already named
+    names[conditionId] = name;
+    fs.writeFileSync(MARKET_NAMES_FILE, JSON.stringify(names, null, 2));
+    log("NAMES", `Registered: ${conditionId.slice(0,10)} → ${name}`);
+  } catch (e) { log("NAMES", `Failed to register name: ${e.message}`); }
+}
+
+// === RESOLUTION HUNTER (auto-buy near-resolved markets) ===
+const RESOLUTION_HUNTER_INTERVAL = 15 * 60 * 1000; // every 15 min
+const RESOLUTION_HUNTER_FILE = path.join(__dirname, "..", "resolution-hunter.json");
+const RH_MIN_PRICE = 0.95;      // only buy outcomes priced 95¢+
+const RH_MAX_PRICE = 0.995;     // don't buy at 99.5¢+ (not worth fees)
+const RH_MAX_SPEND = 15;        // max $15 per resolution trade
+const RH_MIN_LIQUIDITY = 500;   // min $500 liquidity
+const RH_RESOLUTION_WINDOW_H = 6; // markets resolving within 6 hours
+const RH_MIN_VOLUME_24H = 1000; // min $1K 24h volume (filters illiquid junk)
+
+async function runResolutionHunter() {
+  if (circuitBreakerTripped || emergencyMode || survivalMode) {
+    log("RH", "Skipping — risk mode active");
+    return;
+  }
+
+  log("RH", "Scanning for resolution harvesting opportunities...");
+  try {
+    const now = new Date();
+    const min = new Date(now.getTime() + 30 * 60 * 1000);  // at least 30min out (avoid already-resolving)
+    const max = new Date(now.getTime() + RH_RESOLUTION_WINDOW_H * 60 * 60 * 1000);
+
+    const url = `${GAMMA_API}/markets?closed=false&active=true&end_date_min=${min.toISOString()}&end_date_max=${max.toISOString()}&limit=100&order=volume&ascending=false`;
+    const markets = await fetchJSON(url);
+
+    const candidates = [];
+    const executed = [];
+
+    for (const m of markets) {
+      try {
+        const prices = typeof m.outcomePrices === "string" ? JSON.parse(m.outcomePrices) : m.outcomePrices;
+        const tokenIds = typeof m.clobTokenIds === "string" ? JSON.parse(m.clobTokenIds) : m.clobTokenIds;
+        const outcomes = typeof m.outcomes === "string" ? JSON.parse(m.outcomes) : m.outcomes;
+        const vol24h = parseFloat(m.volume24hr) || 0;
+        const liquidity = parseFloat(m.liquidityClob || m.liquidity) || 0;
+
+        if (vol24h < RH_MIN_VOLUME_24H) continue;
+        if (liquidity < RH_MIN_LIQUIDITY) continue;
+        if (!tokenIds || tokenIds.length < 2) continue;
+
+        // Check each outcome
+        for (let i = 0; i < prices.length; i++) {
+          const price = parseFloat(prices[i]);
+          if (price >= RH_MIN_PRICE && price <= RH_MAX_PRICE) {
+            const tokenId = tokenIds[i];
+            const outcome = outcomes[i] || (i === 0 ? "Yes" : "No");
+            const expectedProfit = ((1.0 - price) * RH_MAX_SPEND / price).toFixed(2);
+            
+            candidates.push({
+              market: (m.question || m.title || "").slice(0, 80),
+              outcome,
+              price,
+              tokenId,
+              liquidity,
+              vol24h,
+              endDate: m.endDate || m.end_date_iso,
+              expectedProfit: `$${expectedProfit}`,
+              conditionId: m.conditionId,
+            });
+          }
+        }
+      } catch (e) { /* skip malformed */ }
+    }
+
+    // Sort by best price (highest = most certain = safest)
+    candidates.sort((a, b) => b.price - a.price);
+
+    // Auto-execute: buy top candidates (max 3 per cycle to limit exposure)
+    let tradesThisCycle = 0;
+    const MAX_TRADES_PER_CYCLE = 3;
+
+    for (const c of candidates) {
+      if (tradesThisCycle >= MAX_TRADES_PER_CYCLE) break;
+
+      // Check if we already hold this position
+      if (subscribedAssets.has(c.tokenId)) {
+        log("RH", `Already holding ${c.market.slice(0,40)} — skip`);
+        continue;
+      }
+
+      // Calculate size: spend up to RH_MAX_SPEND
+      const size = Math.floor(RH_MAX_SPEND / c.price);
+      if (size < 1) continue;
+
+      // Get order book to verify depth
+      try {
+        const book = await httpGet(`/book?token_id=${c.tokenId}`);
+        const bestAsk = book.asks && book.asks.length > 0 ? parseFloat(book.asks[0].price) : null;
+        
+        if (!bestAsk || bestAsk > RH_MAX_PRICE) {
+          log("RH", `${c.market.slice(0,40)}: best ask ${bestAsk} too high — skip`);
+          continue;
+        }
+
+        // Place limit order at best ask
+        log("RH", `🎯 BUYING: ${size} ${c.outcome} @ ${bestAsk} on "${c.market.slice(0,50)}"`);
+        const orderResult = await httpPost("/order", {
+          tokenID: c.tokenId,
+          price: bestAsk,
+          size,
+          side: "BUY",
+          orderType: "GTC",
+        });
+
+        log("RH", `Order result: ${JSON.stringify(orderResult).slice(0,200)}`);
+        
+        executed.push({
+          ...c,
+          executedPrice: bestAsk,
+          executedSize: size,
+          spend: (bestAsk * size).toFixed(2),
+          orderResult: orderResult.orderID || orderResult.status || "submitted",
+        });
+
+        // Auto-register market name for dashboard
+        registerMarketName(c.conditionId, c.market);
+
+        tradesThisCycle++;
+
+        // Small delay between orders
+        await new Promise(r => setTimeout(r, 1000));
+      } catch (e) {
+        log("RH", `❌ Failed to execute ${c.market.slice(0,40)}: ${e.message}`);
+      }
+    }
+
+    // Save results
+    const output = {
+      timestamp: new Date().toISOString(),
+      candidates: candidates.length,
+      executed: executed.length,
+      trades: executed,
+      topCandidates: candidates.slice(0, 10),
+    };
+    fs.writeFileSync(RESOLUTION_HUNTER_FILE, JSON.stringify(output, null, 2));
+
+    if (executed.length > 0) {
+      log("RH", `✅ Executed ${executed.length} resolution trades`);
+      sendTelegramAlert(`🎯 Resolution Hunter: ${executed.length} trades executed\n${executed.map(e => `  ${e.outcome} ${e.executedSize}sh @ ${e.executedPrice} → "${e.market.slice(0,40)}"`).join("\n")}`);
+    } else {
+      log("RH", `Scan complete: ${candidates.length} candidates, 0 executed`);
+    }
+  } catch (e) {
+    log("RH", `❌ Resolution hunter failed: ${e.message}`);
+  }
+}
+
+// === WEATHER SIGNAL EXECUTOR ===
+// Reads weather-results.json (generated by weather-scanner.js cron)
+// Auto-executes high-confidence weather signals with Kelly sizing
+const WEATHER_EXECUTOR_INTERVAL = 15 * 60 * 1000; // every 15 min
+const WEATHER_RESULTS_FILE = path.join(__dirname, "..", "weather-results.json");
+const WEATHER_TRADES_FILE = path.join(__dirname, "..", "weather-trades.json");
+const WX_MIN_EDGE = 0.08;           // 8% minimum edge for auto-execution
+const WX_MIN_CONFIDENCE = 0.75;     // 75% minimum ensemble confidence
+const WX_MIN_LIQUIDITY = 200;       // $200 minimum liquidity
+const WX_MIN_VOLUME_24H = 500;      // $500 minimum 24h volume
+const WX_MAX_TRADE_SIZE = 10;       // $10 max per individual trade
+const WX_MAX_TOTAL_EXPOSURE = 50;   // $50 max total weather exposure per cycle
+const WX_MAX_TRADES_PER_CYCLE = 8;  // max 8 weather trades per scan
+const WX_MAX_HOURS_TO_RESOLUTION = 18; // only trade markets resolving within 18h
+const WX_MAX_STALE_MINUTES = 120;   // skip if weather-results.json is >2h old
+
+// Track executed weather trades to avoid duplicates
+let weatherTradesExecuted = new Set();
+try {
+  const saved = JSON.parse(fs.readFileSync(WEATHER_TRADES_FILE, "utf8"));
+  weatherTradesExecuted = new Set(saved.executedConditionIds || []);
+} catch { /* first run */ }
+
+function saveWeatherTrades(trades) {
+  try {
+    const existing = (() => { try { return JSON.parse(fs.readFileSync(WEATHER_TRADES_FILE, "utf8")); } catch { return { trades: [], executedConditionIds: [] }; } })();
+    existing.trades.push(...trades);
+    existing.executedConditionIds = [...weatherTradesExecuted];
+    existing.lastRun = new Date().toISOString();
+    fs.writeFileSync(WEATHER_TRADES_FILE, JSON.stringify(existing, null, 2));
+  } catch (e) { log("WX", `Failed to save trades: ${e.message}`); }
+}
+
+async function runWeatherExecutor() {
+  log("WX", "Starting weather signal executor...");
+  if (circuitBreakerTripped || emergencyMode || survivalMode) {
+    log("WX", "Skipping — risk mode active");
+    return;
+  }
+
+  // Read weather-results.json
+  if (!fs.existsSync(WEATHER_RESULTS_FILE)) {
+    log("WX", "No weather-results.json — scanner hasn't run yet");
+    return;
+  }
+
+  let results;
+  try {
+    results = JSON.parse(fs.readFileSync(WEATHER_RESULTS_FILE, "utf8"));
+  } catch (e) {
+    log("WX", `Failed to read weather results: ${e.message}`);
+    return;
+  }
+
+  // Check staleness
+  const resultAge = (Date.now() - new Date(results.timestamp).getTime()) / 60000;
+  if (resultAge > WX_MAX_STALE_MINUTES) {
+    log("WX", `Weather results are ${resultAge.toFixed(0)}min old (max ${WX_MAX_STALE_MINUTES}) — skipping`);
+    return;
+  }
+
+  const signals = results.signals || [];
+  if (signals.length === 0) {
+    log("WX", "No weather signals to execute");
+    return;
+  }
+
+  log("WX", `Processing ${signals.length} weather signals (results age: ${resultAge.toFixed(0)}min)`);
+
+  const now = new Date();
+  const executed = [];
+  let totalSpent = 0;
+  let tradesThisCycle = 0;
+
+  // Filter and sort signals
+  const actionable = signals.filter(s => {
+    // Must meet thresholds
+    if (Math.abs(s.edge) < WX_MIN_EDGE) return false;
+    if ((s.ensembleConfidence || 0) < WX_MIN_CONFIDENCE) return false;
+    if ((s.liquidity || 0) < WX_MIN_LIQUIDITY) return false;
+    if ((s.volume24h || 0) < WX_MIN_VOLUME_24H) return false;
+    if (s.synthetic) return false; // only trade on real ensemble data
+    
+    // Must resolve within window
+    if (s.endDate) {
+      const hoursToResolution = (new Date(s.endDate) - now) / 3600000;
+      if (hoursToResolution < 0.5 || hoursToResolution > WX_MAX_HOURS_TO_RESOLUTION) return false;
+    }
+    
+    // Skip already-executed
+    if (weatherTradesExecuted.has(s.conditionId)) return false;
+    
+    return true;
+  }).sort((a, b) => {
+    // Sort by: confidence * |edge| (combined quality score)
+    const scoreA = (a.ensembleConfidence || 0.5) * Math.abs(a.edge);
+    const scoreB = (b.ensembleConfidence || 0.5) * Math.abs(b.edge);
+    return scoreB - scoreA;
+  });
+
+  log("WX", `${actionable.length} actionable signals after filtering`);
+
+  for (const signal of actionable) {
+    if (tradesThisCycle >= WX_MAX_TRADES_PER_CYCLE) break;
+    if (totalSpent >= WX_MAX_TOTAL_EXPOSURE) break;
+
+    try {
+      // Use token IDs from weather scanner output (pre-resolved via CLOB API)
+      let tokenId;
+      if (signal.signal === "BUY_YES") {
+        tokenId = signal.yesTokenId;
+      } else if (signal.signal === "BUY_NO") {
+        tokenId = signal.noTokenId;
+      } else {
+        continue;
+      }
+
+      if (!tokenId) {
+        log("WX", `No ${signal.signal === "BUY_YES" ? "YES" : "NO"} tokenId for ${signal.city} ${signal.bucket} — skip`);
+        continue;
+      }
+
+      // Get order book to verify current price
+      const book = await httpGet(`/book?token_id=${tokenId}`);
+      const bestAsk = book.asks && book.asks.length > 0 ? parseFloat(book.asks[0].price) : null;
+      const askDepth = book.asks ? book.asks.slice(0, 3).reduce((s, o) => s + parseFloat(o.size), 0) : 0;
+
+      if (!bestAsk) {
+        log("WX", `No asks for ${signal.city} ${signal.bucket} — skip`);
+        continue;
+      }
+
+      // Check that price hasn't moved against us since scan
+      // For BUY_YES: askPrice should still be cheap (not much higher than scan price)
+      // For BUY_NO: askPrice of NO token — we need to check
+      if (signal.signal === "BUY_YES" && bestAsk > signal.marketPrice * 1.5 + 0.02) {
+        log("WX", `${signal.city} ${signal.bucket}: price moved (was ${signal.marketPrice}, now ask ${bestAsk}) — skip`);
+        continue;
+      }
+
+      // Calculate size using Kelly or cap
+      const kellyDollars = Math.min(signal.kellySize || WX_MAX_TRADE_SIZE, WX_MAX_TRADE_SIZE);
+      const remainingBudget = WX_MAX_TOTAL_EXPOSURE - totalSpent;
+      const spendDollars = Math.min(kellyDollars, remainingBudget);
+      const size = Math.floor(spendDollars / bestAsk);
+
+      if (size < 5) { // minimum 5 shares
+        log("WX", `${signal.city} ${signal.bucket}: size too small (${size} shares) — skip`);
+        continue;
+      }
+
+      // Execute!
+      log("WX", `🌤️ BUYING: ${size} ${signal.signal === "BUY_YES" ? "YES" : "NO"} @ ${bestAsk} on "${signal.city} ${signal.bucket}°${signal.unit}" (edge: ${(signal.edge*100).toFixed(1)}¢, conf: ${((signal.ensembleConfidence||0)*100).toFixed(0)}%)`);
+      
+      const orderResult = await httpPost("/order", {
+        tokenID: tokenId,
+        price: bestAsk,
+        size,
+        side: "BUY",
+        orderType: "GTC",
+      });
+
+      const spend = (bestAsk * size).toFixed(2);
+      totalSpent += parseFloat(spend);
+      tradesThisCycle++;
+      weatherTradesExecuted.add(signal.conditionId);
+
+      const trade = {
+        timestamp: new Date().toISOString(),
+        city: signal.city,
+        date: signal.date,
+        bucket: signal.bucket,
+        unit: signal.unit,
+        signal: signal.signal,
+        tokenId,
+        size,
+        price: bestAsk,
+        spend,
+        edge: signal.edge,
+        ensembleConfidence: signal.ensembleConfidence,
+        ensembleMean: signal.ensembleMean,
+        ensembleStdDev: signal.ensembleStdDev,
+        forecastProb: signal.forecastProb,
+        orderID: orderResult.orderID || null,
+        status: orderResult.status || orderResult.error || "submitted",
+        question: signal.question?.slice(0, 100),
+      };
+
+      executed.push(trade);
+      log("WX", `Order result: ${JSON.stringify(orderResult).slice(0, 200)}`);
+
+      // Auto-register market name for dashboard
+      const wxName = `${signal.city} ${signal.bucket}°${signal.unit} ${signal.date}`.replace(/\b\w/g, c => c.toUpperCase()).slice(0, 40);
+      registerMarketName(signal.conditionId, wxName);
+
+      // Rate limit
+      await new Promise(r => setTimeout(r, 1500));
+
+    } catch (e) {
+      log("WX", `❌ Failed: ${signal.city} ${signal.bucket}: ${e.message}`);
+    }
+  }
+
+  // Save executed trades
+  if (executed.length > 0) {
+    saveWeatherTrades(executed);
+    log("WX", `✅ ${executed.length} weather trades executed, $${totalSpent.toFixed(2)} deployed`);
+    sendTelegramAlert(`🌤️ Weather Executor: ${executed.length} trades, $${totalSpent.toFixed(2)} deployed\n${executed.map(e => `  ${e.signal} ${e.size}sh @ ${e.price} → ${e.city} ${e.bucket}°${e.unit} (edge ${(e.edge*100).toFixed(0)}¢)`).join("\n")}`);
+  } else {
+    log("WX", `Scan complete: ${actionable.length} actionable, 0 executed`);
+  }
+}
+
+// Helper: POST to executor
+async function httpPost(path, body) {
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify(body);
+    const req = require("http").request({
+      hostname: "localhost",
+      port: 3002,
+      path,
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(data) },
+    }, (res) => {
+      let d = "";
+      res.on("data", c => d += c);
+      res.on("end", () => {
+        try { resolve(JSON.parse(d)); } catch (e) { resolve({ raw: d }); }
+      });
+    });
+    req.on("error", reject);
+    req.write(data);
+    req.end();
+  });
+}
+
+// === REST PRICE POLLING (fallback for NegRisk tokens that don't get WS updates) ===
+const REST_POLL_INTERVAL = 60 * 1000; // every 60 seconds
+const REST_POLL_STALE_MS = 120 * 1000; // consider stale if no WS update in 2 min
+
+async function pollStalePrices() {
+  const https = require("https");
+  const now = Date.now();
+  const staleAssets = [];
+
+  for (const [assetId, asset] of subscribedAssets) {
+    // Poll if never updated or stale (no WS data in 2 min)
+    if (!asset.lastUpdate || (now - asset.lastUpdate > REST_POLL_STALE_MS)) {
+      staleAssets.push(assetId);
+    }
+  }
+
+  if (staleAssets.length === 0) return;
+
+  for (const assetId of staleAssets) {
+    const asset = subscribedAssets.get(assetId);
+    if (!asset) continue;
+
+    try {
+      // Fetch buy price (= bid)
+      const buyPrice = await new Promise((resolve, reject) => {
+        https.get(`https://clob.polymarket.com/price?token_id=${assetId}&side=buy`, (res) => {
+          let d = ""; res.on("data", c => d += c);
+          res.on("end", () => { try { resolve(JSON.parse(d).price); } catch(e) { reject(e); } });
+        }).on("error", reject);
+      });
+
+      // Fetch sell price (= ask)
+      const askPrice = await new Promise((resolve, reject) => {
+        https.get(`https://clob.polymarket.com/price?token_id=${assetId}&side=sell`, (res) => {
+          let d = ""; res.on("data", c => d += c);
+          res.on("end", () => { try { resolve(JSON.parse(d).price); } catch(e) { reject(e); } });
+        }).on("error", reject);
+      });
+
+      const oldBid = asset.currentBid;
+      asset.currentBid = parseFloat(buyPrice);
+      asset.currentAsk = parseFloat(askPrice);
+      asset.lastUpdate = now;
+      asset._restPolled = true;
+
+      // Check triggers with new price
+      checkTriggers(assetId, asset);
+
+      if (oldBid === undefined || oldBid === null) {
+        log("REST", `First price for ${asset.market || assetId.slice(0,16)}...: bid=${asset.currentBid} ask=${asset.currentAsk}`);
+      }
+    } catch (e) {
+      // Silently skip — will retry next interval
+    }
+  }
+}
+
 // === DAILY RESET ===
 function scheduleDailyReset() {
   const now = new Date();
@@ -1012,12 +1539,12 @@ async function main() {
   console.log();
   log("INIT", `Executor: ${EXECUTOR_URL}`);
   log("INIT", `Feed API: port ${FEED_PORT}`);
-  log("INIT", `Starting capital: $${STARTING_CAPITAL}`);
+  log("INIT", `P&L: chain-truth only (no hardcoded starting capital)`);
   log("INIT", `Stop-loss: ${DEFAULT_STOP_LOSS * 100}% | Take-profit: ${DEFAULT_TAKE_PROFIT * 100}%`);
   log("INIT", `Daily drawdown limit: ${MAX_DAILY_DRAWDOWN * 100}%`);
-  log("INIT", `Survival: <$${(STARTING_CAPITAL * SURVIVAL_THRESHOLD).toFixed(0)} | Emergency: <$${(STARTING_CAPITAL * EMERGENCY_THRESHOLD).toFixed(0)}`);
+  log("INIT", `Survival: <$${SURVIVAL_FLOOR} | Emergency: <$${EMERGENCY_FLOOR}`);
   log("INIT", `Auto-execute: ${autoExecuteEnabled}`);
-  log("INIT", `Arb scanner: every ${ARB_SCAN_INTERVAL / 60000}min | Resolving scanner: every ${RESOLVING_SCAN_INTERVAL / 60000}min`);
+  log("INIT", `Arb scanner: every ${ARB_SCAN_INTERVAL / 60000}min | Resolving: every ${RESOLVING_SCAN_INTERVAL / 60000}min | Resolution hunter: every ${RESOLUTION_HUNTER_INTERVAL / 60000}min | Weather executor: every ${WEATHER_EXECUTOR_INTERVAL / 60000}min`);
   log("INIT", `Telegram alerts: ${TELEGRAM_BOT_TOKEN ? "ENABLED" : "DISABLED (set TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID)"}`);
   log("INIT", `PnL history: every ${PNL_RECORD_INTERVAL / 60000}min → ${PNL_HISTORY_FILE}`);
   console.log();
@@ -1028,14 +1555,25 @@ async function main() {
   survivalMode = alerts.survivalMode || false;
   emergencyMode = alerts.emergencyMode || false;
 
-  // Sync positions
-  await syncPositions();
+  // Sync positions (retry up to 5x if executor not ready)
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    await syncPositions();
+    if (subscribedAssets.size > 0) break;
+    log("INIT", `No positions loaded (attempt ${attempt}/5), retrying in 3s...`);
+    await new Promise(r => setTimeout(r, 3000));
+  }
 
   // Connect WebSocket
   connect();
 
   // Periodic sync
   setInterval(syncPositions, POSITION_SYNC_INTERVAL);
+
+  // REST price polling for NegRisk/stale tokens (every 60s)
+  setTimeout(() => {
+    pollStalePrices();
+    setInterval(pollStalePrices, REST_POLL_INTERVAL);
+  }, 15 * 1000); // first poll after 15s startup
 
   // Fee change detection (v3 §7)
   let lastKnownFees = null;
@@ -1077,6 +1615,18 @@ async function main() {
     runResolvingScan();
     setInterval(runResolvingScan, RESOLVING_SCAN_INTERVAL);
   }, 60 * 1000);
+
+  // Resolution hunter — runs every 15 min, first run after 90s
+  setTimeout(() => {
+    runResolutionHunter();
+    setInterval(runResolutionHunter, RESOLUTION_HUNTER_INTERVAL);
+  }, 90 * 1000);
+
+  // Weather signal executor — runs every 15 min, first run after 120s
+  setTimeout(() => {
+    runWeatherExecutor().catch(e => log("WX", `❌ Uncaught error: ${e.message}`));
+    setInterval(() => runWeatherExecutor().catch(e => log("WX", `❌ Uncaught error: ${e.message}`)), WEATHER_EXECUTOR_INTERVAL);
+  }, 120 * 1000);
 
   // Daily reset
   scheduleDailyReset();

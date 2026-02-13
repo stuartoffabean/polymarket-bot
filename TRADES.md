@@ -25,7 +25,36 @@
 - **Expiry**: Feb 14, 2026
 
 ## Filled Trades
-(none yet)
+
+### REALIZED TRADES (Closed Positions)
+
+#### 2026-02-12 — Gov Shutdown Feb 14 — TAKE PROFIT WIN
+- **Entry**: 139 shares @ avg $0.83 | Total cost: $115.37
+- **Exit**: 139 shares @ avg $0.96 | Total proceeds: $133.44
+- **Realized P&L**: +$18.07 (+15.7%)
+- **Hold time**: ~28 hours
+- **Annualized return**: ~234%
+- **Exit reason**: AUTO TAKE-PROFIT (ws-feed)
+- **Strategy**: Event-driven directional
+- **Thesis**: DHS funding expires Feb 14, shutdown likely. ✓ CORRECT (price moved 83¢→96¢)
+
+#### 2026-02-12 — Resolution Hunter Batch 1 (4 trades, net breakeven)
+
+**Trade 1: Asset 573859... — WIN**
+- Entry: 21.35 sh @ $0.004 | Exit: $0.006 (+50%) | P&L: ~+$0.04
+
+**Trade 2: Asset 573859... — LOSS**  
+- Entry: 21.35 sh @ $0.004 | Exit: $0.002 (-50%) | P&L: ~-$0.04
+
+**Trade 3: Asset 573859... — WIN**
+- Entry: 18.65 sh @ $0.0017 | Exit: $0.003 (+76.5%) | P&L: ~+$0.03
+
+**Trade 4: Asset 458989... — LOSS**
+- Entry: 40 sh @ $0.031 | Exit: $0.021 (-32.3%) | P&L: ~-$0.40
+
+**Net P&L (all 4 trades)**: ~-$0.37
+**Strategy**: Resolution Hunter (auto-execution)
+**Lessons**: Illiquid micro-markets whipsaw. <5¢ "obvious" outcomes are traps. Trades too small to matter at $500 scale.
 
 ## Summary
 - **Capital deployed (if all fill)**: $78

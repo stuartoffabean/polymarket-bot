@@ -15,6 +15,18 @@
     "14508138056322224915688949573192229922802851672435344101150518068118489796467": {
       "stopLoss": 0.6,
       "takeProfit": 1
+    },
+    "21742633143463906290569050155826241533067272736897614950488156847949938836455": {
+      "stopLoss": 0.75,
+      "takeProfit": 1
+    },
+    "52114319501245915516055106046884209969926127482827954674443846427813813222426": {
+      "stopLoss": 0.8,
+      "takeProfit": 1
+    },
+    "48331043336612883890938759509493159234672657012891542590163813280621545903637": {
+      "stopLoss": 0.6,
+      "takeProfit": 1
     }
   },
   "pending": [
@@ -330,6 +342,299 @@
       "pnlPct": null,
       "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
       "timestamp": "2026-02-13T01:05:29.444Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:22:57.438Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:44:51.899Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:52:58.654Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:53:11.136Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:53:23.623Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:53:36.077Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:53:48.533Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:54:01.006Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:54:13.520Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:54:26.062Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:54:38.533Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:54:51.052Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:55:03.553Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:55:16.036Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:55:28.486Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:55:40.935Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:55:53.386Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T01:56:05.891Z"
+    },
+    {
+      "type": "SURVIVAL_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Position value $55.92 below $100 — SURVIVAL MODE",
+      "timestamp": "2026-02-13T01:56:18.193Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:15:49.268Z"
+    },
+    {
+      "type": "SURVIVAL_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Position value $31.00 below $100 — SURVIVAL MODE",
+      "timestamp": "2026-02-13T02:17:14.078Z"
+    },
+    {
+      "type": "EMERGENCY_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "🚨 EMERGENCY: Position value $31.00 below $50 — ALL TRADING HALTED",
+      "timestamp": "2026-02-13T02:17:14.082Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:47:32.492Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:47:44.908Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:47:57.427Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:48:09.885Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:48:22.350Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:48:34.806Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:48:47.292Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T02:48:59.769Z"
+    },
+    {
+      "type": "FEE_CHANGE_DETECTED",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
+      "timestamp": "2026-02-13T03:56:39.719Z"
+    },
+    {
+      "type": "SURVIVAL_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Position value $23.75 below $100 — SURVIVAL MODE",
+      "timestamp": "2026-02-13T04:33:11.447Z"
+    },
+    {
+      "type": "EMERGENCY_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "🚨 EMERGENCY: Position value $23.75 below $50 — ALL TRADING HALTED",
+      "timestamp": "2026-02-13T04:33:11.449Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "81886414565830455363",
+      "outcome": "No",
+      "market": "0x259d59bbc8ac4ee45a9edcd55404ce251f711fae8c94a98c8fcb3b5a5ffb7641",
+      "price": 0.27,
+      "pnlPct": "-35.7%",
+      "size": 10,
+      "avgPrice": 0.42,
+      "message": "AUTO-SELLING",
+      "timestamp": "2026-02-13T04:49:19.068Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "81886414565830455363",
+      "outcome": "No",
+      "market": "0x259d59bbc8ac4ee45a9edcd55404ce251f711fae8c94a98c8fcb3b5a5ffb7641",
+      "price": 0.27,
+      "pnlPct": null,
+      "size": 10,
+      "avgPrice": 0.42,
+      "message": "STOP_LOSS: Sold 10 @ 0.27",
+      "timestamp": "2026-02-13T04:49:19.920Z"
+    },
+    {
+      "type": "SURVIVAL_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Position value $12.31 below $100 — SURVIVAL MODE",
+      "timestamp": "2026-02-13T05:06:55.295Z"
+    },
+    {
+      "type": "EMERGENCY_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "🚨 EMERGENCY: Position value $12.31 below $50 — ALL TRADING HALTED",
+      "timestamp": "2026-02-13T05:06:55.298Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "48285827915716612189",
+      "outcome": "No",
+      "market": "0xb11d4bd430782bcea0e103c2bff40622627673c8eeb783cc5ff4837946a3820f",
+      "price": 0.41,
+      "pnlPct": "-31.7%",
+      "size": 10,
+      "avgPrice": 0.6,
+      "message": "AUTO-SELLING",
+      "timestamp": "2026-02-13T05:16:02.108Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "48285827915716612189",
+      "outcome": "No",
+      "market": "0xb11d4bd430782bcea0e103c2bff40622627673c8eeb783cc5ff4837946a3820f",
+      "price": 0.41,
+      "pnlPct": null,
+      "size": 10,
+      "avgPrice": 0.6,
+      "message": "STOP_LOSS: Sold 10 @ 0.41",
+      "timestamp": "2026-02-13T05:16:03.959Z"
     }
   ],
   "circuitBreakerTripped": false,

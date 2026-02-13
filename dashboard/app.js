@@ -244,9 +244,8 @@ function updateTopBar() {
     const totalPortfolioEl = document.getElementById('totalPortfolio');
     if (totalPortfolioEl) {
         totalPortfolioEl.textContent = fmtUsd(totalPortfolio);
-        const startCap = 433;
-        const pctChange = ((totalPortfolio - startCap) / startCap * 100).toFixed(1);
-        const cls = totalPortfolio >= startCap ? 'green' : 'red';
+        // Color based on total P&L (realized + unrealized) — chain truth only
+        const cls = combinedPnl >= 0 ? 'green' : 'red';
         totalPortfolioEl.className = 'stat-value mono ' + cls;
     }
 

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@alango/dr-manhattan": "^0.1.6",
+    "pmxtjs": "^2.0.11"
+  }
+}

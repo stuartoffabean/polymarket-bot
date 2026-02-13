@@ -16,9 +16,11 @@
 
 const http = require("http");
 const { ClobClient, Side } = require("@polymarket/clob-client");
+const { BuilderConfig } = require("@polymarket/builder-signing-sdk");
 const { Wallet } = require("ethers");
 
 const HOST = process.env.CLOB_PROXY_URL || "https://clob.polymarket.com";
+console.log(`CLOB HOST: ${HOST}`);
 const CHAIN_ID = 137;
 const PORT = parseInt(process.env.EXECUTOR_PORT || "3002");
 
@@ -38,9 +40,20 @@ async function init() {
     passphrase: process.env.POLYMARKET_PASSPHRASE,
   };
 
+  // Builder credentials for order attribution + gas subsidies
+  const builderCreds = {
+    key: process.env.BUILDER_API_KEY,
+    secret: process.env.BUILDER_SECRET,
+    passphrase: process.env.BUILDER_PASSPHRASE,
+  };
+  const builderConfig = (builderCreds.key && builderCreds.secret && builderCreds.passphrase)
+    ? new BuilderConfig({ localBuilderCreds: builderCreds })
+    : undefined;
+
   // Signature type 0 = EOA
-  client = new ClobClient(HOST, CHAIN_ID, signer, apiCreds, 0);
-  console.log("CLOB client initialized (EOA mode)");
+  // Args: host, chainId, signer, creds, signatureType, funderAddress, geoBlockToken, useServerTime, builderConfig
+  client = new ClobClient(HOST, CHAIN_ID, signer, apiCreds, 0, undefined, undefined, undefined, builderConfig);
+  console.log(`CLOB client initialized (EOA mode${builderConfig ? ' + Builder attribution' : ''})`);
 }
 
 function parseBody(req) {
@@ -304,7 +317,7 @@ async function handler(req, res) {
           const data = require("fs").readFileSync(pnlPath, "utf8");
           return send(res, 200, JSON.parse(data));
         } catch(e) {
-          return send(res, 200, { points: [], startingCapital: 496 });
+          return send(res, 200, { points: [] });
         }
       }
       if (path === "/api/snapshot" || path === "/snapshot") {
@@ -342,7 +355,6 @@ async function handler(req, res) {
           status: "ok", 
           positions, 
           orders,
-          startingCapital: 433,
           timestamp: new Date().toISOString()
         });
       }
@@ -368,10 +380,13 @@ async function handler(req, res) {
       };
 
       // FOK = Fill or Kill (for arb trades — v3 §4)
-      if (orderType === "FOK") orderOpts.orderType = "FOK";
-      else if (orderType === "GTD" && body.expiration) orderOpts.expiration = body.expiration;
+      if (orderType === "GTD" && body.expiration) orderOpts.expiration = body.expiration;
 
-      const order = await client.createAndPostOrder(orderOpts);
+      // Post-only = maker order (earns rebates, never takes liquidity)
+      const postOnly = body.postOnly === true;
+      if (postOnly) console.log("  → Post-only (maker) order");
+
+      const order = await client.createAndPostOrder(orderOpts, undefined, orderType, false, postOnly);
 
       console.log(`Order result:`, JSON.stringify(order));
       return send(res, 200, order);

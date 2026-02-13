@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-12T23:53:08.484Z",
+  "timestamp": "2026-02-13T05:08:24.104Z",
   "summary": {
     "total": 100,
-    "negRisk": 58,
-    "flagged": 5,
-    "viable": 1
+    "negRisk": 56,
+    "flagged": 4,
+    "viable": 2
   },
   "opportunities": [
     {
@@ -12,11 +12,11 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.799,
-      "execSum": 0.73,
-      "deviation": 20.1,
-      "execDeviation": 27,
-      "profitPer100": 27,
+      "midSum": 0.8095,
+      "execSum": 0.746,
+      "deviation": 19.05,
+      "execDeviation": 25.4,
+      "profitPer100": 25.4,
       "viable": true,
       "details": [
         {
@@ -33,14 +33,14 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.031,
+          "mid": 0.0325,
           "exec": 0.031,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.044,
-          "exec": 0.043,
+          "mid": 0.0535,
+          "exec": 0.053,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -51,14 +51,14 @@
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.1115,
+          "mid": 0.112,
           "exec": 0.104,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
         {
           "name": "Will Khaled Mashal win the Nobel Peace Prize in 2026?",
-          "mid": 0.0115,
-          "exec": 0.009,
+          "mid": 0.0145,
+          "exec": 0.014,
           "token": "4817558919700430121831697879056774909752184660255737582917693916506064447935"
         },
         {
@@ -93,20 +93,20 @@
         },
         {
           "name": "Will Elon Musk win the Nobel Peace Prize in 2026?",
-          "mid": 0.023,
-          "exec": 0.021,
+          "mid": 0.0185,
+          "exec": 0.018,
           "token": "75607128808577269329357564425293012652006155264327001987967114873720422847762"
         },
         {
           "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.0965,
-          "exec": 0.084,
+          "mid": 0.0955,
+          "exec": 0.086,
           "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
         },
         {
           "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.1125,
-          "exec": 0.101,
+          "mid": 0.113,
+          "exec": 0.102,
           "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
         },
         {
@@ -117,8 +117,8 @@
         },
         {
           "name": "Will Benjamin Netanyahu win the Nobel Peace Prize in 2026?",
-          "mid": 0.0065,
-          "exec": 0.006,
+          "mid": 0.0075,
+          "exec": 0.007,
           "token": "8075661047254567797432306525558519998052391236898258911573171689963344650999"
         },
         {
@@ -142,76 +142,70 @@
       ]
     },
     {
-      "event": "Elon Musk # tweets February 12 - February 14, 2026?",
-      "slug": "elon-musk-of-tweets-february-12-february-14",
-      "type": "SHORT",
-      "outcomes": 10,
-      "midSum": 1.0325,
-      "execSum": 0.993,
-      "deviation": 3.25,
-      "execDeviation": 0.7,
-      "profitPer100": -0.7,
-      "viable": false,
+      "event": "NBA MVP ",
+      "slug": "nba-mvp-694",
+      "type": "LONG",
+      "outcomes": 9,
+      "midSum": 0.9225,
+      "execSum": 0.905,
+      "deviation": 7.75,
+      "execDeviation": 9.5,
+      "profitPer100": 9.5,
+      "viable": true,
       "details": [
         {
-          "name": "Will Elon Musk post 240+ tweets from February 12 to February",
+          "name": "Will Tyrese Maxey win the 2025–2026 NBA MVP?",
+          "mid": 0.0045,
+          "exec": 0.004,
+          "token": "113032982619525852115420277512821190062380704297670231304441009678288132478177"
+        },
+        {
+          "name": "Will Nikola Jokic win the 2025–2026 NBA MVP?",
+          "mid": 0.2265,
+          "exec": 0.226,
+          "token": "73768610008619570600930429495180540710817177537162503586781057110775077618432"
+        },
+        {
+          "name": "Will Shai Gilgeous-Alexander win the 2025–2026 NBA MVP?",
+          "mid": 0.545,
+          "exec": 0.54,
+          "token": "29048360022556021389805670398008888482908398853670829781367251641936311260707"
+        },
+        {
+          "name": "Will Luka Doncic win the 2025–2026 NBA MVP?",
+          "mid": 0.047,
+          "exec": 0.046,
+          "token": "89110596788673536475065853727140488937259064164063660201050220270400840228269"
+        },
+        {
+          "name": "Will Anthony Edwards win the 2025–2026 NBA MVP?",
           "mid": 0.004,
           "exec": 0.003,
-          "token": "15034215811456036040764278458175248051748617668317505703784824112629572872623"
+          "token": "37530499493117195782451233735171313136269148305511339352740697906918439679769"
         },
         {
-          "name": "Will Elon Musk post 40-64 tweets from February 12 to Februar",
-          "mid": 0.096,
-          "exec": 0.095,
-          "token": "19160696202182641569221548842553238846261739954089635121321811350693102881692"
+          "name": "Will Victor Wembanyama win the 2025–2026 NBA MVP?",
+          "mid": 0.027,
+          "exec": 0.026,
+          "token": "47252200832793247423089215877857667425039333476763845614656878203768571431091"
         },
         {
-          "name": "Will Elon Musk post 115-139 tweets from February 12 to Febru",
-          "mid": 0.21,
-          "exec": 0.2,
-          "token": "79141348498154610869711763517359858283096073835629175956943035939212249740025"
+          "name": "Will Cade Cunningham win the 2025–2026 NBA MVP?",
+          "mid": 0.046,
+          "exec": 0.045,
+          "token": "34119601935291220616728117106690337057964105103638371147174952394298971933530"
         },
         {
-          "name": "Will Elon Musk post 140-164 tweets from February 12 to Febru",
-          "mid": 0.11,
-          "exec": 0.1,
-          "token": "25138700007518255169733220174010858299639620152049125875379405583652485696742"
+          "name": "Will Donovan Mitchell win the 2025–2026 NBA MVP?",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "58929016337506161720363416833742533235950903585527977383885355262628287822950"
         },
         {
-          "name": "Will Elon Musk post 165-189 tweets from February 12 to Febru",
-          "mid": 0.055,
-          "exec": 0.05,
-          "token": "54334899525658175201298870146327190676678802829019336950532850893136954707611"
-        },
-        {
-          "name": "Will Elon Musk post 190-214 tweets from February 12 to Febru",
-          "mid": 0.0115,
-          "exec": 0.011,
-          "token": "30836670145539355582839471359688902101341973319407683130497170933609025408928"
-        },
-        {
-          "name": "Will Elon Musk post <40 tweets from February 12 to February ",
-          "mid": 0.01,
-          "exec": 0.009,
-          "token": "25099567166111281846302244039860015689241816252363247441459396207876081288557"
-        },
-        {
-          "name": "Will Elon Musk post 65-89 tweets from February 12 to Februar",
-          "mid": 0.26,
-          "exec": 0.26,
-          "token": "101737982205729137869548634259137456035523623969460170960358162453586274812342"
-        },
-        {
-          "name": "Will Elon Musk post 90-114 tweets from February 12 to Februa",
-          "mid": 0.27,
-          "exec": 0.26,
-          "token": "115034918305454824214295954991450505325341522461190524009674971926101814878692"
-        },
-        {
-          "name": "Will Elon Musk post 215-239 tweets from February 12 to Febru",
-          "mid": 0.006,
-          "exec": 0.005,
-          "token": "13056891492049623062155969471801682689874473544031899896391783479847146002407"
+          "name": "Will Jaylen Brown win the 2025–2026 NBA MVP?",
+          "mid": 0.0145,
+          "exec": 0.014,
+          "token": "27317805083324305657153029216706373718348619238641707186673635855142895952316"
         }
       ]
     },
@@ -220,17 +214,17 @@
       "slug": "how-many-fed-rate-cuts-in-2026",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.0265,
-      "execSum": 0.99,
-      "deviation": 2.65,
-      "execDeviation": 1,
-      "profitPer100": -1,
+      "midSum": 1.029,
+      "execSum": 1,
+      "deviation": 2.9,
+      "execDeviation": 0,
+      "profitPer100": 0,
       "viable": false,
       "details": [
         {
           "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.0725,
-          "exec": 0.069,
+          "mid": 0.0655,
+          "exec": 0.065,
           "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
         {
@@ -241,8 +235,8 @@
         },
         {
           "name": "Will 2 Fed rate cuts happen in 2026?",
-          "mid": 0.265,
-          "exec": 0.26,
+          "mid": 0.255,
+          "exec": 0.25,
           "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
         },
         {
@@ -253,8 +247,8 @@
         },
         {
           "name": "Will 4 Fed rate cuts happen in 2026?",
-          "mid": 0.13,
-          "exec": 0.12,
+          "mid": 0.135,
+          "exec": 0.13,
           "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
         },
         {
@@ -265,20 +259,20 @@
         },
         {
           "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.025,
-          "exec": 0.026,
+          "mid": 0.0305,
+          "exec": 0.03,
           "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
         },
         {
           "name": "Will 7 Fed rate cuts happen in 2026?",
-          "mid": 0.009,
-          "exec": 0.008,
+          "mid": 0.0135,
+          "exec": 0.013,
           "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
         },
         {
           "name": "Will 8 Fed rate cuts happen in 2026?",
-          "mid": 0.007,
-          "exec": 0.006,
+          "mid": 0.0115,
+          "exec": 0.011,
           "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
         },
         {
@@ -312,11 +306,11 @@
       "slug": "2026-icc-t20-mens-world-cup-winner",
       "type": "SHORT",
       "outcomes": 11,
-      "midSum": 1.041,
-      "execSum": 0.973,
-      "deviation": 4.1,
-      "execDeviation": 2.7,
-      "profitPer100": -2.7,
+      "midSum": 1.042,
+      "execSum": 0.981,
+      "deviation": 4.2,
+      "execDeviation": 1.9,
+      "profitPer100": -1.9,
       "viable": false,
       "details": [
         {
@@ -327,7 +321,7 @@
         },
         {
           "name": "Will Australia win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.16,
+          "mid": 0.15,
           "exec": 0.14,
           "token": "28877596836825284906528825532184866109967770098921566662217924845975491268438"
         },
@@ -345,13 +339,13 @@
         },
         {
           "name": "Will Pakistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0815,
+          "mid": 0.082,
           "exec": 0.077,
           "token": "76190129244386305771969693888683878935433573905105493954956506404783670380035"
         },
         {
           "name": "Will New Zealand win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0845,
+          "mid": 0.0885,
           "exec": 0.081,
           "token": "65008518571572657271211632870860379070221892511688233911018004120158193148414"
         },
@@ -363,20 +357,20 @@
         },
         {
           "name": "Will Afghanistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0035,
-          "exec": 0.003,
+          "mid": 0.0045,
+          "exec": 0.004,
           "token": "100224797595385678276742510521942077883901127206633934091955319005396903527705"
         },
         {
           "name": "Will Sri Lanka win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0285,
-          "exec": 0.025,
+          "mid": 0.032,
+          "exec": 0.031,
           "token": "103630786762206584738662636102754367864881412668966849731168337708616533672029"
         },
         {
           "name": "Will the United States win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0015,
-          "exec": 0.001,
+          "mid": 0.0035,
+          "exec": 0.002,
           "token": "72610582151460304801138152928941305632024243447678281544143361919620548389053"
         },
         {
@@ -384,50 +378,6 @@
           "mid": 0.0015,
           "exec": 0.001,
           "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
-        }
-      ]
-    },
-    {
-      "event": "How long will Trump and Netanyahu shake hands for?",
-      "slug": "how-long-will-trump-and-netanyahu-shake-hands-for-when-meeting-this-week",
-      "type": "SHORT",
-      "outcomes": 5,
-      "midSum": 1.041,
-      "execSum": 0.971,
-      "deviation": 4.1,
-      "execDeviation": 2.9,
-      "profitPer100": -2.9,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will Trump and Netanyahu handshake last 2–6 seconds by Febru",
-          "mid": 0.0315,
-          "exec": 0.007,
-          "token": "91580255349566758785897159465499786183274630044213570758269910115019801034781"
-        },
-        {
-          "name": "Will Trump and Netanyahu handshake last 6–10 seconds by Febr",
-          "mid": 0.015,
-          "exec": 0.001,
-          "token": "114951122256378254781341477010451797643031616371088396785815442638683642035872"
-        },
-        {
-          "name": "Will Trump and Netanyahu handshake last less than 2 seconds ",
-          "mid": 0.0225,
-          "exec": 0.007,
-          "token": "70393341754854329544963473722209901369813999648242185185550086776352509037523"
-        },
-        {
-          "name": "Will Trump and Netanyahu handshake last 15 seconds or longer",
-          "mid": 0.0045,
-          "exec": 0.001,
-          "token": "72657249372083588802555243960518760334015297864119150300480769561790373563748"
-        },
-        {
-          "name": "Will Trump and Netanyahu only be photographed together by Fe",
-          "mid": 0.967,
-          "exec": 0.955,
-          "token": "105038283946597258609699256404637370706731691794441181754066014464795278151914"
         }
       ]
     }

@@ -1,0 +1,18 @@
+{
+  "errors": [
+    {
+      "timestamp": "2026-02-13T03:05:00.000Z",
+      "session": "stuart-arb-scan",
+      "severity": "CRITICAL",
+      "category": "GEO_BLOCK",
+      "message": "All arb orders rejected: 'Access restricted. Your request was blocked due to regional restrictions.'",
+      "context": {
+        "market": "Elon Musk Tweet Count Feb 6-13",
+        "legs": 9,
+        "attemptedSize": 36
+      },
+      "impact": "Trading completely blocked. Cannot execute any orders.",
+      "action": "OPERATOR ALERT REQUIRED"
+    }
+  ]
+}

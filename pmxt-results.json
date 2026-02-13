@@ -1,0 +1,226 @@
+{
+  "timestamp": "2026-02-13T04:04:20.339Z",
+  "runtime": "33.2s",
+  "stats": {
+    "kalshiEvents": 980,
+    "polyEvents": 600,
+    "eventPairs": 709,
+    "kMarketsChecked": 100,
+    "totalPairs": 4,
+    "signals": 0,
+    "aligned": 4
+  },
+  "signals": [],
+  "aligned": [
+    {
+      "eventScore": 0.715,
+      "marketScore": 0.541,
+      "combined": 0.628,
+      "kalshi": {
+        "event": "Who will be the Prime Minister of Japan after their snap election?",
+        "eventTicker": "KXJPNPM-26FEB08",
+        "title": "Will Sanae Takaichi become Prime Minister of Japan following the the 2026 Japanese House of Representatives election?",
+        "ticker": "KXJPNPM-26FEB08-STAK",
+        "yesPrice": 0.98,
+        "askPrice": 0.99,
+        "volume": 33716
+      },
+      "poly": {
+        "event": "Prime Minister of Japan after snap election?",
+        "title": "Will Sanae Takaichi be the Prime Minister of Japan as a result of the 2026 snap election?",
+        "slug": "will-sanae-takaichi-be-the-prime-minister-of-japan-as-a-result-of-the-2026-snap-election",
+        "yesPrice": 0.9995,
+        "volume24h": 46953.18012100002,
+        "liquidity": 70501.15265
+      },
+      "diff": -0.0195,
+      "absDiff": 0.0195,
+      "pct": 2,
+      "signal": "ALIGNED"
+    },
+    {
+      "eventScore": 1,
+      "marketScore": 0.896,
+      "combined": 0.948,
+      "kalshi": {
+        "event": "Who will Trump nominate as Fed Chair?",
+        "eventTicker": "KXFEDCHAIRNOM-29",
+        "title": "Will Trump next nominate Judy Shelton as Fed Chair?",
+        "ticker": "KXFEDCHAIRNOM-29-JS",
+        "yesPrice": 0.03,
+        "askPrice": 0.04,
+        "volume": 74963296
+      },
+      "poly": {
+        "event": "Who will Trump nominate as Fed Chair?",
+        "title": "Will Trump nominate Judy Shelton as the next Fed chair?",
+        "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
+        "yesPrice": 0.0435,
+        "volume24h": 2129129.0666129994,
+        "liquidity": 1407410.20485
+      },
+      "diff": -0.0135,
+      "absDiff": 0.0135,
+      "pct": 45,
+      "signal": "ALIGNED"
+    },
+    {
+      "eventScore": 1,
+      "marketScore": 0.894,
+      "combined": 0.947,
+      "kalshi": {
+        "event": "Who will Trump nominate as Fed Chair?",
+        "eventTicker": "KXFEDCHAIRNOM-29",
+        "title": "Will Trump next nominate Kevin Warsh as Fed Chair?",
+        "ticker": "KXFEDCHAIRNOM-29-KW",
+        "yesPrice": 0.94,
+        "askPrice": 0.95,
+        "volume": 26571450
+      },
+      "poly": {
+        "event": "Who will Trump nominate as Fed Chair?",
+        "title": "Will Trump nominate Kevin Warsh as the next Fed chair?",
+        "slug": "will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
+        "yesPrice": 0.945,
+        "volume24h": 675234.5181730011,
+        "liquidity": 375098.43318
+      },
+      "diff": -0.005,
+      "absDiff": 0.005,
+      "pct": 0.5,
+      "signal": "ALIGNED"
+    },
+    {
+      "eventScore": 0.756,
+      "marketScore": 0.383,
+      "combined": 0.569,
+      "kalshi": {
+        "event": "Will the Supreme Court rule in favor of Trump's tariffs?",
+        "eventTicker": "KXDJTVOSTARIFFS",
+        "title": "Will the Supreme Court rule in favor of Trump in V.O.S. Selections, Inc. v. Trump",
+        "ticker": "KXDJTVOSTARIFFS",
+        "yesPrice": 0.26,
+        "askPrice": 0.27,
+        "volume": 5046686
+      },
+      "poly": {
+        "event": "Supreme Court rules in favor of Trump's tariffs?",
+        "title": "Supreme Court rules in favor of Trump's tariffs?",
+        "slug": "will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
+        "yesPrice": 0.265,
+        "volume24h": 17582.903298,
+        "liquidity": 74126.0452
+      },
+      "diff": -0.005,
+      "absDiff": 0.005,
+      "pct": 1.9,
+      "signal": "ALIGNED"
+    }
+  ],
+  "all": [
+    {
+      "eventScore": 0.715,
+      "marketScore": 0.541,
+      "combined": 0.628,
+      "kalshi": {
+        "event": "Who will be the Prime Minister of Japan after their snap election?",
+        "eventTicker": "KXJPNPM-26FEB08",
+        "title": "Will Sanae Takaichi become Prime Minister of Japan following the the 2026 Japanese House of Representatives election?",
+        "ticker": "KXJPNPM-26FEB08-STAK",
+        "yesPrice": 0.98,
+        "askPrice": 0.99,
+        "volume": 33716
+      },
+      "poly": {
+        "event": "Prime Minister of Japan after snap election?",
+        "title": "Will Sanae Takaichi be the Prime Minister of Japan as a result of the 2026 snap election?",
+        "slug": "will-sanae-takaichi-be-the-prime-minister-of-japan-as-a-result-of-the-2026-snap-election",
+        "yesPrice": 0.9995,
+        "volume24h": 46953.18012100002,
+        "liquidity": 70501.15265
+      },
+      "diff": -0.0195,
+      "absDiff": 0.0195,
+      "pct": 2,
+      "signal": "ALIGNED"
+    },
+    {
+      "eventScore": 1,
+      "marketScore": 0.896,
+      "combined": 0.948,
+      "kalshi": {
+        "event": "Who will Trump nominate as Fed Chair?",
+        "eventTicker": "KXFEDCHAIRNOM-29",
+        "title": "Will Trump next nominate Judy Shelton as Fed Chair?",
+        "ticker": "KXFEDCHAIRNOM-29-JS",
+        "yesPrice": 0.03,
+        "askPrice": 0.04,
+        "volume": 74963296
+      },
+      "poly": {
+        "event": "Who will Trump nominate as Fed Chair?",
+        "title": "Will Trump nominate Judy Shelton as the next Fed chair?",
+        "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
+        "yesPrice": 0.0435,
+        "volume24h": 2129129.0666129994,
+        "liquidity": 1407410.20485
+      },
+      "diff": -0.0135,
+      "absDiff": 0.0135,
+      "pct": 45,
+      "signal": "ALIGNED"
+    },
+    {
+      "eventScore": 1,
+      "marketScore": 0.894,
+      "combined": 0.947,
+      "kalshi": {
+        "event": "Who will Trump nominate as Fed Chair?",
+        "eventTicker": "KXFEDCHAIRNOM-29",
+        "title": "Will Trump next nominate Kevin Warsh as Fed Chair?",
+        "ticker": "KXFEDCHAIRNOM-29-KW",
+        "yesPrice": 0.94,
+        "askPrice": 0.95,
+        "volume": 26571450
+      },
+      "poly": {
+        "event": "Who will Trump nominate as Fed Chair?",
+        "title": "Will Trump nominate Kevin Warsh as the next Fed chair?",
+        "slug": "will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
+        "yesPrice": 0.945,
+        "volume24h": 675234.5181730011,
+        "liquidity": 375098.43318
+      },
+      "diff": -0.005,
+      "absDiff": 0.005,
+      "pct": 0.5,
+      "signal": "ALIGNED"
+    },
+    {
+      "eventScore": 0.756,
+      "marketScore": 0.383,
+      "combined": 0.569,
+      "kalshi": {
+        "event": "Will the Supreme Court rule in favor of Trump's tariffs?",
+        "eventTicker": "KXDJTVOSTARIFFS",
+        "title": "Will the Supreme Court rule in favor of Trump in V.O.S. Selections, Inc. v. Trump",
+        "ticker": "KXDJTVOSTARIFFS",
+        "yesPrice": 0.26,
+        "askPrice": 0.27,
+        "volume": 5046686
+      },
+      "poly": {
+        "event": "Supreme Court rules in favor of Trump's tariffs?",
+        "title": "Supreme Court rules in favor of Trump's tariffs?",
+        "slug": "will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
+        "yesPrice": 0.265,
+        "volume24h": 17582.903298,
+        "liquidity": 74126.0452
+      },
+      "diff": -0.005,
+      "absDiff": 0.005,
+      "pct": 1.9,
+      "signal": "ALIGNED"
+    }
+  ]
+}
