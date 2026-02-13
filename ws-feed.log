@@ -3,47 +3,26 @@
 ║  v3 — Integrated Scanners                ║
 ╚══════════════════════════════════════════╝
 
-[2026-02-12T23:30:46.993Z] [INIT] Executor: http://localhost:3002
-[2026-02-12T23:30:46.993Z] [INIT] Feed API: port 3003
-[2026-02-12T23:30:46.993Z] [INIT] Starting capital: $433
-[2026-02-12T23:30:46.993Z] [INIT] Stop-loss: 30% | Take-profit: 50%
-[2026-02-12T23:30:46.993Z] [INIT] Daily drawdown limit: 15%
-[2026-02-12T23:30:46.993Z] [INIT] Survival: <$108 | Emergency: <$43
-[2026-02-12T23:30:46.993Z] [INIT] Auto-execute: true
-[2026-02-12T23:30:46.993Z] [INIT] Arb scanner: every 15min | Resolving scanner: every 30min
-[2026-02-12T23:30:46.993Z] [INIT] Telegram alerts: ENABLED
-[2026-02-12T23:30:46.993Z] [INIT] PnL history: every 5min → /data/workspace/polymarket-bot/pnl-history.json
+[2026-02-13T00:05:28.753Z] [INIT] Executor: http://localhost:3002
+[2026-02-13T00:05:28.753Z] [INIT] Feed API: port 3003
+[2026-02-13T00:05:28.753Z] [INIT] Starting capital: $433
+[2026-02-13T00:05:28.753Z] [INIT] Stop-loss: 30% | Take-profit: 50%
+[2026-02-13T00:05:28.754Z] [INIT] Daily drawdown limit: 15%
+[2026-02-13T00:05:28.754Z] [INIT] Survival: <$108 | Emergency: <$43
+[2026-02-13T00:05:28.754Z] [INIT] Auto-execute: true
+[2026-02-13T00:05:28.754Z] [INIT] Arb scanner: every 15min | Resolving scanner: every 30min
+[2026-02-13T00:05:28.754Z] [INIT] Telegram alerts: ENABLED
+[2026-02-13T00:05:28.754Z] [INIT] PnL history: every 5min → /data/workspace/polymarket-bot/pnl-history.json
 
-[2026-02-12T23:30:47.431Z] [SYNC] Tracking 7 positions (7 from executor)
-[2026-02-12T23:30:47.431Z] [WS] Connecting to wss://ws-subscriptions-clob.polymarket.com/ws/market...
-[2026-02-12T23:30:47.447Z] [DAILY] Next reset in 0.5h
-[2026-02-12T23:30:47.451Z] [INIT] Feed API running on port 3003
-[2026-02-12T23:30:47.642Z] [WS] Connected!
-[2026-02-12T23:30:47.643Z] [WS] Subscribed to 7 assets
-[2026-02-12T23:30:48.149Z] [ALERT] SURVIVAL_MODE: ⚠️ Balance $30.50 below 25% of $433 — SURVIVAL MODE
-[2026-02-12T23:30:48.152Z] [RISK] ⚠️ SURVIVAL MODE ACTIVATED — balance: $30.50
-[2026-02-12T23:30:48.152Z] [ALERT] EMERGENCY_MODE: 🚨 EMERGENCY: Balance $30.50 below 10% of $433 — ALL TRADING HALTED
-[2026-02-12T23:30:48.158Z] [RISK] 🚨 EMERGENCY MODE — ALL TRADING HALTED
-[2026-02-12T23:30:48.446Z] [RISK] ✅ EMERGENCY MODE CLEARED — balance: $86.02, auto-execute re-enabled
-[2026-02-12T23:30:52.561Z] [ALERT] TAKE_PROFIT: AUTO-SELLING
-[2026-02-12T23:30:52.562Z] [EXEC] 🚨 AUTO-SELL: Yes 18.65 shares (TAKE_PROFIT)
-[2026-02-12T23:30:53.410Z] [EXEC] Sell result: {"errorMsg":"","orderID":"0x950ac24a8e77921d6a88f45cb6255dd89e478d6cf501369e00505ae86ddaa9fa","takingAmount":"0.05595","makingAmount":"18.65","status":"matched","transactionsHashes":["0x9ed7d7d8b52c88fc72b5e8c80b353c9c3acb668762d99ef7de42b2abacd7e4b9"],"success":true,"executedPrice":0.003}
-[2026-02-12T23:30:53.410Z] [ALERT] SELL_EXECUTED: TAKE_PROFIT: Sold 18.65 @ 0.003
-[2026-02-12T23:30:53.412Z] [SYNC] Post-sell position sync...
-[2026-02-12T23:30:53.907Z] [SYNC] Removed sold position: 57385942856155711847
-[2026-02-12T23:30:53.907Z] [WS] Subscribed to 6 new assets
-[2026-02-12T23:30:53.907Z] [SYNC] Tracking 6 positions (6 from executor)
-[2026-02-12T23:30:57.287Z] [RISK] ✅ SURVIVAL MODE CLEARED — balance: $130.99
-[2026-02-12T23:31:17.448Z] [ARB] Starting arb scan...
-[2026-02-12T23:31:17.828Z] [ARB] Found 58 NegRisk events out of 100 total
-[2026-02-12T23:31:17.830Z] [ARB] SKIPPED: Presidential Election Winner 2028 | 33 outcomes (too many) | MidSum: 0.9605
-[2026-02-12T23:31:17.830Z] [ARB] SKIPPED: 2026 NBA Champion | 30 outcomes (too many) | MidSum: 1.0285
-[2026-02-12T23:31:17.831Z] [ARB] SKIPPED: 2026 NHL Stanley Cup Champion  | 32 outcomes (too many) | MidSum: 1.0285
-[2026-02-12T23:31:17.831Z] [ARB] SKIPPED: UEFA Champions League Winner  | 23 outcomes (too many) | MidSum: 1.0370
-[2026-02-12T23:31:17.832Z] [ARB] SKIPPED: F1 Drivers' Champion | 22 outcomes (too many) | MidSum: 1.0360
-[2026-02-12T23:31:17.832Z] [ARB] SKIPPED: Elon Musk # tweets February 13 - February 20, 2026? | 25 outcomes (too many) | MidSum: 1.0550
-[2026-02-12T23:31:17.833Z] [ARB] SKIPPED: Eurovision Winner 2026 | 35 outcomes (too many) | MidSum: 1.0375
-[2026-02-12T23:31:17.833Z] [ARB] FLAGGED: How long will Trump and Netanyahu shake hands for? | MidSum: 1.0450 | Dev: 4.5%
-[2026-02-12T23:31:23.398Z] [ARB] FLAGGED: 2026 ICC T20 Men’s World Cup Winner | MidSum: 1.0410 | Dev: 4.1%
-[2026-02-12T23:31:35.583Z] [ARB] SKIPPED: MLB World Series Champion 2026 | 30 outcomes (too many) | MidSum: 1.0345
-[2026-02-12T23:31:35.583Z] [ARB] FLAGGED: Elon Musk # tweets February 12 - February 14, 2026? | MidSum: 1.0425 | Dev: 4.2%
+[2026-02-13T00:05:29.336Z] [SYNC] Loaded manual position from file: YES 92 @ 0.8
+[2026-02-13T00:05:29.336Z] [SYNC] Loaded manual position from file: YES 50 @ 0.92
+[2026-02-13T00:05:29.336Z] [SYNC] Loaded manual position from file: NO 50 @ 0.93
+[2026-02-13T00:05:29.336Z] [SYNC] Loaded manual position from file: NO 15 @ 0.82
+[2026-02-13T00:05:29.336Z] [SYNC] Tracking 9 positions (5 from executor)
+[2026-02-13T00:05:29.336Z] [WS] Connecting to wss://ws-subscriptions-clob.polymarket.com/ws/market...
+[2026-02-13T00:05:29.352Z] [DAILY] Next reset in 23.9h
+[2026-02-13T00:05:29.356Z] [INIT] Feed API running on port 3003
+[2026-02-13T00:05:29.684Z] [WS] Connected!
+[2026-02-13T00:05:29.685Z] [WS] Subscribed to 9 assets
+[2026-02-13T00:05:30.332Z] [RISK] ✅ EMERGENCY MODE CLEARED — balance: $55.44, auto-execute re-enabled
+[2026-02-13T00:05:30.827Z] [RISK] ✅ SURVIVAL MODE CLEARED — balance: $114.05

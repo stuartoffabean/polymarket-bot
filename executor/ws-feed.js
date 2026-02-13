@@ -23,7 +23,8 @@
  *   GET  /arb-results     — latest arb scanner results
  *   GET  /resolving       — markets resolving in 6-12h
  *   POST /set-trigger     — { assetId, stopLoss, takeProfit }
- *   POST /add-position    — { assetId, market, outcome, avgPrice, size } (manual inject)
+ *   POST /add-position    — { assetId, market, outcome, avgPrice, size } (persisted to manual-positions.json)
+ *   POST /remove-position — { assetId } (removes manual position permanently)
  *   POST /reset-circuit-breaker
  */
 
@@ -38,6 +39,7 @@ const WSS_URL = "wss://ws-subscriptions-clob.polymarket.com/ws/market";
 const EXECUTOR_URL = "http://localhost:3002";
 const STATE_FILE = path.join(__dirname, "..", "TRADING-STATE.json");
 const ALERTS_FILE = path.join(__dirname, "alerts.json");
+const MANUAL_POSITIONS_FILE = path.join(__dirname, "manual-positions.json");
 const FEED_PORT = parseInt(process.env.FEED_PORT || "3003");
 const PING_INTERVAL = 10000;
 const RECONNECT_BASE = 2000;
@@ -107,6 +109,15 @@ function loadAlerts() {
 
 function saveAlerts(data) {
   fs.writeFileSync(ALERTS_FILE, JSON.stringify(data, null, 2));
+}
+
+function loadManualPositions() {
+  try { return JSON.parse(fs.readFileSync(MANUAL_POSITIONS_FILE, "utf8")); }
+  catch (e) { return {}; }
+}
+
+function saveManualPositions(data) {
+  fs.writeFileSync(MANUAL_POSITIONS_FILE, JSON.stringify(data, null, 2));
 }
 
 function loadTradingState() {
@@ -377,8 +388,16 @@ async function executeSell(assetId, asset, reason) {
     pushAlert("SELL_EXECUTED", assetId, asset, result.executedPrice, null, 
       `${reason}: Sold ${asset.size} @ ${result.executedPrice}`);
     
+    // If this was a manual position, remove from persisted file
+    if (asset._manual) {
+      const manualPositions = loadManualPositions();
+      delete manualPositions[assetId];
+      saveManualPositions(manualPositions);
+      subscribedAssets.delete(assetId);
+      log("MANUAL", `Sold manual position — removed from persistence: ${assetId.slice(0,20)}`);
+    }
+    
     // STRUCTURAL FIX: Sync positions from executor after sell
-    // This ensures ws-feed removes sold positions and stays in sync with executor
     log("SYNC", "Post-sell position sync...");
     await syncPositions();
   } catch (e) {
@@ -496,12 +515,26 @@ async function syncPositions() {
     const { positions } = await httpGet("/positions");
     const alerts = loadAlerts();
 
-    // STRUCTURAL FIX: Remove sold positions (not in executor anymore)
+    // STRUCTURAL FIX: Remove sold executor positions (not in executor anymore)
+    // Manual positions are managed separately via manual-positions.json
     const executorAssetIds = new Set(positions.map(p => p.asset_id));
-    for (const [assetId, _] of subscribedAssets) {
-      if (!executorAssetIds.has(assetId)) {
+    const manualPositions = loadManualPositions();
+    for (const [assetId, asset] of subscribedAssets) {
+      if (!executorAssetIds.has(assetId) && !manualPositions[assetId]) {
         subscribedAssets.delete(assetId);
         log("SYNC", `Removed sold position: ${assetId.slice(0,20)}`);
+      }
+    }
+
+    // Merge manual positions from file (survives restarts)
+    for (const [assetId, mp] of Object.entries(manualPositions)) {
+      if (!subscribedAssets.has(assetId)) {
+        subscribedAssets.set(assetId, {
+          ...mp,
+          _manual: true,
+        });
+        subscribe([assetId]);
+        log("SYNC", `Loaded manual position from file: ${mp.outcome} ${mp.size} @ ${mp.avgPrice}`);
       }
     }
 
@@ -672,11 +705,11 @@ async function apiHandler(req, res) {
 
       if (url === "/add-position") {
         // Manual position injection for trades executor can't track
+        // Persisted to manual-positions.json — survives restarts
         const { assetId, market, outcome, avgPrice, size, stopLoss, takeProfit } = body;
         if (!assetId || !avgPrice || !size) return send(res, 400, { error: "Need assetId, avgPrice, size" });
 
-        subscribedAssets.set(assetId, {
-          ...subscribedAssets.get(assetId),
+        const posData = {
           market: market || "manual",
           outcome: outcome || "Unknown",
           avgPrice: parseFloat(avgPrice),
@@ -685,10 +718,37 @@ async function apiHandler(req, res) {
           stopLoss: stopLoss ? parseFloat(stopLoss) : DEFAULT_STOP_LOSS,
           takeProfit: takeProfit ? parseFloat(takeProfit) : DEFAULT_TAKE_PROFIT,
           _manual: true,
+          addedAt: new Date().toISOString(),
+        };
+
+        subscribedAssets.set(assetId, {
+          ...subscribedAssets.get(assetId),
+          ...posData,
         });
 
+        // Persist to file
+        const manualPositions = loadManualPositions();
+        manualPositions[assetId] = posData;
+        saveManualPositions(manualPositions);
+
         subscribe([assetId]);
-        log("MANUAL", `Added position: ${outcome} ${size} @ ${avgPrice}`);
+        log("MANUAL", `Added + persisted position: ${outcome} ${size} @ ${avgPrice}`);
+        return send(res, 200, { ok: true, tracked: subscribedAssets.size });
+      }
+
+      if (url === "/remove-position") {
+        // Remove a manual position permanently
+        const { assetId } = body;
+        if (!assetId) return send(res, 400, { error: "Need assetId" });
+
+        subscribedAssets.delete(assetId);
+
+        // Remove from persisted file
+        const manualPositions = loadManualPositions();
+        delete manualPositions[assetId];
+        saveManualPositions(manualPositions);
+
+        log("MANUAL", `Removed position: ${assetId.slice(0,20)}`);
         return send(res, 200, { ok: true, tracked: subscribedAssets.size });
       }
 

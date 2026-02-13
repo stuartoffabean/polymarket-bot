@@ -1,0 +1,46 @@
+{
+  "77587680906182806497450061873126722297392583495948543397251590274471719007220": {
+    "market": "Bangladesh BNP Election",
+    "outcome": "YES",
+    "avgPrice": 0.8,
+    "size": 92,
+    "totalCost": 73.60000000000001,
+    "stopLoss": 0.3,
+    "takeProfit": 0.5,
+    "_manual": true,
+    "addedAt": "2026-02-13T00:05:16.048Z"
+  },
+  "37951513621735784471651257045517975893424565554701830077103055531806326097100": {
+    "market": "Norway Most Gold Medals Winter Olympics",
+    "outcome": "YES",
+    "avgPrice": 0.92,
+    "size": 50,
+    "totalCost": 46,
+    "stopLoss": 0.3,
+    "takeProfit": 0.5,
+    "_manual": true,
+    "addedAt": "2026-02-13T00:05:16.063Z"
+  },
+  "89036168105179001192755120118050209760422683300339582903158940882158509550672": {
+    "market": "Fed March 25bps Cut",
+    "outcome": "NO",
+    "avgPrice": 0.93,
+    "size": 50,
+    "totalCost": 46.5,
+    "stopLoss": 0.3,
+    "takeProfit": 0.5,
+    "_manual": true,
+    "addedAt": "2026-02-13T00:05:16.079Z"
+  },
+  "14508138056322224915688949573192229922802851672435344101150518068118489796467": {
+    "market": "BTC wont drop to $55K Feb",
+    "outcome": "NO",
+    "avgPrice": 0.82,
+    "size": 15,
+    "totalCost": 12.299999999999999,
+    "stopLoss": 0.3,
+    "takeProfit": 0.5,
+    "_manual": true,
+    "addedAt": "2026-02-13T00:05:16.095Z"
+  }
+}

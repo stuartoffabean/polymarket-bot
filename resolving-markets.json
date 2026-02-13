@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-02-12T23:11:45.676Z",
-  "windowStart": "2026-02-13T05:11:45.409Z",
-  "windowEnd": "2026-02-13T11:11:45.409Z",
+  "timestamp": "2026-02-12T23:52:32.494Z",
+  "windowStart": "2026-02-13T05:52:32.167Z",
+  "windowEnd": "2026-02-13T11:52:32.167Z",
   "count": 100,
   "markets": [
     {
       "slug": "cs2-pssnua-wc1-2026-02-13",
       "question": "Counter-Strike: Passion UA vs Wildcard (BO3) - IEM Atlanta: American Qualifier Playoffs",
-      "yesPrice": 0.745,
-      "noPrice": 0.255,
+      "yesPrice": 0.755,
+      "noPrice": 0.245,
       "endDate": "2026-02-13T07:00:00Z",
-      "volume": 16167.792491,
+      "volume": 18252.537101,
       "volume24hr": 4298.937625,
-      "liquidity": 8272.7791,
+      "liquidity": 14357.2179,
       "conditionId": "0xefb94bc9ce4d3cd67aee94e2e6becc48f2cd8ff621f99f1502166e085397c39d"
     },
     {
@@ -21,9 +21,9 @@
       "yesPrice": 0.48,
       "noPrice": 0.52,
       "endDate": "2026-02-13T08:30:00Z",
-      "volume": 4927.800783,
+      "volume": 4946.319299,
       "volume24hr": 1.960783,
-      "liquidity": 12556.8956,
+      "liquidity": 12535.3498,
       "conditionId": "0x4ae24fa24bbf924eac47de7bd8c2ea593f3c09c660d4b60f0a464351d7b3400b"
     },
     {
@@ -32,20 +32,20 @@
       "yesPrice": 0.69,
       "noPrice": 0.31,
       "endDate": "2026-02-13T10:45:00Z",
-      "volume": 3465.712192,
+      "volume": 3468.552192,
       "volume24hr": 3457.294657,
-      "liquidity": 38713.9808,
+      "liquidity": 23478.999,
       "conditionId": "0xd6972a7b1f475bc0eb63a5fc9fa40db417f7d99868b1062b59bbe85eebefb64f"
     },
     {
       "slug": "aus-wsw-wel-2026-02-13-wsw",
       "question": "Will Western Sydney Wanderers FC win on 2026-02-13?",
-      "yesPrice": 0.595,
-      "noPrice": 0.405,
+      "yesPrice": 0.585,
+      "noPrice": 0.415,
       "endDate": "2026-02-13T08:35:00Z",
-      "volume": 2613.006979,
+      "volume": 2673.006979,
       "volume24hr": 1962.9473099999998,
-      "liquidity": 36308.9088,
+      "liquidity": 36524.1952,
       "conditionId": "0x45ab5396ae59beb8f4d44d0ccbe6f288dfa1f80bfa57c73d1761b4daa64dc6bd"
     },
     {
@@ -54,9 +54,9 @@
       "yesPrice": 0.435,
       "noPrice": 0.565,
       "endDate": "2026-02-13T10:45:00Z",
-      "volume": 1784.625814,
+      "volume": 1954.671264,
       "volume24hr": 658.74822,
-      "liquidity": 37384.8221,
+      "liquidity": 35505.6976,
       "conditionId": "0xc023054cb8cb68767c3bc6bf28136ea6293bf1a5242786a7fb3fc93f020d9df1"
     },
     {
@@ -65,20 +65,31 @@
       "yesPrice": 0.035,
       "noPrice": 0.965,
       "endDate": "2026-02-13T08:35:00Z",
-      "volume": 1670.505599,
+      "volume": 1671.516689,
       "volume24hr": 445.923916,
-      "liquidity": 439.62003,
+      "liquidity": 463.73488,
       "conditionId": "0xb6e0812b50fea0028968d8733db9ecb762830e43159f4b4afccd71643843a248"
+    },
+    {
+      "slug": "aus-wsw-wel-2026-02-13-total-4pt5",
+      "question": "Western Sydney Wanderers FC vs. Wellington Phoenix FC: O/U 4.5",
+      "yesPrice": 0.205,
+      "noPrice": 0.795,
+      "endDate": "2026-02-13T08:35:00Z",
+      "volume": 1378.152235,
+      "volume24hr": 0,
+      "liquidity": 33606.1563,
+      "conditionId": "0x70e520bd402c482c228e91b79440f36677cf9eca5e0b7ae1586382f5f28137f3"
     },
     {
       "slug": "aus-per-new-2026-02-13-total-3pt5",
       "question": "Perth Glory FC vs. Newcastle United Jets FC: O/U 3.5",
-      "yesPrice": 0.49,
-      "noPrice": 0.51,
+      "yesPrice": 0.485,
+      "noPrice": 0.515,
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 1258.773628,
       "volume24hr": 8.34,
-      "liquidity": 33555.8503,
+      "liquidity": 31356.2223,
       "conditionId": "0x9f4ecc500f53ba5d38c4e2926759f166700f62343cc6fdaba3cc3b52dfd6cff0"
     },
     {
@@ -89,7 +100,7 @@
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 1175.494282,
       "volume24hr": 1128.3700000000008,
-      "liquidity": 12138.3252,
+      "liquidity": 10873.2261,
       "conditionId": "0x4c14c4f9c2e047df255e2a711e4f9a254ee992136313e3462db5e9e7ea199c6d"
     },
     {
@@ -100,7 +111,7 @@
       "endDate": "2026-02-13T08:35:00Z",
       "volume": 1140.583715,
       "volume24hr": 1114.7337149999998,
-      "liquidity": 39108.1245,
+      "liquidity": 38581.4981,
       "conditionId": "0x20badd9adbfb9ee2809a4d2317ca16300f89ce1accb118ecb6985d5e5a53156f"
     },
     {
@@ -109,21 +120,21 @@
       "yesPrice": 0.5,
       "noPrice": 0.5,
       "endDate": "2026-02-13T10:30:00Z",
-      "volume": 1071.961566,
+      "volume": 1075.883133,
       "volume24hr": 1.960783,
-      "liquidity": 14125.6967,
+      "liquidity": 14594.23,
       "conditionId": "0x8455874d09fc8566093fcc7ab1e4c30d001a7889218be11a7057512b23ea3a65"
     },
     {
-      "slug": "aus-wsw-wel-2026-02-13-total-4pt5",
-      "question": "Western Sydney Wanderers FC vs. Wellington Phoenix FC: O/U 4.5",
-      "yesPrice": 0.205,
-      "noPrice": 0.795,
+      "slug": "aus-wsw-wel-2026-02-13-total-3pt5",
+      "question": "Western Sydney Wanderers FC vs. Wellington Phoenix FC: O/U 3.5",
+      "yesPrice": 0.39,
+      "noPrice": 0.61,
       "endDate": "2026-02-13T08:35:00Z",
-      "volume": 581.022235,
-      "volume24hr": 0,
-      "liquidity": 24962.6391,
-      "conditionId": "0x70e520bd402c482c228e91b79440f36677cf9eca5e0b7ae1586382f5f28137f3"
+      "volume": 488.30622,
+      "volume24hr": 5.01,
+      "liquidity": 39402.2061,
+      "conditionId": "0x36b961586736400889908bf047da422fe36663175ae4c2893d74d1ff164a8333"
     },
     {
       "slug": "aus-per-new-2026-02-13-draw",
@@ -133,19 +144,8 @@
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 482.558184,
       "volume24hr": 482.55818400000004,
-      "liquidity": 46199.9257,
+      "liquidity": 43291.4042,
       "conditionId": "0xdf441b45e652caece760af5a7e714cf26f38e0291013b8d478096936067e48e0"
-    },
-    {
-      "slug": "aus-wsw-wel-2026-02-13-total-3pt5",
-      "question": "Western Sydney Wanderers FC vs. Wellington Phoenix FC: O/U 3.5",
-      "yesPrice": 0.39,
-      "noPrice": 0.61,
-      "endDate": "2026-02-13T08:35:00Z",
-      "volume": 475.80622,
-      "volume24hr": 5.01,
-      "liquidity": 26206.9962,
-      "conditionId": "0x36b961586736400889908bf047da422fe36663175ae4c2893d74d1ff164a8333"
     },
     {
       "slug": "aus-per-new-2026-02-13-per",
@@ -153,32 +153,32 @@
       "yesPrice": 0.325,
       "noPrice": 0.675,
       "endDate": "2026-02-13T10:45:00Z",
-      "volume": 360.01269,
+      "volume": 365.01269,
       "volume24hr": 27.368887,
-      "liquidity": 37352.8232,
+      "liquidity": 36208.2725,
       "conditionId": "0x8bd3ab71476ac9c3343e19280fff9b103ad8994ad39ad1a21896e2671c262ec0"
-    },
-    {
-      "slug": "lol-gz-cfo-2026-02-13-game3",
-      "question": "LoL: Ground Zero Gaming vs CTBC Flying Oyster - Game 3 Winner",
-      "yesPrice": 0.45,
-      "noPrice": 0.55,
-      "endDate": "2026-02-13T11:00:00Z",
-      "volume": 273.573912,
-      "volume24hr": 122.88,
-      "liquidity": 5550.1011,
-      "conditionId": "0x5063e6d77911ace4396e53e3002a93264d1500b1ae900840a08a218c15a46feb"
     },
     {
       "slug": "aus-wsw-wel-2026-02-13-wel",
       "question": "Will Wellington Phoenix FC win on 2026-02-13?",
-      "yesPrice": 0.175,
-      "noPrice": 0.825,
+      "yesPrice": 0.185,
+      "noPrice": 0.815,
       "endDate": "2026-02-13T08:35:00Z",
-      "volume": 267.516054,
+      "volume": 282.646054,
       "volume24hr": 109.221595,
-      "liquidity": 43016.1718,
+      "liquidity": 38846.0102,
       "conditionId": "0x2a2ad197037a3ed1f2a1fbfa9bcfb22ca013575773611f46dfee428cc6f04f63"
+    },
+    {
+      "slug": "lol-gz-cfo-2026-02-13-game3",
+      "question": "LoL: Ground Zero Gaming vs CTBC Flying Oyster - Game 3 Winner",
+      "yesPrice": 0.445,
+      "noPrice": 0.555,
+      "endDate": "2026-02-13T11:00:00Z",
+      "volume": 273.573912,
+      "volume24hr": 122.88,
+      "liquidity": 5590.2811,
+      "conditionId": "0x5063e6d77911ace4396e53e3002a93264d1500b1ae900840a08a218c15a46feb"
     },
     {
       "slug": "bitcoin-up-or-down-february-13-2am-et",
@@ -188,18 +188,18 @@
       "endDate": "2026-02-13T08:00:00Z",
       "volume": 260.376467,
       "volume24hr": 0,
-      "liquidity": 12029.4144,
+      "liquidity": 12158.0386,
       "conditionId": "0x4e3ac7cd0a9830c2fd52be3e1e7e79f1466aa7207f95717ec98ccad33666fbe0"
     },
     {
       "slug": "aus-wsw-wel-2026-02-13-total-2pt5",
       "question": "Western Sydney Wanderers FC vs. Wellington Phoenix FC: O/U 2.5",
-      "yesPrice": 0.61,
-      "noPrice": 0.39,
+      "yesPrice": 0.605,
+      "noPrice": 0.395,
       "endDate": "2026-02-13T08:35:00Z",
       "volume": 258.16,
       "volume24hr": 24,
-      "liquidity": 34780.0572,
+      "liquidity": 32541.6532,
       "conditionId": "0x78983e298e5135ba547033f4b4cdc940548daee94b600779a8cf0c2e81ea907c"
     },
     {
@@ -210,7 +210,7 @@
       "endDate": "2026-02-13T09:00:00Z",
       "volume": 246,
       "volume24hr": 96,
-      "liquidity": 5609.8676,
+      "liquidity": 5612.5988,
       "conditionId": "0xf3f837be03dd68800cd764b65af810473e1a2991c32f956a82fcde52c6051fea"
     },
     {
@@ -221,7 +221,7 @@
       "endDate": "2026-02-13T07:00:00Z",
       "volume": 243.26,
       "volume24hr": 0,
-      "liquidity": 2839.9949,
+      "liquidity": 2846.1905,
       "conditionId": "0x4262e852040ac51cfcd2bcd23bb791d0ea0a8dfca64dc2de5203046fb7c51cb6"
     },
     {
@@ -243,18 +243,18 @@
       "endDate": "2026-02-13T10:00:00Z",
       "volume": 229.16,
       "volume24hr": 87.64,
-      "liquidity": 5553.599,
+      "liquidity": 5593.729,
       "conditionId": "0x7a05e5b396cfb6353ae2786ffa05526cf2734add73c309541754934fd42101c2"
     },
     {
       "slug": "aus-wsw-wel-2026-02-13-spread-home-1pt5",
       "question": "Spread: Western Sydney Wanderers FC (-1.5)",
-      "yesPrice": 0.36,
-      "noPrice": 0.64,
+      "yesPrice": 0.35,
+      "noPrice": 0.65,
       "endDate": "2026-02-13T08:35:00Z",
       "volume": 226.987613,
       "volume24hr": 226.987613,
-      "liquidity": 10311.8461,
+      "liquidity": 4323.0192,
       "conditionId": "0x90018bd82765fe751cf8c6106cab33f95b941b226fb704262accdc5def8ba11a"
     },
     {
@@ -265,7 +265,7 @@
       "endDate": "2026-02-13T09:00:00Z",
       "volume": 223,
       "volume24hr": 10,
-      "liquidity": 5555.8942,
+      "liquidity": 5559.9975,
       "conditionId": "0xbe40d16f121f05d126e07de1ff67c58b16a3cac91c6cb6bcb6456dbe9afd2c16"
     },
     {
@@ -276,7 +276,7 @@
       "endDate": "2026-02-13T08:35:00Z",
       "volume": 195.114348,
       "volume24hr": 21.091108000000002,
-      "liquidity": 37583.7337,
+      "liquidity": 37229.6971,
       "conditionId": "0xb9b40e437574581cf70280aca89c5e78ea0b0423da9887737b1406b3eff4c67d"
     },
     {
@@ -287,18 +287,18 @@
       "endDate": "2026-02-13T09:00:00Z",
       "volume": 167,
       "volume24hr": 130,
-      "liquidity": 5615.2682,
+      "liquidity": 5623.9983,
       "conditionId": "0x69c9c57d015eab5a838485181deb2d91d334f379bbf919f4afbec3ccf8ee3112"
     },
     {
       "slug": "cs2-pssnua-wc1-2026-02-13-map-handicap-away-1pt5",
       "question": "Map Handicap: PSSN.UA (-1.5) vs Wildcard (+1.5)",
-      "yesPrice": 0.46,
-      "noPrice": 0.54,
+      "yesPrice": 0.465,
+      "noPrice": 0.535,
       "endDate": "2026-02-13T07:00:00Z",
       "volume": 160,
       "volume24hr": 60,
-      "liquidity": 3272.7387,
+      "liquidity": 3633.6887,
       "conditionId": "0x65fad91374418e6c333de42fdd243b25d01ff9f8d5d013ee24c438367e2eb4fb"
     },
     {
@@ -309,18 +309,18 @@
       "endDate": "2026-02-13T09:00:00Z",
       "volume": 159,
       "volume24hr": 127,
-      "liquidity": 5558.766,
+      "liquidity": 5549.4976,
       "conditionId": "0xda44f5db3f19e7ac88ccacf7b43d6c1c35b1c222be0689cccb43d9c26f27a696"
     },
     {
       "slug": "cs2-pssnua-wc1-2026-02-13-total-games-2pt5",
       "question": "Games Total: O/U 2.5",
-      "yesPrice": 0.455,
-      "noPrice": 0.545,
+      "yesPrice": 0.46,
+      "noPrice": 0.54,
       "endDate": "2026-02-13T07:00:00Z",
       "volume": 107.076869,
       "volume24hr": 71.603087,
-      "liquidity": 38.4834,
+      "liquidity": 452.4835,
       "conditionId": "0x3edb1a04630e48e480ad92ca8c91c568b579363b9166da562192927c04cdaec8"
     },
     {
@@ -329,20 +329,20 @@
       "yesPrice": 0.055,
       "noPrice": 0.945,
       "endDate": "2026-02-13T08:35:00Z",
-      "volume": 79.3,
+      "volume": 80.35262,
       "volume24hr": 30.3,
-      "liquidity": 2611.1483,
+      "liquidity": 2593.4745,
       "conditionId": "0xa9577f360d6f2e77aa94504dbdb2f5a7ac5fc5fab4c2683e4806359f2c152605"
     },
     {
       "slug": "aus-per-new-2026-02-13-total-4pt5",
       "question": "Perth Glory FC vs. Newcastle United Jets FC: O/U 4.5",
-      "yesPrice": 0.3,
-      "noPrice": 0.7,
+      "yesPrice": 0.29,
+      "noPrice": 0.71,
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 63.853665,
       "volume24hr": 0,
-      "liquidity": 36351.4601,
+      "liquidity": 20888.364,
       "conditionId": "0x93d01bbe33005d55c69ef97f1f0aca7c0880240421b860b7d2fd4ef4b8f9d447"
     },
     {
@@ -353,7 +353,7 @@
       "endDate": "2026-02-13T09:15:00Z",
       "volume": 55.7027,
       "volume24hr": 0,
-      "liquidity": 670.2865,
+      "liquidity": 1514.8972,
       "conditionId": "0x1eb6809620ac5eef38a5957c638a20650efff9408be59fbde280d96ec27cc19f"
     },
     {
@@ -364,7 +364,7 @@
       "endDate": "2026-02-13T08:00:00Z",
       "volume": 47.8,
       "volume24hr": 0,
-      "liquidity": 10630.2878,
+      "liquidity": 10623.32,
       "conditionId": "0x4da2b287d2acd0c7b4428fd6ec92b328b0600d4e245db7f3a4334cf232886be0"
     },
     {
@@ -375,7 +375,7 @@
       "endDate": "2026-02-13T08:35:00Z",
       "volume": 41.91857,
       "volume24hr": 32.989999999999995,
-      "liquidity": 7915.8846,
+      "liquidity": 4794.9409,
       "conditionId": "0x065a603d7939279c9a41c677506d485fe8a0aa53a4372425d7e85ea2ff80c984"
     },
     {
@@ -386,7 +386,7 @@
       "endDate": "2026-02-13T08:35:00Z",
       "volume": 33.114817,
       "volume24hr": 30,
-      "liquidity": 1161.3377,
+      "liquidity": 606.1872,
       "conditionId": "0xed31ef0348be35d4f6596c825808c0e05c590ea22656bb285e0f09462867699b"
     },
     {
@@ -397,7 +397,7 @@
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 23.66,
       "volume24hr": 2.14,
-      "liquidity": 565.1589,
+      "liquidity": 554.6688,
       "conditionId": "0xd439a5c1c676fe994975372eb4ee163d54ad4153c3bfacd808fba09d4b63f840"
     },
     {
@@ -408,7 +408,7 @@
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 21.52,
       "volume24hr": 0,
-      "liquidity": 590.0615,
+      "liquidity": 591.1713,
       "conditionId": "0x6f7653d6c692201af16f9b487dcd29593e29fda78af40180392a4bc64df5dcf6"
     },
     {
@@ -430,7 +430,7 @@
       "endDate": "2026-02-13T09:30:00Z",
       "volume": 19.84,
       "volume24hr": 19.84,
-      "liquidity": 6648.2298,
+      "liquidity": 7710.7144,
       "conditionId": "0x1ed266c3f9a540c194e030e942b1d7d458fc244472819c8bed26e44dd110c678"
     },
     {
@@ -441,7 +441,7 @@
       "endDate": "2026-02-13T11:00:00Z",
       "volume": 19.546269,
       "volume24hr": 19.546269,
-      "liquidity": 14624.077,
+      "liquidity": 14615.0384,
       "conditionId": "0x21eec08c40d2d4eab95fc63dcd3dd93eeb531f40310854bf2d4b74a58071a188"
     },
     {
@@ -452,7 +452,7 @@
       "endDate": "2026-02-13T08:00:00Z",
       "volume": 16.764703,
       "volume24hr": 16.764703,
-      "liquidity": 20182.7547,
+      "liquidity": 20169.2511,
       "conditionId": "0x3beee638d2c0571c8e14f749fb7307b6675f50208c8edecd0168b11a7de5a5a4"
     },
     {
@@ -463,7 +463,7 @@
       "endDate": "2026-02-13T10:00:00Z",
       "volume": 11.764701,
       "volume24hr": 0,
-      "liquidity": 9912.1581,
+      "liquidity": 9903.3683,
       "conditionId": "0xbb52e0007acf155b5cedf29d12d7005c188be9f81887c366145723ad64e557bb"
     },
     {
@@ -474,7 +474,7 @@
       "endDate": "2026-02-13T09:15:00Z",
       "volume": 11.764701,
       "volume24hr": 0,
-      "liquidity": 9910.0628,
+      "liquidity": 12547.8784,
       "conditionId": "0x692b6647201137edb9f9224c580d7462a034437a2cc42f1338d1e7e8fa743391"
     },
     {
@@ -483,10 +483,21 @@
       "yesPrice": 0.5,
       "noPrice": 0.5,
       "endDate": "2026-02-13T07:45:00Z",
-      "volume": 7.843134,
+      "volume": 9.803917,
       "volume24hr": 0,
-      "liquidity": 12556.1294,
+      "liquidity": 12545.1423,
       "conditionId": "0xd3ab2bbb1b4b8d452c5162c34feedb9465580eefcb3b03fbaf6c807438daff66"
+    },
+    {
+      "slug": "eth-updown-15m-1770982200",
+      "question": "Ethereum Up or Down - February 13, 6:30AM-6:45AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:45:00Z",
+      "volume": 8.17,
+      "volume24hr": 8.17,
+      "liquidity": 10308.5429,
+      "conditionId": "0x07de89a49dddabdf6bc9134c1a430fb1567a8fa573b6b9bae4bcbda81f49e885"
     },
     {
       "slug": "eth-updown-15m-1770969600",
@@ -496,7 +507,7 @@
       "endDate": "2026-02-13T08:15:00Z",
       "volume": 7.843134,
       "volume24hr": 0,
-      "liquidity": 12546.3076,
+      "liquidity": 12536.6474,
       "conditionId": "0x95161e1f391213ebf4478cbf05df7c079b29b7bf0e5b97a920a6fd2a8de87f6c"
     },
     {
@@ -507,7 +518,7 @@
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 7.373639,
       "volume24hr": 0,
-      "liquidity": 2385.3819,
+      "liquidity": 2489.7297,
       "conditionId": "0xa0b042f52663a970334876ad4e93cc03dcb4eeb5e7e9fc6bd23262c22cf93694"
     },
     {
@@ -518,7 +529,7 @@
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 6.12,
       "volume24hr": 0,
-      "liquidity": 2912.7196,
+      "liquidity": 2684.8606,
       "conditionId": "0xc8633f824cb20da6cd9adddbbc3c247987ab32976edd5c337ff1fcd8db214b1c"
     },
     {
@@ -529,7 +540,7 @@
       "endDate": "2026-02-13T09:55:00Z",
       "volume": 5.77,
       "volume24hr": 5.77,
-      "liquidity": 5989.5817,
+      "liquidity": 6010.7807,
       "conditionId": "0xd04b3bdd70c0ac330170e16f5433444f9b4536c1f9ad0d24a24a0c81644e1627"
     },
     {
@@ -540,7 +551,7 @@
       "endDate": "2026-02-13T07:40:00Z",
       "volume": 5,
       "volume24hr": 5,
-      "liquidity": 676.648,
+      "liquidity": 698.6485,
       "conditionId": "0x17ad78ca730d2d7e5d7bb53c754ef9bf7218a51f73dd164585f56bf55029572a"
     },
     {
@@ -551,7 +562,7 @@
       "endDate": "2026-02-13T06:35:00Z",
       "volume": 5,
       "volume24hr": 5,
-      "liquidity": 728.9495,
+      "liquidity": 750.9479,
       "conditionId": "0x045c2b42162c80eea56e3a2b7315ac53f2de4f27d7ab707082b12acfd7e79712"
     },
     {
@@ -562,30 +573,8 @@
       "endDate": "2026-02-13T09:10:00Z",
       "volume": 3.96,
       "volume24hr": 3.96,
-      "liquidity": 5992.4688,
+      "liquidity": 6014.4684,
       "conditionId": "0x9de2331ebfd708f670d257416ef85c0a6f5f97770a98c59f8fa60678520f8892"
-    },
-    {
-      "slug": "eth-updown-15m-1770966000",
-      "question": "Ethereum Up or Down - February 13, 2:00AM-2:15AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T07:15:00Z",
-      "volume": 3.921567,
-      "volume24hr": 0,
-      "liquidity": 12558.5296,
-      "conditionId": "0xf34576c0d2ef1daa05a7be97aaa70c04e2fcc88c162f77150cd60e50a3c67428"
-    },
-    {
-      "slug": "btc-updown-5m-1770965700",
-      "question": "Bitcoin Up or Down - February 13, 1:55AM-2:00AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T07:00:00Z",
-      "volume": 3.921567,
-      "volume24hr": 0,
-      "liquidity": 678.7739,
-      "conditionId": "0x0ce2c2dbb36935772571615c195fc818bcffba2c70373f5f29b3c9057be64c6f"
     },
     {
       "slug": "eth-updown-15m-1770975000",
@@ -595,7 +584,7 @@
       "endDate": "2026-02-13T09:45:00Z",
       "volume": 3.921567,
       "volume24hr": 0,
-      "liquidity": 9892.631,
+      "liquidity": 12530.73,
       "conditionId": "0x9d00c9621b01540d9a6c48d2dd6c1b7584f283ac93547fd6467eae2ab1205d17"
     },
     {
@@ -606,18 +595,51 @@
       "endDate": "2026-02-13T09:30:00Z",
       "volume": 3.921567,
       "volume24hr": 0,
-      "liquidity": 9890.6343,
+      "liquidity": 12520.7707,
       "conditionId": "0x18f9e21c51fe8fded3c6ee7a8a5b77a38891f28fcdc7f4032b7d7e9c8e8da4ec"
+    },
+    {
+      "slug": "btc-updown-5m-1770965700",
+      "question": "Bitcoin Up or Down - February 13, 1:55AM-2:00AM ET",
+      "yesPrice": 0.505,
+      "noPrice": 0.495,
+      "endDate": "2026-02-13T07:00:00Z",
+      "volume": 3.921567,
+      "volume24hr": 0,
+      "liquidity": 750.2725,
+      "conditionId": "0x0ce2c2dbb36935772571615c195fc818bcffba2c70373f5f29b3c9057be64c6f"
+    },
+    {
+      "slug": "eth-updown-15m-1770966000",
+      "question": "Ethereum Up or Down - February 13, 2:00AM-2:15AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T07:15:00Z",
+      "volume": 3.921567,
+      "volume24hr": 0,
+      "liquidity": 12548.2332,
+      "conditionId": "0xf34576c0d2ef1daa05a7be97aaa70c04e2fcc88c162f77150cd60e50a3c67428"
+    },
+    {
+      "slug": "sol-updown-15m-1770980400",
+      "question": "Solana Up or Down - February 13, 6:00AM-6:15AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:15:00Z",
+      "volume": 3.04,
+      "volume24hr": 0,
+      "liquidity": 6580.198,
+      "conditionId": "0x9bd9a69952af6bc6cbd5351d4c3b441deafd56e8a336256df87b095fd882d95c"
     },
     {
       "slug": "khl-adm-tra-2026-02-13",
       "question": "KHL: Admiral Vladivostok vs. Traktor",
-      "yesPrice": 0.31,
-      "noPrice": 0.69,
+      "yesPrice": 0.315,
+      "noPrice": 0.685,
       "endDate": "2026-02-13T09:30:00Z",
       "volume": 2.739725,
       "volume24hr": 0,
-      "liquidity": 562.1587,
+      "liquidity": 1025.8787,
       "conditionId": "0x865d56c20a85b5807d9ab6b36f3129b18c3f6f18e7e27bdb3646b3042f68d61e"
     },
     {
@@ -628,7 +650,7 @@
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 2.272716,
       "volume24hr": 0,
-      "liquidity": 37598.1296,
+      "liquidity": 24792.4245,
       "conditionId": "0xba4b260b0b356326b4100477285262c83a59b349fb45a46a8b5914da2bdd2d01"
     },
     {
@@ -639,41 +661,30 @@
       "endDate": "2026-02-13T09:15:00Z",
       "volume": 1.960783,
       "volume24hr": 1.960783,
-      "liquidity": 6670.6149,
+      "liquidity": 7732.9743,
       "conditionId": "0x81d36e799bc048342765826f21a12c8bfaca6bb4f584a1be6562e2409599ef1d"
+    },
+    {
+      "slug": "bitcoin-up-or-down-february-13-1am-et",
+      "question": "Bitcoin Up or Down - February 13, 1AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T07:00:00Z",
+      "volume": 1.960783,
+      "volume24hr": 0,
+      "liquidity": 11806.2244,
+      "conditionId": "0x3eef4e353a0c15d9ce40ce72be91bae912b98a63cd0b68180ae0d76de32d1684"
     },
     {
       "slug": "btc-updown-5m-1770969900",
       "question": "Bitcoin Up or Down - February 13, 3:05AM-3:10AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
+      "yesPrice": 0.505,
+      "noPrice": 0.495,
       "endDate": "2026-02-13T08:10:00Z",
       "volume": 1.960783,
       "volume24hr": 0,
-      "liquidity": 678.184,
+      "liquidity": 749.6832,
       "conditionId": "0xf89c41e9f05f20ff5306ea62480a106c89442bde40eca2507df7b72505374391"
-    },
-    {
-      "slug": "xrp-updown-15m-1770976800",
-      "question": "XRP Up or Down - February 13, 5:00AM-5:15AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T10:15:00Z",
-      "volume": 1.52,
-      "volume24hr": 0,
-      "liquidity": 6110.8086,
-      "conditionId": "0xed2ecfb15226b54b0e06a7af0cc8208ba95ae40df37ab975fb98ea9214efe951"
-    },
-    {
-      "slug": "xrp-updown-15m-1770958800",
-      "question": "XRP Up or Down - February 13, 12:00AM-12:15AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T05:15:00Z",
-      "volume": 1.52,
-      "volume24hr": 1.52,
-      "liquidity": 7585.8136,
-      "conditionId": "0xb164a8ae0c0ae01bf248d1fca6c6f30f7130eaf6c8eb4b29edacdfa9289af382"
     },
     {
       "slug": "eth-updown-15m-1770978600",
@@ -683,30 +694,8 @@
       "endDate": "2026-02-13T10:45:00Z",
       "volume": 1.52,
       "volume24hr": 1.52,
-      "liquidity": 9833.8208,
+      "liquidity": 9825.8022,
       "conditionId": "0x787671463d007ab080b1e7b0392b9a297315980cc0e11e971e93ced0bc97ec7e"
-    },
-    {
-      "slug": "eth-updown-15m-1770958800",
-      "question": "Ethereum Up or Down - February 13, 12:00AM-12:15AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T05:15:00Z",
-      "volume": 1.52,
-      "volume24hr": 1.52,
-      "liquidity": 13058.0828,
-      "conditionId": "0xcbec26b1b27779476d95ee8039d150c6d745efc239ee1d3a0bf53ea864cc6b86"
-    },
-    {
-      "slug": "sol-updown-15m-1770966000",
-      "question": "Solana Up or Down - February 13, 2:00AM-2:15AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T07:15:00Z",
-      "volume": 1.52,
-      "volume24hr": 1.52,
-      "liquidity": 7244.3924,
-      "conditionId": "0x7fa32c96e3948b702d0bdc437abdf72a58012365dc453ef8426ac625eba5adf0"
     },
     {
       "slug": "xrp-updown-15m-1770975000",
@@ -716,63 +705,107 @@
       "endDate": "2026-02-13T09:45:00Z",
       "volume": 1.52,
       "volume24hr": 1.52,
-      "liquidity": 6672.7306,
+      "liquidity": 7560.242,
       "conditionId": "0x60c25a190c77bba34f6db7321f326056500cdc9d5a705585bd9ac62134bd70d8"
     },
     {
-      "slug": "btc-updown-5m-1770975600",
-      "question": "Bitcoin Up or Down - February 13, 4:40AM-4:45AM ET",
+      "slug": "xrp-updown-15m-1770980400",
+      "question": "XRP Up or Down - February 13, 6:00AM-6:15AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T09:45:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 5992.2097,
-      "conditionId": "0x2290714f599745d922366404e1b8a1279c9226ad74c173116f114c338beb3536"
+      "endDate": "2026-02-13T11:15:00Z",
+      "volume": 1.52,
+      "volume24hr": 1.52,
+      "liquidity": 6099.1218,
+      "conditionId": "0x0a14e238bb1774c42f1b48f0c4d37c9a10a3997b14c28e6851fe064d9e703b58"
     },
     {
-      "slug": "btc-updown-5m-1770975900",
-      "question": "Bitcoin Up or Down - February 13, 4:45AM-4:50AM ET",
+      "slug": "xrp-updown-15m-1770976800",
+      "question": "XRP Up or Down - February 13, 5:00AM-5:15AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T09:50:00Z",
-      "volume": 0,
+      "endDate": "2026-02-13T10:15:00Z",
+      "volume": 1.52,
       "volume24hr": 0,
-      "liquidity": 5992.2095,
-      "conditionId": "0xa1d113c9aefcba42d1c3431a4f0084b84221496834d5a3f95e80e4412408580d"
+      "liquidity": 6102.3218,
+      "conditionId": "0xed2ecfb15226b54b0e06a7af0cc8208ba95ae40df37ab975fb98ea9214efe951"
     },
     {
-      "slug": "btc-updown-15m-1770975900",
-      "question": "Bitcoin Up or Down - February 13, 4:45AM-5:00AM ET",
+      "slug": "sol-updown-15m-1770966000",
+      "question": "Solana Up or Down - February 13, 2:00AM-2:15AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:00:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 14220.2258,
-      "conditionId": "0x8df958b0a33e927f7fe9f97d5c8e3dd80b2d1836e0867fa49e5329024112986b"
+      "endDate": "2026-02-13T07:15:00Z",
+      "volume": 1.52,
+      "volume24hr": 1.52,
+      "liquidity": 7233.4932,
+      "conditionId": "0x7fa32c96e3948b702d0bdc437abdf72a58012365dc453ef8426ac625eba5adf0"
     },
     {
-      "slug": "xrp-updown-15m-1770975900",
-      "question": "XRP Up or Down - February 13, 4:45AM-5:00AM ET",
+      "slug": "btc-updown-5m-1770978000",
+      "question": "Bitcoin Up or Down - February 13, 5:20AM-5:25AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:00:00Z",
+      "endDate": "2026-02-13T10:25:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 6659.9056,
-      "conditionId": "0x3b38ffa089f6debc1eff509b72b0bca068fa5a0add381a51a88159eb490047a8"
+      "liquidity": 6014.4094,
+      "conditionId": "0x1b654b49574f9a9856ffffd6d9d53a69b3b097f927f45966dad7b40c1c76a23e"
     },
     {
-      "slug": "sol-updown-15m-1770979500",
-      "question": "Solana Up or Down - February 13, 5:45AM-6:00AM ET",
+      "slug": "btc-updown-5m-1770978300",
+      "question": "Bitcoin Up or Down - February 13, 5:25AM-5:30AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T11:00:00Z",
+      "endDate": "2026-02-13T10:30:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 6090.1244,
-      "conditionId": "0x242ac3dbb697656868e95c33ce873fb381cad9b1ab4d88350c21154764e55a91"
+      "liquidity": 6014.2086,
+      "conditionId": "0x7c0c4c829206ca6d5b6ab6c7aa2f4b0b36065467ee1beb5fc7e0f8de045ea9a6"
+    },
+    {
+      "slug": "btc-updown-5m-1770981300",
+      "question": "Bitcoin Up or Down - February 13, 6:15AM-6:20AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:20:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6017.409,
+      "conditionId": "0x1832b41e04d9a3c0a7db6291979db2cece13e7a08a556625a6c715118fb4deb4"
+    },
+    {
+      "slug": "xrp-updown-15m-1770978600",
+      "question": "XRP Up or Down - February 13, 5:30AM-5:45AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T10:45:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6599.8682,
+      "conditionId": "0xeaa10db112ad66096d75c0dbe13bd25fd2d4621ba889cc931adda16abb363ed7"
+    },
+    {
+      "slug": "btc-updown-15m-1770978600",
+      "question": "Bitcoin Up or Down - February 13, 5:30AM-5:45AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T10:45:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 14127.646,
+      "conditionId": "0xc45a54ab68b9b482e6ab9afa0754b4e743672b5365c014b82b6b5daeb7e2cead"
+    },
+    {
+      "slug": "btc-updown-15m-1770981300",
+      "question": "Bitcoin Up or Down - February 13, 6:15AM-6:30AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:30:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 14128.2537,
+      "conditionId": "0xfb8c76151f6993550ff850eb2cb71bb75eb070fd0478acd624aa22c6f513e4d7"
     },
     {
       "slug": "cs2-lag-spo-2026-02-14-total-games-2pt5",
@@ -782,52 +815,63 @@
       "endDate": "2026-02-13T08:00:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 52.4869,
+      "liquidity": 46.8469,
       "conditionId": "0x3544b08f6fc6a1540fdcd8780c634674b8581ab50a12acd9bd1ec86d8a41ddb0"
     },
     {
-      "slug": "sol-updown-15m-1770975900",
-      "question": "Solana Up or Down - February 13, 4:45AM-5:00AM ET",
+      "slug": "btc-updown-5m-1770978600",
+      "question": "Bitcoin Up or Down - February 13, 5:30AM-5:35AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:00:00Z",
+      "endDate": "2026-02-13T10:35:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 6171.6774,
-      "conditionId": "0xb0177c5dbe4e3860142b7b3637d393fb471dcab93e50e5ba3a151d7f28f3763e"
+      "liquidity": 6014.2079,
+      "conditionId": "0x7eb72ca8dfb565d66187df377d21e90c4a2868c39713f78ba52a84811af159a0"
     },
     {
-      "slug": "btc-updown-5m-1770979800",
-      "question": "Bitcoin Up or Down - February 13, 5:50AM-5:55AM ET",
+      "slug": "sol-updown-15m-1770981300",
+      "question": "Solana Up or Down - February 13, 6:15AM-6:30AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:55:00Z",
+      "endDate": "2026-02-13T11:30:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 5996.4068,
-      "conditionId": "0x12791531933faab6476df069360b55a04d196934fb05103eef56fb57ad01cc8a"
+      "liquidity": 6581.6876,
+      "conditionId": "0xfd84c8a4b0e5a602b45c09cb0909ecfa4ee5681aa28e264cfbfba70b634d1ad3"
     },
     {
-      "slug": "btc-updown-5m-1770976500",
-      "question": "Bitcoin Up or Down - February 13, 4:55AM-5:00AM ET",
+      "slug": "sol-updown-15m-1770978600",
+      "question": "Solana Up or Down - February 13, 5:30AM-5:45AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:00:00Z",
+      "endDate": "2026-02-13T10:45:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 5992.209,
-      "conditionId": "0x82a2ce528b7edee2036a3c238eb36f0ecde0d6d5f5a76ad085dd98b7d8c5ff58"
+      "liquidity": 6081.6894,
+      "conditionId": "0x9b9e9f72490ef5f37441b239ff7fa3d7dd05c55c027ee0286bb36a2e24082046"
     },
     {
-      "slug": "cs2-regain-o49-2026-02-13-total-games-2pt5",
-      "question": "Games Total: O/U 2.5",
-      "yesPrice": 0.49,
-      "noPrice": 0.51,
-      "endDate": "2026-02-13T07:00:00Z",
+      "slug": "btc-updown-5m-1770978900",
+      "question": "Bitcoin Up or Down - February 13, 5:35AM-5:40AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T10:40:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 45.159,
-      "conditionId": "0x16a4354658ad36933a2d9fe68573ef9cebe9a30f8ae67b93548ed9fdcc050e3a"
+      "liquidity": 6013.6097,
+      "conditionId": "0xabc8dc9bf0886037a5ff5ffc0980820b93bd827bcaa2cedf6f84ed738745796d"
+    },
+    {
+      "slug": "xrp-updown-15m-1770981300",
+      "question": "XRP Up or Down - February 13, 6:15AM-6:30AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:30:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6599.8666,
+      "conditionId": "0x9c3a4aad75dd8bca77282403af85a83d68f85bb573b9a1d422a4231c8d181133"
     },
     {
       "slug": "cs2-cce-f5-2026-02-14-map-handicap-away-1pt5",
@@ -837,7 +881,7 @@
       "endDate": "2026-02-13T08:30:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 50.7501,
+      "liquidity": 35.3901,
       "conditionId": "0x3fb21f12ae508ba451425214cc29c3a1e45a2505eb52c380277849379667f1c1"
     },
     {
@@ -852,125 +896,136 @@
       "conditionId": "0x619239f765b63470f37b5338ad568cece958cd1d9f6bfdf25926bbbaf39508c4"
     },
     {
-      "slug": "btc-updown-15m-1770976800",
-      "question": "Bitcoin Up or Down - February 13, 5:00AM-5:15AM ET",
+      "slug": "btc-updown-5m-1770979200",
+      "question": "Bitcoin Up or Down - February 13, 5:40AM-5:45AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:15:00Z",
+      "endDate": "2026-02-13T10:45:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 14137.1038,
-      "conditionId": "0xff5fcc7aa449f88a8f76d8053f9405a3305029a13548f21b62d7d064254c393d"
+      "liquidity": 6018.2084,
+      "conditionId": "0x7f5bbaedb8d2014ae658a7b4fee29de28410c10f5a4bf1fe75f9602b889d7ed9"
     },
     {
-      "slug": "btc-updown-5m-1770976800",
-      "question": "Bitcoin Up or Down - February 13, 5:00AM-5:05AM ET",
+      "slug": "btc-updown-5m-1770979500",
+      "question": "Bitcoin Up or Down - February 13, 5:45AM-5:50AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:05:00Z",
+      "endDate": "2026-02-13T10:50:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 5992.2098,
-      "conditionId": "0x0d576bd26042fb05213c36ab9f902f92beba1b4e2409bd47c1b9a47162e400ef"
+      "liquidity": 6014.2076,
+      "conditionId": "0x61fdb2c7501f33f42b48be6b77adc87f6aa4f1be86e53f12f0bc84e07aa2b616"
     },
     {
-      "slug": "cs2-regain-o49-2026-02-13",
-      "question": "Counter-Strike: regain vs Outfit 49 (BO3) - Dust2.us Eagle Masters Group Stage",
-      "yesPrice": 0.42,
-      "noPrice": 0.58,
+      "slug": "btc-updown-5m-1770981600",
+      "question": "Bitcoin Up or Down - February 13, 6:20AM-6:25AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:25:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6018.309,
+      "conditionId": "0x9a636d0f0bd22b5a3cbb3223705f43c7503830e5bf93f5e33ae9fef95558a1d1"
+    },
+    {
+      "slug": "xrp-updown-15m-1770979500",
+      "question": "XRP Up or Down - February 13, 5:45AM-6:00AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:00:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6599.8673,
+      "conditionId": "0xd6939475b0a48d0570b034d84855ced9a16c534b2671f99aebfe4f91fcedce3b"
+    },
+    {
+      "slug": "eth-updown-15m-1770979500",
+      "question": "Ethereum Up or Down - February 13, 5:45AM-6:00AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:00:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 9826.5462,
+      "conditionId": "0xd21a4261bc56f5cb99b874c5ee3a9ff79829c9ae47a1642aedb7596b26efa1f3"
+    },
+    {
+      "slug": "btc-updown-5m-1770981900",
+      "question": "Bitcoin Up or Down - February 13, 6:25AM-6:30AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:30:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6018.3093,
+      "conditionId": "0x35aca394d1c9d94d3b07c4f73b0163392ca2f1cb5c39f8d9333d13ff1510b33a"
+    },
+    {
+      "slug": "sol-updown-15m-1770979500",
+      "question": "Solana Up or Down - February 13, 5:45AM-6:00AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:00:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6081.6858,
+      "conditionId": "0x242ac3dbb697656868e95c33ce873fb381cad9b1ab4d88350c21154764e55a91"
+    },
+    {
+      "slug": "btc-updown-15m-1770982200",
+      "question": "Bitcoin Up or Down - February 13, 6:30AM-6:45AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T11:45:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 14117.13,
+      "conditionId": "0x4e38d8ca6f9bfe8a89d848903443edb6458e2f3ff93aded0a4588ec2ff38e7af"
+    },
+    {
+      "slug": "btc-updown-5m-1770979800",
+      "question": "Bitcoin Up or Down - February 13, 5:50AM-5:55AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T10:55:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6018.407,
+      "conditionId": "0x12791531933faab6476df069360b55a04d196934fb05103eef56fb57ad01cc8a"
+    },
+    {
+      "slug": "btc-updown-15m-1770974100",
+      "question": "Bitcoin Up or Down - February 13, 4:15AM-4:30AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T09:30:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 20641.318,
+      "conditionId": "0x68b1914761da6c1c3e1a40e673e630906eaa7ee4cf1edb1f7f59a45b72d51574"
+    },
+    {
+      "slug": "cs2-regain-o49-2026-02-13-total-games-2pt5",
+      "question": "Games Total: O/U 2.5",
+      "yesPrice": 0.49,
+      "noPrice": 0.51,
       "endDate": "2026-02-13T07:00:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 91.8815,
-      "conditionId": "0x018e52d78b9a4952ac93381f1851a546e4219b7111da52bf7be72287062cf78a"
+      "liquidity": 45.159,
+      "conditionId": "0x16a4354658ad36933a2d9fe68573ef9cebe9a30f8ae67b93548ed9fdcc050e3a"
     },
     {
-      "slug": "eth-updown-15m-1770976800",
-      "question": "Ethereum Up or Down - February 13, 5:00AM-5:15AM ET",
+      "slug": "xrp-updown-15m-1770982200",
+      "question": "XRP Up or Down - February 13, 6:30AM-6:45AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:15:00Z",
+      "endDate": "2026-02-13T11:45:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 10334.811,
-      "conditionId": "0x7c66c12302301acf77d2b92ff9b3aabc182b5ca774099dac40dac29331559bc9"
-    },
-    {
-      "slug": "cs2-regain-o49-2026-02-13-map-handicap-home-1pt5",
-      "question": "Map Handicap: O49 (-1.5) vs regain (+1.5)",
-      "yesPrice": 0.305,
-      "noPrice": 0.695,
-      "endDate": "2026-02-13T07:00:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 18.626,
-      "conditionId": "0x663954b7382414bcaca891f67603cb7054aaa3264b26aeaafcae5630b377592d"
-    },
-    {
-      "slug": "sol-updown-15m-1770976800",
-      "question": "Solana Up or Down - February 13, 5:00AM-5:15AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T10:15:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 6091.7524,
-      "conditionId": "0x3c37a6e469bb8063985f666efc40929479fd6cb606c719218650db6c26bcca6f"
-    },
-    {
-      "slug": "btc-updown-5m-1770977100",
-      "question": "Bitcoin Up or Down - February 13, 5:05AM-5:10AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T10:10:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 5992.4097,
-      "conditionId": "0x2aad9c011f7bf0db4adad917d261e6b9ba67217ca07eb6e4d6d88debdf9ee52a"
-    },
-    {
-      "slug": "cs2-ta-farmvi-2026-02-13-map-handicap-away-1pt5",
-      "question": "Map Handicap: TA (-1.5) vs FarmVille (+1.5)",
-      "yesPrice": 0.505,
-      "noPrice": 0.495,
-      "endDate": "2026-02-13T07:30:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 9.6264,
-      "conditionId": "0x0dc4709d2a623e5844331eac7d7a93ba1a87c84d173f57fa4bc42440329e705c"
-    },
-    {
-      "slug": "btc-updown-5m-1770977400",
-      "question": "Bitcoin Up or Down - February 13, 5:10AM-5:15AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T10:15:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 5992.2084,
-      "conditionId": "0xf23e10206edd9779f42866b84ff412f71c02df474b8d7258f528b3b985216fce"
-    },
-    {
-      "slug": "btc-updown-5m-1770977700",
-      "question": "Bitcoin Up or Down - February 13, 5:15AM-5:20AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T10:20:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 5992.2092,
-      "conditionId": "0x661b3a1f7966883c7937df59afbab5218fa73eb30c11eebe29f36e0ad453127e"
-    },
-    {
-      "slug": "cs2-ta-farmvi-2026-02-13-game1",
-      "question": "Counter-Strike: Team Aether vs FarmVille - Map 1 Winner",
-      "yesPrice": 0.505,
-      "noPrice": 0.495,
-      "endDate": "2026-02-13T07:30:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 9.651,
-      "conditionId": "0x4d4914415b4004ffcc4f3c1d1dd6232ab115158c3acb77ca22fa7378febdd69f"
+      "liquidity": 6597.6544,
+      "conditionId": "0x964f00d8e433b9b4ffc865a3a11b63dcbabbf75724728084134c4424b1f49f82"
     },
     {
       "slug": "dota2-yg-y123-2026-02-13-total-games-2pt5",
@@ -995,6 +1050,17 @@
       "conditionId": "0xc7e444fe024e64859f5d5aea871cb68e992d4af539b8a18b2062c6cb1d682652"
     },
     {
+      "slug": "btc-updown-5m-1770973800",
+      "question": "Bitcoin Up or Down - February 13, 4:10AM-4:15AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-13T09:15:00Z",
+      "volume": 0,
+      "volume24hr": 0,
+      "liquidity": 6016.2084,
+      "conditionId": "0x94a1c10f4f0c2c66054471f3a5e81a96e8ba04a0891fd28540d43d6c4f4e414d"
+    },
+    {
       "slug": "dota2-yg-y123-2026-02-13-game2",
       "question": "Dota 2: Yangon Galacticos vs yache123 - Game 2 Winner",
       "yesPrice": 0.695,
@@ -1006,103 +1072,37 @@
       "conditionId": "0xb27996dcde6c6f9c808625e19011aeecba61ef25b2a63ecce2ef3010e670f0dc"
     },
     {
-      "slug": "sol-updown-15m-1770971400",
-      "question": "Solana Up or Down - February 13, 3:30AM-3:45AM ET",
+      "slug": "btc-updown-5m-1770974100",
+      "question": "Bitcoin Up or Down - February 13, 4:15AM-4:20AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T08:45:00Z",
+      "endDate": "2026-02-13T09:20:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 7244.2344,
-      "conditionId": "0x2bd6a2a205cf95cfd74360dd2ba52d2bdc117ba498314e6b7a8b82c72912578d"
+      "liquidity": 6016.2095,
+      "conditionId": "0x9851838297056c5864d3d72340fa16688693b6df59e31e62f7ddfd0ea38aa848"
     },
     {
-      "slug": "xrp-updown-15m-1770971400",
-      "question": "XRP Up or Down - February 13, 3:30AM-3:45AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T08:45:00Z",
+      "slug": "cs2-regain-o49-2026-02-13",
+      "question": "Counter-Strike: regain vs Outfit 49 (BO3) - Dust2.us Eagle Masters Group Stage",
+      "yesPrice": 0.42,
+      "noPrice": 0.58,
+      "endDate": "2026-02-13T07:00:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 7587.2816,
-      "conditionId": "0xe06c1b13bf4459de30f5bc0d86fefbd3b854caea14c1de78cf49565f6adab1c1"
+      "liquidity": 91.8815,
+      "conditionId": "0x018e52d78b9a4952ac93381f1851a546e4219b7111da52bf7be72287062cf78a"
     },
     {
-      "slug": "sol-updown-15m-1770977700",
-      "question": "Solana Up or Down - February 13, 5:15AM-5:30AM ET",
+      "slug": "xrp-updown-15m-1770974100",
+      "question": "XRP Up or Down - February 13, 4:15AM-4:30AM ET",
       "yesPrice": 0.5,
       "noPrice": 0.5,
-      "endDate": "2026-02-13T10:30:00Z",
+      "endDate": "2026-02-13T09:30:00Z",
       "volume": 0,
       "volume24hr": 0,
-      "liquidity": 6090.4286,
-      "conditionId": "0xcc86dcc53b952908f3640ef3e21e560380c7ba0cd1907084cea05aca5a73e7c9"
-    },
-    {
-      "slug": "btc-updown-5m-1770971400",
-      "question": "Bitcoin Up or Down - February 13, 3:30AM-3:35AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T08:35:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 5993.6085,
-      "conditionId": "0xc24cd07c50aa05b360dd5bf8472d21c23c7e1531fe058f66127b361fbdd7e3f0"
-    },
-    {
-      "slug": "btc-updown-15m-1770971400",
-      "question": "Bitcoin Up or Down - February 13, 3:30AM-3:45AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T08:45:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 20202.6453,
-      "conditionId": "0xaed4c50ed98c6d18b741916b4576035156b948b87b168dba9cba24168053979c"
-    },
-    {
-      "slug": "btc-updown-5m-1770971100",
-      "question": "Bitcoin Up or Down - February 13, 3:25AM-3:30AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T08:30:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 5993.8092,
-      "conditionId": "0x8b5d0f8304291c2703414bda0563ca98ec3f935a0df9b59b0a2543033c2ba087"
-    },
-    {
-      "slug": "btc-updown-5m-1770970800",
-      "question": "Bitcoin Up or Down - February 13, 3:20AM-3:25AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T08:25:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 5993.6099,
-      "conditionId": "0x46de09171efabc116de5cb944f014790526608535c6755e427e707e76dd6f0ea"
-    },
-    {
-      "slug": "sol-updown-15m-1770970500",
-      "question": "Solana Up or Down - February 13, 3:15AM-3:30AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T08:30:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 4587.0876,
-      "conditionId": "0x222e29a2c6d11414e597668ebe4daad725be963a3b918aa2108a2e7343381652"
-    },
-    {
-      "slug": "eth-updown-15m-1770971400",
-      "question": "Ethereum Up or Down - February 13, 3:30AM-3:45AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T08:45:00Z",
-      "volume": 0,
-      "volume24hr": 0,
-      "liquidity": 12563.0721,
-      "conditionId": "0x89c56afa2d5c82bb30a57563f37e4171de51d8c4121a9a06ad9ca0ffc6b4de78"
+      "liquidity": 7535.9068,
+      "conditionId": "0xa4acb340bcfb8015392e1a37b9f34df1dd4e79bb064c2956097e48d50df6dc77"
     }
   ]
 }

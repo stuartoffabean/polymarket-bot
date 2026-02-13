@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-12T23:27:15.947Z",
+  "timestamp": "2026-02-12T23:53:08.484Z",
   "summary": {
     "total": 100,
     "negRisk": 58,
-    "flagged": 4,
+    "flagged": 5,
     "viable": 1
   },
   "opportunities": [
@@ -12,11 +12,11 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.8035,
-      "execSum": 0.736,
-      "deviation": 19.65,
-      "execDeviation": 26.4,
-      "profitPer100": 26.4,
+      "midSum": 0.799,
+      "execSum": 0.73,
+      "deviation": 20.1,
+      "execDeviation": 27,
+      "profitPer100": 27,
       "viable": true,
       "details": [
         {
@@ -33,14 +33,14 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.037,
-          "exec": 0.035,
+          "mid": 0.031,
+          "exec": 0.031,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.048,
-          "exec": 0.047,
+          "mid": 0.044,
+          "exec": 0.043,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -51,7 +51,7 @@
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.111,
+          "mid": 0.1115,
           "exec": 0.104,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
@@ -81,7 +81,7 @@
         },
         {
           "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.0725,
+          "mid": 0.074,
           "exec": 0.068,
           "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
         },
@@ -105,7 +105,7 @@
         },
         {
           "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.1105,
+          "mid": 0.1125,
           "exec": 0.101,
           "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
         },
@@ -117,8 +117,8 @@
         },
         {
           "name": "Will Benjamin Netanyahu win the Nobel Peace Prize in 2026?",
-          "mid": 0.005,
-          "exec": 0.004,
+          "mid": 0.0065,
+          "exec": 0.006,
           "token": "8075661047254567797432306525558519998052391236898258911573171689963344650999"
         },
         {
@@ -146,11 +146,11 @@
       "slug": "elon-musk-of-tweets-february-12-february-14",
       "type": "SHORT",
       "outcomes": 10,
-      "midSum": 1.04,
-      "execSum": 0.996,
-      "deviation": 4,
-      "execDeviation": 0.4,
-      "profitPer100": -0.4,
+      "midSum": 1.0325,
+      "execSum": 0.993,
+      "deviation": 3.25,
+      "execDeviation": 0.7,
+      "profitPer100": -0.7,
       "viable": false,
       "details": [
         {
@@ -161,14 +161,14 @@
         },
         {
           "name": "Will Elon Musk post 40-64 tweets from February 12 to Februar",
-          "mid": 0.097,
+          "mid": 0.096,
           "exec": 0.095,
           "token": "19160696202182641569221548842553238846261739954089635121321811350693102881692"
         },
         {
           "name": "Will Elon Musk post 115-139 tweets from February 12 to Febru",
-          "mid": 0.215,
-          "exec": 0.21,
+          "mid": 0.21,
+          "exec": 0.2,
           "token": "79141348498154610869711763517359858283096073835629175956943035939212249740025"
         },
         {
@@ -179,26 +179,26 @@
         },
         {
           "name": "Will Elon Musk post 165-189 tweets from February 12 to Febru",
-          "mid": 0.065,
-          "exec": 0.06,
+          "mid": 0.055,
+          "exec": 0.05,
           "token": "54334899525658175201298870146327190676678802829019336950532850893136954707611"
         },
         {
           "name": "Will Elon Musk post 190-214 tweets from February 12 to Febru",
-          "mid": 0.012,
+          "mid": 0.0115,
           "exec": 0.011,
           "token": "30836670145539355582839471359688902101341973319407683130497170933609025408928"
         },
         {
           "name": "Will Elon Musk post <40 tweets from February 12 to February ",
-          "mid": 0.011,
-          "exec": 0.012,
+          "mid": 0.01,
+          "exec": 0.009,
           "token": "25099567166111281846302244039860015689241816252363247441459396207876081288557"
         },
         {
           "name": "Will Elon Musk post 65-89 tweets from February 12 to Februar",
-          "mid": 0.25,
-          "exec": 0.24,
+          "mid": 0.26,
+          "exec": 0.26,
           "token": "101737982205729137869548634259137456035523623969460170960358162453586274812342"
         },
         {
@@ -220,17 +220,17 @@
       "slug": "how-many-fed-rate-cuts-in-2026",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.0305,
-      "execSum": 0.991,
-      "deviation": 3.05,
-      "execDeviation": 0.9,
-      "profitPer100": -0.9,
+      "midSum": 1.0265,
+      "execSum": 0.99,
+      "deviation": 2.65,
+      "execDeviation": 1,
+      "profitPer100": -1,
       "viable": false,
       "details": [
         {
           "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.073,
-          "exec": 0.07,
+          "mid": 0.0725,
+          "exec": 0.069,
           "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
         {
@@ -241,8 +241,8 @@
         },
         {
           "name": "Will 2 Fed rate cuts happen in 2026?",
-          "mid": 0.26,
-          "exec": 0.25,
+          "mid": 0.265,
+          "exec": 0.26,
           "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
         },
         {
@@ -253,8 +253,8 @@
         },
         {
           "name": "Will 4 Fed rate cuts happen in 2026?",
-          "mid": 0.135,
-          "exec": 0.13,
+          "mid": 0.13,
+          "exec": 0.12,
           "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
         },
         {
@@ -265,7 +265,7 @@
         },
         {
           "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.0285,
+          "mid": 0.025,
           "exec": 0.026,
           "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
         },
@@ -313,10 +313,10 @@
       "type": "SHORT",
       "outcomes": 11,
       "midSum": 1.041,
-      "execSum": 0.983,
+      "execSum": 0.973,
       "deviation": 4.1,
-      "execDeviation": 1.7,
-      "profitPer100": -1.7,
+      "execDeviation": 2.7,
+      "profitPer100": -2.7,
       "viable": false,
       "details": [
         {
@@ -328,7 +328,7 @@
         {
           "name": "Will Australia win the 2026 ICC Men’s T20 World Cup?",
           "mid": 0.16,
-          "exec": 0.15,
+          "exec": 0.14,
           "token": "28877596836825284906528825532184866109967770098921566662217924845975491268438"
         },
         {
@@ -384,6 +384,50 @@
           "mid": 0.0015,
           "exec": 0.001,
           "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
+        }
+      ]
+    },
+    {
+      "event": "How long will Trump and Netanyahu shake hands for?",
+      "slug": "how-long-will-trump-and-netanyahu-shake-hands-for-when-meeting-this-week",
+      "type": "SHORT",
+      "outcomes": 5,
+      "midSum": 1.041,
+      "execSum": 0.971,
+      "deviation": 4.1,
+      "execDeviation": 2.9,
+      "profitPer100": -2.9,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will Trump and Netanyahu handshake last 2–6 seconds by Febru",
+          "mid": 0.0315,
+          "exec": 0.007,
+          "token": "91580255349566758785897159465499786183274630044213570758269910115019801034781"
+        },
+        {
+          "name": "Will Trump and Netanyahu handshake last 6–10 seconds by Febr",
+          "mid": 0.015,
+          "exec": 0.001,
+          "token": "114951122256378254781341477010451797643031616371088396785815442638683642035872"
+        },
+        {
+          "name": "Will Trump and Netanyahu handshake last less than 2 seconds ",
+          "mid": 0.0225,
+          "exec": 0.007,
+          "token": "70393341754854329544963473722209901369813999648242185185550086776352509037523"
+        },
+        {
+          "name": "Will Trump and Netanyahu handshake last 15 seconds or longer",
+          "mid": 0.0045,
+          "exec": 0.001,
+          "token": "72657249372083588802555243960518760334015297864119150300480769561790373563748"
+        },
+        {
+          "name": "Will Trump and Netanyahu only be photographed together by Fe",
+          "mid": 0.967,
+          "exec": 0.955,
+          "token": "105038283946597258609699256404637370706731691794441181754066014464795278151914"
         }
       ]
     }
