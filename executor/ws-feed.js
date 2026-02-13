@@ -173,6 +173,21 @@ const WS_SILENT_THRESHOLD = 15000; // force reconnect if no messages for 15s
 let subscribedAssets = new Map(); // asset_id -> position data
 let dailyStartValue = null;
 let currentPortfolioValue = null;
+let cachedCashBalance = 0;
+let lastCashFetch = 0;
+const CASH_FETCH_INTERVAL = 60000; // Refresh cash balance every 60s
+
+async function fetchCashBalance() {
+  try {
+    const data = await httpGet("/balance");
+    cachedCashBalance = data.balance || 0;
+    lastCashFetch = Date.now();
+  } catch (e) {
+    // Keep last known value on failure
+    if (!cachedCashBalance) cachedCashBalance = 0;
+  }
+}
+
 let liquidBalance = null; // USDCe not in positions
 let circuitBreakerTripped = false;
 let circuitBreakerResumeAt = null;
@@ -670,7 +685,7 @@ async function executeSell(assetId, asset, reason) {
   }
 }
 
-function checkSystemReady() {
+async function checkSystemReady() {
   if (systemReady) return true;
   if (!syncCompletedOnce) return false;
 
@@ -690,9 +705,12 @@ function checkSystemReady() {
     const posVal = computePositionValue();
     const state = loadTradingState();
     const liquid = state?.liquidBalance || 0;
-    currentPortfolioValue = posVal;
-    dailyStartValue = posVal;
-    log("INIT", `dailyStartValue set to $${posVal.toFixed(2)} (liquid: $${liquid.toFixed(2)}, total: $${(posVal + liquid).toFixed(2)})`);
+    // Fetch cash balance for accurate startup values
+    await fetchCashBalance();
+    const totalVal = posVal + cachedCashBalance;
+    currentPortfolioValue = totalVal;
+    dailyStartValue = totalVal;
+    log("INIT", `dailyStartValue set to $${totalVal.toFixed(2)} (positions: $${posVal.toFixed(2)}, cash: $${cachedCashBalance.toFixed(2)})`);
     return true;
   }
 
@@ -713,19 +731,20 @@ function computePositionValue() {
   return v;
 }
 
-function updatePortfolioValue() {
+async function updatePortfolioValue() {
   const positionValue = computePositionValue();
 
-  // Load liquid balance from trading state
-  const state = loadTradingState();
-  const liquid = state?.liquidBalance || 0;
-  const totalValue = positionValue + liquid;
+  // Fetch live cash balance periodically from executor
+  if (Date.now() - lastCashFetch > CASH_FETCH_INTERVAL) {
+    fetchCashBalance().catch(() => {});
+  }
+  const totalValue = positionValue + cachedCashBalance;
 
   if (positionValue > 0) {
-    currentPortfolioValue = positionValue;
+    currentPortfolioValue = totalValue; // TOTAL portfolio = positions + cash
 
     // Skip all risk checks until system is warmed up
-    if (!checkSystemReady()) return;
+    if (!(await checkSystemReady())) return;
 
     if (!dailyStartValue) dailyStartValue = positionValue;
 
@@ -845,10 +864,10 @@ async function syncPositions() {
 
     const newAssetIds = [];
     for (const pos of positions) {
-      // Skip positions with zero size
-      if (pos.size === 0) {
+      // Skip positions with zero or dust size (< 0.1 shares)
+      if (!pos.size || pos.size < 0.1) {
         subscribedAssets.delete(pos.asset_id);
-        log("SYNC", `Skipped zero-size position: ${pos.asset_id.slice(0,20)}`);
+        if (pos.size > 0) log("SYNC", `Removed dust position (${pos.size} shares): ${pos.asset_id.slice(0,20)}`);
         continue;
       }
       
@@ -935,6 +954,8 @@ async function apiHandler(req, res) {
       return send(res, 200, {
         prices,
         portfolioValue: currentPortfolioValue,
+        positionValue: computePositionValue(),
+        cashBalance: cachedCashBalance,
         dailyStartValue,
         systemReady,
         circuitBreakerTripped,
@@ -1011,6 +1032,8 @@ async function apiHandler(req, res) {
         portfolio: {
           trackedPositions: subscribedAssets.size,
           portfolioValue: currentPortfolioValue,
+          positionValue: computePositionValue(),
+          cashBalance: cachedCashBalance,
           dailyStartValue,
           // No startingCapital — P&L is chain-truth only
         },

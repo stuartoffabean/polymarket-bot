@@ -100,11 +100,23 @@ async function checkResolutions() {
             saveResolved(resolved);
             console.log(`[RESOLUTION] ${newlyResolved.length} newly resolved positions recorded`);
             
-            // Remove from ws-feed tracking
+            // Remove from ws-feed tracking (with retry)
             for (const r of newlyResolved) {
-              http.request({ hostname: "localhost", port: 3003, path: "/remove-position", method: "POST",
-                headers: { "Content-Type": "application/json" }
-              }, () => {}).on("error", () => {}).end(JSON.stringify({ assetId: r.asset_id }));
+              const removeFromFeed = () => {
+                const req = http.request({ hostname: "localhost", port: 3003, path: "/remove-position", method: "POST",
+                  headers: { "Content-Type": "application/json" }
+                }, (res) => {
+                  let body = '';
+                  res.on('data', d => body += d);
+                  res.on('end', () => console.log(`[RESOLUTION] Removed ${r.asset_id.slice(0,20)} from ws-feed: ${body}`));
+                });
+                req.on("error", (e) => {
+                  console.error(`[RESOLUTION] Failed to remove ${r.asset_id.slice(0,20)} from ws-feed: ${e.message}, retrying in 5s...`);
+                  setTimeout(removeFromFeed, 5000);
+                });
+                req.end(JSON.stringify({ assetId: r.asset_id }));
+              };
+              removeFromFeed();
             }
           }
           
@@ -813,7 +825,10 @@ async function handler(req, res) {
       }
       if (path === "/positions") {
         const cached = await getCachedPositions();
-        return send(res, 200, { positions: cached.openPositions });
+        // Filter out resolved positions so ws-feed doesn't re-sync them
+        const resolved = loadResolved();
+        const filtered = cached.openPositions.filter(p => !resolved[p.asset_id]);
+        return send(res, 200, { positions: filtered });
       }
       if (path === "/strategy-pnl") {
         // P&L grouped by strategy tag

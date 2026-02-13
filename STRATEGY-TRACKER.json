@@ -80,7 +80,7 @@
       "losses": 0,
       "open": 0,
       "totalPnl": 0,
-      "notes": "Previously BLOCKED (no Kalshi access). dr-manhattan-ts provides read-only Kalshi API access. Step 1: Install dr-manhattan-ts, scan for price divergences. Step 2: If profitable spreads found, get Kalshi API key for execution. Someone built a working Kalshi↔Polymarket arb bot (reddit r/algotrading). Predly tool also detects cross-platform pricing errors."
+      "notes": "UPGRADED 2026-02-13: Expand beyond Kalshi to Opinion + Probable (both blockchain-based, both running airdrop points programs). Delta-neutral: buy YES on one platform, NO on another for same event. Typical spreads 1-3%, ~1%/wk claimed. AIRDROP OVERLAY: Opinion + Probable have weekly points epochs — volume generates airdrop tokens on top of arb profit. Probable points credited Mondays 00:00 UTC. AlertPilot ($100/mo) scans Polymarket+Opinion+Probable with Telegram alerts + AI rule-conflict detection. Risk: different resolution rules across platforms. Next steps: (1) Get Opinion + Probable API access, (2) manually scan 5 matched events for spread, (3) if viable, build cross-platform price monitor. CertiK reports 60% artificial volume on some platforms during airdrop periods = lots of competition but also confirms edge exists."
     },
     "weather-forecast-arb": {
       "name": "Weather Forecast Arbitrage (NOAA/ECMWF)",
@@ -110,5 +110,5 @@
     "new_strategy_deadline": "2026-02-17",
     "notes": "v2 mandates at least 1 new strategy entering pipeline every Monday. 3 new strategies added from night research 2026-02-12."
   },
-  "lastUpdated": "2026-02-12T11:00:00Z"
+  "lastUpdated": "2026-02-13T20:00:00Z"
 }
