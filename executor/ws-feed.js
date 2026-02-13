@@ -1662,6 +1662,12 @@ async function runWeatherExecutor() {
     return;
   }
 
+  // Kill switch: disable weather executor via file flag
+  if (fs.existsSync(path.join(__dirname, '..', 'WEATHER_DISABLED'))) {
+    log("WX", "Weather executor DISABLED (WEATHER_DISABLED file present). Remove file to re-enable.");
+    return;
+  }
+
   // Read weather-results.json
   if (!fs.existsSync(WEATHER_RESULTS_FILE)) {
     log("WX", "No weather-results.json — scanner hasn't run yet");
