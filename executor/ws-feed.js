@@ -696,7 +696,12 @@ function checkSystemReady() {
     return true;
   }
 
-  log("WARMUP", `System warming up — ${priced}/${total} positions priced (${(pct * 100).toFixed(0)}%), waiting...`);
+  // Throttle warmup logs to once every 5s
+  const now = Date.now();
+  if (!checkSystemReady._lastLog || now - checkSystemReady._lastLog > 5000) {
+    log("WARMUP", `System warming up — ${priced}/${total} positions priced (${(pct * 100).toFixed(0)}%), waiting...`);
+    checkSystemReady._lastLog = now;
+  }
   return false;
 }
 
