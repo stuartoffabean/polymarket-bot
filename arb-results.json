@@ -1,321 +1,152 @@
 {
-  "timestamp": "2026-02-13T15:20:18.631Z",
+  "timestamp": "2026-02-13T17:51:34.371Z",
   "summary": {
     "total": 100,
-    "negRisk": 56,
+    "negRisk": 54,
     "flagged": 3,
-    "viable": 2
+    "viable": 3
   },
   "opportunities": [
     {
-      "event": "Nobel Peace Prize Winner 2026",
-      "slug": "nobel-peace-prize-winner-2026-139",
+      "event": "Bangladesh Parliamentary Election Winner",
+      "slug": "bangladesh-parliamentary-election-winner-154",
       "type": "LONG",
-      "outcomes": 20,
-      "midSum": 0.8175,
-      "execSum": 0.745,
-      "deviation": 18.25,
-      "execDeviation": 25.5,
-      "grossProfitPer100": 25.5,
+      "outcomes": 0,
+      "midSum": 0.0035,
+      "execSum": 0,
+      "deviation": 99.65,
+      "execDeviation": 100,
+      "grossProfitPer100": 100,
       "feesPer100": 0,
-      "profitPer100": 25.5,
+      "profitPer100": 100,
       "viable": true,
-      "details": [
-        {
-          "name": "Will Donald Trump win the Nobel Peace Prize in 2026?",
-          "mid": 0.115,
-          "exec": 0.11,
-          "token": "96308556109755835434254900303426519652053230974356832970824534225192181988516"
-        },
-        {
-          "name": "Will Yulia Navalnaya win the Nobel Peace Prize in 2026?",
-          "mid": 0.08,
-          "exec": 0.07,
-          "token": "3494130919441794744300504897798612438496650716124466384425423765833752918969"
-        },
-        {
-          "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.035,
-          "exec": 0.034,
-          "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
-        },
-        {
-          "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.0615,
-          "exec": 0.062,
-          "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
-        },
-        {
-          "name": "Will António Guterres win the Nobel Peace Prize in 2026?",
-          "mid": 0.0055,
-          "exec": 0.003,
-          "token": "23342261653888694132200522593527487238848562692306851598440649086435121500976"
-        },
-        {
-          "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.111,
-          "exec": 0.103,
-          "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
-        },
-        {
-          "name": "Will Khaled Mashal win the Nobel Peace Prize in 2026?",
-          "mid": 0.011,
-          "exec": 0.006,
-          "token": "4817558919700430121831697879056774909752184660255737582917693916506064447935"
-        },
-        {
-          "name": "Will Recep Tayyip Erdoğan win the Nobel Peace Prize in 2026?",
-          "mid": 0.0075,
-          "exec": 0.007,
-          "token": "85146181675473345857517501170400200068194836865848336579180316943778562621184"
-        },
-        {
-          "name": "Will Ahmed al-Sharaa win the Nobel Peace Prize in 2026?",
-          "mid": 0.013,
-          "exec": 0.011,
-          "token": "29384252153498040908016173010534270095096285030713208216637067996773126537603"
-        },
-        {
-          "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
-          "mid": 0.011,
-          "exec": 0.009,
-          "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
-        },
-        {
-          "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.0735,
-          "exec": 0.068,
-          "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
-        },
-        {
-          "name": "Will Julian Assange win the Nobel Peace Prize in 2026?",
-          "mid": 0.0085,
-          "exec": 0.008,
-          "token": "2514203837854735205913781359327052377275050226163878960745268210971566855346"
-        },
-        {
-          "name": "Will Elon Musk win the Nobel Peace Prize in 2026?",
-          "mid": 0.0155,
-          "exec": 0.015,
-          "token": "75607128808577269329357564425293012652006155264327001987967114873720422847762"
-        },
-        {
-          "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.098,
-          "exec": 0.085,
-          "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
-        },
-        {
-          "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.115,
-          "exec": 0.108,
-          "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
-        },
-        {
-          "name": "Will Vladimir Putin win the Nobel Peace Prize in 2026?",
-          "mid": 0.0065,
-          "exec": 0.005,
-          "token": "3072654272549368438022392135276167382428661847959009954134234860002162565563"
-        },
-        {
-          "name": "Will Benjamin Netanyahu win the Nobel Peace Prize in 2026?",
-          "mid": 0.0075,
-          "exec": 0.007,
-          "token": "8075661047254567797432306525558519998052391236898258911573171689963344650999"
-        },
-        {
-          "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
-          "mid": 0.006,
-          "exec": 0.003,
-          "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
-        },
-        {
-          "name": "Will Charlie Kirk win the Nobel Peace Prize in 2026?",
-          "mid": 0.0185,
-          "exec": 0.015,
-          "token": "41901357708237118584313729261027657874621373325486663648640954008517926947624"
-        },
-        {
-          "name": "Will Narendra Modi win the Nobel Peace Prize in 2026?",
-          "mid": 0.018,
-          "exec": 0.016,
-          "token": "95036065107529622997025744213041265776694292492123977042470465876649211394600"
-        }
-      ]
+      "details": []
     },
     {
-      "event": "Venezuela leader end of 2026?",
-      "slug": "venezuela-leader-end-of-2026",
+      "event": "2nd largest company end of March?",
+      "slug": "2nd-largest-company-end-of-march",
       "type": "LONG",
-      "outcomes": 11,
-      "midSum": 0.9745,
-      "execSum": 0.954,
-      "deviation": 2.55,
-      "execDeviation": 4.6,
-      "grossProfitPer100": 4.6,
+      "outcomes": 7,
+      "midSum": 0.9715,
+      "execSum": 0.904,
+      "deviation": 2.85,
+      "execDeviation": 9.6,
+      "grossProfitPer100": 9.6,
       "feesPer100": 0,
-      "profitPer100": 4.6,
+      "profitPer100": 9.6,
       "viable": true,
       "details": [
         {
-          "name": "Will María Corina Machado be the leader of Venezuela end of ",
-          "mid": 0.095,
-          "exec": 0.09,
-          "token": "111206023652925249192617904527998565944558514529537236601741996492948632883698"
+          "name": "Will Microsoft be the second-largest company in the world by",
+          "mid": 0.0095,
+          "exec": 0.009,
+          "token": "56043719131666873392339826690561164371972316765200119693100188654384547919541"
         },
         {
-          "name": "Will Diosdado Cabello Rondón be the leader of Venezuela end ",
-          "mid": 0.026,
-          "exec": 0.025,
-          "token": "112746945158746257741635529019662641558199388176511485763810876768315276888838"
-        },
-        {
-          "name": "Will Dinorah Figuera be the leader of Venezuela end of 2026?",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "63520322965196077858161646392631185222879535067184355961912182985450749868276"
-        },
-        {
-          "name": "Will Vladimir Padrino López be the leader of Venezuela end o",
-          "mid": 0.027,
-          "exec": 0.025,
-          "token": "54906963185407778588520250373893528650769447293260978407024082288131033892651"
-        },
-        {
-          "name": "Will Jorge Rodríguez be the leader of Venezuela end of 2026?",
-          "mid": 0.007,
-          "exec": 0.006,
-          "token": "42727638766042850249414793956193305049964960783968960523056590290643557215679"
-        },
-        {
-          "name": "Will there be no head of state of Venezuela end of 2026?",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "17704927682411404638982382980949594324217253655714867278953651574552110090318"
-        },
-        {
-          "name": "Will Edmundo González be the leader of Venezuela end of 2026",
-          "mid": 0.055,
+          "name": "Will NVIDIA be the second-largest company in the world by ma",
+          "mid": 0.065,
           "exec": 0.05,
-          "token": "85482789936744260311999371350699987044247644306653001528276695717482676507600"
+          "token": "6040947993448829544073894639208840950036278974732442671623041852620281306449"
         },
         {
-          "name": "Will Delcy Rodríguez be the leader of Venezuela end of 2026?",
-          "mid": 0.665,
-          "exec": 0.66,
-          "token": "38667196958602416137463628517439560119304765709104570192447644733106171420112"
+          "name": "Will Alphabet be the second-largest company in the world by ",
+          "mid": 0.415,
+          "exec": 0.38,
+          "token": "52058671260704755371239590954532265413964014051338616280298103550150919688937"
         },
         {
-          "name": "Will Nicolás Maduro be the leader of Venezuela end of 2026?",
-          "mid": 0.086,
-          "exec": 0.09,
-          "token": "37090128566507509913630589460372620352013766554886380785463533062224343545231"
+          "name": "Will Saudi Aramco be the second-largest company in the world",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "23697556611080047668409260002656942203757476640472020997915890756947770362395"
         },
         {
-          "name": "Will Donald Trump be the leader of Venezuela end of 2026?",
+          "name": "Will Apple be the second-largest company in the world by mar",
+          "mid": 0.475,
+          "exec": 0.46,
+          "token": "17650734816192148631865413008800631441117184835523441879314036970940465064230"
+        },
+        {
+          "name": "Will Tesla be the second-largest company in the world by mar",
           "mid": 0.0035,
           "exec": 0.003,
-          "token": "14211065675584872409434951928382202221234755265148030622924500315944266691558"
+          "token": "78315811668598234740089691081618935144006342339309267613533613174700159910650"
         },
         {
-          "name": "Will Marco Rubio be the leader of Venezuela end of 2026?",
-          "mid": 0.0045,
-          "exec": 0.003,
-          "token": "86169745307861674090452043379261530418870357324952931974995649343490068237899"
+          "name": "Will Amazon be the second-largest company in the world by ma",
+          "mid": 0.002,
+          "exec": 0.001,
+          "token": "58207323363308106043860660631824731350235657340858929259583946205828909050830"
         }
       ]
     },
     {
-      "event": "How many Fed rate cuts in 2026?",
-      "slug": "how-many-fed-rate-cuts-in-2026",
-      "type": "SHORT",
-      "outcomes": 13,
-      "midSum": 1.0255,
-      "execSum": 0.986,
-      "deviation": 2.55,
-      "execDeviation": 1.4,
-      "grossProfitPer100": -1.4,
+      "event": "How many people will Trump deport in 2025?",
+      "slug": "how-many-people-will-trump-deport-in-2025",
+      "type": "LONG",
+      "outcomes": 9,
+      "midSum": 0.9605,
+      "execSum": 0.939,
+      "deviation": 3.95,
+      "execDeviation": 6.1,
+      "grossProfitPer100": 6.1,
       "feesPer100": 0,
-      "profitPer100": -1.4,
-      "viable": false,
+      "profitPer100": 6.1,
+      "viable": true,
       "details": [
         {
-          "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.069,
-          "exec": 0.07,
-          "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
+          "name": "Will Trump deport less than 250,000?",
+          "mid": 0.043,
+          "exec": 0.04,
+          "token": "101676997363687199724245607342877036148401850938023978421879460310389391082353"
         },
         {
-          "name": "Will 1 Fed rate cut happen in 2026?",
-          "mid": 0.18,
-          "exec": 0.17,
-          "token": "113379839734351069617987084078322474966003108854908079701423911002443710490196"
+          "name": "Will Trump deport 250,000-500,000 people?",
+          "mid": 0.8675,
+          "exec": 0.857,
+          "token": "13244681086321087932946246027856416106585284024824496763706748621681543444582"
         },
         {
-          "name": "Will 2 Fed rate cuts happen in 2026?",
-          "mid": 0.265,
-          "exec": 0.26,
-          "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
+          "name": "Will Trump deport 500,000-750,000- people?",
+          "mid": 0.019,
+          "exec": 0.016,
+          "token": "100074770378634056601572485653252702850363676459996771990439989989293515601975"
         },
         {
-          "name": "Will 3 Fed rate cuts happen in 2026?",
-          "mid": 0.255,
-          "exec": 0.25,
-          "token": "95835705062472305459663741402900736177330733688944910993896545106260819635212"
+          "name": "Will Trump deport 750,000-1,000,000 people?",
+          "mid": 0.015,
+          "exec": 0.014,
+          "token": "49194009556504828848509244326501559253829462790583873936160989575507522044057"
         },
         {
-          "name": "Will 4 Fed rate cuts happen in 2026?",
-          "mid": 0.12,
-          "exec": 0.11,
-          "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
+          "name": "Will Trump deport 1,000,000-1,250,000 people?",
+          "mid": 0.004,
+          "exec": 0.003,
+          "token": "13018971792603393862521629014128024641178044618205296260525674415067194037856"
         },
         {
-          "name": "Will 5 Fed rate cuts happen in 2026?",
-          "mid": 0.055,
-          "exec": 0.05,
-          "token": "29213252446661789250484965446100709214117256176608501943249094649759520097655"
+          "name": "Will Trump deport 1,750,000-2,000,000 people?",
+          "mid": 0.0025,
+          "exec": 0.002,
+          "token": "24682525479474221428144937281315825971983904267399062415430320764754931667953"
         },
         {
-          "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.027,
-          "exec": 0.026,
-          "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
+          "name": "Will Trump deport 1,250,000-1,500,000 people?",
+          "mid": 0.0025,
+          "exec": 0.002,
+          "token": "73414222381656326204771753454630063673548497164758947581648273905027617570612"
         },
         {
-          "name": "Will 7 Fed rate cuts happen in 2026?",
-          "mid": 0.0085,
-          "exec": 0.007,
-          "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
-        },
-        {
-          "name": "Will 8 Fed rate cuts happen in 2026?",
-          "mid": 0.0075,
-          "exec": 0.007,
-          "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
-        },
-        {
-          "name": "Will 9 Fed rate cuts happen in 2026?",
-          "mid": 0.0055,
-          "exec": 0.005,
-          "token": "23126031577449775652876745717301519312850542565907124407036782701549610893044"
-        },
-        {
-          "name": "Will 10 Fed rate cuts happen in 2026?",
+          "name": "Will Trump deport 1,500,000-1,750,000 people?",
           "mid": 0.0045,
-          "exec": 0.004,
-          "token": "101699865858660601590309838387762714166224752219273014726406345404403204943713"
+          "exec": 0.003,
+          "token": "72354723612769247426741660426331235762851940382312402276325808095604519806766"
         },
         {
-          "name": "Will 11 Fed rate cuts happen in 2026?",
-          "mid": 0.005,
-          "exec": 0.004,
-          "token": "56345349743779788266710915561914531858285418844567819631705863717318287635981"
-        },
-        {
-          "name": "Will 12 or more Fed rate cuts happen in 2026?",
-          "mid": 0.0235,
-          "exec": 0.023,
-          "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
+          "name": "Will Trump deport 2,000,000 or more people?",
+          "mid": 0.0025,
+          "exec": 0.002,
+          "token": "72012724360700510767037780555710363830014634797787940282136454146828040926557"
         }
       ]
     }

@@ -2183,6 +2183,33 @@ async function main() {
   //   setInterval(() => runWeatherExecutor().catch(e => log("WX", `❌ Uncaught error: ${e.message}`)), WEATHER_EXECUTOR_INTERVAL);
   // }, 120 * 1000);
 
+  // Resolution detection — check every 5 minutes for resolved markets
+  // Calls executor /check-resolutions which queries Polymarket data API
+  setInterval(() => {
+    const req = http.get("http://localhost:3002/check-resolutions", (res) => {
+      let d = ""; res.on("data", c => d += c);
+      res.on("end", () => {
+        try {
+          const result = JSON.parse(d);
+          if (result.newlyResolved && result.newlyResolved.length > 0) {
+            log("RESOLUTION", `${result.newlyResolved.length} positions resolved: ${result.newlyResolved.map(r => r.market?.slice(0,30)).join(", ")}`);
+            // Remove resolved positions from our tracking
+            for (const r of result.newlyResolved) {
+              subscribedAssets.delete(r.asset_id);
+            }
+          }
+        } catch(e) {}
+      });
+    });
+    req.on("error", () => {});
+    req.setTimeout(15000, () => req.destroy());
+  }, 5 * 60 * 1000);
+
+  // Run once at startup after warmup
+  setTimeout(() => {
+    http.get("http://localhost:3002/check-resolutions", () => {}).on("error", () => {});
+  }, 120 * 1000);
+
   // Daily reset
   scheduleDailyReset();
 

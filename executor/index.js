@@ -39,6 +39,83 @@ const RISK_MAX_TOTAL_DIRECTIONAL_PCT = 0.60; // Max 60% of bankroll in manual po
 
 // === FEATURE 2: ENTRY QUALITY GATE ===
 const ENTRY_MAX_PRICE_LONG_HORIZON = 0.85;   // No manual entries above 85¢ unless <24h to resolution
+
+/**
+ * Check Polymarket data API for resolved positions.
+ * Positions with redeemable=true have resolved. Records P&L and notifies.
+ */
+async function checkResolutions() {
+  const https = require("https");
+  const addr = OUR_ADDR || "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+  
+  return new Promise((resolve, reject) => {
+    const url = `https://data-api.polymarket.com/positions?user=${addr}&limit=200&sizeThreshold=0`;
+    const req = https.get(url, (res) => {
+      let d = ""; 
+      res.on("data", c => d += c);
+      res.on("end", () => {
+        try {
+          const positions = JSON.parse(d);
+          if (!Array.isArray(positions)) return resolve({ error: "unexpected response", raw: d.slice(0, 200) });
+          
+          const resolved = loadResolved();
+          const newlyResolved = [];
+          
+          for (const p of positions) {
+            if (!p.redeemable) continue;           // Not resolved yet
+            if (resolved[p.asset]) continue;         // Already recorded
+            if (p.size <= 0) continue;               // No position
+            
+            const won = p.curPrice >= 0.99 || p.currentValue > 0;
+            const payout = won ? p.size : 0;         // $1 per share if won
+            const costBasis = p.size * p.avgPrice;
+            const pnl = payout - costBasis;
+            
+            const record = {
+              asset_id: p.asset,
+              conditionId: p.conditionId,
+              market: p.title || p.slug || "Unknown",
+              outcome: p.outcome || "Yes",
+              size: p.size,
+              avgPrice: p.avgPrice,
+              costBasis: parseFloat(costBasis.toFixed(4)),
+              payout: parseFloat(payout.toFixed(4)),
+              realizedPnl: parseFloat(pnl.toFixed(4)),
+              won,
+              resolvedAt: new Date().toISOString(),
+              endDate: p.endDate,
+              slug: p.slug,
+            };
+            
+            resolved[p.asset] = record;
+            newlyResolved.push(record);
+            
+            // Telegram notification
+            const emoji = won ? "✅" : "❌";
+            const pnlStr = pnl >= 0 ? `+$${pnl.toFixed(2)}` : `-$${Math.abs(pnl).toFixed(2)}`;
+            sendTelegramAlert(`${emoji} <b>MARKET RESOLVED</b>\n${p.title || p.slug}\nOutcome: ${record.outcome} ${won ? "WON" : "LOST"}\nSize: ${p.size} shares @ $${p.avgPrice.toFixed(4)}\nPayout: $${payout.toFixed(2)}\nP&L: ${pnlStr}`);
+          }
+          
+          if (newlyResolved.length > 0) {
+            saveResolved(resolved);
+            console.log(`[RESOLUTION] ${newlyResolved.length} newly resolved positions recorded`);
+            
+            // Remove from ws-feed tracking
+            for (const r of newlyResolved) {
+              http.request({ hostname: "localhost", port: 3003, path: "/remove-position", method: "POST",
+                headers: { "Content-Type": "application/json" }
+              }, () => {}).on("error", () => {}).end(JSON.stringify({ assetId: r.asset_id }));
+            }
+          }
+          
+          resolve({ total: Object.keys(resolved).length, newlyResolved, allResolved: resolved });
+        } catch(e) { reject(e); }
+      });
+    });
+    req.on("error", reject);
+    req.setTimeout(15000, () => { req.destroy(); reject(new Error("timeout")); });
+  });
+}
 const ENTRY_EXEMPT_STRATEGIES = ["resolution", "arb"]; // RH has own validated params
 
 // === FEATURE 5: DEPTH CHECK FOR MANUAL ORDERS ===
@@ -47,6 +124,11 @@ const DEPTH_MIN_SHARES_MANUAL = 5;       // Don't bother with <5 shares
 
 const fs = require("fs");
 const path = require("path");
+
+// === RESOLUTION DETECTION ===
+const RESOLVED_FILE = path.join(__dirname, "..", "resolved-positions.json");
+function loadResolved() { try { return JSON.parse(fs.readFileSync(RESOLVED_FILE, "utf8")); } catch(e) { return {}; } }
+function saveResolved(data) { fs.writeFileSync(RESOLVED_FILE, JSON.stringify(data, null, 2)); }
 
 // === DAILY CONVICTION BUDGET ===
 // Max 30% of bankroll in NEW manual positions per day. Resets at midnight UTC.
@@ -821,27 +903,56 @@ async function handler(req, res) {
         const closedPositions = [];
         let totalRealizedPnl = 0;
 
+        // Load resolved positions to detect market resolutions (no sell on CLOB)
+        const resolvedData = loadResolved();
+
         for (const p of Object.values(posMap)) {
           const avgBuyPrice = p.buys.length > 0 ? p.totalBuyCost / p.buys.reduce((s, b) => s + b.size, 0) : 0;
           const totalBought = p.buys.reduce((s, b) => s + b.size, 0);
           const totalSold = p.sells.reduce((s, b) => s + b.size, 0);
-          const realizedPnl = p.totalSellProceeds - (totalSold * avgBuyPrice);
+          const tradePnl = p.totalSellProceeds - (totalSold * avgBuyPrice);
 
           if (p.size > 0.01) {
-            openPositions.push({
-              asset_id: p.asset_id,
-              market: p.market,
-              outcome: p.outcome,
-              size: Math.round(p.size * 100) / 100,
-              avgPrice: avgBuyPrice.toFixed(4),
-              costBasis: (p.size * avgBuyPrice).toFixed(2),
-              totalBought,
-              totalSold,
-              realizedPnl: realizedPnl.toFixed(2),
-              status: "OPEN",
-              firstBuy: p.buys[0]?.time,
-              lastTrade: [...p.buys, ...p.sells].sort((a, b) => new Date(b.time) - new Date(a.time))[0]?.time,
-            });
+            // Check if this "open" position actually resolved (payout bypasses CLOB)
+            const resolution = resolvedData[p.asset_id];
+            if (resolution) {
+              // Market resolved — record as closed with resolution P&L
+              const payout = resolution.won ? p.size * 1.0 : 0;
+              const resolutionPnl = payout - (p.size * avgBuyPrice) + tradePnl;
+              closedPositions.push({
+                asset_id: p.asset_id,
+                market: resolution.market || p.market,
+                outcome: p.outcome,
+                totalBought,
+                totalSold: totalSold + p.size, // All shares "sold" via resolution
+                avgBuyPrice: avgBuyPrice.toFixed(4),
+                avgSellPrice: resolution.won ? "1.0000" : "0.0000",
+                totalCost: p.totalBuyCost.toFixed(2),
+                totalProceeds: (p.totalSellProceeds + payout).toFixed(2),
+                realizedPnl: resolutionPnl.toFixed(2),
+                realizedPnlPct: p.totalBuyCost > 0 ? ((resolutionPnl / p.totalBuyCost) * 100).toFixed(1) : "0",
+                status: resolution.won ? "RESOLVED_WON" : "RESOLVED_LOST",
+                resolvedAt: resolution.resolvedAt,
+                firstBuy: p.buys[0]?.time,
+                lastTrade: resolution.resolvedAt,
+              });
+              totalRealizedPnl += resolutionPnl;
+            } else {
+              openPositions.push({
+                asset_id: p.asset_id,
+                market: p.market,
+                outcome: p.outcome,
+                size: Math.round(p.size * 100) / 100,
+                avgPrice: avgBuyPrice.toFixed(4),
+                costBasis: (p.size * avgBuyPrice).toFixed(2),
+                totalBought,
+                totalSold,
+                realizedPnl: tradePnl.toFixed(2),
+                status: "OPEN",
+                firstBuy: p.buys[0]?.time,
+                lastTrade: [...p.buys, ...p.sells].sort((a, b) => new Date(b.time) - new Date(a.time))[0]?.time,
+              });
+            }
           } else {
             const closed = {
               asset_id: p.asset_id,
@@ -853,14 +964,14 @@ async function handler(req, res) {
               avgSellPrice: totalSold > 0 ? (p.totalSellProceeds / totalSold).toFixed(4) : "0",
               totalCost: p.totalBuyCost.toFixed(2),
               totalProceeds: p.totalSellProceeds.toFixed(2),
-              realizedPnl: realizedPnl.toFixed(2),
-              realizedPnlPct: p.totalBuyCost > 0 ? ((realizedPnl / p.totalBuyCost) * 100).toFixed(1) : "0",
+              realizedPnl: tradePnl.toFixed(2),
+              realizedPnlPct: p.totalBuyCost > 0 ? ((tradePnl / p.totalBuyCost) * 100).toFixed(1) : "0",
               status: "CLOSED",
               firstBuy: p.buys[0]?.time,
               lastTrade: [...p.buys, ...p.sells].sort((a, b) => new Date(b.time) - new Date(a.time))[0]?.time,
             };
             closedPositions.push(closed);
-            totalRealizedPnl += realizedPnl;
+            totalRealizedPnl += tradePnl;
           }
         }
 
@@ -914,6 +1025,15 @@ async function handler(req, res) {
       }
       // GET /risk-check?token_id=XXX&price=0.50&size=100&side=BUY
       // Preview risk check without placing order
+      if (path === "/check-resolutions") {
+        try {
+          const result = await checkResolutions();
+          return send(res, 200, result);
+        } catch(e) {
+          return send(res, 500, { error: e.message });
+        }
+      }
+
       if (path === "/risk-check") {
         const tokenID = query.token_id;
         const price = parseFloat(query.price || "0");

@@ -2203,6 +2203,95 @@
       "avgPrice": 0.18,
       "message": "STOP_LOSS: Sold 10 @ 0.12",
       "timestamp": "2026-02-13T15:03:47.739Z"
+    },
+    {
+      "type": "TAKE_PROFIT",
+      "assetId": "47317420149081151716",
+      "outcome": "No",
+      "market": "0x9ff2a3685d0bf3c18b8d765935166a2bba3626ced2e23f8ecd250c1aafdb924f",
+      "price": 0.85,
+      "pnlPct": "50.2%",
+      "size": 3.74,
+      "avgPrice": 0.5661,
+      "message": "AUTO-SELLING [weather]",
+      "timestamp": "2026-02-13T15:26:44.098Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "47317420149081151716",
+      "outcome": "No",
+      "market": "0x9ff2a3685d0bf3c18b8d765935166a2bba3626ced2e23f8ecd250c1aafdb924f",
+      "price": 0.85,
+      "pnlPct": null,
+      "size": 3.74,
+      "avgPrice": 0.5661,
+      "message": "TAKE_PROFIT: Sold 3.74 @ 0.85",
+      "timestamp": "2026-02-13T15:26:45.777Z"
+    },
+    {
+      "type": "TICK_SIZE_CHANGE",
+      "assetId": "92692355295105043188",
+      "price": null,
+      "pnlPct": null,
+      "message": "0.01 -> 0.001",
+      "timestamp": "2026-02-13T16:10:58.866Z"
+    },
+    {
+      "type": "TICK_SIZE_CHANGE",
+      "assetId": "92692355295105043188",
+      "price": null,
+      "pnlPct": null,
+      "message": "0.001 -> 0.001",
+      "timestamp": "2026-02-13T16:10:58.868Z"
+    },
+    {
+      "type": "CIRCUIT_BREAKER",
+      "price": null,
+      "pnlPct": "-16.9%",
+      "message": "Daily drawdown 16.9% exceeds 15% — PAUSED for 2 hours",
+      "timestamp": "2026-02-13T16:34:20.028Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T17:49:34.383Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T17:51:34.574Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T17:51:47.041Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T17:51:59.508Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T17:52:12.049Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-13T17:52:24.492Z"
     }
   ],
   "circuitBreakerTripped": false,
