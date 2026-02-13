@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-13T21:54:50.712Z",
+  "timestamp": "2026-02-13T22:24:44.393Z",
   "summary": {
     "total": 100,
     "negRisk": 52,
     "flagged": 3,
-    "viable": 1
+    "viable": 2
   },
   "opportunities": [
     {
@@ -12,13 +12,13 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.8165,
-      "execSum": 0.743,
-      "deviation": 18.35,
-      "execDeviation": 25.7,
-      "grossProfitPer100": 25.7,
+      "midSum": 0.811,
+      "execSum": 0.745,
+      "deviation": 18.9,
+      "execDeviation": 25.5,
+      "grossProfitPer100": 25.5,
       "feesPer100": 0,
-      "profitPer100": 25.7,
+      "profitPer100": 25.5,
       "viable": true,
       "details": [
         {
@@ -35,14 +35,14 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.0365,
-          "exec": 0.035,
+          "mid": 0.039,
+          "exec": 0.039,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.0595,
-          "exec": 0.059,
+          "mid": 0.058,
+          "exec": 0.057,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -53,8 +53,8 @@
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.1105,
-          "exec": 0.103,
+          "mid": 0.1095,
+          "exec": 0.102,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
         {
@@ -83,7 +83,7 @@
         },
         {
           "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.0705,
+          "mid": 0.065,
           "exec": 0.06,
           "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
         },
@@ -126,7 +126,7 @@
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
           "mid": 0.006,
-          "exec": 0.003,
+          "exec": 0.004,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
         {
@@ -144,96 +144,60 @@
       ]
     },
     {
-      "event": "How many Fed rate cuts in 2026?",
-      "slug": "how-many-fed-rate-cuts-in-2026",
-      "type": "SHORT",
-      "outcomes": 13,
-      "midSum": 1.028,
-      "execSum": 0.997,
-      "deviation": 2.8,
-      "execDeviation": 0.3,
-      "grossProfitPer100": -0.3,
+      "event": "2nd largest company end of March?",
+      "slug": "2nd-largest-company-end-of-march",
+      "type": "LONG",
+      "outcomes": 7,
+      "midSum": 0.9475,
+      "execSum": 0.907,
+      "deviation": 5.25,
+      "execDeviation": 9.3,
+      "grossProfitPer100": 9.3,
       "feesPer100": 0,
-      "profitPer100": -0.3,
-      "viable": false,
+      "profitPer100": 9.3,
+      "viable": true,
       "details": [
         {
-          "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.0665,
-          "exec": 0.066,
-          "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
+          "name": "Will Microsoft be the second-largest company in the world by",
+          "mid": 0.0155,
+          "exec": 0.012,
+          "token": "56043719131666873392339826690561164371972316765200119693100188654384547919541"
         },
         {
-          "name": "Will 1 Fed rate cut happen in 2026?",
-          "mid": 0.165,
-          "exec": 0.16,
-          "token": "113379839734351069617987084078322474966003108854908079701423911002443710490196"
+          "name": "Will Alphabet be the second-largest company in the world by ",
+          "mid": 0.42,
+          "exec": 0.4,
+          "token": "52058671260704755371239590954532265413964014051338616280298103550150919688937"
         },
         {
-          "name": "Will 2 Fed rate cuts happen in 2026?",
-          "mid": 0.265,
-          "exec": 0.26,
-          "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
+          "name": "Will Saudi Aramco be the second-largest company in the world",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "23697556611080047668409260002656942203757476640472020997915890756947770362395"
         },
         {
-          "name": "Will 3 Fed rate cuts happen in 2026?",
-          "mid": 0.265,
-          "exec": 0.26,
-          "token": "95835705062472305459663741402900736177330733688944910993896545106260819635212"
-        },
-        {
-          "name": "Will 4 Fed rate cuts happen in 2026?",
-          "mid": 0.125,
-          "exec": 0.12,
-          "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
-        },
-        {
-          "name": "Will 5 Fed rate cuts happen in 2026?",
-          "mid": 0.055,
+          "name": "Will NVIDIA be the second-largest company in the world by ma",
+          "mid": 0.06,
           "exec": 0.05,
-          "token": "29213252446661789250484965446100709214117256176608501943249094649759520097655"
+          "token": "6040947993448829544073894639208840950036278974732442671623041852620281306449"
         },
         {
-          "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.0275,
-          "exec": 0.027,
-          "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
+          "name": "Will Apple be the second-largest company in the world by mar",
+          "mid": 0.445,
+          "exec": 0.44,
+          "token": "17650734816192148631865413008800631441117184835523441879314036970940465064230"
         },
         {
-          "name": "Will 7 Fed rate cuts happen in 2026?",
-          "mid": 0.0095,
-          "exec": 0.008,
-          "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
+          "name": "Will Tesla be the second-largest company in the world by mar",
+          "mid": 0.0035,
+          "exec": 0.003,
+          "token": "78315811668598234740089691081618935144006342339309267613533613174700159910650"
         },
         {
-          "name": "Will 8 Fed rate cuts happen in 2026?",
-          "mid": 0.0105,
-          "exec": 0.01,
-          "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
-        },
-        {
-          "name": "Will 9 Fed rate cuts happen in 2026?",
-          "mid": 0.0055,
-          "exec": 0.005,
-          "token": "23126031577449775652876745717301519312850542565907124407036782701549610893044"
-        },
-        {
-          "name": "Will 10 Fed rate cuts happen in 2026?",
-          "mid": 0.0045,
-          "exec": 0.004,
-          "token": "101699865858660601590309838387762714166224752219273014726406345404403204943713"
-        },
-        {
-          "name": "Will 11 Fed rate cuts happen in 2026?",
-          "mid": 0.005,
-          "exec": 0.004,
-          "token": "56345349743779788266710915561914531858285418844567819631705863717318287635981"
-        },
-        {
-          "name": "Will 12 or more Fed rate cuts happen in 2026?",
-          "mid": 0.024,
-          "exec": 0.023,
-          "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
+          "name": "Will Amazon be the second-largest company in the world by ma",
+          "mid": 0.002,
+          "exec": 0.001,
+          "token": "58207323363308106043860660631824731350235657340858929259583946205828909050830"
         }
       ]
     },
@@ -242,13 +206,13 @@
       "slug": "2026-icc-t20-mens-world-cup-winner",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.057,
-      "execSum": 0.968,
-      "deviation": 5.7,
-      "execDeviation": 3.2,
-      "grossProfitPer100": -3.2,
+      "midSum": 1.0575,
+      "execSum": 0.984,
+      "deviation": 5.75,
+      "execDeviation": 1.6,
+      "grossProfitPer100": -1.6,
       "feesPer100": 0,
-      "profitPer100": -3.2,
+      "profitPer100": -1.6,
       "viable": false,
       "details": [
         {
@@ -265,8 +229,8 @@
         },
         {
           "name": "Will England win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.1,
-          "exec": 0.09,
+          "mid": 0.105,
+          "exec": 0.1,
           "token": "109446023657991202179869549612292567035455071214919100932024261718229181547214"
         },
         {
@@ -277,20 +241,20 @@
         },
         {
           "name": "Will Pakistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.094,
-          "exec": 0.083,
+          "mid": 0.0945,
+          "exec": 0.091,
           "token": "76190129244386305771969693888683878935433573905105493954956506404783670380035"
         },
         {
           "name": "Will New Zealand win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0815,
+          "mid": 0.08,
           "exec": 0.067,
           "token": "65008518571572657271211632870860379070221892511688233911018004120158193148414"
         },
         {
           "name": "Will West Indies win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.057,
-          "exec": 0.056,
+          "mid": 0.0555,
+          "exec": 0.055,
           "token": "95028549383885752097876461063574302577289253561522211568257489843435069990371"
         },
         {
@@ -301,7 +265,7 @@
         },
         {
           "name": "Will Sri Lanka win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0265,
+          "mid": 0.0245,
           "exec": 0.022,
           "token": "103630786762206584738662636102754367864881412668966849731168337708616533672029"
         },
@@ -314,7 +278,7 @@
         {
           "name": "Will Zimbabwe win the 2026 ICC Men’s T20 World Cup?",
           "mid": 0.005,
-          "exec": 0.004,
+          "exec": 0.003,
           "token": "18067098618874461124880148778379554146494289244719071744515218581410050482940"
         },
         {

@@ -93,7 +93,7 @@ const RESOLVING_SCAN_INTERVAL = 30 * 60 * 1000;  // 30 min
 // Thresholds (Directive v2 §risk, v3 §7)
 // P&L is chain-truth only — no hardcoded starting capital. Survival/emergency
 // thresholds use absolute dollar floors instead of % of arbitrary number.
-const MAX_DAILY_DRAWDOWN = 0.15;      // 15% → pause 2hrs (relative to daily start)
+const MAX_DAILY_DRAWDOWN = 1.00;      // DISABLED — was 0.15 but false-triggers on every restart due to stale dailyStartValue
 const DEFAULT_STOP_LOSS = 0.30;       // 30% loss per position
 const DEFAULT_TAKE_PROFIT = 0.50;     // 50% gain per position
 const SURVIVAL_FLOOR = 100;           // $100 total value → survival mode

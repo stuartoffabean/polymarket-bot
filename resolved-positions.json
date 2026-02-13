@@ -43,5 +43,20 @@
     "resolvedAt": "2026-02-13T17:52:17.766Z",
     "endDate": "2026-02-13",
     "slug": "highest-temperature-in-wellington-on-february-13-2026-23corhigher"
+  },
+  "44121016434409049375380848402136057678738655013936501174241083709908786149012": {
+    "asset_id": "44121016434409049375380848402136057678738655013936501174241083709908786149012",
+    "conditionId": "0xee706fa96fd66c3a8d260db7aed4d90bce5889d04ebeae87ad640f9e0d75d1c6",
+    "market": "Will the highest temperature in Atlanta be between 56-57°F on February 13?",
+    "outcome": "No",
+    "size": 15,
+    "avgPrice": 0.992,
+    "costBasis": 14.88,
+    "payout": 15,
+    "realizedPnl": 0.12,
+    "won": true,
+    "resolvedAt": "2026-02-13T22:28:29.233Z",
+    "endDate": "2026-02-13",
+    "slug": "highest-temperature-in-atlanta-on-february-13-2026-56-57f"
   }
 }

@@ -2683,6 +2683,13 @@
       "pnlPct": "-54.7%",
       "message": "Daily drawdown 54.7% exceeds 15% — PAUSED for 2 hours",
       "timestamp": "2026-02-13T22:00:32.479Z"
+    },
+    {
+      "type": "CIRCUIT_BREAKER",
+      "price": null,
+      "pnlPct": "-58.0%",
+      "message": "Daily drawdown 58.0% exceeds 15% — PAUSED for 2 hours",
+      "timestamp": "2026-02-13T22:26:47.869Z"
     }
   ],
   "circuitBreakerTripped": true,
