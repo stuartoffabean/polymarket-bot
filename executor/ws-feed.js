@@ -167,6 +167,9 @@ function checkAutoCapBudget(strategy, spendAmount) {
 let ws = null;
 let reconnectAttempts = 0;
 let pingTimer = null;
+let wsLastMessageAt = 0;          // timestamp of last WS message (any)
+let wsSilentCheckTimer = null;    // 15s silent detection timer
+const WS_SILENT_THRESHOLD = 15000; // force reconnect if no messages for 15s
 let subscribedAssets = new Map(); // asset_id -> position data
 let dailyStartValue = null;
 let currentPortfolioValue = null;
@@ -476,13 +479,30 @@ function connect() {
       log("WS", `Subscribed to ${assetIds.length} assets`);
     }
 
+    wsLastMessageAt = Date.now();
+
     if (pingTimer) clearInterval(pingTimer);
     pingTimer = setInterval(() => {
       if (ws && ws.readyState === WebSocket.OPEN) ws.send("PING");
     }, PING_INTERVAL);
+
+    // Silent WS detection: if no messages for 15s, force reconnect
+    if (wsSilentCheckTimer) clearInterval(wsSilentCheckTimer);
+    wsSilentCheckTimer = setInterval(() => {
+      if (ws && ws.readyState === WebSocket.OPEN && wsLastMessageAt > 0) {
+        const silentMs = Date.now() - wsLastMessageAt;
+        if (silentMs > WS_SILENT_THRESHOLD) {
+          log("WS", `🚨 SILENT WebSocket: no messages for ${(silentMs / 1000).toFixed(1)}s — force reconnect`);
+          pushAlert("WS_SILENT", null, null, null, null, `Silent WS for ${(silentMs / 1000).toFixed(0)}s — forced reconnect`);
+          try { ws.terminate(); } catch {}
+          // close/error handler will trigger scheduleReconnect
+        }
+      }
+    }, 5000); // check every 5s
   });
 
   ws.on("message", (raw) => {
+    wsLastMessageAt = Date.now();
     const msg = raw.toString();
     if (msg === "PONG") return;
     try { handleMessage(JSON.parse(msg)); } catch (e) { /* ignore non-JSON */ }
@@ -502,6 +522,7 @@ function connect() {
 // v3 §7: WebSocket disconnects → cancel all open maker orders
 async function handleDisconnect() {
   if (pingTimer) clearInterval(pingTimer);
+  if (wsSilentCheckTimer) clearInterval(wsSilentCheckTimer);
   log("WS", "🚨 Disconnected — cancelling all open orders (v3 §7)");
   try {
     const result = await httpDelete("/orders");
@@ -819,9 +840,11 @@ async function apiHandler(req, res) {
 
   try {
     if (url === "/health") {
+      const wsSilentSec = wsLastMessageAt > 0 ? ((Date.now() - wsLastMessageAt) / 1000).toFixed(1) : null;
       return send(res, 200, {
         ok: true,
         wsConnected: ws?.readyState === WebSocket.OPEN,
+        wsLastMessageAgo: wsSilentSec ? `${wsSilentSec}s` : "never",
         trackedAssets: subscribedAssets.size,
         circuitBreakerTripped,
         survivalMode,
@@ -1844,8 +1867,9 @@ async function runWeatherExecutor() {
 // httpPost is defined at top of file (line ~147) with rate limit handling — do not duplicate
 
 // === REST PRICE POLLING (fallback for NegRisk tokens that don't get WS updates) ===
-const REST_POLL_INTERVAL = 60 * 1000; // every 60 seconds
-const REST_POLL_STALE_MS = 120 * 1000; // consider stale if no WS update in 2 min
+const REST_POLL_INTERVAL = 30 * 1000; // every 30 seconds (was 60s — tighter for SL positions)
+const REST_POLL_STALE_SL = 30 * 1000;  // 30s stale threshold for positions with active stop-loss
+const REST_POLL_STALE_DEFAULT = 120 * 1000; // 120s for monitoring-only positions
 
 async function pollStalePrices() {
   const https = require("https");
@@ -1853,8 +1877,16 @@ async function pollStalePrices() {
   const staleAssets = [];
 
   for (const [assetId, asset] of subscribedAssets) {
-    // Poll if never updated or stale (no WS data in 2 min)
-    if (!asset.lastUpdate || (now - asset.lastUpdate > REST_POLL_STALE_MS)) {
+    const hasStopLoss = asset.stopLoss && asset.stopLoss > 0 && asset.stopLoss < 1;
+    const staleThreshold = hasStopLoss ? REST_POLL_STALE_SL : REST_POLL_STALE_DEFAULT;
+    const age = asset.lastUpdate ? now - asset.lastUpdate : Infinity;
+
+    if (age > staleThreshold) {
+      // Log transition from WS-fed to REST-polled (first time only)
+      if (!asset._restPolled && asset.lastUpdate) {
+        const name = asset.market || getStrategy(assetId) || assetId.slice(0, 16);
+        log("REST", `⚠️ ${name}: stale ${(age / 1000).toFixed(0)}s (threshold ${staleThreshold / 1000}s, SL=${hasStopLoss}) — falling back to REST`);
+      }
       staleAssets.push(assetId);
     }
   }
