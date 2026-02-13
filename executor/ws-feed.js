@@ -1169,7 +1169,7 @@ function parseBody(req) {
     let data = "";
     req.on("data", (c) => data += c);
     req.on("end", () => {
-      try { resolve(JSON.parse(data)); } catch (e) { reject(e); }
+      try { resolve(data ? JSON.parse(data) : {}); } catch (e) { reject(e); }
     });
   });
 }
