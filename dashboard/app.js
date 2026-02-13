@@ -309,7 +309,7 @@ function renderLedger() {
             const currentValue = size * currentBid;
             const pnl = currentValue - costBasis;
             const pnlPct = costBasis > 0 ? ((pnl / costBasis) * 100).toFixed(1) : '0.0';
-            const src = lp.source === 'personal_wallet' ? ' 👤' : '';
+            const src = '';
             
             return { market: lp.market + src, outcome: lp.outcome, size, avgPrice, currentBid, pnl, pnlPct };
         });
