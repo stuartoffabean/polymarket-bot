@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-13T06:07:49.399Z",
+  "timestamp": "2026-02-13T06:14:13.956Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
@@ -146,9 +146,9 @@
       "slug": "how-many-people-will-trump-deport-in-2025",
       "type": "LONG",
       "outcomes": 9,
-      "midSum": 0.964,
+      "midSum": 0.965,
       "execSum": 0.91,
-      "deviation": 3.6,
+      "deviation": 3.5,
       "execDeviation": 9,
       "profitPer100": 9,
       "viable": true,
@@ -161,7 +161,7 @@
         },
         {
           "name": "Will Trump deport 250,000-500,000 people?",
-          "mid": 0.8635,
+          "mid": 0.8645,
           "exec": 0.852,
           "token": "13244681086321087932946246027856416106585284024824496763706748621681543444582"
         },
@@ -214,16 +214,16 @@
       "slug": "how-many-fed-rate-cuts-in-2026",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.0265,
-      "execSum": 0.989,
-      "deviation": 2.65,
-      "execDeviation": 1.1,
-      "profitPer100": -1.1,
+      "midSum": 1.028,
+      "execSum": 0.99,
+      "deviation": 2.8,
+      "execDeviation": 1,
+      "profitPer100": -1,
       "viable": false,
       "details": [
         {
           "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.065,
+          "mid": 0.0665,
           "exec": 0.066,
           "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
@@ -260,7 +260,7 @@
         {
           "name": "Will 6 Fed rate cuts happen in 2026?",
           "mid": 0.0285,
-          "exec": 0.028,
+          "exec": 0.029,
           "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
         },
         {
@@ -386,11 +386,11 @@
       "slug": "nba-western-conference-champion-933",
       "type": "SHORT",
       "outcomes": 12,
-      "midSum": 1.0275,
-      "execSum": 0.979,
-      "deviation": 2.75,
-      "execDeviation": 2.1,
-      "profitPer100": -2.1,
+      "midSum": 1.027,
+      "execSum": 0.978,
+      "deviation": 2.7,
+      "execDeviation": 2.2,
+      "profitPer100": -2.2,
       "viable": false,
       "details": [
         {
@@ -407,8 +407,8 @@
         },
         {
           "name": "Will the Houston Rockets win the NBA Western Conference Fina",
-          "mid": 0.0515,
-          "exec": 0.051,
+          "mid": 0.051,
+          "exec": 0.05,
           "token": "22226004461035625319919657267129959466466585725269185478458570055870755140202"
         },
         {
@@ -454,16 +454,16 @@
           "token": "79870685104046272701356539864336775233555053726570352166377648938896627310090"
         },
         {
-          "name": "Will the Golden State Warriors win the NBA Western Conferenc",
-          "mid": 0.02,
-          "exec": 0.019,
-          "token": "8186557467277475901094949742490854679817405006696983018588137692207963004648"
-        },
-        {
           "name": "Will the Portland Trail Blazers win the NBA Western Conferen",
           "mid": 0.018,
           "exec": 0.007,
           "token": "77648433824716730185008177852682080573261442860361580435966309914289533557558"
+        },
+        {
+          "name": "Will the Golden State Warriors win the NBA Western Conferenc",
+          "mid": 0.02,
+          "exec": 0.019,
+          "token": "8186557467277475901094949742490854679817405006696983018588137692207963004648"
         }
       ]
     },
@@ -481,7 +481,7 @@
       "details": [
         {
           "name": "Will Trump and Netanyahu handshake last 2–6 seconds by Febru",
-          "mid": 0.007,
+          "mid": 0.0075,
           "exec": 0.001,
           "token": "91580255349566758785897159465499786183274630044213570758269910115019801034781"
         },
@@ -505,7 +505,7 @@
         },
         {
           "name": "Will Trump and Netanyahu only be photographed together by Fe",
-          "mid": 0.971,
+          "mid": 0.9705,
           "exec": 0.953,
           "token": "105038283946597258609699256404637370706731691794441181754066014464795278151914"
         }

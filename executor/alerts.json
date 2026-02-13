@@ -673,6 +673,44 @@
       "avgPrice": 0.15,
       "message": "STOP_LOSS: Sold 10 @ 0.1",
       "timestamp": "2026-02-13T05:48:19.937Z"
+    },
+    {
+      "type": "SURVIVAL_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Position value $7.80 below $100 — SURVIVAL MODE",
+      "timestamp": "2026-02-13T06:12:26.190Z"
+    },
+    {
+      "type": "EMERGENCY_MODE",
+      "price": null,
+      "pnlPct": null,
+      "message": "🚨 EMERGENCY: Position value $7.80 below $50 — ALL TRADING HALTED",
+      "timestamp": "2026-02-13T06:12:26.193Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "28321426810817884323",
+      "outcome": "No",
+      "market": "0x1509e483198a3810002d69b28e3039dfc1ad645313b072c80d7b40666a5fbbfa",
+      "price": 0.13,
+      "pnlPct": "-65.9%",
+      "size": 1.7799999999999994,
+      "avgPrice": 0.3809,
+      "message": "AUTO-SELLING",
+      "timestamp": "2026-02-13T06:12:41.130Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "28321426810817884323",
+      "outcome": "No",
+      "market": "0x1509e483198a3810002d69b28e3039dfc1ad645313b072c80d7b40666a5fbbfa",
+      "price": 0.13,
+      "pnlPct": null,
+      "size": 1.7799999999999994,
+      "avgPrice": 0.3809,
+      "message": "STOP_LOSS: Sold 1.7799999999999994 @ 0.13",
+      "timestamp": "2026-02-13T06:12:43.049Z"
     }
   ],
   "circuitBreakerTripped": false,

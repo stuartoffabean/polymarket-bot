@@ -34,6 +34,26 @@ const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
+// === FEE ACCOUNTING (Feb 2026) ===
+// Most Polymarket markets: ZERO fees. Only 15-min crypto, NCAAB, Serie A have taker fees.
+// Source: https://docs.polymarket.com/polymarket-learn/trading/fees
+// Fee formula: feePerShare = p * (1-p) * RATE
+// Weather, politics, events: RATE = 0 (no fees)
+// 15-min crypto: RATE = 3.125 (max 1.56% effective at p=0.50)
+// NCAAB/Serie A: RATE = 0.875 (max 0.44%, from Feb 18)
+// Maker orders (postOnly): always zero fees + earn rebates
+const FEE_RATES = { NONE: 0, CRYPTO_15MIN: 3.125, SPORTS: 0.875 };
+function takerFeePerShare(price, marketType = 'NONE') {
+  return price * (1 - price) * (FEE_RATES[marketType] || 0);
+}
+// Detect market type from question/slug
+function detectMarketType(question = '', slug = '') {
+  const q = (question + ' ' + slug).toLowerCase();
+  if (q.includes('15m') || q.includes('up or down') || q.includes('updown')) return 'CRYPTO_15MIN';
+  if (q.includes('ncaab') || q.includes('serie a')) return 'SPORTS';
+  return 'NONE';
+}
+
 // === CONFIG ===
 const WSS_URL = "wss://ws-subscriptions-clob.polymarket.com/ws/market";
 const EXECUTOR_URL = "http://localhost:3002";
@@ -911,7 +931,17 @@ async function runArbScan() {
 
       const type = midSum > 1.0 ? "SHORT" : "LONG";
       const execDev = Math.abs(execSum - 1.0);
-      const profit = type === "SHORT" ? (execSum - 1.0) * 100 : (1.0 - execSum) * 100;
+      const grossProfit = type === "SHORT" ? (execSum - 1.0) * 100 : (1.0 - execSum) * 100;
+      
+      // Fee accounting: taker fee on each leg (most NegRisk markets are fee-free)
+      const mktType = detectMarketType(event.title, event.slug);
+      let totalFeePer100 = 0;
+      for (const o of outcomes) {
+        if (o.execPrice > 0) {
+          totalFeePer100 += takerFeePerShare(o.execPrice, mktType) * 100;
+        }
+      }
+      const profit = grossProfit - totalFeePer100;
 
       opportunities.push({
         event: event.title,
@@ -922,6 +952,8 @@ async function runArbScan() {
         execSum: allOk ? +execSum.toFixed(4) : null,
         deviation: +(deviation * 100).toFixed(2),
         execDeviation: allOk ? +(execDev * 100).toFixed(2) : null,
+        grossProfitPer100: +grossProfit.toFixed(2),
+        feesPer100: +totalFeePer100.toFixed(2),
         profitPer100: +profit.toFixed(2),
         viable: profit > 0 && allOk,
         details: outcomes.map(o => ({ name: o.name, mid: o.yesPrice, exec: o.execPrice, token: o.tokenId })),
@@ -1130,7 +1162,16 @@ async function runResolutionHunter() {
           if (price >= RH_MIN_PRICE && price <= RH_MAX_PRICE) {
             const tokenId = tokenIds[i];
             const outcome = outcomes[i] || (i === 0 ? "Yes" : "No");
-            const expectedProfit = ((1.0 - price) * RH_MAX_SPEND / price).toFixed(2);
+            const mktType = detectMarketType(m.question, m.slug);
+            const feePerShare = takerFeePerShare(price, mktType);
+            const sharesPerDollar = 1 / price;
+            const grossProfit = (1.0 - price) * RH_MAX_SPEND / price;
+            const totalFees = feePerShare * Math.floor(RH_MAX_SPEND / price);
+            const netProfit = grossProfit - totalFees;
+            // Skip if net profit < 0.5¢ per share (not worth it after fees)
+            const netProfitPerShare = (1.0 - price) - feePerShare;
+            if (netProfitPerShare < 0.005) continue;
+            const expectedProfit = netProfit.toFixed(2);
             
             candidates.push({
               market: (m.question || m.title || "").slice(0, 80),
@@ -1316,7 +1357,11 @@ async function runWeatherExecutor() {
   // Filter and sort signals
   const actionable = signals.filter(s => {
     // Must meet thresholds
-    if (Math.abs(s.edge) < WX_MIN_EDGE) return false;
+    // Deduct round-trip fees from edge (weather markets are fee-free, but future-proof)
+    const wxMktType = detectMarketType(s.question || '', s.slug || '');
+    const wxFee = takerFeePerShare(s.marketPrice || 0.5, wxMktType);
+    const netEdge = Math.abs(s.edge) - wxFee; // round-trip cost (buy fee only, sell at resolution = no fee)
+    if (netEdge < WX_MIN_EDGE) return false;
     if ((s.ensembleConfidence || 0) < WX_MIN_CONFIDENCE) return false;
     if ((s.liquidity || 0) < WX_MIN_LIQUIDITY) return false;
     if ((s.volume24h || 0) < WX_MIN_VOLUME_24H) return false;

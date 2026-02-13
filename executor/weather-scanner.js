@@ -43,9 +43,33 @@ async function fetchJSON(url, headers = {}) {
 
 // ── Configuration ────────────────────────────────────────────────────────────
 
+// ── Fee Structure (as of Feb 2026) ───────────────────────────────────────────
+// Most Polymarket markets: ZERO taker fees (weather, politics, events, etc.)
+// Fee-enabled markets: 15-min crypto (max 1.56%), NCAAB/Serie A (max 0.44%)
+// Fee formula: fee = p * (1-p) * TAKER_FEE_RATE (per 100 shares, in USDC)
+// Maker orders (postOnly=true): ZERO fees + earn daily rebates
+// Source: https://docs.polymarket.com/polymarket-learn/trading/fees
+const TAKER_FEE_RATE = {
+  NONE: 0,                     // Weather, politics, events — no fees
+  CRYPTO_15MIN: 3.125,         // 15-min crypto: fee = p*(1-p)*3.125 per share
+  SPORTS: 0.875,               // NCAAB/Serie A: fee = p*(1-p)*0.875 per share (from Feb 18)
+};
+
+// Calculate taker fee per share for a given price and market type
+function takerFeePerShare(price, marketType = 'NONE') {
+  const rate = TAKER_FEE_RATE[marketType] || 0;
+  return price * (1 - price) * rate;  // In USDC per share
+}
+
+// Calculate effective fee rate (as fraction of trade value)
+function effectiveFeeRate(price, marketType = 'NONE') {
+  if (marketType === 'NONE') return 0;
+  return (1 - price) * (TAKER_FEE_RATE[marketType] || 0);  // fee/tradeValue
+}
+
 const CONFIG = {
-  // Signal thresholds
-  MIN_EDGE: 0.05,              // 5% minimum edge for signal
+  // Signal thresholds — these are compared against edge AFTER fees
+  MIN_EDGE: 0.05,              // 5% minimum net edge (after fee deduction)
   MIN_EDGE_LADDER: 0.03,      // 3% minimum for ladder entries (lower because diversified)
   MIN_VOLUME_24H: 200,         // Minimum 24h volume
   MIN_LIQUIDITY: 100,          // Minimum liquidity

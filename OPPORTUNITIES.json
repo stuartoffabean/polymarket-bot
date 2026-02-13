@@ -1,5 +1,19 @@
 [
   {
+    "id": "opp-20260213-005",
+    "market": "CRITICAL: Position Alert — Asset 283... at -60.6%",
+    "slug": "position-alert-severe-loss",
+    "type": "POSITION_ALERT",
+    "status": "URGENT_REVIEW",
+    "summary": "Asset 28321426810817884323 (outcome: No) showing SEVERE -60.6% loss. Entry $0.38, current bid $0.15. Stop-loss at $0.30 NOT triggered (this is a micro-position from Resolution Hunter). Cost basis: $0.68, current value: $0.27. Down $0.41 on 1.78 shares.",
+    "estimatedEdge": "N/A — severe loss position",
+    "timeHorizon": "N/A",
+    "recommendedAction": "IMMEDIATE REVIEW in next cognitive turn. Identify market. If thesis destroyed, exit immediately (loss is only $0.41). If Resolution Hunter auto-trade, evaluate if illiquidity caused the drop.",
+    "recommendedSize": "N/A",
+    "riskNote": "Dollar loss is minimal ($0.41) but percentage indicates either: (1) market moved hard against us, (2) illiquid market with wide spreads, or (3) bad Resolution Hunter entry. Review logs.",
+    "scannedAt": "2026-02-13T06:15:00Z"
+  },
+  {
     "id": "opp-20260213-003",
     "market": "Position Alert: Asset 16680... at -18.0%",
     "slug": "position-alert",
