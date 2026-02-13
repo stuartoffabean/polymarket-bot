@@ -734,10 +734,14 @@ function computePositionValue() {
 async function updatePortfolioValue() {
   const positionValue = computePositionValue();
 
-  // Fetch live cash balance periodically from executor
+  // Fetch live cash balance periodically from executor (AWAIT to prevent race condition)
   if (Date.now() - lastCashFetch > CASH_FETCH_INTERVAL) {
-    fetchCashBalance().catch(() => {});
+    await fetchCashBalance().catch(() => {});
   }
+  
+  // Don't run any portfolio calculations until cash has been fetched at least once
+  if (lastCashFetch === 0) return;
+  
   const totalValue = positionValue + cachedCashBalance;
 
   if (positionValue > 0) {
@@ -746,10 +750,10 @@ async function updatePortfolioValue() {
     // Skip all risk checks until system is warmed up
     if (!(await checkSystemReady())) return;
 
-    if (!dailyStartValue) dailyStartValue = positionValue;
+    if (!dailyStartValue) dailyStartValue = totalValue;
 
-    // Daily drawdown check (v3 §7)
-    const drawdown = (dailyStartValue - positionValue) / dailyStartValue;
+    // Daily drawdown check (v3 §7) — compare TOTAL vs TOTAL (not positions vs total+cash)
+    const drawdown = (dailyStartValue - totalValue) / dailyStartValue;
     if (drawdown >= MAX_DAILY_DRAWDOWN && !circuitBreakerTripped) {
       circuitBreakerTripped = true;
       circuitBreakerResumeAt = Date.now() + DRAWDOWN_PAUSE_MS;
