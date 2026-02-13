@@ -258,10 +258,10 @@ function updateTopBar() {
     const cashEl = document.getElementById('cashBalance');
     if (cashEl) cashEl.textContent = fmtUsd(cash);
     
-    // Unrealized P&L
-    const unrealized = fmtPnl(totalPnl);
-    pnlTotalEl.textContent = unrealized.text;
-    pnlTotalEl.className = 'stat-value mono ' + unrealized.cls;
+    // Total P&L (realized + unrealized) — main display
+    const combined = fmtPnl(combinedPnl);
+    pnlTotalEl.textContent = combined.text;
+    pnlTotalEl.className = 'stat-value mono ' + combined.cls;
     
     // Realized P&L
     const realizedEl = document.getElementById('realizedPnl');
