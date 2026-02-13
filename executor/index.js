@@ -332,8 +332,8 @@ async function getPortfolioValue() {
     if (data.portfolio && data.portfolio.positionValue > 0) {
       return {
         positionValue: data.portfolio.positionValue,
-        liquidBalance: data.portfolio.liquidBalance || 0,
-        totalValue: data.portfolio.totalValue || data.portfolio.positionValue,
+        liquidBalance: data.portfolio.cashBalance || data.portfolio.liquidBalance || 0,
+        totalValue: data.portfolio.portfolioValue || (data.portfolio.positionValue + (data.portfolio.cashBalance || data.portfolio.liquidBalance || 0)),
         source: "ws-feed"
       };
     }
