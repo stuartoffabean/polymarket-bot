@@ -101,6 +101,25 @@ const CITIES = {
   'toronto': { lat: 43.6532, lon: -79.3832, unit: 'C', polyAliases: ['toronto'] },
 };
 
+// ── City-Calibrated Ensemble Spread ──────────────────────────────────────────
+// Typical ensemble std dev for each city in February (°F for US, °C for intl).
+// Used to normalize confidence: a 3°F spread in Miami is alarming, but normal in Chicago.
+// Values derived from historical GFS ensemble spread for winter months.
+const CITY_TYPICAL_SPREAD = {
+  'new york city': 5.0,  // F, high variability in winter
+  'chicago':       7.0,  // F, highest variability — lake effect + arctic air
+  'atlanta':       4.0,  // F, moderate
+  'dallas':        5.0,  // F, frontal passages cause big swings
+  'seattle':       3.0,  // F, marine influence keeps spread low
+  'miami':         2.0,  // F, tropical = very stable
+  'seoul':         3.5,  // C, continental but consistent
+  'london':        2.5,  // C, maritime = stable
+  'buenos aires':  2.5,  // C, summer = stable
+  'wellington':    2.0,  // C, maritime
+  'ankara':        4.0,  // C, continental = higher spread
+  'toronto':       5.0,  // C, high variability like Chicago
+};
+
 // ── Ensemble Forecast Fetching ───────────────────────────────────────────────
 
 /**
@@ -168,7 +187,7 @@ async function getEnsembleForecast(city, config) {
       min: Math.min(...highs),
       max: Math.max(...highs),
       stdDev: +stdDev.toFixed(2),
-      confidence: Math.max(0, Math.min(1, 1 - (stdDev / 10))),  // Higher when members agree
+      confidence: Math.max(0, Math.min(1, 1 - (stdDev / (CITY_TYPICAL_SPREAD[city] || 10)))),  // Relative to city's typical spread
       memberCount: highs.length,
     };
   }
@@ -264,23 +283,29 @@ function ensembleProbability(parsed, ensembleData) {
   const n = highs.length;
   let matching = 0;
   
+  // Polymarket resolves on the integer value recorded by the weather station.
+  // No rounding buffer — use exact integer boundaries.
+  // Ensemble members are continuous (e.g., 22.7°C), so we round each to nearest
+  // integer to match how weather stations report, then check the bucket.
+  const roundedHighs = highs.map(t => Math.round(t));
+  
   switch (parsed.type) {
     case 'range': {
-      // P(low <= high_temp <= high) — count members in this range
-      matching = highs.filter(t => t >= (parsed.low - 0.5) && t <= (parsed.high + 0.5)).length;
+      // P(low <= rounded_temp <= high)
+      matching = roundedHighs.filter(t => t >= parsed.low && t <= parsed.high).length;
       break;
     }
     case 'exact': {
-      // P(temp rounds to this value)
-      matching = highs.filter(t => t >= (parsed.low - 0.5) && t <= (parsed.high + 0.5)).length;
+      // P(rounded_temp == value)
+      matching = roundedHighs.filter(t => t === parsed.low).length;
       break;
     }
     case 'at_or_below': {
-      matching = highs.filter(t => t <= (parsed.high + 0.5)).length;
+      matching = roundedHighs.filter(t => t <= parsed.high).length;
       break;
     }
     case 'at_or_above': {
-      matching = highs.filter(t => t >= (parsed.low - 0.5)).length;
+      matching = roundedHighs.filter(t => t >= parsed.low).length;
       break;
     }
     default:

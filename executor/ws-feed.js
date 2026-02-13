@@ -1345,6 +1345,12 @@ async function runWeatherExecutor() {
         continue;
       }
 
+      // Check ask depth can fill our order (at least 10 shares within 2¢ of best ask)
+      if (askDepth < 10) {
+        log("WX", `${signal.city} ${signal.bucket}: insufficient ask depth (${askDepth.toFixed(0)} shares) — skip`);
+        continue;
+      }
+
       // Check that price hasn't moved against us since scan
       // For BUY_YES: askPrice should still be cheap (not much higher than scan price)
       // For BUY_NO: askPrice of NO token — we need to check
@@ -1357,11 +1363,22 @@ async function runWeatherExecutor() {
       const kellyDollars = Math.min(signal.kellySize || WX_MAX_TRADE_SIZE, WX_MAX_TRADE_SIZE);
       const remainingBudget = WX_MAX_TOTAL_EXPOSURE - totalSpent;
       const spendDollars = Math.min(kellyDollars, remainingBudget);
-      const size = Math.floor(spendDollars / bestAsk);
+      let size = Math.floor(spendDollars / bestAsk);
 
       if (size < 5) { // minimum 5 shares
         log("WX", `${signal.city} ${signal.bucket}: size too small (${size} shares) — skip`);
         continue;
+      }
+
+      // Don't try to buy more than available depth (would get worse fill)
+      if (size > askDepth * 0.8) {
+        const cappedSize = Math.floor(askDepth * 0.8);
+        if (cappedSize < 5) {
+          log("WX", `${signal.city} ${signal.bucket}: would exceed book depth (${size} > ${askDepth.toFixed(0)}) — skip`);
+          continue;
+        }
+        log("WX", `${signal.city} ${signal.bucket}: capping size ${size} → ${cappedSize} (book depth: ${askDepth.toFixed(0)})`);
+        size = cappedSize;
       }
 
       // Execute!
