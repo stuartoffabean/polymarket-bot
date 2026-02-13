@@ -677,6 +677,101 @@ function triggerSnapshotPush() {
   }, 5000);
 }
 
+// === OPPORTUNITY VALIDATION ===
+// Single validation gate for all trade entry paths (fast-path + queue)
+// Rejects phantom markets, empty order books, illiquid tokens
+const REJECTION_LOG_FILE = path.join(__dirname, "rejected-opportunities.json");
+
+function loadRejectionLog() {
+  try { return JSON.parse(fs.readFileSync(REJECTION_LOG_FILE, "utf8")); } catch(e) { return []; }
+}
+
+function logRejection(opportunity, reason, details = {}) {
+  const log = loadRejectionLog();
+  const entry = {
+    timestamp: new Date().toISOString(),
+    market: opportunity.market || opportunity.slug || "unknown",
+    tokenID: opportunity.tokenID ? opportunity.tokenID.slice(0, 30) + "..." : null,
+    slug: opportunity.slug || null,
+    reason,
+    ...details,
+  };
+  log.push(entry);
+  // Keep last 200 rejections
+  if (log.length > 200) log.splice(0, log.length - 200);
+  fs.writeFileSync(REJECTION_LOG_FILE, JSON.stringify(log, null, 2));
+  console.log(`🚫 OPPORTUNITY REJECTED: ${reason} — ${entry.market}`);
+  return entry;
+}
+
+async function validateOpportunity(opportunity) {
+  const { tokenID, slug, market } = opportunity;
+  const label = market || slug || (tokenID ? tokenID.slice(0, 20) : "unknown");
+
+  // 1. Must have a tokenID to trade
+  if (!tokenID) {
+    const rejection = logRejection(opportunity, "NO_TOKEN_ID", { detail: "No tokenID provided" });
+    return { valid: false, reason: "NO_TOKEN_ID", rejection };
+  }
+
+  // 2. Check order book exists and has liquidity
+  try {
+    const book = await client.getOrderBook(tokenID);
+    
+    if (!book) {
+      const rejection = logRejection(opportunity, "NO_ORDER_BOOK", { detail: "getOrderBook returned null" });
+      return { valid: false, reason: "NO_ORDER_BOOK", rejection };
+    }
+
+    const asks = book.asks || [];
+    const bids = book.bids || [];
+
+    if (asks.length === 0 && bids.length === 0) {
+      const rejection = logRejection(opportunity, "EMPTY_ORDER_BOOK", { detail: "No bids or asks" });
+      return { valid: false, reason: "EMPTY_ORDER_BOOK", rejection };
+    }
+
+    // Check minimum liquidity — at least $5 on ask side for buys
+    const side = (opportunity.side || "BUY").toUpperCase();
+    const relevantSide = side === "BUY" ? asks : bids;
+    
+    if (relevantSide.length === 0) {
+      const rejection = logRejection(opportunity, "NO_LIQUIDITY", { 
+        detail: `No ${side === "BUY" ? "asks" : "bids"} in book`,
+        bids: bids.length,
+        asks: asks.length,
+      });
+      return { valid: false, reason: "NO_LIQUIDITY", rejection };
+    }
+
+    // Calculate total available depth on relevant side
+    const totalDepth = relevantSide.reduce((sum, level) => sum + parseFloat(level.size || 0) * parseFloat(level.price || 0), 0);
+    
+    if (totalDepth < 5) {
+      const rejection = logRejection(opportunity, "INSUFFICIENT_DEPTH", { 
+        detail: `Only $${totalDepth.toFixed(2)} depth on ${side === "BUY" ? "ask" : "bid"} side (min $5)`,
+        totalDepth: totalDepth.toFixed(2),
+        levels: relevantSide.length,
+      });
+      return { valid: false, reason: "INSUFFICIENT_DEPTH", rejection };
+    }
+
+    // Passed all checks
+    console.log(`✅ OPPORTUNITY VALIDATED: ${label} — ${relevantSide.length} levels, $${totalDepth.toFixed(2)} depth`);
+    return { valid: true, depth: totalDepth, levels: relevantSide.length };
+
+  } catch (e) {
+    // If getOrderBook throws, the market likely doesn't exist
+    const isNotFound = e.message && (e.message.includes("404") || e.message.includes("not found") || e.message.includes("Not Found"));
+    const reason = isNotFound ? "MARKET_NOT_FOUND" : "ORDER_BOOK_ERROR";
+    const rejection = logRejection(opportunity, reason, { 
+      detail: e.message,
+      httpStatus: e.status || e.statusCode || null,
+    });
+    return { valid: false, reason, rejection };
+  }
+}
+
 async function getCachedPositions() {
   if (_tradeCache && (Date.now() - _tradeCacheTime) < TRADE_CACHE_TTL) return _tradeCache;
 
@@ -1374,6 +1469,25 @@ async function handler(req, res) {
       return send(res, 200, { ok: true, alertSent: true });
     }
 
+    // GET /rejected-opportunities — view rejection log
+    if (method === "GET" && path === "/rejected-opportunities") {
+      const log = loadRejectionLog();
+      const byReason = {};
+      log.forEach(r => { byReason[r.reason] = (byReason[r.reason] || 0) + 1; });
+      return send(res, 200, { 
+        total: log.length, 
+        byReason, 
+        recent: log.slice(-20),
+      });
+    }
+
+    // POST /validate-opportunity — standalone validation check (for crons to call before queuing)
+    if (method === "POST" && path === "/validate-opportunity") {
+      const body = await parseBody(req);
+      const result = await validateOpportunity(body);
+      return send(res, result.valid ? 200 : 404, result);
+    }
+
     // POST /execute-opportunity — fast-path: validate all gates + execute in one call
     // Used by scanner crons for immediate execution of high-conviction opportunities
     if (method === "POST" && path === "/execute-opportunity") {
@@ -1388,6 +1502,20 @@ async function handler(req, res) {
       }
 
       console.log(`⚡ FAST-PATH EXECUTION: ${market || tokenID.slice(0, 20)}`);
+
+      // Step 0: Validate market exists with liquidity
+      const validation = await validateOpportunity({ tokenID, slug, market, side });
+      if (!validation.valid) {
+        console.log(`🚫 FAST-PATH REJECTED: ${validation.reason} — ${market || tokenID.slice(0, 20)}`);
+        sendTelegramAlert(
+          `🚫 <b>OPPORTUNITY REJECTED</b>\n\n` +
+          `<b>Market:</b> ${market || slug || tokenID.slice(0, 20)}\n` +
+          `<b>Reason:</b> ${validation.reason}\n` +
+          `<b>Detail:</b> ${validation.rejection?.detail || "N/A"}\n` +
+          `<b>Edge:</b> ${edge || "?"}`
+        );
+        return send(res, 404, { error: `Market validation failed: ${validation.reason}`, validation });
+      }
 
       // Step 1: Run all risk gates
       const riskOpts = {

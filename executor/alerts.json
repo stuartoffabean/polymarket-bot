@@ -2690,9 +2690,16 @@
       "pnlPct": "-58.0%",
       "message": "Daily drawdown 58.0% exceeds 15% — PAUSED for 2 hours",
       "timestamp": "2026-02-13T22:26:47.869Z"
+    },
+    {
+      "type": "FEE_CHANGE_DETECTED",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
+      "timestamp": "2026-02-13T23:31:00.680Z"
     }
   ],
-  "circuitBreakerTripped": true,
+  "circuitBreakerTripped": false,
   "survivalMode": false,
   "emergencyMode": false
 }

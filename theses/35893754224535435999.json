@@ -1,0 +1,15 @@
+{
+  "market": "Will Kautkaili win Supernova 2026?",
+  "tokenID": "35893754224535435999993729638513134815193387826555869856334100738664798912329",
+  "side": "BUY",
+  "entryPrice": 0.835,
+  "size": 51,
+  "thesis": "Bookmakers (Betsson, Unibet, Optibet) price Kautkaili at 9% to win Supernova 2026. Polymarket YES at 16.5% is nearly 2x overpriced. Favorites are Atvara (40%) and Emilija (31%). Buying NO at 83.5¢ captures 9% edge vs bookmaker consensus.",
+  "invalidation": "Kautkaili wins Supernova 2026 or gains momentum in voting/betting markets before tonight",
+  "hoursToResolution": 7,
+  "edge": 9,
+  "slug": "will-kautkaili-win-supernova-2026",
+  "entryTime": "2026-02-13T23:03:19.111Z",
+  "entryQualityScore": 7,
+  "status": "OPEN"
+}
