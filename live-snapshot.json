@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-02-13T20:31:16.602Z",
+  "timestamp": "2026-02-13T20:45:04.988Z",
   "portfolio": {
     "trackedPositions": 11,
-    "portfolioValue": 451.28275499999995,
-    "positionValue": 206.4432,
-    "cashBalance": 244.839555,
-    "dailyStartValue": 421.317755
+    "portfolioValue": 206.5282,
+    "positionValue": 206.5282,
+    "cashBalance": 0,
+    "dailyStartValue": 451.28275499999995
   },
   "risk": {
     "circuitBreakerTripped": true,
-    "circuitBreakerResumeAt": null,
+    "circuitBreakerResumeAt": 1771021954159,
     "survivalMode": false,
     "emergencyMode": false,
     "autoExecuteEnabled": true,
@@ -23,7 +23,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 25.955278668
+    "uptime": 854.19511518
   },
   "positions": [
     {
@@ -93,7 +93,7 @@
       "size": 2.8,
       "avgPrice": 0.242,
       "currentBid": 0.249,
-      "currentAsk": 0.251,
+      "currentAsk": 0.252,
       "costBasis": "0.68",
       "currentValue": "0.70",
       "pnl": "0.02",
@@ -122,12 +122,12 @@
       "outcome": "Yes",
       "size": 10,
       "avgPrice": 0.66,
-      "currentBid": 0.7,
+      "currentBid": 0.69,
       "currentAsk": 0.82,
       "costBasis": "6.60",
-      "currentValue": "7.00",
-      "pnl": "0.40",
-      "pnlPct": "6.1%",
+      "currentValue": "6.90",
+      "pnl": "0.30",
+      "pnlPct": "4.5%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -137,12 +137,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.94,
-      "currentBid": 0.946,
+      "currentBid": 0.947,
       "currentAsk": 0.95,
       "costBasis": "23.50",
-      "currentValue": "23.65",
-      "pnl": "0.15",
-      "pnlPct": "0.6%",
+      "currentValue": "23.67",
+      "pnl": "0.17",
+      "pnlPct": "0.7%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -182,12 +182,12 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.693,
-      "currentAsk": 0.699,
+      "currentBid": 0.695,
+      "currentAsk": 0.697,
       "costBasis": "49.60",
-      "currentValue": "55.44",
-      "pnl": "5.84",
-      "pnlPct": "11.8%",
+      "currentValue": "55.60",
+      "pnl": "6.00",
+      "pnlPct": "12.1%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     }
@@ -195,7 +195,7 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Chicago 46-47°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -208,7 +208,7 @@
       "tokenId": "86069854998126295712887500512103672980330890383172698747999211918441355492422"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Miami 76-77°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -221,7 +221,7 @@
       "tokenId": "92692355295105043188084535345172617132941070537427143745066857388094591739498"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "New York City ≤33°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -234,7 +234,7 @@
       "tokenId": "87034544787508362600520628155582601877854843596079024073643613177448200402413"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Atlanta 58-59°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -247,7 +247,7 @@
       "tokenId": "89850023208665827912791204459354162829290040613445798160551059612704754189351"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Will the highest temperature in Ankara be 13°C on February 13?",
       "outcome": "No",
       "side": "buy",
@@ -260,7 +260,7 @@
       "tokenId": "7340112073555222453704760842525649718617418327394825093976073523054585350682"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Will the highest temperature in Atlanta be between 56-57°F on February 13?",
       "outcome": "No",
       "side": "buy",
@@ -273,7 +273,7 @@
       "tokenId": "44121016434409049375380848402136057678738655013936501174241083709908786149012"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Will the highest temperature in New York City be 44°F or higher on February 13?",
       "outcome": "No",
       "side": "buy",
@@ -286,7 +286,7 @@
       "tokenId": "34741782909792644160008944715571340589799476685148756110746740038189821413536"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Will the highest temperature in New York City be between 42-43°F on February 13?",
       "outcome": "No",
       "side": "buy",
@@ -299,7 +299,7 @@
       "tokenId": "163753302602334382041940165066379168856500423857432279946373957328934308182"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Chicago ≥50°F Feb 13",
       "outcome": "No",
       "side": "buy",
@@ -312,7 +312,7 @@
       "tokenId": "28321426810817884323028002735778558086441279106030661015331363203764252597900"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "0xf2fb4784ceb4d41ce23703da426700f710320ec5b711b6e3784bdaac24d94c23",
       "outcome": "Yes",
       "side": "buy",
@@ -325,7 +325,7 @@
       "tokenId": "73768610008619570600930429495180540710817177537162503586781057110775077618432"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "0xb207031da5ef9cbded418e6b5b3c5eee24a3a7b22c6ec10053cbaaa67d793796",
       "outcome": "Yes",
       "side": "buy",
@@ -338,33 +338,33 @@
       "tokenId": "89110596788673536475065853727140488937259064164063660201050220270400840228269"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Seattle ≥48°F Feb 13",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.66,
       "size": 6.6000000000000005,
       "shares": 10,
-      "currentPrice": 0.7,
-      "pnl": 0.4,
-      "pnlPct": "6.1%",
+      "currentPrice": 0.69,
+      "pnl": 0.3,
+      "pnlPct": "4.5%",
       "tokenId": "61128604990087042122548586390800420839327799964679640129754629783994076452623"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
       "price": 0.94,
       "size": 23.5,
       "shares": 25,
-      "currentPrice": 0.946,
-      "pnl": 0.15,
-      "pnlPct": "0.6%",
+      "currentPrice": 0.947,
+      "pnl": 0.18,
+      "pnlPct": "0.7%",
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.600Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
@@ -377,7 +377,7 @@
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.601Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "Yes",
       "side": "buy",
@@ -390,16 +390,16 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-13T20:31:16.601Z",
+      "timestamp": "2026-02-13T20:45:04.988Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
       "shares": 80,
-      "currentPrice": 0.693,
-      "pnl": 5.84,
-      "pnlPct": "11.8%",
+      "currentPrice": 0.695,
+      "pnl": 6,
+      "pnlPct": "12.1%",
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     }
   ],
@@ -407,7 +407,7 @@
     {
       "name": "Safe Yield",
       "trades": 10,
-      "pnl": 1.3,
+      "pnl": 1.33,
       "wins": 6,
       "enabled": true,
       "winRate": 0.6
@@ -423,13 +423,19 @@
     {
       "name": "Event-Driven",
       "trades": 3,
-      "pnl": 10.24,
+      "pnl": 10.3,
       "wins": 3,
       "enabled": true,
       "winRate": 1
     }
   ],
-  "activity": [],
+  "activity": [
+    {
+      "time": "2026-02-13T20:32:34.159Z",
+      "type": "CIRCUIT_BREAKER",
+      "message": "Daily drawdown 54.3% exceeds 15% — PAUSED for 2 hours"
+    }
+  ],
   "cash": 244.839555,
   "ledger": {
     "openPositions": [
