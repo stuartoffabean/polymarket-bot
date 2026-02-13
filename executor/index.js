@@ -145,13 +145,20 @@ async function handler(req, res) {
         // Full trade ledger: open + closed positions with realized P&L
         const trades = await client.getTrades();
         const OUR_ADDR = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+        
+        // Load market name mappings
+        let marketNames = {};
+        try { marketNames = JSON.parse(require("fs").readFileSync(require("path").join(__dirname, "market-names.json"), "utf8")); } catch(e) {}
+        const resolveName = (assetId, conditionId) => marketNames[assetId] || marketNames[conditionId] || conditionId || assetId?.slice(0,16)+'...';
+        
         const posMap = {};
         const tradeLog = []; // every individual fill
 
         for (const t of trades) {
           if (t.trader_side === "TAKER") {
             const key = t.asset_id;
-            if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: t.outcome, buys: [], sells: [], size: 0, totalBuyCost: 0, totalSellProceeds: 0 };
+            const mktName = resolveName(key, t.market);
+            if (!posMap[key]) posMap[key] = { asset_id: key, market: mktName, outcome: t.outcome, buys: [], sells: [], size: 0, totalBuyCost: 0, totalSellProceeds: 0 };
             const qty = parseFloat(t.size);
             const px = parseFloat(t.price);
             const ts = t.created_at || t.timestamp;
@@ -164,12 +171,13 @@ async function handler(req, res) {
               posMap[key].totalSellProceeds += qty * px;
               posMap[key].sells.push({ size: qty, price: px, time: ts });
             }
-            tradeLog.push({ asset_id: key, market: t.market, outcome: t.outcome, side: t.side, size: qty, price: px, time: ts });
+            tradeLog.push({ asset_id: key, market: mktName, outcome: t.outcome, side: t.side, size: qty, price: px, time: ts });
           } else if (t.trader_side === "MAKER" && t.maker_orders) {
             for (const mo of t.maker_orders) {
               if (mo.maker_address && mo.maker_address.toLowerCase() === OUR_ADDR) {
                 const key = mo.asset_id;
-                if (!posMap[key]) posMap[key] = { asset_id: key, market: t.market, outcome: mo.outcome, buys: [], sells: [], size: 0, totalBuyCost: 0, totalSellProceeds: 0 };
+                const mktName2 = resolveName(key, t.market);
+                if (!posMap[key]) posMap[key] = { asset_id: key, market: mktName2, outcome: mo.outcome, buys: [], sells: [], size: 0, totalBuyCost: 0, totalSellProceeds: 0 };
                 const qty = parseFloat(mo.matched_amount);
                 const px = parseFloat(mo.price);
                 const ts = t.created_at || t.timestamp;
@@ -182,7 +190,7 @@ async function handler(req, res) {
                   posMap[key].totalSellProceeds += qty * px;
                   posMap[key].sells.push({ size: qty, price: px, time: ts });
                 }
-                tradeLog.push({ asset_id: key, market: t.market, outcome: mo.outcome, side: mo.side, size: qty, price: px, time: ts });
+                tradeLog.push({ asset_id: key, market: mktName2, outcome: mo.outcome, side: mo.side, size: qty, price: px, time: ts });
               }
             }
           }
