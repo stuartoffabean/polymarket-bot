@@ -34,6 +34,62 @@ const RISK_CASH_RESERVE_PCT = 0.10;        // Always keep 10% uninvested
 const RISK_MIN_LIQUIDITY_DEPTH = 5;        // Minimum 5 shares of depth at best price
 const RISK_MAX_SPREAD_PCT = 0.15;          // 15% spread = skip (illiquid trap)
 
+// === FEATURE 1: TOTAL DIRECTIONAL EXPOSURE CAP ===
+const RISK_MAX_TOTAL_DIRECTIONAL_PCT = 0.60; // Max 60% of bankroll in manual positions
+
+// === FEATURE 2: ENTRY QUALITY GATE ===
+const ENTRY_MAX_PRICE_LONG_HORIZON = 0.85;   // No manual entries above 85¢ unless <24h to resolution
+const ENTRY_EXEMPT_STRATEGIES = ["resolution", "arb"]; // RH has own validated params
+
+// === FEATURE 5: DEPTH CHECK FOR MANUAL ORDERS ===
+const DEPTH_SLIPPAGE_TOL_MANUAL = 0.02;  // 2% max slippage
+const DEPTH_MIN_SHARES_MANUAL = 5;       // Don't bother with <5 shares
+
+const fs = require("fs");
+const path = require("path");
+
+// === FEATURE 3: THESIS TRACKING ===
+const THESES_DIR = path.join(__dirname, "..", "theses");
+if (!fs.existsSync(THESES_DIR)) fs.mkdirSync(THESES_DIR, { recursive: true });
+
+function saveThesis(tokenID, thesis) {
+  const file = path.join(THESES_DIR, `${tokenID.slice(0, 20)}.json`);
+  fs.writeFileSync(file, JSON.stringify(thesis, null, 2));
+  console.log(`📝 Thesis saved: ${thesis.market} → ${file}`);
+}
+
+function loadThesis(tokenID) {
+  const file = path.join(THESES_DIR, `${tokenID.slice(0, 20)}.json`);
+  try { return JSON.parse(fs.readFileSync(file, "utf8")); } catch { return null; }
+}
+
+function loadAllTheses() {
+  try {
+    return fs.readdirSync(THESES_DIR)
+      .filter(f => f.endsWith(".json"))
+      .map(f => { try { return JSON.parse(fs.readFileSync(path.join(THESES_DIR, f), "utf8")); } catch { return null; } })
+      .filter(Boolean);
+  } catch { return []; }
+}
+
+// === FEATURE 4: OPPORTUNITY ALERT ===
+function sendTelegramAlert(text) {
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!botToken || !chatId) return;
+  const https = require("https");
+  const payload = JSON.stringify({ chat_id: chatId, text, parse_mode: "HTML", disable_notification: false });
+  const req = https.request({
+    hostname: "api.telegram.org",
+    path: `/bot${botToken}/sendMessage`,
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(payload) },
+  }, () => {});
+  req.on("error", () => {});
+  req.write(payload);
+  req.end();
+}
+
 async function getPortfolioValue() {
   // Try ws-feed first (has live prices)
   try {
@@ -96,7 +152,7 @@ async function getExistingExposure(tokenID) {
  * Checks: max single position %, cash reserve, spread, existing exposure.
  * Pass force:true to bypass (logged + alerted).
  */
-async function preTradeRiskCheck(tokenID, price, size, side, force = false) {
+async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts = {}) {
   // Only validate BUY orders (SELL is always allowed — exiting risk)
   if (side === "SELL") return { allowed: true, reason: "sell_always_allowed" };
 
@@ -109,11 +165,18 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false) {
   
   const checks = [];
   let blocked = false;
+  const strategy = opts.strategy || "unknown";
+  const isAutoStrategy = ENTRY_EXEMPT_STRATEGIES.includes(strategy);
 
-  // 1. Single position size check (including existing exposure)
+  // === CHECK 1: Single position size (15% max) ===
   const existing = await getExistingExposure(tokenID);
   const totalExposure = existing.costBasis + orderValue;
   const exposurePct = totalExposure / effectivePortfolio;
+  
+  // Feature 1: Calculate recommended max size
+  const maxAllowedExposure = effectivePortfolio * RISK_MAX_SINGLE_POSITION_PCT;
+  const maxOrderValue = Math.max(0, maxAllowedExposure - existing.costBasis);
+  const maxShares = maxOrderValue > 0 ? Math.floor(maxOrderValue / price) : 0;
   
   if (exposurePct > RISK_MAX_SINGLE_POSITION_PCT) {
     blocked = true;
@@ -122,12 +185,51 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false) {
       status: "BLOCKED",
       detail: `Total exposure $${totalExposure.toFixed(2)} = ${(exposurePct * 100).toFixed(1)}% of $${effectivePortfolio.toFixed(2)} portfolio (max ${RISK_MAX_SINGLE_POSITION_PCT * 100}%)`,
       existing: existing.costBasis > 0 ? `Already hold $${existing.costBasis.toFixed(2)} in this token` : null,
+      recommended: { maxShares, maxOrderValue: maxOrderValue.toFixed(2) },
     });
   } else {
     checks.push({ check: "MAX_SINGLE_POSITION", status: "OK", pct: (exposurePct * 100).toFixed(1) + "%" });
   }
 
-  // 2. Cash reserve check
+  // === CHECK 2: Total directional exposure (60% max for manual) ===
+  if (!isAutoStrategy) {
+    const totalDirectional = await getTotalDirectionalExposure();
+    const newTotalDirectional = totalDirectional + orderValue;
+    const directionalPct = newTotalDirectional / effectivePortfolio;
+    
+    if (directionalPct > RISK_MAX_TOTAL_DIRECTIONAL_PCT) {
+      blocked = true;
+      const headroom = Math.max(0, effectivePortfolio * RISK_MAX_TOTAL_DIRECTIONAL_PCT - totalDirectional);
+      checks.push({
+        check: "TOTAL_DIRECTIONAL",
+        status: "BLOCKED",
+        detail: `Total manual exposure would be $${newTotalDirectional.toFixed(2)} = ${(directionalPct * 100).toFixed(1)}% of portfolio (max ${RISK_MAX_TOTAL_DIRECTIONAL_PCT * 100}%)`,
+        currentDirectional: `$${totalDirectional.toFixed(2)}`,
+        headroom: `$${headroom.toFixed(2)}`,
+      });
+    } else {
+      checks.push({ check: "TOTAL_DIRECTIONAL", status: "OK", pct: (directionalPct * 100).toFixed(1) + "%" });
+    }
+  }
+
+  // === CHECK 3: Entry quality gate (no entries above 85¢ for long-horizon) ===
+  if (!isAutoStrategy && price > ENTRY_MAX_PRICE_LONG_HORIZON) {
+    const hoursToResolution = opts.hoursToResolution || null;
+    if (hoursToResolution === null || hoursToResolution > 24) {
+      blocked = true;
+      checks.push({
+        check: "ENTRY_QUALITY",
+        status: "BLOCKED",
+        detail: `Entry price ${price} exceeds ${ENTRY_MAX_PRICE_LONG_HORIZON} for market with ${hoursToResolution ? hoursToResolution.toFixed(0) + 'h' : 'unknown'} to resolution (min margin of safety violated). Winners enter at 62-82¢. Exception: provide hoursToResolution <= 24 to override.`,
+      });
+    } else {
+      checks.push({ check: "ENTRY_QUALITY", status: "OK", detail: `Price ${price} > ${ENTRY_MAX_PRICE_LONG_HORIZON} but resolution in ${hoursToResolution.toFixed(0)}h (exempt)` });
+    }
+  } else if (!isAutoStrategy) {
+    checks.push({ check: "ENTRY_QUALITY", status: "OK", price: price });
+  }
+
+  // === CHECK 4: Cash reserve (10% minimum) ===
   const cashAfter = portfolio.liquidBalance - orderValue;
   const reserveRequired = effectivePortfolio * RISK_CASH_RESERVE_PCT;
   if (cashAfter < reserveRequired) {
@@ -141,7 +243,8 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false) {
     checks.push({ check: "CASH_RESERVE", status: "OK", cashAfter: "$" + cashAfter.toFixed(2) });
   }
 
-  // 3. Spread / liquidity check (only for non-trivial orders)
+  // === CHECK 5: Spread + Depth check (for non-trivial orders) ===
+  let depthResult = null;
   if (orderValue > 2) {
     try {
       const book = await client.getOrderBook(tokenID);
@@ -158,25 +261,73 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false) {
             detail: `Spread ${(spread * 100).toFixed(1)}% (bid=${bestBid}, ask=${bestAsk}) exceeds max ${RISK_MAX_SPREAD_PCT * 100}%`,
           });
         } else {
-          checks.push({ check: "SPREAD", status: "OK", spread: (spread * 100).toFixed(1) + "%" });
+          checks.push({ check: "SPREAD", status: "OK", spread: (spread * 100).toFixed(1) + "%", bestBid, bestAsk });
         }
       }
       
-      // Check depth at best ask
-      if (book.asks?.length > 0) {
-        const topAskSize = parseFloat(book.asks[0].size || 0);
-        if (topAskSize < RISK_MIN_LIQUIDITY_DEPTH) {
+      // Feature 5: Full depth check (same as ws-feed checkBookDepth)
+      if (book.asks?.length > 0 && side === "BUY") {
+        const asks = (book.asks || [])
+          .map(a => ({ price: parseFloat(a.price), size: parseFloat(a.size) }))
+          .sort((a, b) => a.price - b.price);
+        
+        const depthBestAsk = asks[0].price;
+        const maxPrice = depthBestAsk * (1 + DEPTH_SLIPPAGE_TOL_MANUAL);
+        let filled = 0, totalCost = 0;
+        
+        for (const level of asks) {
+          if (level.price > maxPrice) break;
+          const canTake = Math.min(level.size, size - filled);
+          filled += canTake;
+          totalCost += canTake * level.price;
+          if (filled >= size) break;
+        }
+        
+        const avgFillPrice = filled > 0 ? totalCost / filled : depthBestAsk;
+        const slippagePct = ((avgFillPrice - depthBestAsk) / depthBestAsk * 100);
+        
+        depthResult = { bestAsk: depthBestAsk, avgFillPrice, slippagePct, fillableShares: Math.floor(filled), intendedShares: size };
+        
+        if (filled < size) {
+          const availableSize = Math.floor(filled);
+          if (availableSize < DEPTH_MIN_SHARES_MANUAL) {
+            blocked = true;
+            checks.push({
+              check: "DEPTH",
+              status: "BLOCKED",
+              detail: `Only ${availableSize}sh fillable within 2% of best ask ${depthBestAsk} (need ${size}sh)`,
+            });
+          } else {
+            checks.push({
+              check: "DEPTH",
+              status: "WARNING",
+              detail: `Only ${availableSize}/${size}sh fillable within 2% of best ask ${depthBestAsk}. Consider reducing to ${availableSize}sh.`,
+              avgFillPrice: avgFillPrice.toFixed(4),
+              slippagePct: slippagePct.toFixed(2) + "%",
+            });
+          }
+        } else if (slippagePct > 1) {
           checks.push({
             check: "DEPTH",
             status: "WARNING",
-            detail: `Only ${topAskSize} shares at best ask — thin liquidity`,
+            detail: `${size}sh fillable but avg fill ${avgFillPrice.toFixed(4)} is ${slippagePct.toFixed(2)}% above best ask ${depthBestAsk}`,
           });
+        } else {
+          checks.push({ check: "DEPTH", status: "OK", avgFillPrice: avgFillPrice.toFixed(4), slippage: slippagePct.toFixed(2) + "%" });
         }
       }
     } catch (e) {
       checks.push({ check: "BOOK", status: "SKIP", detail: "Could not fetch order book: " + e.message });
     }
   }
+
+  // === SIZING CALCULATOR: always return recommended size ===
+  const sizingAdvice = {
+    maxSharesSinglePosition: maxShares,
+    maxOrderValue: maxOrderValue.toFixed(2),
+    portfolioValue: effectivePortfolio.toFixed(2),
+    liquidBalance: portfolio.liquidBalance.toFixed(2),
+  };
 
   // Force override
   if (blocked && force) {
@@ -186,6 +337,8 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false) {
       reason: "force_override",
       overridden: checks.filter(c => c.status === "BLOCKED").map(c => c.check),
       checks,
+      sizing: sizingAdvice,
+      depth: depthResult,
       portfolio: { total: effectivePortfolio, liquid: portfolio.liquidBalance, source: portfolio.source },
     };
   }
@@ -198,8 +351,57 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false) {
     allowed: !blocked,
     reason: blocked ? "risk_check_failed" : "all_checks_passed",
     checks,
+    sizing: sizingAdvice,
+    depth: depthResult,
     portfolio: { total: effectivePortfolio, liquid: portfolio.liquidBalance, source: portfolio.source },
   };
+}
+
+// Feature 1: Calculate total directional exposure across all manual positions
+async function getTotalDirectionalExposure() {
+  try {
+    const cached = await getCachedPositions();
+    // Manual positions = everything NOT tagged as resolution/arb/weather in ws-feed
+    // We check all positions and sum cost basis for non-auto strategies
+    let total = 0;
+    const manualFile = path.join(__dirname, "manual-positions.json");
+    let manualIds = new Set();
+    try { 
+      const mp = JSON.parse(fs.readFileSync(manualFile, "utf8")); 
+      manualIds = new Set(Object.keys(mp));
+    } catch {}
+    
+    // Strategy tags from ws-feed
+    let strategyTags = {};
+    try {
+      const data = await new Promise((resolve, reject) => {
+        const req = http.get("http://localhost:3003/prices", (res) => {
+          let d = ""; res.on("data", c => d += c);
+          res.on("end", () => { try { resolve(JSON.parse(d)); } catch(e) { reject(e); } });
+        });
+        req.on("error", reject);
+        req.setTimeout(3000, () => { req.destroy(); reject(new Error("timeout")); });
+      });
+      if (data.prices) {
+        for (const [id, p] of Object.entries(data.prices)) {
+          strategyTags[id] = p.strategy;
+        }
+      }
+    } catch {}
+
+    for (const pos of cached.openPositions) {
+      const shortId = pos.asset_id.slice(0, 20);
+      const strat = strategyTags[shortId] || "unknown";
+      const isManual = manualIds.has(pos.asset_id) || strat === "manual" || strat === "unknown";
+      if (isManual) {
+        total += pos.totalCost;
+      }
+    }
+    return total;
+  } catch (e) {
+    console.log(`getTotalDirectionalExposure error: ${e.message}`);
+    return 0;
+  }
 }
 
 let client;
@@ -637,8 +839,53 @@ async function handler(req, res) {
         const size = parseFloat(query.size || "0");
         const side = query.side || "BUY";
         if (!tokenID || !price || !size) return send(res, 400, { error: "Need token_id, price, size params" });
-        const result = await preTradeRiskCheck(tokenID, price, size, side, false);
+        const riskOpts = {
+          strategy: query.strategy || "unknown",
+          hoursToResolution: query.hours_to_resolution ? parseFloat(query.hours_to_resolution) : null,
+        };
+        const result = await preTradeRiskCheck(tokenID, price, size, side, false, riskOpts);
         return send(res, 200, result);
+      }
+      // GET /theses — list all active theses
+      if (path === "/theses") {
+        return send(res, 200, { theses: loadAllTheses() });
+      }
+      // GET /thesis?token_id=XXX — get thesis for a specific position
+      if (path === "/thesis") {
+        const t = loadThesis(query.token_id || "");
+        return send(res, 200, t || { error: "No thesis found" });
+      }
+      // GET /sizing?price=X&conviction=1|2|3 — position sizing calculator
+      if (path === "/sizing") {
+        const p = parseFloat(query.price || "0");
+        const conviction = parseInt(query.conviction || "2"); // 1=low, 2=med, 3=high
+        if (!p || p <= 0) return send(res, 400, { error: "Need price param" });
+        const portfolio = await getPortfolioValue();
+        const eff = portfolio.totalValue > 10 ? portfolio.totalValue : 500;
+        // Conviction scaling: low=5%, med=10%, high=15% of portfolio
+        const convictionPct = [0.05, 0.10, 0.15][Math.min(Math.max(conviction, 1), 3) - 1];
+        const maxByConviction = eff * convictionPct;
+        const maxBySingleCap = eff * RISK_MAX_SINGLE_POSITION_PCT;
+        const maxAlloc = Math.min(maxByConviction, maxBySingleCap);
+        const maxShares = Math.floor(maxAlloc / p);
+        const totalDirectional = await getTotalDirectionalExposure();
+        const directionalHeadroom = Math.max(0, eff * RISK_MAX_TOTAL_DIRECTIONAL_PCT - totalDirectional);
+        const maxByDirectional = Math.floor(directionalHeadroom / p);
+        const finalMax = Math.min(maxShares, maxByDirectional);
+        return send(res, 200, {
+          price: p,
+          conviction,
+          convictionLabel: ["low", "medium", "high"][conviction - 1],
+          portfolioValue: eff.toFixed(2),
+          maxSharesByConviction: maxShares,
+          maxSharesByDirectionalCap: maxByDirectional,
+          recommendedShares: finalMax,
+          recommendedCost: (finalMax * p).toFixed(2),
+          pctOfPortfolio: ((finalMax * p) / eff * 100).toFixed(1) + "%",
+          totalDirectionalExposure: totalDirectional.toFixed(2),
+          directionalHeadroom: directionalHeadroom.toFixed(2),
+          entryQualityGate: p > ENTRY_MAX_PRICE_LONG_HORIZON ? "⚠️ Price above 85¢ — need hoursToResolution < 24 to pass entry gate" : "✅ OK",
+        });
       }
       if (path === "/api/snapshot" || path === "/snapshot") {
         const cached = await getCachedPositions();
@@ -650,6 +897,49 @@ async function handler(req, res) {
           timestamp: new Date().toISOString()
         });
       }
+    }
+
+    // POST /thesis — save a structured thesis for a position
+    if (method === "POST" && path === "/thesis") {
+      const body = await parseBody(req);
+      const { tokenID, market, entryPrice, thesis, invalidationConditions, expectedResolution, catalyst } = body;
+      if (!tokenID || !market || !thesis) {
+        return send(res, 400, { error: "Need tokenID, market, thesis" });
+      }
+      const thesisObj = {
+        tokenID,
+        market,
+        entryPrice: entryPrice || null,
+        thesis,
+        invalidationConditions: invalidationConditions || [],
+        expectedResolution: expectedResolution || null,
+        catalyst: catalyst || null,
+        createdAt: new Date().toISOString(),
+        status: "active",
+      };
+      saveThesis(tokenID, thesisObj);
+      return send(res, 200, { ok: true, thesis: thesisObj });
+    }
+
+    // POST /opportunity-alert — high-conviction opportunity alert to Telegram
+    if (method === "POST" && path === "/opportunity-alert") {
+      const body = await parseBody(req);
+      const { market, edge, resolution, price, thesis, slug } = body;
+      if (!market) return send(res, 400, { error: "Need market" });
+      const msg = [
+        `🎯 <b>HIGH-CONVICTION OPPORTUNITY</b>`,
+        ``,
+        `<b>Market:</b> ${market}`,
+        edge ? `<b>Edge:</b> ${edge}` : null,
+        resolution ? `<b>Resolution:</b> ${resolution}` : null,
+        price ? `<b>Current price:</b> ${price}` : null,
+        thesis ? `\n<b>Thesis:</b> ${thesis}` : null,
+        slug ? `\n🔗 polymarket.com/event/${slug}` : null,
+        `\n⚡ Reply to approve for next execution window`,
+      ].filter(Boolean).join("\n");
+      sendTelegramAlert(msg);
+      console.log(`📢 Opportunity alert sent: ${market}`);
+      return send(res, 200, { ok: true, alertSent: true });
     }
 
     // POST /order — place order (with pre-trade risk validation)
@@ -669,7 +959,11 @@ async function handler(req, res) {
       const forceRisk = body.force === true;
       
       if (!skipRisk) {
-        const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, forceRisk);
+        const riskOpts = {
+          strategy: body.strategy || "unknown",
+          hoursToResolution: body.hoursToResolution != null ? parseFloat(body.hoursToResolution) : null,
+        };
+        const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, forceRisk, riskOpts);
         if (!riskResult.allowed) {
           console.log(`🚫 ORDER REJECTED by risk gate: ${side} ${size} @ ${price}`);
           return send(res, 422, {
