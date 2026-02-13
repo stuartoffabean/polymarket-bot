@@ -39,10 +39,43 @@ const positions = Object.entries(prices.prices || {}).map(([id, p]) => ({
   pnl: p.pnl, pnlPct: p.pnlPct, stopLoss: p.stopLoss, takeProfit: p.takeProfit,
 }));
 
+// Load market name mappings
+let marketNames = {};
+try { marketNames = JSON.parse(require('fs').readFileSync('/data/workspace/polymarket-bot/executor/market-names.json', 'utf8')); } catch(e) { console.error('market-names.json not found:', e.message); }
+const resolveName = (assetId, conditionId) => {
+  if (marketNames[assetId]) return marketNames[assetId];
+  if (marketNames[conditionId]) return marketNames[conditionId];
+  // Try prefix match (condition IDs sometimes truncated)
+  for (const [k, v] of Object.entries(marketNames)) {
+    if (k.length > 10 && (assetId.startsWith(k.slice(0,20)) || k.startsWith(assetId.slice(0,20)))) return v;
+    if (conditionId && k.length > 10 && (conditionId.startsWith(k.slice(0,20)) || k.startsWith(conditionId.slice(0,20)))) return v;
+  }
+  return conditionId || assetId?.slice(0,16)+'...';
+};
+
 // STRUCTURAL FIX: Derive trades from EXECUTOR, not TRADING-STATE.json
 // Executor is the single source of truth for position data
+// Merge executor positions + manual positions
 const execPos = execPositions.positions || [];
-const trades = execPos.filter(p => p.size > 0).map(p => {
+let manualPos = [];
+try {
+  const mp = JSON.parse(require('fs').readFileSync('/data/workspace/polymarket-bot/executor/manual-positions.json', 'utf8'));
+  for (const [assetId, info] of Object.entries(mp)) {
+    // Only add if not already in executor positions
+    if (!execPos.some(ep => ep.asset_id.slice(0, 20) === assetId.slice(0, 20)) && info.size > 0) {
+      manualPos.push({
+        asset_id: assetId,
+        market: info.market || 'Manual Position',
+        outcome: info.outcome || 'Yes',
+        size: info.size,
+        totalCost: info.totalCost || (info.size * (info.avgPrice || 0)),
+        avgPrice: String(info.avgPrice || 0),
+      });
+    }
+  }
+} catch(e) {}
+const allPositions = [...execPos, ...manualPos];
+const trades = allPositions.filter(p => p.size > 0).map(p => {
   // Find live price from ws-feed
   const livePos = positions.find(pp => pp.fullAssetId === p.asset_id);
   const wsPrice = livePriceCache[p.asset_id];
@@ -51,7 +84,7 @@ const trades = execPos.filter(p => p.size > 0).map(p => {
   const costBasis = p.totalCost || (parseFloat(p.avgPrice) * p.size);
   return {
     timestamp: new Date().toISOString(),
-    market: p.market || 'Unknown',
+    market: resolveName(p.asset_id, p.market) || 'Unknown',
     outcome: p.outcome,
     side: 'buy',
     price: parseFloat(p.avgPrice),

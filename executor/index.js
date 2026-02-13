@@ -243,6 +243,35 @@ async function handler(req, res) {
           }
         }
 
+        // Merge manual positions (personal wallet) into open positions
+        try {
+          const manualPath = require("path").join(__dirname, "manual-positions.json");
+          const manualData = JSON.parse(require("fs").readFileSync(manualPath, "utf8"));
+          for (const [assetId, mp] of Object.entries(manualData)) {
+            // Skip if already in openPositions (by asset_id prefix match)
+            const prefix = assetId.slice(0, 20);
+            const alreadyTracked = openPositions.some(op => op.asset_id.slice(0, 20) === prefix);
+            if (!alreadyTracked && mp.size > 0) {
+              const mktName = mp.market || resolveName(assetId, "");
+              openPositions.push({
+                asset_id: assetId,
+                market: mktName,
+                outcome: mp.outcome || "Yes",
+                size: mp.size,
+                avgPrice: (mp.avgPrice || 0).toFixed(4),
+                costBasis: (mp.size * (mp.avgPrice || 0)).toFixed(2),
+                totalBought: mp.size,
+                totalSold: 0,
+                realizedPnl: "0.00",
+                status: "OPEN",
+                source: "personal_wallet",
+                firstBuy: mp.addedAt || null,
+                lastTrade: mp.addedAt || null,
+              });
+            }
+          }
+        } catch(e) { /* no manual positions file */ }
+
         return send(res, 200, {
           openPositions,
           closedPositions,
