@@ -685,7 +685,7 @@ async function executeSell(assetId, asset, reason) {
   }
 }
 
-async function checkSystemReady() {
+function checkSystemReady() {
   if (systemReady) return true;
   if (!syncCompletedOnce) return false;
 
@@ -699,14 +699,15 @@ async function checkSystemReady() {
 
   const pct = priced / total;
   if (pct >= 0.8) {
+    // Don't mark ready until cash balance is known
+    if (lastCashFetch === 0) {
+      fetchCashBalance().catch(() => {});
+      log("WARMUP", `Positions priced (${(pct * 100).toFixed(0)}%) but waiting for cash balance...`);
+      return false;
+    }
     systemReady = true;
     log("INIT", `✅ System ready — ${priced}/${total} positions priced (${(pct * 100).toFixed(0)}%). Monitoring active.`);
-    // Set dailyStartValue NOW from accurate portfolio data
     const posVal = computePositionValue();
-    const state = loadTradingState();
-    const liquid = state?.liquidBalance || 0;
-    // Fetch cash balance for accurate startup values
-    await fetchCashBalance();
     const totalVal = posVal + cachedCashBalance;
     currentPortfolioValue = totalVal;
     dailyStartValue = totalVal;
@@ -731,15 +732,16 @@ function computePositionValue() {
   return v;
 }
 
-async function updatePortfolioValue() {
+function updatePortfolioValue() {
   const positionValue = computePositionValue();
 
-  // Fetch live cash balance periodically from executor (AWAIT to prevent race condition)
+  // Kick off cash balance refresh (non-blocking — runs on its own timer)
   if (Date.now() - lastCashFetch > CASH_FETCH_INTERVAL) {
-    await fetchCashBalance().catch(() => {});
+    fetchCashBalance().catch(() => {});
   }
   
-  // Don't run any portfolio calculations until cash has been fetched at least once
+  // CRITICAL: Don't run ANY portfolio/risk calculations until cash balance is known
+  // This prevents false circuit breaker trips where positions=$206 vs dailyStart=$450
   if (lastCashFetch === 0) return;
   
   const totalValue = positionValue + cachedCashBalance;
@@ -748,7 +750,7 @@ async function updatePortfolioValue() {
     currentPortfolioValue = totalValue; // TOTAL portfolio = positions + cash
 
     // Skip all risk checks until system is warmed up
-    if (!(await checkSystemReady())) return;
+    if (!checkSystemReady()) return;
 
     if (!dailyStartValue) dailyStartValue = totalValue;
 
@@ -2140,6 +2142,10 @@ async function main() {
     log("INIT", `No positions loaded (attempt ${attempt}/5), retrying in 3s...`);
     await new Promise(r => setTimeout(r, 3000));
   }
+
+  // Fetch cash balance BEFORE connecting WebSocket (prevents false circuit breaker)
+  await fetchCashBalance();
+  log("INIT", `Cash balance fetched: $${cachedCashBalance.toFixed(2)}`);
 
   // Connect WebSocket
   connect();

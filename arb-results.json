@@ -1,35 +1,20 @@
 {
-  "timestamp": "2026-02-13T21:01:56.301Z",
+  "timestamp": "2026-02-13T21:16:16.473Z",
   "summary": {
     "total": 100,
-    "negRisk": 55,
-    "flagged": 4,
-    "viable": 4
+    "negRisk": 52,
+    "flagged": 3,
+    "viable": 2
   },
   "opportunities": [
     {
-      "event": "Bitcoin price on February 13?",
-      "slug": "bitcoin-price-on-february-13",
+      "event": "Elon Musk # tweets February 6 - February 13, 2026?",
+      "slug": "elon-musk-of-tweets-february-6-february-13",
       "type": "LONG",
       "outcomes": 0,
-      "midSum": 0.0025,
+      "midSum": 0.005,
       "execSum": 0,
-      "deviation": 99.75,
-      "execDeviation": 100,
-      "grossProfitPer100": 100,
-      "feesPer100": 0,
-      "profitPer100": 100,
-      "viable": true,
-      "details": []
-    },
-    {
-      "event": "Ethereum price on February 13?",
-      "slug": "ethereum-price-on-february-13",
-      "type": "LONG",
-      "outcomes": 0,
-      "midSum": 0.002,
-      "execSum": 0,
-      "deviation": 99.8,
+      "deviation": 99.5,
       "execDeviation": 100,
       "grossProfitPer100": 100,
       "feesPer100": 0,
@@ -42,13 +27,13 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.8175,
-      "execSum": 0.74,
-      "deviation": 18.25,
-      "execDeviation": 26,
-      "grossProfitPer100": 26,
+      "midSum": 0.8215,
+      "execSum": 0.749,
+      "deviation": 17.85,
+      "execDeviation": 25.1,
+      "grossProfitPer100": 25.1,
       "feesPer100": 0,
-      "profitPer100": 26,
+      "profitPer100": 25.1,
       "viable": true,
       "details": [
         {
@@ -113,8 +98,8 @@
         },
         {
           "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.066,
-          "exec": 0.051,
+          "mid": 0.0705,
+          "exec": 0.06,
           "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
         },
         {
@@ -155,7 +140,7 @@
         },
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
-          "mid": 0.006,
+          "mid": 0.0055,
           "exec": 0.003,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
@@ -174,72 +159,96 @@
       ]
     },
     {
-      "event": "Brazil Presidential Election",
-      "slug": "brazil-presidential-election",
-      "type": "LONG",
-      "outcomes": 9,
-      "midSum": 0.9735,
-      "execSum": 0.965,
-      "deviation": 2.65,
-      "execDeviation": 3.5,
-      "grossProfitPer100": 3.5,
+      "event": "How many Fed rate cuts in 2026?",
+      "slug": "how-many-fed-rate-cuts-in-2026",
+      "type": "SHORT",
+      "outcomes": 13,
+      "midSum": 1.027,
+      "execSum": 0.996,
+      "deviation": 2.7,
+      "execDeviation": 0.4,
+      "grossProfitPer100": -0.4,
       "feesPer100": 0,
-      "profitPer100": 3.5,
-      "viable": true,
+      "profitPer100": -0.4,
+      "viable": false,
       "details": [
         {
-          "name": "Will Tarcisio de Freitas win the 2026 Brazilian presidential",
-          "mid": 0.037,
-          "exec": 0.036,
-          "token": "52634616068523389389514492087655237014427439869589807217055529923225131895030"
+          "name": "Will no Fed rate cuts happen in 2026?",
+          "mid": 0.067,
+          "exec": 0.066,
+          "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
         {
-          "name": "Will Luiz Inácio Lula da Silva win the 2026 Brazilian presid",
-          "mid": 0.505,
-          "exec": 0.5,
-          "token": "30630994248667897740988010928640156931882346081873066002335460180076741328029"
+          "name": "Will 1 Fed rate cut happen in 2026?",
+          "mid": 0.165,
+          "exec": 0.16,
+          "token": "113379839734351069617987084078322474966003108854908079701423911002443710490196"
         },
         {
-          "name": "Will Jair Bolsonaro win the 2026 Brazilian presidential elec",
-          "mid": 0.0115,
-          "exec": 0.011,
-          "token": "66991175107696133528353695394151645462081911990365106169948013117379189357520"
+          "name": "Will 2 Fed rate cuts happen in 2026?",
+          "mid": 0.265,
+          "exec": 0.26,
+          "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
         },
         {
-          "name": "Will Fernando Haddad win the 2026 Brazilian presidential ele",
-          "mid": 0.0165,
-          "exec": 0.016,
-          "token": "34763699632057764824138626876692302096202604335992573366008355204521657293675"
+          "name": "Will 3 Fed rate cuts happen in 2026?",
+          "mid": 0.265,
+          "exec": 0.26,
+          "token": "95835705062472305459663741402900736177330733688944910993896545106260819635212"
         },
         {
-          "name": "Will Michelle Bolsonaro win the 2026 Brazilian presidential ",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "91154058715822908897619103072380844452822017332608583147987152526225529443892"
+          "name": "Will 4 Fed rate cuts happen in 2026?",
+          "mid": 0.125,
+          "exec": 0.12,
+          "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
         },
         {
-          "name": "Will Eduardo Bolsonaro win the 2026 Brazilian presidential e",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "68827474128979817444758177181483142354604256745613325980470518365059439724226"
-        },
-        {
-          "name": "Will Carlos Roberto Massa Júnior win the 2026 Brazilian pres",
-          "mid": 0.0505,
+          "name": "Will 5 Fed rate cuts happen in 2026?",
+          "mid": 0.055,
           "exec": 0.05,
-          "token": "7424753944577407627798342086224300332261118341771286172561357635231967087849"
+          "token": "29213252446661789250484965446100709214117256176608501943249094649759520097655"
         },
         {
-          "name": "Will Renan Santos win the 2026 Brazilian presidential electi",
-          "mid": 0.0585,
-          "exec": 0.058,
-          "token": "93998891488819623915454849994768171534113749478841216025646247933473925258016"
+          "name": "Will 6 Fed rate cuts happen in 2026?",
+          "mid": 0.0275,
+          "exec": 0.027,
+          "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
         },
         {
-          "name": "Will Flávio Bolsonaro win the 2026 Brazilian presidential el",
-          "mid": 0.2905,
-          "exec": 0.291,
-          "token": "109876868437950584369987384406356259939519193117253465815665152916226511121427"
+          "name": "Will 7 Fed rate cuts happen in 2026?",
+          "mid": 0.0075,
+          "exec": 0.006,
+          "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
+        },
+        {
+          "name": "Will 8 Fed rate cuts happen in 2026?",
+          "mid": 0.0105,
+          "exec": 0.01,
+          "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
+        },
+        {
+          "name": "Will 9 Fed rate cuts happen in 2026?",
+          "mid": 0.0055,
+          "exec": 0.005,
+          "token": "23126031577449775652876745717301519312850542565907124407036782701549610893044"
+        },
+        {
+          "name": "Will 10 Fed rate cuts happen in 2026?",
+          "mid": 0.0045,
+          "exec": 0.004,
+          "token": "101699865858660601590309838387762714166224752219273014726406345404403204943713"
+        },
+        {
+          "name": "Will 11 Fed rate cuts happen in 2026?",
+          "mid": 0.005,
+          "exec": 0.004,
+          "token": "56345349743779788266710915561914531858285418844567819631705863717318287635981"
+        },
+        {
+          "name": "Will 12 or more Fed rate cuts happen in 2026?",
+          "mid": 0.0245,
+          "exec": 0.024,
+          "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
         }
       ]
     }
