@@ -82,6 +82,22 @@ async function handler(req, res) {
 
     if (!client) return send(res, 503, { error: "Client not initialized" });
 
+    // GET /balance — on-chain USDC balance
+    if (method === "GET" && path === "/balance") {
+      try {
+        const { ethers } = require("ethers");
+        const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com");
+        const USDC_E = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
+        const erc20Abi = ["function balanceOf(address) view returns (uint256)"];
+        const usdc = new ethers.Contract(USDC_E, erc20Abi, provider);
+        const bal = await usdc.balanceOf("0xe693Ef449979E387C8B4B5071Af9e27a7742E18D");
+        const balance = parseFloat(ethers.utils.formatUnits(bal, 6));
+        return send(res, 200, { balance, currency: "USDC", wallet: "executor" });
+      } catch(e) {
+        return send(res, 500, { error: e.message });
+      }
+    }
+
     // GET endpoints
     if (method === "GET") {
       if (path === "/price" && query.token_id) {

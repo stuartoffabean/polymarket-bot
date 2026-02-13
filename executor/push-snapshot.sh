@@ -18,6 +18,7 @@ fi
 EXEC_POSITIONS=$(curl -s localhost:3002/positions 2>/dev/null || echo '{"positions":[]}')
 ALERTS=$(curl -s localhost:3003/alerts 2>/dev/null || echo '{"alerts":[]}')
 LEDGER=$(curl -s localhost:3002/trade-ledger 2>/dev/null || echo '{"openPositions":[],"closedPositions":[],"totalRealizedPnl":"0","tradeLog":[]}')
+BALANCE=$(curl -s localhost:3002/balance 2>/dev/null || echo '{"balance":0}')
 WSPROXY=$(curl -s https://polymarket-dashboard-ws-production.up.railway.app/prices 2>/dev/null || echo '{"prices":{}}')
 
 # Combine into dashboard-ready JSON
@@ -28,6 +29,7 @@ const orders = $ORDERS;
 const execPositions = $EXEC_POSITIONS;
 const alerts = $ALERTS;
 const ledger = $LEDGER;
+const balanceData = $BALANCE;
 const wsProxy = $WSPROXY;
 const livePriceCache = wsProxy.prices || {};
 
@@ -132,6 +134,7 @@ const snapshot = {
   trades,
   strategies,
   activity,
+  cash: balanceData.balance || 0,
   ledger: {
     openPositions: ledger.openPositions || [],
     closedPositions: ledger.closedPositions || [],

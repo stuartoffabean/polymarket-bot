@@ -25,7 +25,7 @@ const statusLabel = $('#statusLabel');
 const bankrollEl = $('#bankroll');
 const pnlTodayEl = $('#pnlToday');
 const pnlTotalEl = $('#pnlTotal');
-const uptimeEl = $('#uptime');
+// uptimeEl removed — replaced with cash + total portfolio
 const killBtn = $('#killBtn');
 const ledgerBody = $('#ledgerBody');
 const positionsEl = $('#positions');
@@ -235,11 +235,27 @@ function renderPositions() {
 function updateTopBar() {
     const {totalValue, totalCost, totalPnl, positions} = computePortfolio();
     const ledger = snapshot?.ledger || {};
+    const cash = snapshot?.cash || 0;
     const realizedPnl = parseFloat(ledger.totalRealizedPnl) || 0;
     const combinedPnl = totalPnl + realizedPnl;
+    const totalPortfolio = totalValue + cash;
 
-    // Portfolio value (current position value)
+    // Total portfolio (positions + cash)
+    const totalPortfolioEl = document.getElementById('totalPortfolio');
+    if (totalPortfolioEl) {
+        totalPortfolioEl.textContent = fmtUsd(totalPortfolio);
+        const startCap = 433;
+        const pctChange = ((totalPortfolio - startCap) / startCap * 100).toFixed(1);
+        const cls = totalPortfolio >= startCap ? 'green' : 'red';
+        totalPortfolioEl.className = 'stat-value mono ' + cls;
+    }
+
+    // Position value
     bankrollEl.textContent = fmtUsd(totalValue);
+    
+    // Cash
+    const cashEl = document.getElementById('cashBalance');
+    if (cashEl) cashEl.textContent = fmtUsd(cash);
     
     // Unrealized P&L
     const unrealized = fmtPnl(totalPnl);
@@ -261,10 +277,6 @@ function updateTopBar() {
         totalPnlEl.textContent = tPnl.text;
         totalPnlEl.className = 'stat-value mono ' + tPnl.cls;
     }
-
-    // Positions count
-    const closedCount = (ledger.closedPositions || []).length;
-    uptimeEl.textContent = `${positions.length} open · ${closedCount} closed`;
 }
 
 // ── Trade Ledger ──

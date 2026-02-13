@@ -323,9 +323,16 @@
       "pnlPct": null,
       "message": "🚨 EMERGENCY: Balance $20.00 below 10% of $433 — ALL TRADING HALTED",
       "timestamp": "2026-02-12T23:50:50.112Z"
+    },
+    {
+      "type": "FEE_CHANGE_DETECTED",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
+      "timestamp": "2026-02-13T01:05:29.444Z"
     }
   ],
   "circuitBreakerTripped": false,
-  "survivalMode": true,
-  "emergencyMode": true
+  "survivalMode": false,
+  "emergencyMode": false
 }
