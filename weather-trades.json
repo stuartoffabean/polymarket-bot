@@ -359,6 +359,26 @@
       "orderID": null,
       "status": 400,
       "question": "Will the highest temperature in Atlanta be between 54-55°F on February 13?"
+    },
+    {
+      "timestamp": "2026-02-13T06:30:42.755Z",
+      "city": "atlanta",
+      "date": "2026-02-13",
+      "bucket": "58-59",
+      "unit": "F",
+      "signal": "BUY_YES",
+      "tokenId": "89850023208665827912791204459354162829290040613445798160551059612704754189351",
+      "size": 33,
+      "price": 0.08,
+      "spend": "2.64",
+      "edge": 0.2266,
+      "ensembleConfidence": 0.75,
+      "ensembleMean": 57.4,
+      "ensembleStdDev": 2.53,
+      "forecastProb": 0.3226,
+      "orderID": "0xc9a6f44137aab3b1c27171e9800ce6ada46ee4ec099b2021f7dc57ce73f5e323",
+      "status": "delayed",
+      "question": "Will the highest temperature in Atlanta be between 58-59°F on February 13?"
     }
   ],
   "executedConditionIds": [
@@ -379,7 +399,8 @@
     "0x06673e5550e928446020a6b6474ab19501b7abc250934535776844caa8ef682a",
     "0x45c947968b0e43a7659aeb82cb3058a73c8c26ddfebcd291630e96e486d539f8",
     "0xe8c0411a7d9a162ca2926f4caa2c66c96d64df7c4db7ab90e1e184f5ca6b6ce9",
-    "0x0ca862b0407b4e233182575a8bca7873e65487cabb11988805b5c7de7cf5b79b"
+    "0x0ca862b0407b4e233182575a8bca7873e65487cabb11988805b5c7de7cf5b79b",
+    "0x905107460e444247972c1ad28fe208ab1d1be09ed180327828dce6cbcd9c19c8"
   ],
-  "lastRun": "2026-02-13T06:14:49.930Z"
+  "lastRun": "2026-02-13T06:30:44.258Z"
 }

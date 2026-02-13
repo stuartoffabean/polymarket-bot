@@ -101,6 +101,26 @@ const EMERGENCY_FLOOR = 50;           // $50 total value → emergency mode
 const SINGLE_TRADE_LOSS_LIMIT_USD = 20; // $20 single trade loss → halt strategy
 const DRAWDOWN_PAUSE_MS = 2 * 60 * 60 * 1000; // 2 hour pause
 
+// === STRATEGY TAGS ===
+// Every position gets a strategy tag: 'weather', 'resolution', 'arb', 'manual'
+// Persisted to survive restarts. SL/TP sells inherit the original buy's strategy.
+const STRATEGY_TAGS_FILE = path.join(__dirname, "..", "strategy-tags.json");
+let strategyTags = {}; // assetId -> { strategy, entryTime, ... }
+try { strategyTags = JSON.parse(fs.readFileSync(STRATEGY_TAGS_FILE, "utf8")); } catch {}
+function saveStrategyTags() {
+  try { fs.writeFileSync(STRATEGY_TAGS_FILE, JSON.stringify(strategyTags, null, 2)); } catch {}
+}
+function tagStrategy(assetId, strategy, meta = {}) {
+  strategyTags[assetId] = { strategy, taggedAt: new Date().toISOString(), ...meta };
+  saveStrategyTags();
+  // Also set on the tracked asset
+  const asset = subscribedAssets.get(assetId);
+  if (asset) asset.strategy = strategy;
+}
+function getStrategy(assetId) {
+  return strategyTags[assetId]?.strategy || subscribedAssets.get(assetId)?.strategy || 'unknown';
+}
+
 // === STATE ===
 let ws = null;
 let reconnectAttempts = 0;
@@ -382,7 +402,8 @@ function checkTriggers(assetId, asset) {
   // Stop loss → AUTO SELL
   if (pnlPct <= -stopLoss && !asset._stopLossTriggered) {
     asset._stopLossTriggered = true;
-    pushAlert("STOP_LOSS", assetId, asset, currentPrice, pnlPct, "AUTO-SELLING");
+    const strat = getStrategy(assetId);
+    pushAlert("STOP_LOSS", assetId, asset, currentPrice, pnlPct, `AUTO-SELLING [${strat}]`);
     if (autoExecuteEnabled && !circuitBreakerTripped) {
       executeSell(assetId, asset, "STOP_LOSS");
     }
@@ -391,7 +412,8 @@ function checkTriggers(assetId, asset) {
   // Take profit → AUTO SELL
   if (pnlPct >= takeProfit && !asset._takeProfitTriggered) {
     asset._takeProfitTriggered = true;
-    pushAlert("TAKE_PROFIT", assetId, asset, currentPrice, pnlPct, "AUTO-SELLING");
+    const strat = getStrategy(assetId);
+    pushAlert("TAKE_PROFIT", assetId, asset, currentPrice, pnlPct, `AUTO-SELLING [${strat}]`);
     if (autoExecuteEnabled && !circuitBreakerTripped) {
       executeSell(assetId, asset, "TAKE_PROFIT");
     }
@@ -635,6 +657,7 @@ async function apiHandler(req, res) {
           currentValue: currentValue?.toFixed(2),
           pnl: costBasis && currentValue ? (currentValue - costBasis).toFixed(2) : null,
           pnlPct: costBasis && currentValue ? (((currentValue - costBasis) / costBasis) * 100).toFixed(1) + "%" : null,
+          strategy: getStrategy(id),
           stopLoss: asset.stopLoss || DEFAULT_STOP_LOSS,
           takeProfit: asset.takeProfit || DEFAULT_TAKE_PROFIT,
           lastUpdate: asset.lastUpdate,
@@ -746,11 +769,15 @@ async function apiHandler(req, res) {
       if (url === "/add-position") {
         // Manual position injection for trades executor can't track
         // Persisted to manual-positions.json — survives restarts
-        const { assetId, market, outcome, avgPrice, size, stopLoss, takeProfit } = body;
+        const { assetId, market, outcome, avgPrice, size, stopLoss, takeProfit, strategy } = body;
         if (!assetId || !avgPrice || !size) return send(res, 400, { error: "Need assetId, avgPrice, size" });
+
+        // Tag strategy (default 'manual' for manually added positions)
+        tagStrategy(assetId, strategy || 'manual', { market: market?.slice(0, 60) });
 
         const posData = {
           market: market || "manual",
+          strategy: strategy || 'manual',
           outcome: outcome || "Unknown",
           avgPrice: parseFloat(avgPrice),
           size: parseFloat(size),
@@ -1026,6 +1053,11 @@ async function runArbScan() {
 
           sendTelegramAlert(`🎯 ARB EXECUTED: "${opp.event.slice(0,50)}"\n${sets} sets @ $${opp.execSum.toFixed(3)}/set\nSpend: $${totalSpend} | Expected profit: $${totalProfit}\nLegs: ${legs.length}`);
           
+          // Tag all legs with arb strategy
+          for (const leg of legs) {
+            tagStrategy(leg.tokenID, 'arb', { event: opp.event?.slice(0, 60), slug: opp.slug });
+          }
+
           // Persist to prevent re-executing after restart
           arbExecutedSlugs.add(opp.slug);
           try { fs.writeFileSync(ARB_EXECUTED_FILE, JSON.stringify([...arbExecutedSlugs])); } catch {}
@@ -1245,6 +1277,9 @@ async function runResolutionHunter() {
 
         // Auto-register market name for dashboard
         registerMarketName(c.conditionId, c.market);
+
+        // Tag strategy
+        tagStrategy(c.tokenId, 'resolution', { market: c.market?.slice(0, 60), conditionId: c.conditionId });
 
         // Persist to prevent re-buying after restart
         rhExecutedIds.add(c.conditionId);
@@ -1497,6 +1532,9 @@ async function runWeatherExecutor() {
       // Auto-register market name for dashboard
       const wxName = `${signal.city} ${signal.bucket}°${signal.unit} ${signal.date}`.replace(/\b\w/g, c => c.toUpperCase()).slice(0, 40);
       registerMarketName(signal.conditionId, wxName);
+
+      // Tag strategy
+      tagStrategy(tokenId, 'weather', { market: wxName, conditionId: signal.conditionId, city: signal.city });
 
       // Rate limit
       await new Promise(r => setTimeout(r, 1500));

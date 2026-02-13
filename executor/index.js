@@ -184,6 +184,103 @@ async function handler(req, res) {
         const cached = await getCachedPositions();
         return send(res, 200, { positions: cached.openPositions });
       }
+      if (path === "/strategy-pnl") {
+        // P&L grouped by strategy tag
+        const cached = await getCachedPositions();
+        const fs = require("fs");
+        const pathMod = require("path");
+        
+        // Load strategy tags
+        let strategyTags = {};
+        try { strategyTags = JSON.parse(fs.readFileSync(pathMod.join(__dirname, "..", "strategy-tags.json"), "utf8")); } catch {}
+        
+        // Load market names
+        let marketNames = {};
+        try { marketNames = JSON.parse(fs.readFileSync(pathMod.join(__dirname, "market-names.json"), "utf8")); } catch {}
+        
+        // Get live prices from ws-feed
+        let livePrices = {};
+        try {
+          const priceData = await new Promise((resolve, reject) => {
+            http.get("http://localhost:3003/prices", (res) => {
+              let d = ""; res.on("data", c => d += c);
+              res.on("end", () => { try { resolve(JSON.parse(d)); } catch(e) { resolve({}); } });
+            }).on("error", () => resolve({}));
+          });
+          livePrices = priceData.prices || {};
+        } catch {}
+        
+        const strategies = {};
+        
+        for (const pos of cached.allPositions) {
+          const tag = strategyTags[pos.asset_id]?.strategy || 'manual';
+          if (!strategies[tag]) strategies[tag] = { 
+            strategy: tag, openTrades: 0, closedTrades: 0, 
+            totalDeployed: 0, realizedPnl: 0, unrealizedPnl: 0,
+            positions: []
+          };
+          
+          const s = strategies[tag];
+          const name = marketNames[pos.asset_id] || marketNames[pos.market] || pos.market?.slice(0, 20) || 'unknown';
+          
+          if (pos.size > 0.001) {
+            // Open position
+            s.openTrades++;
+            s.totalDeployed += pos.totalCost;
+            
+            // Get live bid for unrealized P&L
+            const shortId = pos.asset_id.slice(0, 20);
+            const liveData = livePrices[shortId];
+            const currentBid = liveData ? parseFloat(liveData.bid) : null;
+            const currentValue = currentBid ? currentBid * pos.size : null;
+            const unrealized = currentValue ? currentValue - pos.totalCost : 0;
+            s.unrealizedPnl += unrealized;
+            
+            s.positions.push({
+              asset_id: pos.asset_id.slice(0, 20),
+              market: name,
+              outcome: pos.outcome,
+              size: pos.size,
+              avgPrice: parseFloat(pos.avgPrice),
+              costBasis: +pos.totalCost.toFixed(2),
+              currentValue: currentValue ? +currentValue.toFixed(2) : null,
+              unrealizedPnl: +unrealized.toFixed(2),
+              status: 'open',
+            });
+          } else {
+            // Closed position — realized P&L = sell proceeds - buy cost
+            s.closedTrades++;
+            const buyTotal = pos.trades?.filter(t => (t.side === 'BUY' || t._makerFill?.side === 'BUY'))
+              .reduce((sum, t) => sum + (parseFloat(t.size || t._makerFill?.matched_amount || 0) * parseFloat(t.price || t._makerFill?.price || 0)), 0) || 0;
+            const sellTotal = pos.trades?.filter(t => (t.side === 'SELL' || t._makerFill?.side === 'SELL'))
+              .reduce((sum, t) => sum + (parseFloat(t.size || t._makerFill?.matched_amount || 0) * parseFloat(t.price || t._makerFill?.price || 0)), 0) || 0;
+            const realized = sellTotal - buyTotal;
+            s.realizedPnl += realized;
+            s.totalDeployed += Math.abs(pos.totalCost);
+            
+            s.positions.push({
+              asset_id: pos.asset_id.slice(0, 20),
+              market: name,
+              outcome: pos.outcome,
+              realizedPnl: +realized.toFixed(2),
+              status: 'closed',
+            });
+          }
+        }
+        
+        // Round totals
+        for (const s of Object.values(strategies)) {
+          s.totalDeployed = +s.totalDeployed.toFixed(2);
+          s.realizedPnl = +s.realizedPnl.toFixed(2);
+          s.unrealizedPnl = +s.unrealizedPnl.toFixed(2);
+          s.totalPnl = +(s.realizedPnl + s.unrealizedPnl).toFixed(2);
+        }
+        
+        return send(res, 200, { 
+          timestamp: new Date().toISOString(),
+          strategies: Object.values(strategies).sort((a, b) => b.totalDeployed - a.totalDeployed),
+        });
+      }
       if (path === "/trades") {
         const trades = await client.getTrades();
         return send(res, 200, { trades });

@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-13T06:14:13.956Z",
+  "timestamp": "2026-02-13T06:30:15.127Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
-    "flagged": 6,
+    "flagged": 5,
     "viable": 2
   },
   "opportunities": [
@@ -13,10 +13,12 @@
       "type": "LONG",
       "outcomes": 20,
       "midSum": 0.805,
-      "execSum": 0.742,
+      "execSum": 0.741,
       "deviation": 19.5,
-      "execDeviation": 25.8,
-      "profitPer100": 25.8,
+      "execDeviation": 25.9,
+      "grossProfitPer100": 25.9,
+      "feesPer100": 0,
+      "profitPer100": 25.9,
       "viable": true,
       "details": [
         {
@@ -40,7 +42,7 @@
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
           "mid": 0.0505,
-          "exec": 0.05,
+          "exec": 0.049,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -146,29 +148,31 @@
       "slug": "how-many-people-will-trump-deport-in-2025",
       "type": "LONG",
       "outcomes": 9,
-      "midSum": 0.965,
+      "midSum": 0.9545,
       "execSum": 0.91,
-      "deviation": 3.5,
+      "deviation": 4.55,
       "execDeviation": 9,
+      "grossProfitPer100": 9,
+      "feesPer100": 0,
       "profitPer100": 9,
       "viable": true,
       "details": [
         {
           "name": "Will Trump deport less than 250,000?",
-          "mid": 0.04,
-          "exec": 0.03,
+          "mid": 0.0395,
+          "exec": 0.029,
           "token": "101676997363687199724245607342877036148401850938023978421879460310389391082353"
         },
         {
           "name": "Will Trump deport 250,000-500,000 people?",
-          "mid": 0.8645,
+          "mid": 0.854,
           "exec": 0.852,
           "token": "13244681086321087932946246027856416106585284024824496763706748621681543444582"
         },
         {
           "name": "Will Trump deport 500,000-750,000- people?",
-          "mid": 0.034,
-          "exec": 0.01,
+          "mid": 0.0345,
+          "exec": 0.011,
           "token": "100074770378634056601572485653252702850363676459996771990439989989293515601975"
         },
         {
@@ -214,17 +218,19 @@
       "slug": "how-many-fed-rate-cuts-in-2026",
       "type": "SHORT",
       "outcomes": 13,
-      "midSum": 1.028,
-      "execSum": 0.99,
-      "deviation": 2.8,
-      "execDeviation": 1,
-      "profitPer100": -1,
+      "midSum": 1.026,
+      "execSum": 0.997,
+      "deviation": 2.6,
+      "execDeviation": 0.3,
+      "grossProfitPer100": -0.3,
+      "feesPer100": 0,
+      "profitPer100": -0.3,
       "viable": false,
       "details": [
         {
           "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.0665,
-          "exec": 0.066,
+          "mid": 0.0645,
+          "exec": 0.064,
           "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
         },
         {
@@ -235,7 +241,7 @@
         },
         {
           "name": "Will 2 Fed rate cuts happen in 2026?",
-          "mid": 0.26,
+          "mid": 0.255,
           "exec": 0.25,
           "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
         },
@@ -247,8 +253,8 @@
         },
         {
           "name": "Will 4 Fed rate cuts happen in 2026?",
-          "mid": 0.13,
-          "exec": 0.12,
+          "mid": 0.135,
+          "exec": 0.13,
           "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
         },
         {
@@ -260,7 +266,7 @@
         {
           "name": "Will 6 Fed rate cuts happen in 2026?",
           "mid": 0.0285,
-          "exec": 0.029,
+          "exec": 0.028,
           "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
         },
         {
@@ -306,10 +312,12 @@
       "slug": "2026-icc-t20-mens-world-cup-winner",
       "type": "SHORT",
       "outcomes": 11,
-      "midSum": 1.0425,
+      "midSum": 1.043,
       "execSum": 0.981,
-      "deviation": 4.25,
+      "deviation": 4.3,
       "execDeviation": 1.9,
+      "grossProfitPer100": -1.9,
+      "feesPer100": 0,
       "profitPer100": -1.9,
       "viable": false,
       "details": [
@@ -351,7 +359,7 @@
         },
         {
           "name": "Will West Indies win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0355,
+          "mid": 0.036,
           "exec": 0.035,
           "token": "95028549383885752097876461063574302577289253561522211568257489843435069990371"
         },
@@ -382,112 +390,28 @@
       ]
     },
     {
-      "event": "NBA Western Conference Champion ",
-      "slug": "nba-western-conference-champion-933",
-      "type": "SHORT",
-      "outcomes": 12,
-      "midSum": 1.027,
-      "execSum": 0.978,
-      "deviation": 2.7,
-      "execDeviation": 2.2,
-      "profitPer100": -2.2,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will the Oklahoma City Thunder win the NBA Western Conferenc",
-          "mid": 0.5,
-          "exec": 0.49,
-          "token": "105874436620923713168019020245858616944322383958692280683224180064376992665538"
-        },
-        {
-          "name": "Will the Denver Nuggets win the NBA Western Conference Final",
-          "mid": 0.16,
-          "exec": 0.15,
-          "token": "108398074540970095314518325646490765619963623062982966676789014794361479719637"
-        },
-        {
-          "name": "Will the Houston Rockets win the NBA Western Conference Fina",
-          "mid": 0.051,
-          "exec": 0.05,
-          "token": "22226004461035625319919657267129959466466585725269185478458570055870755140202"
-        },
-        {
-          "name": "Will the Los Angeles Lakers win the NBA Western Conference F",
-          "mid": 0.0365,
-          "exec": 0.036,
-          "token": "92156510891798873020497715268024772851858076229893943637545856397683791106647"
-        },
-        {
-          "name": "Will the Minnesota Timberwolves win the NBA Western Conferen",
-          "mid": 0.064,
-          "exec": 0.061,
-          "token": "80564199933198063686735983682931201091805047291421501140508185910743468318376"
-        },
-        {
-          "name": "Will the Los Angeles Clippers win the NBA Western Conference",
-          "mid": 0.025,
-          "exec": 0.024,
-          "token": "48683147420750921052017138201270724636186430958875818497134964551306866907814"
-        },
-        {
-          "name": "Will the Dallas Mavericks win the NBA Western Conference Fin",
-          "mid": 0.005,
-          "exec": 0.003,
-          "token": "55099493322519440967558717167222283364927814955850690659280839827209928958533"
-        },
-        {
-          "name": "Will the San Antonio Spurs win the NBA Western Conference Fi",
-          "mid": 0.1215,
-          "exec": 0.118,
-          "token": "6842047670820419171425914468337077680927367717837404858652329372722501774629"
-        },
-        {
-          "name": "Will the Phoenix Suns win the NBA Western Conference Finals?",
-          "mid": 0.0215,
-          "exec": 0.02,
-          "token": "24315108267836543154857233535536136482524552716493402526894829400485516895736"
-        },
-        {
-          "name": "Will the Utah Jazz win the NBA Western Conference Finals?",
-          "mid": 0.0025,
-          "exec": 0,
-          "token": "79870685104046272701356539864336775233555053726570352166377648938896627310090"
-        },
-        {
-          "name": "Will the Portland Trail Blazers win the NBA Western Conferen",
-          "mid": 0.018,
-          "exec": 0.007,
-          "token": "77648433824716730185008177852682080573261442860361580435966309914289533557558"
-        },
-        {
-          "name": "Will the Golden State Warriors win the NBA Western Conferenc",
-          "mid": 0.02,
-          "exec": 0.019,
-          "token": "8186557467277475901094949742490854679817405006696983018588137692207963004648"
-        }
-      ]
-    },
-    {
       "event": "How long will Trump and Netanyahu shake hands for?",
       "slug": "how-long-will-trump-and-netanyahu-shake-hands-for-when-meeting-this-week",
       "type": "SHORT",
       "outcomes": 5,
-      "midSum": 1.0285,
+      "midSum": 1.028,
       "execSum": 0.955,
-      "deviation": 2.85,
+      "deviation": 2.8,
       "execDeviation": 4.5,
+      "grossProfitPer100": -4.5,
+      "feesPer100": 0,
       "profitPer100": -4.5,
       "viable": false,
       "details": [
         {
           "name": "Will Trump and Netanyahu handshake last 2–6 seconds by Febru",
-          "mid": 0.0075,
+          "mid": 0.007,
           "exec": 0.001,
           "token": "91580255349566758785897159465499786183274630044213570758269910115019801034781"
         },
         {
           "name": "Will Trump and Netanyahu handshake last 6–10 seconds by Febr",
-          "mid": 0.0235,
+          "mid": 0.023,
           "exec": 0.001,
           "token": "114951122256378254781341477010451797643031616371088396785815442638683642035872"
         },
@@ -505,7 +429,7 @@
         },
         {
           "name": "Will Trump and Netanyahu only be photographed together by Fe",
-          "mid": 0.9705,
+          "mid": 0.971,
           "exec": 0.953,
           "token": "105038283946597258609699256404637370706731691794441181754066014464795278151914"
         }
