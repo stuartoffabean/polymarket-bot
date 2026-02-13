@@ -1,0 +1,15 @@
+{
+  "tokenID": "63143918686236233928",
+  "market": "Anthropic Best AI Model Feb",
+  "entryPrice": 0.62,
+  "thesis": "Anthropic raised $30B, Claude quality improvements ongoing. Market underprices Anthropic vs OpenAI.",
+  "invalidationConditions": [
+    "OpenAI releases GPT-5 with clear benchmark superiority before Feb 28",
+    "Major Anthropic service outage or safety incident",
+    "Independent benchmark shows Claude falling behind GPT-4 by >10%"
+  ],
+  "expectedResolution": "2026-02-28",
+  "catalyst": "AI benchmark releases, model announcements",
+  "createdAt": "2026-02-13T15:10:46.393Z",
+  "status": "active"
+}

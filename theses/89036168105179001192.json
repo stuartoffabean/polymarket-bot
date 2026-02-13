@@ -1,0 +1,15 @@
+{
+  "tokenID": "89036168105179001192",
+  "market": "Fed March 25bps Cut NO",
+  "entryPrice": 0.93,
+  "thesis": "CPI sticky, Fed hawkish tone, market pricing in pause. No rate cut in March meeting.",
+  "invalidationConditions": [
+    "February CPI drops below 2.3% YoY unexpectedly",
+    "Fed governor gives dovish speech signaling March cut",
+    "Major financial crisis forces emergency easing"
+  ],
+  "expectedResolution": "2026-03-19",
+  "catalyst": "CPI data releases, Fed speeches, FOMC minutes",
+  "createdAt": "2026-02-13T15:10:46.439Z",
+  "status": "active"
+}

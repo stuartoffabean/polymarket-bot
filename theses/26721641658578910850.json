@@ -1,0 +1,15 @@
+{
+  "tokenID": "26721641658578910850",
+  "market": "Norway Most Total Medals Winter Olympics",
+  "entryPrice": 0.62,
+  "thesis": "Norway dominates biathlon (8 events) and cross-country (8 events) — their 2 strongest sports with 16 remaining events. Historical dominance in these disciplines should close the medal gap.",
+  "invalidationConditions": [
+    "Norway falls >5 medals behind with <8 events remaining",
+    "Major Norwegian athletes (Bø, Klæbo) injured/DNS",
+    "Host nation (Italy) sweeps biathlon or XC events"
+  ],
+  "expectedResolution": "2026-02-23",
+  "catalyst": "Biathlon and cross-country events schedule",
+  "createdAt": "2026-02-13T15:10:46.409Z",
+  "status": "active"
+}

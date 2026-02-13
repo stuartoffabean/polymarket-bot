@@ -1,0 +1,15 @@
+{
+  "tokenID": "14508138056322224915",
+  "market": "BTC wont drop to 55K Feb",
+  "entryPrice": 0.82,
+  "thesis": "BTC at $67K, would need 18% drop in 2 weeks to hit $55K. Unlikely without major black swan.",
+  "invalidationConditions": [
+    "BTC drops below $60K (halfway to target)",
+    "Major exchange hack or regulatory crackdown",
+    "Tether depeg or stablecoin crisis"
+  ],
+  "expectedResolution": "2026-02-28",
+  "catalyst": "Crypto market conditions",
+  "createdAt": "2026-02-13T15:10:46.454Z",
+  "status": "active"
+}

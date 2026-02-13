@@ -1,0 +1,15 @@
+{
+  "tokenID": "77587680906182806497",
+  "market": "Bangladesh BNP Election Win",
+  "entryPrice": 0.8,
+  "thesis": "BNP frontrunner in post-Hasina election. Strong polling data, opposition fragmented.",
+  "invalidationConditions": [
+    "Official results show BNP losing with >95% counted",
+    "Election commission announces recount or fraud investigation",
+    "Military intervention suspending election results"
+  ],
+  "expectedResolution": "2026-02-14",
+  "catalyst": "Election results announcement",
+  "createdAt": "2026-02-13T15:10:20.782Z",
+  "status": "active"
+}

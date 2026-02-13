@@ -1,0 +1,15 @@
+{
+  "tokenID": "37951513621735784471",
+  "market": "Norway Most Gold Medals Winter Olympics",
+  "entryPrice": 0.92,
+  "thesis": "Same biathlon/XC thesis as total medals but tighter margin. Norway needs gold specifically, not just podiums.",
+  "invalidationConditions": [
+    "Italy leads by 3+ golds with <6 gold events remaining",
+    "Norway fails to medal in 3+ consecutive biathlon/XC events",
+    "Klæbo loses 10km XC (was heavy favorite)"
+  ],
+  "expectedResolution": "2026-02-23",
+  "catalyst": "Daily gold medal results",
+  "createdAt": "2026-02-13T15:10:46.425Z",
+  "status": "active"
+}

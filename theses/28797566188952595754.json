@@ -1,0 +1,15 @@
+{
+  "tokenID": "28797566188952595754",
+  "market": "Bad Bunny Halftime Views",
+  "entryPrice": 0.54,
+  "thesis": "Bad Bunny Super Bowl halftime show likely to generate massive YouTube views. Previous halftime shows consistently hit high view counts.",
+  "invalidationConditions": [
+    "Show receives overwhelmingly negative reception",
+    "YouTube removes or restricts the video",
+    "Technical issues prevent proper upload/distribution"
+  ],
+  "expectedResolution": "2026-02-20",
+  "catalyst": "Super Bowl halftime performance and YouTube upload",
+  "createdAt": "2026-02-13T15:10:46.466Z",
+  "status": "active"
+}
