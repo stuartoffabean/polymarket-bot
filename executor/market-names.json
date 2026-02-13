@@ -51,5 +51,7 @@
   "0x0ca862b0407b4e233182575a8bca7873e65487cabb11988805b5c7de7cf5b79b": "Atlanta 54-55°F 2026-02-13",
   "0x46fb37d8507df7f1b0dc94ffee763ed59f7ea7104f4f589ca37de25750207539": "Will the highest temperature in New York City be 44°F or higher on February 13?",
   "0xbaf32eb7e3c4a31d82e5ab317923f81b2f1996537637e86f5f875f7d5d0c1deb": "Will the highest temperature in Toronto be 3°C or higher on February 13?",
-  "0x905107460e444247972c1ad28fe208ab1d1be09ed180327828dce6cbcd9c19c8": "Atlanta 58-59°F 2026-02-13"
+  "0x905107460e444247972c1ad28fe208ab1d1be09ed180327828dce6cbcd9c19c8": "Atlanta 58-59°F 2026-02-13",
+  "0xee192e2875d2a3088106dc681281e973ba0950a651edb95c5b3fac91c69b9d70": "Will the highest temperature in Ankara be 13°C on February 13?",
+  "0xc4c9c9d00b49a98d0c0698df4af359e2ac6f040929baa64dd325edd323e3374c": "Ankara 9°C 2026-02-13"
 }

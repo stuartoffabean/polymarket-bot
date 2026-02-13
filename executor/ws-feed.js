@@ -121,6 +121,48 @@ function getStrategy(assetId) {
   return strategyTags[assetId]?.strategy || subscribedAssets.get(assetId)?.strategy || 'unknown';
 }
 
+// === GLOBAL AUTO-EXECUTION CAP ===
+// Combined ceiling for all auto strategies (weather + resolution + arb).
+// Remaining 75% reserved for manual/cognitive trades via executor sessions.
+const AUTO_STRATEGIES = new Set(["weather", "resolution", "arb"]);
+const AUTO_GLOBAL_CAP_PCT = 0.25; // 25% of bankroll
+const AUTO_GLOBAL_CAP_FLOOR = 125; // minimum $125 (based on ~$500 bankroll)
+
+function getAutoDeployedCapital() {
+  let total = 0;
+  const breakdown = { weather: 0, resolution: 0, arb: 0 };
+  for (const [id, asset] of subscribedAssets) {
+    const strat = getStrategy(id);
+    if (AUTO_STRATEGIES.has(strat)) {
+      const value = (asset.currentBid || asset.avgPrice || 0) * (asset.size || 0);
+      total += value;
+      if (breakdown[strat] !== undefined) breakdown[strat] += value;
+    }
+  }
+  return { total: parseFloat(total.toFixed(2)), breakdown };
+}
+
+function getAutoGlobalCap() {
+  // Use portfolio value if available, otherwise floor
+  const bankroll = currentPortfolioValue || AUTO_GLOBAL_CAP_FLOOR / AUTO_GLOBAL_CAP_PCT;
+  return Math.max(bankroll * AUTO_GLOBAL_CAP_PCT, AUTO_GLOBAL_CAP_FLOOR);
+}
+
+// Returns { allowed, deployed, remaining, cap } — call before any auto-trade
+function checkAutoCapBudget(strategy, spendAmount) {
+  const { total, breakdown } = getAutoDeployedCapital();
+  const cap = getAutoGlobalCap();
+  const remaining = cap - total;
+  const allowed = spendAmount <= remaining;
+  if (!allowed) {
+    const msg = `🚫 AUTO-CAP BLOCKED: ${strategy} wanted $${spendAmount.toFixed(2)} but global auto-deployed=$${total.toFixed(2)}/${cap.toFixed(2)} (remaining=$${remaining.toFixed(2)}). Breakdown: wx=$${breakdown.weather.toFixed(2)} rh=$${breakdown.resolution.toFixed(2)} arb=$${breakdown.arb.toFixed(2)}`;
+    log("CAP", msg);
+    addAlert("AUTO_CAP_BLOCKED", msg);
+    sendTelegramAlert(msg);
+  }
+  return { allowed, deployed: total, remaining, cap, breakdown };
+}
+
 // === STATE ===
 let ws = null;
 let reconnectAttempts = 0;
@@ -663,6 +705,7 @@ async function apiHandler(req, res) {
           lastUpdate: asset.lastUpdate,
         };
       }
+      const _autoCap = getAutoDeployedCapital();
       return send(res, 200, {
         prices,
         portfolioValue: currentPortfolioValue,
@@ -672,6 +715,7 @@ async function apiHandler(req, res) {
         survivalMode,
         emergencyMode,
         autoExecuteEnabled,
+        autoCapital: { ..._autoCap, cap: getAutoGlobalCap(), remaining: parseFloat((getAutoGlobalCap() - _autoCap.total).toFixed(2)) },
       });
     }
 
@@ -741,6 +785,12 @@ async function apiHandler(req, res) {
           maxDailyDrawdown: MAX_DAILY_DRAWDOWN,
           defaultStopLoss: DEFAULT_STOP_LOSS,
           defaultTakeProfit: DEFAULT_TAKE_PROFIT,
+        },
+        autoCapital: {
+          ...getAutoDeployedCapital(),
+          cap: getAutoGlobalCap(),
+          remaining: parseFloat((getAutoGlobalCap() - getAutoDeployedCapital().total).toFixed(2)),
+          capPct: AUTO_GLOBAL_CAP_PCT,
         },
         recentAlerts: alertLog.slice(-10),
       });
@@ -1030,6 +1080,13 @@ async function runArbScan() {
 
         if (parseFloat(totalProfit) < ARB_MIN_PROFIT_FLAT) continue;
 
+        // Global auto-capital cap check
+        const arbCapCheck = checkAutoCapBudget("arb", parseFloat(totalSpend));
+        if (!arbCapCheck.allowed) {
+          log("ARB", `Skipping "${opp.event.slice(0,40)}" — global auto-cap exceeded`);
+          break; // stop trying more arbs this cycle
+        }
+
         log("ARB", `🎯 AUTO-EXEC: "${opp.event.slice(0,50)}" — ${sets} sets @ $${opp.execSum.toFixed(3)}/set = $${totalSpend} spend, $${totalProfit} profit`);
 
         try {
@@ -1243,6 +1300,14 @@ async function runResolutionHunter() {
       // Calculate size: spend up to RH_MAX_SPEND
       const size = Math.floor(RH_MAX_SPEND / c.price);
       if (size < 1) continue;
+
+      // Global auto-capital cap check
+      const rhSpend = size * c.price;
+      const rhCapCheck = checkAutoCapBudget("resolution", rhSpend);
+      if (!rhCapCheck.allowed) {
+        log("RH", `Skipping "${c.market.slice(0,40)}" — global auto-cap exceeded`);
+        break; // stop trying more RH trades this cycle
+      }
 
       // Get order book to verify depth
       try {
@@ -1465,6 +1530,13 @@ async function runWeatherExecutor() {
       if (signal.signal === "BUY_YES" && bestAsk > signal.marketPrice * 1.5 + 0.02) {
         log("WX", `${signal.city} ${signal.bucket}: price moved (was ${signal.marketPrice}, now ask ${bestAsk}) — skip`);
         continue;
+      }
+
+      // Global auto-capital cap check (before sizing)
+      const wxCapCheck = checkAutoCapBudget("weather", Math.min(signal.kellySize || WX_MAX_TRADE_SIZE, WX_MAX_TRADE_SIZE));
+      if (!wxCapCheck.allowed) {
+        log("WX", `Skipping ${signal.city} ${signal.bucket} — global auto-cap exceeded`);
+        break; // stop trying more weather trades this cycle
       }
 
       // Calculate size using Kelly or cap

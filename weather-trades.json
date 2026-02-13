@@ -379,6 +379,26 @@
       "orderID": "0xc9a6f44137aab3b1c27171e9800ce6ada46ee4ec099b2021f7dc57ce73f5e323",
       "status": "delayed",
       "question": "Will the highest temperature in Atlanta be between 58-59°F on February 13?"
+    },
+    {
+      "timestamp": "2026-02-13T06:34:29.840Z",
+      "city": "ankara",
+      "date": "2026-02-13",
+      "bucket": "9",
+      "unit": "C",
+      "signal": "BUY_YES",
+      "tokenId": "93357045767485842718148159020894568638500725026688511787117867018971102220543",
+      "size": 53,
+      "price": 0.15,
+      "spend": "7.95",
+      "edge": 0.2971,
+      "ensembleConfidence": 0.9,
+      "ensembleMean": 9.5,
+      "ensembleStdDev": 0.97,
+      "forecastProb": 0.3871,
+      "orderID": "0x9deb2f309a91831a22a847691cb2517edd435d5c1bc0f7ed2eaed2a1601defb6",
+      "status": "delayed",
+      "question": "Will the highest temperature in Ankara be 9°C on February 13?"
     }
   ],
   "executedConditionIds": [
@@ -400,7 +420,8 @@
     "0x45c947968b0e43a7659aeb82cb3058a73c8c26ddfebcd291630e96e486d539f8",
     "0xe8c0411a7d9a162ca2926f4caa2c66c96d64df7c4db7ab90e1e184f5ca6b6ce9",
     "0x0ca862b0407b4e233182575a8bca7873e65487cabb11988805b5c7de7cf5b79b",
-    "0x905107460e444247972c1ad28fe208ab1d1be09ed180327828dce6cbcd9c19c8"
+    "0x905107460e444247972c1ad28fe208ab1d1be09ed180327828dce6cbcd9c19c8",
+    "0xc4c9c9d00b49a98d0c0698df4af359e2ac6f040929baa64dd325edd323e3374c"
   ],
-  "lastRun": "2026-02-13T06:30:44.258Z"
+  "lastRun": "2026-02-13T06:34:31.342Z"
 }

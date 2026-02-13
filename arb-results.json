@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-13T06:30:15.127Z",
+  "timestamp": "2026-02-13T06:33:58.103Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
-    "flagged": 5,
+    "flagged": 4,
     "viable": 2
   },
   "opportunities": [
@@ -13,12 +13,12 @@
       "type": "LONG",
       "outcomes": 20,
       "midSum": 0.805,
-      "execSum": 0.741,
+      "execSum": 0.742,
       "deviation": 19.5,
-      "execDeviation": 25.9,
-      "grossProfitPer100": 25.9,
+      "execDeviation": 25.8,
+      "grossProfitPer100": 25.8,
       "feesPer100": 0,
-      "profitPer100": 25.9,
+      "profitPer100": 25.8,
       "viable": true,
       "details": [
         {
@@ -78,7 +78,7 @@
         {
           "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
           "mid": 0.01,
-          "exec": 0.009,
+          "exec": 0.01,
           "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
         },
         {
@@ -149,12 +149,12 @@
       "type": "LONG",
       "outcomes": 9,
       "midSum": 0.9545,
-      "execSum": 0.91,
+      "execSum": 0.911,
       "deviation": 4.55,
-      "execDeviation": 9,
-      "grossProfitPer100": 9,
+      "execDeviation": 8.9,
+      "grossProfitPer100": 8.9,
       "feesPer100": 0,
-      "profitPer100": 9,
+      "profitPer100": 8.9,
       "viable": true,
       "details": [
         {
@@ -172,7 +172,7 @@
         {
           "name": "Will Trump deport 500,000-750,000- people?",
           "mid": 0.0345,
-          "exec": 0.011,
+          "exec": 0.012,
           "token": "100074770378634056601572485653252702850363676459996771990439989989293515601975"
         },
         {
@@ -386,52 +386,6 @@
           "mid": 0.0015,
           "exec": 0.001,
           "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
-        }
-      ]
-    },
-    {
-      "event": "How long will Trump and Netanyahu shake hands for?",
-      "slug": "how-long-will-trump-and-netanyahu-shake-hands-for-when-meeting-this-week",
-      "type": "SHORT",
-      "outcomes": 5,
-      "midSum": 1.028,
-      "execSum": 0.955,
-      "deviation": 2.8,
-      "execDeviation": 4.5,
-      "grossProfitPer100": -4.5,
-      "feesPer100": 0,
-      "profitPer100": -4.5,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will Trump and Netanyahu handshake last 2–6 seconds by Febru",
-          "mid": 0.007,
-          "exec": 0.001,
-          "token": "91580255349566758785897159465499786183274630044213570758269910115019801034781"
-        },
-        {
-          "name": "Will Trump and Netanyahu handshake last 6–10 seconds by Febr",
-          "mid": 0.023,
-          "exec": 0.001,
-          "token": "114951122256378254781341477010451797643031616371088396785815442638683642035872"
-        },
-        {
-          "name": "Will Trump and Netanyahu handshake last 10–15 seconds by Feb",
-          "mid": 0.023,
-          "exec": 0,
-          "token": "58197759230167791948402563725452716039090984372695453084460085699639116525382"
-        },
-        {
-          "name": "Will Trump and Netanyahu handshake last 15 seconds or longer",
-          "mid": 0.0035,
-          "exec": 0,
-          "token": "72657249372083588802555243960518760334015297864119150300480769561790373563748"
-        },
-        {
-          "name": "Will Trump and Netanyahu only be photographed together by Fe",
-          "mid": 0.971,
-          "exec": 0.953,
-          "token": "105038283946597258609699256404637370706731691794441181754066014464795278151914"
         }
       ]
     }

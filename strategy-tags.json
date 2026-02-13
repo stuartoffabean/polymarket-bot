@@ -128,5 +128,18 @@
     "strategy": "resolution",
     "taggedAt": "2026-02-13T06:32:08.161Z",
     "market": "Will the highest temperature in Toronto be 3°C or higher on "
+  },
+  "7340112073555222453704760842525649718617418327394825093976073523054585350682": {
+    "strategy": "resolution",
+    "taggedAt": "2026-02-13T06:34:00.977Z",
+    "market": "Will the highest temperature in Ankara be 13°C on February 1",
+    "conditionId": "0xee192e2875d2a3088106dc681281e973ba0950a651edb95c5b3fac91c69b9d70"
+  },
+  "93357045767485842718148159020894568638500725026688511787117867018971102220543": {
+    "strategy": "weather",
+    "taggedAt": "2026-02-13T06:34:29.841Z",
+    "market": "Ankara 9°C 2026-02-13",
+    "conditionId": "0xc4c9c9d00b49a98d0c0698df4af359e2ac6f040929baa64dd325edd323e3374c",
+    "city": "ankara"
   }
 }
