@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-13T12:52:49.835Z",
+  "timestamp": "2026-02-13T13:08:09.945Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
-    "flagged": 2,
-    "viable": 2
+    "flagged": 4,
+    "viable": 3
   },
   "opportunities": [
     {
@@ -12,13 +12,13 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.8155,
-      "execSum": 0.752,
-      "deviation": 18.45,
-      "execDeviation": 24.8,
-      "grossProfitPer100": 24.8,
+      "midSum": 0.8255,
+      "execSum": 0.762,
+      "deviation": 17.45,
+      "execDeviation": 23.8,
+      "grossProfitPer100": 23.8,
       "feesPer100": 0,
-      "profitPer100": 24.8,
+      "profitPer100": 23.8,
       "viable": true,
       "details": [
         {
@@ -41,8 +41,8 @@
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.0605,
-          "exec": 0.059,
+          "mid": 0.062,
+          "exec": 0.063,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -53,13 +53,13 @@
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.1115,
-          "exec": 0.105,
+          "mid": 0.1145,
+          "exec": 0.109,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
         {
           "name": "Will Khaled Mashal win the Nobel Peace Prize in 2026?",
-          "mid": 0.0115,
+          "mid": 0.012,
           "exec": 0.009,
           "token": "4817558919700430121831697879056774909752184660255737582917693916506064447935"
         },
@@ -71,8 +71,8 @@
         },
         {
           "name": "Will Ahmed al-Sharaa win the Nobel Peace Prize in 2026?",
-          "mid": 0.013,
-          "exec": 0.011,
+          "mid": 0.014,
+          "exec": 0.012,
           "token": "29384252153498040908016173010534270095096285030713208216637067996773126537603"
         },
         {
@@ -83,7 +83,7 @@
         },
         {
           "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.073,
+          "mid": 0.074,
           "exec": 0.068,
           "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
         },
@@ -113,7 +113,7 @@
         },
         {
           "name": "Will Vladimir Putin win the Nobel Peace Prize in 2026?",
-          "mid": 0.006,
+          "mid": 0.0065,
           "exec": 0.005,
           "token": "3072654272549368438022392135276167382428661847959009954134234860002162565563"
         },
@@ -126,18 +126,18 @@
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
           "mid": 0.0055,
-          "exec": 0.003,
+          "exec": 0.004,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
         {
           "name": "Will Charlie Kirk win the Nobel Peace Prize in 2026?",
-          "mid": 0.017,
+          "mid": 0.019,
           "exec": 0.016,
           "token": "41901357708237118584313729261027657874621373325486663648640954008517926947624"
         },
         {
           "name": "Will Narendra Modi win the Nobel Peace Prize in 2026?",
-          "mid": 0.0175,
+          "mid": 0.018,
           "exec": 0.016,
           "token": "95036065107529622997025744213041265776694292492123977042470465876649211394600"
         }
@@ -148,55 +148,55 @@
       "slug": "elon-musk-of-tweets-february-12-february-14",
       "type": "LONG",
       "outcomes": 10,
-      "midSum": 0.9545,
-      "execSum": 0.922,
-      "deviation": 4.55,
-      "execDeviation": 7.8,
-      "grossProfitPer100": 7.8,
+      "midSum": 0.9645,
+      "execSum": 0.927,
+      "deviation": 3.55,
+      "execDeviation": 7.3,
+      "grossProfitPer100": 7.3,
       "feesPer100": 0,
-      "profitPer100": 7.8,
+      "profitPer100": 7.3,
       "viable": true,
       "details": [
         {
           "name": "Will Elon Musk post 240+ tweets from February 12 to February",
-          "mid": 0.004,
+          "mid": 0.0025,
           "exec": 0.002,
           "token": "15034215811456036040764278458175248051748617668317505703784824112629572872623"
         },
         {
           "name": "Will Elon Musk post 40-64 tweets from February 12 to Februar",
-          "mid": 0.268,
-          "exec": 0.267,
+          "mid": 0.272,
+          "exec": 0.27,
           "token": "19160696202182641569221548842553238846261739954089635121321811350693102881692"
         },
         {
           "name": "Will Elon Musk post 115-139 tweets from February 12 to Febru",
-          "mid": 0.065,
+          "mid": 0.07,
           "exec": 0.06,
           "token": "79141348498154610869711763517359858283096073835629175956943035939212249740025"
         },
         {
           "name": "Will Elon Musk post 140-164 tweets from February 12 to Febru",
-          "mid": 0.0245,
-          "exec": 0.021,
+          "mid": 0.031,
+          "exec": 0.025,
           "token": "25138700007518255169733220174010858299639620152049125875379405583652485696742"
         },
         {
           "name": "Will Elon Musk post 165-189 tweets from February 12 to Febru",
-          "mid": 0.013,
-          "exec": 0.011,
+          "mid": 0.0175,
+          "exec": 0.013,
           "token": "54334899525658175201298870146327190676678802829019336950532850893136954707611"
         },
         {
           "name": "Will Elon Musk post 190-214 tweets from February 12 to Febru",
-          "mid": 0.004,
+          "mid": 0.005,
           "exec": 0.003,
           "token": "30836670145539355582839471359688902101341973319407683130497170933609025408928"
         },
         {
           "name": "Will Elon Musk post <40 tweets from February 12 to February ",
-          "mid": 0.05,
-          "exec": 0.044,
+          "mid": 0.042,
+          "exec": 0.05,
           "token": "25099567166111281846302244039860015689241816252363247441459396207876081288557"
         },
         {
@@ -208,14 +208,154 @@
         {
           "name": "Will Elon Musk post 90-114 tweets from February 12 to Februa",
           "mid": 0.16,
-          "exec": 0.16,
+          "exec": 0.15,
           "token": "115034918305454824214295954991450505325341522461190524009674971926101814878692"
         },
         {
           "name": "Will Elon Musk post 215-239 tweets from February 12 to Febru",
-          "mid": 0.006,
+          "mid": 0.0045,
           "exec": 0.004,
           "token": "13056891492049623062155969471801682689874473544031899896391783479847146002407"
+        }
+      ]
+    },
+    {
+      "event": "2026 Winter Olympics: Most Medals",
+      "slug": "2026-winter-olympics-most-medals",
+      "type": "LONG",
+      "outcomes": 5,
+      "midSum": 0.9665,
+      "execSum": 0.955,
+      "deviation": 3.35,
+      "execDeviation": 4.5,
+      "grossProfitPer100": 4.5,
+      "feesPer100": 0,
+      "profitPer100": 4.5,
+      "viable": true,
+      "details": [
+        {
+          "name": "Will Austria win the most medals in the 2026 Winter Olympics",
+          "mid": 0.002,
+          "exec": 0.001,
+          "token": "32913970980151912338709408787347975401666190851973193394368477630531376305300"
+        },
+        {
+          "name": "Will Germany win the most medals in the 2026 Winter Olympics",
+          "mid": 0.002,
+          "exec": 0.001,
+          "token": "101712910572402512590283498860352772596318173558564598801167849103398831367984"
+        },
+        {
+          "name": "Will Norway win the most medals in the 2026 Winter Olympics?",
+          "mid": 0.705,
+          "exec": 0.71,
+          "token": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
+        },
+        {
+          "name": "Will Italy win the most medals in the 2026 Winter Olympics?",
+          "mid": 0.034,
+          "exec": 0.033,
+          "token": "19244830563353029156820916829799158659728550740152956971626445435150732003803"
+        },
+        {
+          "name": "Will the United States win the most medals in the 2026 Winte",
+          "mid": 0.22,
+          "exec": 0.21,
+          "token": "59592458272795269751135156838957871846215950681303118579370928325544984039115"
+        }
+      ]
+    },
+    {
+      "event": "How many Fed rate cuts in 2026?",
+      "slug": "how-many-fed-rate-cuts-in-2026",
+      "type": "SHORT",
+      "outcomes": 13,
+      "midSum": 1.0265,
+      "execSum": 0.991,
+      "deviation": 2.65,
+      "execDeviation": 0.9,
+      "grossProfitPer100": -0.9,
+      "feesPer100": 0,
+      "profitPer100": -0.9,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will no Fed rate cuts happen in 2026?",
+          "mid": 0.0755,
+          "exec": 0.074,
+          "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
+        },
+        {
+          "name": "Will 1 Fed rate cut happen in 2026?",
+          "mid": 0.19,
+          "exec": 0.18,
+          "token": "113379839734351069617987084078322474966003108854908079701423911002443710490196"
+        },
+        {
+          "name": "Will 2 Fed rate cuts happen in 2026?",
+          "mid": 0.255,
+          "exec": 0.25,
+          "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
+        },
+        {
+          "name": "Will 3 Fed rate cuts happen in 2026?",
+          "mid": 0.245,
+          "exec": 0.24,
+          "token": "95835705062472305459663741402900736177330733688944910993896545106260819635212"
+        },
+        {
+          "name": "Will 4 Fed rate cuts happen in 2026?",
+          "mid": 0.115,
+          "exec": 0.11,
+          "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
+        },
+        {
+          "name": "Will 5 Fed rate cuts happen in 2026?",
+          "mid": 0.055,
+          "exec": 0.05,
+          "token": "29213252446661789250484965446100709214117256176608501943249094649759520097655"
+        },
+        {
+          "name": "Will 6 Fed rate cuts happen in 2026?",
+          "mid": 0.034,
+          "exec": 0.034,
+          "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
+        },
+        {
+          "name": "Will 7 Fed rate cuts happen in 2026?",
+          "mid": 0.0145,
+          "exec": 0.014,
+          "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
+        },
+        {
+          "name": "Will 8 Fed rate cuts happen in 2026?",
+          "mid": 0.009,
+          "exec": 0.008,
+          "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
+        },
+        {
+          "name": "Will 9 Fed rate cuts happen in 2026?",
+          "mid": 0.0055,
+          "exec": 0.005,
+          "token": "23126031577449775652876745717301519312850542565907124407036782701549610893044"
+        },
+        {
+          "name": "Will 10 Fed rate cuts happen in 2026?",
+          "mid": 0.0045,
+          "exec": 0.004,
+          "token": "101699865858660601590309838387762714166224752219273014726406345404403204943713"
+        },
+        {
+          "name": "Will 11 Fed rate cuts happen in 2026?",
+          "mid": 0.005,
+          "exec": 0.004,
+          "token": "56345349743779788266710915561914531858285418844567819631705863717318287635981"
+        },
+        {
+          "name": "Will 12 or more Fed rate cuts happen in 2026?",
+          "mid": 0.0185,
+          "exec": 0.018,
+          "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
         }
       ]
     }

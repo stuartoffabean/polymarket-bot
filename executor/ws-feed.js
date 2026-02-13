@@ -1434,6 +1434,11 @@ const RH_MIN_LIQUIDITY = 500;   // min $500 liquidity
 const RH_RESOLUTION_WINDOW_H = 6; // markets resolving within 6 hours
 const RH_MIN_VOLUME_24H = 1000; // min $1K 24h volume (filters illiquid junk)
 
+// Sports/esports filter — these categories have structurally higher upset rates
+// that poison RH math (3 of 4 backtest losses were sports/esports)
+const RH_SKIP_SLUGS = /esports|valorant|counter-strike|cs2|tennis|nba|nfl|mma|ufc|soccer|football|dota|league-of-legends|lol-|r6siege|codmw|cricket|boxing|rugby|hockey|nhl|mlb|baseball|basketball|a-league|serie-a|la-liga|premier-league|bundesliga|ligue-1|eredivisie|copa|champions-league|europa-league|ncaa|cbb-|cwbb-|sea-|bun-|efa-|fl1-|ere-|por-|es2-|fr2-|lal-|chi1-|elc-/i;
+const RH_SKIP_QUESTIONS = /vs\.|vs |winner|match|game \d|map handicap|spread:|o\/u \d|both teams|total games|score in/i;
+
 // Persist executed conditionIds to survive restarts
 let rhExecutedIds = new Set();
 try { rhExecutedIds = new Set(JSON.parse(fs.readFileSync(RH_EXECUTED_FILE, "utf8"))); } catch {}
@@ -1470,6 +1475,11 @@ async function runResolutionHunter() {
         if (vol24h < RH_MIN_VOLUME_24H) continue;
         if (liquidity < RH_MIN_LIQUIDITY) continue;
         if (!tokenIds || tokenIds.length < 2) continue;
+
+        // Sports/esports filter — skip categories with high upset rates
+        const slug = m.slug || "";
+        const question = m.question || m.title || "";
+        if (RH_SKIP_SLUGS.test(slug) || RH_SKIP_QUESTIONS.test(question)) continue;
 
         // Check each outcome
         for (let i = 0; i < prices.length; i++) {

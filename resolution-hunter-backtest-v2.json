@@ -1,0 +1,68 @@
+{
+  "parameters": {
+    "RH_MIN": 0.95,
+    "RH_MAX": 0.98,
+    "RH_SPEND": 10.0,
+    "days": 30
+  },
+  "summary": {
+    "total_markets_analyzed": 9051,
+    "total_trades": 311,
+    "wins": 307,
+    "losses": 4,
+    "hit_rate_pct": 98.71,
+    "gross_pnl": 69.01,
+    "net_pnl": 69.01,
+    "avg_win": 0.3551,
+    "avg_loss": -10.0,
+    "wins_needed_per_loss": 28.16
+  },
+  "tier_breakdown": {
+    "95-96": {
+      "trades": 85,
+      "wins": 84,
+      "losses": 1,
+      "pnl": 30.19
+    },
+    "96-97": {
+      "trades": 96,
+      "wins": 94,
+      "losses": 2,
+      "pnl": 15.33
+    },
+    "97-98": {
+      "trades": 130,
+      "wins": 129,
+      "losses": 1,
+      "pnl": 23.5
+    }
+  },
+  "worst_losses": [
+    {
+      "market": "Will Stephen Miran be the first to leave the Trump Cabinet before 2027?",
+      "outcome": "NO",
+      "price": 0.9615,
+      "pnl": -10.0
+    },
+    {
+      "market": "Sierra vs. Rakhimova: Set 1 Games O/U 10.5",
+      "outcome": "YES",
+      "price": 0.96,
+      "pnl": -10.0
+    },
+    {
+      "market": "Counter-Strike: BIG EQUIPA vs kONO.ECF (BO3) - CCT Europe Series #15 Group Stage",
+      "outcome": "YES",
+      "price": 0.953,
+      "pnl": -10.0
+    },
+    {
+      "market": "Valorant: University War GC vs Looking For Laburo - Map 1 Winner",
+      "outcome": "YES",
+      "price": 0.979,
+      "pnl": -10.0
+    }
+  ],
+  "recommendation": "RE-ENABLE",
+  "timestamp": "2026-02-13T13:07:57.094055+00:00"
+}

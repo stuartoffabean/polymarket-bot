@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-02-13T12:37:46.455Z",
-  "windowStart": "2026-02-13T18:37:46.060Z",
-  "windowEnd": "2026-02-14T00:37:46.060Z",
+  "timestamp": "2026-02-13T13:07:46.443Z",
+  "windowStart": "2026-02-13T19:07:46.063Z",
+  "windowEnd": "2026-02-14T01:07:46.063Z",
   "count": 100,
   "markets": [
     {
       "slug": "another-us-government-shutdown-by-february-14",
       "question": "Government shutdown on Saturday?",
-      "yesPrice": 0.2415,
-      "noPrice": 0.7585,
+      "yesPrice": 0.224,
+      "noPrice": 0.776,
       "endDate": "2026-02-14T00:00:00Z",
-      "volume": 7506677.017858,
+      "volume": 7596935.279329,
       "volume24hr": 4582504.161655994,
-      "liquidity": 97377.77412,
+      "liquidity": 93304.72792,
       "conditionId": "0x4b78de44ea49d0eb8d5fee85352294b6f679a47c56944c6ad5c945e9a2ba7211"
     },
     {
       "slug": "sea-pis-mil-2026-02-13-mil",
       "question": "Will AC Milan win on 2026-02-13?",
-      "yesPrice": 0.605,
-      "noPrice": 0.395,
+      "yesPrice": 0.615,
+      "noPrice": 0.385,
       "endDate": "2026-02-13T19:45:00Z",
-      "volume": 782848.443609,
+      "volume": 802923.650891,
       "volume24hr": 451402.39542700007,
-      "liquidity": 616566.8713,
+      "liquidity": 677820.5344,
       "conditionId": "0x1c343aa731d9157ef3380b7edcad65838ff3bc88fee2e567f01b94023abe7c4f"
     },
     {
@@ -32,21 +32,10 @@
       "yesPrice": 0.575,
       "noPrice": 0.425,
       "endDate": "2026-02-13T19:30:00Z",
-      "volume": 85755.429475,
+      "volume": 87462.563546,
       "volume24hr": 63021.734662,
-      "liquidity": 479105.4574,
+      "liquidity": 474479.2582,
       "conditionId": "0xe82fd9670d6e8d9a0043c9c1f04c210db9b9264ac0a22e22bb5ab5cfdf9e53cd"
-    },
-    {
-      "slug": "dota2-flc-liquid-2026-02-13",
-      "question": "Dota 2: Team Falcons vs Team Liquid (BO5) - BLAST Slam Playoffs",
-      "yesPrice": 0.635,
-      "noPrice": 0.365,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 65217.397026,
-      "volume24hr": 20458.573276000003,
-      "liquidity": 27514.3399,
-      "conditionId": "0xa953cb1479c3df97ea552628c1e50515df7e0889aac7d280cd1d6bf95a0f41a3"
     },
     {
       "slug": "hsi-up-or-down-on-february-13-2026",
@@ -56,41 +45,30 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 9941.547,
       "volume24hr": 4941.5470000000005,
-      "liquidity": 33866.81631,
+      "liquidity": 33880.14884,
       "conditionId": "0x8c55ac5eff60954fe9a4f984f3a9787846e6f69151caf5cda478e1aecf7f7963"
-    },
-    {
-      "slug": "meta-above-610-on-february-13-2026",
-      "question": "Will Meta (META) finish week of February 9 above $610?",
-      "yesPrice": 0.9905,
-      "noPrice": 0.0095,
-      "endDate": "2026-02-13T21:00:00Z",
-      "volume": 9864.177705,
-      "volume24hr": 766.029555,
-      "liquidity": 8778.12553,
-      "conditionId": "0x2ff94664ba906db5c5bbdb8090da7f4d1a5c2e7a39909e659e8d831e9159a48a"
-    },
-    {
-      "slug": "msft-above-410-on-february-13-2026",
-      "question": "Will Microsoft (MSFT) finish week of February 9 above $410?",
-      "yesPrice": 0.0315,
-      "noPrice": 0.9685,
-      "endDate": "2026-02-13T21:00:00Z",
-      "volume": 9527.08283,
-      "volume24hr": 2407.4777400000003,
-      "liquidity": 985.1852,
-      "conditionId": "0x72c52464c68e75880f60447203dd4d3c694d7d452bbd5f4be6410bc5678619d6"
     },
     {
       "slug": "lal-elc-osa-2026-02-13-btts",
       "question": "Elche CF vs. CA Osasuna: Both Teams to Score",
-      "yesPrice": 0.525,
-      "noPrice": 0.475,
+      "yesPrice": 0.535,
+      "noPrice": 0.465,
       "endDate": "2026-02-13T20:00:00Z",
-      "volume": 9399.600177,
+      "volume": 9785.246415,
       "volume24hr": 1047.14402,
-      "liquidity": 44306.8094,
+      "liquidity": 38444.252,
       "conditionId": "0xf02b446dd1ad251390d0e02e052bf3fca2f74ab79baa04604ce91a07286267e0"
+    },
+    {
+      "slug": "msft-above-410-on-february-13-2026",
+      "question": "Will Microsoft (MSFT) finish week of February 9 above $410?",
+      "yesPrice": 0.0975,
+      "noPrice": 0.9025,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 9537.08283,
+      "volume24hr": 2407.4777400000003,
+      "liquidity": 897.3179,
+      "conditionId": "0x72c52464c68e75880f60447203dd4d3c694d7d452bbd5f4be6410bc5678619d6"
     },
     {
       "slug": "nflx-above-60-on-february-13-2026",
@@ -100,18 +78,18 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 9249.045231,
       "volume24hr": 721.3159999999998,
-      "liquidity": 8586.60702,
+      "liquidity": 8584.15934,
       "conditionId": "0xe4d1348d9816e6740c5d705c604b76a9fbff61892d3c1749980700b5e9e1b27d"
     },
     {
       "slug": "meta-above-620-on-february-13-2026",
       "question": "Will Meta (META) finish week of February 9 above $620?",
-      "yesPrice": 0.9765,
-      "noPrice": 0.0235,
+      "yesPrice": 0.9855,
+      "noPrice": 0.0145,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 9134.290177,
       "volume24hr": 5813.08577,
-      "liquidity": 1059.55596,
+      "liquidity": 1272.89928,
       "conditionId": "0x9219e4fd2ca25256c685acae550caa45b54fceaa0496881a748ecf9a11fecd6d"
     },
     {
@@ -122,30 +100,52 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 9006.684689,
       "volume24hr": 0,
-      "liquidity": 4543.41132,
+      "liquidity": 4538.41236,
       "conditionId": "0x576ebea56bb6026fd210664b3d125405162d4e71b201bde60955e92d1c4f2125"
     },
     {
       "slug": "efa-hul-cfc-2026-02-13-spread-away-1pt5",
       "question": "Spread: Chelsea FC (-1.5)",
-      "yesPrice": 0.575,
-      "noPrice": 0.425,
+      "yesPrice": 0.585,
+      "noPrice": 0.415,
       "endDate": "2026-02-13T19:45:00Z",
-      "volume": 8910.676504,
+      "volume": 8950.638261,
       "volume24hr": 7765.859307000012,
-      "liquidity": 5513.4528,
+      "liquidity": 5708.3097,
       "conditionId": "0x7794939bcf18ec5daeb40b59ced382900b29ef205bcad4d027934ec269c9d6cf"
+    },
+    {
+      "slug": "val-gm-bbl1-2026-02-13",
+      "question": "Valorant: Gentle Mates vs BBL Esports (BO5) - VCT EMEA Kickoff Playoffs",
+      "yesPrice": 0.485,
+      "noPrice": 0.515,
+      "endDate": "2026-02-13T22:00:00Z",
+      "volume": 8904.103806,
+      "volume24hr": 5213.479027,
+      "liquidity": 31663.02,
+      "conditionId": "0x60dad95394c1b6ed9566fc4d65b989850eb921d815b59abbc8943838f7d4eff4"
     },
     {
       "slug": "sea-pis-mil-2026-02-13-total-2pt5",
       "question": "Pisa SC vs. AC Milan: O/U 2.5",
-      "yesPrice": 0.44,
-      "noPrice": 0.56,
+      "yesPrice": 0.435,
+      "noPrice": 0.565,
       "endDate": "2026-02-13T19:45:00Z",
-      "volume": 8849.579929,
+      "volume": 8892.16215,
       "volume24hr": 4024.014325,
-      "liquidity": 440519.0735,
+      "liquidity": 443896.2282,
       "conditionId": "0x13f280fc44e6fdaea3a5157aa1273ce39fc35faa03cd19789b7e80cee06a3821"
+    },
+    {
+      "slug": "fl1-asm-nan-2026-02-13-draw",
+      "question": "Will AS Monaco FC vs. FC Nantes end in a draw?",
+      "yesPrice": 0.195,
+      "noPrice": 0.805,
+      "endDate": "2026-02-13T19:45:00Z",
+      "volume": 8750.859801,
+      "volume24hr": 986.1919029999999,
+      "liquidity": 556209.664,
+      "conditionId": "0x1feab6d84b99556e0eecf8a1ba1499d16ef07920ec3209257cfa53f3e1e3e386"
     },
     {
       "slug": "will-nvda-close-below-150-week-february-13-2026",
@@ -155,7 +155,7 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 8741.250251,
       "volume24hr": 694.361,
-      "liquidity": 2613.90551,
+      "liquidity": 2636.02685,
       "conditionId": "0x96271fbb53a1ccb0eb2bea065b714be5a530c1772d9e0018327c52493931f8e7"
     },
     {
@@ -164,9 +164,9 @@
       "yesPrice": 0.065,
       "noPrice": 0.935,
       "endDate": "2026-02-13T21:00:00Z",
-      "volume": 8715.378087,
+      "volume": 8720.378087,
       "volume24hr": 4050.06,
-      "liquidity": 4147.7309,
+      "liquidity": 4916.3712,
       "conditionId": "0xfe57729b66713605909397b221dfefb2d9f59d019318424317ccd42db12a38ce"
     },
     {
@@ -177,19 +177,8 @@
       "endDate": "2026-02-14T00:00:00Z",
       "volume": 8676.271518,
       "volume24hr": 5354.245636,
-      "liquidity": 1884.897,
+      "liquidity": 1761.3225,
       "conditionId": "0x63bc5b46e379fd257e547d4add29739ac90c551c5c7a802e5c8f847025566f3f"
-    },
-    {
-      "slug": "val-gm-bbl1-2026-02-13",
-      "question": "Valorant: Gentle Mates vs BBL Esports (BO5) - VCT EMEA Kickoff Playoffs",
-      "yesPrice": 0.495,
-      "noPrice": 0.505,
-      "endDate": "2026-02-13T22:00:00Z",
-      "volume": 8644.199961,
-      "volume24hr": 5213.479027,
-      "liquidity": 31754.5989,
-      "conditionId": "0x60dad95394c1b6ed9566fc4d65b989850eb921d815b59abbc8943838f7d4eff4"
     },
     {
       "slug": "msft-above-450-on-february-13-2026",
@@ -199,30 +188,19 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 8528.448955,
       "volume24hr": 5919.350332999999,
-      "liquidity": 2658.98825,
+      "liquidity": 2672.28593,
       "conditionId": "0x2da4f60a5b27ce62c74c9a3f7b29b3c7c5e8cabbf790e15f6dae90bf903c4388"
     },
     {
       "slug": "will-trumps-approval-rating-be-between-40pt5-and-40pt9-on-february-13-2026",
       "question": "Will Trump’s approval rating be between 40.5 and 40.9 on February 13, 2026?",
-      "yesPrice": 0.535,
-      "noPrice": 0.465,
+      "yesPrice": 0.53,
+      "noPrice": 0.47,
       "endDate": "2026-02-14T00:00:00Z",
-      "volume": 8509.217439,
+      "volume": 8519.217439,
       "volume24hr": 2449.7764289999996,
-      "liquidity": 1577.2547,
+      "liquidity": 1847.3316,
       "conditionId": "0x5da004d1735d1e003db21b364c2a9e27cbd6f1754bc54e43a48056c5eef352e4"
-    },
-    {
-      "slug": "ere-vol-psv-2026-02-13-psv",
-      "question": "Will PSV win on 2026-02-13?",
-      "yesPrice": 0.775,
-      "noPrice": 0.225,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 8419.493319,
-      "volume24hr": 4375.241649,
-      "liquidity": 223749.0756,
-      "conditionId": "0x5441bda3a4e4ace25db5b88c55f28f8c4a79efd724d29512a44f982076c29c27"
     },
     {
       "slug": "wwoh-usa-ita-2026-02-13",
@@ -232,7 +210,7 @@
       "endDate": "2026-02-13T22:59:59.999Z",
       "volume": 8415.978678,
       "volume24hr": 2915.308678,
-      "liquidity": 35530.65307,
+      "liquidity": 35798.35326,
       "conditionId": "0x209c3a776f84b48affbd8266147766221786347d6d6a4d665036f5d08f676047"
     },
     {
@@ -243,29 +221,29 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 8364.633751,
       "volume24hr": 5603.849881999999,
-      "liquidity": 1436.0023,
+      "liquidity": 1603.23905,
       "conditionId": "0xa9ac2def3d4acc328969bd439e48bc3de9cfbfe4a141fb1a0eee05b95b39af43"
     },
     {
       "slug": "meta-above-660-on-february-13-2026",
       "question": "Will Meta (META) finish week of February 9 above $660?",
-      "yesPrice": 0.27,
-      "noPrice": 0.73,
+      "yesPrice": 0.28,
+      "noPrice": 0.72,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 8364.106554,
       "volume24hr": 1222.4078550000002,
-      "liquidity": 917.1879,
+      "liquidity": 954.6789,
       "conditionId": "0x27b7c54cbe58dbc36aa0a32199a23f2057bba99a9185688240cf0cc96d0b6d8a"
     },
     {
       "slug": "nflx-above-50-on-february-13-2026",
       "question": "Will Netflix (NFLX) finish week of February 9 above $50?",
-      "yesPrice": 0.9985,
-      "noPrice": 0.0015,
+      "yesPrice": 0.998,
+      "noPrice": 0.002,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 8163.542783,
       "volume24hr": 467.7209320000001,
-      "liquidity": 12656.39633,
+      "liquidity": 12199.19279,
       "conditionId": "0xeb41b08ef973ca99d23d0e50b85754bf47001a907027e500aee5c6fd3165292c"
     },
     {
@@ -274,9 +252,9 @@
       "yesPrice": 0.9985,
       "noPrice": 0.0015,
       "endDate": "2026-02-13T21:00:00Z",
-      "volume": 7984.644405,
+      "volume": 8008.457405,
       "volume24hr": 2236.103665,
-      "liquidity": 10102.67715,
+      "liquidity": 10381.36209,
       "conditionId": "0xf76867ae8bba2cd17e8f576f83ddfbbe59165844c19de9020082a02c24cf31bf"
     },
     {
@@ -285,9 +263,9 @@
       "yesPrice": 0.007,
       "noPrice": 0.993,
       "endDate": "2026-02-13T21:00:00Z",
-      "volume": 7978.152839,
+      "volume": 7980.414839,
       "volume24hr": 5169.34,
-      "liquidity": 3377.02541,
+      "liquidity": 3381.29018,
       "conditionId": "0xbf840acc06a25014b7b136ead57d5c006686e4f34f0080fd90021dbc6092b291"
     },
     {
@@ -298,40 +276,51 @@
       "endDate": "2026-02-14T00:00:00Z",
       "volume": 7852.956392,
       "volume24hr": 2818.337226,
-      "liquidity": 1300.26854,
+      "liquidity": 1309.34462,
       "conditionId": "0x565b1fc09757098ae579b5da4ecf8e5deeb12c670ac474ecb6cfbb9e75b40b9d"
     },
     {
       "slug": "cbb-cornel-prnce-2026-02-13",
       "question": "Cornell Big Red vs. Princeton Tigers",
-      "yesPrice": 0.59,
-      "noPrice": 0.41,
+      "yesPrice": 0.595,
+      "noPrice": 0.405,
       "endDate": "2026-02-14T00:00:00Z",
-      "volume": 7762.576187,
+      "volume": 7785.731183,
       "volume24hr": 4798.019931,
-      "liquidity": 6316.1065,
+      "liquidity": 7044.1419,
       "conditionId": "0xd96fe924c21043260cd1b2f62e6be7858754a523c2d75d78d97e7e03a6ff9489"
+    },
+    {
+      "slug": "dax-up-or-down-on-february-13-2026",
+      "question": "DAX (DAX) Up or Down on February 13?",
+      "yesPrice": 0.51,
+      "noPrice": 0.49,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 7777,
+      "volume24hr": 2969,
+      "liquidity": 417.94,
+      "conditionId": "0x807161be0d0f05e3b9a61fd91c0d73269f6dede68f0ed4b7d7db5c31018586fd"
     },
     {
       "slug": "lal-elc-osa-2026-02-13-total-1pt5",
       "question": "Elche CF vs. CA Osasuna: O/U 1.5",
-      "yesPrice": 0.705,
-      "noPrice": 0.295,
+      "yesPrice": 0.715,
+      "noPrice": 0.285,
       "endDate": "2026-02-13T20:00:00Z",
-      "volume": 7730.56459,
+      "volume": 7746.95459,
       "volume24hr": 5233.191827999999,
-      "liquidity": 401923.9495,
+      "liquidity": 457629.5803,
       "conditionId": "0x6d9d9b7741abbcb9fede9f5c10925b65eb89ef27de15bca245f3574520f6e702"
     },
     {
       "slug": "will-amzn-close-above-245-week-february-13-2026",
       "question": "Will Amazon (AMZN) close at >$245 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.0025,
-      "noPrice": 0.9975,
+      "yesPrice": 0.002,
+      "noPrice": 0.998,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 7700.557948,
       "volume24hr": 67.712,
-      "liquidity": 3033.04567,
+      "liquidity": 3032.48262,
       "conditionId": "0x0e90c4fcd9d3e490787eb2f95d2873d458474c7999645d656433490443da2793"
     },
     {
@@ -340,9 +329,9 @@
       "yesPrice": 0.9895,
       "noPrice": 0.0105,
       "endDate": "2026-02-13T21:00:00Z",
-      "volume": 7333.039277,
+      "volume": 7430.565277,
       "volume24hr": 1283.453344,
-      "liquidity": 1503.40765,
+      "liquidity": 2258.3007,
       "conditionId": "0x81406beb3e90ec7d3b856ef3e02ad0511d8173e41732a0cbf3ee10268cd3cb4f"
     },
     {
@@ -351,9 +340,9 @@
       "yesPrice": 0.0105,
       "noPrice": 0.9895,
       "endDate": "2026-02-13T21:00:00Z",
-      "volume": 7286.212474,
+      "volume": 7288.414675,
       "volume24hr": 455.293,
-      "liquidity": 2683.35867,
+      "liquidity": 2701.68366,
       "conditionId": "0x6c01fa4696451ae96956bfda2f309932809a76fed6ede4997e75cc7d05f43820"
     },
     {
@@ -362,9 +351,9 @@
       "yesPrice": 0.955,
       "noPrice": 0.045,
       "endDate": "2026-02-13T21:00:00Z",
-      "volume": 7210.35507,
+      "volume": 7215.35507,
       "volume24hr": 4124.219586,
-      "liquidity": 251.4578,
+      "liquidity": 273.9251,
       "conditionId": "0x076f26e04eca98b30a9af27590d48c565d14fea30e34c557b4a2c59433817489"
     },
     {
@@ -373,10 +362,21 @@
       "yesPrice": 0.285,
       "noPrice": 0.715,
       "endDate": "2026-02-13T19:45:00Z",
-      "volume": 6981.650557,
+      "volume": 7038.650557,
       "volume24hr": 5601.255272,
-      "liquidity": 221150.1384,
+      "liquidity": 224721.1182,
       "conditionId": "0xf8851bcadab857c9f1a230e98a37689a959ef48c2c80d32b786c55df7dcd7344"
+    },
+    {
+      "slug": "cbb-mst-wisc-2026-02-13",
+      "question": "Michigan State Spartans vs. Wisconsin Badgers",
+      "yesPrice": 0.55,
+      "noPrice": 0.45,
+      "endDate": "2026-02-14T01:00:00Z",
+      "volume": 6985.997275,
+      "volume24hr": 2020.6456810000002,
+      "liquidity": 6782.2196,
+      "conditionId": "0x9e31f50346cbd5447b47c72493eaee88b63f4ec8c344d083f58a81306fffc512"
     },
     {
       "slug": "will-ollie-win-eesti-laul-2026",
@@ -386,7 +386,7 @@
       "endDate": "2026-02-14T00:00:00Z",
       "volume": 6912.836661,
       "volume24hr": 3360.737223,
-      "liquidity": 4635.8464,
+      "liquidity": 4097.5063,
       "conditionId": "0xcf55129640bd57133e59b11ae8fe6f245b0a3824450fea6252bc34c3023e5366"
     },
     {
@@ -397,19 +397,63 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 6792.3496,
       "volume24hr": 5336.097599999999,
-      "liquidity": 2476.54783,
+      "liquidity": 2491.54639,
       "conditionId": "0x135a8acdae6578ddead856a15b5929e0db7a7c16d7f9dd2a0a90282156d260b7"
     },
     {
       "slug": "tsla-above-415-on-february-13-2026",
       "question": "Will Tesla (TSLA) finish week of February 9 above $415?",
-      "yesPrice": 0.575,
-      "noPrice": 0.425,
+      "yesPrice": 0.585,
+      "noPrice": 0.415,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 6785.76577,
       "volume24hr": 1738.762047,
-      "liquidity": 234.4233,
+      "liquidity": 545.1067,
       "conditionId": "0x3eefd66d9ceb6ae160972703df29982bd915e51efaa7dd3b57985d875b05d465"
+    },
+    {
+      "slug": "will-nflx-close-between-80-and-90-week-february-13-2026",
+      "question": "Will Netflix (NFLX) close at $80-$90 on the final day of trading of the week of Feb 9 – Feb 13?",
+      "yesPrice": 0.0055,
+      "noPrice": 0.9945,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 6776.715174,
+      "volume24hr": 4196.123709,
+      "liquidity": 1392.2637,
+      "conditionId": "0x2399ac8d1aedc49528301672f855942d22939de2ea52c5d9b2e81cfc90997227"
+    },
+    {
+      "slug": "will-trumps-approval-rating-be-between-41pt0-and-41pt4-on-february-13-2026",
+      "question": "Will Trump’s approval rating be between 41.0 and 41.4 on February 13, 2026?",
+      "yesPrice": 0.43,
+      "noPrice": 0.57,
+      "endDate": "2026-02-14T00:00:00Z",
+      "volume": 6393.978024,
+      "volume24hr": 1689.261235,
+      "liquidity": 1714.7574,
+      "conditionId": "0xd6e6185e0b1ceb56b8bd8e284e01c806fd601de1545e504a114784d2c634b69e"
+    },
+    {
+      "slug": "nflx-above-90-on-february-13-2026",
+      "question": "Will Netflix (NFLX) finish week of February 9 above $90?",
+      "yesPrice": 0.0035,
+      "noPrice": 0.9965,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 6259.659885,
+      "volume24hr": 1528.4633319999998,
+      "liquidity": 7732.45603,
+      "conditionId": "0x73b9731485c908e98846065ff9e28b46932f45fe38fd2586d81cd46562d5ce7c"
+    },
+    {
+      "slug": "nflx-above-70-on-february-13-2026",
+      "question": "Will Netflix (NFLX) finish week of February 9 above $70?",
+      "yesPrice": 0.9765,
+      "noPrice": 0.0235,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 6147.183909,
+      "volume24hr": 1385.5037529999997,
+      "liquidity": 3687.19564,
+      "conditionId": "0xafe18c3461ba6eb1abcb0fce8ee91258b06361ef668b90fc8c28fac020a29f7f"
     },
     {
       "slug": "nik-up-or-down-on-february-13-2026",
@@ -419,8 +463,19 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 983.143244,
       "volume24hr": 983.143244,
-      "liquidity": 29966.18406,
+      "liquidity": 29959.51776,
       "conditionId": "0x1bc4dca7e1b2ffb672e738038a483f3529d6eeaf01e24b9a228f234d14cfef08"
+    },
+    {
+      "slug": "cbb-mst-wisc-2026-02-13-total-145pt5",
+      "question": "Michigan State Spartans vs. Wisconsin Badgers: O/U 145.5",
+      "yesPrice": 0.52,
+      "noPrice": 0.48,
+      "endDate": "2026-02-14T01:00:00Z",
+      "volume": 964.630209,
+      "volume24hr": 964.630209,
+      "liquidity": 2238.6449,
+      "conditionId": "0x207b57b8694cc2086f33704778caeefa55dfbccde906c59d460774c2fa96bdaa"
     },
     {
       "slug": "por-ton-alv-2026-02-13-draw",
@@ -430,29 +485,29 @@
       "endDate": "2026-02-13T20:45:00Z",
       "volume": 964.495463,
       "volume24hr": 327.586048,
-      "liquidity": 41198.7525,
+      "liquidity": 58693.9557,
       "conditionId": "0x1934873301810b1ab66601074d2274f5379f4321a0126511a4b4da226fdc90eb"
     },
     {
       "slug": "will-pltr-close-between-126-and-128-week-february-13-2026",
       "question": "Will Palantir (PLTR) close at $126-$128 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.265,
-      "noPrice": 0.735,
+      "yesPrice": 0.2705,
+      "noPrice": 0.7295,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 957.49,
       "volume24hr": 20,
-      "liquidity": 894.654,
+      "liquidity": 872.532,
       "conditionId": "0xfccfd97434edbc17ead152f28b9f417e045bfde69391d8026dbe9ae66fcec36f"
     },
     {
       "slug": "pltr-above-128-on-february-13-2026",
       "question": "Will Palantir (PLTR) finish week of February 9 above $128?",
-      "yesPrice": 0.54,
-      "noPrice": 0.46,
+      "yesPrice": 0.535,
+      "noPrice": 0.465,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 921.46459,
       "volume24hr": 889.724813,
-      "liquidity": 294.26,
+      "liquidity": 171.5096,
       "conditionId": "0x3f7b3664beef3cddb62fca5198471017f8f4112a0804c4650d016cc2561099c6"
     },
     {
@@ -463,7 +518,7 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 913.496414,
       "volume24hr": 169.514443,
-      "liquidity": 828.007,
+      "liquidity": 891.993,
       "conditionId": "0x88acbaea50812e6cbf7f962e6d26bdced5863b11af70f1d46c3b5537575aae1f"
     },
     {
@@ -474,7 +529,7 @@
       "endDate": "2026-02-14T00:00:00Z",
       "volume": 900.152233,
       "volume24hr": 115.879333,
-      "liquidity": 1931.67803,
+      "liquidity": 1889.1305,
       "conditionId": "0xeca4a4911f2008ad9fcbdb2f1f8a02eb31ae5724b27bcfc70358895df4e5e737"
     },
     {
@@ -483,31 +538,42 @@
       "yesPrice": 0.565,
       "noPrice": 0.435,
       "endDate": "2026-02-13T19:45:00Z",
-      "volume": 883.851656,
+      "volume": 885.606039,
       "volume24hr": 618.272776,
-      "liquidity": 39117.1884,
+      "liquidity": 33308.5701,
       "conditionId": "0x714e96b9d60f4cbffdb280b1ce947c20257c656bd996819c61666d5cc8176541"
     },
     {
       "slug": "will-nvda-close-between-185-and-190-week-february-13-2026",
       "question": "Will NVIDIA (NVDA) close at $185-$190 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.495,
-      "noPrice": 0.505,
+      "yesPrice": 0.52,
+      "noPrice": 0.48,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 868.113645,
       "volume24hr": 300.36652999999995,
-      "liquidity": 357.9979,
+      "liquidity": 438.8114,
       "conditionId": "0xcb2229bd9dac533504f3550ac2d2c978a0185b9e062075a5e1b3d57f019e4ba9"
+    },
+    {
+      "slug": "cs2-rbls-bmb-2026-02-13",
+      "question": "Counter-Strike: Rebels Gaming vs BASEMENT BOYS (BO3) - ESL Challenger League Europe Cup 1 Playoffs",
+      "yesPrice": 0.555,
+      "noPrice": 0.445,
+      "endDate": "2026-02-13T20:00:00Z",
+      "volume": 852.815748,
+      "volume24hr": 495.92025699999994,
+      "liquidity": 2375.731,
+      "conditionId": "0x663447aee74ba418a896e895f50009f4d15e033eeec6b3a582aed0612e884044"
     },
     {
       "slug": "will-aapl-close-between-275-and-280-week-february-13-2026",
       "question": "Will Apple (AAPL) close at $275-$280 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.1045,
-      "noPrice": 0.8955,
+      "yesPrice": 0.105,
+      "noPrice": 0.895,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 851.719457,
       "volume24hr": 703.3174160000002,
-      "liquidity": 1135.04767,
+      "liquidity": 1391.46487,
       "conditionId": "0x91fc8bcb794f82c8f3ddf8764526b4425b0fc6557a69a89eae8c569d7145d95b"
     },
     {
@@ -518,7 +584,7 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 850.398518,
       "volume24hr": 363.29709,
-      "liquidity": 1180.08,
+      "liquidity": 1179.625,
       "conditionId": "0xe534d27a3576a9d1ed6a0318ac019f5ae5a625a64ad0c98958bbb69a3bef3db5"
     },
     {
@@ -529,51 +595,29 @@
       "endDate": "2026-02-13T19:30:00Z",
       "volume": 841.603788,
       "volume24hr": 0,
-      "liquidity": 571.63343,
+      "liquidity": 569.16765,
       "conditionId": "0x1d7392b13378f9853bc1f2b422f22e1e348aecaad4b4ec031e051f5a4489d281"
-    },
-    {
-      "slug": "cs2-rbls-bmb-2026-02-13",
-      "question": "Counter-Strike: Rebels Gaming vs BASEMENT BOYS (BO3) - ESL Challenger League Europe Cup 1 Playoffs",
-      "yesPrice": 0.555,
-      "noPrice": 0.445,
-      "endDate": "2026-02-13T20:00:00Z",
-      "volume": 834.958608,
-      "volume24hr": 495.92025699999994,
-      "liquidity": 2390.7447,
-      "conditionId": "0x663447aee74ba418a896e895f50009f4d15e033eeec6b3a582aed0612e884044"
-    },
-    {
-      "slug": "cs2-mana-hotu-2026-02-13",
-      "question": "Counter-Strike: MANA eSports vs HOTU (BO3) - IstanbuLAN Playoffs",
-      "yesPrice": 0.215,
-      "noPrice": 0.785,
-      "endDate": "2026-02-13T22:30:00Z",
-      "volume": 807,
-      "volume24hr": 0,
-      "liquidity": 4934.5768,
-      "conditionId": "0x91f40a6eda3c7f9c3e61a66addfd21e1df17640e2c60f32f0b78ebf5ca236050"
     },
     {
       "slug": "will-msft-close-between-410-and-420-week-february-13-2026",
       "question": "Will Microsoft (MSFT) close at $410-$420 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.12,
-      "noPrice": 0.88,
+      "yesPrice": 0.11,
+      "noPrice": 0.89,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 796.597408,
       "volume24hr": 118.22151900000001,
-      "liquidity": 1619.7126,
+      "liquidity": 1621.7926,
       "conditionId": "0x60a9b43e590096e52c498a552c4bf460c4b849ce595a9e8ba20032ebd2aaa2d3"
     },
     {
       "slug": "will-amzn-close-between-205-and-210-week-february-13-2026",
       "question": "Will Amazon (AMZN) close at $205-$210 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.175,
-      "noPrice": 0.825,
+      "yesPrice": 0.15,
+      "noPrice": 0.85,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 793.309573,
       "volume24hr": 750.25865,
-      "liquidity": 1177.73,
+      "liquidity": 1140.03,
       "conditionId": "0xffbe8335d7ae8eaaa81d1109376789f8262790b2369392aa18fef62096809ec3"
     },
     {
@@ -584,40 +628,29 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 781.38,
       "volume24hr": 152.95,
-      "liquidity": 532.993,
+      "liquidity": 553.093,
       "conditionId": "0xdc762f6051aebe3af2e7eefc9679fa56d5b8700800fb1e91caff2c190748d98e"
     },
     {
       "slug": "meta-above-700-on-february-13-2026",
       "question": "Will Meta (META) finish week of February 9 above $700?",
-      "yesPrice": 0.025,
-      "noPrice": 0.975,
+      "yesPrice": 0.024,
+      "noPrice": 0.976,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 765.326375,
       "volume24hr": 339,
-      "liquidity": 1208.54604,
+      "liquidity": 1222.11136,
       "conditionId": "0xabdb40c4bd423011c76e1340ec5ec144dd8c5cb35544817a03cdaaaac566b9ce"
-    },
-    {
-      "slug": "dota2-flc-liquid-2026-02-13-game-handicap-away-1pt5",
-      "question": "Game Handicap: FLC (-1.5) vs Team Liquid (+1.5)",
-      "yesPrice": 0.67,
-      "noPrice": 0.33,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 757.309616,
-      "volume24hr": 196.07843,
-      "liquidity": 14.9395,
-      "conditionId": "0x7ebf91b3577d4dbcc37f9c146c60dc37b1e6c6d8e6fcce78ce09019b84ccbea2"
     },
     {
       "slug": "pltr-above-129-on-february-13-2026",
       "question": "Will Palantir (PLTR) finish week of February 9 above $129?",
-      "yesPrice": 0.465,
-      "noPrice": 0.535,
+      "yesPrice": 0.455,
+      "noPrice": 0.545,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 744.518098,
       "volume24hr": 440.518098,
-      "liquidity": 169.66,
+      "liquidity": 153.66,
       "conditionId": "0xa693fb3c46e844dc608d40d7937aea2b72c63da4f39601eae61823dd4f0fa0a2"
     },
     {
@@ -628,52 +661,30 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 741.16579,
       "volume24hr": 267.871933,
-      "liquidity": 324.24437,
+      "liquidity": 125.42097,
       "conditionId": "0x8effb81a3bfefcc680fe4d33135e1770b91716c13ba263c85db285820ee1a43c"
     },
     {
       "slug": "pltr-above-131-on-february-13-2026",
       "question": "Will Palantir (PLTR) finish week of February 9 above $131?",
-      "yesPrice": 0.38,
-      "noPrice": 0.62,
+      "yesPrice": 0.375,
+      "noPrice": 0.625,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 739.999046,
       "volume24hr": 292.38,
-      "liquidity": 494.82,
+      "liquidity": 579.22,
       "conditionId": "0xdc9ca3ec8d45ae5fa7f43a15c380111eb0da955364f0fc27934a5137fa8d0fed"
     },
     {
       "slug": "aapl-close-above-275-on-february-13-2026",
       "question": "Will Apple (AAPL) close above $275 on February 13?",
-      "yesPrice": 0.0155,
-      "noPrice": 0.9845,
+      "yesPrice": 0.05,
+      "noPrice": 0.95,
       "endDate": "2026-02-13T21:00:00Z",
-      "volume": 718.433431,
+      "volume": 728.633431,
       "volume24hr": 617.423331,
-      "liquidity": 558.88623,
+      "liquidity": 566.04189,
       "conditionId": "0x25f38cdabc089a6667ff60c59f52014f89eef3cc9b7d1ee82c540301c0e158dd"
-    },
-    {
-      "slug": "will-aapl-close-between-285-and-290-week-february-13-2026",
-      "question": "Will Apple (AAPL) close at $285-$290 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.1,
-      "noPrice": 0.9,
-      "endDate": "2026-02-13T21:00:00Z",
-      "volume": 704.22,
-      "volume24hr": 252,
-      "liquidity": 1133.0303,
-      "conditionId": "0x37c64db10e361d7e2668aacea1d0a3b74fa093c1661b838d66701b78aa898e34"
-    },
-    {
-      "slug": "ere-vol-psv-2026-02-13-draw",
-      "question": "Will FC Volendam vs. PSV end in a draw?",
-      "yesPrice": 0.135,
-      "noPrice": 0.865,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 701.866285,
-      "volume24hr": 333.818296,
-      "liquidity": 223705.7482,
-      "conditionId": "0x524b68b05cb2432a34ae868d48caf2b71259a36d96c6b8a2615b3ea2c06c415c"
     },
     {
       "slug": "sea-pis-mil-2026-02-13-total-4pt5",
@@ -681,21 +692,21 @@
       "yesPrice": 0.095,
       "noPrice": 0.905,
       "endDate": "2026-02-13T19:45:00Z",
-      "volume": 700.743849,
+      "volume": 720.743849,
       "volume24hr": 436.796357,
-      "liquidity": 6598.1054,
+      "liquidity": 6465.915,
       "conditionId": "0xa97b89acd74d3ba668aac00590764c8fd91fd3adcf81e782888ef914b87e7a56"
     },
     {
-      "slug": "val-fnc1-vit-2026-02-13-map-handicap-home-1pt5",
-      "question": "Map Handicap: VIT (-1.5) vs Fnatic (+1.5)",
-      "yesPrice": 0.165,
-      "noPrice": 0.835,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 698.42538,
-      "volume24hr": 25.785383,
-      "liquidity": 66.4189,
-      "conditionId": "0x40b2dd4f88ac13f637f178e47b338c4ee5cf34e697043ae51ddf9be7e3e0343d"
+      "slug": "will-aapl-close-between-285-and-290-week-february-13-2026",
+      "question": "Will Apple (AAPL) close at $285-$290 on the final day of trading of the week of Feb 9 – Feb 13?",
+      "yesPrice": 0.0995,
+      "noPrice": 0.9005,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 704.22,
+      "volume24hr": 252,
+      "liquidity": 1140.9873,
+      "conditionId": "0x37c64db10e361d7e2668aacea1d0a3b74fa093c1661b838d66701b78aa898e34"
     },
     {
       "slug": "eth-updown-4h-1771002000",
@@ -705,7 +716,7 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 681.195685,
       "volume24hr": 50,
-      "liquidity": 5704.729,
+      "liquidity": 5072.479,
       "conditionId": "0x3c60cb93efd0a6dd0259bb20d79515cd920b5a5d3fcdcd1f26888b6cd38fae8f"
     },
     {
@@ -716,7 +727,7 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 680.81,
       "volume24hr": 232.62,
-      "liquidity": 1423.46501,
+      "liquidity": 1430.12667,
       "conditionId": "0x4e5830c721b8f2195eecbbf053f66fbb1a0720a467b952114cb318841facbe0b"
     },
     {
@@ -727,19 +738,8 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 680.485391,
       "volume24hr": 633.4770659999999,
-      "liquidity": 1259.24566,
+      "liquidity": 1265.90732,
       "conditionId": "0xd66e3080532d8919e3e35e3e4ed547002dcc75177021a5d0bcedd48dd335f07a"
-    },
-    {
-      "slug": "fr2-rst-asn-2026-02-13-total-1pt5",
-      "question": "Red Star FC vs. AS Nancy-Lorraine: O/U 1.5",
-      "yesPrice": 0.695,
-      "noPrice": 0.305,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 675.750534,
-      "volume24hr": 621.8838739999999,
-      "liquidity": 46285.0986,
-      "conditionId": "0x5b2de442167c6fde6cbe5784d7a2e81d0b98adb3e18ffe012eb2eb69943b4edb"
     },
     {
       "slug": "tsla-above-395-on-february-13-2026",
@@ -747,32 +747,54 @@
       "yesPrice": 0.9545,
       "noPrice": 0.0455,
       "endDate": "2026-02-13T21:00:00Z",
-      "volume": 662.001937,
+      "volume": 678.001937,
       "volume24hr": 100,
-      "liquidity": 1305.34436,
+      "liquidity": 123.61295,
       "conditionId": "0x97e6ba3703a48c48bb5803f62107decaac8476ad80e5fed70ecbe320d7975439"
     },
     {
-      "slug": "fr2-clf-raf-2026-02-13-total-1pt5",
-      "question": "Clermont Foot 63 vs. Rodez Aveyron Football: O/U 1.5",
-      "yesPrice": 0.755,
-      "noPrice": 0.245,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 653.754667,
-      "volume24hr": 588.447314,
-      "liquidity": 43375.3782,
-      "conditionId": "0x5b3507dc9081341fec0a2e86ba9989c86defc4c86382348be4407415077c26ca"
+      "slug": "por-ton-alv-2026-02-13-spread-home-1pt5",
+      "question": "Spread: CD Tondela (-1.5)",
+      "yesPrice": 0.155,
+      "noPrice": 0.845,
+      "endDate": "2026-02-13T20:45:00Z",
+      "volume": 654.89044,
+      "volume24hr": 180.20044,
+      "liquidity": 4632.5699,
+      "conditionId": "0x51d7d58e6e96580e04af16e8640bc41b05f2ea8f6728655906c4ef9a3abfde90"
     },
     {
-      "slug": "fr2-ami-usd-2026-02-13-total-4pt5",
-      "question": "Amiens SC vs. USL Dunkerque: O/U 4.5",
-      "yesPrice": 0.125,
-      "noPrice": 0.875,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 99.994015,
-      "volume24hr": 7,
-      "liquidity": 29176.3805,
-      "conditionId": "0x0f7ebcefa6257a216fc2dca5d58463e5c6376b8a429a2d405699744ba1c1db51"
+      "slug": "por-ton-alv-2026-02-13-total-4pt5",
+      "question": "CD Tondela vs. FC Alverca: O/U 4.5",
+      "yesPrice": 0.065,
+      "noPrice": 0.935,
+      "endDate": "2026-02-13T20:45:00Z",
+      "volume": 644.20974,
+      "volume24hr": 528.860211,
+      "liquidity": 3725.0799,
+      "conditionId": "0x79ca129e7c7a287df463f0e8d724ffc5d3ab13172de1abbe6168e0c03d922ee5"
+    },
+    {
+      "slug": "aapl-above-285-on-february-13-2026",
+      "question": "Will Apple (AAPL) finish week of February 9 above $285?",
+      "yesPrice": 0.022,
+      "noPrice": 0.978,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 633.745825,
+      "volume24hr": 353.14,
+      "liquidity": 112.6101,
+      "conditionId": "0xb36c5885465a08723f1b4c363603890130015c921fc726460641a81eb47f2a77"
+    },
+    {
+      "slug": "tsla-close-above-430-on-february-13-2026",
+      "question": "Will Tesla (TSLA) close above $430 on February 13?",
+      "yesPrice": 0.08,
+      "noPrice": 0.92,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 622.446708,
+      "volume24hr": 602.238383,
+      "liquidity": 538.8913,
+      "conditionId": "0xcbc434c34d097a532ebdb9d952fe7813502a91617c2892147ec3546327a6e6ef"
     },
     {
       "slug": "dota2-aloha-vpp-2026-02-13-game1",
@@ -782,29 +804,18 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 97.12,
       "volume24hr": 0,
-      "liquidity": 7283.6036,
+      "liquidity": 7285.6027,
       "conditionId": "0xcc8eb2cdc05b985b006195960589d03fc13ca521e6fb414070b08b7a759eb120"
-    },
-    {
-      "slug": "efa-wre-ips-2026-02-13-btts",
-      "question": "Wrexham AFC vs. Ipswich Town FC: Both Teams to Score",
-      "yesPrice": 0.53,
-      "noPrice": 0.47,
-      "endDate": "2026-02-13T19:45:00Z",
-      "volume": 96.908654,
-      "volume24hr": 52.907901,
-      "liquidity": 11079.942,
-      "conditionId": "0xf0489fa7b53ed3061a6342fc6cf07e3a23b853c92616c0a9121c8d5b4a1c4f73"
     },
     {
       "slug": "nvda-close-above-185-on-february-13-2026",
       "question": "Will NVIDIA (NVDA) close above $185 on February 13?",
-      "yesPrice": 0.715,
-      "noPrice": 0.285,
+      "yesPrice": 0.695,
+      "noPrice": 0.305,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 91.25,
       "volume24hr": 91.25,
-      "liquidity": 577.3944,
+      "liquidity": 577.6173,
       "conditionId": "0x5b1f25fbb362317fc5eb57044f5e6cdc0a3572bbf9290d1c907ab1217696de1b"
     },
     {
@@ -815,19 +826,8 @@
       "endDate": "2026-02-13T23:00:00Z",
       "volume": 89.938894,
       "volume24hr": 0,
-      "liquidity": 260.9,
+      "liquidity": 262.5997,
       "conditionId": "0x7a95be31f67d3bc7ee360dc8b05ab4d7f0df813e126adf023b6adba474af7011"
-    },
-    {
-      "slug": "fr2-lav-fca-2026-02-13-total-3pt5",
-      "question": "Stade Lavallois Mayenne FC vs. FC Annecy: O/U 3.5",
-      "yesPrice": 0.155,
-      "noPrice": 0.845,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 87.176466,
-      "volume24hr": 87.176466,
-      "liquidity": 26202.4584,
-      "conditionId": "0x3789dc080f0a72f58584631573a283a9fc28f7835658b4c1a0ed82601d3ca499"
     },
     {
       "slug": "tsla-close-above-440-on-february-13-2026",
@@ -837,18 +837,18 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 86.7,
       "volume24hr": 86.7,
-      "liquidity": 352.95378,
+      "liquidity": 352.89833,
       "conditionId": "0x07086ddb6aee4449931d69f795a110fa0e9105350604484e11ed131fe87b8cbb"
     },
     {
       "slug": "will-meta-close-between-660-and-670-week-february-13-2026",
       "question": "Will Meta (META) close at $660-$670 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.315,
-      "noPrice": 0.685,
+      "yesPrice": 0.26,
+      "noPrice": 0.74,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 86.557595,
       "volume24hr": 68.588649,
-      "liquidity": 699.9761,
+      "liquidity": 879.8171,
       "conditionId": "0x2cb95d8c2bfe75684d41efed883036eefd75b6f28c3aed30f112da10256b8f69"
     },
     {
@@ -870,8 +870,19 @@
       "endDate": "2026-02-13T23:00:00Z",
       "volume": 84.6,
       "volume24hr": 79.6,
-      "liquidity": 59.0458,
+      "liquidity": 61.0457,
       "conditionId": "0x92939499b84522fc7283eaacd7ddaebb5c4687321091046af89faba6f1248c20"
+    },
+    {
+      "slug": "xrp-updown-4h-1771016400",
+      "question": "XRP Up or Down - February 13, 4:00PM-8:00PM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-14T01:00:00Z",
+      "volume": 81,
+      "volume24hr": 0,
+      "liquidity": 5503.8174,
+      "conditionId": "0xde496ded1a9c86513f3d0819d76d634ea04d0744a0479bd43a818e9e5a6a4a17"
     },
     {
       "slug": "chi1-cdp-cud-2026-02-13-cdp",
@@ -881,7 +892,7 @@
       "endDate": "2026-02-13T23:30:00Z",
       "volume": 80.130338,
       "volume24hr": 75.944114,
-      "liquidity": 2506.7906,
+      "liquidity": 2413.7906,
       "conditionId": "0x661fcc6ba4ee7ca0a86d65d03aaf7d2e367838758e8c9154d883a436e4907195"
     },
     {
@@ -892,29 +903,29 @@
       "endDate": "2026-02-13T22:00:00Z",
       "volume": 79.268288,
       "volume24hr": 0,
-      "liquidity": 40.4824,
+      "liquidity": 42.4823,
       "conditionId": "0xb0bd54b346d2216d0875bfca3a83df0f4dacf68e3abbfb43d92fd8510f4d510b"
     },
     {
       "slug": "googl-close-above-300-on-february-13-2026",
       "question": "Will Google (GOOGL) close above $300 on February 13?",
-      "yesPrice": 0.92,
-      "noPrice": 0.08,
+      "yesPrice": 0.915,
+      "noPrice": 0.085,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 75.92154,
       "volume24hr": 35.105239999999995,
-      "liquidity": 678.1386,
+      "liquidity": 652.817,
       "conditionId": "0xebc511843d10c9cd769362d27b11da4b6609c7e49a5e6f4907a0b8474452ff80"
     },
     {
       "slug": "aapl-close-above-265-on-february-13-2026",
       "question": "Will Apple (AAPL) close above $265 on February 13?",
-      "yesPrice": 0.2,
-      "noPrice": 0.8,
+      "yesPrice": 0.175,
+      "noPrice": 0.825,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 75.563472,
       "volume24hr": 52.943732,
-      "liquidity": 444.5215,
+      "liquidity": 456.0593,
       "conditionId": "0x8d922f246817c61584c5ecf1fde66eaa8144720b60a40be46e219f6d674c7748"
     },
     {
@@ -934,20 +945,31 @@
       "yesPrice": 0.49,
       "noPrice": 0.51,
       "endDate": "2026-02-13T19:45:00Z",
-      "volume": 70.782302,
+      "volume": 74.782302,
       "volume24hr": 34.692302000000005,
-      "liquidity": 13841.837,
+      "liquidity": 5916.1262,
       "conditionId": "0x941072932575610e90ddb851b1e7d2ed6f6b0acec29914655cd18a7ae6ea8bc6"
+    },
+    {
+      "slug": "es2-alm-and-2026-02-13-total-1pt5",
+      "question": "UD Almería vs. FC Andorra: O/U 1.5",
+      "yesPrice": 0.805,
+      "noPrice": 0.195,
+      "endDate": "2026-02-13T19:30:00Z",
+      "volume": 72.246899,
+      "volume24hr": 7.308636,
+      "liquidity": 601.9246,
+      "conditionId": "0xd120a90e8bdd0751ae0927c4d8800885108af94649779fdccc5a32a897b9d990"
     },
     {
       "slug": "will-meta-close-between-630-and-640-week-february-13-2026",
       "question": "Will Meta (META) close at $630-$640 on the final day of trading of the week of Feb 9 – Feb 13?",
-      "yesPrice": 0.385,
-      "noPrice": 0.615,
+      "yesPrice": 0.365,
+      "noPrice": 0.635,
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 70.0618,
       "volume24hr": 68,
-      "liquidity": 659.5886,
+      "liquidity": 816.6326,
       "conditionId": "0x8bb78c1f651aac7976a1d5253cd80e12b9d98131ec4a0d05c4bcd424eb389906"
     },
     {
@@ -958,7 +980,7 @@
       "endDate": "2026-02-13T21:30:00Z",
       "volume": 70.034116,
       "volume24hr": 70.03411600000001,
-      "liquidity": 6054.1703,
+      "liquidity": 6058.1703,
       "conditionId": "0xdee83055306554224127d3120184e9d5dc607e50fa004df66db13fac13044726"
     },
     {
@@ -969,7 +991,7 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 68.258332,
       "volume24hr": 68.25833200000001,
-      "liquidity": 227.391,
+      "liquidity": 224.491,
       "conditionId": "0x9fce8baf0362f37d27d1ed19ddd6376e341db51cdaed87278dafa3be2c299eaf"
     },
     {
@@ -980,7 +1002,7 @@
       "endDate": "2026-02-13T21:00:00Z",
       "volume": 66.105917,
       "volume24hr": 63.978259,
-      "liquidity": 2703.539,
+      "liquidity": 2604.589,
       "conditionId": "0xc793a298a57945cdc608e4cab912e15eccf70cb4fbd5fdc72c1cdd5966564fc3"
     },
     {
@@ -991,30 +1013,30 @@
       "endDate": "2026-02-14T00:00:00Z",
       "volume": 65.698799,
       "volume24hr": 0,
-      "liquidity": 47.7755,
+      "liquidity": 47.2995,
       "conditionId": "0x464f645b6f9de6770197b11e2796f608b5ef817c363147d3b9b9d4eee332c009"
     },
     {
-      "slug": "fr2-rst-asn-2026-02-13-total-4pt5",
-      "question": "Red Star FC vs. AS Nancy-Lorraine: O/U 4.5",
-      "yesPrice": 0.11,
-      "noPrice": 0.89,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 65.472926,
-      "volume24hr": 12.681816000000001,
-      "liquidity": 1565.9854,
-      "conditionId": "0x2f4f51e0bea0f535e816fdbd74236ff666a677ffd7817d6208e7e71e52c73447"
+      "slug": "si-up-or-down-on-february-13-2026",
+      "question": "Silver (SI) Up or Down on February 13?",
+      "yesPrice": 0.865,
+      "noPrice": 0.135,
+      "endDate": "2026-02-13T21:00:00Z",
+      "volume": 63.8669,
+      "volume24hr": 41.809088,
+      "liquidity": 974.8399,
+      "conditionId": "0xf2b4c1936b95a5076fd0193850679a9fc12d1dc3701696807a8768cb2ab90ccf"
     },
     {
-      "slug": "codmw-tex-bos-2026-02-13-game2",
-      "question": "Call of Duty: OpTic Texas vs Boston Breach - Game 2 Winner",
-      "yesPrice": 0.655,
-      "noPrice": 0.345,
-      "endDate": "2026-02-14T00:00:00Z",
-      "volume": 9.898549,
+      "slug": "cs2-zerote-ecf-2026-02-13",
+      "question": "Counter-Strike: ex-Zero Tenacity vs kONO.ECF (BO3) - ESL Challenger League Europe Cup 1 Playoffs",
+      "yesPrice": 0.45,
+      "noPrice": 0.55,
+      "endDate": "2026-02-13T20:00:00Z",
+      "volume": 63.008162,
       "volume24hr": 0,
-      "liquidity": 7411.5379,
-      "conditionId": "0xdaadf0c5d84fce57aec4d47eb83cfe95c71cba54adc072e84fae9cdd1bffaed2"
+      "liquidity": 425.7882,
+      "conditionId": "0xdd7b93500cc98af79ffbb8b7409f2a63d8a473cb96d5dab027fee6d6db1f9e15"
     },
     {
       "slug": "cs2-nem-vpp-2026-02-13-total-games-2pt5",
@@ -1024,41 +1046,8 @@
       "endDate": "2026-02-13T20:00:00Z",
       "volume": 9.80392,
       "volume24hr": 9.80392,
-      "liquidity": 3889.7561,
+      "liquidity": 3890.7554,
       "conditionId": "0x33b95bb4801808a11b78974ebace8513f7079cf2e5ba68cae90f2f0140307e52"
-    },
-    {
-      "slug": "xrp-up-or-down-february-13-3pm-et",
-      "question": "XRP Up or Down - February 13, 3PM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T21:00:00Z",
-      "volume": 9.43137,
-      "volume24hr": 1.960783,
-      "liquidity": 11051.7891,
-      "conditionId": "0xb2c3571287f8e95fff1f66f0790266de47467131afc8c5e701d9e1db6445e5fe"
-    },
-    {
-      "slug": "solana-up-or-down-february-13-1pm-et",
-      "question": "Solana Up or Down - February 13, 1PM ET",
-      "yesPrice": 0.495,
-      "noPrice": 0.505,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 8.78,
-      "volume24hr": 0,
-      "liquidity": 9758.7998,
-      "conditionId": "0x6fa65f1782b70c8c1eb4c7133990d4123362a3c0c29cd50be108ff2d9bc88b42"
-    },
-    {
-      "slug": "eth-updown-15m-1771007400",
-      "question": "Ethereum Up or Down - February 13, 1:30PM-1:45PM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-13T18:45:00Z",
-      "volume": 8.382742,
-      "volume24hr": 8.382742,
-      "liquidity": 13308.1568,
-      "conditionId": "0xdca3cb03420738f91a81f69490213b81cf50e9d8739c0bfbe34ce6473a4f41b2"
     },
     {
       "slug": "cbb-quin-siena-2026-02-13-spread-home-3pt5",
@@ -1068,18 +1057,29 @@
       "endDate": "2026-02-14T00:00:00Z",
       "volume": 8.20408,
       "volume24hr": 8.20408,
-      "liquidity": 1891.1896,
+      "liquidity": 1951.6909,
       "conditionId": "0xac689b4208d749bad235ca161f3c80deb231b27629dd7bbe196d393549c1fb1c"
+    },
+    {
+      "slug": "mex-pue-pum-2026-02-13-btts",
+      "question": "Club Puebla vs. Pumas de la UNAM: Both Teams to Score",
+      "yesPrice": 0.52,
+      "noPrice": 0.48,
+      "endDate": "2026-02-14T01:00:00Z",
+      "volume": 8,
+      "volume24hr": 8,
+      "liquidity": 4831.4218,
+      "conditionId": "0xd3eca34bc393f9f5f0fa886fbb87d891ecd44d426383b323378360fa507fb3e6"
     },
     {
       "slug": "r6siege-faze-flcs-2026-02-13",
       "question": "Rainbow Six Siege: FaZe Clan vs Falcons Esport (BO3) - Six Invitational Playoffs",
-      "yesPrice": 0.44,
-      "noPrice": 0.56,
+      "yesPrice": 0.45,
+      "noPrice": 0.55,
       "endDate": "2026-02-14T00:15:00Z",
       "volume": 7.127658,
       "volume24hr": 0,
-      "liquidity": 1489.0192,
+      "liquidity": 1455.5386,
       "conditionId": "0x35e9cc5d7f8a9c3488998da13e13e409c53d4a124024e1d522287c295614d178"
     },
     {
@@ -1094,15 +1094,15 @@
       "conditionId": "0x60f7da04f2fb31b8ff8397188ceb41222c4716821963e3f4cdebaac34b6ea9cf"
     },
     {
-      "slug": "fr2-pau-usb-2026-02-13-total-4pt5",
-      "question": "Pau FC vs. US Boulogne Côte d'Opale: O/U 4.5",
-      "yesPrice": 0.135,
-      "noPrice": 0.865,
-      "endDate": "2026-02-13T19:00:00Z",
-      "volume": 6.887692,
-      "volume24hr": 4.588846,
-      "liquidity": 28370.382,
-      "conditionId": "0x2c72efbcd1ad54fdba756a05fd72659c4fc10d0161f00700fe06f5a685a82c49"
+      "slug": "cbb-colmb-penn-2026-02-13-spread-home-3pt5",
+      "question": "Spread: Penn Quakers (-3.5)",
+      "yesPrice": 0.47,
+      "noPrice": 0.53,
+      "endDate": "2026-02-14T00:00:00Z",
+      "volume": 6.40151,
+      "volume24hr": 0,
+      "liquidity": 2067.1272,
+      "conditionId": "0x3b97c44e8abd711e8ebf69e53dacdd1027f5aa0bf893bba114cd6e4c36696f7c"
     }
   ]
 }
