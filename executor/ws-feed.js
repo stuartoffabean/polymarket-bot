@@ -1482,17 +1482,67 @@ function registerMarketName(conditionId, name) {
 const RESOLUTION_HUNTER_INTERVAL = 15 * 60 * 1000; // every 15 min
 const RESOLUTION_HUNTER_FILE = path.join(__dirname, "..", "resolution-hunter.json");
 const RH_EXECUTED_FILE = path.join(__dirname, "..", "rh-executed.json");
-const RH_MIN_PRICE = 0.95;      // only buy outcomes priced 95¢+
-const RH_MAX_PRICE = 0.98;      // backtest shows 95-98¢ is profitable, 98-99.5¢ is toxic
-const RH_MAX_SPEND = 10;        // reduced from $15 for live validation period
+const RH_MIN_PRICE = 0.96;      // v4: dropped 95-96¢ tier (breakeven, highest loss rate)
+const RH_MAX_PRICE = 0.98;      // backtest v4: 96-98¢ = 99.0% hit rate, $21.23 net P&L on 103 trades
+const RH_MAX_SPEND = 10;        // $10 max per trade
 const RH_MIN_LIQUIDITY = 500;   // min $500 liquidity
 const RH_RESOLUTION_WINDOW_H = 6; // markets resolving within 6 hours
 const RH_MIN_VOLUME_24H = 1000; // min $1K 24h volume (filters illiquid junk)
 
-// Sports/esports filter — these categories have structurally higher upset rates
-// that poison RH math (3 of 4 backtest losses were sports/esports)
-const RH_SKIP_SLUGS = /esports|valorant|counter-strike|cs2|tennis|nba|nfl|mma|ufc|soccer|football|dota|league-of-legends|lol-|r6siege|codmw|cricket|boxing|rugby|hockey|nhl|mlb|baseball|basketball|a-league|serie-a|la-liga|premier-league|bundesliga|ligue-1|eredivisie|copa|champions-league|europa-league|ncaa|cbb-|cwbb-|sea-|bun-|efa-|fl1-|ere-|por-|es2-|fr2-|lal-|chi1-|elc-/i;
-const RH_SKIP_QUESTIONS = /vs\.|vs |winner|match|game \d|map handicap|spread:|o\/u \d|both teams|total games|score in/i;
+// === EXPANDED CATEGORY FILTERS (v4) ===
+// Sports/esports + volatile single-data-point markets
+// Backtest v4: 139 markets filtered, 99.0% hit rate on remainder
+
+// Category-level skip (from Gamma API 'category' field)
+const RH_SKIP_CATEGORIES = /sports|esports|gaming|mma|boxing|wrestling|racing|motorsport/i;
+
+// Slug-level skip — sports/esports patterns + league codes
+const RH_SKIP_SLUGS = new RegExp([
+  // Sports/esports base
+  'esports', 'valorant', 'counter-strike', 'cs2', 'tennis', 'nba', 'nfl', 'mma', 'ufc',
+  'soccer', 'football', 'dota', 'league-of-legends', 'lol-', 'r6siege', 'codmw',
+  'cricket', 'boxing', 'rugby', 'hockey', 'nhl', 'mlb', 'baseball', 'basketball',
+  // League/competition codes
+  'a-league', 'serie-a', 'la-liga', 'premier-league', 'bundesliga', 'ligue-1',
+  'eredivisie', 'copa', 'champions-league', 'europa-league', 'ncaa',
+  'cbb-', 'cwbb-', 'sea-', 'bun-', 'efa-', 'fl1-', 'ere-', 'por-', 'es2-', 'fr2-', 'lal-', 'chi1-', 'elc-',
+  // NEW: expanded sports coverage
+  'bbl', 'apex.legends', 'jack.sock', 'overwatch', 'rocket.league', 'fortnite',
+  'pubg', 'rainbow.six', 'call.of.duty', 'fifa', 'f1-', 'moto-?gp', 'wwe', 'aew',
+  'pga', 'lpga', 'atp-', 'wta-', 'grand.slam', 'wimbledon', 'us.open',
+  'world.cup', 'olympics', 'super.bowl', 'stanley.cup', 'world.series',
+  // Country league codes
+  'arg-', 'mex-', 'bra-', 'ita-', 'esp-', 'eng-', 'ger-', 'fra-', 'tur-',
+  'val-', 'dota2-', 'cs2-', 'r6-', 'rl-',
+  // Match patterns in slugs
+  '-spread-', '-total-\\d', '-btts', '-handicap-', '-draw$',
+].join('|'), 'i');
+
+// Question-level skip — match patterns + volatile single-data-point markets
+const RH_SKIP_QUESTIONS = new RegExp([
+  // Sports/match patterns
+  'vs\\.', 'vs ', 'winner', 'match', 'game \\d', 'map handicap', 'spread:', 'o\\/u \\d',
+  'both teams', 'total games', 'score in', 'home win', 'away win',
+  // Team mascot names
+  'Bears|Bulldogs|Tigers|Eagles|Hawks|Lions|Panthers|Warriors|Spartans|Badgers|Crimson|Ramblers|Bobcats|Saints|Cougars|Peacocks|Pioneers|Big Green|Quakers|Billikens',
+  // Earnings/financial
+  'earnings', 'revenue beat', 'EPS beat', 'quarterly results',
+  // ETF flows
+  'ETF (in|out)flows', 'ETF flows', 'net (in|out)flows',
+  // Crypto price targets
+  '(Bitcoin|BTC|Ethereum|ETH|Solana|SOL|XRP|Doge|DOGE|ADA|DOT|AVAX|MATIC|LINK|UNI|AAVE).*(above|below|over|under|close at|finish at|hit)\\s*\\$',
+  // Stock price targets (ticker + above/below + $)
+  '(AAPL|MSFT|NVDA|GOOGL|AMZN|META|TSLA|NFLX|AMD|INTC|PLTR|OPEN|BA|DIS|UBER|COIN|HOOD|GME|AMC|PYPL|SQ|SHOP|SNAP|PINS|RBLX|ABNB|DASH|RIVN|LCID|NIO|F|GM|WMT|TGT|COST|KO|PEP).*(above|below|close|finish)\\s*(at\\s*)?\\$',
+  // Close above/below patterns
+  'close (above|below|at) \\$\\d', 'finish.*(above|below) \\$\\d',
+  // Person-says-word-during-event
+  '(say|mention|utter|use the word)\\b.*\\b(during|at|in the)\\b',
+  '(State of the Union|SOTU|debate|press conference|speech|interview).*\\b(say|mention)\\b',
+  // Tweet/post count markets
+  '(tweets?|posts?) from', 'number of (tweets|posts)', 'how many (tweets|posts)',
+  // Up/Down daily markets (coin flip)
+  'Up or Down',
+].join('|'), 'i');
 
 // Persist executed conditionIds to survive restarts
 let rhExecutedIds = new Set();
@@ -1532,10 +1582,11 @@ async function runResolutionHunter() {
         if (liquidity < RH_MIN_LIQUIDITY) continue;
         if (!tokenIds || tokenIds.length < 2) continue;
 
-        // Sports/esports filter — skip categories with high upset rates
+        // v4 expanded filters — sports/esports + volatile single-data-point markets
         const slug = m.slug || "";
         const question = m.question || m.title || "";
-        if (RH_SKIP_SLUGS.test(slug) || RH_SKIP_QUESTIONS.test(question)) continue;
+        const category = m.category || "";
+        if (RH_SKIP_CATEGORIES.test(category) || RH_SKIP_SLUGS.test(slug) || RH_SKIP_QUESTIONS.test(question)) continue;
 
         // Check each outcome
         for (let i = 0; i < prices.length; i++) {
