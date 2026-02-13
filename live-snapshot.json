@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-13T02:16:05.220Z",
+  "timestamp": "2026-02-13T02:30:04.449Z",
   "portfolio": {
     "trackedPositions": 10,
-    "portfolioValue": 261.716,
-    "dailyStartValue": 55.919999999999995
+    "portfolioValue": 364.243,
+    "dailyStartValue": 31
   },
   "risk": {
     "circuitBreakerTripped": false,
@@ -21,21 +21,81 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 1186.580502814
+    "uptime": 770.485530265
   },
   "positions": [
+    {
+      "id": "77587680906182806497",
+      "fullAssetId": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
+      "outcome": "YES",
+      "size": 92,
+      "avgPrice": 0.8,
+      "currentBid": 0.994,
+      "currentAsk": 0.997,
+      "costBasis": "73.60",
+      "currentValue": "91.45",
+      "pnl": "17.85",
+      "pnlPct": "24.2%",
+      "stopLoss": 0.6,
+      "takeProfit": 1
+    },
+    {
+      "id": "37951513621735784471",
+      "fullAssetId": "37951513621735784471651257045517975893424565554701830077103055531806326097100",
+      "outcome": "YES",
+      "size": 50,
+      "avgPrice": 0.92,
+      "currentBid": 0.87,
+      "currentAsk": 0.88,
+      "costBasis": "46.00",
+      "currentValue": "43.50",
+      "pnl": "-2.50",
+      "pnlPct": "-5.4%",
+      "stopLoss": 0.75,
+      "takeProfit": 1
+    },
+    {
+      "id": "89036168105179001192",
+      "fullAssetId": "89036168105179001192755120118050209760422683300339582903158940882158509550672",
+      "outcome": "NO",
+      "size": 50,
+      "avgPrice": 0.93,
+      "currentBid": 0.93,
+      "currentAsk": 0.94,
+      "costBasis": "46.50",
+      "currentValue": "46.50",
+      "pnl": "0.00",
+      "pnlPct": "0.0%",
+      "stopLoss": 0.8,
+      "takeProfit": 1
+    },
+    {
+      "id": "14508138056322224915",
+      "fullAssetId": "14508138056322224915688949573192229922802851672435344101150518068118489796467",
+      "outcome": "NO",
+      "size": 15,
+      "avgPrice": 0.82,
+      "currentBid": 0.821,
+      "currentAsk": 0.822,
+      "costBasis": "12.30",
+      "currentValue": "12.31",
+      "pnl": "0.02",
+      "pnlPct": "0.1%",
+      "stopLoss": 0.6,
+      "takeProfit": 1
+    },
     {
       "id": "16680383807036024154",
       "fullAssetId": "16680383807036024154663222348300164487828801908390056508639441371141589139909",
       "outcome": "Yes",
       "size": 40,
       "avgPrice": 0.35,
-      "currentBid": 0.392,
-      "currentAsk": 0.395,
+      "currentBid": 0.398,
+      "currentAsk": 0.429,
       "costBasis": "14.00",
-      "currentValue": "15.68",
-      "pnl": "1.68",
-      "pnlPct": "12.0%",
+      "currentValue": "15.92",
+      "pnl": "1.92",
+      "pnlPct": "13.7%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -46,7 +106,7 @@
       "size": 40,
       "avgPrice": 0.54,
       "currentBid": 0.54,
-      "currentAsk": 0.57,
+      "currentAsk": 0.56,
       "costBasis": "21.60",
       "currentValue": "21.60",
       "pnl": "0.00",
@@ -60,12 +120,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.94,
-      "currentBid": 0.95,
-      "currentAsk": 0.96,
+      "currentBid": 0.94,
+      "currentAsk": 0.95,
       "costBasis": "23.50",
-      "currentValue": "23.75",
-      "pnl": "0.25",
-      "pnlPct": "1.1%",
+      "currentValue": "23.50",
+      "pnl": "0.00",
+      "pnlPct": "0.0%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -75,12 +135,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.92,
-      "currentBid": 0.922,
+      "currentBid": 0.924,
       "currentAsk": 0.928,
       "costBasis": "23.00",
-      "currentValue": "23.05",
-      "pnl": "0.05",
-      "pnlPct": "0.2%",
+      "currentValue": "23.10",
+      "pnl": "0.10",
+      "pnlPct": "0.4%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -105,84 +165,33 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.691,
-      "currentAsk": 0.692,
+      "currentBid": 0.692,
+      "currentAsk": 0.696,
       "costBasis": "49.60",
-      "currentValue": "55.28",
-      "pnl": "5.68",
-      "pnlPct": "11.5%",
+      "currentValue": "55.36",
+      "pnl": "5.76",
+      "pnlPct": "11.6%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
-    },
-    {
-      "id": "77587680906182806497",
-      "fullAssetId": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
-      "outcome": "YES",
-      "size": 92,
-      "avgPrice": 0.8,
-      "currentBid": 0.993,
-      "currentAsk": 0.998,
-      "costBasis": "73.60",
-      "currentValue": "91.36",
-      "pnl": "17.76",
-      "pnlPct": "24.1%",
-      "stopLoss": 0.6,
-      "takeProfit": 1
-    },
-    {
-      "id": "21742633143463906290",
-      "fullAssetId": "21742633143463906290569050155826241533067272736897614950488156847949938836455",
-      "outcome": "YES",
-      "size": 50,
-      "avgPrice": 0.92,
-      "costBasis": "46.00",
-      "pnl": null,
-      "pnlPct": null,
-      "stopLoss": 0.75,
-      "takeProfit": 1
-    },
-    {
-      "id": "52114319501245915516",
-      "fullAssetId": "52114319501245915516055106046884209969926127482827954674443846427813813222426",
-      "outcome": "NO",
-      "size": 50,
-      "avgPrice": 0.93,
-      "costBasis": "46.50",
-      "pnl": null,
-      "pnlPct": null,
-      "stopLoss": 0.8,
-      "takeProfit": 1
-    },
-    {
-      "id": "48331043336612883890",
-      "fullAssetId": "48331043336612883890938759509493159234672657012891542590163813280621545903637",
-      "outcome": "NO",
-      "size": 15,
-      "avgPrice": 0.82,
-      "costBasis": "12.30",
-      "pnl": null,
-      "pnlPct": null,
-      "stopLoss": 0.6,
-      "takeProfit": 1
     }
   ],
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
+      "timestamp": "2026-02-13T02:30:04.448Z",
       "market": "Bad Bunny 75-100M Views (7 days)",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.35,
       "size": 14,
       "shares": 40,
-      "currentPrice": 0.392,
-      "pnl": 1.68,
-      "pnlPct": "12.0%",
+      "currentPrice": 0.398,
+      "pnl": 1.92,
+      "pnlPct": "13.7%",
       "tokenId": "16680383807036024154663222348300164487828801908390056508639441371141589139909"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
+      "timestamp": "2026-02-13T02:30:04.449Z",
       "market": "Bad Bunny Halftime Views",
       "outcome": "Yes",
       "side": "buy",
@@ -195,33 +204,33 @@
       "tokenId": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
+      "timestamp": "2026-02-13T02:30:04.449Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
       "price": 0.94,
       "size": 23.5,
       "shares": 25,
-      "currentPrice": 0.95,
-      "pnl": 0.25,
-      "pnlPct": "1.1%",
+      "currentPrice": 0.94,
+      "pnl": 0,
+      "pnlPct": "0.0%",
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
+      "timestamp": "2026-02-13T02:30:04.449Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
       "price": 0.92,
       "size": 23,
       "shares": 25,
-      "currentPrice": 0.922,
-      "pnl": 0.05,
-      "pnlPct": "0.2%",
+      "currentPrice": 0.924,
+      "pnl": 0.1,
+      "pnlPct": "0.4%",
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
+      "timestamp": "2026-02-13T02:30:04.449Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "Yes",
       "side": "buy",
@@ -234,76 +243,76 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
+      "timestamp": "2026-02-13T02:30:04.449Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
       "shares": 80,
-      "currentPrice": 0.691,
-      "pnl": 5.68,
-      "pnlPct": "11.5%",
+      "currentPrice": 0.692,
+      "pnl": 5.76,
+      "pnlPct": "11.6%",
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
+      "timestamp": "2026-02-13T02:30:04.449Z",
       "market": "Bangladesh BNP Election Win",
       "outcome": "YES",
       "side": "buy",
       "price": 0.8,
       "size": 73.60000000000001,
       "shares": 92,
-      "currentPrice": 0.993,
-      "pnl": 17.76,
-      "pnlPct": "24.1%",
+      "currentPrice": 0.994,
+      "pnl": 17.85,
+      "pnlPct": "24.2%",
       "tokenId": "77587680906182806497450061873126722297392583495948543397251590274471719007220"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
-      "market": "Norway Gold Medals Winter Olympics",
+      "timestamp": "2026-02-13T02:30:04.449Z",
+      "market": "Norway Most Gold Medals Winter Olympics",
       "outcome": "YES",
       "side": "buy",
       "price": 0.92,
       "size": 46,
       "shares": 50,
-      "currentPrice": null,
-      "pnl": 0,
-      "pnlPct": "0.0%",
-      "tokenId": "21742633143463906290569050155826241533067272736897614950488156847949938836455"
+      "currentPrice": 0.87,
+      "pnl": -2.5,
+      "pnlPct": "-5.4%",
+      "tokenId": "37951513621735784471651257045517975893424565554701830077103055531806326097100"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
-      "market": "Fed March Rate Cut NO",
+      "timestamp": "2026-02-13T02:30:04.449Z",
+      "market": "Fed March 25bps Cut",
       "outcome": "NO",
       "side": "buy",
       "price": 0.93,
       "size": 46.5,
       "shares": 50,
-      "currentPrice": null,
+      "currentPrice": 0.93,
       "pnl": 0,
       "pnlPct": "0.0%",
-      "tokenId": "52114319501245915516055106046884209969926127482827954674443846427813813222426"
+      "tokenId": "89036168105179001192755120118050209760422683300339582903158940882158509550672"
     },
     {
-      "timestamp": "2026-02-13T02:16:05.219Z",
-      "market": "BTC Below $55K Feb NO",
+      "timestamp": "2026-02-13T02:30:04.449Z",
+      "market": "BTC wont drop to $55K Feb",
       "outcome": "NO",
       "side": "buy",
       "price": 0.82,
       "size": 12.299999999999999,
       "shares": 15,
-      "currentPrice": null,
-      "pnl": 0,
-      "pnlPct": "0.0%",
-      "tokenId": "48331043336612883890938759509493159234672657012891542590163813280621545903637"
+      "currentPrice": 0.821,
+      "pnl": 0.02,
+      "pnlPct": "0.1%",
+      "tokenId": "14508138056322224915688949573192229922802851672435344101150518068118489796467"
     }
   ],
   "strategies": [
     {
       "name": "Speculative",
       "trades": 2,
-      "pnl": 1.68,
+      "pnl": 1.92,
       "wins": 1,
       "enabled": true,
       "winRate": 0.5
@@ -311,30 +320,30 @@
     {
       "name": "Safe Yield",
       "trades": 4,
-      "pnl": 0.3,
-      "wins": 2,
+      "pnl": -2.4,
+      "wins": 1,
       "enabled": true,
-      "winRate": 0.5
+      "winRate": 0.25
     },
     {
       "name": "Event-Driven",
       "trades": 4,
-      "pnl": 23.44,
-      "wins": 2,
+      "pnl": 23.63,
+      "wins": 3,
       "enabled": true,
-      "winRate": 0.5
+      "winRate": 0.75
     }
   ],
   "activity": [
     {
-      "time": "2026-02-13T01:56:18.193Z",
+      "time": "2026-02-13T02:17:14.078Z",
       "type": "SURVIVAL_MODE",
-      "message": "⚠️ Position value $55.92 below $100 — SURVIVAL MODE"
+      "message": "⚠️ Position value $31.00 below $100 — SURVIVAL MODE"
     },
     {
-      "time": "2026-02-13T02:15:49.268Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
+      "time": "2026-02-13T02:17:14.082Z",
+      "type": "EMERGENCY_MODE",
+      "message": "🚨 EMERGENCY: Position value $31.00 below $50 — ALL TRADING HALTED"
     }
   ],
   "cash": 214.170184,
@@ -424,12 +433,12 @@
         "realizedPnl": "0.00",
         "status": "OPEN",
         "source": "personal_wallet",
-        "firstBuy": "2026-02-13T02:05:14.163Z",
-        "lastTrade": "2026-02-13T02:05:14.163Z"
+        "firstBuy": null,
+        "lastTrade": null
       },
       {
-        "asset_id": "21742633143463906290569050155826241533067272736897614950488156847949938836455",
-        "market": "Norway Gold Medals Winter Olympics",
+        "asset_id": "37951513621735784471651257045517975893424565554701830077103055531806326097100",
+        "market": "Norway Most Gold Medals Winter Olympics",
         "outcome": "YES",
         "size": 50,
         "avgPrice": "0.9200",
@@ -439,12 +448,12 @@
         "realizedPnl": "0.00",
         "status": "OPEN",
         "source": "personal_wallet",
-        "firstBuy": "2026-02-13T02:05:23.657Z",
-        "lastTrade": "2026-02-13T02:05:23.657Z"
+        "firstBuy": null,
+        "lastTrade": null
       },
       {
-        "asset_id": "52114319501245915516055106046884209969926127482827954674443846427813813222426",
-        "market": "Fed March Rate Cut NO",
+        "asset_id": "89036168105179001192755120118050209760422683300339582903158940882158509550672",
+        "market": "Fed March 25bps Cut",
         "outcome": "NO",
         "size": 50,
         "avgPrice": "0.9300",
@@ -454,12 +463,12 @@
         "realizedPnl": "0.00",
         "status": "OPEN",
         "source": "personal_wallet",
-        "firstBuy": "2026-02-13T02:05:29.289Z",
-        "lastTrade": "2026-02-13T02:05:29.289Z"
+        "firstBuy": null,
+        "lastTrade": null
       },
       {
-        "asset_id": "48331043336612883890938759509493159234672657012891542590163813280621545903637",
-        "market": "BTC Below $55K Feb NO",
+        "asset_id": "14508138056322224915688949573192229922802851672435344101150518068118489796467",
+        "market": "BTC wont drop to 55K Feb",
         "outcome": "NO",
         "size": 15,
         "avgPrice": "0.8200",
@@ -469,8 +478,8 @@
         "realizedPnl": "0.00",
         "status": "OPEN",
         "source": "personal_wallet",
-        "firstBuy": "2026-02-13T02:05:33.194Z",
-        "lastTrade": "2026-02-13T02:05:33.194Z"
+        "firstBuy": null,
+        "lastTrade": null
       }
     ],
     "closedPositions": [
