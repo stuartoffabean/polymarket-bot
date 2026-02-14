@@ -66,5 +66,22 @@
     "pnlPct": -100,
     "strategy": "arb",
     "notes": "SL=0.3, TP=0.5, Entry=0.002"
+  },
+  {
+    "timestamp": "2026-02-14T21:02:44.529Z",
+    "assetId": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
+    "market": "Anthropic Best AI Model Feb",
+    "outcome": "Yes",
+    "reason": "manual_sell",
+    "triggerSource": "executor-manual",
+    "entryPrice": -21.3309,
+    "exitPrice": 0.693,
+    "size": 53,
+    "costBasis": -1130.5377,
+    "proceeds": 36.729,
+    "realizedPnl": 1167.2667,
+    "pnlPct": 0,
+    "strategy": "unknown",
+    "notes": ""
   }
 ]

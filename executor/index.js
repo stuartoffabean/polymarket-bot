@@ -1857,7 +1857,8 @@ async function handler(req, res) {
       
       // EXIT LEDGER — log the manual sell
       // Try to find entry price from cached positions
-      const cachedPos = await getCachedPositions().catch(() => []);
+      const cachedData = await getCachedPositions().catch(() => null);
+      const cachedPos = cachedData?.openPositions || [];
       const pos = cachedPos.find(p => p.asset_id === tokenID);
       const entryPrice = pos ? parseFloat(pos.avgPrice) : 0;
       const sellSize = parseFloat(size);
