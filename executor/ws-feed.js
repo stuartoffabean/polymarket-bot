@@ -181,11 +181,19 @@ const CASH_FETCH_INTERVAL = 60000; // Refresh cash balance every 60s
 async function fetchCashBalance() {
   try {
     const data = await httpGet("/balance");
-    cachedCashBalance = data.balance || 0;
+    const newBal = data.balance || 0;
+    // NEVER zero out a known-good cash balance — stale is better than missing
+    if (newBal > 0 || cachedCashBalance === 0) {
+      cachedCashBalance = newBal;
+    } else if (newBal === 0 && cachedCashBalance > 10) {
+      log("CASH", `⚠️ /balance returned $0 but cached=$${cachedCashBalance.toFixed(2)} — keeping cached (likely fetch bug)`);
+      // Don't update — keep the stale but valid value
+      return;
+    }
     lastCashFetch = Date.now();
   } catch (e) {
-    // Keep last known value on failure
-    if (!cachedCashBalance) cachedCashBalance = 0;
+    // Keep last known value on failure — NEVER zero it out
+    log("CASH", `⚠️ fetchCashBalance failed: ${e.message} — keeping cached $${cachedCashBalance.toFixed(2)}`);
   }
 }
 
@@ -830,7 +838,7 @@ function computePositionValue() {
   return v;
 }
 
-function updatePortfolioValue() {
+async function updatePortfolioValue() {
   const positionValue = computePositionValue();
 
   // Kick off cash balance refresh (non-blocking — runs on its own timer)
@@ -855,10 +863,29 @@ function updatePortfolioValue() {
     // Daily drawdown check (v3 §7) — compare TOTAL vs TOTAL (not positions vs total+cash)
     const drawdown = (dailyStartValue - totalValue) / dailyStartValue;
     if (drawdown >= MAX_DAILY_DRAWDOWN && !circuitBreakerTripped) {
+      // SANITY CHECK: If drawdown >30%, it's almost certainly a stale/missing cash balance.
+      // Re-fetch cash synchronously before tripping.
+      if (drawdown > 0.30) {
+        log("CB", `⚠️ Suspicious drawdown ${(drawdown * 100).toFixed(1)}% — verifying cash balance before tripping...`);
+        log("CB", `  positionValue=$${positionValue.toFixed(2)}, cachedCash=$${cachedCashBalance.toFixed(2)}, dailyStart=$${dailyStartValue.toFixed(2)}`);
+        try {
+          await fetchCashBalance();
+          const verifiedTotal = positionValue + cachedCashBalance;
+          const verifiedDrawdown = (dailyStartValue - verifiedTotal) / dailyStartValue;
+          log("CB", `  After re-fetch: cash=$${cachedCashBalance.toFixed(2)}, total=$${verifiedTotal.toFixed(2)}, drawdown=${(verifiedDrawdown * 100).toFixed(1)}%`);
+          if (verifiedDrawdown < MAX_DAILY_DRAWDOWN) {
+            log("CB", `  ✅ FALSE ALARM — real drawdown ${(verifiedDrawdown * 100).toFixed(1)}% is under ${MAX_DAILY_DRAWDOWN * 100}% threshold`);
+            return; // Don't trip — it was stale data
+          }
+        } catch (e) {
+          log("CB", `  ⚠️ Cash re-fetch failed: ${e.message} — NOT tripping on unverified data`);
+          return; // Don't trip if we can't verify
+        }
+      }
       circuitBreakerTripped = true;
       circuitBreakerResumeAt = Date.now() + DRAWDOWN_PAUSE_MS;
       pushAlert("CIRCUIT_BREAKER", null, null, null, -drawdown, 
-        `Daily drawdown ${(drawdown * 100).toFixed(1)}% exceeds 15% — PAUSED for 2 hours`);
+        `Daily drawdown ${(drawdown * 100).toFixed(1)}% exceeds ${(MAX_DAILY_DRAWDOWN * 100).toFixed(0)}% — PAUSED for 2 hours`);
       log("CB", `🔴 CIRCUIT BREAKER TRIPPED — resume at ${new Date(circuitBreakerResumeAt).toISOString()}`);
       
       // Auto-resume after 2 hours
@@ -2340,9 +2367,11 @@ async function main() {
   log("INIT", `PnL history: every ${PNL_RECORD_INTERVAL / 60000}min → ${PNL_HISTORY_FILE}`);
   console.log();
 
-  // Load persisted state
+  // Load persisted state — but NEVER restore circuit breaker on restart
+  // (dailyStartValue is freshly calculated, old CB state is meaningless)
   const alerts = loadAlerts();
-  circuitBreakerTripped = alerts.circuitBreakerTripped || false;
+  circuitBreakerTripped = false;  // Always start fresh — warmup sets new dailyStartValue
+  circuitBreakerResumeAt = null;
   survivalMode = alerts.survivalMode || false;
   emergencyMode = alerts.emergencyMode || false;
 

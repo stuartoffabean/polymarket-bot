@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-02-14T04:57:03.750Z",
+  "lastUpdated": "2026-02-14T11:09:44.769Z",
   "generatedBy": "trade-reporter.js v1.0",
   "portfolio": {
-    "totalValue": 409.706955,
-    "positionValue": 172.4674,
-    "cashBalance": 237.239555,
-    "trackedPositions": 8,
-    "idlePct": "57.9"
+    "totalValue": 377.029355,
+    "positionValue": 140.46179999999998,
+    "cashBalance": 236.567555,
+    "trackedPositions": 6,
+    "idlePct": "62.7"
   },
   "summary": {
-    "totalRealizedPnl": -33.9,
-    "totalUnrealizedPnl": 13.91,
-    "totalPnl": -19.99,
+    "totalRealizedPnl": -34.3,
+    "totalUnrealizedPnl": 11.63,
+    "totalPnl": -22.67,
     "totalTrades": 49,
-    "totalWins": 14,
+    "totalWins": 16,
     "totalLosses": 25,
-    "overallWinRate": 34.1,
-    "portfolioValue": 409.706955,
-    "cashBalance": 237.239555,
-    "idlePct": "57.9",
+    "overallWinRate": 37.2,
+    "portfolioValue": 377.029355,
+    "cashBalance": 236.567555,
+    "idlePct": "62.7",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
@@ -34,14 +34,43 @@
         "unfilled": 0
       },
       "arb": {
-        "submitted": 4,
+        "submitted": 5,
         "filled": 4,
         "partial": 0,
-        "unfilled": 0
+        "unfilled": 1
       }
     }
   },
   "strategies": {
+    "unknown": {
+      "status": "ACTIVE",
+      "totalTrades": 16,
+      "openPositions": 5,
+      "closedPositions": 11,
+      "wins": 7,
+      "losses": 4,
+      "winRate": "63.6%",
+      "realizedPnl": "$10.44",
+      "unrealizedPnl": "$5.63",
+      "totalPnl": "$16.07",
+      "totalDeployed": "$224.45",
+      "currentDeployed": "$97.83",
+      "expectancy": "$0.95",
+      "profitFactor": "2.10",
+      "avgWin": "$2.85",
+      "avgLoss": "$-2.37",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Gov Shutdown Feb 14",
+        "pnl": 18.07,
+        "pnlPct": "15.7"
+      },
+      "worstTrade": {
+        "market": "Bad Bunny Halftime Views",
+        "pnl": -7.43,
+        "pnlPct": "-21.2"
+      }
+    },
     "manual": {
       "status": "COMPLETED",
       "totalTrades": 2,
@@ -100,35 +129,6 @@
         "pnlPct": "-73.3"
       }
     },
-    "unknown": {
-      "status": "ACTIVE",
-      "totalTrades": 16,
-      "openPositions": 6,
-      "closedPositions": 10,
-      "wins": 6,
-      "losses": 4,
-      "winRate": "60%",
-      "realizedPnl": "$10.93",
-      "unrealizedPnl": "$7.34",
-      "totalPnl": "$18.27",
-      "totalDeployed": "$196.04",
-      "currentDeployed": "$112.65",
-      "expectancy": "$1.09",
-      "profitFactor": "2.24",
-      "avgWin": "$3.29",
-      "avgLoss": "$-2.21",
-      "avgHoldHours": 0,
-      "bestTrade": {
-        "market": "Gov Shutdown Feb 14",
-        "pnl": 18.07,
-        "pnlPct": "15.7"
-      },
-      "worstTrade": {
-        "market": "Bad Bunny Halftime Views",
-        "pnl": -6.8,
-        "pnlPct": "-31.5"
-      }
-    },
     "arb": {
       "status": "ACTIVE",
       "totalTrades": 8,
@@ -138,8 +138,8 @@
       "losses": 5,
       "winRate": "14.3%",
       "realizedPnl": "$-1.08",
-      "unrealizedPnl": "$6.50",
-      "totalPnl": "$5.42",
+      "unrealizedPnl": "$6.00",
+      "totalPnl": "$4.92",
       "totalDeployed": "$3.47",
       "currentDeployed": "$31.00",
       "expectancy": "$-0.15",
@@ -159,21 +159,21 @@
       }
     },
     "resolution": {
-      "status": "ACTIVE",
+      "status": "COMPLETED",
       "totalTrades": 4,
-      "openPositions": 1,
-      "closedPositions": 3,
-      "wins": 3,
+      "openPositions": 0,
+      "closedPositions": 4,
+      "wins": 4,
       "losses": 0,
       "winRate": "100%",
-      "realizedPnl": "$0.35",
-      "unrealizedPnl": "$0.07",
-      "totalPnl": "$0.42",
-      "totalDeployed": "$44.59",
-      "currentDeployed": "$14.91",
-      "expectancy": "$0.12",
+      "realizedPnl": "$0.44",
+      "unrealizedPnl": "$0.00",
+      "totalPnl": "$0.44",
+      "totalDeployed": "$59.50",
+      "currentDeployed": "$0.00",
+      "expectancy": "$0.11",
       "profitFactor": "∞",
-      "avgWin": "$0.12",
+      "avgWin": "$0.11",
       "avgLoss": "$0.00",
       "avgHoldHours": 0,
       "bestTrade": {

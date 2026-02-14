@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-14T11:04:31.125Z",
+  "timestamp": "2026-02-14T15:51:13.681Z",
   "summary": {
     "total": 100,
-    "negRisk": 53,
-    "flagged": 6,
-    "viable": 4
+    "negRisk": 57,
+    "flagged": 4,
+    "viable": 1
   },
   "opportunities": [
     {
@@ -12,13 +12,13 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.7905,
-      "execSum": 0.731,
-      "deviation": 20.95,
-      "execDeviation": 26.9,
-      "grossProfitPer100": 26.9,
+      "midSum": 0.789,
+      "execSum": 0.737,
+      "deviation": 21.1,
+      "execDeviation": 26.3,
+      "grossProfitPer100": 26.3,
       "feesPer100": 0,
-      "profitPer100": 26.9,
+      "profitPer100": 26.3,
       "viable": true,
       "details": [
         {
@@ -35,14 +35,14 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.03,
-          "exec": 0.029,
+          "mid": 0.0305,
+          "exec": 0.03,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.061,
-          "exec": 0.06,
+          "mid": 0.0595,
+          "exec": 0.059,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -53,8 +53,8 @@
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.1135,
-          "exec": 0.111,
+          "mid": 0.114,
+          "exec": 0.112,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
         {
@@ -78,19 +78,19 @@
         {
           "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
           "mid": 0.0105,
-          "exec": 0.008,
+          "exec": 0.007,
           "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
         },
         {
           "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.064,
-          "exec": 0.059,
+          "mid": 0.0645,
+          "exec": 0.06,
           "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
         },
         {
           "name": "Will Julian Assange win the Nobel Peace Prize in 2026?",
-          "mid": 0.0085,
-          "exec": 0.008,
+          "mid": 0.008,
+          "exec": 0.007,
           "token": "2514203837854735205913781359327052377275050226163878960745268210971566855346"
         },
         {
@@ -101,14 +101,14 @@
         },
         {
           "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.095,
-          "exec": 0.083,
+          "mid": 0.098,
+          "exec": 0.09,
           "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
         },
         {
           "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.116,
-          "exec": 0.112,
+          "mid": 0.112,
+          "exec": 0.111,
           "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
         },
         {
@@ -144,269 +144,59 @@
       ]
     },
     {
-      "event": "Colombia Presidential Election",
-      "slug": "colombia-presidential-election",
-      "type": "LONG",
-      "outcomes": 16,
-      "midSum": 0.968,
-      "execSum": 0.926,
-      "deviation": 3.2,
-      "execDeviation": 7.4,
-      "grossProfitPer100": 7.4,
-      "feesPer100": 0,
-      "profitPer100": 7.4,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will Vicky Dávila win the 2026 Colombian presidential electi",
-          "mid": 0.009,
-          "exec": 0.007,
-          "token": "111233749945390693132335511891715724694881884819987764738034083584495542889312"
-        },
-        {
-          "name": "Will Luis Gilberto Murillo win the 2026 Colombian presidenti",
-          "mid": 0.002,
-          "exec": 0.001,
-          "token": "33053388922196452557261107683035649080682228011295662021241156014202987636793"
-        },
-        {
-          "name": "Will Claudia López win the 2026 Colombian presidential elect",
-          "mid": 0.0045,
-          "exec": 0.003,
-          "token": "8704105627729187158244464441676617275507746943882460083674867791526057508646"
-        },
-        {
-          "name": "Will David Luna Sánchez win the 2026 Colombian presidential ",
-          "mid": 0.0035,
-          "exec": 0.003,
-          "token": "29634269883198564591373707667338539580309224908853967914175595169149205026965"
-        },
-        {
-          "name": "Will Juan Daniel Oviedo win the 2026 Colombian presidential ",
-          "mid": 0.0055,
-          "exec": 0.004,
-          "token": "112555322065982091470513953234842603626356443236936103808494470812727562408795"
-        },
-        {
-          "name": "Will Sergio Fajardo win the 2026 Colombian presidential elec",
-          "mid": 0.0235,
-          "exec": 0.021,
-          "token": "8068224814554540438878048752492562091284744204380091879028789889702206094159"
-        },
-        {
-          "name": "Will Juan Manuel Galán win the 2026 Colombian presidential e",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "75712298340810272859765060308006832993211601931382911468417184675550881103879"
-        },
-        {
-          "name": "Will Germán Vargas Lleras win the 2026 Colombian presidentia",
-          "mid": 0.011,
-          "exec": 0.01,
-          "token": "80201140209960826248352000586932595636659282485774269449093899277382388462647"
-        },
-        {
-          "name": "Will Abelardo de la Espriella  win the 2026 Colombian presid",
-          "mid": 0.37,
-          "exec": 0.36,
-          "token": "87037476560262355019736573472997730954875286944171789280729969665019434635807"
-        },
-        {
-          "name": "Will Mauricio Cardenas win the 2026 Colombian presidential e",
-          "mid": 0.003,
-          "exec": 0.002,
-          "token": "100491958886776974191121583503513146470234388396360962605267069217658465802580"
-        },
-        {
-          "name": "Will Ivan Cepeda Castro win the 2026 Colombian presidential ",
-          "mid": 0.38,
-          "exec": 0.37,
-          "token": "62374557612691330043510053829591470998236327248924987579815802826988260253261"
-        },
-        {
-          "name": "Will Daniel Quintero win the 2026 Colombian presidential ele",
-          "mid": 0.005,
-          "exec": 0.004,
-          "token": "36553834009124167357981460132800746681781045509640776189348736916365216865880"
-        },
-        {
-          "name": "Will Roy Barreras win the 2026 Colombian presidential electi",
-          "mid": 0.05,
-          "exec": 0.049,
-          "token": "89197674428783317925181961175064005674601073120281612991629461250109749011039"
-        },
-        {
-          "name": "Will Enrique Peñalosa win the 2026 Colombian presidential el",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "107683978284338345514269480869866022278445451292438352236628035370370763457098"
-        },
-        {
-          "name": "Will Juan Carlos Pinzón win the 2026 Colombian presidential ",
-          "mid": 0.007,
-          "exec": 0.005,
-          "token": "54150466123374773726738402962617014073469969105711615831248994920187304132512"
-        },
-        {
-          "name": "Will Paloma Valencia win the 2026 Colombian presidential ele",
-          "mid": 0.088,
-          "exec": 0.083,
-          "token": "62446510551119788095477835528576672715047217994292762496431912510269665561591"
-        }
-      ]
-    },
-    {
-      "event": "Brazil Presidential Election",
-      "slug": "brazil-presidential-election",
-      "type": "LONG",
-      "outcomes": 9,
-      "midSum": 0.969,
-      "execSum": 0.959,
-      "deviation": 3.1,
-      "execDeviation": 4.1,
-      "grossProfitPer100": 4.1,
-      "feesPer100": 0,
-      "profitPer100": 4.1,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will Tarcisio de Freitas win the 2026 Brazilian presidential",
-          "mid": 0.0385,
-          "exec": 0.038,
-          "token": "52634616068523389389514492087655237014427439869589807217055529923225131895030"
-        },
-        {
-          "name": "Will Luiz Inácio Lula da Silva win the 2026 Brazilian presid",
-          "mid": 0.505,
-          "exec": 0.5,
-          "token": "30630994248667897740988010928640156931882346081873066002335460180076741328029"
-        },
-        {
-          "name": "Will Jair Bolsonaro win the 2026 Brazilian presidential elec",
-          "mid": 0.0105,
-          "exec": 0.01,
-          "token": "66991175107696133528353695394151645462081911990365106169948013117379189357520"
-        },
-        {
-          "name": "Will Fernando Haddad win the 2026 Brazilian presidential ele",
-          "mid": 0.0195,
-          "exec": 0.019,
-          "token": "34763699632057764824138626876692302096202604335992573366008355204521657293675"
-        },
-        {
-          "name": "Will Michelle Bolsonaro win the 2026 Brazilian presidential ",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "91154058715822908897619103072380844452822017332608583147987152526225529443892"
-        },
-        {
-          "name": "Will Eduardo Bolsonaro win the 2026 Brazilian presidential e",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "68827474128979817444758177181483142354604256745613325980470518365059439724226"
-        },
-        {
-          "name": "Will Carlos Roberto Massa Júnior win the 2026 Brazilian pres",
-          "mid": 0.049,
-          "exec": 0.048,
-          "token": "7424753944577407627798342086224300332261118341771286172561357635231967087849"
-        },
-        {
-          "name": "Will Renan Santos win the 2026 Brazilian presidential electi",
-          "mid": 0.0625,
-          "exec": 0.062,
-          "token": "93998891488819623915454849994768171534113749478841216025646247933473925258016"
-        },
-        {
-          "name": "Will Flávio Bolsonaro win the 2026 Brazilian presidential el",
-          "mid": 0.28,
-          "exec": 0.279,
-          "token": "109876868437950584369987384406356259939519193117253465815665152916226511121427"
-        }
-      ]
-    },
-    {
-      "event": "# of views on Bad Bunny halftime show (YouTube) in week 1?",
-      "slug": "of-views-on-bad-bunny-halftime-show-youtube-in-week-1",
-      "type": "LONG",
-      "outcomes": 2,
-      "midSum": 0.972,
-      "execSum": 0.961,
-      "deviation": 2.8,
-      "execDeviation": 3.9,
-      "grossProfitPer100": 3.9,
-      "feesPer100": 0,
-      "profitPer100": 3.9,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
-          "mid": 0.485,
-          "exec": 0.471,
-          "token": "16680383807036024154663222348300164487828801908390056508639441371141589139909"
-        },
-        {
-          "name": "Will the 2026 Bad Bunny Super Bowl halftime show video get b",
-          "mid": 0.485,
-          "exec": 0.49,
-          "token": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
-        }
-      ]
-    },
-    {
       "event": "Elon Musk # tweets February 10 - February 17, 2026?",
       "slug": "elon-musk-of-tweets-february-10-february-17",
       "type": "SHORT",
       "outcomes": 20,
-      "midSum": 1.0295,
-      "execSum": 0.998,
-      "deviation": 2.95,
-      "execDeviation": 0.2,
-      "grossProfitPer100": -0.2,
+      "midSum": 1.03,
+      "execSum": 0.993,
+      "deviation": 3,
+      "execDeviation": 0.7,
+      "grossProfitPer100": -0.7,
       "feesPer100": 0,
-      "profitPer100": -0.2,
+      "profitPer100": -0.7,
       "viable": false,
       "details": [
         {
           "name": "Will Elon Musk post 160-179 tweets from February 10 to Febru",
-          "mid": 0.008,
-          "exec": 0.007,
+          "mid": 0.0035,
+          "exec": 0.003,
           "token": "109238011000692352108828767303898071755044935229589386222936923097977313728414"
         },
         {
           "name": "Will Elon Musk post 180-199 tweets from February 10 to Febru",
-          "mid": 0.0295,
-          "exec": 0.029,
+          "mid": 0.0205,
+          "exec": 0.019,
           "token": "80129402193926886222872648744582448109420209585695362513644908498087632880007"
         },
         {
           "name": "Will Elon Musk post 200-219 tweets from February 10 to Febru",
-          "mid": 0.063,
-          "exec": 0.062,
+          "mid": 0.0675,
+          "exec": 0.066,
           "token": "64416820489790288121332102418502472550033366952379918524927111781067175558728"
         },
         {
           "name": "Will Elon Musk post 220-239 tweets from February 10 to Febru",
-          "mid": 0.1165,
-          "exec": 0.116,
+          "mid": 0.1185,
+          "exec": 0.122,
           "token": "39984374655456235253656309386142440892847335410208574801160432468734235032379"
         },
         {
           "name": "Will Elon Musk post 240-259 tweets from February 10 to Febru",
-          "mid": 0.1435,
-          "exec": 0.143,
+          "mid": 0.158,
+          "exec": 0.156,
           "token": "110086312911106114856365407473141439385088061745851411040518145492635387128654"
         },
         {
           "name": "Will Elon Musk post 260-279 tweets from February 10 to Febru",
-          "mid": 0.145,
-          "exec": 0.144,
+          "mid": 0.158,
+          "exec": 0.157,
           "token": "92804214888488286051660081845840802500960320189916628779681012160154623746659"
         },
         {
           "name": "Will Elon Musk post 280-299 tweets from February 10 to Febru",
-          "mid": 0.125,
-          "exec": 0.12,
+          "mid": 0.135,
+          "exec": 0.13,
           "token": "54690840325411903483913219455611047215123448522591285512786502451539096092975"
         },
         {
@@ -417,62 +207,62 @@
         },
         {
           "name": "Will Elon Musk post 320-339 tweets from February 10 to Febru",
-          "mid": 0.085,
-          "exec": 0.08,
+          "mid": 0.075,
+          "exec": 0.07,
           "token": "99041117589274216932043990005087798610474127600814514035919300325500109165784"
         },
         {
           "name": "Will Elon Musk post 340-359 tweets from February 10 to Febru",
-          "mid": 0.075,
-          "exec": 0.07,
+          "mid": 0.055,
+          "exec": 0.05,
           "token": "56642611054613403913919428582227500957548450934026978077352003466686247768324"
         },
         {
           "name": "Will Elon Musk post 360-379 tweets from February 10 to Febru",
-          "mid": 0.0495,
-          "exec": 0.049,
+          "mid": 0.047,
+          "exec": 0.046,
           "token": "21547563690326420206108236709516775266934352952491095703108460557563075061478"
         },
         {
           "name": "Will Elon Musk post 380-399 tweets from February 10 to Febru",
-          "mid": 0.0325,
+          "mid": 0.036,
           "exec": 0.032,
           "token": "69334117169564710460204031249483643325085029645369125379997402163488514883717"
         },
         {
           "name": "Will Elon Musk post 400-419 tweets from February 10 to Febru",
-          "mid": 0.0185,
-          "exec": 0.018,
+          "mid": 0.017,
+          "exec": 0.014,
           "token": "19712570898317104556251606569447212832197645525492704365639605030352363765250"
         },
         {
           "name": "Will Elon Musk post 420-439 tweets from February 10 to Febru",
-          "mid": 0.0115,
-          "exec": 0.011,
+          "mid": 0.015,
+          "exec": 0.013,
           "token": "95558768311819174949326480514271676170677962375548879508365985765068496694519"
         },
         {
           "name": "Will Elon Musk post 440-459 tweets from February 10 to Febru",
           "mid": 0.0065,
-          "exec": 0.006,
+          "exec": 0.008,
           "token": "83857067296720617532971946189991838378360948274195071724210433075026914341583"
         },
         {
           "name": "Will Elon Musk post 460-479 tweets from February 10 to Febru",
-          "mid": 0.0045,
-          "exec": 0.004,
+          "mid": 0.0025,
+          "exec": 0.002,
           "token": "75290599409857445610918404354897944196813863043273492972579674466788868679119"
         },
         {
           "name": "Will Elon Musk post 480-499 tweets from February 10 to Febru",
-          "mid": 0.0035,
-          "exec": 0.003,
+          "mid": 0.0025,
+          "exec": 0.002,
           "token": "80738894559105633035868114894710048334173188982599421881331265333526115764714"
         },
         {
           "name": "Will Elon Musk post 500-519 tweets from February 10 to Febru",
           "mid": 0.0025,
-          "exec": 0.002,
+          "exec": 0.001,
           "token": "14310481446556249018043038725450556186523312353390890852422793795299722169224"
         },
         {
@@ -494,13 +284,13 @@
       "slug": "2026-icc-t20-mens-world-cup-winner",
       "type": "SHORT",
       "outcomes": 12,
-      "midSum": 1.0365,
-      "execSum": 0.966,
-      "deviation": 3.65,
-      "execDeviation": 3.4,
-      "grossProfitPer100": -3.4,
+      "midSum": 1.048,
+      "execSum": 0.983,
+      "deviation": 4.8,
+      "execDeviation": 1.7,
+      "grossProfitPer100": -1.7,
       "feesPer100": 0,
-      "profitPer100": -3.4,
+      "profitPer100": -1.7,
       "viable": false,
       "details": [
         {
@@ -511,43 +301,43 @@
         },
         {
           "name": "Will Australia win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.11,
+          "mid": 0.105,
           "exec": 0.1,
           "token": "28877596836825284906528825532184866109967770098921566662217924845975491268438"
         },
         {
           "name": "Will England win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.085,
-          "exec": 0.07,
+          "mid": 0.09,
+          "exec": 0.08,
           "token": "109446023657991202179869549612292567035455071214919100932024261718229181547214"
         },
         {
           "name": "Will South Africa win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.17,
+          "mid": 0.175,
           "exec": 0.16,
           "token": "54644802007454240937143078370147159297869876341797598982143095655493911125903"
         },
         {
           "name": "Will Pakistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0835,
-          "exec": 0.077,
+          "mid": 0.0945,
+          "exec": 0.09,
           "token": "76190129244386305771969693888683878935433573905105493954956506404783670380035"
         },
         {
           "name": "Will New Zealand win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0825,
+          "mid": 0.0845,
           "exec": 0.074,
           "token": "65008518571572657271211632870860379070221892511688233911018004120158193148414"
         },
         {
           "name": "Will West Indies win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.053,
-          "exec": 0.052,
+          "mid": 0.0475,
+          "exec": 0.046,
           "token": "95028549383885752097876461063574302577289253561522211568257489843435069990371"
         },
         {
           "name": "Will Afghanistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0025,
+          "mid": 0.002,
           "exec": 0.001,
           "token": "100224797595385678276742510521942077883901127206633934091955319005396903527705"
         },
@@ -565,7 +355,7 @@
         },
         {
           "name": "Will Zimbabwe win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.006,
+          "mid": 0.0055,
           "exec": 0.005,
           "token": "18067098618874461124880148778379554146494289244719071744515218581410050482940"
         },
@@ -574,6 +364,40 @@
           "mid": 0.0015,
           "exec": 0.001,
           "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
+        }
+      ]
+    },
+    {
+      "event": "Como 1907 vs. ACF Fiorentina",
+      "slug": "sea-com-fio-2026-02-14",
+      "type": "SHORT",
+      "outcomes": 3,
+      "midSum": 1.0655,
+      "execSum": 0.98,
+      "deviation": 6.55,
+      "execDeviation": 2,
+      "grossProfitPer100": -2,
+      "feesPer100": 0,
+      "profitPer100": -2,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will Como 1907 vs. ACF Fiorentina end in a draw?",
+          "mid": 0.18,
+          "exec": 0.02,
+          "token": "75086859208131496049576276639178421334798233910668525480167791435010623747172"
+        },
+        {
+          "name": "Will Como 1907 win on 2026-02-14?",
+          "mid": 0.0105,
+          "exec": 0,
+          "token": "88448559313604399478910711841700113630641766372254573022782134894004190938909"
+        },
+        {
+          "name": "Will ACF Fiorentina win on 2026-02-14?",
+          "mid": 0.875,
+          "exec": 0.96,
+          "token": "51306615989722752833153992497589751863798622118174637661402021350243836193326"
         }
       ]
     }
