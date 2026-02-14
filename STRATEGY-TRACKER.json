@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-02-14T16:29:54.948Z",
+  "lastUpdated": "2026-02-14T23:03:00.772Z",
   "generatedBy": "trade-reporter.js v1.0",
   "portfolio": {
-    "totalValue": 380.439155,
-    "positionValue": 144.77460000000002,
-    "cashBalance": 235.664555,
-    "trackedPositions": 7,
-    "idlePct": "61.9"
+    "totalValue": 451.545885,
+    "positionValue": 163.0768,
+    "cashBalance": 288.469085,
+    "trackedPositions": 40,
+    "idlePct": "63.9"
   },
   "summary": {
-    "totalRealizedPnl": -34.31,
-    "totalUnrealizedPnl": 15.06,
-    "totalPnl": -19.25,
-    "totalTrades": 51,
+    "totalRealizedPnl": -34.59,
+    "totalUnrealizedPnl": 17.01,
+    "totalPnl": -17.58,
+    "totalTrades": 56,
     "totalWins": 16,
-    "totalLosses": 25,
-    "overallWinRate": 36.4,
-    "portfolioValue": 380.439155,
-    "cashBalance": 235.664555,
-    "idlePct": "61.9",
+    "totalLosses": 27,
+    "overallWinRate": 34.8,
+    "portfolioValue": 451.545885,
+    "cashBalance": 288.469085,
+    "idlePct": "63.9",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
@@ -34,60 +34,31 @@
         "unfilled": 0
       },
       "arb": {
-        "submitted": 5,
+        "submitted": 6,
         "filled": 4,
         "partial": 0,
-        "unfilled": 1
+        "unfilled": 2
       }
     }
   },
   "strategies": {
-    "arb": {
-      "status": "ACTIVE",
-      "totalTrades": 10,
-      "openPositions": 2,
-      "closedPositions": 8,
-      "wins": 1,
-      "losses": 5,
-      "winRate": "12.5%",
-      "realizedPnl": "$-1.09",
-      "unrealizedPnl": "$8.76",
-      "totalPnl": "$7.67",
-      "totalDeployed": "$3.48",
-      "currentDeployed": "$31.90",
-      "expectancy": "$-0.14",
-      "profitFactor": "0.06",
-      "avgWin": "$0.07",
-      "avgLoss": "$-0.23",
-      "avgHoldHours": 0,
-      "bestTrade": {
-        "market": "0xb67faadf0c0d3ce177f996359849f5ea46961f7ef34872e5948ab25eb6a49168",
-        "pnl": 0.07,
-        "pnlPct": "53.8"
-      },
-      "worstTrade": {
-        "market": "0x27c9827d0da9e1dc91a2c497afe10e8ba852e72e68d7efbe1b7a677542eb31a1",
-        "pnl": -0.6,
-        "pnlPct": "-33.3"
-      }
-    },
     "unknown": {
-      "status": "COMPLETED",
-      "totalTrades": 11,
-      "openPositions": 0,
-      "closedPositions": 11,
+      "status": "ACTIVE",
+      "totalTrades": 16,
+      "openPositions": 4,
+      "closedPositions": 12,
       "wins": 7,
-      "losses": 4,
-      "winRate": "63.6%",
-      "realizedPnl": "$10.44",
-      "unrealizedPnl": "$0.00",
-      "totalPnl": "$10.44",
-      "totalDeployed": "$224.45",
-      "currentDeployed": "$0.00",
-      "expectancy": "$0.95",
-      "profitFactor": "2.10",
+      "losses": 5,
+      "winRate": "58.3%",
+      "realizedPnl": "$10.32",
+      "unrealizedPnl": "$1.72",
+      "totalPnl": "$12.04",
+      "totalDeployed": "$224.81",
+      "currentDeployed": "$3.35",
+      "expectancy": "$0.86",
+      "profitFactor": "2.07",
       "avgWin": "$2.85",
-      "avgLoss": "$-2.37",
+      "avgLoss": "$-1.92",
       "avgHoldHours": 0,
       "bestTrade": {
         "market": "Gov Shutdown Feb 14",
@@ -100,6 +71,35 @@
         "pnlPct": "-21.2"
       }
     },
+    "arb": {
+      "status": "ACTIVE",
+      "totalTrades": 10,
+      "openPositions": 1,
+      "closedPositions": 9,
+      "wins": 1,
+      "losses": 6,
+      "winRate": "11.1%",
+      "realizedPnl": "$-1.25",
+      "unrealizedPnl": "$8.42",
+      "totalPnl": "$7.17",
+      "totalDeployed": "$4.38",
+      "currentDeployed": "$31.00",
+      "expectancy": "$-0.14",
+      "profitFactor": "0.05",
+      "avgWin": "$0.07",
+      "avgLoss": "$-0.22",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "0xb67faadf0c0d3ce177f996359849f5ea46961f7ef34872e5948ab25eb6a49168",
+        "pnl": 0.07,
+        "pnlPct": "53.8"
+      },
+      "worstTrade": {
+        "market": "0x27c9827d0da9e1dc91a2c497afe10e8ba852e72e68d7efbe1b7a677542eb31a1",
+        "pnl": -0.6,
+        "pnlPct": "-33.3"
+      }
+    },
     "manual": {
       "status": "ACTIVE",
       "totalTrades": 7,
@@ -109,10 +109,10 @@
       "losses": 2,
       "winRate": "0%",
       "realizedPnl": "$-9.54",
-      "unrealizedPnl": "$6.30",
-      "totalPnl": "$-3.24",
+      "unrealizedPnl": "$6.87",
+      "totalPnl": "$-2.67",
       "totalDeployed": "$94.60",
-      "currentDeployed": "$97.83",
+      "currentDeployed": "$48.24",
       "expectancy": "$-4.77",
       "profitFactor": "0.00",
       "avgWin": "$0.00",

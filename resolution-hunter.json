@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-14T20:56:25.706Z",
+  "timestamp": "2026-02-14T22:56:25.684Z",
   "candidates": 2,
   "executed": 0,
   "trades": [],
@@ -7,24 +7,24 @@
     {
       "market": "Will MrBeast's million-dollar puzzle be solved by February 15?",
       "outcome": "No",
-      "price": 0.967,
+      "price": 0.9755,
       "tokenId": "58896686424978363756713769127578513604232156091609258775776512444233397174376",
-      "liquidity": 6069.70329,
+      "liquidity": 4751.34383,
       "vol24h": 9767.350856,
       "endDate": "2026-02-15T00:00:00Z",
-      "expectedProfit": "$0.34",
+      "expectedProfit": "$0.25",
       "conditionId": "0x0c1872e56419c6ebfc480dbcc70b80b734cbd345a80109dcf7ff67acfa252cff"
     },
     {
-      "market": "Will Trump say \"Midterm Election\" this week? (February 15)",
+      "market": "Will the total number of TSA passengers for February 9 - 15 be between 15,500,00",
       "outcome": "No",
       "price": 0.9615,
-      "tokenId": "55479332478931415616773358134138848144152050725266784299588289451204059819911",
-      "liquidity": 745.34056,
-      "vol24h": 1609.1018889999998,
+      "tokenId": "103134567622198626904097441245161008059577393314266339269481468241267105018800",
+      "liquidity": 917.29841,
+      "vol24h": 1568.23361,
       "endDate": "2026-02-15T00:00:00Z",
       "expectedProfit": "$0.40",
-      "conditionId": "0x706428397836852dd75de8a6524a42705f83a67b3f2f6a8b14abf52f8dfc9189"
+      "conditionId": "0x37ebbd3c66ba95519e844a95cd1311fe910f0c7f7ca01c3e92fdbc0b2cbe3b02"
     }
   ]
 }

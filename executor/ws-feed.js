@@ -20,7 +20,8 @@
  *   GET  /prices          — live prices + P&L for all positions
  *   GET  /alerts          — recent alert history
  *   GET  /status          — full system status
- *   GET  /arb-results     — latest arb scanner results
+ *   GET  /arb-results     — latest arb scanner results (NegRisk multi-outcome)
+ *   GET  /binary-arb-results — latest binary arb scanner results (YES+NO pairs)
  *   GET  /resolving       — markets resolving in 6-12h
  *   POST /set-trigger     — { assetId, stopLoss, takeProfit }
  *   POST /add-position    — { assetId, market, outcome, avgPrice, size } (persisted to manual-positions.json)
@@ -36,6 +37,7 @@ const path = require("path");
 const { logExit, getExits, getExitSummary, EXIT_REASONS } = require("./exit-ledger");
 const { writeFileAtomic } = require("./safe-write");
 const positionLedger = require("./position-ledger");
+const { runBinaryArbScan, BINARY_ARB_RESULTS_FILE } = require("./binary-arb-scanner");
 
 // === FEE ACCOUNTING (Feb 2026) ===
 // Most Polymarket markets: ZERO fees. Only 15-min crypto, NCAAB, Serie A have taker fees.
@@ -92,6 +94,7 @@ const ARB_RESULTS_FILE = path.join(__dirname, "..", "arb-results.json");
 const RESOLVING_FILE = path.join(__dirname, "..", "resolving-markets.json");
 const ARB_SCAN_INTERVAL = 15 * 60 * 1000;       // 15 min
 const RESOLVING_SCAN_INTERVAL = 30 * 60 * 1000;  // 30 min
+const BINARY_ARB_SCAN_INTERVAL = 5 * 60 * 1000;  // 5 min (binary arbs are fleeting)
 
 // Thresholds (Directive v2 §risk, v3 §7)
 // P&L is chain-truth only — no hardcoded starting capital. Survival/emergency
@@ -1158,6 +1161,15 @@ async function apiHandler(req, res) {
         return send(res, 200, data);
       } catch (e) {
         return send(res, 200, { error: "No resolving markets data yet", timestamp: null });
+      }
+    }
+
+    if (url === "/binary-arb-results") {
+      try {
+        const data = JSON.parse(fs.readFileSync(BINARY_ARB_RESULTS_FILE, "utf8"));
+        return send(res, 200, data);
+      } catch (e) {
+        return send(res, 200, { error: "No binary arb results yet", timestamp: null });
       }
     }
 
@@ -2485,6 +2497,24 @@ async function main() {
     runResolutionHunter();
     setInterval(runResolutionHunter, RESOLUTION_HUNTER_INTERVAL);
   }, 90 * 1000);
+
+  // Binary arb scanner — runs every 5 min, first run after 45s
+  // Scans ALL binary markets (not just NegRisk) for YES ask + NO ask < $1.00
+  setTimeout(() => {
+    const runBinaryArb = () => {
+      const canExec = systemReady && !circuitBreakerTripped && !emergencyMode && !survivalMode && autoExecuteEnabled;
+      runBinaryArbScan({
+        log,
+        checkAutoCapBudget,
+        httpPost,
+        sendTelegramAlert,
+        tagStrategy,
+        canExecute: canExec,
+      }).catch(e => log("BARB", `❌ Uncaught error: ${e.message}`));
+    };
+    runBinaryArb();
+    setInterval(runBinaryArb, BINARY_ARB_SCAN_INTERVAL);
+  }, 45 * 1000);
 
   // Weather signal executor — PERMANENTLY DISABLED (2026-02-13)
   // Backtest showed NEGATIVE EDGE: 52.7% hit rate, -$234.74 simulated P&L on 129 signals.
