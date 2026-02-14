@@ -1,0 +1,36 @@
+[
+  {
+    "timestamp": "2026-02-14T09:22:03.162Z",
+    "assetId": "163753302602334382041940165066379168856500423857432279946373957328934308182",
+    "market": "Will the highest temperature in New York City be between 42-43°F on February 13?",
+    "outcome": "No",
+    "reason": "resolution_won",
+    "triggerSource": "resolution-detection",
+    "entryPrice": 0.988,
+    "exitPrice": 1,
+    "size": 15,
+    "costBasis": 14.82,
+    "proceeds": 15,
+    "realizedPnl": 0.18,
+    "pnlPct": 1.21,
+    "strategy": "unknown",
+    "notes": "Resolved WON at 2026-02-14T09:22:03.162Z"
+  },
+  {
+    "timestamp": "2026-02-14T09:22:03.164Z",
+    "assetId": "34741782909792644160008944715571340589799476685148756110746740038189821413536",
+    "market": "Will the highest temperature in New York City be 44°F or higher on February 13?",
+    "outcome": "No",
+    "reason": "resolution_won",
+    "triggerSource": "resolution-detection",
+    "entryPrice": 0.994,
+    "exitPrice": 1,
+    "size": 15,
+    "costBasis": 14.91,
+    "proceeds": 15,
+    "realizedPnl": 0.09,
+    "pnlPct": 0.6,
+    "strategy": "unknown",
+    "notes": "Resolved WON at 2026-02-14T09:22:03.164Z"
+  }
+]

@@ -278,5 +278,29 @@
     "strategy": "manual",
     "taggedAt": "2026-02-14T00:22:13.497Z",
     "market": "Wuthering Heights $47-53M"
+  },
+  "49662274238485451283220527378586398370959042852997899886824914466317758572224": {
+    "strategy": "arb",
+    "taggedAt": "2026-02-14T02:46:38.751Z",
+    "event": "French Ligue 1 Winner ",
+    "slug": "french-ligue-1-winner"
+  },
+  "37247697796314054477445671418600147171468572907588144854814679003872920679597": {
+    "strategy": "arb",
+    "taggedAt": "2026-02-14T02:46:38.751Z",
+    "event": "French Ligue 1 Winner ",
+    "slug": "french-ligue-1-winner"
+  },
+  "22667617953671803775562636820557023939003625390106866761389646733205014974047": {
+    "strategy": "arb",
+    "taggedAt": "2026-02-14T02:46:38.752Z",
+    "event": "French Ligue 1 Winner ",
+    "slug": "french-ligue-1-winner"
+  },
+  "106893482875330829332347425550558141013488263650384566003078374608472351519383": {
+    "strategy": "arb",
+    "taggedAt": "2026-02-14T02:46:38.752Z",
+    "event": "French Ligue 1 Winner ",
+    "slug": "french-ligue-1-winner"
   }
 }

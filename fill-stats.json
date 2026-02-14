@@ -12,9 +12,9 @@
     "unfilled": 0
   },
   "arb": {
-    "submitted": 3,
-    "filled": 3,
+    "submitted": 5,
+    "filled": 4,
     "partial": 0,
-    "unfilled": 0
+    "unfilled": 1
   }
 }

@@ -2773,6 +2773,144 @@
       "avgPrice": 0.07,
       "message": "STOP_LOSS: Sold 300 @ 0.04",
       "timestamp": "2026-02-14T00:22:18.589Z"
+    },
+    {
+      "type": "FEE_CHANGE_DETECTED",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
+      "timestamp": "2026-02-14T01:30:03.878Z"
+    },
+    {
+      "type": "FEE_CHANGE_DETECTED",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
+      "timestamp": "2026-02-14T03:30:03.878Z"
+    },
+    {
+      "type": "TRAILING_STOP_ACTIVATED",
+      "assetId": "26721641658578910850",
+      "outcome": "Yes",
+      "market": "0xdeaa7932b51ce74186dc0fb1af2c20294d58d6ace29e4c15e0f8ad13a2d5191d",
+      "price": 0.75,
+      "pnlPct": "21.0%",
+      "size": 50,
+      "avgPrice": 0.62,
+      "message": "Trailing stop engaged. Floor: $0.6260 (breakeven). HWM: +21.0%",
+      "timestamp": "2026-02-14T04:52:19.205Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "28797566188952595754",
+      "outcome": "Yes",
+      "market": "0xf95dfcdf72d98c59381df5b2d015e67aa7b7caf59258881c549d79400490a579",
+      "price": 0.61,
+      "pnlPct": "-36.7%",
+      "size": 21,
+      "avgPrice": 0.9638,
+      "message": "AUTO-SELLING [unknown]",
+      "timestamp": "2026-02-14T05:47:05.364Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "28797566188952595754",
+      "outcome": "Yes",
+      "market": "0xf95dfcdf72d98c59381df5b2d015e67aa7b7caf59258881c549d79400490a579",
+      "pnlPct": null,
+      "size": 21,
+      "avgPrice": 0.9638,
+      "message": "STOP_LOSS: Sold 21 @ undefined",
+      "timestamp": "2026-02-14T05:47:06.246Z"
+    },
+    {
+      "type": "SELL_FAILED",
+      "assetId": "28797566188952595754",
+      "outcome": "Yes",
+      "market": "0xf95dfcdf72d98c59381df5b2d015e67aa7b7caf59258881c549d79400490a579",
+      "price": null,
+      "pnlPct": null,
+      "size": 21,
+      "avgPrice": 0.9638,
+      "message": "STOP_LOSS sell failed: stopLossThreshold is not defined",
+      "timestamp": "2026-02-14T05:47:06.250Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "45898979561776724675",
+      "outcome": "Yes",
+      "market": "0x2749c8d903eb43d4be7ec2c3dc9608613089175450dab63022bf2dab042544f6",
+      "price": 0.004,
+      "pnlPct": "-84.0%",
+      "size": 21,
+      "avgPrice": 0.025,
+      "message": "AUTO-SELLING [unknown]",
+      "timestamp": "2026-02-14T05:47:13.008Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "45898979561776724675",
+      "outcome": "Yes",
+      "market": "0x2749c8d903eb43d4be7ec2c3dc9608613089175450dab63022bf2dab042544f6",
+      "pnlPct": null,
+      "size": 21,
+      "avgPrice": 0.025,
+      "message": "STOP_LOSS: Sold 21 @ undefined",
+      "timestamp": "2026-02-14T05:47:13.903Z"
+    },
+    {
+      "type": "SELL_FAILED",
+      "assetId": "45898979561776724675",
+      "outcome": "Yes",
+      "market": "0x2749c8d903eb43d4be7ec2c3dc9608613089175450dab63022bf2dab042544f6",
+      "price": null,
+      "pnlPct": null,
+      "size": 21,
+      "avgPrice": 0.025,
+      "message": "STOP_LOSS sell failed: stopLossThreshold is not defined",
+      "timestamp": "2026-02-14T05:47:13.906Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "57385942856155711847",
+      "outcome": "Yes",
+      "market": "0x8ba0968026142248f3d6cfc1b817f3519de767703598fe4eb2b8f38ed5713d08",
+      "price": 0.001,
+      "pnlPct": "-1100.0%",
+      "size": 21,
+      "avgPrice": -0.0001,
+      "message": "AUTO-SELLING [unknown]",
+      "timestamp": "2026-02-14T07:32:03.804Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "57385942856155711847",
+      "outcome": "Yes",
+      "market": "0x8ba0968026142248f3d6cfc1b817f3519de767703598fe4eb2b8f38ed5713d08",
+      "pnlPct": null,
+      "size": 21,
+      "avgPrice": -0.0001,
+      "message": "STOP_LOSS: Sold 21 @ undefined",
+      "timestamp": "2026-02-14T07:32:04.805Z"
+    },
+    {
+      "type": "SELL_FAILED",
+      "assetId": "57385942856155711847",
+      "outcome": "Yes",
+      "market": "0x8ba0968026142248f3d6cfc1b817f3519de767703598fe4eb2b8f38ed5713d08",
+      "price": null,
+      "pnlPct": null,
+      "size": 21,
+      "avgPrice": -0.0001,
+      "message": "STOP_LOSS sell failed: stopLossThreshold is not defined",
+      "timestamp": "2026-02-14T07:32:04.808Z"
+    },
+    {
+      "type": "FEE_CHANGE_DETECTED",
+      "price": null,
+      "pnlPct": null,
+      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
+      "timestamp": "2026-02-14T10:52:02.687Z"
     }
   ],
   "circuitBreakerTripped": false,

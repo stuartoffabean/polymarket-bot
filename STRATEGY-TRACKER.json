@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-02-14T00:05:00.018Z",
+  "lastUpdated": "2026-02-14T04:57:03.750Z",
   "generatedBy": "trade-reporter.js v1.0",
   "portfolio": {
-    "totalValue": 433.81775500000003,
-    "positionValue": 188.8782,
-    "cashBalance": 244.939555,
-    "trackedPositions": 9,
-    "idlePct": "56.5"
+    "totalValue": 409.706955,
+    "positionValue": 172.4674,
+    "cashBalance": 237.239555,
+    "trackedPositions": 8,
+    "idlePct": "57.9"
   },
   "summary": {
-    "totalRealizedPnl": -26.36,
-    "totalUnrealizedPnl": 15.47,
-    "totalPnl": -10.89,
-    "totalTrades": 48,
-    "totalWins": 13,
-    "totalLosses": 24,
-    "overallWinRate": 33.3,
-    "portfolioValue": 433.81775500000003,
-    "cashBalance": 244.939555,
-    "idlePct": "56.5",
+    "totalRealizedPnl": -33.9,
+    "totalUnrealizedPnl": 13.91,
+    "totalPnl": -19.99,
+    "totalTrades": 49,
+    "totalWins": 14,
+    "totalLosses": 25,
+    "overallWinRate": 34.1,
+    "portfolioValue": 409.706955,
+    "cashBalance": 237.239555,
+    "idlePct": "57.9",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
@@ -34,14 +34,43 @@
         "unfilled": 0
       },
       "arb": {
-        "submitted": 3,
-        "filled": 3,
+        "submitted": 4,
+        "filled": 4,
         "partial": 0,
         "unfilled": 0
       }
     }
   },
   "strategies": {
+    "manual": {
+      "status": "COMPLETED",
+      "totalTrades": 2,
+      "openPositions": 0,
+      "closedPositions": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0%",
+      "realizedPnl": "$-9.54",
+      "unrealizedPnl": "$0.00",
+      "totalPnl": "$-9.54",
+      "totalDeployed": "$94.60",
+      "currentDeployed": "$0.00",
+      "expectancy": "$-4.77",
+      "profitFactor": "0.00",
+      "avgWin": "$0.00",
+      "avgLoss": "$-4.77",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Bangladesh BNP Election Win",
+        "pnl": -1.84,
+        "pnlPct": "-2.5"
+      },
+      "worstTrade": {
+        "market": "0xb572085e24472c1039ea8d5a06eaaca249f1d5459b7b09a0d71a89628708924c",
+        "pnl": -7.7,
+        "pnlPct": "-36.7"
+      }
+    },
     "weather": {
       "status": "COMPLETED",
       "totalTrades": 19,
@@ -80,8 +109,8 @@
       "losses": 4,
       "winRate": "60%",
       "realizedPnl": "$10.93",
-      "unrealizedPnl": "$8.25",
-      "totalPnl": "$19.18",
+      "unrealizedPnl": "$7.34",
+      "totalPnl": "$18.27",
       "totalDeployed": "$196.04",
       "currentDeployed": "$112.65",
       "expectancy": "$1.09",
@@ -109,8 +138,8 @@
       "losses": 5,
       "winRate": "14.3%",
       "realizedPnl": "$-1.08",
-      "unrealizedPnl": "$7.00",
-      "totalPnl": "$5.92",
+      "unrealizedPnl": "$6.50",
+      "totalPnl": "$5.42",
       "totalDeployed": "$3.47",
       "currentDeployed": "$31.00",
       "expectancy": "$-0.15",
@@ -132,59 +161,30 @@
     "resolution": {
       "status": "ACTIVE",
       "totalTrades": 4,
-      "openPositions": 2,
-      "closedPositions": 2,
-      "wins": 2,
+      "openPositions": 1,
+      "closedPositions": 3,
+      "wins": 3,
       "losses": 0,
       "winRate": "100%",
-      "realizedPnl": "$0.19",
-      "unrealizedPnl": "$0.22",
-      "totalPnl": "$0.41",
-      "totalDeployed": "$29.75",
-      "currentDeployed": "$29.75",
-      "expectancy": "$0.10",
+      "realizedPnl": "$0.35",
+      "unrealizedPnl": "$0.07",
+      "totalPnl": "$0.42",
+      "totalDeployed": "$44.59",
+      "currentDeployed": "$14.91",
+      "expectancy": "$0.12",
       "profitFactor": "∞",
-      "avgWin": "$0.10",
+      "avgWin": "$0.12",
       "avgLoss": "$0.00",
       "avgHoldHours": 0,
       "bestTrade": {
-        "market": "Will the highest temperature in Atlanta be between 56-57°F on February 13?",
-        "pnl": 0.12,
-        "pnlPct": "0.8"
+        "market": "Will the highest temperature in Ankara be 13°C on February 13?",
+        "pnl": 0.16,
+        "pnlPct": "1.1"
       },
       "worstTrade": {
         "market": "Will the highest temperature in Toronto be 3°C or higher on February 13?",
         "pnl": 0.07,
         "pnlPct": "0.5"
-      }
-    },
-    "manual": {
-      "status": "COMPLETED",
-      "totalTrades": 1,
-      "openPositions": 0,
-      "closedPositions": 1,
-      "wins": 0,
-      "losses": 1,
-      "winRate": "0%",
-      "realizedPnl": "$-1.84",
-      "unrealizedPnl": "$0.00",
-      "totalPnl": "$-1.84",
-      "totalDeployed": "$73.60",
-      "currentDeployed": "$0.00",
-      "expectancy": "$-1.84",
-      "profitFactor": "0.00",
-      "avgWin": "$0.00",
-      "avgLoss": "$-1.84",
-      "avgHoldHours": 0,
-      "bestTrade": {
-        "market": "Bangladesh BNP Election Win",
-        "pnl": -1.84,
-        "pnlPct": "-2.5"
-      },
-      "worstTrade": {
-        "market": "Bangladesh BNP Election Win",
-        "pnl": -1.84,
-        "pnlPct": "-2.5"
       }
     }
   }

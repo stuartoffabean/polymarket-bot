@@ -94,7 +94,7 @@ const RESOLVING_SCAN_INTERVAL = 30 * 60 * 1000;  // 30 min
 // Thresholds (Directive v2 §risk, v3 §7)
 // P&L is chain-truth only — no hardcoded starting capital. Survival/emergency
 // thresholds use absolute dollar floors instead of % of arbitrary number.
-const MAX_DAILY_DRAWDOWN = 1.00;      // DISABLED — was 0.15 but false-triggers on every restart due to stale dailyStartValue
+const MAX_DAILY_DRAWDOWN = 0.15;      // RE-ENABLED 2026-02-14: warmup system (checkSystemReady) now prevents false-triggers on restart
 const DEFAULT_STOP_LOSS = 0.30;       // 30% loss per position
 const DEFAULT_TAKE_PROFIT = 0.50;     // 50% gain per position
 const SURVIVAL_FLOOR = 100;           // $100 total value → survival mode
@@ -728,29 +728,36 @@ async function executeSell(assetId, asset, reason) {
       `${reason}: Sold ${asset.size} @ ${result.executedPrice}`);
     
     // EXIT LEDGER — log every exit with full context
-    const exitPrice = parseFloat(result.executedPrice) || 0;
-    const costBasis = asset.size * asset.avgPrice;
-    const proceeds = asset.size * exitPrice;
-    logExit({
-      assetId,
-      market: asset._marketName || asset._market || `Asset ${assetId.slice(0,20)}...`,
-      outcome: asset.outcome || "Unknown",
-      reason: reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS 
-            : reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT
-            : reason === "TRAILING_STOP" ? EXIT_REASONS.TRAILING_STOP
-            : EXIT_REASONS.MANUAL_SELL,
-      triggerSource: "ws-feed-auto",
-      entryPrice: asset.avgPrice,
-      exitPrice,
-      size: asset.size,
-      costBasis,
-      proceeds,
-      realizedPnl: proceeds - costBasis,
-      strategy: getStrategy(assetId),
-      notes: reason === "TRAILING_STOP" 
-        ? `TrailingFloor=${asset._trailingFloor?.toFixed(4)}, HWM=+${(asset._highWaterPnlPct*100)?.toFixed(1)}%, Entry=${asset.avgPrice}`
-        : `SL=${asset._customStopLoss || stopLossThreshold}, TP=${asset._customTakeProfit || takeProfitThreshold}`,
-    });
+    // Wrapped in its own try/catch so logging failures NEVER prevent position cleanup
+    try {
+      const exitPrice = parseFloat(result.executedPrice) || 0;
+      const costBasis = asset.size * asset.avgPrice;
+      const proceeds = asset.size * exitPrice;
+      const stopLossVal = asset.stopLoss || DEFAULT_STOP_LOSS;
+      const takeProfitVal = asset.takeProfit || DEFAULT_TAKE_PROFIT;
+      logExit({
+        assetId,
+        market: asset._marketName || asset._market || asset.market || `Asset ${assetId.slice(0,20)}...`,
+        outcome: asset.outcome || "Unknown",
+        reason: reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS 
+              : reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT
+              : reason === "TRAILING_STOP" ? EXIT_REASONS.TRAILING_STOP
+              : EXIT_REASONS.MANUAL_SELL,
+        triggerSource: "ws-feed-auto",
+        entryPrice: asset.avgPrice,
+        exitPrice,
+        size: asset.size,
+        costBasis,
+        proceeds,
+        realizedPnl: proceeds - costBasis,
+        strategy: getStrategy(assetId),
+        notes: reason === "TRAILING_STOP" 
+          ? `TrailingFloor=${asset._trailingFloor?.toFixed(4)}, HWM=+${(asset._highWaterPnlPct*100)?.toFixed(1)}%, Entry=${asset.avgPrice}`
+          : `SL=${stopLossVal}, TP=${takeProfitVal}, Entry=${asset.avgPrice}`,
+      });
+    } catch (logErr) {
+      log("EXEC", `⚠️ Exit ledger logging failed (non-fatal): ${logErr.message}`);
+    }
 
     // If this was a manual position, remove from persisted file
     if (asset._manual) {

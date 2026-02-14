@@ -58,5 +58,50 @@
     "resolvedAt": "2026-02-13T22:28:29.233Z",
     "endDate": "2026-02-13",
     "slug": "highest-temperature-in-atlanta-on-february-13-2026-56-57f"
+  },
+  "7340112073555222453704760842525649718617418327394825093976073523054585350682": {
+    "asset_id": "7340112073555222453704760842525649718617418327394825093976073523054585350682",
+    "conditionId": "0xee192e2875d2a3088106dc681281e973ba0950a651edb95c5b3fac91c69b9d70",
+    "market": "Will the highest temperature in Ankara be 13°C on February 13?",
+    "outcome": "No",
+    "size": 15,
+    "avgPrice": 0.989,
+    "costBasis": 14.835,
+    "payout": 15,
+    "realizedPnl": 0.165,
+    "won": true,
+    "resolvedAt": "2026-02-14T01:20:04.321Z",
+    "endDate": "2026-02-13",
+    "slug": "highest-temperature-in-ankara-on-february-13-2026-13c"
+  },
+  "163753302602334382041940165066379168856500423857432279946373957328934308182": {
+    "asset_id": "163753302602334382041940165066379168856500423857432279946373957328934308182",
+    "conditionId": "0xf709caa22e0eb963bd6f9a015361b1aa108698fc1934566c5f8f4241658284bf",
+    "market": "Will the highest temperature in New York City be between 42-43°F on February 13?",
+    "outcome": "No",
+    "size": 15,
+    "avgPrice": 0.988,
+    "costBasis": 14.82,
+    "payout": 15,
+    "realizedPnl": 0.18,
+    "won": true,
+    "resolvedAt": "2026-02-14T09:22:03.162Z",
+    "endDate": "2026-02-13",
+    "slug": "highest-temperature-in-nyc-on-february-13-2026-42-43f"
+  },
+  "34741782909792644160008944715571340589799476685148756110746740038189821413536": {
+    "asset_id": "34741782909792644160008944715571340589799476685148756110746740038189821413536",
+    "conditionId": "0x46fb37d8507df7f1b0dc94ffee763ed59f7ea7104f4f589ca37de25750207539",
+    "market": "Will the highest temperature in New York City be 44°F or higher on February 13?",
+    "outcome": "No",
+    "size": 15,
+    "avgPrice": 0.994,
+    "costBasis": 14.91,
+    "payout": 15,
+    "realizedPnl": 0.09,
+    "won": true,
+    "resolvedAt": "2026-02-14T09:22:03.164Z",
+    "endDate": "2026-02-13",
+    "slug": "highest-temperature-in-nyc-on-february-13-2026-44forhigher"
   }
 }

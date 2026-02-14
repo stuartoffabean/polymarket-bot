@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-14T00:17:52.992Z",
+  "timestamp": "2026-02-14T10:54:11.018Z",
   "summary": {
     "total": 100,
-    "negRisk": 54,
+    "negRisk": 53,
     "flagged": 6,
-    "viable": 3
+    "viable": 2
   },
   "opportunities": [
     {
@@ -12,14 +12,14 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.816,
-      "execSum": 0.755,
-      "deviation": 18.4,
-      "execDeviation": 24.5,
-      "grossProfitPer100": 24.5,
+      "midSum": 0.79,
+      "execSum": null,
+      "deviation": 21,
+      "execDeviation": null,
+      "grossProfitPer100": 29.9,
       "feesPer100": 0,
-      "profitPer100": 24.5,
-      "viable": true,
+      "profitPer100": 29.9,
+      "viable": false,
       "details": [
         {
           "name": "Will Donald Trump win the Nobel Peace Prize in 2026?",
@@ -29,20 +29,20 @@
         },
         {
           "name": "Will Yulia Navalnaya win the Nobel Peace Prize in 2026?",
-          "mid": 0.08,
-          "exec": 0.07,
+          "mid": 0.07,
+          "exec": 0.06,
           "token": "3494130919441794744300504897798612438496650716124466384425423765833752918969"
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.04,
-          "exec": 0.04,
+          "mid": 0.03,
+          "exec": 0,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.0585,
-          "exec": 0.058,
+          "mid": 0.061,
+          "exec": 0.06,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -53,8 +53,8 @@
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.1095,
-          "exec": 0.102,
+          "mid": 0.1135,
+          "exec": 0.111,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
         {
@@ -77,14 +77,14 @@
         },
         {
           "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
-          "mid": 0.011,
-          "exec": 0.009,
+          "mid": 0.0105,
+          "exec": 0.007,
           "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
         },
         {
           "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.065,
-          "exec": 0.06,
+          "mid": 0.0635,
+          "exec": 0.059,
           "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
         },
         {
@@ -101,19 +101,19 @@
         },
         {
           "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.1045,
-          "exec": 0.1,
+          "mid": 0.095,
+          "exec": 0.083,
           "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
         },
         {
           "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
           "mid": 0.116,
-          "exec": 0.108,
+          "exec": 0.112,
           "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
         },
         {
           "name": "Will Vladimir Putin win the Nobel Peace Prize in 2026?",
-          "mid": 0.0065,
+          "mid": 0.007,
           "exec": 0.005,
           "token": "3072654272549368438022392135276167382428661847959009954134234860002162565563"
         },
@@ -125,13 +125,13 @@
         },
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
-          "mid": 0.006,
-          "exec": 0.003,
+          "mid": 0.005,
+          "exec": 0.004,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
         {
           "name": "Will Charlie Kirk win the Nobel Peace Prize in 2026?",
-          "mid": 0.0185,
+          "mid": 0.018,
           "exec": 0.015,
           "token": "41901357708237118584313729261027657874621373325486663648640954008517926947624"
         },
@@ -144,153 +144,195 @@
       ]
     },
     {
-      "event": "2026 Winter Olympics: 2nd Most Gold Medals",
-      "slug": "2026-winter-olympics-2nd-most-gold-medals",
+      "event": "Colombia Presidential Election",
+      "slug": "colombia-presidential-election",
       "type": "LONG",
-      "outcomes": 11,
-      "midSum": 0.967,
-      "execSum": 0.877,
-      "deviation": 3.3,
-      "execDeviation": 12.3,
-      "grossProfitPer100": 12.3,
+      "outcomes": 16,
+      "midSum": 0.9685,
+      "execSum": 0.926,
+      "deviation": 3.15,
+      "execDeviation": 7.4,
+      "grossProfitPer100": 7.4,
       "feesPer100": 0,
-      "profitPer100": 12.3,
+      "profitPer100": 7.4,
       "viable": true,
       "details": [
         {
-          "name": "Will Germany win the second most gold medals in the 2026 Win",
-          "mid": 0.155,
-          "exec": 0.12,
-          "token": "33527841083238114410821794727721397473423028282802524280756781366173358220337"
+          "name": "Will Vicky Dávila win the 2026 Colombian presidential electi",
+          "mid": 0.009,
+          "exec": 0.007,
+          "token": "111233749945390693132335511891715724694881884819987764738034083584495542889312"
         },
         {
-          "name": "Will Japan win the second most gold medals in the 2026 Winte",
+          "name": "Will Luis Gilberto Murillo win the 2026 Colombian presidenti",
           "mid": 0.0025,
-          "exec": 0,
-          "token": "111894557298781939977731489803328039016139776743804941329095911521550536502479"
+          "exec": 0.001,
+          "token": "33053388922196452557261107683035649080682228011295662021241156014202987636793"
         },
         {
-          "name": "Will Norway win the second most gold medals in the 2026 Wint",
-          "mid": 0.073,
-          "exec": 0.073,
-          "token": "106833699228273846976176656407851093285252741004912922624914012805053630217261"
-        },
-        {
-          "name": "Will Switzerland win the second most gold medals in the 2026",
-          "mid": 0.005,
-          "exec": 0.004,
-          "token": "29907155796368150519005574238713742631093524047565146960025503386355357885802"
-        },
-        {
-          "name": "Will France win the second most gold medals in the 2026 Wint",
-          "mid": 0.0955,
-          "exec": 0.058,
-          "token": "68959022501965827834594225017440628797651972987757467980276659254144556424029"
-        },
-        {
-          "name": "Will Italy win the second most gold medals in the 2026 Winte",
-          "mid": 0.056,
-          "exec": 0.055,
-          "token": "26763796227093385389238049506291521102844214410541553072801638416728642140084"
-        },
-        {
-          "name": "Will Netherlands win the second most gold medals in the 2026",
+          "name": "Will Claudia López win the 2026 Colombian presidential elect",
           "mid": 0.0045,
           "exec": 0.003,
-          "token": "115788300045717132726717696681600151651413337435636733783573497592330245124743"
+          "token": "8704105627729187158244464441676617275507746943882460083674867791526057508646"
         },
         {
-          "name": "Will Sweden win the second most gold medals in the 2026 Wint",
-          "mid": 0.0175,
-          "exec": 0.02,
-          "token": "102873391199200034656929292947181197275415695519728750406984504778587939102412"
-        },
-        {
-          "name": "Will the United States win the second most gold medals in th",
-          "mid": 0.55,
-          "exec": 0.54,
-          "token": "27088732675640554540326471754429594214850278691470958430964695104190473141220"
-        },
-        {
-          "name": "Will Austria win the second most gold medals in the 2026 Win",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "101791809986905988277762039111990493829559771462296396105013985938159628621953"
-        },
-        {
-          "name": "Will Canada win the second most gold medals in the 2026 Wint",
-          "mid": 0.0055,
+          "name": "Will David Luna Sánchez win the 2026 Colombian presidential ",
+          "mid": 0.0035,
           "exec": 0.003,
-          "token": "44629545256584328971382372348438020632127150259657362302329795377047481617498"
+          "token": "29634269883198564591373707667338539580309224908853967914175595169149205026965"
+        },
+        {
+          "name": "Will Juan Daniel Oviedo win the 2026 Colombian presidential ",
+          "mid": 0.0055,
+          "exec": 0.004,
+          "token": "112555322065982091470513953234842603626356443236936103808494470812727562408795"
+        },
+        {
+          "name": "Will Sergio Fajardo win the 2026 Colombian presidential elec",
+          "mid": 0.0235,
+          "exec": 0.021,
+          "token": "8068224814554540438878048752492562091284744204380091879028789889702206094159"
+        },
+        {
+          "name": "Will Juan Manuel Galán win the 2026 Colombian presidential e",
+          "mid": 0.0025,
+          "exec": 0.002,
+          "token": "75712298340810272859765060308006832993211601931382911468417184675550881103879"
+        },
+        {
+          "name": "Will Germán Vargas Lleras win the 2026 Colombian presidentia",
+          "mid": 0.011,
+          "exec": 0.01,
+          "token": "80201140209960826248352000586932595636659282485774269449093899277382388462647"
+        },
+        {
+          "name": "Will Abelardo de la Espriella  win the 2026 Colombian presid",
+          "mid": 0.37,
+          "exec": 0.36,
+          "token": "87037476560262355019736573472997730954875286944171789280729969665019434635807"
+        },
+        {
+          "name": "Will Mauricio Cardenas win the 2026 Colombian presidential e",
+          "mid": 0.003,
+          "exec": 0.002,
+          "token": "100491958886776974191121583503513146470234388396360962605267069217658465802580"
+        },
+        {
+          "name": "Will Ivan Cepeda Castro win the 2026 Colombian presidential ",
+          "mid": 0.38,
+          "exec": 0.37,
+          "token": "62374557612691330043510053829591470998236327248924987579815802826988260253261"
+        },
+        {
+          "name": "Will Daniel Quintero win the 2026 Colombian presidential ele",
+          "mid": 0.005,
+          "exec": 0.004,
+          "token": "36553834009124167357981460132800746681781045509640776189348736916365216865880"
+        },
+        {
+          "name": "Will Roy Barreras win the 2026 Colombian presidential electi",
+          "mid": 0.05,
+          "exec": 0.049,
+          "token": "89197674428783317925181961175064005674601073120281612991629461250109749011039"
+        },
+        {
+          "name": "Will Enrique Peñalosa win the 2026 Colombian presidential el",
+          "mid": 0.0025,
+          "exec": 0.002,
+          "token": "107683978284338345514269480869866022278445451292438352236628035370370763457098"
+        },
+        {
+          "name": "Will Juan Carlos Pinzón win the 2026 Colombian presidential ",
+          "mid": 0.007,
+          "exec": 0.005,
+          "token": "54150466123374773726738402962617014073469969105711615831248994920187304132512"
+        },
+        {
+          "name": "Will Paloma Valencia win the 2026 Colombian presidential ele",
+          "mid": 0.088,
+          "exec": 0.083,
+          "token": "62446510551119788095477835528576672715047217994292762496431912510269665561591"
         }
       ]
     },
     {
-      "event": "2nd largest company end of March?",
-      "slug": "2nd-largest-company-end-of-march",
+      "event": "Brazil Presidential Election",
+      "slug": "brazil-presidential-election",
       "type": "LONG",
-      "outcomes": 7,
-      "midSum": 0.9625,
-      "execSum": 0.907,
-      "deviation": 3.75,
-      "execDeviation": 9.3,
-      "grossProfitPer100": 9.3,
+      "outcomes": 9,
+      "midSum": 0.97,
+      "execSum": 0.959,
+      "deviation": 3,
+      "execDeviation": 4.1,
+      "grossProfitPer100": 4.1,
       "feesPer100": 0,
-      "profitPer100": 9.3,
+      "profitPer100": 4.1,
       "viable": true,
       "details": [
         {
-          "name": "Will Microsoft be the second-largest company in the world by",
-          "mid": 0.0155,
-          "exec": 0.012,
-          "token": "56043719131666873392339826690561164371972316765200119693100188654384547919541"
+          "name": "Will Tarcisio de Freitas win the 2026 Brazilian presidential",
+          "mid": 0.0385,
+          "exec": 0.038,
+          "token": "52634616068523389389514492087655237014427439869589807217055529923225131895030"
         },
         {
-          "name": "Will Alphabet be the second-largest company in the world by ",
-          "mid": 0.435,
-          "exec": 0.42,
-          "token": "52058671260704755371239590954532265413964014051338616280298103550150919688937"
+          "name": "Will Luiz Inácio Lula da Silva win the 2026 Brazilian presid",
+          "mid": 0.505,
+          "exec": 0.5,
+          "token": "30630994248667897740988010928640156931882346081873066002335460180076741328029"
         },
         {
-          "name": "Will Saudi Aramco be the second-largest company in the world",
+          "name": "Will Jair Bolsonaro win the 2026 Brazilian presidential elec",
+          "mid": 0.0115,
+          "exec": 0.01,
+          "token": "66991175107696133528353695394151645462081911990365106169948013117379189357520"
+        },
+        {
+          "name": "Will Fernando Haddad win the 2026 Brazilian presidential ele",
+          "mid": 0.0195,
+          "exec": 0.019,
+          "token": "34763699632057764824138626876692302096202604335992573366008355204521657293675"
+        },
+        {
+          "name": "Will Michelle Bolsonaro win the 2026 Brazilian presidential ",
+          "mid": 0.0025,
+          "exec": 0.002,
+          "token": "91154058715822908897619103072380844452822017332608583147987152526225529443892"
+        },
+        {
+          "name": "Will Eduardo Bolsonaro win the 2026 Brazilian presidential e",
           "mid": 0.0015,
           "exec": 0.001,
-          "token": "23697556611080047668409260002656942203757476640472020997915890756947770362395"
+          "token": "68827474128979817444758177181483142354604256745613325980470518365059439724226"
         },
         {
-          "name": "Will NVIDIA be the second-largest company in the world by ma",
-          "mid": 0.075,
-          "exec": 0.07,
-          "token": "6040947993448829544073894639208840950036278974732442671623041852620281306449"
+          "name": "Will Carlos Roberto Massa Júnior win the 2026 Brazilian pres",
+          "mid": 0.049,
+          "exec": 0.048,
+          "token": "7424753944577407627798342086224300332261118341771286172561357635231967087849"
         },
         {
-          "name": "Will Apple be the second-largest company in the world by mar",
-          "mid": 0.43,
-          "exec": 0.4,
-          "token": "17650734816192148631865413008800631441117184835523441879314036970940465064230"
+          "name": "Will Renan Santos win the 2026 Brazilian presidential electi",
+          "mid": 0.0625,
+          "exec": 0.062,
+          "token": "93998891488819623915454849994768171534113749478841216025646247933473925258016"
         },
         {
-          "name": "Will Tesla be the second-largest company in the world by mar",
-          "mid": 0.0035,
-          "exec": 0.003,
-          "token": "78315811668598234740089691081618935144006342339309267613533613174700159910650"
-        },
-        {
-          "name": "Will Amazon be the second-largest company in the world by ma",
-          "mid": 0.002,
-          "exec": 0.001,
-          "token": "58207323363308106043860660631824731350235657340858929259583946205828909050830"
+          "name": "Will Flávio Bolsonaro win the 2026 Brazilian presidential el",
+          "mid": 0.28,
+          "exec": 0.279,
+          "token": "109876868437950584369987384406356259939519193117253465815665152916226511121427"
         }
       ]
     },
     {
-      "event": "How many Fed rate cuts in 2026?",
-      "slug": "how-many-fed-rate-cuts-in-2026",
+      "event": "Elon Musk # tweets February 10 - February 17, 2026?",
+      "slug": "elon-musk-of-tweets-february-10-february-17",
       "type": "SHORT",
-      "outcomes": 13,
-      "midSum": 1.0275,
+      "outcomes": 20,
+      "midSum": 1.03,
       "execSum": 0.998,
-      "deviation": 2.75,
+      "deviation": 3,
       "execDeviation": 0.2,
       "grossProfitPer100": -0.2,
       "feesPer100": 0,
@@ -298,164 +340,124 @@
       "viable": false,
       "details": [
         {
-          "name": "Will no Fed rate cuts happen in 2026?",
-          "mid": 0.0645,
-          "exec": 0.064,
-          "token": "12403602920039269077597917340921667997547115084613238528792639013246536343316"
+          "name": "Will Elon Musk post 160-179 tweets from February 10 to Febru",
+          "mid": 0.0065,
+          "exec": 0.007,
+          "token": "109238011000692352108828767303898071755044935229589386222936923097977313728414"
         },
         {
-          "name": "Will 1 Fed rate cut happen in 2026?",
-          "mid": 0.165,
-          "exec": 0.16,
-          "token": "113379839734351069617987084078322474966003108854908079701423911002443710490196"
+          "name": "Will Elon Musk post 180-199 tweets from February 10 to Febru",
+          "mid": 0.0285,
+          "exec": 0.029,
+          "token": "80129402193926886222872648744582448109420209585695362513644908498087632880007"
         },
         {
-          "name": "Will 2 Fed rate cuts happen in 2026?",
-          "mid": 0.265,
-          "exec": 0.26,
-          "token": "72535544017897924722695722172278828562733090748474862987195303914909938482758"
+          "name": "Will Elon Musk post 200-219 tweets from February 10 to Febru",
+          "mid": 0.0635,
+          "exec": 0.063,
+          "token": "64416820489790288121332102418502472550033366952379918524927111781067175558728"
         },
         {
-          "name": "Will 3 Fed rate cuts happen in 2026?",
-          "mid": 0.265,
-          "exec": 0.26,
-          "token": "95835705062472305459663741402900736177330733688944910993896545106260819635212"
+          "name": "Will Elon Musk post 220-239 tweets from February 10 to Febru",
+          "mid": 0.1165,
+          "exec": 0.116,
+          "token": "39984374655456235253656309386142440892847335410208574801160432468734235032379"
         },
         {
-          "name": "Will 4 Fed rate cuts happen in 2026?",
+          "name": "Will Elon Musk post 240-259 tweets from February 10 to Febru",
+          "mid": 0.144,
+          "exec": 0.143,
+          "token": "110086312911106114856365407473141439385088061745851411040518145492635387128654"
+        },
+        {
+          "name": "Will Elon Musk post 260-279 tweets from February 10 to Febru",
+          "mid": 0.1445,
+          "exec": 0.144,
+          "token": "92804214888488286051660081845840802500960320189916628779681012160154623746659"
+        },
+        {
+          "name": "Will Elon Musk post 280-299 tweets from February 10 to Febru",
           "mid": 0.125,
           "exec": 0.12,
-          "token": "73197441127256680134600821323583356037261213281680365433623681075249556019477"
+          "token": "54690840325411903483913219455611047215123448522591285512786502451539096092975"
         },
         {
-          "name": "Will 5 Fed rate cuts happen in 2026?",
-          "mid": 0.055,
-          "exec": 0.05,
-          "token": "29213252446661789250484965446100709214117256176608501943249094649759520097655"
+          "name": "Will Elon Musk post 300-319 tweets from February 10 to Febru",
+          "mid": 0.105,
+          "exec": 0.1,
+          "token": "25467699180573493717711565751893722640385987038872615705722431610356245437254"
         },
         {
-          "name": "Will 6 Fed rate cuts happen in 2026?",
-          "mid": 0.0275,
-          "exec": 0.027,
-          "token": "77531340423610587330488971960018210147778793548713753738604838920212617696839"
+          "name": "Will Elon Musk post 320-339 tweets from February 10 to Febru",
+          "mid": 0.085,
+          "exec": 0.08,
+          "token": "99041117589274216932043990005087798610474127600814514035919300325500109165784"
         },
         {
-          "name": "Will 7 Fed rate cuts happen in 2026?",
+          "name": "Will Elon Musk post 340-359 tweets from February 10 to Febru",
+          "mid": 0.075,
+          "exec": 0.07,
+          "token": "56642611054613403913919428582227500957548450934026978077352003466686247768324"
+        },
+        {
+          "name": "Will Elon Musk post 360-379 tweets from February 10 to Febru",
+          "mid": 0.0495,
+          "exec": 0.049,
+          "token": "21547563690326420206108236709516775266934352952491095703108460557563075061478"
+        },
+        {
+          "name": "Will Elon Musk post 380-399 tweets from February 10 to Febru",
+          "mid": 0.0345,
+          "exec": 0.032,
+          "token": "69334117169564710460204031249483643325085029645369125379997402163488514883717"
+        },
+        {
+          "name": "Will Elon Musk post 400-419 tweets from February 10 to Febru",
+          "mid": 0.0175,
+          "exec": 0.017,
+          "token": "19712570898317104556251606569447212832197645525492704365639605030352363765250"
+        },
+        {
+          "name": "Will Elon Musk post 420-439 tweets from February 10 to Febru",
           "mid": 0.0115,
           "exec": 0.011,
-          "token": "83225062900867600837789591190756506957715645312465902979999093167287051133800"
+          "token": "95558768311819174949326480514271676170677962375548879508365985765068496694519"
         },
         {
-          "name": "Will 8 Fed rate cuts happen in 2026?",
-          "mid": 0.0105,
-          "exec": 0.01,
-          "token": "79224949855948800840589557145654317659028242814072850811675646040486360279565"
+          "name": "Will Elon Musk post 440-459 tweets from February 10 to Febru",
+          "mid": 0.007,
+          "exec": 0.006,
+          "token": "83857067296720617532971946189991838378360948274195071724210433075026914341583"
         },
         {
-          "name": "Will 9 Fed rate cuts happen in 2026?",
-          "mid": 0.0055,
-          "exec": 0.005,
-          "token": "23126031577449775652876745717301519312850542565907124407036782701549610893044"
-        },
-        {
-          "name": "Will 10 Fed rate cuts happen in 2026?",
+          "name": "Will Elon Musk post 460-479 tweets from February 10 to Febru",
           "mid": 0.0045,
           "exec": 0.004,
-          "token": "101699865858660601590309838387762714166224752219273014726406345404403204943713"
+          "token": "75290599409857445610918404354897944196813863043273492972579674466788868679119"
         },
         {
-          "name": "Will 11 Fed rate cuts happen in 2026?",
+          "name": "Will Elon Musk post 480-499 tweets from February 10 to Febru",
           "mid": 0.0045,
-          "exec": 0.004,
-          "token": "56345349743779788266710915561914531858285418844567819631705863717318287635981"
-        },
-        {
-          "name": "Will 12 or more Fed rate cuts happen in 2026?",
-          "mid": 0.024,
-          "exec": 0.023,
-          "token": "9348234470735473071085620208817441102005165766524508452759679947551704787649"
-        }
-      ]
-    },
-    {
-      "event": "Bitcoin price on February 15?",
-      "slug": "bitcoin-price-on-february-15",
-      "type": "SHORT",
-      "outcomes": 11,
-      "midSum": 1.05,
-      "execSum": 0.989,
-      "deviation": 5,
-      "execDeviation": 1.1,
-      "grossProfitPer100": -1.1,
-      "feesPer100": 0,
-      "profitPer100": -1.1,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will the price of Bitcoin be less than $62,000 on February 1",
-          "mid": 0.0035,
           "exec": 0.003,
-          "token": "27949417428573445813088695839917496968726369934584872098628951930949747990810"
+          "token": "80738894559105633035868114894710048334173188982599421881331265333526115764714"
         },
         {
-          "name": "Will the price of Bitcoin be between $62,000 and $64,000 on ",
-          "mid": 0.015,
-          "exec": 0.013,
-          "token": "53839636326432237178563940503741915576006662601296760661203015485164222905673"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $64,000 and $66,000 on ",
-          "mid": 0.03,
-          "exec": 0.023,
-          "token": "37577118071508707644805426614046623397085035735679293449171488353199427219779"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $66,000 and $68,000 on ",
-          "mid": 0.24,
-          "exec": 0.22,
-          "token": "33036914367330249014378807168558153960064205626882050302014818468219372833657"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $68,000 and $70,000 on ",
-          "mid": 0.56,
-          "exec": 0.54,
-          "token": "2103636101400917288966026802743382599425237974062742810167322525539408591964"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $70,000 and $72,000 on ",
-          "mid": 0.175,
-          "exec": 0.17,
-          "token": "31496071606449467870622347283605592055318393091565793195141504351886050316606"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $76,000 and $78,000 on ",
+          "name": "Will Elon Musk post 500-519 tweets from February 10 to Febru",
           "mid": 0.0025,
           "exec": 0.002,
-          "token": "66519617457949135061281687875400907962543514552801505502809304373828686525654"
+          "token": "14310481446556249018043038725450556186523312353390890852422793795299722169224"
         },
         {
-          "name": "Will the price of Bitcoin be between $78,000 and $80,000 on ",
-          "mid": 0.002,
+          "name": "Will Elon Musk post 520-539 tweets from February 10 to Febru",
+          "mid": 0.0015,
           "exec": 0.001,
-          "token": "57917704581945861932736964561663755056164605004116754839734400063772604235565"
+          "token": "83613813112288037060902958112247571994178506435291177486496469769569851818188"
         },
         {
-          "name": "Will the price of Bitcoin be greater than $80,000 on Februar",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "115275971407217309106499675974973288551328498716329746398911691899068174125490"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $72,000 and $74,000 on ",
-          "mid": 0.0145,
-          "exec": 0.012,
-          "token": "45785080051250195009325047370792023004975486607002605077181919459885541644837"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $74,000 and $76,000 on ",
-          "mid": 0.005,
-          "exec": 0.003,
-          "token": "82798009819714764204928458633507575002656124337113405934246714106475199928736"
+          "name": "Will Elon Musk post 580+ tweets from February 10 to February",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "107810647744099605078816204195846764437275373412425546033872319821493516206854"
         }
       ]
     },
@@ -464,18 +466,18 @@
       "slug": "2026-icc-t20-mens-world-cup-winner",
       "type": "SHORT",
       "outcomes": 12,
-      "midSum": 1.0605,
-      "execSum": 0.987,
-      "deviation": 6.05,
-      "execDeviation": 1.3,
-      "grossProfitPer100": -1.3,
+      "midSum": 1.046,
+      "execSum": 0.969,
+      "deviation": 4.6,
+      "execDeviation": 3.1,
+      "grossProfitPer100": -3.1,
       "feesPer100": 0,
-      "profitPer100": -1.3,
+      "profitPer100": -3.1,
       "viable": false,
       "details": [
         {
           "name": "Will India win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.415,
+          "mid": 0.41,
           "exec": 0.4,
           "token": "36190803750786635844165995661794551716343290080007015981336350366434982775233"
         },
@@ -487,32 +489,32 @@
         },
         {
           "name": "Will England win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.105,
-          "exec": 0.1,
+          "mid": 0.09,
+          "exec": 0.07,
           "token": "109446023657991202179869549612292567035455071214919100932024261718229181547214"
         },
         {
           "name": "Will South Africa win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.155,
-          "exec": 0.14,
+          "mid": 0.17,
+          "exec": 0.16,
           "token": "54644802007454240937143078370147159297869876341797598982143095655493911125903"
         },
         {
           "name": "Will Pakistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.093,
-          "exec": 0.091,
+          "mid": 0.0835,
+          "exec": 0.077,
           "token": "76190129244386305771969693888683878935433573905105493954956506404783670380035"
         },
         {
           "name": "Will New Zealand win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0815,
-          "exec": 0.071,
+          "mid": 0.084,
+          "exec": 0.074,
           "token": "65008518571572657271211632870860379070221892511688233911018004120158193148414"
         },
         {
           "name": "Will West Indies win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.056,
-          "exec": 0.055,
+          "mid": 0.053,
+          "exec": 0.052,
           "token": "95028549383885752097876461063574302577289253561522211568257489843435069990371"
         },
         {
@@ -523,20 +525,20 @@
         },
         {
           "name": "Will Sri Lanka win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0265,
-          "exec": 0.022,
+          "mid": 0.03,
+          "exec": 0.028,
           "token": "103630786762206584738662636102754367864881412668966849731168337708616533672029"
         },
         {
           "name": "Will the United States win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.004,
-          "exec": 0.003,
+          "mid": 0.0015,
+          "exec": 0.001,
           "token": "72610582151460304801138152928941305632024243447678281544143361919620548389053"
         },
         {
           "name": "Will Zimbabwe win the 2026 ICC Men’s T20 World Cup?",
           "mid": 0.006,
-          "exec": 0.003,
+          "exec": 0.005,
           "token": "18067098618874461124880148778379554146494289244719071744515218581410050482940"
         },
         {
@@ -544,6 +546,88 @@
           "mid": 0.0015,
           "exec": 0.001,
           "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
+        }
+      ]
+    },
+    {
+      "event": "Bitcoin price on February 15?",
+      "slug": "bitcoin-price-on-february-15",
+      "type": "SHORT",
+      "outcomes": 11,
+      "midSum": 1.048,
+      "execSum": 0.956,
+      "deviation": 4.8,
+      "execDeviation": 4.4,
+      "grossProfitPer100": -4.4,
+      "feesPer100": 0,
+      "profitPer100": -4.4,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will the price of Bitcoin be between $72,000 and $74,000 on ",
+          "mid": 0.054,
+          "exec": 0.045,
+          "token": "45785080051250195009325047370792023004975486607002605077181919459885541644837"
+        },
+        {
+          "name": "Will the price of Bitcoin be less than $62,000 on February 1",
+          "mid": 0.0055,
+          "exec": 0.001,
+          "token": "27949417428573445813088695839917496968726369934584872098628951930949747990810"
+        },
+        {
+          "name": "Will the price of Bitcoin be between $62,000 and $64,000 on ",
+          "mid": 0.01,
+          "exec": 0.003,
+          "token": "53839636326432237178563940503741915576006662601296760661203015485164222905673"
+        },
+        {
+          "name": "Will the price of Bitcoin be between $74,000 and $76,000 on ",
+          "mid": 0.009,
+          "exec": 0.003,
+          "token": "82798009819714764204928458633507575002656124337113405934246714106475199928736"
+        },
+        {
+          "name": "Will the price of Bitcoin be between $64,000 and $66,000 on ",
+          "mid": 0.015,
+          "exec": 0.011,
+          "token": "37577118071508707644805426614046623397085035735679293449171488353199427219779"
+        },
+        {
+          "name": "Will the price of Bitcoin be between $66,000 and $68,000 on ",
+          "mid": 0.1,
+          "exec": 0.08,
+          "token": "33036914367330249014378807168558153960064205626882050302014818468219372833657"
+        },
+        {
+          "name": "Will the price of Bitcoin be between $68,000 and $70,000 on ",
+          "mid": 0.5,
+          "exec": 0.48,
+          "token": "2103636101400917288966026802743382599425237974062742810167322525539408591964"
+        },
+        {
+          "name": "Will the price of Bitcoin be between $70,000 and $72,000 on ",
+          "mid": 0.35,
+          "exec": 0.33,
+          "token": "31496071606449467870622347283605592055318393091565793195141504351886050316606"
+        },
+        {
+          "name": "Will the price of Bitcoin be between $76,000 and $78,000 on ",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "66519617457949135061281687875400907962543514552801505502809304373828686525654"
+        },
+        {
+          "name": "Will the price of Bitcoin be between $78,000 and $80,000 on ",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "57917704581945861932736964561663755056164605004116754839734400063772604235565"
+        },
+        {
+          "name": "Will the price of Bitcoin be greater than $80,000 on Februar",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "115275971407217309106499675974973288551328498716329746398911691899068174125490"
         }
       ]
     }
