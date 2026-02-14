@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-14T05:30:05.629Z",
+  "timestamp": "2026-02-14T05:45:05.412Z",
   "portfolio": {
     "trackedPositions": 8,
-    "portfolioValue": 409.602955,
-    "positionValue": 172.3634,
-    "cashBalance": 237.239555,
+    "portfolioValue": 396.104955,
+    "positionValue": 172.4314,
+    "cashBalance": 223.673555,
     "dailyStartValue": 372.286955
   },
   "risk": {
@@ -23,7 +23,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 2282.101315431
+    "uptime": 3182.152467757
   },
   "positions": [
     {
@@ -77,12 +77,12 @@
       "outcome": "Yes",
       "size": 21,
       "avgPrice": 0.05,
-      "currentBid": 0.05,
-      "currentAsk": 0.051,
+      "currentBid": 0.048,
+      "currentAsk": 0.05,
       "costBasis": "1.05",
-      "currentValue": "1.05",
-      "pnl": "0.00",
-      "pnlPct": "0.0%",
+      "currentValue": "1.01",
+      "pnl": "-0.04",
+      "pnlPct": "-4.0%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -92,12 +92,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.94,
-      "currentBid": 0.957,
-      "currentAsk": 0.958,
+      "currentBid": 0.956,
+      "currentAsk": 0.96,
       "costBasis": "23.50",
-      "currentValue": "23.93",
-      "pnl": "0.43",
-      "pnlPct": "1.8%",
+      "currentValue": "23.90",
+      "pnl": "0.40",
+      "pnlPct": "1.7%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -107,12 +107,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.92,
-      "currentBid": 0.954,
+      "currentBid": 0.953,
       "currentAsk": 0.957,
       "costBasis": "23.00",
-      "currentValue": "23.85",
-      "pnl": "0.85",
-      "pnlPct": "3.7%",
+      "currentValue": "23.82",
+      "pnl": "0.82",
+      "pnlPct": "3.6%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -137,17 +137,35 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.692,
-      "currentAsk": 0.694,
+      "currentBid": 0.694,
+      "currentAsk": 0.695,
       "costBasis": "49.60",
-      "currentValue": "55.36",
-      "pnl": "5.76",
-      "pnlPct": "11.6%",
+      "currentValue": "55.52",
+      "pnl": "5.92",
+      "pnlPct": "11.9%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     }
   ],
   "orders": [
+    {
+      "id": "0xffa873ee2ec6b2451621a9947f7abbd03300d58e7fdca50da3008b75625b1195",
+      "asset_id": "57385942856155711847230446373369941486584487930706621877050702770993063538064",
+      "side": "BUY",
+      "price": "0.001",
+      "original_size": "21",
+      "size_matched": "0",
+      "status": "LIVE"
+    },
+    {
+      "id": "0xfaa5935172f58b6f19be77380be8308752ee97c2529a31a54c3ebc6f0a01abc3",
+      "asset_id": "16680383807036024154663222348300164487828801908390056508639441371141589139909",
+      "side": "BUY",
+      "price": "0.289",
+      "original_size": "21",
+      "size_matched": "0",
+      "status": "LIVE"
+    },
     {
       "id": "0xe4b10a9477a742b4877abdf213c8407e5534100a4db5460127c647d7fd768237",
       "asset_id": "49662274238485451283220527378586398370959042852997899886824914466317758572224",
@@ -187,7 +205,33 @@
   ],
   "trades": [
     {
-      "timestamp": "2026-02-14T05:30:05.628Z",
+      "timestamp": "2026-02-14T05:45:05.411Z",
+      "market": "Bad Bunny Super Bowl Halftime",
+      "outcome": "Yes",
+      "side": "buy",
+      "price": 0.025,
+      "size": 0.5259999999999999,
+      "shares": 21,
+      "currentPrice": null,
+      "pnl": 0,
+      "pnlPct": "0.0%",
+      "tokenId": "45898979561776724675674269540705289853904297480687405423030789870584323984150"
+    },
+    {
+      "timestamp": "2026-02-14T05:45:05.411Z",
+      "market": "Bad Bunny Halftime Views",
+      "outcome": "Yes",
+      "side": "buy",
+      "price": 0.9638,
+      "size": 20.240000000000002,
+      "shares": 21,
+      "currentPrice": null,
+      "pnl": 0,
+      "pnlPct": "0.0%",
+      "tokenId": "28797566188952595754532249233237210079260595405997354963532548251029768750444"
+    },
+    {
+      "timestamp": "2026-02-14T05:45:05.411Z",
       "market": "Chicago 46-47°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -200,7 +244,7 @@
       "tokenId": "86069854998126295712887500512103672980330890383172698747999211918441355492422"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.411Z",
       "market": "Miami 76-77°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -213,7 +257,7 @@
       "tokenId": "92692355295105043188084535345172617132941070537427143745066857388094591739498"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.411Z",
       "market": "New York City ≤33°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -226,7 +270,7 @@
       "tokenId": "87034544787508362600520628155582601877854843596079024073643613177448200402413"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.411Z",
       "market": "Atlanta 58-59°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -239,7 +283,7 @@
       "tokenId": "89850023208665827912791204459354162829290040613445798160551059612704754189351"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.411Z",
       "market": "Will the highest temperature in New York City be 44°F or higher on February 13?",
       "outcome": "No",
       "side": "buy",
@@ -252,7 +296,7 @@
       "tokenId": "34741782909792644160008944715571340589799476685148756110746740038189821413536"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.411Z",
       "market": "Will the highest temperature in New York City be between 42-43°F on February 13?",
       "outcome": "No",
       "side": "buy",
@@ -265,7 +309,7 @@
       "tokenId": "163753302602334382041940165066379168856500423857432279946373957328934308182"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.411Z",
       "market": "Chicago ≥50°F Feb 13",
       "outcome": "No",
       "side": "buy",
@@ -278,7 +322,7 @@
       "tokenId": "28321426810817884323028002735778558086441279106030661015331363203764252597900"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.412Z",
       "market": "Jokic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -291,46 +335,46 @@
       "tokenId": "73768610008619570600930429495180540710817177537162503586781057110775077618432"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.412Z",
       "market": "Doncic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.05,
       "size": 1.05,
       "shares": 21,
-      "currentPrice": 0.05,
-      "pnl": 0,
-      "pnlPct": "0.0%",
+      "currentPrice": 0.048,
+      "pnl": -0.04,
+      "pnlPct": "-4.0%",
       "tokenId": "89110596788673536475065853727140488937259064164063660201050220270400840228269"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.412Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
       "price": 0.94,
       "size": 23.5,
       "shares": 25,
-      "currentPrice": 0.957,
-      "pnl": 0.43,
-      "pnlPct": "1.8%",
+      "currentPrice": 0.956,
+      "pnl": 0.4,
+      "pnlPct": "1.7%",
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.412Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
       "price": 0.92,
       "size": 23,
       "shares": 25,
-      "currentPrice": 0.954,
-      "pnl": 0.85,
-      "pnlPct": "3.7%",
+      "currentPrice": 0.953,
+      "pnl": 0.82,
+      "pnlPct": "3.6%",
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.412Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "Yes",
       "side": "buy",
@@ -343,40 +387,40 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-14T05:30:05.629Z",
+      "timestamp": "2026-02-14T05:45:05.412Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "Yes",
       "side": "buy",
       "price": 0.62,
       "size": 49.6,
       "shares": 80,
-      "currentPrice": 0.692,
-      "pnl": 5.76,
-      "pnlPct": "11.6%",
+      "currentPrice": 0.694,
+      "pnl": 5.92,
+      "pnlPct": "11.9%",
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     }
   ],
   "strategies": [
     {
-      "name": "Safe Yield",
-      "trades": 8,
-      "pnl": 1.5299999999999998,
-      "wins": 4,
-      "enabled": true,
-      "winRate": 0.5
-    },
-    {
       "name": "Speculative",
-      "trades": 3,
-      "pnl": 0.03,
+      "trades": 4,
+      "pnl": -0.010000000000000002,
       "wins": 1,
       "enabled": true,
-      "winRate": 0.3333333333333333
+      "winRate": 0.25
+    },
+    {
+      "name": "Safe Yield",
+      "trades": 9,
+      "pnl": 1.47,
+      "wins": 4,
+      "enabled": true,
+      "winRate": 0.4444444444444444
     },
     {
       "name": "Event-Driven",
       "trades": 2,
-      "pnl": 12.26,
+      "pnl": 12.42,
       "wins": 2,
       "enabled": true,
       "winRate": 1
@@ -390,9 +434,33 @@
       "outcome": "Yes"
     }
   ],
-  "cash": 237.239555,
+  "cash": 223.673555,
   "ledger": {
     "openPositions": [
+      {
+        "asset_id": "45898979561776724675674269540705289853904297480687405423030789870584323984150",
+        "market": "Bad Bunny Super Bowl Halftime",
+        "outcome": "Yes",
+        "size": 21,
+        "avgPrice": "0.0224",
+        "costBasis": "0.47",
+        "totalBought": 61,
+        "totalSold": 40,
+        "realizedPnl": "-0.06",
+        "status": "OPEN"
+      },
+      {
+        "asset_id": "28797566188952595754532249233237210079260595405997354963532548251029768750444",
+        "market": "Bad Bunny Halftime Views",
+        "outcome": "Yes",
+        "size": 21,
+        "avgPrice": "0.5744",
+        "costBasis": "12.06",
+        "totalBought": 61,
+        "totalSold": 40,
+        "realizedPnl": "-8.18",
+        "status": "OPEN"
+      },
       {
         "asset_id": "34741782909792644160008944715571340589799476685148756110746740038189821413536",
         "market": "Will the highest temperature in New York City be 44°F or higher on February 13?",
@@ -531,20 +599,6 @@
         "totalProceeds": "5.50",
         "realizedPnl": "-1.20",
         "realizedPnlPct": "-17.9",
-        "status": "CLOSED"
-      },
-      {
-        "asset_id": "28797566188952595754532249233237210079260595405997354963532548251029768750444",
-        "market": "Bad Bunny Halftime Views",
-        "outcome": "Yes",
-        "totalBought": 40,
-        "totalSold": 40,
-        "avgBuyPrice": "0.5400",
-        "avgSellPrice": "0.3700",
-        "totalCost": "21.60",
-        "totalProceeds": "14.80",
-        "realizedPnl": "-6.80",
-        "realizedPnlPct": "-31.5",
         "status": "CLOSED"
       },
       {
@@ -1020,20 +1074,6 @@
         "status": "CLOSED"
       },
       {
-        "asset_id": "45898979561776724675674269540705289853904297480687405423030789870584323984150",
-        "market": "Bad Bunny Super Bowl Halftime",
-        "outcome": "Yes",
-        "totalBought": 40,
-        "totalSold": 40,
-        "avgBuyPrice": "0.0310",
-        "avgSellPrice": "0.0210",
-        "totalCost": "1.24",
-        "totalProceeds": "0.84",
-        "realizedPnl": "-0.40",
-        "realizedPnlPct": "-32.3",
-        "status": "CLOSED"
-      },
-      {
         "asset_id": "57385942856155711847230446373369941486584487930706621877050702770993063538064",
         "market": "Bad Bunny Super Bowl Halftime",
         "outcome": "Yes",
@@ -1076,9 +1116,25 @@
         "status": "CLOSED"
       }
     ],
-    "totalRealizedPnl": "-33.88",
-    "tradeCount": 162,
+    "totalRealizedPnl": "-26.68",
+    "tradeCount": 164,
     "tradeLog": [
+      {
+        "asset_id": "45898979561776724675674269540705289853904297480687405423030789870584323984150",
+        "market": "Bad Bunny Super Bowl Halftime",
+        "outcome": "Yes",
+        "side": "BUY",
+        "size": 21,
+        "price": 0.006
+      },
+      {
+        "asset_id": "28797566188952595754532249233237210079260595405997354963532548251029768750444",
+        "market": "Bad Bunny Halftime Views",
+        "outcome": "Yes",
+        "side": "BUY",
+        "size": 21,
+        "price": 0.64
+      },
       {
         "asset_id": "28328225026237327629360643111285186726736313186938816497061098367884646110898",
         "market": "0xb572085e24472c1039ea8d5a06eaaca249f1d5459b7b09a0d71a89628708924c",
@@ -1222,27 +1278,35 @@
         "side": "SELL",
         "size": 43,
         "price": 0.038
-      },
-      {
-        "asset_id": "15423385434865987682978868698737701596735074678456622196151311185597416660946",
-        "market": "Will the highest temperature in Miami be between 72-73°F on February 13?",
-        "outcome": "No",
-        "side": "SELL",
-        "size": 15,
-        "price": 0.99
-      },
-      {
-        "asset_id": "99985961234431197624419223195962158714097433429315677188219266860875736285624",
-        "market": "Will the highest temperature in Miami be between 74-75°F on February 13?",
-        "outcome": "No",
-        "side": "SELL",
-        "size": 15,
-        "price": 0.99
       }
     ]
   },
   "tradeHistory": {
     "openPositions": [
+      {
+        "asset_id": "45898979561776724675674269540705289853904297480687405423030789870584323984150",
+        "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get between 125M and 150M views in its first 7 days?",
+        "outcome": "Yes",
+        "size": 21,
+        "avgPrice": "0.0224",
+        "costBasis": "0.47",
+        "totalBought": 61,
+        "totalSold": 40,
+        "realizedPnl": "-0.06",
+        "status": "OPEN"
+      },
+      {
+        "asset_id": "28797566188952595754532249233237210079260595405997354963532548251029768750444",
+        "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get between 100M and 125M views in its first 7 days?",
+        "outcome": "Yes",
+        "size": 21,
+        "avgPrice": "0.5744",
+        "costBasis": "12.06",
+        "totalBought": 61,
+        "totalSold": 40,
+        "realizedPnl": "-8.18",
+        "status": "OPEN"
+      },
       {
         "asset_id": "106950486694572490024227720149165144675055991470689031749832849184539330153763",
         "market": "Will the highest temperature in London be 7°C on February 13?",
@@ -1444,20 +1508,6 @@
         "status": "CLOSED"
       },
       {
-        "asset_id": "28797566188952595754532249233237210079260595405997354963532548251029768750444",
-        "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get between 100M and 125M views in its first 7 days?",
-        "outcome": "Yes",
-        "totalBought": 40,
-        "totalSold": 40,
-        "avgBuyPrice": "0.5400",
-        "avgSellPrice": "0.3700",
-        "totalCost": "21.60",
-        "totalProceeds": "14.80",
-        "realizedPnl": "-6.80",
-        "realizedPnlPct": "-31.5",
-        "status": "CLOSED"
-      },
-      {
         "asset_id": "47317420149081151716106164007318362486945962935245728787198862430914220210967",
         "market": "Will the highest temperature in Toronto be 1°C on February 13?",
         "outcome": "No",
@@ -1584,20 +1634,6 @@
         "status": "CLOSED"
       },
       {
-        "asset_id": "15423385434865987682978868698737701596735074678456622196151311185597416660946",
-        "market": "Will the highest temperature in Miami be between 72-73°F on February 13?",
-        "outcome": "No",
-        "totalBought": 15,
-        "totalSold": 15,
-        "avgBuyPrice": "0.9870",
-        "avgSellPrice": "0.9900",
-        "totalCost": "14.80",
-        "totalProceeds": "14.85",
-        "realizedPnl": "0.04",
-        "realizedPnlPct": "0.3",
-        "status": "CLOSED"
-      },
-      {
         "asset_id": "99985961234431197624419223195962158714097433429315677188219266860875736285624",
         "market": "Will the highest temperature in Miami be between 74-75°F on February 13?",
         "outcome": "No",
@@ -1609,6 +1645,20 @@
         "totalProceeds": "14.85",
         "realizedPnl": "0.09",
         "realizedPnlPct": "0.6",
+        "status": "CLOSED"
+      },
+      {
+        "asset_id": "15423385434865987682978868698737701596735074678456622196151311185597416660946",
+        "market": "Will the highest temperature in Miami be between 72-73°F on February 13?",
+        "outcome": "No",
+        "totalBought": 15,
+        "totalSold": 15,
+        "avgBuyPrice": "0.9870",
+        "avgSellPrice": "0.9900",
+        "totalCost": "14.80",
+        "totalProceeds": "14.85",
+        "realizedPnl": "0.04",
+        "realizedPnlPct": "0.3",
         "status": "CLOSED"
       },
       {
@@ -1850,20 +1900,6 @@
         "status": "CLOSED"
       },
       {
-        "asset_id": "45898979561776724675674269540705289853904297480687405423030789870584323984150",
-        "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get between 125M and 150M views in its first 7 days?",
-        "outcome": "Yes",
-        "totalBought": 40,
-        "totalSold": 40,
-        "avgBuyPrice": "0.0310",
-        "avgSellPrice": "0.0210",
-        "totalCost": "1.24",
-        "totalProceeds": "0.84",
-        "realizedPnl": "-0.40",
-        "realizedPnlPct": "-32.3",
-        "status": "CLOSED"
-      },
-      {
         "asset_id": "57385942856155711847230446373369941486584487930706621877050702770993063538064",
         "market": "Will the 2026 Bad Bunny Super Bowl halftime show video get at least 150M views in its first 7 days?",
         "outcome": "Yes",
@@ -1906,8 +1942,8 @@
         "status": "CLOSED"
       }
     ],
-    "totalRealizedPnl": "-23.61",
-    "totalTrades": 162,
+    "totalRealizedPnl": "-16.41",
+    "totalTrades": 164,
     "source": "data-api"
   },
   "circuitBreakerTripped": false,
