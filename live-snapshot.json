@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-02-14T16:15:56.606Z",
+  "timestamp": "2026-02-14T16:30:04.345Z",
   "portfolio": {
     "trackedPositions": 7,
     "portfolioValue": 380.439155,
     "positionValue": 144.77460000000002,
     "cashBalance": 235.664555,
-    "dailyStartValue": 379.169155
+    "dailyStartValue": 356.139155
   },
   "risk": {
     "circuitBreakerTripped": false,
@@ -23,7 +23,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 1179.838320517
+    "uptime": 310.444090495
   },
   "positions": [
     {
@@ -33,7 +33,7 @@
       "size": 7,
       "avgPrice": 0.128,
       "currentBid": 0.093,
-      "currentAsk": 0.096,
+      "currentAsk": 0.095,
       "costBasis": "0.90",
       "currentValue": "0.65",
       "pnl": "-0.24",
@@ -48,7 +48,7 @@
       "size": 2.8,
       "avgPrice": 0.242,
       "currentBid": 0.242,
-      "currentAsk": 0.251,
+      "currentAsk": 0.25,
       "costBasis": "0.68",
       "currentValue": "0.68",
       "pnl": "0.00",
@@ -63,7 +63,7 @@
       "size": 21,
       "avgPrice": 0.05,
       "currentBid": 0.046,
-      "currentAsk": 0.048,
+      "currentAsk": 0.047,
       "costBasis": "1.05",
       "currentValue": "0.97",
       "pnl": "-0.08",
@@ -123,7 +123,7 @@
       "size": 80,
       "avgPrice": 0.62,
       "currentBid": 0.681,
-      "currentAsk": 0.684,
+      "currentAsk": 0.683,
       "costBasis": "49.60",
       "currentValue": "54.48",
       "pnl": "4.88",
@@ -163,7 +163,7 @@
   ],
   "trades": [
     {
-      "timestamp": "2026-02-14T16:15:56.605Z",
+      "timestamp": "2026-02-14T16:30:04.344Z",
       "market": "0x5eb681cc36248c64a48aa01096f2287834ac836d814541cd96da9924752cae06",
       "outcome": "Yes",
       "side": "buy",
@@ -176,7 +176,7 @@
       "tokenId": "106893482875330829332347425550558141013488263650384566003078374608472351519383"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "Chicago 46-47°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -189,7 +189,7 @@
       "tokenId": "86069854998126295712887500512103672980330890383172698747999211918441355492422"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "Miami 76-77°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -202,7 +202,7 @@
       "tokenId": "92692355295105043188084535345172617132941070537427143745066857388094591739498"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "New York City ≤33°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -215,7 +215,7 @@
       "tokenId": "87034544787508362600520628155582601877854843596079024073643613177448200402413"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "Atlanta 58-59°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -228,7 +228,7 @@
       "tokenId": "89850023208665827912791204459354162829290040613445798160551059612704754189351"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "Chicago ≥50°F Feb 13",
       "outcome": "No",
       "side": "buy",
@@ -241,7 +241,7 @@
       "tokenId": "28321426810817884323028002735778558086441279106030661015331363203764252597900"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "Jokic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -254,7 +254,7 @@
       "tokenId": "73768610008619570600930429495180540710817177537162503586781057110775077618432"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "Doncic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -267,7 +267,7 @@
       "tokenId": "89110596788673536475065853727140488937259064164063660201050220270400840228269"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
@@ -280,7 +280,7 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
@@ -293,7 +293,7 @@
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "Yes",
       "side": "buy",
@@ -306,7 +306,7 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-14T16:15:56.606Z",
+      "timestamp": "2026-02-14T16:30:04.345Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "Yes",
       "side": "buy",
@@ -347,33 +347,9 @@
   ],
   "activity": [
     {
-      "time": "2026-02-14T15:56:31.684Z",
-      "type": "STOP_LOSS",
-      "message": "AUTO-SELLING [arb]",
-      "outcome": "Yes"
-    },
-    {
-      "time": "2026-02-14T15:56:33.993Z",
-      "type": "SELL_EXECUTED",
-      "message": "STOP_LOSS: Sold 7 @ undefined",
-      "outcome": "Yes"
-    },
-    {
-      "time": "2026-02-14T15:56:57.746Z",
-      "type": "STOP_LOSS",
-      "message": "AUTO-SELLING [arb]",
-      "outcome": "Yes"
-    },
-    {
-      "time": "2026-02-14T15:56:59.300Z",
-      "type": "SELL_EXECUTED",
-      "message": "STOP_LOSS: Sold 7 @ undefined",
-      "outcome": "Yes"
-    },
-    {
-      "time": "2026-02-14T15:57:02.023Z",
+      "time": "2026-02-14T16:25:14.780Z",
       "type": "TRAILING_STOP_ACTIVATED",
-      "message": "Trailing stop engaged. Floor: $0.6660 (breakeven). HWM: +27.4%",
+      "message": "Trailing stop engaged. Floor: $0.6760 (breakeven). HWM: +29.0%",
       "outcome": "Yes"
     }
   ],
