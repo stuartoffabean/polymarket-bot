@@ -102,6 +102,17 @@ const EMERGENCY_FLOOR = 50;           // $50 total value → emergency mode
 const SINGLE_TRADE_LOSS_LIMIT_USD = 20; // $20 single trade loss → halt strategy
 const DRAWDOWN_PAUSE_MS = 2 * 60 * 60 * 1000; // 2 hour pause
 
+// === IGNORED ASSETS ===
+// Ghost arb positions with corrupted avgPrice — permanently excluded from tracking.
+// These are dust positions (<0.01 shares) from failed arb fills. Sunk cost, written off.
+const IGNORED_ASSETS = new Set([
+  "86069854998126295712887500512103672980330890383172698747999211918441355492422",  // avgPrice 203.40
+  "92692355295105043188084535345172617132941070537427143745066857388094591739498",  // avgPrice 285.62
+  "87034544787508362600520628155582601877854843596079024073643613177448200402413",  // avgPrice -226.29
+  "89850023208665827912791204459354162829290040613445798160551059612704754189351",  // avgPrice 193.53
+  "28321426810817884323028002735778558086441279106030661015331363203764252597900",  // avgPrice 44.79
+]);
+
 // === STRATEGY TAGS ===
 // Every position gets a strategy tag: 'weather', 'resolution', 'arb', 'manual'
 // Persisted to survive restarts. SL/TP sells inherit the original buy's strategy.
@@ -716,6 +727,10 @@ function checkTriggers(assetId, asset) {
 
 // Per-assetId sell lock — prevents duplicate sell executions
 const sellLocks = new Set();
+// Recently sold assets — prevents syncPositions from re-adding them
+// Entries expire after 5 minutes (executor needs time to process the sell)
+const recentlySold = new Map(); // assetId -> timestamp
+const RECENTLY_SOLD_TTL = 5 * 60 * 1000; // 5 minutes
 
 async function executeSell(assetId, asset, reason) {
   // Check sell lock — only one sell per asset at a time
@@ -777,11 +792,8 @@ async function executeSell(assetId, asset, reason) {
 
     // ALWAYS remove sold position from tracking immediately
     subscribedAssets.delete(assetId);
-    log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)}`);
-    
-    // STRUCTURAL FIX: Sync positions from executor after sell
-    log("SYNC", "Post-sell position sync...");
-    await syncPositions();
+    recentlySold.set(assetId, Date.now());
+    log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)} (blocked from re-sync for 5min)`);
   } catch (e) {
     log("EXEC", `❌ Auto-sell FAILED: ${e.message}`);
     pushAlert("SELL_FAILED", assetId, asset, null, null, `${reason} sell failed: ${e.message}`);
@@ -805,10 +817,11 @@ function checkSystemReady() {
 
   const pct = priced / total;
   if (pct >= 0.8) {
-    // Don't mark ready until cash balance is known
-    if (lastCashFetch === 0) {
+    // Don't mark ready until cash balance is ACTUALLY known (not just fetched)
+    // cachedCashBalance === 0 after fetch likely means executor returned bad data
+    if (lastCashFetch === 0 || cachedCashBalance === 0) {
       fetchCashBalance().catch(() => {});
-      log("WARMUP", `Positions priced (${(pct * 100).toFixed(0)}%) but waiting for cash balance...`);
+      log("WARMUP", `Positions priced (${(pct * 100).toFixed(0)}%) but waiting for cash balance (current: $${cachedCashBalance.toFixed(2)})...`);
       return false;
     }
     systemReady = true;
@@ -993,12 +1006,30 @@ async function syncPositions() {
       }
     }
 
+    // Clean up expired recentlySold entries
+    const now_sync = Date.now();
+    for (const [id, ts] of recentlySold) {
+      if (now_sync - ts > RECENTLY_SOLD_TTL) recentlySold.delete(id);
+    }
+
     const newAssetIds = [];
     for (const pos of positions) {
       // Skip positions with zero or dust size (< 0.1 shares)
       if (!pos.size || pos.size < 0.1) {
         subscribedAssets.delete(pos.asset_id);
         if (pos.size > 0) log("SYNC", `Removed dust position (${pos.size} shares): ${pos.asset_id.slice(0,20)}`);
+        continue;
+      }
+
+      // Skip permanently ignored assets (ghost arb positions with corrupted data)
+      if (IGNORED_ASSETS.has(pos.asset_id)) {
+        subscribedAssets.delete(pos.asset_id);
+        continue;
+      }
+
+      // Skip recently sold positions — executor may still report them before settlement
+      if (recentlySold.has(pos.asset_id)) {
+        log("SYNC", `Skipping recently sold position: ${pos.asset_id.slice(0,20)} (sold ${((now_sync - recentlySold.get(pos.asset_id)) / 1000).toFixed(0)}s ago)`);
         continue;
       }
       

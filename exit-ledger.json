@@ -49,5 +49,22 @@
     "pnlPct": -100,
     "strategy": "arb",
     "notes": "SL=0.3, TP=0.5, Entry=0.002"
+  },
+  {
+    "timestamp": "2026-02-14T15:56:59.302Z",
+    "assetId": "49662274238485451283220527378586398370959042852997899886824914466317758572224",
+    "market": "0xad48e5283fae802e72889e08955aadb8c007e4cdd071cba561f674ffbac59671",
+    "outcome": "Yes",
+    "reason": "stop_loss",
+    "triggerSource": "ws-feed-auto",
+    "entryPrice": 0.002,
+    "exitPrice": 0,
+    "size": 7,
+    "costBasis": 0.014,
+    "proceeds": 0,
+    "realizedPnl": -0.014,
+    "pnlPct": -100,
+    "strategy": "arb",
+    "notes": "SL=0.3, TP=0.5, Entry=0.002"
   }
 ]

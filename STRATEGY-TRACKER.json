@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-02-14T11:09:44.769Z",
+  "lastUpdated": "2026-02-14T16:01:16.743Z",
   "generatedBy": "trade-reporter.js v1.0",
   "portfolio": {
-    "totalValue": 377.029355,
-    "positionValue": 140.46179999999998,
-    "cashBalance": 236.567555,
-    "trackedPositions": 6,
-    "idlePct": "62.7"
+    "totalValue": 380.103155,
+    "positionValue": 144.4386,
+    "cashBalance": 235.664555,
+    "trackedPositions": 7,
+    "idlePct": "62.0"
   },
   "summary": {
-    "totalRealizedPnl": -34.3,
-    "totalUnrealizedPnl": 11.63,
-    "totalPnl": -22.67,
-    "totalTrades": 49,
+    "totalRealizedPnl": -34.31,
+    "totalUnrealizedPnl": 14.72,
+    "totalPnl": -19.59,
+    "totalTrades": 51,
     "totalWins": 16,
     "totalLosses": 25,
-    "overallWinRate": 37.2,
-    "portfolioValue": 377.029355,
-    "cashBalance": 236.567555,
-    "idlePct": "62.7",
+    "overallWinRate": 36.4,
+    "portfolioValue": 380.103155,
+    "cashBalance": 235.664555,
+    "idlePct": "62.0",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
@@ -42,6 +42,35 @@
     }
   },
   "strategies": {
+    "arb": {
+      "status": "ACTIVE",
+      "totalTrades": 10,
+      "openPositions": 2,
+      "closedPositions": 8,
+      "wins": 1,
+      "losses": 5,
+      "winRate": "12.5%",
+      "realizedPnl": "$-1.09",
+      "unrealizedPnl": "$8.27",
+      "totalPnl": "$7.18",
+      "totalDeployed": "$3.48",
+      "currentDeployed": "$31.90",
+      "expectancy": "$-0.14",
+      "profitFactor": "0.06",
+      "avgWin": "$0.07",
+      "avgLoss": "$-0.23",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "0xb67faadf0c0d3ce177f996359849f5ea46961f7ef34872e5948ab25eb6a49168",
+        "pnl": 0.07,
+        "pnlPct": "53.8"
+      },
+      "worstTrade": {
+        "market": "0x27c9827d0da9e1dc91a2c497afe10e8ba852e72e68d7efbe1b7a677542eb31a1",
+        "pnl": -0.6,
+        "pnlPct": "-33.3"
+      }
+    },
     "unknown": {
       "status": "ACTIVE",
       "totalTrades": 16,
@@ -51,8 +80,8 @@
       "losses": 4,
       "winRate": "63.6%",
       "realizedPnl": "$10.44",
-      "unrealizedPnl": "$5.63",
-      "totalPnl": "$16.07",
+      "unrealizedPnl": "$6.45",
+      "totalPnl": "$16.89",
       "totalDeployed": "$224.45",
       "currentDeployed": "$97.83",
       "expectancy": "$0.95",
@@ -127,35 +156,6 @@
         "market": "Buenos Aires ≤27°C 2026-02-13",
         "pnl": -6.6,
         "pnlPct": "-73.3"
-      }
-    },
-    "arb": {
-      "status": "ACTIVE",
-      "totalTrades": 8,
-      "openPositions": 1,
-      "closedPositions": 7,
-      "wins": 1,
-      "losses": 5,
-      "winRate": "14.3%",
-      "realizedPnl": "$-1.08",
-      "unrealizedPnl": "$6.00",
-      "totalPnl": "$4.92",
-      "totalDeployed": "$3.47",
-      "currentDeployed": "$31.00",
-      "expectancy": "$-0.15",
-      "profitFactor": "0.06",
-      "avgWin": "$0.07",
-      "avgLoss": "$-0.23",
-      "avgHoldHours": 0,
-      "bestTrade": {
-        "market": "0xb67faadf0c0d3ce177f996359849f5ea46961f7ef34872e5948ab25eb6a49168",
-        "pnl": 0.07,
-        "pnlPct": "53.8"
-      },
-      "worstTrade": {
-        "market": "0x27c9827d0da9e1dc91a2c497afe10e8ba852e72e68d7efbe1b7a677542eb31a1",
-        "pnl": -0.6,
-        "pnlPct": "-33.3"
       }
     },
     "resolution": {
