@@ -1754,7 +1754,23 @@ async function handler(req, res) {
       const failed = [];
       results.forEach((r, i) => {
         if (r.status === "fulfilled" && r.value && !r.value.error) {
-          filled.push({ leg: i, result: r.value });
+          // FOK orders: "live" means resting on book (NOT filled), "matched" means filled
+          // Also check takingAmount/makingAmount — empty strings = no fill
+          const val = r.value;
+          const isActuallyFilled = val.status === "matched" || 
+            (val.takingAmount && val.takingAmount !== "" && val.takingAmount !== "0") ||
+            (val.makingAmount && val.makingAmount !== "" && val.makingAmount !== "0");
+          
+          if (isActuallyFilled) {
+            filled.push({ leg: i, result: val });
+          } else {
+            console.log(`⚠️ ARB leg ${i}: order accepted but NOT filled (status: ${val.status}, taking: "${val.takingAmount}", making: "${val.makingAmount}") — treating as failed`);
+            // Cancel the resting order if it got posted
+            if (val.orderID) {
+              client.cancelOrder(val.orderID).catch(e => console.log(`  Cancel cleanup: ${e.message}`));
+            }
+            failed.push({ leg: i, error: `Order posted but not filled (status: ${val.status})` });
+          }
         } else {
           failed.push({ leg: i, error: r.reason?.message || r.value?.error || "Unknown" });
         }
