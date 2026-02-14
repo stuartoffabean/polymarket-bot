@@ -202,7 +202,7 @@ async function reconcilePositions() {
         headers: { "Content-Type": "application/json" }
       }, () => {}).on("error", () => {}).end(JSON.stringify({ assetId: p.assetId }));
     }
-    fs.writeFileSync(manualPath, JSON.stringify(manual, null, 2));
+    writeFileAtomic(manualPath, manual);
 
     const phantomList = phantoms.map(p => `• ${p.market || p.assetId.slice(0,20)} (tracked ${p.trackedSize}sh, actual 0)`).join("\n");
     sendTelegramAlert(`🚨 <b>PHANTOM POSITIONS DETECTED & REMOVED</b>\n${phantomList}\n\nThese positions were in tracking but NOT on-chain. Auto-cleaned.`);
@@ -227,6 +227,9 @@ const DEPTH_MIN_SHARES_MANUAL = 5;       // Don't bother with <5 shares
 const fs = require("fs");
 const path = require("path");
 const { logExit, getExits, getExitSummary, EXIT_REASONS } = require("./exit-ledger");
+const { logIntent, resolveIntent, getUnresolved, markStaleAsUnresolved } = require("./trade-wal");
+const { writeFileAtomic } = require("./safe-write");
+const positionLedger = require("./position-ledger");
 
 // Market name resolver — loads from market-names.json
 function getMarketName(assetIdOrConditionId) {
@@ -239,14 +242,14 @@ function getMarketName(assetIdOrConditionId) {
 // === RESOLUTION DETECTION ===
 const RESOLVED_FILE = path.join(__dirname, "..", "resolved-positions.json");
 function loadResolved() { try { return JSON.parse(fs.readFileSync(RESOLVED_FILE, "utf8")); } catch(e) { return {}; } }
-function saveResolved(data) { fs.writeFileSync(RESOLVED_FILE, JSON.stringify(data, null, 2)); }
+function saveResolved(data) { writeFileAtomic(RESOLVED_FILE, data); }
 
 // === EVENT MAP: conditionId → eventGroupId (for correlation checking) ===
 // eventGroupId = neg_risk_market_id (for NegRisk multi-outcome markets) or market_slug (for standalone)
 // This groups positions that bet on the same underlying event (e.g., multiple Bad Bunny markets)
 const EVENT_MAP_FILE = path.join(__dirname, "event-map.json");
 function loadEventMap() { try { return JSON.parse(fs.readFileSync(EVENT_MAP_FILE, "utf8")); } catch(e) { return {}; } }
-function saveEventMap(data) { fs.writeFileSync(EVENT_MAP_FILE, JSON.stringify(data, null, 2)); }
+function saveEventMap(data) { writeFileAtomic(EVENT_MAP_FILE, data); }
 
 // Look up the event group for a conditionId. Checks local cache first, then CLOB API.
 async function getEventGroup(conditionId) {
@@ -329,7 +332,7 @@ function loadDailyBudget() {
 }
 
 function saveDailyBudget(budget) {
-  fs.writeFileSync(DAILY_BUDGET_FILE, JSON.stringify(budget, null, 2));
+  writeFileAtomic(DAILY_BUDGET_FILE, budget);
 }
 
 function recordDailyBudgetSpend(orderValue, market) {
@@ -832,7 +835,7 @@ function logRejection(opportunity, reason, details = {}) {
   log.push(entry);
   // Keep last 200 rejections
   if (log.length > 200) log.splice(0, log.length - 200);
-  fs.writeFileSync(REJECTION_LOG_FILE, JSON.stringify(log, null, 2));
+  writeFileAtomic(REJECTION_LOG_FILE, log);
   console.log(`🚫 OPPORTUNITY REJECTED: ${reason} — ${entry.market}`);
   return entry;
 }
@@ -1342,6 +1345,11 @@ async function handler(req, res) {
           timestamp: new Date().toISOString(),
         });
       }
+      if (path === "/position-ledger") {
+        const positions = positionLedger.getPositions();
+        const txLog = positionLedger.getTxLog(parseInt(query.limit) || 50);
+        return send(res, 200, { positions, txLog, count: positions.length });
+      }
       if (path === "/api/pnl" || path === "/pnl") {
         // Read P&L history from snapshots file
         const pnlPath = require("path").join(__dirname, "..", "pnl-history.json");
@@ -1728,10 +1736,17 @@ async function handler(req, res) {
         side: side === "BUY" ? Side.BUY : Side.SELL,
       };
       
+      const walId = logIntent({ type: "buy", tokenID, price: parseFloat(price), size: parseFloat(size), side, strategy: "fast-path", source: "executor", meta: { market } });
       try {
         const order = await client.createAndPostOrder(orderOpts, undefined, "GTC");
+        resolveIntent(walId, "filled", { orderID: order.orderID || order.id });
         invalidateTradeCache();
         triggerSnapshotPush();
+
+        // Record to position ledger
+        if (side === "BUY") {
+          positionLedger.recordEntry({ assetId: tokenID, market, outcome: body.outcome, size: parseFloat(size), avgPrice: parseFloat(price), strategy: "fast-path", source: "executor" });
+        }
 
         // Record daily budget + event mapping
         if (side === "BUY") {
@@ -1755,6 +1770,7 @@ async function handler(req, res) {
         console.log(`⚡ FAST-PATH SUCCESS: ${order.orderID || order.id}`);
         return send(res, 200, { order, thesis: thesisObj, riskResult });
       } catch (e) {
+        resolveIntent(walId, "failed", { error: e.message });
         console.error(`⚡ FAST-PATH ORDER FAILED: ${e.message}`);
         return send(res, 500, { error: e.message, thesis: thesisObj, riskResult });
       }
@@ -1814,9 +1830,24 @@ async function handler(req, res) {
       const postOnly = body.postOnly === true;
       if (postOnly) console.log("  → Post-only (maker) order");
 
-      const order = await client.createAndPostOrder(orderOpts, undefined, orderType, false, postOnly);
+      const walId = logIntent({ type: side.toLowerCase(), tokenID, price: parseFloat(price), size: parseFloat(size), side, strategy: body.strategy || "manual", source: "executor", meta: { market: body.market } });
+      let order;
+      try {
+        order = await client.createAndPostOrder(orderOpts, undefined, orderType, false, postOnly);
+        resolveIntent(walId, "filled", { orderID: order.orderID || order.id });
+      } catch (e) {
+        resolveIntent(walId, "failed", { error: e.message });
+        throw e;
+      }
       invalidateTradeCache();
       triggerSnapshotPush();
+
+      // Record to position ledger
+      if (side === "BUY") {
+        positionLedger.recordEntry({ assetId: tokenID, market: body.market, outcome: body.outcome, size: parseFloat(size), avgPrice: parseFloat(price), strategy: body.strategy || "manual", source: "executor" });
+      } else {
+        positionLedger.recordExit({ assetId: tokenID, size: parseFloat(size), reason: "manual_sell", source: "executor" });
+      }
 
       console.log(`Order result:`, JSON.stringify(order));
 
@@ -1862,13 +1893,21 @@ async function handler(req, res) {
       if (!bestBid) return send(res, 400, { error: "No bids available" });
 
       console.log(`🚨 MARKET SELL: ${size} @ ${bestBid} (best bid) on ${tokenID.slice(0, 20)}...`);
-      
-      const order = await client.createAndPostOrder({
-        tokenID,
-        price: bestBid,
-        size: parseFloat(size),
-        side: Side.SELL,
-      });
+
+      const walId = logIntent({ type: "market-sell", tokenID, price: bestBid, size: parseFloat(size), side: "SELL", strategy: body.strategy || "manual", source: body.source || "executor-manual", meta: { reason: body.reason } });
+      let order;
+      try {
+        order = await client.createAndPostOrder({
+          tokenID,
+          price: bestBid,
+          size: parseFloat(size),
+          side: Side.SELL,
+        });
+        resolveIntent(walId, "filled", { orderID: order.orderID || order.id, executedPrice: bestBid });
+      } catch (e) {
+        resolveIntent(walId, "failed", { error: e.message });
+        throw e;
+      }
 
       console.log(`Sell result:`, JSON.stringify(order));
       
@@ -1900,6 +1939,9 @@ async function handler(req, res) {
         strategy: pos?.strategy || body.strategy || "unknown",
         notes: body.notes || "",
       });
+
+      // Record exit in position ledger
+      positionLedger.recordExit({ assetId: tokenID, size: sellSize, reason: body.reason || "manual_sell", source: body.source || "executor-manual" });
 
       invalidateTradeCache();
       triggerSnapshotPush();
@@ -1944,9 +1986,10 @@ async function handler(req, res) {
       if (!legs || legs.length < 2) return send(res, 400, { error: "Need at least 2 legs" });
 
       console.log(`⚡ ARB: Executing ${legs.length} legs simultaneously (FOK)`);
-      
+
+      const arbWalId = logIntent({ type: "arb", tokenID: legs.map(l => l.tokenID.slice(0, 12)).join("+"), price: 0, size: legs.length, side: "ARB", strategy: "arb", source: "executor", meta: { legs: legs.map(l => ({ token: l.tokenID.slice(0, 20), price: l.price, size: l.size, side: l.side })) } });
       const results = await Promise.allSettled(
-        legs.map(leg => 
+        legs.map(leg =>
           client.createAndPostOrder({
             tokenID: leg.tokenID,
             price: parseFloat(leg.price),
@@ -2014,16 +2057,19 @@ async function handler(req, res) {
           }
         }
         
-        return send(res, 200, { 
+        resolveIntent(arbWalId, "failed", { error: "Partial fill — unwound" });
+        return send(res, 200, {
           status: "PARTIAL_FILL_UNWOUND",
           filled, failed, unwindResults,
           warning: "Arbitrage incomplete — filled legs unwound"
         });
       }
 
-      return send(res, 200, { 
-        status: filled.length === legs.length ? "ALL_FILLED" : "ALL_FAILED",
-        filled, failed 
+      const arbStatus = filled.length === legs.length ? "ALL_FILLED" : "ALL_FAILED";
+      resolveIntent(arbWalId, arbStatus === "ALL_FILLED" ? "filled" : "failed", { error: arbStatus === "ALL_FAILED" ? "All legs failed" : null });
+      return send(res, 200, {
+        status: arbStatus,
+        filled, failed
       });
     }
 
@@ -2074,12 +2120,38 @@ function send(res, status, data) {
 
 async function main() {
   await init();
-  
+
+  // WAL crash recovery: surface any orders that were in-flight when we last crashed
+  const unresolved = getUnresolved();
+  if (unresolved.length > 0) {
+    console.log(`[WAL] ⚠️ Found ${unresolved.length} unresolved trade(s) from previous session`);
+    const summary = unresolved.map(e => `• ${e.side} ${e.size}sh @ $${e.price} (${e.type}, ${e.strategy}) — ${e.createdAt}`).join("\n");
+    sendTelegramAlert(
+      `⚠️ <b>WAL RECOVERY: ${unresolved.length} unresolved trade(s)</b>\n\n` +
+      `These orders may have filled on-chain but were not confirmed locally.\n` +
+      `Check /positions and reconcile.\n\n${summary}`
+    );
+    markStaleAsUnresolved();
+  }
+
   const server = http.createServer(handler);
   server.listen(PORT, () => {
     console.log(`Executor API running on http://0.0.0.0:${PORT}`);
   });
 }
+
+// === CRASH SAFETY: Catch unhandled errors before they kill the process ===
+process.on("unhandledRejection", (reason) => {
+  console.error("[EXECUTOR] Unhandled rejection:", reason);
+  sendTelegramAlert(`🚨 <b>EXECUTOR UNHANDLED REJECTION</b>\n<pre>${String(reason).slice(0, 500)}</pre>\n\nProcess may restart via PM2.`);
+});
+
+process.on("uncaughtException", (err) => {
+  console.error("[EXECUTOR] Uncaught exception:", err);
+  sendTelegramAlert(`🚨 <b>EXECUTOR CRASH</b>\n<pre>${String(err.stack || err).slice(0, 500)}</pre>\n\nProcess will restart via PM2.`);
+  // Give Telegram time to send before exit
+  setTimeout(() => process.exit(1), 2000);
+});
 
 main().catch((err) => {
   console.error("Fatal:", err);

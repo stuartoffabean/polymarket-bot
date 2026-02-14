@@ -9,6 +9,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { writeFileAtomic } = require("./safe-write");
 
 const LEDGER_FILE = path.join(__dirname, "..", "exit-ledger.json");
 
@@ -39,7 +40,7 @@ function loadLedger() {
 
 function saveLedger(entries) {
   try {
-    fs.writeFileSync(LEDGER_FILE, JSON.stringify(entries, null, 2));
+    writeFileAtomic(LEDGER_FILE, entries);
   } catch (e) {
     console.log(`[EXIT-LEDGER] Failed to save: ${e.message}`);
   }

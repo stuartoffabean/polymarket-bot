@@ -34,6 +34,8 @@ const https = require("https");
 const fs = require("fs");
 const path = require("path");
 const { logExit, getExits, getExitSummary, EXIT_REASONS } = require("./exit-ledger");
+const { writeFileAtomic } = require("./safe-write");
+const positionLedger = require("./position-ledger");
 
 // === FEE ACCOUNTING (Feb 2026) ===
 // Most Polymarket markets: ZERO fees. Only 15-min crypto, NCAAB, Serie A have taker fees.
@@ -120,7 +122,7 @@ const STRATEGY_TAGS_FILE = path.join(__dirname, "..", "strategy-tags.json");
 let strategyTags = {}; // assetId -> { strategy, entryTime, ... }
 try { strategyTags = JSON.parse(fs.readFileSync(STRATEGY_TAGS_FILE, "utf8")); } catch {}
 function saveStrategyTags() {
-  try { fs.writeFileSync(STRATEGY_TAGS_FILE, JSON.stringify(strategyTags, null, 2)); } catch {}
+  try { writeFileAtomic(STRATEGY_TAGS_FILE, strategyTags); } catch {}
 }
 function tagStrategy(assetId, strategy, meta = {}) {
   strategyTags[assetId] = { strategy, taggedAt: new Date().toISOString(), ...meta };
@@ -236,7 +238,7 @@ function loadAlerts() {
 }
 
 function saveAlerts(data) {
-  fs.writeFileSync(ALERTS_FILE, JSON.stringify(data, null, 2));
+  writeFileAtomic(ALERTS_FILE, data);
 }
 
 function loadManualPositions() {
@@ -245,7 +247,7 @@ function loadManualPositions() {
 }
 
 function saveManualPositions(data) {
-  fs.writeFileSync(MANUAL_POSITIONS_FILE, JSON.stringify(data, null, 2));
+  writeFileAtomic(MANUAL_POSITIONS_FILE, data);
 }
 
 function loadTradingState() {
@@ -334,7 +336,7 @@ function handleRateLimit() {
 const FILL_STATS_FILE = path.join(__dirname, "..", "fill-stats.json");
 let fillStats = { weather: { submitted: 0, filled: 0, partial: 0, unfilled: 0 }, resolution: { submitted: 0, filled: 0, partial: 0, unfilled: 0 }, arb: { submitted: 0, filled: 0, partial: 0, unfilled: 0 } };
 try { fillStats = JSON.parse(fs.readFileSync(FILL_STATS_FILE, "utf8")); } catch {}
-function saveFillStats() { try { fs.writeFileSync(FILL_STATS_FILE, JSON.stringify(fillStats, null, 2)); } catch {} }
+function saveFillStats() { try { writeFileAtomic(FILL_STATS_FILE, fillStats); } catch {} }
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
@@ -891,8 +893,8 @@ async function updatePortfolioValue() {
             return; // Don't trip — it was stale data
           }
         } catch (e) {
-          log("CB", `  ⚠️ Cash re-fetch failed: ${e.message} — NOT tripping on unverified data`);
-          return; // Don't trip if we can't verify
+          log("CB", `  ⚠️ Cash re-fetch failed: ${e.message} — tripping conservatively (cannot verify)`);
+          // Fall through to trip — better a false halt than an unprotected drawdown
         }
       }
       circuitBreakerTripped = true;
@@ -1051,6 +1053,12 @@ async function syncPositions() {
     }
 
     if (newAssetIds.length > 0) subscribe(newAssetIds);
+
+    // Sync position ledger (single source of truth)
+    const ledgerChanges = positionLedger.recordSync(positions, manualPositions);
+    if (ledgerChanges.added || ledgerChanges.removed) {
+      log("SYNC", `Position ledger: +${ledgerChanges.added} -${ledgerChanges.removed} ~${ledgerChanges.updated}`);
+    }
     log("SYNC", `Tracking ${subscribedAssets.size} positions (${positions.length} from executor)`);
     if (!syncCompletedOnce) {
       syncCompletedOnce = true;
@@ -1328,6 +1336,7 @@ async function apiHandler(req, res) {
         circuitBreakerResumeAt = null;
         dailyStartValue = currentPortfolioValue;
         log("CB", "Circuit breaker manually reset");
+        pushAlert("CIRCUIT_BREAKER_RESUMED", null, null, null, null, "Manual reset via API");
         return send(res, 200, { ok: true });
       }
 
@@ -1384,7 +1393,7 @@ function recordPnlSnapshot() {
     history.push(snapshot);
     // Keep last 2000 entries (~7 days at 5 min intervals)
     if (history.length > 2000) history = history.slice(-2000);
-    fs.writeFileSync(PNL_HISTORY_FILE, JSON.stringify(history, null, 2));
+    writeFileAtomic(PNL_HISTORY_FILE, history);
   } catch (e) {
     log("PNL", `Failed to record snapshot: ${e.message}`);
   }
@@ -1502,7 +1511,7 @@ async function runArbScan() {
       opportunities: opportunities.sort((a, b) => b.profitPer100 - a.profitPer100),
     };
 
-    fs.writeFileSync(ARB_RESULTS_FILE, JSON.stringify(output, null, 2));
+    writeFileAtomic(ARB_RESULTS_FILE, output);
     log("ARB", `✅ Scan complete — Flagged: ${opportunities.length} | Viable: ${output.summary.viable} → ${ARB_RESULTS_FILE}`);
 
     // === ARB AUTO-EXECUTION ===
@@ -1612,7 +1621,7 @@ async function runArbScan() {
 
           // Persist to prevent re-executing after restart
           arbExecutedSlugs.add(opp.slug);
-          try { fs.writeFileSync(ARB_EXECUTED_FILE, JSON.stringify([...arbExecutedSlugs])); } catch {}
+          try { writeFileAtomic(ARB_EXECUTED_FILE, [...arbExecutedSlugs]); } catch {}
         } catch (e) {
           log("ARB", `❌ Arb execution failed: ${e.message}`);
         }
@@ -1671,7 +1680,7 @@ async function runResolvingScan() {
       markets: results,
     };
 
-    fs.writeFileSync(RESOLVING_FILE, JSON.stringify(output, null, 2));
+    writeFileAtomic(RESOLVING_FILE, output);
     log("RESOLVE", `✅ Found ${results.length} markets resolving in 6-12h → ${RESOLVING_FILE}`);
   } catch (e) {
     log("RESOLVE", `❌ Resolving scan failed: ${e.message}`);
@@ -1687,7 +1696,7 @@ function registerMarketName(conditionId, name) {
     try { names = JSON.parse(fs.readFileSync(MARKET_NAMES_FILE, "utf8")); } catch {}
     if (names[conditionId]) return; // already named
     names[conditionId] = name;
-    fs.writeFileSync(MARKET_NAMES_FILE, JSON.stringify(names, null, 2));
+    writeFileAtomic(MARKET_NAMES_FILE, names);
     log("NAMES", `Registered: ${conditionId.slice(0,10)} → ${name}`);
   } catch (e) { log("NAMES", `Failed to register name: ${e.message}`); }
 }
@@ -1762,7 +1771,7 @@ const RH_SKIP_QUESTIONS = new RegExp([
 let rhExecutedIds = new Set();
 try { rhExecutedIds = new Set(JSON.parse(fs.readFileSync(RH_EXECUTED_FILE, "utf8"))); } catch {}
 function saveRhExecuted() {
-  try { fs.writeFileSync(RH_EXECUTED_FILE, JSON.stringify([...rhExecutedIds])); } catch {}
+  try { writeFileAtomic(RH_EXECUTED_FILE, [...rhExecutedIds]); } catch {}
 }
 
 async function runResolutionHunter() {
@@ -1939,7 +1948,7 @@ async function runResolutionHunter() {
       trades: executed,
       topCandidates: candidates.slice(0, 10),
     };
-    fs.writeFileSync(RESOLUTION_HUNTER_FILE, JSON.stringify(output, null, 2));
+    writeFileAtomic(RESOLUTION_HUNTER_FILE, output);
 
     if (executed.length > 0) {
       log("RH", `✅ Executed ${executed.length} resolution trades`);
@@ -1982,7 +1991,7 @@ function saveWeatherTrades(trades) {
     existing.trades.push(...trades);
     existing.executedConditionIds = [...weatherTradesExecuted];
     existing.lastRun = new Date().toISOString();
-    fs.writeFileSync(WEATHER_TRADES_FILE, JSON.stringify(existing, null, 2));
+    writeFileAtomic(WEATHER_TRADES_FILE, existing);
   } catch (e) { log("WX", `Failed to save trades: ${e.message}`); }
 }
 
@@ -2585,6 +2594,18 @@ async function main() {
     log("INIT", `Feed API running on port ${FEED_PORT}`);
   });
 }
+
+// === CRASH SAFETY: Catch unhandled errors before they kill the process ===
+process.on("unhandledRejection", (reason) => {
+  console.error("[WS-FEED] Unhandled rejection:", reason);
+  sendTelegramAlert(`🚨 <b>WS-FEED UNHANDLED REJECTION</b>\n<pre>${String(reason).slice(0, 500)}</pre>\n\nProcess may restart via PM2.`);
+});
+
+process.on("uncaughtException", (err) => {
+  console.error("[WS-FEED] Uncaught exception:", err);
+  sendTelegramAlert(`🚨 <b>WS-FEED CRASH</b>\n<pre>${String(err.stack || err).slice(0, 500)}</pre>\n\nProcess will restart via PM2.`);
+  setTimeout(() => process.exit(1), 2000);
+});
 
 main().catch((err) => {
   console.error("Fatal:", err);
