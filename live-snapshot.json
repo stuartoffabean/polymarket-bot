@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-14T21:00:04.497Z",
+  "timestamp": "2026-02-14T21:01:01.815Z",
   "portfolio": {
     "trackedPositions": 6,
-    "portfolioValue": 381.173355,
-    "positionValue": 144.7738,
+    "portfolioValue": 381.013355,
+    "positionValue": 144.6138,
     "cashBalance": 236.399555,
     "dailyStartValue": 356.139155
   },
@@ -23,7 +23,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 16510.257339389
+    "uptime": 16567.258586802
   },
   "positions": [
     {
@@ -63,7 +63,7 @@
       "size": 25,
       "avgPrice": 0.94,
       "currentBid": 0.949,
-      "currentAsk": 0.952,
+      "currentAsk": 0.951,
       "costBasis": "23.50",
       "currentValue": "23.72",
       "pnl": "0.22",
@@ -107,17 +107,26 @@
       "outcome": "Yes",
       "size": 80,
       "avgPrice": 0.62,
-      "currentBid": 0.696,
-      "currentAsk": 0.698,
+      "currentBid": 0.694,
+      "currentAsk": 0.695,
       "costBasis": "49.60",
-      "currentValue": "55.68",
-      "pnl": "6.08",
-      "pnlPct": "12.3%",
+      "currentValue": "55.52",
+      "pnl": "5.92",
+      "pnlPct": "11.9%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     }
   ],
   "orders": [
+    {
+      "id": "0x4377062360636b9c442bd8f94334077700331a5e630fbedd216d3f9084f66bd4",
+      "asset_id": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
+      "side": "SELL",
+      "price": "0.695",
+      "original_size": "80",
+      "size_matched": "26.73",
+      "status": "LIVE"
+    },
     {
       "id": "0xfaa5935172f58b6f19be77380be8308752ee97c2529a31a54c3ebc6f0a01abc3",
       "asset_id": "16680383807036024154663222348300164487828801908390056508639441371141589139909",
@@ -148,7 +157,20 @@
   ],
   "trades": [
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
+      "market": "Anthropic Best AI Model Feb",
+      "outcome": "Yes",
+      "side": "buy",
+      "price": 0.5824,
+      "size": 31.022650000000002,
+      "shares": 53.269999999999996,
+      "currentPrice": 0.694,
+      "pnl": 5.94,
+      "pnlPct": "19.2%",
+      "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
+    },
+    {
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "Chicago 46-47°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -161,7 +183,7 @@
       "tokenId": "86069854998126295712887500512103672980330890383172698747999211918441355492422"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "Miami 76-77°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -174,7 +196,7 @@
       "tokenId": "92692355295105043188084535345172617132941070537427143745066857388094591739498"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "New York City ≤33°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -187,7 +209,7 @@
       "tokenId": "87034544787508362600520628155582601877854843596079024073643613177448200402413"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "Atlanta 58-59°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -200,7 +222,7 @@
       "tokenId": "89850023208665827912791204459354162829290040613445798160551059612704754189351"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "Chicago ≥50°F Feb 13",
       "outcome": "No",
       "side": "buy",
@@ -213,7 +235,7 @@
       "tokenId": "28321426810817884323028002735778558086441279106030661015331363203764252597900"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "Jokic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -226,7 +248,7 @@
       "tokenId": "73768610008619570600930429495180540710817177537162503586781057110775077618432"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "Doncic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -239,7 +261,7 @@
       "tokenId": "89110596788673536475065853727140488937259064164063660201050220270400840228269"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
@@ -252,7 +274,7 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.496Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
@@ -265,7 +287,7 @@
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-14T21:00:04.497Z",
+      "timestamp": "2026-02-14T21:01:01.815Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "Yes",
       "side": "buy",
@@ -276,22 +298,17 @@
       "pnl": 8.5,
       "pnlPct": "27.4%",
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
-    },
-    {
-      "timestamp": "2026-02-14T21:00:04.497Z",
-      "market": "Anthropic Best AI Model Feb",
-      "outcome": "Yes",
-      "side": "buy",
-      "price": 0.62,
-      "size": 49.6,
-      "shares": 80,
-      "currentPrice": 0.696,
-      "pnl": 6.08,
-      "pnlPct": "12.3%",
-      "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     }
   ],
   "strategies": [
+    {
+      "name": "Speculative",
+      "trades": 4,
+      "pnl": 5.890000000000001,
+      "wins": 2,
+      "enabled": true,
+      "winRate": 0.5
+    },
     {
       "name": "Safe Yield",
       "trades": 6,
@@ -301,18 +318,10 @@
       "winRate": 0.3333333333333333
     },
     {
-      "name": "Speculative",
-      "trades": 3,
-      "pnl": -0.05,
-      "wins": 1,
-      "enabled": true,
-      "winRate": 0.3333333333333333
-    },
-    {
       "name": "Event-Driven",
-      "trades": 2,
-      "pnl": 14.58,
-      "wins": 2,
+      "trades": 1,
+      "pnl": 8.5,
+      "wins": 1,
       "enabled": true,
       "winRate": 1
     }
@@ -328,6 +337,18 @@
   "cash": 236.399555,
   "ledger": {
     "openPositions": [
+      {
+        "asset_id": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
+        "market": "Anthropic Best AI Model Feb",
+        "outcome": "Yes",
+        "size": 53.27,
+        "avgPrice": "0.6200",
+        "costBasis": "33.03",
+        "totalBought": 80,
+        "totalSold": 26.73,
+        "realizedPnl": "2.00",
+        "status": "OPEN"
+      },
       {
         "asset_id": "73768610008619570600930429495180540710817177537162503586781057110775077618432",
         "market": "Jokic NBA MVP 2025-26",
@@ -384,18 +405,6 @@
         "avgPrice": "0.6200",
         "costBasis": "31.00",
         "totalBought": 50,
-        "totalSold": 0,
-        "realizedPnl": "0.00",
-        "status": "OPEN"
-      },
-      {
-        "asset_id": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
-        "market": "Anthropic Best AI Model Feb",
-        "outcome": "Yes",
-        "size": 80,
-        "avgPrice": "0.6200",
-        "costBasis": "49.60",
-        "totalBought": 80,
         "totalSold": 0,
         "realizedPnl": "0.00",
         "status": "OPEN"
@@ -1048,8 +1057,16 @@
       }
     ],
     "totalRealizedPnl": "-34.45",
-    "tradeCount": 172,
+    "tradeCount": 173,
     "tradeLog": [
+      {
+        "asset_id": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
+        "market": "Anthropic Best AI Model Feb",
+        "outcome": "Yes",
+        "side": "SELL",
+        "size": 26.73,
+        "price": 0.695
+      },
       {
         "asset_id": "106893482875330829332347425550558141013488263650384566003078374608472351519383",
         "market": "0x5eb681cc36248c64a48aa01096f2287834ac836d814541cd96da9924752cae06",
@@ -1201,14 +1218,6 @@
         "side": "SELL",
         "size": 10,
         "price": 0.04
-      },
-      {
-        "asset_id": "88900583850800385933127773924992016438736381408821028966855845616737191855587",
-        "market": "Miami 80-81°F Feb 13",
-        "outcome": "No",
-        "side": "SELL",
-        "size": 0.37,
-        "price": 0.31
       }
     ]
   },
