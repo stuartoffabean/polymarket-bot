@@ -1,7 +1,7 @@
 #!/bin/bash
 # Polymarket Scanner - fetch markets and CLOB prices
 
-OUTPUT_DIR="/data/workspace/polymarket-bot"
+OUTPUT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Step 1: Fetch all markets
 echo "Fetching markets..."
@@ -13,7 +13,7 @@ const fs = require("fs");
 const https = require("https");
 const http = require("http");
 
-const markets = JSON.parse(fs.readFileSync("/data/workspace/polymarket-bot/raw-markets.json", "utf8"));
+const markets = JSON.parse(fs.readFileSync(process.cwd() + "/raw-markets.json", "utf8"));
 
 // Filter volume > 50K
 const filtered = markets.filter(m => m.volume24hr > 50000);
@@ -102,7 +102,7 @@ async function run() {
     await new Promise(r => setTimeout(r, 200));
   }
   
-  fs.writeFileSync("/data/workspace/polymarket-bot/scanner-output.json", JSON.stringify(results, null, 2));
+  fs.writeFileSync(process.cwd() + "/scanner-output.json", JSON.stringify(results, null, 2));
   console.log(`\nDone. Saved ${results.length} markets to scanner-output.json`);
   
   // Generate summary
@@ -142,7 +142,7 @@ async function run() {
     md += `- **Sum (YES+NO buy):** ${r.sumYesBuyNoBuy}\n\n`;
   }
   
-  fs.writeFileSync("/data/workspace/polymarket-bot/scanner-summary.md", md);
+  fs.writeFileSync(process.cwd() + "/scanner-summary.md", md);
   console.log("Saved scanner-summary.md");
 }
 

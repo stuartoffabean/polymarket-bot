@@ -1,6 +1,8 @@
 // Load .env into a plain object for pm2
 const fs = require("fs");
-const envPath = "/data/workspace/polymarket-bot/.env";
+const path = require("path");
+const ROOT = path.resolve(__dirname);
+const envPath = path.join(ROOT, ".env");
 const envVars = {};
 fs.readFileSync(envPath, "utf8").split("\n").forEach((line) => {
   line = line.trim();
@@ -14,7 +16,7 @@ module.exports = {
     {
       name: "executor",
       script: "executor/index.js",
-      cwd: "/data/workspace/polymarket-bot",
+      cwd: ROOT,
       env: envVars,
       watch: false,
       autorestart: true,
@@ -24,14 +26,14 @@ module.exports = {
       exp_backoff_restart_delay: 1000,
       max_memory_restart: "200M",
       log_date_format: "YYYY-MM-DD HH:mm:ss Z",
-      error_file: "/data/workspace/polymarket-bot/logs/executor-error.log",
-      out_file: "/data/workspace/polymarket-bot/logs/executor-out.log",
+      error_file: path.join(ROOT, "logs", "executor-error.log"),
+      out_file: path.join(ROOT, "logs", "executor-out.log"),
       merge_logs: true,
     },
     {
       name: "ws-feed",
       script: "executor/ws-feed.js",
-      cwd: "/data/workspace/polymarket-bot",
+      cwd: ROOT,
       env: envVars,
       watch: false,
       autorestart: true,
@@ -41,8 +43,8 @@ module.exports = {
       exp_backoff_restart_delay: 1000,
       max_memory_restart: "200M",
       log_date_format: "YYYY-MM-DD HH:mm:ss Z",
-      error_file: "/data/workspace/polymarket-bot/logs/ws-feed-error.log",
-      out_file: "/data/workspace/polymarket-bot/logs/ws-feed-out.log",
+      error_file: path.join(ROOT, "logs", "ws-feed-error.log"),
+      out_file: path.join(ROOT, "logs", "ws-feed-out.log"),
       merge_logs: true,
     },
   ],

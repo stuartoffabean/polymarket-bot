@@ -1855,7 +1855,7 @@ async function runResolutionHunter() {
       }
 
       // Calculate size: spend up to RH_MAX_SPEND
-      const size = Math.floor(RH_MAX_SPEND / c.price);
+      let size = Math.floor(RH_MAX_SPEND / c.price);
       if (size < 1) continue;
 
       // Global auto-capital cap check

@@ -633,7 +633,9 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts
     try {
       const book = await client.getOrderBook(tokenID);
       const bestBid = book.bids?.length > 0 ? parseFloat(book.bids[book.bids.length - 1].price) : null;
-      const bestAsk = book.asks?.length > 0 ? parseFloat(book.asks[0].price) : null;
+      // Sort asks ascending to ensure we get the best (lowest) ask
+      const askPrices = (book.asks || []).map(a => parseFloat(a.price)).sort((a, b) => a - b);
+      const bestAsk = askPrices.length > 0 ? askPrices[0] : null;
       
       if (bestBid && bestAsk) {
         const spread = (bestAsk - bestBid) / bestAsk;
@@ -798,8 +800,9 @@ function triggerSnapshotPush() {
   if (_snapshotTimer) clearTimeout(_snapshotTimer);
   _snapshotTimer = setTimeout(() => {
     console.log("📸 Auto-pushing snapshot after trade...");
-    execFile("bash", ["/data/workspace/polymarket-bot/executor/push-snapshot.sh"], 
-      { cwd: "/data/workspace/polymarket-bot", timeout: 30000 },
+    const botDir = path.join(__dirname, "..");
+    execFile("bash", [path.join(__dirname, "push-snapshot.sh")],
+      { cwd: botDir, timeout: 30000 },
       (err, stdout, stderr) => {
         if (err) console.error("Snapshot push failed:", err.message);
         else console.log("📸 Snapshot pushed to GitHub");
@@ -915,7 +918,15 @@ async function getCachedPositions() {
       const qty = parseFloat(t.size);
       const px = parseFloat(t.price);
       if (t.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
-      else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
+      else {
+        // On sell, reduce totalCost by avg cost basis (not sell price)
+        // This prevents avgPrice from going negative or exceeding 1.0
+        const p = posMap[key];
+        const avgCost = p.size > 0 ? p.totalCost / p.size : px;
+        p.size -= qty;
+        p.totalCost -= qty * avgCost;
+        if (p.size < 0.001) { p.size = 0; p.totalCost = 0; }
+      }
       posMap[key].trades.push(t);
     } else if (t.trader_side === "MAKER" && t.maker_orders) {
       for (const mo of t.maker_orders) {
@@ -925,7 +936,13 @@ async function getCachedPositions() {
           const qty = parseFloat(mo.matched_amount);
           const px = parseFloat(mo.price);
           if (mo.side === "BUY") { posMap[key].size += qty; posMap[key].totalCost += qty * px; }
-          else { posMap[key].size -= qty; posMap[key].totalCost -= qty * px; }
+          else {
+            const p = posMap[key];
+            const avgCost = p.size > 0 ? p.totalCost / p.size : px;
+            p.size -= qty;
+            p.totalCost -= qty * avgCost;
+            if (p.size < 0.001) { p.size = 0; p.totalCost = 0; }
+          }
           posMap[key].trades.push({ ...t, _makerFill: mo });
         }
       }
@@ -1977,9 +1994,11 @@ async function handler(req, res) {
             // Sell what we bought, buy back what we sold
             const unwindSide = leg.side === "BUY" ? Side.SELL : Side.BUY;
             const book = await client.getOrderBook(leg.tokenID);
-            const unwindPrice = unwindSide === Side.SELL 
+            // Sort asks ascending to get best (lowest) ask price
+            const sortedAsks = (book.asks || []).map(a => parseFloat(a.price)).sort((a, b) => a - b);
+            const unwindPrice = unwindSide === Side.SELL
               ? (book.bids?.length > 0 ? parseFloat(book.bids[book.bids.length - 1].price) : null)
-              : (book.asks?.length > 0 ? parseFloat(book.asks[0].price) : null);
+              : (sortedAsks.length > 0 ? sortedAsks[0] : null);
             
             if (unwindPrice) {
               const unwind = await client.createAndPostOrder({

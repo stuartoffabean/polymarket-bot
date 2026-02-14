@@ -73,7 +73,8 @@ async function main() {
   
   // Save raw data for backtest
   const { writeFileSync } = require('fs');
-  writeFileSync('/data/workspace/polymarket-bot/weather-resolved-raw.json', JSON.stringify(allEvents, null, 2));
+  const path = require('path');
+  writeFileSync(path.join(__dirname, '..', 'weather-resolved-raw.json'), JSON.stringify(allEvents, null, 2));
   console.log('Saved to weather-resolved-raw.json');
 }
 

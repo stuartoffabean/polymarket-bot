@@ -2,7 +2,7 @@
 # Push live snapshot to GitHub for dashboard consumption
 # Run via cron every 15 minutes
 
-cd /data/workspace/polymarket-bot
+cd "$(dirname "$0")/.."
 
 # Generate snapshot from live feed
 SNAPSHOT=$(curl -s localhost:3003/prices 2>/dev/null)
@@ -45,7 +45,7 @@ const positions = Object.entries(prices.prices || {}).map(([id, p]) => ({
 
 // Load market name mappings
 let marketNames = {};
-try { marketNames = JSON.parse(require('fs').readFileSync('/data/workspace/polymarket-bot/executor/market-names.json', 'utf8')); } catch(e) { console.error('market-names.json not found:', e.message); }
+try { marketNames = JSON.parse(require('fs').readFileSync('executor/market-names.json', 'utf8')); } catch(e) { console.error('market-names.json not found:', e.message); }
 const resolveName = (assetId, conditionId) => {
   if (marketNames[assetId]) return marketNames[assetId];
   if (marketNames[conditionId]) return marketNames[conditionId];
@@ -63,7 +63,7 @@ const resolveName = (assetId, conditionId) => {
 const execPos = execPositions.positions || [];
 let manualPos = [];
 try {
-  const mp = JSON.parse(require('fs').readFileSync('/data/workspace/polymarket-bot/executor/manual-positions.json', 'utf8'));
+  const mp = JSON.parse(require('fs').readFileSync('executor/manual-positions.json', 'utf8'));
   for (const [assetId, info] of Object.entries(mp)) {
     // Only add if not already in executor positions
     if (!execPos.some(ep => ep.asset_id.slice(0, 20) === assetId.slice(0, 20)) && info.size > 0) {
