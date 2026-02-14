@@ -90,6 +90,23 @@ async function checkResolutions() {
             resolved[p.asset] = record;
             newlyResolved.push(record);
             
+            // EXIT LEDGER — log resolution
+            logExit({
+              assetId: p.asset,
+              market: record.market,
+              outcome: record.outcome,
+              reason: won ? EXIT_REASONS.RESOLUTION_WON : EXIT_REASONS.RESOLUTION_LOST,
+              triggerSource: "resolution-detection",
+              entryPrice: p.avgPrice,
+              exitPrice: won ? 1.0 : 0,
+              size: p.size,
+              costBasis: record.costBasis,
+              proceeds: record.payout,
+              realizedPnl: record.realizedPnl,
+              strategy: "unknown",
+              notes: `Resolved ${record.won ? "WON" : "LOST"} at ${record.resolvedAt}`,
+            });
+
             // Telegram notification
             const emoji = won ? "✅" : "❌";
             const pnlStr = pnl >= 0 ? `+$${pnl.toFixed(2)}` : `-$${Math.abs(pnl).toFixed(2)}`;
@@ -208,6 +225,15 @@ const DEPTH_MIN_SHARES_MANUAL = 5;       // Don't bother with <5 shares
 
 const fs = require("fs");
 const path = require("path");
+const { logExit, getExits, getExitSummary, EXIT_REASONS } = require("./exit-ledger");
+
+// Market name resolver — loads from market-names.json
+function getMarketName(assetIdOrConditionId) {
+  try {
+    const names = JSON.parse(fs.readFileSync(path.join(__dirname, "market-names.json"), "utf8"));
+    return names[assetIdOrConditionId] || null;
+  } catch { return null; }
+}
 
 // === RESOLUTION DETECTION ===
 const RESOLVED_FILE = path.join(__dirname, "..", "resolved-positions.json");
@@ -1209,6 +1235,20 @@ async function handler(req, res) {
         }
       }
 
+      // GET /exit-ledger — full exit log with optional filters
+      if (path === "/exit-ledger") {
+        const since = query.since;  // ISO date string
+        const reason = query.reason;
+        const limit = query.limit ? parseInt(query.limit) : undefined;
+        
+        if (query.summary === "true") {
+          return send(res, 200, getExitSummary(since));
+        }
+        
+        const exits = getExits({ since, reason, limit });
+        return send(res, 200, { count: exits.length, exits });
+      }
+
       if (path === "/check-resolutions") {
         try {
           const result = await checkResolutions();
@@ -1694,6 +1734,35 @@ async function handler(req, res) {
       });
 
       console.log(`Sell result:`, JSON.stringify(order));
+      
+      // EXIT LEDGER — log the manual sell
+      // Try to find entry price from cached positions
+      const cachedPos = await getCachedPositions().catch(() => []);
+      const pos = cachedPos.find(p => p.asset_id === tokenID);
+      const entryPrice = pos ? parseFloat(pos.avgPrice) : 0;
+      const sellSize = parseFloat(size);
+      const costBasis = sellSize * entryPrice;
+      const proceeds = sellSize * bestBid;
+      logExit({
+        assetId: tokenID,
+        market: getMarketName(tokenID) || (pos?.market) || `Asset ${tokenID.slice(0,20)}...`,
+        outcome: pos?.outcome || body.outcome || "Unknown",
+        reason: body.reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS
+              : body.reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT
+              : body.reason === "TIME_STOP" ? EXIT_REASONS.TIME_STOP
+              : body.reason === "EMERGENCY" ? EXIT_REASONS.EMERGENCY
+              : EXIT_REASONS.MANUAL_SELL,
+        triggerSource: body.source || "executor-manual",
+        entryPrice,
+        exitPrice: bestBid,
+        size: sellSize,
+        costBasis,
+        proceeds,
+        realizedPnl: proceeds - costBasis,
+        strategy: pos?.strategy || body.strategy || "unknown",
+        notes: body.notes || "",
+      });
+
       invalidateTradeCache();
       triggerSnapshotPush();
       return send(res, 200, { ...order, executedPrice: bestBid });

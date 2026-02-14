@@ -33,6 +33,7 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 const path = require("path");
+const { logExit, getExits, getExitSummary, EXIT_REASONS } = require("./exit-ledger");
 
 // === FEE ACCOUNTING (Feb 2026) ===
 // Most Polymarket markets: ZERO fees. Only 15-min crypto, NCAAB, Serie A have taker fees.
@@ -677,6 +678,28 @@ async function executeSell(assetId, asset, reason) {
     pushAlert("SELL_EXECUTED", assetId, asset, result.executedPrice, null, 
       `${reason}: Sold ${asset.size} @ ${result.executedPrice}`);
     
+    // EXIT LEDGER — log every exit with full context
+    const exitPrice = parseFloat(result.executedPrice) || 0;
+    const costBasis = asset.size * asset.avgPrice;
+    const proceeds = asset.size * exitPrice;
+    logExit({
+      assetId,
+      market: asset._marketName || asset._market || `Asset ${assetId.slice(0,20)}...`,
+      outcome: asset.outcome || "Unknown",
+      reason: reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS 
+            : reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT 
+            : EXIT_REASONS.MANUAL_SELL,
+      triggerSource: "ws-feed-auto",
+      entryPrice: asset.avgPrice,
+      exitPrice,
+      size: asset.size,
+      costBasis,
+      proceeds,
+      realizedPnl: proceeds - costBasis,
+      strategy: getStrategy(assetId),
+      notes: `SL=${asset._customStopLoss || stopLossThreshold}, TP=${asset._customTakeProfit || takeProfitThreshold}`,
+    });
+
     // If this was a manual position, remove from persisted file
     if (asset._manual) {
       const manualPositions = loadManualPositions();
