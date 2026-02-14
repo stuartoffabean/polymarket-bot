@@ -33,6 +33,7 @@ const RISK_MAX_SINGLE_POSITION_PCT = 0.15; // 15% of portfolio per position
 const RISK_CASH_RESERVE_PCT = 0.10;        // Always keep 10% uninvested
 const RISK_MIN_LIQUIDITY_DEPTH = 5;        // Minimum 5 shares of depth at best price
 const RISK_MAX_SPREAD_PCT = 0.15;          // 15% spread = skip (illiquid trap)
+const RISK_MAX_CORRELATED_PCT = 0.15;      // 15% combined exposure across correlated positions (same event)
 
 // === FEATURE 1: TOTAL DIRECTIONAL EXPOSURE CAP ===
 const RISK_MAX_TOTAL_DIRECTIONAL_PCT = 0.60; // Max 60% of bankroll in manual positions
@@ -240,6 +241,75 @@ const RESOLVED_FILE = path.join(__dirname, "..", "resolved-positions.json");
 function loadResolved() { try { return JSON.parse(fs.readFileSync(RESOLVED_FILE, "utf8")); } catch(e) { return {}; } }
 function saveResolved(data) { fs.writeFileSync(RESOLVED_FILE, JSON.stringify(data, null, 2)); }
 
+// === EVENT MAP: conditionId → eventGroupId (for correlation checking) ===
+// eventGroupId = neg_risk_market_id (for NegRisk multi-outcome markets) or market_slug (for standalone)
+// This groups positions that bet on the same underlying event (e.g., multiple Bad Bunny markets)
+const EVENT_MAP_FILE = path.join(__dirname, "event-map.json");
+function loadEventMap() { try { return JSON.parse(fs.readFileSync(EVENT_MAP_FILE, "utf8")); } catch(e) { return {}; } }
+function saveEventMap(data) { fs.writeFileSync(EVENT_MAP_FILE, JSON.stringify(data, null, 2)); }
+
+// Look up the event group for a conditionId. Checks local cache first, then CLOB API.
+async function getEventGroup(conditionId) {
+  if (!conditionId) return null;
+  const eventMap = loadEventMap();
+  if (eventMap[conditionId]) return eventMap[conditionId];
+  
+  // Fetch from CLOB API — neg_risk_market_id groups NegRisk markets, market_slug for standalone
+  try {
+    const proxyUrl = process.env.CLOB_PROXY_URL || "https://clob.polymarket.com";
+    const resp = await fetch(`${proxyUrl}/markets/${conditionId}`);
+    if (resp.ok) {
+      const data = await resp.json();
+      // NegRisk markets share neg_risk_market_id — that's the event-level correlation key
+      // Standalone markets use market_slug as a unique key
+      const groupId = data.neg_risk_market_id || data.market_slug || null;
+      if (groupId) {
+        eventMap[conditionId] = groupId;
+        saveEventMap(eventMap);
+        console.log(`[CORRELATION] Mapped ${conditionId.slice(0,20)} → ${groupId.slice(0,50)}`);
+        return groupId;
+      }
+    }
+  } catch (e) { console.log(`[CORRELATION] Failed to lookup ${conditionId}: ${e.message}`); }
+  return null;
+}
+
+// Register a conditionId → eventGroupId mapping (called on trade execution)
+function registerEventMapping(conditionId, eventGroupId) {
+  if (!conditionId || !eventGroupId) return;
+  const eventMap = loadEventMap();
+  if (eventMap[conditionId] !== eventGroupId) {
+    eventMap[conditionId] = eventGroupId;
+    saveEventMap(eventMap);
+  }
+}
+
+// Get total cost basis of all open positions correlated to a given event group
+async function getCorrelatedExposure(eventGroupId, excludeTokenID) {
+  if (!eventGroupId) return { total: 0, positions: [] };
+  const eventMap = loadEventMap();
+  const cached = await getCachedPositions();
+  
+  // Find all conditionIds belonging to this event group
+  const correlatedConditionIds = new Set();
+  for (const [cid, gid] of Object.entries(eventMap)) {
+    if (gid === eventGroupId) correlatedConditionIds.add(cid);
+  }
+  
+  // Sum exposure across all open positions whose market (conditionId) is correlated
+  let total = 0;
+  const positions = [];
+  for (const pos of cached.openPositions) {
+    if (pos.asset_id === excludeTokenID) continue; // Don't double-count the token being checked
+    const posConditionId = pos.market; // In CLOB trade data, "market" = conditionId
+    if (correlatedConditionIds.has(posConditionId)) {
+      total += pos.totalCost;
+      positions.push({ asset_id: pos.asset_id, conditionId: posConditionId, costBasis: pos.totalCost, outcome: pos.outcome });
+    }
+  }
+  return { total, positions };
+}
+
 // === DAILY CONVICTION BUDGET ===
 // Max 30% of bankroll in NEW manual positions per day. Resets at midnight UTC.
 // Resolution Hunter exempt (validated strategy with own limits).
@@ -443,6 +513,47 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts
     });
   } else {
     checks.push({ check: "MAX_SINGLE_POSITION", status: "OK", pct: (exposurePct * 100).toFixed(1) + "%" });
+  }
+
+  // === CHECK 1.5: Correlated position exposure (15% max across same event) ===
+  // Uses neg_risk_market_id (NegRisk multi-outcome) or market_slug (standalone) to group positions
+  {
+    try {
+      let eventGroupId = null;
+      const conditionId = opts.conditionId || null;
+      
+      if (conditionId) {
+        eventGroupId = await getEventGroup(conditionId);
+      }
+      
+      if (eventGroupId) {
+        // Register this mapping for future lookups
+        registerEventMapping(conditionId, eventGroupId);
+        
+        const correlated = await getCorrelatedExposure(eventGroupId, tokenID);
+        const correlatedTotal = correlated.total + orderValue;
+        const correlatedPct = correlatedTotal / effectivePortfolio;
+        
+        if (correlatedPct > RISK_MAX_CORRELATED_PCT) {
+          blocked = true;
+          checks.push({
+            check: "CORRELATED_EXPOSURE",
+            status: "BLOCKED",
+            detail: `Combined exposure on event "${eventGroupId.slice(0,50)}": $${correlatedTotal.toFixed(2)} = ${(correlatedPct * 100).toFixed(1)}% of portfolio (max ${RISK_MAX_CORRELATED_PCT * 100}%). Existing correlated positions: ${correlated.positions.length}`,
+            correlatedPositions: correlated.positions.map(p => ({ asset: p.asset_id.slice(0,20) + "...", costBasis: "$" + p.costBasis.toFixed(2), outcome: p.outcome })),
+            thisOrder: `$${orderValue.toFixed(2)}`,
+            recommended: { maxOrderValue: Math.max(0, effectivePortfolio * RISK_MAX_CORRELATED_PCT - correlated.total).toFixed(2) },
+          });
+        } else {
+          checks.push({ check: "CORRELATED_EXPOSURE", status: "OK", pct: (correlatedPct * 100).toFixed(1) + "%", correlatedPositions: correlated.positions.length, eventGroup: eventGroupId.slice(0,50) });
+        }
+      } else if (conditionId) {
+        checks.push({ check: "CORRELATED_EXPOSURE", status: "SKIPPED", detail: "Could not resolve event group for conditionId" });
+      }
+      // If no conditionId provided, skip silently (backward compat)
+    } catch (e) {
+      checks.push({ check: "CORRELATED_EXPOSURE", status: "SKIPPED", detail: `Error: ${e.message}` });
+    }
   }
 
   // === CHECK 2: Total directional exposure (60% max for manual) ===
@@ -1384,6 +1495,8 @@ async function handler(req, res) {
         const riskOpts = {
           strategy: query.strategy || "unknown",
           hoursToResolution: query.hours_to_resolution ? parseFloat(query.hours_to_resolution) : null,
+          conditionId: query.condition_id || null,
+          slug: query.slug || null,
         };
         const result = await preTradeRiskCheck(tokenID, price, size, side, false, riskOpts);
         return send(res, 200, result);
@@ -1554,6 +1667,8 @@ async function handler(req, res) {
       const riskOpts = {
         strategy: body.strategy || "directional",
         hoursToResolution: hoursToResolution != null ? parseFloat(hoursToResolution) : null,
+        conditionId: body.conditionId || null,
+        slug: slug || null,
       };
       const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, false, riskOpts);
       
@@ -1601,9 +1716,11 @@ async function handler(req, res) {
         invalidateTradeCache();
         triggerSnapshotPush();
 
-        // Record daily budget
+        // Record daily budget + event mapping
         if (side === "BUY") {
           recordDailyBudgetSpend(parseFloat(price) * parseFloat(size), market || tokenID.slice(0, 20));
+          // Register event mapping for correlation checker
+          // Event mapping registered lazily by risk check's getEventGroup()
         }
 
         // Telegram notification
@@ -1645,6 +1762,8 @@ async function handler(req, res) {
         const riskOpts = {
           strategy: body.strategy || "unknown",
           hoursToResolution: body.hoursToResolution != null ? parseFloat(body.hoursToResolution) : null,
+          conditionId: body.conditionId || null,
+          slug: body.slug || null,
         };
         const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, false, riskOpts);
         if (!riskResult.allowed) {
@@ -1690,6 +1809,7 @@ async function handler(req, res) {
         const marketName = body.market || tokenID.slice(0, 20);
         recordDailyBudgetSpend(parseFloat(price) * parseFloat(size), marketName);
       }
+      // Event mapping registered lazily by risk check's getEventGroup()
 
       // Informational Telegram notification for all trades
       {
