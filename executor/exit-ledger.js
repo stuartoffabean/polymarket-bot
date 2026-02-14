@@ -21,6 +21,7 @@ const EXIT_REASONS = {
   RESOLUTION_LOST: "resolution_lost",
   TIME_STOP: "time_stop",
   THESIS_INVALIDATED: "thesis_invalidated",
+  TRAILING_STOP: "trailing_stop",
   EMERGENCY: "emergency",
   UNKNOWN: "unknown",
 };

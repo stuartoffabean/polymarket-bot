@@ -623,6 +623,55 @@ function checkTriggers(assetId, asset) {
   const pnlPct = (currentValue - costBasis) / costBasis;
   const pnlAbs = currentValue - costBasis;
 
+  // ── TRAILING STOP ──
+  // When position reaches +20% unrealized, ratchet stop-loss to breakeven.
+  // Stop trails 20 points below the high water mark and never goes back down.
+  const TRAILING_ACTIVATION = 0.20;  // activate at +20%
+  const TRAILING_DISTANCE  = 0.20;   // trail 20 points below HWM
+  
+  if (!asset._highWaterPnlPct) asset._highWaterPnlPct = 0;
+  
+  if (pnlPct > asset._highWaterPnlPct) {
+    asset._highWaterPnlPct = pnlPct;
+  }
+  
+  if (asset._highWaterPnlPct >= TRAILING_ACTIVATION) {
+    // Calculate trailing stop as a loss percentage from entry
+    // HWM=0.20 → trailStop=0 (breakeven), HWM=0.40 → trailStop=0.20 (lock +20%)
+    const trailStopPnl = asset._highWaterPnlPct - TRAILING_DISTANCE;
+    // Convert P&L threshold to a stop-loss value (stopLoss is a positive loss %)
+    // If trailStopPnl=0 → stopLoss=0 (sell if ANY loss), trailStopPnl=0.20 → stopLoss=-0.20 (sell if drops below +20%)
+    // We express this as a price floor instead
+    const trailFloorPrice = asset.avgPrice * (1 + trailStopPnl);
+    
+    // Only ratchet UP, never down
+    if (!asset._trailingFloor || trailFloorPrice > asset._trailingFloor) {
+      const oldFloor = asset._trailingFloor;
+      asset._trailingFloor = trailFloorPrice;
+      
+      if (!oldFloor) {
+        log("TRAIL", `🔒 TRAILING STOP ACTIVATED: ${asset.market || assetId.slice(0,20)} — floor=${trailFloorPrice.toFixed(4)} (breakeven) at +${(pnlPct*100).toFixed(1)}%`);
+        pushAlert("TRAILING_STOP_ACTIVATED", assetId, asset, currentPrice, pnlPct,
+          `Trailing stop engaged. Floor: $${trailFloorPrice.toFixed(4)} (breakeven). HWM: +${(asset._highWaterPnlPct*100).toFixed(1)}%`);
+      } else if (trailFloorPrice > oldFloor * 1.02) { // only log if floor moved >2% to avoid spam
+        log("TRAIL", `📈 TRAILING STOP RATCHETED: ${asset.market || assetId.slice(0,20)} — floor=${trailFloorPrice.toFixed(4)} (was ${oldFloor.toFixed(4)}) at +${(pnlPct*100).toFixed(1)}%`);
+      }
+    }
+    
+    // Check if price has fallen through the trailing floor
+    if (asset._trailingFloor && currentPrice <= asset._trailingFloor && !asset._trailingStopTriggered) {
+      asset._trailingStopTriggered = true;
+      const lockedPnl = ((asset._trailingFloor - asset.avgPrice) / asset.avgPrice * 100).toFixed(1);
+      const strat = getStrategy(assetId);
+      pushAlert("TRAILING_STOP", assetId, asset, currentPrice, pnlPct,
+        `AUTO-SELLING [${strat}] — Floor $${asset._trailingFloor.toFixed(4)} breached. Locked +${lockedPnl}% from HWM +${(asset._highWaterPnlPct*100).toFixed(1)}%`);
+      if (autoExecuteEnabled && !circuitBreakerTripped) {
+        executeSell(assetId, asset, "TRAILING_STOP");
+        return; // don't check other triggers after trailing stop fires
+      }
+    }
+  }
+  
   const stopLoss = asset.stopLoss || DEFAULT_STOP_LOSS;
   const takeProfit = asset.takeProfit || DEFAULT_TAKE_PROFIT;
 
@@ -687,7 +736,8 @@ async function executeSell(assetId, asset, reason) {
       market: asset._marketName || asset._market || `Asset ${assetId.slice(0,20)}...`,
       outcome: asset.outcome || "Unknown",
       reason: reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS 
-            : reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT 
+            : reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT
+            : reason === "TRAILING_STOP" ? EXIT_REASONS.TRAILING_STOP
             : EXIT_REASONS.MANUAL_SELL,
       triggerSource: "ws-feed-auto",
       entryPrice: asset.avgPrice,
@@ -697,7 +747,9 @@ async function executeSell(assetId, asset, reason) {
       proceeds,
       realizedPnl: proceeds - costBasis,
       strategy: getStrategy(assetId),
-      notes: `SL=${asset._customStopLoss || stopLossThreshold}, TP=${asset._customTakeProfit || takeProfitThreshold}`,
+      notes: reason === "TRAILING_STOP" 
+        ? `TrailingFloor=${asset._trailingFloor?.toFixed(4)}, HWM=+${(asset._highWaterPnlPct*100)?.toFixed(1)}%, Entry=${asset.avgPrice}`
+        : `SL=${asset._customStopLoss || stopLossThreshold}, TP=${asset._customTakeProfit || takeProfitThreshold}`,
     });
 
     // If this was a manual position, remove from persisted file
@@ -992,6 +1044,8 @@ async function apiHandler(req, res) {
           strategy: getStrategy(id),
           stopLoss: asset.stopLoss || DEFAULT_STOP_LOSS,
           takeProfit: asset.takeProfit || DEFAULT_TAKE_PROFIT,
+          trailingFloor: asset._trailingFloor || null,
+          highWaterPnl: asset._highWaterPnlPct ? (asset._highWaterPnlPct * 100).toFixed(1) + "%" : null,
           lastUpdate: asset.lastUpdate,
         };
       }
