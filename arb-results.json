@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-13T23:47:40.374Z",
+  "timestamp": "2026-02-14T00:17:52.992Z",
   "summary": {
     "total": 100,
-    "negRisk": 53,
-    "flagged": 5,
-    "viable": 2
+    "negRisk": 54,
+    "flagged": 6,
+    "viable": 3
   },
   "opportunities": [
     {
@@ -13,12 +13,12 @@
       "type": "LONG",
       "outcomes": 20,
       "midSum": 0.816,
-      "execSum": 0.756,
+      "execSum": 0.755,
       "deviation": 18.4,
-      "execDeviation": 24.4,
-      "grossProfitPer100": 24.4,
+      "execDeviation": 24.5,
+      "grossProfitPer100": 24.5,
       "feesPer100": 0,
-      "profitPer100": 24.4,
+      "profitPer100": 24.5,
       "viable": true,
       "details": [
         {
@@ -35,8 +35,8 @@
         },
         {
           "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.042,
-          "exec": 0.041,
+          "mid": 0.04,
+          "exec": 0.04,
           "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
         },
         {
@@ -53,7 +53,7 @@
         },
         {
           "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.11,
+          "mid": 0.1095,
           "exec": 0.102,
           "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
         },
@@ -101,13 +101,13 @@
         },
         {
           "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.1005,
+          "mid": 0.1045,
           "exec": 0.1,
           "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
         },
         {
           "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.117,
+          "mid": 0.116,
           "exec": 0.108,
           "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
         },
@@ -131,7 +131,7 @@
         },
         {
           "name": "Will Charlie Kirk win the Nobel Peace Prize in 2026?",
-          "mid": 0.019,
+          "mid": 0.0185,
           "exec": 0.015,
           "token": "41901357708237118584313729261027657874621373325486663648640954008517926947624"
         },
@@ -144,29 +144,111 @@
       ]
     },
     {
+      "event": "2026 Winter Olympics: 2nd Most Gold Medals",
+      "slug": "2026-winter-olympics-2nd-most-gold-medals",
+      "type": "LONG",
+      "outcomes": 11,
+      "midSum": 0.967,
+      "execSum": 0.877,
+      "deviation": 3.3,
+      "execDeviation": 12.3,
+      "grossProfitPer100": 12.3,
+      "feesPer100": 0,
+      "profitPer100": 12.3,
+      "viable": true,
+      "details": [
+        {
+          "name": "Will Germany win the second most gold medals in the 2026 Win",
+          "mid": 0.155,
+          "exec": 0.12,
+          "token": "33527841083238114410821794727721397473423028282802524280756781366173358220337"
+        },
+        {
+          "name": "Will Japan win the second most gold medals in the 2026 Winte",
+          "mid": 0.0025,
+          "exec": 0,
+          "token": "111894557298781939977731489803328039016139776743804941329095911521550536502479"
+        },
+        {
+          "name": "Will Norway win the second most gold medals in the 2026 Wint",
+          "mid": 0.073,
+          "exec": 0.073,
+          "token": "106833699228273846976176656407851093285252741004912922624914012805053630217261"
+        },
+        {
+          "name": "Will Switzerland win the second most gold medals in the 2026",
+          "mid": 0.005,
+          "exec": 0.004,
+          "token": "29907155796368150519005574238713742631093524047565146960025503386355357885802"
+        },
+        {
+          "name": "Will France win the second most gold medals in the 2026 Wint",
+          "mid": 0.0955,
+          "exec": 0.058,
+          "token": "68959022501965827834594225017440628797651972987757467980276659254144556424029"
+        },
+        {
+          "name": "Will Italy win the second most gold medals in the 2026 Winte",
+          "mid": 0.056,
+          "exec": 0.055,
+          "token": "26763796227093385389238049506291521102844214410541553072801638416728642140084"
+        },
+        {
+          "name": "Will Netherlands win the second most gold medals in the 2026",
+          "mid": 0.0045,
+          "exec": 0.003,
+          "token": "115788300045717132726717696681600151651413337435636733783573497592330245124743"
+        },
+        {
+          "name": "Will Sweden win the second most gold medals in the 2026 Wint",
+          "mid": 0.0175,
+          "exec": 0.02,
+          "token": "102873391199200034656929292947181197275415695519728750406984504778587939102412"
+        },
+        {
+          "name": "Will the United States win the second most gold medals in th",
+          "mid": 0.55,
+          "exec": 0.54,
+          "token": "27088732675640554540326471754429594214850278691470958430964695104190473141220"
+        },
+        {
+          "name": "Will Austria win the second most gold medals in the 2026 Win",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "101791809986905988277762039111990493829559771462296396105013985938159628621953"
+        },
+        {
+          "name": "Will Canada win the second most gold medals in the 2026 Wint",
+          "mid": 0.0055,
+          "exec": 0.003,
+          "token": "44629545256584328971382372348438020632127150259657362302329795377047481617498"
+        }
+      ]
+    },
+    {
       "event": "2nd largest company end of March?",
       "slug": "2nd-largest-company-end-of-march",
       "type": "LONG",
       "outcomes": 7,
-      "midSum": 0.943,
-      "execSum": 0.888,
-      "deviation": 5.7,
-      "execDeviation": 11.2,
-      "grossProfitPer100": 11.2,
+      "midSum": 0.9625,
+      "execSum": 0.907,
+      "deviation": 3.75,
+      "execDeviation": 9.3,
+      "grossProfitPer100": 9.3,
       "feesPer100": 0,
-      "profitPer100": 11.2,
+      "profitPer100": 9.3,
       "viable": true,
       "details": [
         {
           "name": "Will Microsoft be the second-largest company in the world by",
-          "mid": 0.016,
-          "exec": 0.013,
+          "mid": 0.0155,
+          "exec": 0.012,
           "token": "56043719131666873392339826690561164371972316765200119693100188654384547919541"
         },
         {
           "name": "Will Alphabet be the second-largest company in the world by ",
-          "mid": 0.43,
-          "exec": 0.41,
+          "mid": 0.435,
+          "exec": 0.42,
           "token": "52058671260704755371239590954532265413964014051338616280298103550150919688937"
         },
         {
@@ -183,8 +265,8 @@
         },
         {
           "name": "Will Apple be the second-largest company in the world by mar",
-          "mid": 0.415,
-          "exec": 0.39,
+          "mid": 0.43,
+          "exec": 0.4,
           "token": "17650734816192148631865413008800631441117184835523441879314036970940465064230"
         },
         {
@@ -300,54 +382,54 @@
       "slug": "bitcoin-price-on-february-15",
       "type": "SHORT",
       "outcomes": 11,
-      "midSum": 1.038,
-      "execSum": 0.99,
-      "deviation": 3.8,
-      "execDeviation": 1,
-      "grossProfitPer100": -1,
+      "midSum": 1.05,
+      "execSum": 0.989,
+      "deviation": 5,
+      "execDeviation": 1.1,
+      "grossProfitPer100": -1.1,
       "feesPer100": 0,
-      "profitPer100": -1,
+      "profitPer100": -1.1,
       "viable": false,
       "details": [
         {
           "name": "Will the price of Bitcoin be less than $62,000 on February 1",
-          "mid": 0.005,
+          "mid": 0.0035,
           "exec": 0.003,
           "token": "27949417428573445813088695839917496968726369934584872098628951930949747990810"
         },
         {
           "name": "Will the price of Bitcoin be between $62,000 and $64,000 on ",
-          "mid": 0.013,
-          "exec": 0.012,
+          "mid": 0.015,
+          "exec": 0.013,
           "token": "53839636326432237178563940503741915576006662601296760661203015485164222905673"
         },
         {
           "name": "Will the price of Bitcoin be between $64,000 and $66,000 on ",
-          "mid": 0.0305,
-          "exec": 0.022,
+          "mid": 0.03,
+          "exec": 0.023,
           "token": "37577118071508707644805426614046623397085035735679293449171488353199427219779"
         },
         {
           "name": "Will the price of Bitcoin be between $66,000 and $68,000 on ",
-          "mid": 0.225,
+          "mid": 0.24,
           "exec": 0.22,
           "token": "33036914367330249014378807168558153960064205626882050302014818468219372833657"
         },
         {
           "name": "Will the price of Bitcoin be between $68,000 and $70,000 on ",
-          "mid": 0.54,
-          "exec": 0.53,
+          "mid": 0.56,
+          "exec": 0.54,
           "token": "2103636101400917288966026802743382599425237974062742810167322525539408591964"
         },
         {
           "name": "Will the price of Bitcoin be between $70,000 and $72,000 on ",
-          "mid": 0.195,
-          "exec": 0.18,
+          "mid": 0.175,
+          "exec": 0.17,
           "token": "31496071606449467870622347283605592055318393091565793195141504351886050316606"
         },
         {
           "name": "Will the price of Bitcoin be between $76,000 and $78,000 on ",
-          "mid": 0.003,
+          "mid": 0.0025,
           "exec": 0.002,
           "token": "66519617457949135061281687875400907962543514552801505502809304373828686525654"
         },
@@ -365,14 +447,14 @@
         },
         {
           "name": "Will the price of Bitcoin be between $72,000 and $74,000 on ",
-          "mid": 0.0155,
+          "mid": 0.0145,
           "exec": 0.012,
           "token": "45785080051250195009325047370792023004975486607002605077181919459885541644837"
         },
         {
           "name": "Will the price of Bitcoin be between $74,000 and $76,000 on ",
-          "mid": 0.0065,
-          "exec": 0.006,
+          "mid": 0.005,
+          "exec": 0.003,
           "token": "82798009819714764204928458633507575002656124337113405934246714106475199928736"
         }
       ]
@@ -382,13 +464,13 @@
       "slug": "2026-icc-t20-mens-world-cup-winner",
       "type": "SHORT",
       "outcomes": 12,
-      "midSum": 1.0565,
-      "execSum": 0.983,
-      "deviation": 5.65,
-      "execDeviation": 1.7,
-      "grossProfitPer100": -1.7,
+      "midSum": 1.0605,
+      "execSum": 0.987,
+      "deviation": 6.05,
+      "execDeviation": 1.3,
+      "grossProfitPer100": -1.3,
       "feesPer100": 0,
-      "profitPer100": -1.7,
+      "profitPer100": -1.3,
       "viable": false,
       "details": [
         {
@@ -423,8 +505,8 @@
         },
         {
           "name": "Will New Zealand win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0795,
-          "exec": 0.067,
+          "mid": 0.0815,
+          "exec": 0.071,
           "token": "65008518571572657271211632870860379070221892511688233911018004120158193148414"
         },
         {
@@ -441,7 +523,7 @@
         },
         {
           "name": "Will Sri Lanka win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0245,
+          "mid": 0.0265,
           "exec": 0.022,
           "token": "103630786762206584738662636102754367864881412668966849731168337708616533672029"
         },

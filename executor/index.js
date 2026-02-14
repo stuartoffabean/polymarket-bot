@@ -500,13 +500,17 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts
       
       if (bestBid && bestAsk) {
         const spread = (bestAsk - bestBid) / bestAsk;
-        if (spread > RISK_MAX_SPREAD_PCT) {
+        const isNegRisk = book.neg_risk === true;
+        if (spread > RISK_MAX_SPREAD_PCT && !isNegRisk) {
           blocked = true;
           checks.push({
             check: "SPREAD",
             status: "BLOCKED",
             detail: `Spread ${(spread * 100).toFixed(1)}% (bid=${bestBid}, ask=${bestAsk}) exceeds max ${RISK_MAX_SPREAD_PCT * 100}%`,
           });
+        } else if (spread > RISK_MAX_SPREAD_PCT && isNegRisk) {
+          // NegRisk/bucket markets structurally have wide spreads — skip spread check, depth check still applies
+          checks.push({ check: "SPREAD", status: "OK_NEGRISK", spread: (spread * 100).toFixed(1) + "%", bestBid, bestAsk, note: "NegRisk market — spread check skipped, depth required" });
         } else {
           checks.push({ check: "SPREAD", status: "OK", spread: (spread * 100).toFixed(1) + "%", bestBid, bestAsk });
         }
@@ -576,19 +580,8 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts
     liquidBalance: portfolio.liquidBalance.toFixed(2),
   };
 
-  // Force override
-  if (blocked && force) {
-    console.log(`⚠️ RISK GATE OVERRIDDEN (force=true): ${checks.filter(c => c.status === "BLOCKED").map(c => c.check).join(", ")}`);
-    return {
-      allowed: true,
-      reason: "force_override",
-      overridden: checks.filter(c => c.status === "BLOCKED").map(c => c.check),
-      checks,
-      sizing: sizingAdvice,
-      depth: depthResult,
-      portfolio: { total: effectivePortfolio, liquid: portfolio.liquidBalance, source: portfolio.source },
-    };
-  }
+  // force:true removed — no gate bypasses on live trades, ever.
+  // If a gate blocks a legitimate trade, fix the gate logic.
 
   if (blocked) {
     console.log(`🚫 RISK GATE BLOCKED: ${checks.filter(c => c.status === "BLOCKED").map(c => c.detail).join(" | ")}`);
@@ -1604,23 +1597,22 @@ async function handler(req, res) {
 
       // === PRE-TRADE RISK GATE ===
       // Validates position sizing, cash reserve, spread before execution.
-      // Pass force:true to bypass (logged). skipRiskCheck:true for internal
-      // auto-execution paths (ws-feed) that have their own risk checks.
+      // skipRiskCheck:true for internal auto-execution paths (ws-feed) that have their own risk checks.
+      // force:true removed — fix gate logic instead of bypassing gates.
       const skipRisk = body.skipRiskCheck === true;
-      const forceRisk = body.force === true;
       
       if (!skipRisk) {
         const riskOpts = {
           strategy: body.strategy || "unknown",
           hoursToResolution: body.hoursToResolution != null ? parseFloat(body.hoursToResolution) : null,
         };
-        const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, forceRisk, riskOpts);
+        const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, false, riskOpts);
         if (!riskResult.allowed) {
           console.log(`🚫 ORDER REJECTED by risk gate: ${side} ${size} @ ${price}`);
           return send(res, 422, {
             error: "Order rejected by pre-trade risk check",
             riskResult,
-            hint: "Pass force:true to override (will be logged), or reduce position size",
+            hint: "Fix the gate logic if this is a legitimate trade, or reduce position size",
           });
         }
         // Log risk check result for audit

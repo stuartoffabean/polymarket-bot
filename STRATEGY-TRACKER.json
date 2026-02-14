@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-02-13T22:36:01.290Z",
+  "lastUpdated": "2026-02-14T00:05:00.018Z",
   "generatedBy": "trade-reporter.js v1.0",
   "portfolio": {
-    "totalValue": 432.82495500000005,
-    "positionValue": 187.8854,
+    "totalValue": 433.81775500000003,
+    "positionValue": 188.8782,
     "cashBalance": 244.939555,
     "trackedPositions": 9,
-    "idlePct": "56.6"
+    "idlePct": "56.5"
   },
   "summary": {
     "totalRealizedPnl": -26.36,
-    "totalUnrealizedPnl": 14.48,
-    "totalPnl": -11.88,
+    "totalUnrealizedPnl": 15.47,
+    "totalPnl": -10.89,
     "totalTrades": 48,
     "totalWins": 13,
     "totalLosses": 24,
     "overallWinRate": 33.3,
-    "portfolioValue": 432.82495500000005,
+    "portfolioValue": 433.81775500000003,
     "cashBalance": 244.939555,
-    "idlePct": "56.6",
+    "idlePct": "56.5",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
@@ -80,8 +80,8 @@
       "losses": 4,
       "winRate": "60%",
       "realizedPnl": "$10.93",
-      "unrealizedPnl": "$7.26",
-      "totalPnl": "$18.19",
+      "unrealizedPnl": "$8.25",
+      "totalPnl": "$19.18",
       "totalDeployed": "$196.04",
       "currentDeployed": "$112.65",
       "expectancy": "$1.09",

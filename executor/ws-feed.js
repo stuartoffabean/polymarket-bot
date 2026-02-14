@@ -656,7 +656,17 @@ function checkTriggers(assetId, asset) {
 
 }
 
+// Per-assetId sell lock — prevents duplicate sell executions
+const sellLocks = new Set();
+
 async function executeSell(assetId, asset, reason) {
+  // Check sell lock — only one sell per asset at a time
+  if (sellLocks.has(assetId)) {
+    log("EXEC", `🔒 SELL LOCKED: ${assetId.slice(0,20)} — sell already in progress, skipping duplicate ${reason}`);
+    return;
+  }
+  sellLocks.add(assetId);
+
   log("EXEC", `🚨 AUTO-SELL: ${asset.outcome} ${asset.size} shares (${reason})`);
   try {
     const result = await httpPost("/market-sell", {
@@ -685,6 +695,9 @@ async function executeSell(assetId, asset, reason) {
   } catch (e) {
     log("EXEC", `❌ Auto-sell FAILED: ${e.message}`);
     pushAlert("SELL_FAILED", assetId, asset, null, null, `${reason} sell failed: ${e.message}`);
+  } finally {
+    // Clear lock after sell completes (success or failure)
+    sellLocks.delete(assetId);
   }
 }
 
