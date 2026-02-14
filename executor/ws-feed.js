@@ -642,6 +642,13 @@ function checkTriggers(assetId, asset) {
   if (!systemReady) return; // skip triggers during warmup
   if (emergencyMode) return; // no trading in emergency
 
+  // EARLY EXIT: If this asset already has a sell in progress or was recently sold,
+  // skip ALL trigger evaluation. This prevents the duplicate execution bug where
+  // multiple triggers (stop-loss + trailing stop + take-profit) fire from the same
+  // checkTriggers() call, or re-fire on restart before on-chain state catches up.
+  if (sellLocks.has(assetId)) return;
+  if (recentlySold.has(assetId)) return;
+
   const costBasis = asset.avgPrice * asset.size;
   const currentValue = currentPrice * asset.size;
   const pnlPct = (currentValue - costBasis) / costBasis;
@@ -716,6 +723,7 @@ function checkTriggers(assetId, asset) {
     if (autoExecuteEnabled && !circuitBreakerTripped) {
       executeSell(assetId, asset, "STOP_LOSS");
     }
+    return; // don't check take-profit after stop-loss fires
   }
 
   // Take profit → AUTO SELL
