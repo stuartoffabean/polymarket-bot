@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-14T21:01:01.815Z",
+  "timestamp": "2026-02-14T21:01:26.570Z",
   "portfolio": {
     "trackedPositions": 6,
     "portfolioValue": 381.013355,
@@ -23,7 +23,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 16567.258586802
+    "uptime": 16591.256763301
   },
   "positions": [
     {
@@ -78,7 +78,7 @@
       "size": 25,
       "avgPrice": 0.92,
       "currentBid": 0.968,
-      "currentAsk": 0.972,
+      "currentAsk": 0.971,
       "costBasis": "23.00",
       "currentValue": "24.20",
       "pnl": "1.20",
@@ -157,7 +157,7 @@
   ],
   "trades": [
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "Anthropic Best AI Model Feb",
       "outcome": "Yes",
       "side": "buy",
@@ -170,7 +170,7 @@
       "tokenId": "63143918686236233928672983984129058891473353803994659201131614781821505294362"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "Chicago 46-47°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -183,7 +183,7 @@
       "tokenId": "86069854998126295712887500512103672980330890383172698747999211918441355492422"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "Miami 76-77°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -196,7 +196,7 @@
       "tokenId": "92692355295105043188084535345172617132941070537427143745066857388094591739498"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "New York City ≤33°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -209,7 +209,7 @@
       "tokenId": "87034544787508362600520628155582601877854843596079024073643613177448200402413"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "Atlanta 58-59°F 2026-02-13",
       "outcome": "Yes",
       "side": "buy",
@@ -222,7 +222,7 @@
       "tokenId": "89850023208665827912791204459354162829290040613445798160551059612704754189351"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "Chicago ≥50°F Feb 13",
       "outcome": "No",
       "side": "buy",
@@ -235,7 +235,7 @@
       "tokenId": "28321426810817884323028002735778558086441279106030661015331363203764252597900"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "Jokic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -248,7 +248,7 @@
       "tokenId": "73768610008619570600930429495180540710817177537162503586781057110775077618432"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "Doncic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -261,7 +261,7 @@
       "tokenId": "89110596788673536475065853727140488937259064164063660201050220270400840228269"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
@@ -274,7 +274,7 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
@@ -287,7 +287,7 @@
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-14T21:01:01.815Z",
+      "timestamp": "2026-02-14T21:01:26.570Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "Yes",
       "side": "buy",
@@ -334,7 +334,7 @@
       "outcome": "Yes"
     }
   ],
-  "cash": 236.399555,
+  "cash": 254.976905,
   "ledger": {
     "openPositions": [
       {
@@ -1224,6 +1224,18 @@
   "tradeHistory": {
     "openPositions": [
       {
+        "asset_id": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
+        "market": "Will Anthropic have the best AI model at the end of February 2026?",
+        "outcome": "Yes",
+        "size": 53.27,
+        "avgPrice": "0.6200",
+        "costBasis": "33.03",
+        "totalBought": 80,
+        "totalSold": 26.73,
+        "realizedPnl": "2.00",
+        "status": "OPEN"
+      },
+      {
         "asset_id": "106950486694572490024227720149165144675055991470689031749832849184539330153763",
         "market": "Will the highest temperature in London be 7°C on February 13?",
         "outcome": "Yes",
@@ -1363,18 +1375,6 @@
         "avgPrice": "0.6200",
         "costBasis": "31.00",
         "totalBought": 50,
-        "totalSold": 0,
-        "realizedPnl": "0.00",
-        "status": "OPEN"
-      },
-      {
-        "asset_id": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
-        "market": "Will Anthropic have the best AI model at the end of February 2026?",
-        "outcome": "Yes",
-        "size": 80,
-        "avgPrice": "0.6200",
-        "costBasis": "49.60",
-        "totalBought": 80,
         "totalSold": 0,
         "realizedPnl": "0.00",
         "status": "OPEN"
@@ -1707,7 +1707,7 @@
         "asset_id": "87034544787508362600520628155582601877854843596079024073643613177448200402413",
         "market": "Will the highest temperature in New York City be 33°F or below on February 13?",
         "outcome": "Yes",
-        "totalBought": 271.83200000000005,
+        "totalBought": 271.832,
         "totalSold": 271.82818100000003,
         "avgBuyPrice": "0.0069",
         "avgSellPrice": "0.0101",
@@ -1915,7 +1915,7 @@
       }
     ],
     "totalRealizedPnl": "-24.45",
-    "totalTrades": 172,
+    "totalTrades": 173,
     "source": "data-api"
   },
   "circuitBreakerTripped": false,
