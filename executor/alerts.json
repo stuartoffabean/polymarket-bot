@@ -2911,6 +2911,18 @@
       "pnlPct": null,
       "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.",
       "timestamp": "2026-02-14T10:52:02.687Z"
+    },
+    {
+      "type": "TRAILING_STOP_ACTIVATED",
+      "assetId": "26721641658578910850",
+      "outcome": "Yes",
+      "market": "0xdeaa7932b51ce74186dc0fb1af2c20294d58d6ace29e4c15e0f8ad13a2d5191d",
+      "price": 0.75,
+      "pnlPct": "21.0%",
+      "size": 50,
+      "avgPrice": 0.62,
+      "message": "Trailing stop engaged. Floor: $0.6260 (breakeven). HWM: +21.0%",
+      "timestamp": "2026-02-14T11:02:47.305Z"
     }
   ],
   "circuitBreakerTripped": false,

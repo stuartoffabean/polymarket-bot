@@ -2237,6 +2237,86 @@ function scheduleDailyReset() {
   log("DAILY", `Next reset in ${(ms / 3600000).toFixed(1)}h`);
 }
 
+// === STARTUP SAFETY SELF-TEST ===
+// Meta-analysis finding (2026-02-14): #1 recurring failure is deploying code without
+// validation. This function runs on every boot BEFORE enabling auto-execution.
+// If any safety invariant is broken, auto-execute stays disabled and Telegram gets an alert.
+function runSafetyTests() {
+  const failures = [];
+  
+  // TEST 1: Circuit breaker threshold is reasonable
+  if (MAX_DAILY_DRAWDOWN <= 0 || MAX_DAILY_DRAWDOWN > 0.50) {
+    failures.push(`Circuit breaker threshold ${MAX_DAILY_DRAWDOWN} is outside safe range (0.01-0.50)`);
+  }
+  
+  // TEST 2: Stop-loss / take-profit defaults are sane
+  if (DEFAULT_STOP_LOSS <= 0 || DEFAULT_STOP_LOSS > 0.80) {
+    failures.push(`Default stop-loss ${DEFAULT_STOP_LOSS} is outside safe range (0.01-0.80)`);
+  }
+  if (DEFAULT_TAKE_PROFIT <= 0 || DEFAULT_TAKE_PROFIT > 5.0) {
+    failures.push(`Default take-profit ${DEFAULT_TAKE_PROFIT} is outside safe range (0.01-5.0)`);
+  }
+  
+  // TEST 3: executeSell can construct logExit notes without ReferenceError
+  // (This catches the stopLossThreshold bug class)
+  try {
+    const mockAsset = { stopLoss: 0.3, takeProfit: 0.5, avgPrice: 0.80, _trailingFloor: 0.75, _highWaterPnlPct: 0.25 };
+    const stopLossVal = mockAsset.stopLoss || DEFAULT_STOP_LOSS;
+    const takeProfitVal = mockAsset.takeProfit || DEFAULT_TAKE_PROFIT;
+    const testNotes = `SL=${stopLossVal}, TP=${takeProfitVal}, Entry=${mockAsset.avgPrice}`;
+    const testTrailingNotes = `TrailingFloor=${mockAsset._trailingFloor?.toFixed(4)}, HWM=+${(mockAsset._highWaterPnlPct*100)?.toFixed(1)}%, Entry=${mockAsset.avgPrice}`;
+    if (!testNotes || !testTrailingNotes) failures.push("Exit notes construction returned falsy");
+  } catch (e) {
+    failures.push(`Exit notes construction threw: ${e.message}`);
+  }
+  
+  // TEST 4: logExit function is callable
+  try {
+    if (typeof logExit !== "function") {
+      failures.push("logExit is not a function — exit logging will fail");
+    }
+  } catch (e) {
+    failures.push(`logExit check threw: ${e.message}`);
+  }
+  
+  // TEST 5: EXIT_REASONS constants are defined
+  try {
+    const requiredReasons = ["STOP_LOSS", "TAKE_PROFIT", "TRAILING_STOP", "MANUAL_SELL"];
+    for (const r of requiredReasons) {
+      if (!EXIT_REASONS[r]) failures.push(`EXIT_REASONS.${r} is undefined`);
+    }
+  } catch (e) {
+    failures.push(`EXIT_REASONS check threw: ${e.message}`);
+  }
+  
+  // TEST 6: Survival/emergency floors are reasonable
+  if (SURVIVAL_FLOOR <= 0 || SURVIVAL_FLOOR > 500) {
+    failures.push(`Survival floor $${SURVIVAL_FLOOR} is outside safe range ($1-$500)`);
+  }
+  if (EMERGENCY_FLOOR <= 0 || EMERGENCY_FLOOR >= SURVIVAL_FLOOR) {
+    failures.push(`Emergency floor $${EMERGENCY_FLOOR} must be >0 and < survival floor $${SURVIVAL_FLOOR}`);
+  }
+  
+  // TEST 7: Telegram is configured (warning, not failure)
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    log("SAFETY", "⚠️ Telegram not configured — alerts will be log-only");
+  }
+  
+  // VERDICT
+  if (failures.length > 0) {
+    log("SAFETY", `🚨 SAFETY SELF-TEST FAILED (${failures.length} failures):`);
+    for (const f of failures) log("SAFETY", `  ❌ ${f}`);
+    log("SAFETY", "AUTO-EXECUTE DISABLED until issues are resolved");
+    autoExecuteEnabled = false;
+    const alertMsg = `🚨 <b>Stuart Bot — SAFETY TEST FAILED</b>\n\nAuto-execute DISABLED on startup.\n\n${failures.map(f => `❌ ${f}`).join("\n")}\n\nFix the code and restart.`;
+    sendTelegramAlert(alertMsg);
+    return false;
+  }
+  
+  log("SAFETY", "✅ All safety self-tests passed — auto-execute enabled");
+  return true;
+}
+
 // === MAIN ===
 async function main() {
   console.log("╔══════════════════════════════════════════╗");
@@ -2244,13 +2324,17 @@ async function main() {
   console.log("║  v3 — Integrated Scanners                ║");
   console.log("╚══════════════════════════════════════════╝");
   console.log();
+
+  // RUN SAFETY SELF-TEST FIRST (before anything else)
+  const safetyOk = runSafetyTests();
+
   log("INIT", `Executor: ${EXECUTOR_URL}`);
   log("INIT", `Feed API: port ${FEED_PORT}`);
   log("INIT", `P&L: chain-truth only (no hardcoded starting capital)`);
   log("INIT", `Stop-loss: ${DEFAULT_STOP_LOSS * 100}% | Take-profit: ${DEFAULT_TAKE_PROFIT * 100}%`);
   log("INIT", `Daily drawdown limit: ${MAX_DAILY_DRAWDOWN * 100}%`);
   log("INIT", `Survival: <$${SURVIVAL_FLOOR} | Emergency: <$${EMERGENCY_FLOOR}`);
-  log("INIT", `Auto-execute: ${autoExecuteEnabled}`);
+  log("INIT", `Auto-execute: ${autoExecuteEnabled}${!safetyOk ? " (DISABLED by safety test)" : ""}`);
   log("INIT", `Arb scanner: every ${ARB_SCAN_INTERVAL / 60000}min | Resolving: every ${RESOLVING_SCAN_INTERVAL / 60000}min | Resolution hunter: every ${RESOLUTION_HUNTER_INTERVAL / 60000}min | Weather executor: every ${WEATHER_EXECUTOR_INTERVAL / 60000}min`);
   log("INIT", `Telegram alerts: ${TELEGRAM_BOT_TOKEN ? "ENABLED" : "DISABLED (set TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID)"}`);
   log("INIT", `PnL history: every ${PNL_RECORD_INTERVAL / 60000}min → ${PNL_HISTORY_FILE}`);

@@ -1,107 +1,52 @@
 {
-  "timestamp": "2026-02-14T10:53:03.298Z",
-  "windowStart": "2026-02-14T16:53:02.614Z",
-  "windowEnd": "2026-02-14T22:53:02.614Z",
+  "timestamp": "2026-02-14T11:03:33.771Z",
+  "windowStart": "2026-02-14T17:03:33.077Z",
+  "windowEnd": "2026-02-14T23:03:33.077Z",
   "count": 100,
   "markets": [
-    {
-      "slug": "bitcoin-up-or-down-on-february-14",
-      "question": "Bitcoin Up or Down on February 14?",
-      "yesPrice": 0.915,
-      "noPrice": 0.085,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 885406.983967,
-      "volume24hr": 349414.59737099963,
-      "liquidity": 39001.092,
-      "conditionId": "0x98900867a0498637b6ec9052bcaff819bc2d221a3ad8932f5ccb6f7cf3e1dc7b"
-    },
-    {
-      "slug": "ethereum-above-1700-on-february-14",
-      "question": "Will the price of Ethereum be above $1,700 on February 14?",
-      "yesPrice": 0.9995,
-      "noPrice": 0.0005,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 99435.107792,
-      "volume24hr": 73168.77962299997,
-      "liquidity": 24440.23799,
-      "conditionId": "0x237c0055451285a2c8ce71792ef28a2095ca73143873c15611139a8d9c9e3a9e"
-    },
-    {
-      "slug": "ethereum-above-2000-on-february-14",
-      "question": "Will the price of Ethereum be above $2,000 on February 14?",
-      "yesPrice": 0.9695,
-      "noPrice": 0.0305,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 98245.506046,
-      "volume24hr": 65358.554482,
-      "liquidity": 16012.00131,
-      "conditionId": "0x9ea3f0a418713a3c5bea1166ab1f1d0b9f9f655040bef4b93a4e5daeb5d87d0f"
-    },
-    {
-      "slug": "ethereum-above-2400-on-february-14",
-      "question": "Will the price of Ethereum be above $2,400 on February 14?",
-      "yesPrice": 0.0005,
-      "noPrice": 0.9995,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 95675.438259,
-      "volume24hr": 79634.634666,
-      "liquidity": 20460.99661,
-      "conditionId": "0x499cea3f8e3b5b3026e60912a230ddfb28aed4b9b8bcfd1aa1a4562579185438"
-    },
     {
       "slug": "fl1-pfc-rcl-2026-02-14-rcl",
       "question": "Will Racing Club de Lens win on 2026-02-14?",
       "yesPrice": 0.5,
       "noPrice": 0.5,
       "endDate": "2026-02-14T20:05:00Z",
-      "volume": 92341.520578,
+      "volume": 92851.304887,
       "volume24hr": 76180.29302499999,
-      "liquidity": 304527.6724,
+      "liquidity": 305271.0309,
       "conditionId": "0xaaaff06dee261705b3c19dbff098ab458127cb6cc5cf9146e7397332f0935fb7"
     },
     {
-      "slug": "ethereum-above-1600-on-february-14",
-      "question": "Will the price of Ethereum be above $1,600 on February 14?",
-      "yesPrice": 0.9995,
-      "noPrice": 0.0005,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 79956.040353,
-      "volume24hr": 61218.430416,
-      "liquidity": 43341.61832,
-      "conditionId": "0xe33e76bad55d896b6bceab599f1787708d7097c1299b9bbb1d412f1b3feb7f0c"
+      "slug": "mwoh-usa-den-2026-02-14",
+      "question": "Men's Group C - USA vs. Denmark",
+      "yesPrice": 0.945,
+      "noPrice": 0.055,
+      "endDate": "2026-02-14T22:59:59.999Z",
+      "volume": 76510.234555,
+      "volume24hr": 56102.40788199999,
+      "liquidity": 130851.8146,
+      "conditionId": "0x44dc279432a1a7a92ba63af3cbf4d61abaa497da3f40255581c643f0509d86dd"
     },
     {
-      "slug": "will-the-price-of-ethereum-be-between-2300-2400-on-february-14",
-      "question": "Will the price of Ethereum be between $2,300 and $2,400 on February 14?",
-      "yesPrice": 0.003,
-      "noPrice": 0.997,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 77974.94269,
-      "volume24hr": 53688.06954,
-      "liquidity": 10312.85059,
-      "conditionId": "0x149a555f1043fa2545f7b9bcde51ae8a9f1f3bf28f1af4dd1179982b76b6def1"
+      "slug": "mwoh-swe-slo-2026-02-14",
+      "question": "Men's Group B - Sweden vs. Slovakia",
+      "yesPrice": 0.845,
+      "noPrice": 0.155,
+      "endDate": "2026-02-14T22:59:59.999Z",
+      "volume": 71369.854688,
+      "volume24hr": 47096.654933000005,
+      "liquidity": 142113.5302,
+      "conditionId": "0x1bbcffd62ddbe76e943fa96cdb7461b01a56cc218c01891304580d712a52f2fd"
     },
     {
-      "slug": "xrp-above-1-on-february-14",
-      "question": "Will the price of XRP be above $1.00 on February 14?",
-      "yesPrice": 0.9995,
-      "noPrice": 0.0005,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 75804.773638,
-      "volume24hr": 70667.401466,
-      "liquidity": 46253.24946,
-      "conditionId": "0x388b583211948f717a3fea4de9a4338bf2777e90cb586eedc8a270a5f8cc202f"
-    },
-    {
-      "slug": "will-the-price-of-ethereum-be-between-1600-1700-on-february-14",
-      "question": "Will the price of Ethereum be between $1,600 and $1,700 on February 14?",
-      "yesPrice": 0.0005,
-      "noPrice": 0.9995,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 71719.314736,
-      "volume24hr": 55187.13180000001,
-      "liquidity": 18173.32132,
-      "conditionId": "0x6c8eb6d521de235e9bd0d6a40c73723bec00f9dadd93ab20bc81c16c75ad2fb3"
+      "slug": "fl1-lil-sbr-2026-02-14-lil",
+      "question": "Will Lille OSC win on 2026-02-14?",
+      "yesPrice": 0.615,
+      "noPrice": 0.385,
+      "endDate": "2026-02-14T18:00:00Z",
+      "volume": 66062.341176,
+      "volume24hr": 43294.81278000002,
+      "liquidity": 481470.1652,
+      "conditionId": "0x1b2bd50ac7f3f00654567c3c15992520230f2187938656f9268bb5dcbcd48dcd"
     },
     {
       "slug": "fl1-lil-sbr-2026-02-14-draw",
@@ -111,52 +56,30 @@
       "endDate": "2026-02-14T18:00:00Z",
       "volume": 9659.325232,
       "volume24hr": 5593.200725,
-      "liquidity": 468464.7516,
+      "liquidity": 468459.7891,
       "conditionId": "0x66465a113621fb226b7c8dce7db4ba8bf4081a1dc99361bafdd02b51b9700836"
-    },
-    {
-      "slug": "will-the-price-of-solana-be-between-100-110-on-february-14",
-      "question": "Will the price of Solana be between $100 and $110 on February 14?",
-      "yesPrice": 0.002,
-      "noPrice": 0.998,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 9255.580332,
-      "volume24hr": 1674.964332,
-      "liquidity": 9041.76786,
-      "conditionId": "0x2f140bed4fbd5fa51142bda173ba57fe6b5fe59073aa481bb9d9f08b98640ac7"
-    },
-    {
-      "slug": "will-the-price-of-xrp-be-between-1pt70-1pt80-on-february-14",
-      "question": "Will the price of XRP be between $1.70 and $1.80 on February 14?",
-      "yesPrice": 0.002,
-      "noPrice": 0.998,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 9245.488,
-      "volume24hr": 8878.988000000001,
-      "liquidity": 11998.79675,
-      "conditionId": "0x1fa48b6dc78350f2b95435c6b77d962336b79e1a4c1e04446781e5849326103b"
-    },
-    {
-      "slug": "xrp-above-1pt7-on-february-14",
-      "question": "Will the price of XRP be above $1.70 on February 14?",
-      "yesPrice": 0.003,
-      "noPrice": 0.997,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 8920.064893,
-      "volume24hr": 6992.894893,
-      "liquidity": 16345.61743,
-      "conditionId": "0x9ee93a3856627aa8f4374be882a93ba50dee88be3981fa7f62609a0a2bed3d8a"
     },
     {
       "slug": "cbb-umbc-nhamp-2026-02-14",
       "question": "UMBC Retrievers vs. New Hampshire Wildcats",
-      "yesPrice": 0.615,
-      "noPrice": 0.385,
+      "yesPrice": 0.625,
+      "noPrice": 0.375,
       "endDate": "2026-02-14T18:00:00Z",
-      "volume": 8796.089948,
+      "volume": 9116.949948,
       "volume24hr": 6607.925609000001,
-      "liquidity": 4661.9969,
+      "liquidity": 4592.3296,
       "conditionId": "0x956afb13eddaada9b7eea4a4d83fbef4aa4830cc6837bb1d7d9b2058fb22abce"
+    },
+    {
+      "slug": "wwoh-can-ger-2026-02-14",
+      "question": "Women's Quarterfinals - Canada vs. Germany",
+      "yesPrice": 0.971,
+      "noPrice": 0.029,
+      "endDate": "2026-02-14T22:59:59.999Z",
+      "volume": 9014.552729,
+      "volume24hr": 8741.361434,
+      "liquidity": 26612.28924,
+      "conditionId": "0x8e6a5fbce231534f0832b685aa4dc0e211b5a108ff414425251cb1a21a6df9a3"
     },
     {
       "slug": "lal-sev-ala-2026-02-14-total-1pt5",
@@ -166,7 +89,7 @@
       "endDate": "2026-02-14T17:30:00Z",
       "volume": 8715.119044,
       "volume24hr": 4896.600907,
-      "liquidity": 440048.2343,
+      "liquidity": 439950.2643,
       "conditionId": "0x37e68f63135763f33ff67b426b68d28cd1a9a747356720daaa9a05a30155d656"
     },
     {
@@ -177,7 +100,7 @@
       "endDate": "2026-02-14T20:00:00Z",
       "volume": 8481.147249,
       "volume24hr": 1196.070597,
-      "liquidity": 94415.4697,
+      "liquidity": 96244.7969,
       "conditionId": "0x2b1f1a105171570935ac5b850acd76c522f41948a07dd358899eb5145c1b935f"
     },
     {
@@ -188,30 +111,8 @@
       "endDate": "2026-02-14T20:05:00Z",
       "volume": 8477.656261,
       "volume24hr": 7631.887737999999,
-      "liquidity": 241792.7449,
+      "liquidity": 242649.0702,
       "conditionId": "0x1d45e703672f393b6e51a448b343f3779c7b46f64a9e06c526ba859d9c3d9703"
-    },
-    {
-      "slug": "will-the-price-of-xrp-be-greater-than-1pt90-on-february-14",
-      "question": "Will the price of XRP be greater than $1.90 on February 14?",
-      "yesPrice": 0.0005,
-      "noPrice": 0.9995,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 8387.368526,
-      "volume24hr": 7648.859332,
-      "liquidity": 27006.59514,
-      "conditionId": "0x357f2ff5d60d22a559739fac3b0a01db9d5044324ea20bbf9a10bf60ca2905e3"
-    },
-    {
-      "slug": "solana-above-100-on-february-14",
-      "question": "Will the price of Solana be above $100 on February 14?",
-      "yesPrice": 0.001,
-      "noPrice": 0.999,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 7939.984202,
-      "volume24hr": 7496.5796310000005,
-      "liquidity": 12374.21322,
-      "conditionId": "0x5b72ea0569cdd97351ab752dfde1ddf8dfba204a03d5b963b0d82c573572ea4f"
     },
     {
       "slug": "lal-rea-rso-2026-02-14-total-2pt5",
@@ -219,9 +120,9 @@
       "yesPrice": 0.67,
       "noPrice": 0.33,
       "endDate": "2026-02-14T20:00:00Z",
-      "volume": 7833.192656,
+      "volume": 7834.810302,
       "volume24hr": 7633.648233,
-      "liquidity": 195736.6826,
+      "liquidity": 195611.9438,
       "conditionId": "0x08f507248a74a79f11826138b5cb89ad742005fbf65e23d4203e06e563508bfa"
     },
     {
@@ -230,43 +131,21 @@
       "yesPrice": 0.26,
       "noPrice": 0.74,
       "endDate": "2026-02-14T17:30:00Z",
-      "volume": 7775.579697,
+      "volume": 7805.209324,
       "volume24hr": 449.62392900000003,
-      "liquidity": 212354.4839,
+      "liquidity": 212485.3969,
       "conditionId": "0x6d641f6c3053a53ae3f0c105063fb036266410198dbd518919dcaeacd30028cb"
     },
     {
-      "slug": "xrp-above-1pt3-on-february-14",
-      "question": "Will the price of XRP be above $1.30 on February 14?",
-      "yesPrice": 0.998,
-      "noPrice": 0.002,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 7555.978914,
-      "volume24hr": 5391.837942,
-      "liquidity": 13040.91422,
-      "conditionId": "0x8e6127a51378baed7b5a84faf1fdc5c33fef1542f25db998b9dc0d6c1fdecb82"
-    },
-    {
-      "slug": "cbb-gtech-nd-2026-02-14",
-      "question": "Georgia Tech Yellow Jackets vs. Notre Dame Fighting Irish",
-      "yesPrice": 0.23,
-      "noPrice": 0.77,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 7475.648855,
-      "volume24hr": 5342.261431000001,
-      "liquidity": 6590.8752,
-      "conditionId": "0x786b1496b0bc70efb7516b27c55658a7158a92f3140cfad699bdd13932a32b65"
-    },
-    {
-      "slug": "cbb-tcu-okst-2026-02-14",
-      "question": "TCU Horned Frogs vs. Oklahoma State Cowboys",
-      "yesPrice": 0.47,
-      "noPrice": 0.53,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 7429.027187,
-      "volume24hr": 5566.963957,
-      "liquidity": 5706.6132,
-      "conditionId": "0x19a1fdbb02dc40f5e5e50a68378b4fa7c4f3009ff2da99a69fc5d3d9b1ded3c7"
+      "slug": "cs2-furia-b8-2026-02-14",
+      "question": "Counter-Strike: FURIA vs B8 (BO3) - PGL Cluj-Napoca Group Stage",
+      "yesPrice": 0.85,
+      "noPrice": 0.15,
+      "endDate": "2026-02-14T23:00:00Z",
+      "volume": 7683.082693,
+      "volume24hr": 3793.325056999999,
+      "liquidity": 39563.7612,
+      "conditionId": "0x8b531b9020bf55c54d9b9028c28f40ddb4d24667bbe1f99016d9e21d6e6a2a78"
     },
     {
       "slug": "val-vit-tl1-2026-02-14",
@@ -274,43 +153,65 @@
       "yesPrice": 0.58,
       "noPrice": 0.42,
       "endDate": "2026-02-14T19:00:00Z",
-      "volume": 7327.861233,
+      "volume": 7345.558906,
       "volume24hr": 2007.4358489999997,
-      "liquidity": 15577.5751,
+      "liquidity": 11664.4861,
       "conditionId": "0x349a6e90dc24de7398aa333b34c4d7bcfcf0c875b997433a83d62cf0ccb14b7b"
     },
     {
       "slug": "cbb-pitt-ncar-2026-02-14",
       "question": "Pittsburgh Panthers vs. North Carolina Tar Heels",
-      "yesPrice": 0.125,
-      "noPrice": 0.875,
+      "yesPrice": 0.13,
+      "noPrice": 0.87,
       "endDate": "2026-02-14T19:00:00Z",
-      "volume": 7032.672865,
+      "volume": 7052.160131,
       "volume24hr": 5195.365349000001,
-      "liquidity": 10556.4416,
+      "liquidity": 10506.1801,
       "conditionId": "0xc91d984837aa8f222593071796999e8f74962c52dcd9c21ac9863794fc920aa8"
     },
     {
-      "slug": "xrp-above-1pt8-on-february-14",
-      "question": "Will the price of XRP be above $1.80 on February 14?",
-      "yesPrice": 0.001,
-      "noPrice": 0.999,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 6991.884287,
-      "volume24hr": 3536.0448720000004,
-      "liquidity": 18091.0022,
-      "conditionId": "0x056e1c1dd6fae4043d76ab4ee45fffaf2db0db78d0e2ee91067e73052f9b73ef"
+      "slug": "spl-fat-nsr-2026-02-14-nsr",
+      "question": "Will Al Nassr Saudi Club win on 2026-02-14?",
+      "yesPrice": 0.755,
+      "noPrice": 0.245,
+      "endDate": "2026-02-14T17:30:00Z",
+      "volume": 6722.710217,
+      "volume24hr": 5367.561082,
+      "liquidity": 33956.0525,
+      "conditionId": "0x0ec0417d39041f1b93506539c80eb1dd38bd1fa1d72145b9a471a3f2fced10f3"
     },
     {
-      "slug": "cbb-clmsn-duke-2026-02-14-total-133pt5",
-      "question": "Clemson Tigers vs. Duke Blue Devils: O/U 133.5",
-      "yesPrice": 0.53,
-      "noPrice": 0.47,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 997.849539,
-      "volume24hr": 297.689222,
-      "liquidity": 5584.1969,
-      "conditionId": "0x14473fe25b9f73b91f038a3287e58b0aeaef9af48f3c7abccbb20a49fa77f458"
+      "slug": "ere-exc-az-2026-02-14-az",
+      "question": "Will AZ win on 2026-02-14?",
+      "yesPrice": 0.445,
+      "noPrice": 0.555,
+      "endDate": "2026-02-14T17:45:00Z",
+      "volume": 6494.453123,
+      "volume24hr": 4082.2676500000002,
+      "liquidity": 216588.9762,
+      "conditionId": "0xf94d7ee4d029ea2702f2635bb030cbd364e287ac6bbe2f315a7a65e105afb3a8"
+    },
+    {
+      "slug": "lal-rea-rso-2026-02-14-spread-away-1pt5",
+      "question": "Spread: Real Sociedad de Fútbol (-1.5)",
+      "yesPrice": 0.032,
+      "noPrice": 0.968,
+      "endDate": "2026-02-14T20:00:00Z",
+      "volume": 6478.552083,
+      "volume24hr": 493.01000000000005,
+      "liquidity": 40088.47029,
+      "conditionId": "0xf921c25097026ae6e1cbdd2dd03d18122f0bd9255125e75f6696bb5544c65708"
+    },
+    {
+      "slug": "cbb-uk-fl-2026-02-14",
+      "question": "Kentucky Wildcats vs. Florida Gators",
+      "yesPrice": 0.13,
+      "noPrice": 0.87,
+      "endDate": "2026-02-14T20:00:00Z",
+      "volume": 6404.229927,
+      "volume24hr": 3769.165738,
+      "liquidity": 12805.4359,
+      "conditionId": "0xc93b8cc1b3e5152e95c64c468c11ded03b5d493718c12c97f1cefa3c13d7ba15"
     },
     {
       "slug": "cbb-sala-arkst-2026-02-14",
@@ -320,7 +221,7 @@
       "endDate": "2026-02-14T20:00:00Z",
       "volume": 959.800551,
       "volume24hr": 867.94983,
-      "liquidity": 6507.3339,
+      "liquidity": 6564.884,
       "conditionId": "0xeff9d378f930322944848fecc17081cba2d56b137e4f4d6c87804a4a5d527109"
     },
     {
@@ -331,18 +232,18 @@
       "endDate": "2026-02-14T20:00:00Z",
       "volume": 953.705994,
       "volume24hr": 365.4825389999999,
-      "liquidity": 2450.8252,
+      "liquidity": 2635.6252,
       "conditionId": "0xad25d47f37bfb21abffa6a9dde47dbe65cf2cb6ccfb2488960a56b24248e6575"
     },
     {
       "slug": "cbb-presb-ncashe-2026-02-14",
       "question": "Presbyterian Blue Hose vs. UNC Asheville Bulldogs",
-      "yesPrice": 0.385,
-      "noPrice": 0.615,
+      "yesPrice": 0.38,
+      "noPrice": 0.62,
       "endDate": "2026-02-14T19:00:00Z",
-      "volume": 944.755529,
+      "volume": 948.755529,
       "volume24hr": 876.6995530000002,
-      "liquidity": 7097.6651,
+      "liquidity": 7136.7856,
       "conditionId": "0x6450da164043edc10cca6d08eb9a8fdcce694aa84dbee8e7f24433ad006cabbd"
     },
     {
@@ -364,7 +265,7 @@
       "endDate": "2026-02-14T20:00:00Z",
       "volume": 866.677845,
       "volume24hr": 848.0919890000001,
-      "liquidity": 92068.3595,
+      "liquidity": 102518.9696,
       "conditionId": "0x43f78543fb429b76df3eca53cb2b6f4286cda5a832915c10dfb0c531417110a4"
     },
     {
@@ -375,30 +276,19 @@
       "endDate": "2026-02-14T17:30:00Z",
       "volume": 856.801744,
       "volume24hr": 30,
-      "liquidity": 3143.72329,
+      "liquidity": 6057.85464,
       "conditionId": "0xd2b899fece6cdc5d7fd376fb192483ce0ccabdd6c45ea7d4fda77d3f6d65c237"
     },
     {
-      "slug": "efa-ast-new-2026-02-14-draw",
-      "question": "Will Aston Villa FC vs. Newcastle United FC end in a draw?",
-      "yesPrice": 0.265,
-      "noPrice": 0.735,
-      "endDate": "2026-02-14T17:45:00Z",
-      "volume": 852.775534,
-      "volume24hr": 230.33948199999998,
-      "liquidity": 237700.0896,
-      "conditionId": "0x9f522280b1108d8a60f79e02c97b71fa55f915917db5265550c02536ceee9ea6"
-    },
-    {
-      "slug": "cbb-gtech-nd-2026-02-14-total-151pt5",
-      "question": "Georgia Tech Yellow Jackets vs. Notre Dame Fighting Irish: O/U 151.5",
-      "yesPrice": 0.495,
-      "noPrice": 0.505,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 845.231351,
-      "volume24hr": 833.4274310000001,
-      "liquidity": 4309.4567,
-      "conditionId": "0x5354540ac529e64cdcd15f03dd32bd88cd2b50ba0e48a0f0acc97993b7db9ada"
+      "slug": "cbb-kan-iowast-2026-02-14-spread-home-6pt5",
+      "question": "Spread: Iowa State Cyclones (-6.5)",
+      "yesPrice": 0.51,
+      "noPrice": 0.49,
+      "endDate": "2026-02-14T18:00:00Z",
+      "volume": 838.588997,
+      "volume24hr": 801.0889999999995,
+      "liquidity": 8653.1825,
+      "conditionId": "0x00b6f119286bedde323ee084a3452858aecf43bb21dd01b36602ecaecd9456c4"
     },
     {
       "slug": "por-gil-scb-2026-02-14-gil",
@@ -408,19 +298,8 @@
       "endDate": "2026-02-14T20:30:00Z",
       "volume": 835.624099,
       "volume24hr": 612.1603969999999,
-      "liquidity": 39576.6636,
+      "liquidity": 39685.2628,
       "conditionId": "0xb3d922df0b9659d95623d25a2ffebbc611c8fedee5ec27c257104cbd7a3474d8"
-    },
-    {
-      "slug": "cbb-kan-iowast-2026-02-14-spread-home-6pt5",
-      "question": "Spread: Iowa State Cyclones (-6.5)",
-      "yesPrice": 0.51,
-      "noPrice": 0.49,
-      "endDate": "2026-02-14T18:00:00Z",
-      "volume": 818.588997,
-      "volume24hr": 801.0889999999995,
-      "liquidity": 8765.6783,
-      "conditionId": "0x00b6f119286bedde323ee084a3452858aecf43bb21dd01b36602ecaecd9456c4"
     },
     {
       "slug": "btc-updown-4h-1771088400",
@@ -428,21 +307,32 @@
       "yesPrice": 0.5,
       "noPrice": 0.5,
       "endDate": "2026-02-14T21:00:00Z",
-      "volume": 818.38,
+      "volume": 830.340783,
       "volume24hr": 80,
-      "liquidity": 5557.856,
+      "liquidity": 5556.8907,
       "conditionId": "0x5e69838eef43f1de70687451d3c3c2adfc6a523da13b1eafca762a8aaebef33b"
     },
     {
       "slug": "fl1-pfc-rcl-2026-02-14-total-4pt5",
       "question": "Paris FC vs. Racing Club de Lens: O/U 4.5",
-      "yesPrice": 0.15,
-      "noPrice": 0.85,
+      "yesPrice": 0.145,
+      "noPrice": 0.855,
       "endDate": "2026-02-14T20:05:00Z",
       "volume": 815.722186,
       "volume24hr": 290.4834,
-      "liquidity": 7170.1959,
+      "liquidity": 13550.2926,
       "conditionId": "0xfd0f1f8f40028cf99bd12c2c683485fe5dc3243a23933b90fc87cf9b7a1a3fd7"
+    },
+    {
+      "slug": "bun-stu-koe-2026-02-14-total-3pt5",
+      "question": "VfB Stuttgart vs. 1. FC Köln: O/U 3.5",
+      "yesPrice": 0.45,
+      "noPrice": 0.55,
+      "endDate": "2026-02-14T17:30:00Z",
+      "volume": 809.030393,
+      "volume24hr": 576.489529,
+      "liquidity": 272113.4526,
+      "conditionId": "0x39b3ef9fd52752657061b0ca3fd6fa48121f166b1feb77506180035eb9149bab"
     },
     {
       "slug": "efa-liv-bha-2026-02-14-total-2pt5",
@@ -452,7 +342,7 @@
       "endDate": "2026-02-14T20:00:00Z",
       "volume": 806.938893,
       "volume24hr": 20.575752,
-      "liquidity": 67992.2926,
+      "liquidity": 69649.2497,
       "conditionId": "0x1baa9a6ebbc1b925cddf29d7938c519d767ea08928a068f4b5f826d183dd442b"
     },
     {
@@ -463,7 +353,7 @@
       "endDate": "2026-02-14T20:00:00Z",
       "volume": 794.003922,
       "volume24hr": 794.003922,
-      "liquidity": 615.0116,
+      "liquidity": 1679.458,
       "conditionId": "0x76e0ba3766ad82ac2af4bab80a43b1c4774572ff07e9c5fd1d711827675be2d4"
     },
     {
@@ -474,7 +364,7 @@
       "endDate": "2026-02-14T17:30:00Z",
       "volume": 782.144952,
       "volume24hr": 145.67548,
-      "liquidity": 14212.7901,
+      "liquidity": 28270.8567,
       "conditionId": "0x730d70ab75eef3a847c196a6958060fa82f8a8a855dceed48f353a2f6eea2e3c"
     },
     {
@@ -485,7 +375,7 @@
       "endDate": "2026-02-14T17:30:00Z",
       "volume": 775.895725,
       "volume24hr": 242.20927899999998,
-      "liquidity": 208995.9349,
+      "liquidity": 208977.4904,
       "conditionId": "0x7d9854d7409f7e5448f62f0326dc35cb4a4f9f82096c911a16abe7baade49b7c"
     },
     {
@@ -496,8 +386,19 @@
       "endDate": "2026-02-14T20:30:00Z",
       "volume": 775.093045,
       "volume24hr": 444.412195,
-      "liquidity": 1047.65384,
+      "liquidity": 1069.5439,
       "conditionId": "0x6b52e8a3b2db4d9c4cc97a9ab93467015e3f1bfed161408c989164e3b481f191"
+    },
+    {
+      "slug": "ere-exc-az-2026-02-14-total-2pt5",
+      "question": "SBV Excelsior vs. AZ: O/U 2.5",
+      "yesPrice": 0.555,
+      "noPrice": 0.445,
+      "endDate": "2026-02-14T17:45:00Z",
+      "volume": 769.267204,
+      "volume24hr": 106.694202,
+      "liquidity": 77463.2267,
+      "conditionId": "0xf919279624346cad009aa97acc65f33c0b2cc87154c5c49610c8cadd1be46372"
     },
     {
       "slug": "efa-ast-new-2026-02-14-total-3pt5",
@@ -507,19 +408,19 @@
       "endDate": "2026-02-14T17:45:00Z",
       "volume": 756.148235,
       "volume24hr": 60.954544,
-      "liquidity": 75654.5667,
+      "liquidity": 77232.0046,
       "conditionId": "0x749f2dae4e3476a2acf0a5342f891db7616e84a4fbae2f7224b5bfd3f04bddcc"
     },
     {
-      "slug": "bun-stu-koe-2026-02-14-total-3pt5",
-      "question": "VfB Stuttgart vs. 1. FC Köln: O/U 3.5",
-      "yesPrice": 0.455,
-      "noPrice": 0.545,
-      "endDate": "2026-02-14T17:30:00Z",
-      "volume": 748.552134,
-      "volume24hr": 576.489529,
-      "liquidity": 272239.2926,
-      "conditionId": "0x39b3ef9fd52752657061b0ca3fd6fa48121f166b1feb77506180035eb9149bab"
+      "slug": "cbb-mrcy-stfpa-2026-02-14",
+      "question": "Mercyhurst Lakers vs. St. Francis (PA) Red Flash",
+      "yesPrice": 0.615,
+      "noPrice": 0.385,
+      "endDate": "2026-02-14T19:00:00Z",
+      "volume": 742.696286,
+      "volume24hr": 155.632902,
+      "liquidity": 9152.9341,
+      "conditionId": "0x0cb603863bc442d8123bddd5d8a8a9375d74768458e2ee714713dae90d8ca5aa"
     },
     {
       "slug": "cs2-shin-fdb-2026-02-14",
@@ -529,29 +430,29 @@
       "endDate": "2026-02-14T19:00:00Z",
       "volume": 737.731231,
       "volume24hr": 0,
-      "liquidity": 8763.153,
+      "liquidity": 8811.853,
       "conditionId": "0xc464245cce2a91af32d8ea57a5307eb5d1a7ff02f3da5aaaf8f5c1a5dec55830"
     },
     {
       "slug": "es2-gra-vld-2026-02-14-spread-away-2pt5",
       "question": "Spread: Real Valladolid CF (-2.5)",
-      "yesPrice": 0.025,
-      "noPrice": 0.975,
+      "yesPrice": 0.037,
+      "noPrice": 0.963,
       "endDate": "2026-02-14T20:00:00Z",
       "volume": 732.719978,
       "volume24hr": 134.140545,
-      "liquidity": 576.1638,
+      "liquidity": 578.04957,
       "conditionId": "0x4291ea3450045d518754b6ef78c0c0070eae61035de17e165f8c8f5c8b22e486"
     },
     {
       "slug": "cbb-coppst-ncc-2026-02-14",
       "question": "Coppin State Eagles vs. North Carolina Central Eagles",
-      "yesPrice": 0.19,
-      "noPrice": 0.81,
+      "yesPrice": 0.185,
+      "noPrice": 0.815,
       "endDate": "2026-02-14T21:30:00Z",
       "volume": 732.69857,
       "volume24hr": 10,
-      "liquidity": 6754.8785,
+      "liquidity": 6474.0547,
       "conditionId": "0x27300973cbc3f949a76981c66f50818210dafb2b2cb80ba921f611eb39366c2d"
     },
     {
@@ -562,19 +463,8 @@
       "endDate": "2026-02-14T21:00:00Z",
       "volume": 730.857253,
       "volume24hr": 719.857253,
-      "liquidity": 9001.2211,
+      "liquidity": 7938.5221,
       "conditionId": "0xfe0b36e67fcc45566173b1b7822c315d911570d1c1fbd383207d80bcf7effd1a"
-    },
-    {
-      "slug": "es2-leo-zar-2026-02-14-draw",
-      "question": "Will Cultural y Deportiva Leonesa vs. Real Zaragoza end in a draw?",
-      "yesPrice": 0.305,
-      "noPrice": 0.695,
-      "endDate": "2026-02-14T17:30:00Z",
-      "volume": 719.790492,
-      "volume24hr": 703.661461,
-      "liquidity": 215175.5072,
-      "conditionId": "0x39c9396ab72cf0bb2639c567ae0ca610919bd37f48f32c17d78083eef17630f7"
     },
     {
       "slug": "arg-ban-rac-2026-02-14-rac",
@@ -584,19 +474,8 @@
       "endDate": "2026-02-14T20:30:00Z",
       "volume": 714.369659,
       "volume24hr": 593.330968,
-      "liquidity": 63210.0367,
+      "liquidity": 63183.8467,
       "conditionId": "0x56162f192b31f9bb8362a2984850242ef41f452f437c895b9aac36d1df667eb1"
-    },
-    {
-      "slug": "sea-laz-ata-2026-02-14-total-2pt5",
-      "question": "SS Lazio vs. Atalanta BC: O/U 2.5",
-      "yesPrice": 0.46,
-      "noPrice": 0.54,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 710.989664,
-      "volume24hr": 420.6666339999999,
-      "liquidity": 417186.8978,
-      "conditionId": "0x5e6395b6392f5d551b388608ed1ba88ad6607bc9a1f812c44a59c0d3df1d635e"
     },
     {
       "slug": "cbb-gcan-sjst-2026-02-14",
@@ -606,7 +485,7 @@
       "endDate": "2026-02-14T22:00:00Z",
       "volume": 709.186324,
       "volume24hr": 398.975354,
-      "liquidity": 6460.5373,
+      "liquidity": 5896.3964,
       "conditionId": "0x8839601bc7d0ffb8420c6bed546c6d712822186a4c95b9731d004ea922d21d24"
     },
     {
@@ -617,19 +496,118 @@
       "endDate": "2026-02-14T21:00:00Z",
       "volume": 705.342091,
       "volume24hr": 138,
-      "liquidity": 6882.1384,
+      "liquidity": 6776.6386,
       "conditionId": "0xc989484b20cc7d27ed81612310bcaa540b32d824a077d45697875f829a993c5d"
     },
     {
-      "slug": "cbb-mrcy-stfpa-2026-02-14",
-      "question": "Mercyhurst Lakers vs. St. Francis (PA) Red Flash",
-      "yesPrice": 0.605,
-      "noPrice": 0.395,
+      "slug": "cwbb-selou-nwst-2026-02-14",
+      "question": "Southeastern Louisiana Lions vs. Northwestern State Demons (W)",
+      "yesPrice": 0.12,
+      "noPrice": 0.88,
       "endDate": "2026-02-14T19:00:00Z",
-      "volume": 705.01629,
-      "volume24hr": 155.632902,
-      "liquidity": 9168.977,
-      "conditionId": "0x0cb603863bc442d8123bddd5d8a8a9375d74768458e2ee714713dae90d8ca5aa"
+      "volume": 690.06946,
+      "volume24hr": 21.579459999999997,
+      "liquidity": 64.103,
+      "conditionId": "0xb23bd3fa7a363ea9a30cb082a36ff254af02a3c892f137492e7f30446f0e1d22"
+    },
+    {
+      "slug": "cs2-fal2-3dmax-2026-02-14-map-handicap-away-1pt5",
+      "question": "Map Handicap: FAL (-1.5) vs 3DMAX (+1.5)",
+      "yesPrice": 0.535,
+      "noPrice": 0.465,
+      "endDate": "2026-02-14T20:00:00Z",
+      "volume": 678.087683,
+      "volume24hr": 554.754353,
+      "liquidity": 7957.7876,
+      "conditionId": "0x707ee4c26d68bd3ccee0d5ae8846522a9b08c1dde04eb9cdbcf53082ee225ab5"
+    },
+    {
+      "slug": "por-gui-ama-2026-02-14-ama",
+      "question": "Will CF Estrela da Amadora win on 2026-02-14?",
+      "yesPrice": 0.155,
+      "noPrice": 0.845,
+      "endDate": "2026-02-14T18:00:00Z",
+      "volume": 676.483918,
+      "volume24hr": 551.288364,
+      "liquidity": 98208.0807,
+      "conditionId": "0x3f11874c38f4793250ab41c65a249ce871a6b57fdc47fb748bcd996770e33a7d"
+    },
+    {
+      "slug": "itsb-ces-ven-2026-02-14-draw",
+      "question": "Will Cesena FC vs. Venezia FC end in a draw?",
+      "yesPrice": 0.295,
+      "noPrice": 0.705,
+      "endDate": "2026-02-14T18:30:00Z",
+      "volume": 671.021124,
+      "volume24hr": 517.521124,
+      "liquidity": 211090.9151,
+      "conditionId": "0x4e9c0b337b9e9c35a35ecfc1db936b55adebc3bf97d688975bebbe5246cbe8c5"
+    },
+    {
+      "slug": "por-gui-ama-2026-02-14-spread-home-1pt5",
+      "question": "Spread: Vitória SC (-1.5)",
+      "yesPrice": 0.31,
+      "noPrice": 0.69,
+      "endDate": "2026-02-14T18:00:00Z",
+      "volume": 643.542847,
+      "volume24hr": 643.542847,
+      "liquidity": 5971.267,
+      "conditionId": "0x06ac9e86718745687131b4ead488e6759a31fd1c153fbe7e96a0e1ca58ee8fb9"
+    },
+    {
+      "slug": "es2-leo-zar-2026-02-14-spread-away-2pt5",
+      "question": "Spread: Real Zaragoza (-2.5)",
+      "yesPrice": 0.026,
+      "noPrice": 0.974,
+      "endDate": "2026-02-14T17:30:00Z",
+      "volume": 634.736555,
+      "volume24hr": 0,
+      "liquidity": 689.05676,
+      "conditionId": "0x9f9bb4df97517361e529c349f8d8dfe85b480284f991e496c041e937a5f446a8"
+    },
+    {
+      "slug": "cwbb-monst-mont-2026-02-14",
+      "question": "Montana State Bobcats vs. Montana Grizzlies (W)",
+      "yesPrice": 0.66,
+      "noPrice": 0.34,
+      "endDate": "2026-02-14T21:00:00Z",
+      "volume": 634.69,
+      "volume24hr": 47.26,
+      "liquidity": 47.92932,
+      "conditionId": "0xc91dad77c09966b332a11eee37b1e1d541c12274330ca617a8a473541962c7d1"
+    },
+    {
+      "slug": "itsb-ces-ven-2026-02-14-ven",
+      "question": "Will Venezia FC win on 2026-02-14?",
+      "yesPrice": 0.46,
+      "noPrice": 0.54,
+      "endDate": "2026-02-14T18:30:00Z",
+      "volume": 633.898408,
+      "volume24hr": 12.6773,
+      "liquidity": 205545.6491,
+      "conditionId": "0xd8e7411e700fefadaa347d2bcb625063760cec71293022cafae1180d2b20f5b7"
+    },
+    {
+      "slug": "cbb-marq-xav-2026-02-14",
+      "question": "Marquette Golden Eagles vs. Xavier Musketeers",
+      "yesPrice": 0.42,
+      "noPrice": 0.58,
+      "endDate": "2026-02-14T20:00:00Z",
+      "volume": 628.565567,
+      "volume24hr": 542.9174909999999,
+      "liquidity": 6462.3622,
+      "conditionId": "0xfaa049913962317c37cda2422dec3f2ad4b4afdf2b42f337944f11ca25bf568a"
+    },
+    {
+      "slug": "lol-oa-lds-2026-02-14",
+      "question": "LoL: Orbit Anonymo vs Lodis (BO1) - Rift Legends Group Stage",
+      "yesPrice": 0.39,
+      "noPrice": 0.61,
+      "endDate": "2026-02-14T18:30:00Z",
+      "volume": 626.190388,
+      "volume24hr": 65.009605,
+      "liquidity": 1460.9424,
+      "conditionId": "0xd58d82d9bb87ccb10d221cc1a8736ee1afffb7698d27e20feaa5b8329ca3678c"
     },
     {
       "slug": "cbb-nichls-incar-2026-02-14",
@@ -639,7 +617,7 @@
       "endDate": "2026-02-14T22:00:00Z",
       "volume": 99,
       "volume24hr": 80,
-      "liquidity": 7191.5845,
+      "liquidity": 7090.9847,
       "conditionId": "0xe4812726c03f26030e8fcc4cec852de87011a799ed8680b583a7ff39cb7f6e0c"
     },
     {
@@ -654,17 +632,6 @@
       "conditionId": "0xd36bc505ca654e14bbb37e0f5e5006a66e1ba79dab7d6ff4ea023ef8f131fa73"
     },
     {
-      "slug": "cbb-samf-etnst-2026-02-14-total-147pt5",
-      "question": "Samford Bulldogs vs. East Tennessee State Buccaneers: O/U 147.5",
-      "yesPrice": 0.485,
-      "noPrice": 0.515,
-      "endDate": "2026-02-14T17:00:00Z",
-      "volume": 98.35395,
-      "volume24hr": 79.219989,
-      "liquidity": 2166.7507,
-      "conditionId": "0x916ba36c85d1253ad8dee729ecf195879d94d1984bf77337be195adb3dea59d8"
-    },
-    {
       "slug": "solana-up-or-down-february-14-3pm-et",
       "question": "Solana Up or Down - February 14, 3PM ET",
       "yesPrice": 0.5,
@@ -672,18 +639,18 @@
       "endDate": "2026-02-14T21:00:00Z",
       "volume": 95.215679,
       "volume24hr": 0,
-      "liquidity": 10774.9691,
+      "liquidity": 10775.5396,
       "conditionId": "0x1e78be115fc306652e1421db2eed5c3bd22ec98617e62b432d08ef19ffdad5ae"
     },
     {
       "slug": "cs2-faze-hero-2026-02-14-total-games-2pt5",
       "question": "Games Total: O/U 2.5",
-      "yesPrice": 0.46,
-      "noPrice": 0.54,
+      "yesPrice": 0.465,
+      "noPrice": 0.535,
       "endDate": "2026-02-14T17:45:00Z",
       "volume": 95.20408,
       "volume24hr": 55,
-      "liquidity": 84.4808,
+      "liquidity": 1812.314,
       "conditionId": "0x98d473a664f4e94c63ee5230be4f298acf292fe39beead7e8ded5e567fc6ce07"
     },
     {
@@ -698,6 +665,17 @@
       "conditionId": "0x2a4a74f3892246fbaa78a389d9b243e88087b94435ada503359c711e61e3d1e1"
     },
     {
+      "slug": "mex-asl-que-2026-02-14-draw",
+      "question": "Will Atlético San Luis vs. Querétaro FC end in a draw?",
+      "yesPrice": 0.265,
+      "noPrice": 0.735,
+      "endDate": "2026-02-14T23:00:00Z",
+      "volume": 92.586331,
+      "volume24hr": 53.703702,
+      "liquidity": 65145.8238,
+      "conditionId": "0xfde62e0060aa2fa7f6398ff6b200876b6006835dde145d9931b29e642174ad2b"
+    },
+    {
       "slug": "btc-updown-5m-1771101300",
       "question": "Bitcoin Up or Down - February 14, 3:35PM-3:40PM ET",
       "yesPrice": 0.495,
@@ -705,7 +683,7 @@
       "endDate": "2026-02-14T20:40:00Z",
       "volume": 92.540389,
       "volume24hr": 92.540389,
-      "liquidity": 6717.6578,
+      "liquidity": 6717.8578,
       "conditionId": "0xe6ac36c8d5c123c0aec4bd9526840409bc43986408e2bb0e102554d004aa496a"
     },
     {
@@ -716,7 +694,7 @@
       "endDate": "2026-02-14T21:00:00Z",
       "volume": 91.165452,
       "volume24hr": 91.165452,
-      "liquidity": 6990.323,
+      "liquidity": 6995.7014,
       "conditionId": "0x08a6cc42d00182f0c7b707e271165c4915a59e49941720a1ec5b6fa0536b0221"
     },
     {
@@ -738,7 +716,7 @@
       "endDate": "2026-02-14T22:00:00Z",
       "volume": 89.803918,
       "volume24hr": 0,
-      "liquidity": 5948.5299,
+      "liquidity": 5948.5301,
       "conditionId": "0x7be690ab734e445e0ecf769b5376c212c914c131df915d5636b9ea27fd3af2a9"
     },
     {
@@ -771,7 +749,7 @@
       "endDate": "2026-02-14T20:30:00Z",
       "volume": 86.801973,
       "volume24hr": 83.098271,
-      "liquidity": 64334.2683,
+      "liquidity": 64313.3723,
       "conditionId": "0x39b505f1fff4d94a8c2422cee4155d8da673bdfbcf2c7e5c4a78d0411814acb9"
     },
     {
@@ -782,7 +760,7 @@
       "endDate": "2026-02-14T22:00:00Z",
       "volume": 85.296295,
       "volume24hr": 39,
-      "liquidity": 5758.8823,
+      "liquidity": 5530.7455,
       "conditionId": "0xceef93cffc036dbdf6dd8d568590e3087d5b318fb4ac39c1acb23274f0d8d422"
     },
     {
@@ -793,7 +771,7 @@
       "endDate": "2026-02-14T17:30:00Z",
       "volume": 84.9,
       "volume24hr": 84.9,
-      "liquidity": 3002.1515,
+      "liquidity": 2995.3019,
       "conditionId": "0x8bf11ff53bcdb90b99805f00cb1f831d4a2e501cf08d2a617a027dae9f2cb70a"
     },
     {
@@ -804,19 +782,8 @@
       "endDate": "2026-02-14T20:30:00Z",
       "volume": 84.559237,
       "volume24hr": 84.559237,
-      "liquidity": 32855.0016,
+      "liquidity": 32850.0216,
       "conditionId": "0x9470b11037b87a44ba5ef4a8e3b3f67c47f9e279d2f28d4a1826153be780db10"
-    },
-    {
-      "slug": "dota2-spirit1-ic-2026-02-14",
-      "question": "Dota 2: Spirit Academy vs Inner Circle (BO3) - CCT Series 7 Group B",
-      "yesPrice": 0.27,
-      "noPrice": 0.73,
-      "endDate": "2026-02-14T18:00:00Z",
-      "volume": 83.793329,
-      "volume24hr": 60,
-      "liquidity": 619.4605,
-      "conditionId": "0x5c7057ca2d2fdb191c508b4731dba99795634dcd802211a9815eeda330394ff4"
     },
     {
       "slug": "dota2-og-liquid-2026-02-14-total-games-3pt5",
@@ -826,7 +793,7 @@
       "endDate": "2026-02-14T19:00:00Z",
       "volume": 83,
       "volume24hr": 27,
-      "liquidity": 146.1678,
+      "liquidity": 141.0778,
       "conditionId": "0x42e5de0a24fa2ca3f12f9bcdf1aada4cb3d9341fb272e77859b49634dbb1e958"
     },
     {
@@ -837,7 +804,7 @@
       "endDate": "2026-02-14T18:00:00Z",
       "volume": 82.031742,
       "volume24hr": 57.031742,
-      "liquidity": 44.7961,
+      "liquidity": 60.7968,
       "conditionId": "0x1624f46b060e6d6e8b3ad55cb70a34f9c9cb9b790df9c2aec728e92c4cf1ba3c"
     },
     {
@@ -848,7 +815,7 @@
       "endDate": "2026-02-14T19:00:00Z",
       "volume": 81.004136,
       "volume24hr": 71.004136,
-      "liquidity": 2055.92,
+      "liquidity": 2549.04,
       "conditionId": "0xe59cbb380a85f6534f5d89f9e37620a714e5a11ccd5bac848b441484ac7b4659"
     },
     {
@@ -859,7 +826,7 @@
       "endDate": "2026-02-14T21:30:00Z",
       "volume": 80.946264,
       "volume24hr": 80.946264,
-      "liquidity": 5923.1629,
+      "liquidity": 5923.3629,
       "conditionId": "0x5fb21adc5177690ea30c3bfc9ea6fdaa9e135a27e2ccbda0398924ac361abbe3"
     },
     {
@@ -870,7 +837,7 @@
       "endDate": "2026-02-14T21:25:00Z",
       "volume": 80.602339,
       "volume24hr": 80.60233899999999,
-      "liquidity": 5916.3857,
+      "liquidity": 5916.5857,
       "conditionId": "0x652e733bc2f4268c470700c3e232338c8ab7376f23879a88b94fa35a287378b5"
     },
     {
@@ -881,7 +848,7 @@
       "endDate": "2026-02-14T19:30:00Z",
       "volume": 78.197712,
       "volume24hr": 78.197712,
-      "liquidity": 2132.8622,
+      "liquidity": 2316.6622,
       "conditionId": "0xf59b39f8811128d1c0573317e01ab5ff433f8be6404af8405c37bf0af01ca400"
     },
     {
@@ -892,18 +859,18 @@
       "endDate": "2026-02-14T17:30:00Z",
       "volume": 77.16,
       "volume24hr": 61.16,
-      "liquidity": 3981.4133,
+      "liquidity": 3931.0891,
       "conditionId": "0x409582830249e8393443f179efc3c2a00ed8bf9e56d0147b997d96f27bbaf332"
     },
     {
       "slug": "cbb-smho-kenest-2026-02-14",
       "question": "Sam Houston Bearkats vs. Kennesaw State Owls",
-      "yesPrice": 0.475,
-      "noPrice": 0.525,
+      "yesPrice": 0.48,
+      "noPrice": 0.52,
       "endDate": "2026-02-14T22:00:00Z",
       "volume": 76.705477,
       "volume24hr": 58.583029999999994,
-      "liquidity": 7558.1489,
+      "liquidity": 7274.0991,
       "conditionId": "0x2a80bb15bdb3e987ffd7b04654bd53ce9e9d1b659c42c7be754a32ec44318e05"
     },
     {
@@ -914,7 +881,7 @@
       "endDate": "2026-02-14T21:00:00Z",
       "volume": 76.603772,
       "volume24hr": 56.603772,
-      "liquidity": 2487.1426,
+      "liquidity": 2709.4436,
       "conditionId": "0x6e76835c70c6a404ceedff2060c09fa995d178c28bea0db513fb917bdb0324b4"
     },
     {
@@ -925,19 +892,8 @@
       "endDate": "2026-02-14T18:00:00Z",
       "volume": 75.655015,
       "volume24hr": 45.045015,
-      "liquidity": 381768.8656,
+      "liquidity": 381760.1856,
       "conditionId": "0x85670941e8abd1a019114125be8faae9992988b3dc94a4a5d1ed35fe67ed72ea"
-    },
-    {
-      "slug": "bl2-dyn-elv-2026-02-14-total-3pt5",
-      "question": "SG Dynamo Dresden vs. SV 07 Elversberg: O/U 3.5",
-      "yesPrice": 0.32,
-      "noPrice": 0.68,
-      "endDate": "2026-02-14T19:30:00Z",
-      "volume": 74.820479,
-      "volume24hr": 16.449055,
-      "liquidity": 30042.3185,
-      "conditionId": "0x2e7afb32ed447c607bd797e14488ab1c56ee23ba8f4516b6f5f2d33b65579175"
     },
     {
       "slug": "cs2-vit-g2-2026-02-14-total-games-2pt5",
@@ -958,7 +914,7 @@
       "endDate": "2026-02-14T19:00:00Z",
       "volume": 73.074831,
       "volume24hr": 73.07483099999999,
-      "liquidity": 2324.3595,
+      "liquidity": 2816.9795,
       "conditionId": "0x75e5b1ee16ddb1f37c8e625e094e845710a51b0ae918c60689ace5f736c6c079"
     },
     {
@@ -969,7 +925,7 @@
       "endDate": "2026-02-14T18:30:00Z",
       "volume": 71.102563,
       "volume24hr": 71.102563,
-      "liquidity": 2452.3159,
+      "liquidity": 2432.3859,
       "conditionId": "0x29ee7c7583f86b9915a0bbc5bd161e9bc3da25eaeaeaa0c13dfd2729cf7d397a"
     },
     {
@@ -995,6 +951,50 @@
       "conditionId": "0x3ce63a99c8a5f70d4681c38dd9551a1b91ae0ca201efda44a60815f2f8740866"
     },
     {
+      "slug": "cbb-kentst-ballst-2026-02-14-total-143pt5",
+      "question": "Kent State Golden Flashes vs. Ball State Cardinals: O/U 143.5",
+      "yesPrice": 0.485,
+      "noPrice": 0.515,
+      "endDate": "2026-02-14T19:00:00Z",
+      "volume": 69.156591,
+      "volume24hr": 66.636591,
+      "liquidity": 2718.8086,
+      "conditionId": "0x552083bc6a5c46a0b449394c64abee08a7fc8c3b9f2ef51af4d786b9dee0bfd2"
+    },
+    {
+      "slug": "btc-updown-5m-1771102500",
+      "question": "Bitcoin Up or Down - February 14, 3:55PM-4:00PM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-14T21:00:00Z",
+      "volume": 68.13,
+      "volume24hr": 68.13,
+      "liquidity": 6608.3498,
+      "conditionId": "0x47c996cc8def830380b5b57e5bd717e2097e0099165dc195fb5e8d089ad3fdbd"
+    },
+    {
+      "slug": "cs2-faze-hero-2026-02-14-map-handicap-away-1pt5",
+      "question": "Map Handicap: FaZe (-1.5) vs Heroic (+1.5)",
+      "yesPrice": 0.36,
+      "noPrice": 0.64,
+      "endDate": "2026-02-14T17:45:00Z",
+      "volume": 66.374287,
+      "volume24hr": 27.83178,
+      "liquidity": 3675.1495,
+      "conditionId": "0x0ab364f5023e0a7101fe9e39010955a25f24cc64922c15ea4854285c74a85512"
+    },
+    {
+      "slug": "cbb-sfaus-utrgv-2026-02-14",
+      "question": "Stephen F. Austin Lumberjacks vs. Texas-Rio Grande Valley Vaqueros",
+      "yesPrice": 0.56,
+      "noPrice": 0.44,
+      "endDate": "2026-02-14T22:30:00Z",
+      "volume": 64.318306,
+      "volume24hr": 54.318306,
+      "liquidity": 3415.9849,
+      "conditionId": "0x54c91ed8a3bae9385c0b3a3e5b1a35e14a797b356e43f396391bbe873d7196ae"
+    },
+    {
       "slug": "cbb-liub-nhvn-2026-02-14-spread-away-7pt5",
       "question": "Spread: LIU Sharks (-7.5)",
       "yesPrice": 0.495,
@@ -1002,7 +1002,7 @@
       "endDate": "2026-02-14T18:00:00Z",
       "volume": 9.433961,
       "volume24hr": 0,
-      "liquidity": 101.6795,
+      "liquidity": 98.8595,
       "conditionId": "0x1ab23d0f2a694cb735038d5fb11dad19c893bd44ac2351ac04334e8943b7b1ef"
     },
     {
@@ -1013,40 +1013,40 @@
       "endDate": "2026-02-14T18:00:00Z",
       "volume": 9.259258,
       "volume24hr": 0,
-      "liquidity": 2803.7993,
+      "liquidity": 2974.7893,
       "conditionId": "0x1191026fca623be485f14ddf71d23fa276f68e2fa44831033d1f75ef3fecbb2b"
     },
     {
       "slug": "col1-mif-llf-2026-02-14-draw",
       "question": "Will Millonarios FC vs. Llaneros FC end in a draw?",
-      "yesPrice": 0.25,
-      "noPrice": 0.75,
+      "yesPrice": 0.26,
+      "noPrice": 0.74,
       "endDate": "2026-02-14T21:30:00Z",
       "volume": 9.19,
       "volume24hr": 0,
-      "liquidity": 477.9512,
+      "liquidity": 1976.5337,
       "conditionId": "0x715849f55971da64d90ea6035a0b3a0f80f237d7b730f7e410d0a10a2ccd5d86"
     },
     {
       "slug": "cbb-bryant-verm-2026-02-14-total-134pt5",
       "question": "Bryant Bulldogs vs. Vermont Catamounts: O/U 134.5",
-      "yesPrice": 0.49,
-      "noPrice": 0.51,
+      "yesPrice": 0.495,
+      "noPrice": 0.505,
       "endDate": "2026-02-14T19:00:00Z",
       "volume": 9.144073,
       "volume24hr": 9.144073,
-      "liquidity": 103.0232,
+      "liquidity": 98.3232,
       "conditionId": "0x953149cd266656111b6e8e6d8f8f6f89fef12b7fe055628e5eaefc2003fa06b1"
     },
     {
       "slug": "cbb-stjohn-prov-2026-02-14-spread-away-6pt5",
       "question": "Spread: St. John's Red Storm (-6.5)",
-      "yesPrice": 0.53,
-      "noPrice": 0.47,
+      "yesPrice": 0.52,
+      "noPrice": 0.48,
       "endDate": "2026-02-14T18:00:00Z",
       "volume": 9.090908,
       "volume24hr": 0,
-      "liquidity": 2056.3338,
+      "liquidity": 3037.5593,
       "conditionId": "0x69728b7e16c6e01ffa71a015bb2ae4f32b84f2281848a987ab9439d6ad600599"
     },
     {
@@ -1057,7 +1057,7 @@
       "endDate": "2026-02-14T22:40:00Z",
       "volume": 8.97,
       "volume24hr": 8.97,
-      "liquidity": 5946.0437,
+      "liquidity": 5946.2437,
       "conditionId": "0xe243b43c28898ae31b362234c54b7afe5a31a155adf52bee80f07eaaa1e17fed"
     },
     {
@@ -1068,19 +1068,8 @@
       "endDate": "2026-02-14T21:00:00Z",
       "volume": 8,
       "volume24hr": 8,
-      "liquidity": 46.6273,
+      "liquidity": 42.3768,
       "conditionId": "0x6145aadfc9f816e523cf0965e3095aee1fe00834256b5c75c59d9caa0f8d0f07"
-    },
-    {
-      "slug": "arg-tal-gye-2026-02-14-total-4pt5",
-      "question": "CA Talleres vs. CA Gimnasia y Esgrima de Mendoza: O/U 4.5",
-      "yesPrice": 0.075,
-      "noPrice": 0.925,
-      "endDate": "2026-02-14T22:45:00Z",
-      "volume": 8,
-      "volume24hr": 8,
-      "liquidity": 1782.4725,
-      "conditionId": "0xa4daa224396e21eef3c9e728b0dc88c1ace6a7be5d8eadb270ab8457c8a2fe4d"
     },
     {
       "slug": "btc-updown-5m-1771101000",
@@ -1090,7 +1079,7 @@
       "endDate": "2026-02-14T20:35:00Z",
       "volume": 7.702351,
       "volume24hr": 7.702351,
-      "liquidity": 6758.9305,
+      "liquidity": 6759.1305,
       "conditionId": "0x8aec997f42ef2f3fbe7f5489d16007dfffc552b2ac364e527522d6611567a52b"
     },
     {
@@ -1101,8 +1090,19 @@
       "endDate": "2026-02-14T20:30:00Z",
       "volume": 7.581631,
       "volume24hr": 7.581631,
-      "liquidity": 1887.406,
+      "liquidity": 1799.8808,
       "conditionId": "0x4887a3eb948459dd4a5f7da51a190a6789467d2f3c0830062cf403f5ab9242ef"
+    },
+    {
+      "slug": "lol-bce-bombat-2026-02-14",
+      "question": "LoL: Orzeł Barcząca Esports vs BOMBA Team (BO1) - Rift Legends Group Stage",
+      "yesPrice": 0.435,
+      "noPrice": 0.565,
+      "endDate": "2026-02-14T19:45:00Z",
+      "volume": 6.759135,
+      "volume24hr": 5.09247,
+      "liquidity": 2181.6166,
+      "conditionId": "0xae68b41cc5155c1bcb834a4950d4a1d00db43b0cb2ec22b91a16d1242b550fbb"
     }
   ]
 }
