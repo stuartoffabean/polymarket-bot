@@ -27,6 +27,8 @@
  *   POST /add-position    — { assetId, market, outcome, avgPrice, size } (persisted to manual-positions.json)
  *   POST /remove-position — { assetId } (removes manual position permanently)
  *   POST /reset-circuit-breaker
+ *   GET  /exit-failed      — list positions where sell permanently failed (stuck)
+ *   POST /clear-exit-failed — { assetId } or {} to clear all exit-failed blocks
  */
 
 const WebSocket = require("ws");
@@ -676,6 +678,8 @@ function checkTriggers(assetId, asset) {
   // checkTriggers() call, or re-fire on restart before on-chain state catches up.
   if (sellLocks.has(assetId)) return;
   if (recentlySold.has(assetId)) return;
+  // Exit-failed assets: sell exhausted all retries, waiting for manual intervention or resolution
+  if (exitFailed.has(assetId)) return;
   // Cooldown after unfilled sell — wait before re-triggering
   if (asset._sellCooldownUntil && Date.now() < asset._sellCooldownUntil) return;
 
@@ -776,6 +780,12 @@ const recentlySold = new Map(); // assetId -> timestamp
 const RECENTLY_SOLD_TTL = 2 * 60 * 60 * 1000; // 2 hours — on-chain settlement can take 30-60min, 30min TTL caused duplicate sells
 const RECENTLY_SOLD_FILE = path.join(__dirname, 'recently-sold.json');
 
+// Exit-failed assets — sells exhausted all retries, position stuck
+// Persisted to disk so they survive restarts (unlike _exitFailed which was in-memory only)
+// Cleared only via POST /clear-exit-failed or manual file edit
+const exitFailed = new Map(); // assetId -> { timestamp, retries, reason, market, size, avgPrice }
+const EXIT_FAILED_FILE = path.join(__dirname, 'exit-failed.json');
+
 // Load persisted sold assets on startup
 try {
   if (fs.existsSync(RECENTLY_SOLD_FILE)) {
@@ -788,11 +798,29 @@ try {
   }
 } catch (e) { log("INIT", `Failed to load recently-sold.json: ${e.message}`); }
 
+// Load persisted exit-failed assets on startup
+try {
+  if (fs.existsSync(EXIT_FAILED_FILE)) {
+    const saved = JSON.parse(fs.readFileSync(EXIT_FAILED_FILE, 'utf8'));
+    for (const [id, info] of Object.entries(saved)) {
+      exitFailed.set(id, info);
+    }
+    log("INIT", `Loaded ${exitFailed.size} exit-failed assets from disk — these will NOT auto-sell until cleared`);
+  }
+} catch (e) { log("INIT", `Failed to load exit-failed.json: ${e.message}`); }
+
 function persistRecentlySold() {
   try {
     const obj = Object.fromEntries(recentlySold);
     fs.writeFileSync(RECENTLY_SOLD_FILE, JSON.stringify(obj, null, 2));
   } catch (e) { log("EXEC", `Failed to persist recently-sold.json: ${e.message}`); }
+}
+
+function persistExitFailed() {
+  try {
+    const obj = Object.fromEntries(exitFailed);
+    fs.writeFileSync(EXIT_FAILED_FILE, JSON.stringify(obj, null, 2));
+  } catch (e) { log("EXEC", `Failed to persist exit-failed.json: ${e.message}`); }
 }
 
 async function executeSell(assetId, asset, reason) {
@@ -843,8 +871,20 @@ async function executeSell(assetId, asset, reason) {
       const MAX_SELL_RETRIES = 3;
       if (asset._sellRetries >= MAX_SELL_RETRIES) {
         // Exhausted retries — mark as exit_failed, stop retrying, alert operator
+        // PERSISTED TO DISK — survives restarts (fixes duplicate stop-loss bug)
         asset._exitFailed = true;
-        asset._sellCooldownUntil = Infinity; // permanent block
+        asset._sellCooldownUntil = Infinity; // permanent block (in-memory backup)
+        exitFailed.set(assetId, {
+          timestamp: Date.now(),
+          isoTime: new Date().toISOString(),
+          retries: MAX_SELL_RETRIES,
+          reason,
+          market: asset._marketName || asset._market || asset.market || `Asset ${assetId.slice(0,20)}`,
+          outcome: asset.outcome,
+          size: asset.size,
+          avgPrice: asset.avgPrice,
+        });
+        persistExitFailed();
         const failMsg = `${reason}: SELL PERMANENTLY FAILED after ${MAX_SELL_RETRIES} attempts (no bid liquidity). Position stuck: ${asset.size} shares @ ${asset.avgPrice}. Manual intervention needed.`;
         log("EXEC", `🚨 ${failMsg}`);
         pushAlert("SELL_FAILED", assetId, asset, null, null, failMsg);
@@ -907,6 +947,12 @@ async function executeSell(assetId, asset, reason) {
     subscribedAssets.delete(assetId);
     recentlySold.set(assetId, Date.now());
     persistRecentlySold();
+    // Clear exit-failed if this asset was previously stuck (e.g., manual retry succeeded)
+    if (exitFailed.has(assetId)) {
+      exitFailed.delete(assetId);
+      persistExitFailed();
+      log("EXEC", `Cleared exit-failed for ${assetId.slice(0,20)} — sell finally succeeded`);
+    }
     log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)} (blocked from re-sync for 2h)`);
   } catch (e) {
     log("EXEC", `❌ Auto-sell FAILED: ${e.message}`);
@@ -1184,6 +1230,10 @@ async function syncPositions() {
         _stopLossTriggered: existing._stopLossTriggered || false,
         _takeProfitTriggered: existing._takeProfitTriggered || false,
         _singleLossAlerted: existing._singleLossAlerted || false,
+        // Restore exit-failed state from persisted file (survives restarts)
+        _exitFailed: existing._exitFailed || exitFailed.has(pos.asset_id),
+        _sellCooldownUntil: existing._sellCooldownUntil || (exitFailed.has(pos.asset_id) ? Infinity : undefined),
+        _sellRetries: existing._sellRetries || (exitFailed.has(pos.asset_id) ? 3 : 0),
       });
       newAssetIds.push(pos.asset_id);
     }
@@ -1391,6 +1441,13 @@ async function apiHandler(req, res) {
           maxDailyDrawdown: MAX_DAILY_DRAWDOWN,
           defaultStopLoss: DEFAULT_STOP_LOSS,
           defaultTakeProfit: DEFAULT_TAKE_PROFIT,
+          exitFailedCount: exitFailed.size,
+          exitFailedAssets: Array.from(exitFailed.entries()).map(([id, info]) => ({
+            assetId: id.slice(0, 20) + '...',
+            market: info.market,
+            reason: info.reason,
+            since: info.isoTime,
+          })),
         },
         autoCapital: {
           ...getAutoDeployedCapital(),
@@ -1489,6 +1546,62 @@ async function apiHandler(req, res) {
         log("CONFIG", `Auto-execute: ${autoExecuteEnabled}`);
         return send(res, 200, { ok: true, autoExecuteEnabled });
       }
+
+      if (url === "/clear-exit-failed") {
+        const body = await parseBody(req);
+        if (body.assetId) {
+          // Clear a specific exit-failed asset
+          const existed = exitFailed.delete(body.assetId);
+          if (existed) {
+            persistExitFailed();
+            // Also clear in-memory flags on the tracked asset
+            const asset = subscribedAssets.get(body.assetId);
+            if (asset) {
+              asset._exitFailed = false;
+              asset._sellCooldownUntil = undefined;
+              asset._sellRetries = 0;
+              asset._stopLossTriggered = false;
+              asset._takeProfitTriggered = false;
+            }
+            log("EXEC", `Cleared exit-failed for ${body.assetId.slice(0,20)} — will re-evaluate triggers`);
+          }
+          return send(res, 200, { ok: true, cleared: existed, remaining: exitFailed.size });
+        } else {
+          // Clear ALL exit-failed assets
+          const count = exitFailed.size;
+          exitFailed.clear();
+          persistExitFailed();
+          // Clear in-memory flags on all tracked assets
+          for (const [, asset] of subscribedAssets) {
+            if (asset._exitFailed) {
+              asset._exitFailed = false;
+              asset._sellCooldownUntil = undefined;
+              asset._sellRetries = 0;
+              asset._stopLossTriggered = false;
+              asset._takeProfitTriggered = false;
+            }
+          }
+          log("EXEC", `Cleared ALL ${count} exit-failed assets — will re-evaluate triggers`);
+          return send(res, 200, { ok: true, clearedCount: count });
+        }
+      }
+
+      if (url === "/exit-failed") {
+        const list = [];
+        for (const [assetId, info] of exitFailed) {
+          list.push({ assetId, ...info });
+        }
+        return send(res, 200, { count: list.length, assets: list });
+      }
+    }
+
+    // GET /exit-failed also works
+    if (method === "GET" && url === "/exit-failed") {
+      const list = [];
+      for (const [assetId, info] of exitFailed) {
+        list.push({ assetId, ...info });
+      }
+      return send(res, 200, { count: list.length, assets: list });
     }
 
     send(res, 404, { error: "Not found" });
