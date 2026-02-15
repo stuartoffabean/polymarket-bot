@@ -8,6 +8,7 @@
  * 3. LMSYS/LMArena — AI model leaderboard scraper (free, scrapes HF + arena.ai)
  * 4. FRED — Federal Reserve Economic Data (free, 120 req/min)
  * 5. Metaculus — Prediction market consensus (free API)
+ * 6. NewsAPI — Breaking news headlines for any topic (free tier, 500 req/day)
  * 
  * Each enricher: takes a market question, returns structured signal or null.
  */
@@ -584,6 +585,83 @@ async function enrichWithMetaculus(question) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// 6. NEWSAPI — Breaking News Headlines
+// ═══════════════════════════════════════════════════════════════════
+
+const NEWSAPI_KEY = process.env.NEWSAPI_KEY || '';
+
+/**
+ * Extract search keywords from a market question.
+ * Strips common words, returns 2-4 most relevant terms.
+ */
+function extractNewsKeywords(question) {
+  const stopWords = new Set([
+    'will', 'the', 'be', 'in', 'on', 'of', 'a', 'an', 'to', 'for', 'and', 'or',
+    'by', 'from', 'at', 'is', 'it', 'this', 'that', 'with', 'has', 'have', 'do',
+    'does', 'did', 'not', 'no', 'yes', 'was', 'were', 'been', 'being', 'are',
+    'before', 'after', 'between', 'more', 'than', 'most', 'how', 'many', 'much',
+    'what', 'when', 'where', 'who', 'which', 'win', 'reach', 'dip', 'price',
+    'highest', 'lowest', 'february', 'march', 'april', 'may', 'june', 'july',
+    'august', 'september', 'october', 'november', 'december', 'january',
+    '2025', '2026', '2027',
+  ]);
+  const words = question
+    .replace(/[^a-zA-Z0-9\s'-]/g, '')
+    .split(/\s+/)
+    .filter(w => w.length > 2 && !stopWords.has(w.toLowerCase()))
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+  // Return top 3-4 unique keywords
+  const unique = [...new Set(words)];
+  return unique.slice(0, 4).join(' ');
+}
+
+/**
+ * Search NewsAPI for recent headlines related to a market question.
+ * Returns: { source, query, articles: [{ title, source, publishedAt, url }], articleCount }
+ */
+async function enrichWithNewsAPI(question) {
+  if (!NEWSAPI_KEY) return null;
+  
+  const keywords = extractNewsKeywords(question);
+  if (!keywords || keywords.split(' ').length < 1) return null;
+
+  try {
+    const query = encodeURIComponent(keywords);
+    const url = `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&pageSize=5&language=en&apiKey=${NEWSAPI_KEY}`;
+    const resp = await httpGet(url, 8000);
+    if (resp.status !== 200) return null;
+    
+    const data = JSON.parse(resp.data);
+    if (!data.articles || data.articles.length === 0) return null;
+
+    const articles = data.articles.map(a => ({
+      title: a.title,
+      source: a.source?.name,
+      publishedAt: a.publishedAt,
+      description: a.description?.slice(0, 150),
+      url: a.url,
+    }));
+
+    // Check recency — if most recent article is >3 days old, less useful
+    const mostRecent = new Date(articles[0].publishedAt);
+    const hoursAgo = (Date.now() - mostRecent.getTime()) / (1000 * 60 * 60);
+
+    return {
+      source: 'newsapi',
+      query: keywords,
+      articleCount: data.totalResults,
+      articles,
+      mostRecentHoursAgo: Math.round(hoursAgo),
+      isBreaking: hoursAgo < 6,
+      isFresh: hoursAgo < 24,
+    };
+  } catch (e) {
+    console.error('[NEWSAPI]', e.message);
+    return null;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // UNIFIED ENRICHMENT — Call all relevant sources for a market
 // ═══════════════════════════════════════════════════════════════════
 
@@ -636,6 +714,15 @@ async function enrichMarket(question) {
       enrichWithMetaculus(question)
         .then(r => { if (r) enrichments.metaculus = r; })
         .catch(e => errors.push(`metaculus: ${e.message}`))
+    );
+  }
+
+  // NewsAPI (breaking news context)
+  if (NEWSAPI_KEY) {
+    promises.push(
+      enrichWithNewsAPI(question)
+        .then(r => { if (r) enrichments.news = r; })
+        .catch(e => errors.push(`news: ${e.message}`))
     );
   }
 
@@ -720,6 +807,18 @@ function adjustEdgeFromEnrichment(enrichments, currentConfidence, outcome) {
     }
   }
 
+  // NewsAPI: breaking news boost
+  if (enrichments.news) {
+    const n = enrichments.news;
+    if (n.isBreaking && n.articleCount >= 3) {
+      adjustment += 0.07;
+      reasons.push(`breaking news (${n.articleCount} articles, latest ${n.mostRecentHoursAgo}h ago): "${n.articles[0]?.title?.slice(0, 80)}"`);
+    } else if (n.isFresh && n.articleCount >= 5) {
+      adjustment += 0.03;
+      reasons.push(`fresh news coverage (${n.articleCount} articles): "${n.articles[0]?.title?.slice(0, 80)}"`);
+    }
+  }
+
   // Metaculus: cross-platform prediction consensus
   if (enrichments.metaculus) {
     const m = enrichments.metaculus;
@@ -751,6 +850,7 @@ module.exports = {
   enrichWithLMSYS,
   enrichWithFRED,
   enrichWithMetaculus,
+  enrichWithNewsAPI,
   // Detection helpers
   detectSport,
   isLegislationMarket,

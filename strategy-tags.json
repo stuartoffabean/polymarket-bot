@@ -22,17 +22,17 @@
   "109803312939082069931212252420549743720885519875457359851257497317941489838583": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.160Z",
-    "market": "Will the highest temperature in Wellington be 23°C or higher"
+    "market": "Will the highest temperature in Wellington be 23\u00b0C or higher"
   },
   "28321426810817884323028002735778558086441279106030661015331363203764252597900": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.160Z",
-    "market": "Will the highest temperature in Chicago be 50°F or higher on"
+    "market": "Will the highest temperature in Chicago be 50\u00b0F or higher on"
   },
   "81886414565830455363898400247598914618904584960778707119417799714051247635429": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.160Z",
-    "market": "Will the highest temperature in Atlanta be 62°F or higher on"
+    "market": "Will the highest temperature in Atlanta be 62\u00b0F or higher on"
   },
   "4828582791571661218921335365101498469447062828800129751506318696977295810037": {
     "strategy": "weather",
@@ -42,17 +42,17 @@
   "88900583850800385933127773924992016438736381408821028966855845616737191855587": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.160Z",
-    "market": "Will the highest temperature in Miami be between 80-81°F on "
+    "market": "Will the highest temperature in Miami be between 80-81\u00b0F on "
   },
   "47317420149081151716106164007318362486945962935245728787198862430914220210967": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.160Z",
-    "market": "Will the highest temperature in Toronto be 1°C on February 1"
+    "market": "Will the highest temperature in Toronto be 1\u00b0C on February 1"
   },
   "90887752002215992900699115811327800127783468839853027031678381049010443770292": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.160Z",
-    "market": "Will the highest temperature in Toronto be 0°C on February 1"
+    "market": "Will the highest temperature in Toronto be 0\u00b0C on February 1"
   },
   "59738352393322328580126685992902759403890341646473609818739437825403384038067": {
     "strategy": "weather",
@@ -62,12 +62,12 @@
   "61128604990087042122548586390800420839327799964679640129754629783994076452623": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Seattle be 48°F or higher on"
+    "market": "Will the highest temperature in Seattle be 48\u00b0F or higher on"
   },
   "53112913970374706046013290270953246355085018482245770482075634513851705409571": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in London be 8°C on February 13"
+    "market": "Will the highest temperature in London be 8\u00b0C on February 13"
   },
   "4744868690721394129843149460017966124816685702723027589495518997737549864171": {
     "strategy": "weather",
@@ -77,75 +77,75 @@
   "87034544787508362600520628155582601877854843596079024073643613177448200402413": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in New York City be 33°F or bel"
+    "market": "Will the highest temperature in New York City be 33\u00b0F or bel"
   },
   "102514516731092370083970442715055648567453320955758144087542228274725507632632": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Chicago be between 44-45°F o"
+    "market": "Will the highest temperature in Chicago be between 44-45\u00b0F o"
   },
   "92692355295105043188084535345172617132941070537427143745066857388094591739498": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Miami be between 76-77°F on "
+    "market": "Will the highest temperature in Miami be between 76-77\u00b0F on "
   },
   "86069854998126295712887500512103672980330890383172698747999211918441355492422": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Chicago be between 46-47°F o"
+    "market": "Will the highest temperature in Chicago be between 46-47\u00b0F o"
   },
   "106950486694572490024227720149165144675055991470689031749832849184539330153763": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in London be 7°C on February 13"
+    "market": "Will the highest temperature in London be 7\u00b0C on February 13"
   },
   "109968398822491712984169099041759237653611990413064557777859294999080708230264": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Buenos Aires be 27°C or belo"
+    "market": "Will the highest temperature in Buenos Aires be 27\u00b0C or belo"
   },
   "43249593973532459823312968360352455048724496981394213353591365165904968155525": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Atlanta be between 54-55°F o"
+    "market": "Will the highest temperature in Atlanta be between 54-55\u00b0F o"
   },
   "89850023208665827912791204459354162829290040613445798160551059612704754189351": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Atlanta be between 58-59°F o"
+    "market": "Will the highest temperature in Atlanta be between 58-59\u00b0F o"
   },
   "34741782909792644160008944715571340589799476685148756110746740038189821413536": {
     "strategy": "resolution",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in New York City be 44°F or hig"
+    "market": "Will the highest temperature in New York City be 44\u00b0F or hig"
   },
   "51503537920404633431180213870797713703431706144559394844438473428019572749669": {
     "strategy": "resolution",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Chicago be between 44-45°F o"
+    "market": "Will the highest temperature in Chicago be between 44-45\u00b0F o"
   },
   "85072480840170610142487235940817834178094029385695822892183652933465713216387": {
     "strategy": "resolution",
     "taggedAt": "2026-02-13T06:32:08.161Z",
-    "market": "Will the highest temperature in Toronto be 3°C or higher on "
+    "market": "Will the highest temperature in Toronto be 3\u00b0C or higher on "
   },
   "7340112073555222453704760842525649718617418327394825093976073523054585350682": {
     "strategy": "resolution",
     "taggedAt": "2026-02-13T06:34:00.977Z",
-    "market": "Will the highest temperature in Ankara be 13°C on February 1",
+    "market": "Will the highest temperature in Ankara be 13\u00b0C on February 1",
     "conditionId": "0xee192e2875d2a3088106dc681281e973ba0950a651edb95c5b3fac91c69b9d70"
   },
   "93357045767485842718148159020894568638500725026688511787117867018971102220543": {
     "strategy": "weather",
     "taggedAt": "2026-02-13T06:34:29.841Z",
-    "market": "Ankara 9°C 2026-02-13",
+    "market": "Ankara 9\u00b0C 2026-02-13",
     "conditionId": "0xc4c9c9d00b49a98d0c0698df4af359e2ac6f040929baa64dd325edd323e3374c",
     "city": "ankara"
   },
   "44121016434409049375380848402136057678738655013936501174241083709908786149012": {
     "strategy": "resolution",
     "taggedAt": "2026-02-13T06:46:23.578Z",
-    "market": "Will the highest temperature in Atlanta be between 56-57°F o",
+    "market": "Will the highest temperature in Atlanta be between 56-57\u00b0F o",
     "conditionId": "0xee706fa96fd66c3a8d260db7aed4d90bce5889d04ebeae87ad640f9e0d75d1c6"
   },
   "15034215811456036040764278458175248051748617668317505703784824112629572872623": {
@@ -257,10 +257,9 @@
     "slug": "2026-winter-olympics-most-medals"
   },
   "26721641658578910850400467922902137112767338738318620899764587083396221213881": {
-    "strategy": "arb",
-    "taggedAt": "2026-02-13T17:35:10.367Z",
-    "event": "2026 Winter Olympics: Most Medals",
-    "slug": "2026-winter-olympics-most-medals"
+    "strategy": "manual",
+    "taggedAt": "2026-02-15T17:00:00Z",
+    "note": "Norway medals - was mislabeled arb"
   },
   "19244830563353029156820916829799158659728550740152956971626445435150732003803": {
     "strategy": "arb",
@@ -337,19 +336,29 @@
   "61176650446302385201029696533044432621693136257583170813099493745612781327080": {
     "strategy": "resolution",
     "taggedAt": "2026-02-15T06:12:11.096Z",
-    "market": "Will the highest temperature in Atlanta be between 56-57°F o",
+    "market": "Will the highest temperature in Atlanta be between 56-57\u00b0F o",
     "conditionId": "0xe6b75a3492cda9b79169b512e0dd13001888b6eaad7715783b83fbbe218bf6c8"
   },
   "43691810767397506200794028428481680002715340128350391690525622962800428343304": {
     "strategy": "resolution",
     "taggedAt": "2026-02-15T06:27:03.896Z",
-    "market": "Will the highest temperature in Toronto be -2°C on February ",
+    "market": "Will the highest temperature in Toronto be -2\u00b0C on February ",
     "conditionId": "0x720fbcdec4437766b891c9145ea29f179ebb7acfb597421ed8eeb6d5cfcd07a0"
   },
   "90543168575913125170711592499937603464451107171132524301497848244050423670552": {
     "strategy": "resolution",
     "taggedAt": "2026-02-15T07:27:03.043Z",
-    "market": "Will the highest temperature in Dallas be between 60-61°F on",
+    "market": "Will the highest temperature in Dallas be between 60-61\u00b0F on",
     "conditionId": "0x6da0a11cb7a39148d4372698d56cb1274b0135c9965e7bd89fb42143d3d0829a"
+  },
+  "26721641658578910850": {
+    "strategy": "manual",
+    "taggedAt": "2026-02-15T17:00:00Z",
+    "note": "Norway medals - was mislabeled arb"
+  },
+  "11940987541302590336": {
+    "strategy": "event-scanner",
+    "taggedAt": "2026-02-15T16:24:00Z",
+    "note": "Auto-bought by event scanner"
   }
 }

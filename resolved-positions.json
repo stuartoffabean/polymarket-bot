@@ -117,5 +117,20 @@
     "won": false,
     "resolvedAt": "2026-02-15T05:12:39.091Z",
     "note": "Position was sold at $0.78 before resolution. Stop-loss misfire or manual exit. Thesis was correct (BNP won)."
+  },
+  "73002776802776123994946750806885447862269394307070074560451323297088045954726": {
+    "asset_id": "73002776802776123994946750806885447862269394307070074560451323297088045954726",
+    "conditionId": "0x90bb4c9b8fdafccee5359706860565115ae3f19264469a719c696b0762ccd16c",
+    "market": "Will Elon Musk post <40 tweets from February 14 to February 16, 2026?",
+    "outcome": "Yes",
+    "size": 23,
+    "avgPrice": 0.0386,
+    "costBasis": 0.8878,
+    "payout": 0,
+    "realizedPnl": -0.8878,
+    "won": false,
+    "resolvedAt": "2026-02-15T17:36:53.685Z",
+    "endDate": "2026-02-16",
+    "slug": "elon-musk-of-tweets-february-14-february-16-0-39"
   }
 }

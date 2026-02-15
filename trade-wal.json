@@ -4520,5 +4520,81 @@
       "error": null,
       "executedPrice": null
     }
+  },
+  {
+    "id": "wal_1771173970506_8q54et",
+    "status": "filled",
+    "createdAt": "2026-02-15T16:46:10.506Z",
+    "type": "market-sell",
+    "tokenID": "66428117863747102844220264721414851885963981506342918275396832477086386403512",
+    "price": 0.35,
+    "size": 18,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T16:46:10.932Z",
+    "result": {
+      "orderID": "0x11d46428b1487f18b0abc5bd987dfc5b826c612913edfa21260bfa5352ac06b8",
+      "error": null,
+      "executedPrice": 0.35
+    }
+  },
+  {
+    "id": "wal_1771176416309_jqx6hk",
+    "status": "filled",
+    "createdAt": "2026-02-15T17:26:56.309Z",
+    "type": "market-sell",
+    "tokenID": "101866985831276610664013320804876912535329030997498192633757087055137328160575",
+    "price": 0.59,
+    "size": 18,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T17:26:56.718Z",
+    "result": {
+      "orderID": "0xb35ed027a660bebfa94aca107fcddbd81989b5f9ed524804b6cf0c4d23c6fdee",
+      "error": null,
+      "executedPrice": 0.59
+    }
+  },
+  {
+    "id": "wal_1771179002359_1wgkwz",
+    "status": "filled",
+    "createdAt": "2026-02-15T18:10:02.359Z",
+    "type": "market-sell",
+    "tokenID": "17816702236900425865568306352615335050535613858611623099670723569975538116721",
+    "price": 0.21,
+    "size": 101,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T18:10:04.059Z",
+    "result": {
+      "orderID": "0x825f30b040913be2300f70fc39253da0f90e9d53a53305424635142de6c50452",
+      "error": null,
+      "executedPrice": 0.21
+    }
+  },
+  {
+    "id": "wal_1771182315326_ri56x3",
+    "status": "filled",
+    "createdAt": "2026-02-15T19:05:15.326Z",
+    "type": "market-sell",
+    "tokenID": "19779568221493895952676865609231089464510850574582508381986852563307884493501",
+    "price": 0.52,
+    "size": 5.0026,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T19:05:16.960Z",
+    "result": {
+      "orderID": "0x5a0bad1dcb281d4a7401bf7f0d0aa9f5342929388124eccbe532f7dc79b15b1d",
+      "error": null,
+      "executedPrice": 0.52
+    }
   }
 ]
