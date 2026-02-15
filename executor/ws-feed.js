@@ -827,7 +827,8 @@ async function executeSell(assetId, asset, reason) {
     // The executor posts a limit order at best bid. CLOB returns status:
     //   "matched" = filled, "live" = posted but unfilled, others = failed
     // Only treat as sold if the order actually filled.
-    const orderStatus = (result.status || result.orderStatus || "").toLowerCase();
+    const statusField = result.status || result.orderStatus || result.order_status || "";
+    const orderStatus = typeof statusField === "string" ? statusField.toLowerCase() : String(statusField).toLowerCase();
     const isFilled = orderStatus === "matched" || orderStatus === "filled";
 
     if (!isFilled) {
