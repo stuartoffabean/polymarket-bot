@@ -682,6 +682,8 @@ function checkTriggers(assetId, asset) {
   // checkTriggers() call, or re-fire on restart before on-chain state catches up.
   if (sellLocks.has(assetId)) return;
   if (recentlySold.has(assetId)) return;
+  // Cooldown after unfilled sell — wait before re-triggering
+  if (asset._sellCooldownUntil && Date.now() < asset._sellCooldownUntil) return;
 
   const costBasis = asset.avgPrice * asset.size;
   const currentValue = currentPrice * asset.size;
@@ -820,6 +822,33 @@ async function executeSell(assetId, asset, reason) {
       size: asset.size,
     });
     log("EXEC", `Sell result: ${JSON.stringify(result)}`);
+
+    // ── FILL VERIFICATION ──
+    // The executor posts a limit order at best bid. CLOB returns status:
+    //   "matched" = filled, "live" = posted but unfilled, others = failed
+    // Only treat as sold if the order actually filled.
+    const orderStatus = (result.status || result.orderStatus || "").toLowerCase();
+    const isFilled = orderStatus === "matched" || orderStatus === "filled";
+
+    if (!isFilled) {
+      // Order posted but NOT filled — cancel it and set a cooldown
+      log("EXEC", `⚠️ SELL NOT FILLED (status: ${orderStatus}) for ${assetId.slice(0,20)} — cancelling unfilled order`);
+      const orderId = result.orderID || result.id || result.order_id;
+      if (orderId) {
+        try {
+          await httpPost("/cancel-order", { orderID: orderId });
+          log("EXEC", `Cancelled unfilled sell order ${orderId} for ${assetId.slice(0,20)}`);
+        } catch (cancelErr) {
+          log("EXEC", `⚠️ Failed to cancel unfilled order: ${cancelErr.message}`);
+        }
+      }
+      // Set a 10-minute cooldown — don't re-trigger immediately
+      asset._sellCooldownUntil = Date.now() + 10 * 60 * 1000;
+      pushAlert("SELL_FAILED", assetId, asset, null, null, 
+        `${reason}: Order posted but NOT filled (status: ${orderStatus}). Cooldown 10min.`);
+      return; // Don't remove from tracking — position still exists
+    }
+
     pushAlert("SELL_EXECUTED", assetId, asset, result.executedPrice, null, 
       `${reason}: Sold ${asset.size} @ ${result.executedPrice}`);
     
@@ -867,7 +896,7 @@ async function executeSell(assetId, asset, reason) {
     subscribedAssets.delete(assetId);
     recentlySold.set(assetId, Date.now());
     persistRecentlySold();
-    log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)} (blocked from re-sync for 30min)`);
+    log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)} (blocked from re-sync for 2h)`);
   } catch (e) {
     log("EXEC", `❌ Auto-sell FAILED: ${e.message}`);
     pushAlert("SELL_FAILED", assetId, asset, null, null, `${reason} sell failed: ${e.message}`);
