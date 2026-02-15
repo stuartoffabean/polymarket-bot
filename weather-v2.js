@@ -41,6 +41,9 @@ const CITIES = {
   'São Paulo':     { lat: -23.5505, lon: -46.6333, unit: 'celsius', aliases: ['Sao Paulo'] },
 };
 
+// US cities eligible for NOAA forecasts
+const US_CITIES = new Set(['New York City', 'Miami', 'Chicago', 'Atlanta', 'Dallas', 'Seattle']);
+
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // ═══════════════════════════════════════════════════════════════
@@ -105,6 +108,116 @@ async function fetchForecast(cityName, cityConfig, targetDate) {
     hourlyTemps: dayTemps,
     highTemp,
     unit: unit === 'fahrenheit' ? '°F' : '°C',
+  };
+}
+
+// ═══════════════════════════════════════════════════════════════
+// NOAA FORECAST (US cities only)
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Fetch NOAA forecast for a US city.
+ * Chain: /points/{lat},{lon} → gridpoint forecast URL → hourly forecast
+ * Returns same format as fetchForecast() or null if unavailable.
+ */
+async function fetchNOAAForecast(cityName, cityConfig, targetDate) {
+  if (!US_CITIES.has(cityName)) return null;
+  
+  try {
+    // Step 1: Get grid point
+    const pointUrl = `https://api.weather.gov/points/${cityConfig.lat.toFixed(4)},${cityConfig.lon.toFixed(4)}`;
+    const pointData = await httpGet(pointUrl);
+    
+    if (!pointData.properties || !pointData.properties.forecastHourly) {
+      console.log(`   ⚠️  NOAA: No grid data for ${cityName}`);
+      return null;
+    }
+    
+    await sleep(200); // NOAA rate limit courtesy
+    
+    // Step 2: Get hourly forecast
+    const hourlyUrl = pointData.properties.forecastHourly;
+    const hourlyData = await httpGet(hourlyUrl);
+    
+    if (!hourlyData.properties || !hourlyData.properties.periods) {
+      console.log(`   ⚠️  NOAA: No hourly periods for ${cityName}`);
+      return null;
+    }
+    
+    // Step 3: Filter to target date and find high temp
+    const periods = hourlyData.properties.periods;
+    const dayTemps = [];
+    
+    for (const period of periods) {
+      const periodDate = period.startTime.slice(0, 10); // YYYY-MM-DD
+      if (periodDate === targetDate) {
+        // NOAA returns Fahrenheit by default for US
+        let temp = period.temperature;
+        if (period.temperatureUnit === 'C' && cityConfig.unit === 'fahrenheit') {
+          temp = temp * 9/5 + 32;
+        } else if (period.temperatureUnit === 'F' && cityConfig.unit === 'celsius') {
+          temp = (temp - 32) * 5/9;
+        }
+        dayTemps.push(temp);
+      }
+    }
+    
+    if (dayTemps.length === 0) return null;
+    
+    const highTemp = Math.max(...dayTemps);
+    const unit = cityConfig.unit === 'fahrenheit' ? '°F' : '°C';
+    
+    console.log(`   📡 NOAA forecast: ${highTemp.toFixed(1)}${unit} (${dayTemps.length} hourly readings)`);
+    
+    return {
+      city: cityName,
+      date: targetDate,
+      hourlyTemps: dayTemps,
+      highTemp,
+      unit,
+      source: 'NOAA',
+    };
+  } catch (err) {
+    console.log(`   ⚠️  NOAA fetch failed for ${cityName}: ${err.message}`);
+    return null;
+  }
+}
+
+/**
+ * Get best forecast for a city — uses both NOAA + Open-Meteo for US cities,
+ * averages them for higher confidence. Falls back to Open-Meteo only for intl.
+ */
+async function getBestForecast(cityName, cityConfig, targetDate) {
+  const openMeteo = await fetchForecast(cityName, cityConfig, targetDate);
+  
+  if (!US_CITIES.has(cityName)) {
+    if (openMeteo) openMeteo.source = 'Open-Meteo';
+    return openMeteo;
+  }
+  
+  await sleep(300);
+  const noaa = await fetchNOAAForecast(cityName, cityConfig, targetDate);
+  
+  if (!openMeteo && !noaa) return null;
+  if (!noaa) { openMeteo.source = 'Open-Meteo'; return openMeteo; }
+  if (!openMeteo) return noaa;
+  
+  // Both available — average the high temps, reduce uncertainty
+  const avgHigh = (openMeteo.highTemp + noaa.highTemp) / 2;
+  const spread = Math.abs(openMeteo.highTemp - noaa.highTemp);
+  
+  console.log(`   🔀 Ensemble: Open-Meteo=${openMeteo.highTemp.toFixed(1)} NOAA=${noaa.highTemp.toFixed(1)} → avg=${avgHigh.toFixed(1)} spread=${spread.toFixed(1)}`);
+  
+  return {
+    city: cityName,
+    date: targetDate,
+    hourlyTemps: openMeteo.hourlyTemps,
+    highTemp: avgHigh,
+    unit: openMeteo.unit,
+    source: 'Ensemble(NOAA+Open-Meteo)',
+    noaaHigh: noaa.highTemp,
+    openMeteoHigh: openMeteo.highTemp,
+    spread,
   };
 }
 
@@ -289,21 +402,21 @@ async function scanWeatherMarkets() {
       continue;
     }
     
-    // 4. Fetch forecast
+    // 4. Fetch forecast (ensemble: NOAA + Open-Meteo for US, Open-Meteo only for intl)
     let forecast;
     try {
-      forecast = await fetchForecast(city, cityConfig, date);
+      console.log(`🏙️  ${city} — ${date} (resolves in ${hoursUntil.toFixed(0)}h)`);
+      forecast = await getBestForecast(city, cityConfig, date);
       if (!forecast) {
-        console.log(`⚠️  No forecast data for ${city} on ${date}`);
+        console.log(`   ⚠️  No forecast data for ${city} on ${date}`);
         continue;
       }
     } catch (err) {
-      console.log(`❌ Forecast fetch failed for ${city}: ${err.message}`);
+      console.log(`   ❌ Forecast fetch failed for ${city}: ${err.message}`);
       continue;
     }
     
-    console.log(`🏙️  ${city} — ${date} (resolves in ${hoursUntil.toFixed(0)}h)`);
-    console.log(`   Forecast high: ${forecast.highTemp.toFixed(1)}${forecast.unit}`);
+    console.log(`   Forecast high: ${forecast.highTemp.toFixed(1)}${forecast.unit} [${forecast.source}]`);
     
     // 5. Parse market buckets
     const activeMarkets = (event.markets || []).filter(m => m.active && !m.closed);
@@ -455,4 +568,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { scanWeatherMarkets, fetchForecast, computeBucketProbabilities, CITIES };
+module.exports = { scanWeatherMarkets, fetchForecast, fetchNOAAForecast, getBestForecast, computeBucketProbabilities, CITIES };
