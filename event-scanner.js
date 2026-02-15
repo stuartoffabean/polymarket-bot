@@ -265,6 +265,50 @@ function analyzeNews(articles, question) {
 
 // ── Step 3: Edge Detection ───────────────────────────────────────────────────
 
+// ── Question-Relevance Check ─────────────────────────────────────────────────
+// Detects when news sentiment answers a DIFFERENT question than the market asks.
+// e.g., "US wins gold medals" (true) ≠ "US wins the MOST gold medals" (unlikely)
+
+const SUPERLATIVE_PATTERNS = [
+  { regex: /\b(the )?most\b/i, type: 'superlative' },
+  { regex: /\bwin .*(championship|title|trophy|finals|series)\b/i, type: 'championship' },
+  { regex: /\b(first|1st) (to|place)\b/i, type: 'ranking' },
+  { regex: /\babove \$?[\d,]+\b/i, type: 'threshold' },
+  { regex: /\bbelow \$?[\d,]+\b/i, type: 'threshold' },
+  { regex: /\bbetween .* and\b/i, type: 'range' },
+  { regex: /\bmore than\b/i, type: 'comparison' },
+  { regex: /\bfewer than\b/i, type: 'comparison' },
+  { regex: /\beat least\b/i, type: 'minimum' },
+  { regex: /\bexactly\b/i, type: 'exact' },
+  { regex: /\bhighest\b/i, type: 'superlative' },
+  { regex: /\blowest\b/i, type: 'superlative' },
+  { regex: /\bbest\b/i, type: 'superlative' },
+  { regex: /\brecord\b/i, type: 'superlative' },
+];
+
+function checkQuestionRelevance(question, headlines) {
+  const q = question.toLowerCase();
+  
+  // Detect if the market question has a superlative/comparative/threshold qualifier
+  const matchedQualifiers = SUPERLATIVE_PATTERNS.filter(p => p.regex.test(q));
+  if (matchedQualifiers.length === 0) return { relevant: true, penalty: 0 };
+  
+  // Check if any headline actually addresses the specific qualifier
+  const headlineText = headlines.map(h => h.toLowerCase()).join(' ');
+  const qualifierInNews = SUPERLATIVE_PATTERNS.some(p => p.regex.test(headlineText));
+  
+  // If market asks a superlative question but news just confirms the general topic
+  // (e.g., "US wins golds" vs "Will US win the MOST golds"), the news isn't answering
+  // the actual question. The news is irrelevant — treat confidence as if we have no signal.
+  if (!qualifierInNews) {
+    const types = matchedQualifiers.map(m => m.type);
+    console.log(`[RELEVANCE] Question has qualifiers [${types.join(',')}] but news doesn't address them — REJECTING (news doesn't answer the question)`);
+    return { relevant: false, reject: true, types };
+  }
+  
+  return { relevant: true, penalty: 0 };
+}
+
 function detectEdge(market, news) {
   // Get current YES price
   let yesPrice = 0.5;
@@ -277,16 +321,27 @@ function detectEdge(market, news) {
     return null; // No clear signal
   }
 
+  // Check if news actually answers the market question (not just the topic)
+  const question = market.question || '';
+  const relevance = checkQuestionRelevance(question, news.topHeadlines || []);
+  
+  if (!relevance.relevant && relevance.reject) {
+    console.log(`[EDGE] REJECTED — news doesn't answer the specific question (qualifiers: ${relevance.types})`);
+    return null; // No edge — news is about the topic but doesn't address the actual question
+  }
+  
+  let adjustedConfidence = news.confidence;
+
   let estimatedProb, currentPrice, outcome;
   
   if (news.impliedOutcome === 'Yes') {
     outcome = 'Yes';
     currentPrice = yesPrice;
-    estimatedProb = news.confidence;
+    estimatedProb = adjustedConfidence;
   } else {
     outcome = 'No';
     currentPrice = 1 - yesPrice;
-    estimatedProb = news.confidence;
+    estimatedProb = adjustedConfidence;
   }
 
   // Boost confidence if news is spiking with strong signal
