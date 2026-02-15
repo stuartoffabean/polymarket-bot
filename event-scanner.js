@@ -74,6 +74,9 @@ async function fetchGoogleTrends(query) {
   }
 }
 
+// External data enrichment
+const { enrichMarket, adjustEdgeFromEnrichment } = require('./enrichment');
+
 // Sentiment keywords
 const POSITIVE_SIGNALS = ['confirmed', 'approved', 'passed', 'signed', 'won', 'elected', 'achieved',
   'completed', 'resolved', 'agreed', 'breakthrough', 'victory', 'success', 'announces', 'officially',
@@ -510,6 +513,23 @@ async function runScan() {
       const edge = detectEdge(market, news);
       if (!edge) continue;
 
+      // Step 3.5: External data enrichment
+      let enrichments = null;
+      try {
+        enrichments = await enrichMarket(question);
+        if (enrichments) {
+          const adj = adjustEdgeFromEnrichment(enrichments, edge.estimatedProb, edge.outcome);
+          if (adj) {
+            console.log(`[ENRICH] ${question.slice(0, 60)} — ${adj.reasons.join(', ')} (+${(adj.adjustment*100).toFixed(0)}%)`);
+            edge.estimatedProb = adj.adjustedConfidence;
+            edge.edge = edge.estimatedProb - edge.currentPrice;
+            edge._enrichmentBoost = adj;
+          }
+        }
+      } catch (e) {
+        console.error('[ENRICH] Error:', e.message);
+      }
+
       // Step 4: Scoring
       const { score, reasons } = scoreOpportunity(market, news, edge);
       if (score < MIN_SCORE) continue;
@@ -553,6 +573,8 @@ async function runScan() {
           spiking: news.spiking,
         },
         trends: news._trends || null,
+        enrichments: enrichments || null,
+        enrichmentBoost: edge._enrichmentBoost || null,
       };
 
       newOpportunities.push(opp);
