@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-15T15:50:16.125Z",
+  "timestamp": "2026-02-15T15:52:03.449Z",
   "portfolio": {
     "trackedPositions": 14,
-    "portfolioValue": 399.661692,
-    "positionValue": 151.60381200000003,
-    "cashBalance": 248.05788,
+    "portfolioValue": 399.33758580000006,
+    "positionValue": 151.11770580000004,
+    "cashBalance": 248.21988,
     "dailyStartValue": 410.155449
   },
   "risk": {
@@ -23,7 +23,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 4703.460323079
+    "uptime": 4809.986677833
   },
   "positions": [
     {
@@ -106,7 +106,7 @@
       "size": 25,
       "avgPrice": 0.9399,
       "currentBid": 0.955,
-      "currentAsk": 0.957,
+      "currentAsk": 0.958,
       "costBasis": "23.50",
       "currentValue": "23.88",
       "pnl": "0.38",
@@ -217,17 +217,17 @@
       "takeProfit": 0.5
     },
     {
-      "id": "37045989981370646785",
-      "fullAssetId": "37045989981370646785565987640302980722922490568913077517676058505553216044411",
+      "id": "56489028549550467921",
+      "fullAssetId": "56489028549550467921814118328415903635417326244285958217167410740105550859398",
       "outcome": "Yes",
-      "size": 18.0036,
-      "avgPrice": 0.07,
-      "currentBid": 0.03,
-      "currentAsk": 0.09,
-      "costBasis": "1.26",
-      "currentValue": "0.54",
-      "pnl": "-0.72",
-      "pnlPct": "-57.1%",
+      "size": 18.0006,
+      "avgPrice": 0.0109,
+      "currentBid": 0.003,
+      "currentAsk": 0.014,
+      "costBasis": "0.20",
+      "currentValue": "0.05",
+      "pnl": "-0.14",
+      "pnlPct": "-72.5%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     }
@@ -263,7 +263,7 @@
   ],
   "trades": [
     {
-      "timestamp": "2026-02-15T15:50:16.124Z",
+      "timestamp": "2026-02-15T15:52:03.448Z",
       "market": "0x9fdd3e8b8a4f433d2b127cca1c7dc0e617c078ea16eb24d3ec16300787e99419",
       "outcome": "Denmark",
       "side": "buy",
@@ -276,7 +276,7 @@
       "tokenId": "17816702236900425865568306352615335050535613858611623099670723569975538116721"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.448Z",
       "market": "0x719a3035c825fc80c183e1e70a9b8a053ee72de464badc0a71bd3dd63ffd5bbb",
       "outcome": "Yes",
       "side": "buy",
@@ -289,7 +289,7 @@
       "tokenId": "4041589306676725212214754350234225640967187610933746971905383811151582011379"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.448Z",
       "market": "Norway Most Total Medals Winter Olympics",
       "outcome": "Yes",
       "side": "buy",
@@ -302,7 +302,7 @@
       "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.448Z",
       "market": "0xfee2a7cc1949eb30df489993460b32992218bd29b15e87b117715071ca581ef6",
       "outcome": "Yes",
       "side": "buy",
@@ -315,7 +315,7 @@
       "tokenId": "45389975275559493805521933835573186197410218531592213078479110681779711897538"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.448Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
@@ -328,7 +328,7 @@
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.448Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
@@ -341,7 +341,7 @@
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.448Z",
       "market": "0x90bb4c9b8fdafccee5359706860565115ae3f19264469a719c696b0762ccd16c",
       "outcome": "Yes",
       "side": "buy",
@@ -354,7 +354,7 @@
       "tokenId": "73002776802776123994946750806885447862269394307070074560451323297088045954726"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.448Z",
       "market": "0x15eec799be53bc8fe57134b51e0ecbfa9407d8f141876aad6e5718adef9a7276",
       "outcome": "Yes",
       "side": "buy",
@@ -367,7 +367,7 @@
       "tokenId": "73102171968254150175441789734331062683107726947580722925006610769377018279866"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.449Z",
       "market": "Doncic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -380,20 +380,20 @@
       "tokenId": "89110596788673536475065853727140488937259064164063660201050220270400840228269"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
-      "market": "0x92042244cab005f9f5bac4f1b224e611ce274702ee1abe1e76ca388738e70bc3",
+      "timestamp": "2026-02-15T15:52:03.449Z",
+      "market": "0xc2c24e3b9967b6cc92d413e38264dbe07f3cc57286b64c4fc54d6cce1b694b56",
       "outcome": "Yes",
       "side": "buy",
-      "price": 0.07,
-      "size": 1.2604,
-      "shares": 18.0036,
-      "currentPrice": 0.03,
-      "pnl": -0.72,
-      "pnlPct": "-57.1%",
-      "tokenId": "37045989981370646785565987640302980722922490568913077517676058505553216044411"
+      "price": 0.0109,
+      "size": 0.1979,
+      "shares": 18.0006,
+      "currentPrice": 0.003,
+      "pnl": -0.14,
+      "pnlPct": "-71.9%",
+      "tokenId": "56489028549550467921814118328415903635417326244285958217167410740105550859398"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.449Z",
       "market": "0x9f1005862030d9a2780a0683cd0d680f27e426e6efc9445af2ff2270edcee094",
       "outcome": "Yes",
       "side": "buy",
@@ -406,7 +406,7 @@
       "tokenId": "34031820758254992803859804442973314667344212273112379288461599897450876246015"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.449Z",
       "market": "0x8e97d4425dd885462f62eeeacd212a89854f3284cc4d4dfa1518965df0e916b4",
       "outcome": "Yes",
       "side": "buy",
@@ -419,7 +419,7 @@
       "tokenId": "8010270730382868588546130570365383621891724310853848910851331100920214793828"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.449Z",
       "market": "0x80c0af8a0d5cfd3f5b5ec6a67c1d2a569750f2eab57c946bad1be670d66b4b6a",
       "outcome": "Yes",
       "side": "buy",
@@ -432,7 +432,7 @@
       "tokenId": "96056737241459852464668495438249705146982084684639300055750446226975465960678"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.449Z",
       "market": "0x5c011f79606c7522336e06dcad98728c24927cd9b100fb5bedfe2debb1542e0f",
       "outcome": "Yes",
       "side": "buy",
@@ -445,7 +445,7 @@
       "tokenId": "6648898655936574004442985809763692949982309217460137876687892597824326297102"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.449Z",
       "market": "0xb9ed449e81a990c75c5b63bfb478fde4c77d200412b93b5ec07fa4c723a38317",
       "outcome": "Yes",
       "side": "buy",
@@ -458,7 +458,7 @@
       "tokenId": "14588689847155710140084925630833413220311051563779237763910268505586365020396"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.449Z",
       "market": "0xcd851128a667ff4f37805ce75f9b8d9f66c6e61102e916b505ba473487c94ba7",
       "outcome": "Yes",
       "side": "buy",
@@ -471,7 +471,7 @@
       "tokenId": "19779568221493895952676865609231089464510850574582508381986852563307884493501"
     },
     {
-      "timestamp": "2026-02-15T15:50:16.125Z",
+      "timestamp": "2026-02-15T15:52:03.449Z",
       "market": "Jokic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -488,7 +488,7 @@
     {
       "name": "Speculative",
       "trades": 14,
-      "pnl": -2.69,
+      "pnl": -2.1100000000000003,
       "wins": 2,
       "enabled": true,
       "winRate": 0.14285714285714285
@@ -511,18 +511,6 @@
     }
   ],
   "activity": [
-    {
-      "time": "2026-02-15T15:16:51.556Z",
-      "type": "TAKE_PROFIT",
-      "message": "AUTO-SELLING [unknown]",
-      "outcome": "Yes"
-    },
-    {
-      "time": "2026-02-15T15:16:53.156Z",
-      "type": "SELL_EXECUTED",
-      "message": "STOP_LOSS: Sold 8.581 @ 0.001",
-      "outcome": "Yes"
-    },
     {
       "time": "2026-02-15T15:16:53.934Z",
       "type": "SELL_EXECUTED",
@@ -629,23 +617,23 @@
       "type": "SELL_FAILED",
       "message": "STOP_LOSS: Order posted but NOT filled (status: delayed). Cooldown 10min.",
       "outcome": "Yes"
+    },
+    {
+      "time": "2026-02-15T15:51:52.436Z",
+      "type": "STOP_LOSS",
+      "message": "AUTO-SELLING [unknown]",
+      "outcome": "Yes"
+    },
+    {
+      "time": "2026-02-15T15:51:55.321Z",
+      "type": "SELL_FAILED",
+      "message": "STOP_LOSS: Order posted but NOT filled (status: delayed). Cooldown 10min.",
+      "outcome": "Yes"
     }
   ],
-  "cash": 247.85988,
+  "cash": 248.21988,
   "ledger": {
     "openPositions": [
-      {
-        "asset_id": "56489028549550467921814118328415903635417326244285958217167410740105550859398",
-        "market": "0xc2c24e3b9967b6cc92d413e38264dbe07f3cc57286b64c4fc54d6cce1b694b56",
-        "outcome": "Yes",
-        "size": 18,
-        "avgPrice": "0.0098",
-        "costBasis": "0.18",
-        "totalBought": 29.990625,
-        "totalSold": 11.99,
-        "realizedPnl": "-0.03",
-        "status": "OPEN"
-      },
       {
         "asset_id": "6648898655936574004442985809763692949982309217460137876687892597824326297102",
         "market": "0x5c011f79606c7522336e06dcad98728c24927cd9b100fb5bedfe2debb1542e0f",
@@ -852,6 +840,20 @@
       }
     ],
     "closedPositions": [
+      {
+        "asset_id": "56489028549550467921814118328415903635417326244285958217167410740105550859398",
+        "market": "0xc2c24e3b9967b6cc92d413e38264dbe07f3cc57286b64c4fc54d6cce1b694b56",
+        "outcome": "Yes",
+        "totalBought": 29.990625,
+        "totalSold": 29.990000000000002,
+        "avgBuyPrice": "0.0098",
+        "avgSellPrice": "0.0046",
+        "totalCost": "0.29",
+        "totalProceeds": "0.14",
+        "realizedPnl": "-0.16",
+        "realizedPnlPct": "-53.1",
+        "status": "CLOSED"
+      },
       {
         "asset_id": "37045989981370646785565987640302980722922490568913077517676058505553216044411",
         "market": "0x92042244cab005f9f5bac4f1b224e611ce274702ee1abe1e76ca388738e70bc3",
@@ -1542,7 +1544,7 @@
         "asset_id": "87034544787508362600520628155582601877854843596079024073643613177448200402413",
         "market": "New York City ≤33°F 2026-02-13",
         "outcome": "Yes",
-        "totalBought": 271.83200000000005,
+        "totalBought": 271.832,
         "totalSold": 271.82818100000003,
         "avgBuyPrice": "0.0069",
         "avgSellPrice": "0.0101",
@@ -1861,9 +1863,17 @@
         "status": "CLOSED"
       }
     ],
-    "totalRealizedPnl": "-66.94",
-    "tradeCount": 455,
+    "totalRealizedPnl": "-67.10",
+    "tradeCount": 456,
     "tradeLog": [
+      {
+        "asset_id": "56489028549550467921814118328415903635417326244285958217167410740105550859398",
+        "market": "0xc2c24e3b9967b6cc92d413e38264dbe07f3cc57286b64c4fc54d6cce1b694b56",
+        "outcome": "Yes",
+        "side": "SELL",
+        "size": 18,
+        "price": 0.003
+      },
       {
         "asset_id": "37045989981370646785565987640302980722922490568913077517676058505553216044411",
         "market": "0x92042244cab005f9f5bac4f1b224e611ce274702ee1abe1e76ca388738e70bc3",
@@ -1877,7 +1887,7 @@
         "market": "0xc2c24e3b9967b6cc92d413e38264dbe07f3cc57286b64c4fc54d6cce1b694b56",
         "outcome": "Yes",
         "side": "BUY",
-        "size": 3.84,
+        "size": 14.16,
         "price": 0.011
       },
       {
@@ -1885,7 +1895,7 @@
         "market": "0xc2c24e3b9967b6cc92d413e38264dbe07f3cc57286b64c4fc54d6cce1b694b56",
         "outcome": "Yes",
         "side": "BUY",
-        "size": 14.16,
+        "size": 3.84,
         "price": 0.011
       },
       {
@@ -2015,28 +2025,20 @@
         "side": "BUY",
         "size": 8.61,
         "price": 0.004
-      },
-      {
-        "asset_id": "6648898655936574004442985809763692949982309217460137876687892597824326297102",
-        "market": "0x5c011f79606c7522336e06dcad98728c24927cd9b100fb5bedfe2debb1542e0f",
-        "outcome": "Yes",
-        "side": "BUY",
-        "size": 1.16,
-        "price": 0.001
       }
     ]
   },
   "tradeHistory": {
     "openPositions": [
       {
-        "asset_id": "37045989981370646785565987640302980722922490568913077517676058505553216044411",
-        "market": "Will the highest temperature in London be 10°C on February 15?",
+        "asset_id": "56489028549550467921814118328415903635417326244285958217167410740105550859398",
+        "market": "Will the highest temperature in London be 11°C on February 15?",
         "outcome": "Yes",
         "size": 18,
-        "avgPrice": "0.1092",
-        "costBasis": "1.97",
-        "totalBought": 51.993669,
-        "totalSold": 33.99,
+        "avgPrice": "0.0098",
+        "costBasis": "0.18",
+        "totalBought": 29.990625,
+        "totalSold": 11.99,
         "realizedPnl": "-0.03",
         "status": "OPEN"
       },
@@ -2331,6 +2333,20 @@
     ],
     "closedPositions": [
       {
+        "asset_id": "37045989981370646785565987640302980722922490568913077517676058505553216044411",
+        "market": "Will the highest temperature in London be 10°C on February 15?",
+        "outcome": "Yes",
+        "totalBought": 51.993669,
+        "totalSold": 51.99,
+        "avgBuyPrice": "0.1092",
+        "avgSellPrice": "0.0777",
+        "totalCost": "5.68",
+        "totalProceeds": "4.04",
+        "realizedPnl": "-1.64",
+        "realizedPnlPct": "-28.9",
+        "status": "CLOSED"
+      },
+      {
         "asset_id": "38438772155524797227604156147702318731495933573080859210052483248896070461765",
         "market": "Will the price of Ethereum be between $2,000 and $2,100 on February 15?",
         "outcome": "Yes",
@@ -2468,20 +2484,6 @@
         "totalProceeds": "2.26",
         "realizedPnl": "-3.05",
         "realizedPnlPct": "-57.4",
-        "status": "CLOSED"
-      },
-      {
-        "asset_id": "56489028549550467921814118328415903635417326244285958217167410740105550859398",
-        "market": "Will the highest temperature in London be 11°C on February 15?",
-        "outcome": "Yes",
-        "totalBought": 11.990625,
-        "totalSold": 11.99,
-        "avgBuyPrice": "0.0080",
-        "avgSellPrice": "0.0070",
-        "totalCost": "0.10",
-        "totalProceeds": "0.08",
-        "realizedPnl": "-0.01",
-        "realizedPnlPct": "-12.5",
         "status": "CLOSED"
       },
       {
@@ -3227,8 +3229,8 @@
         "status": "CLOSED"
       }
     ],
-    "totalRealizedPnl": "-55.32",
-    "totalTrades": 452,
+    "totalRealizedPnl": "-56.94",
+    "totalTrades": 455,
     "source": "data-api"
   },
   "circuitBreakerTripped": false,
