@@ -256,6 +256,8 @@ let rateLimitResumeAt = null;
 // systemReady stays false until: (1) syncPositions completed at least once AND
 // (2) ≥80% of tracked positions have received a price update (WS or REST).
 let systemReady = false;
+let systemReadyAt = 0;  // timestamp when system became ready
+const STARTUP_GRACE_PERIOD = 60 * 1000; // 60s grace period — no auto-executes after restart
 let syncCompletedOnce = false;
 
 // === HELPERS ===
@@ -794,6 +796,12 @@ function persistRecentlySold() {
 }
 
 async function executeSell(assetId, asset, reason) {
+  // STARTUP GRACE PERIOD — don't auto-execute for 60s after system becomes ready
+  // This prevents false triggers from stale positions that get re-synced on restart
+  if (systemReadyAt > 0 && (Date.now() - systemReadyAt) < STARTUP_GRACE_PERIOD) {
+    log("EXEC", `⏸️ GRACE PERIOD: Skipping ${reason} for ${assetId.slice(0,20)} — ${((STARTUP_GRACE_PERIOD - (Date.now() - systemReadyAt)) / 1000).toFixed(0)}s remaining`);
+    return;
+  }
   // Check sell lock — only one sell per asset at a time
   if (sellLocks.has(assetId)) {
     log("EXEC", `🔒 SELL LOCKED: ${assetId.slice(0,20)} — sell already in progress, skipping duplicate ${reason}`);
@@ -887,7 +895,8 @@ function checkSystemReady() {
       return false;
     }
     systemReady = true;
-    log("INIT", `✅ System ready — ${priced}/${total} positions priced (${(pct * 100).toFixed(0)}%). Monitoring active.`);
+    systemReadyAt = Date.now();
+    log("INIT", `✅ System ready — ${priced}/${total} positions priced (${(pct * 100).toFixed(0)}%). Auto-execute grace period: 60s.`);
     const posVal = computePositionValue();
     const totalVal = posVal + cachedCashBalance;
     currentPortfolioValue = totalVal;
