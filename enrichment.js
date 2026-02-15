@@ -41,22 +41,21 @@ function httpGet(url, timeoutMs = 10000, headers = {}) {
 // ═══════════════════════════════════════════════════════════════════
 
 const ODDSBLAZE_KEY = process.env.ODDSBLAZE_API_KEY || '';
-const ODDSBLAZE_BASE = 'https://data.oddsblaze.com/v1';
+const ODDSBLAZE_BASE = 'https://odds.oddsblaze.com';
 
-// Sport keyword mapping for OddsBlaze API
+// Sport keyword mapping for OddsBlaze league IDs
 const SPORT_KEYWORDS = {
-  'nfl': 'football_nfl', 'nba': 'basketball_nba', 'mlb': 'baseball_mlb',
-  'nhl': 'icehockey_nhl', 'mls': 'soccer_usa_mls', 'ncaa': 'football_ncaaf',
-  'college basketball': 'basketball_ncaab', 'college football': 'football_ncaaf',
-  'premier league': 'soccer_epl', 'champions league': 'soccer_uefa_champs_league',
-  'la liga': 'soccer_spain_la_liga', 'serie a': 'soccer_italy_serie_a',
-  'bundesliga': 'soccer_germany_bundesliga', 'ligue 1': 'soccer_france_ligue_one',
-  'ufc': 'mma_mixed_martial_arts', 'boxing': 'boxing_boxing',
-  'tennis': 'tennis_atp', 'pga': 'golf_pga', 'f1': 'motorsport_formula_one',
-  'super bowl': 'football_nfl', 'world cup': 'soccer_fifa_world_cup',
-  'olympics': null, // No direct mapping
-  'hockey': 'icehockey_nhl', 'football': 'football_nfl', 'basketball': 'basketball_nba',
-  'baseball': 'baseball_mlb', 'soccer': 'soccer_epl',
+  'nfl': 'nfl', 'nba': 'nba', 'mlb': 'mlb', 'nhl': 'nhl', 'mls': 'mls',
+  'ncaa basketball': 'ncaab', 'college basketball': 'ncaab', 'ncaab': 'ncaab',
+  'ncaa football': 'ncaaf', 'college football': 'ncaaf', 'ncaaf': 'ncaaf',
+  'premier league': 'epl', 'champions league': 'ucl', 'la liga': 'laliga',
+  'serie a': 'seriea', 'bundesliga': 'bundesliga', 'ligue 1': 'ligue1',
+  'ufc': 'ufc', 'mma': 'ufc', 'boxing': 'boxing',
+  'tennis': 'tennis', 'pga': 'pga', 'f1': 'f1',
+  'super bowl': 'nfl', 'world cup': 'fifa',
+  'olympics': null,
+  'hockey': 'nhl', 'football': 'nfl', 'basketball': 'nba',
+  'baseball': 'mlb', 'soccer': 'epl',
 };
 
 function detectSport(question) {
@@ -94,58 +93,77 @@ async function enrichWithOddsBlaze(question) {
   if (!sportMatch || !sportMatch.sport) return null;
 
   try {
-    const url = `${ODDSBLAZE_BASE}/odds/${sportMatch.sport}?key=${ODDSBLAZE_KEY}&market=Moneyline`;
-    const r = await httpGet(url);
-    if (r.status !== 200) return null;
-    const data = JSON.parse(r.data);
-    
     const teams = extractTeamsOrPlayers(question);
     if (teams.length === 0) return null;
 
-    // Find matching games
-    const games = data.games || data.data || [];
-    for (const game of games) {
-      const gameName = `${game.home_team || ''} ${game.away_team || ''} ${game.teams?.join(' ') || ''}`.toLowerCase();
-      const matched = teams.filter(t => gameName.includes(t.toLowerCase()));
-      if (matched.length === 0) continue;
+    // OddsBlaze: one sportsbook per call, uses probability format for easy parsing
+    // Query multiple books for consensus
+    const sportsbooks = ['pinnacle', 'draftkings', 'fanduel', 'betmgm', 'bovada'];
+    const allOdds = {}; // teamName -> [probabilities]
+    let matchedGame = null;
+    let booksQueried = 0;
 
-      // Extract consensus odds across sportsbooks
-      const odds = game.odds || game.sportsbooks || [];
-      if (!Array.isArray(odds) || odds.length === 0) continue;
-
-      // Calculate average implied probability from sportsbooks
-      const probabilities = {};
-      for (const book of odds) {
-        const outcomes = book.outcomes || book.odds || [];
-        for (const o of outcomes) {
-          const name = o.name || o.team || '';
-          const price = o.price || o.odds || 0;
-          if (!probabilities[name]) probabilities[name] = [];
-          // Convert American odds to implied probability
-          let impliedProb;
-          if (price > 0) impliedProb = 100 / (price + 100);
-          else if (price < 0) impliedProb = Math.abs(price) / (Math.abs(price) + 100);
-          else continue;
-          probabilities[name].push(impliedProb);
+    for (const book of sportsbooks) {
+      try {
+        const url = `${ODDSBLAZE_BASE}/?key=${ODDSBLAZE_KEY}&sportsbook=${book}&league=${sportMatch.sport}&market=Moneyline&price=probability&main=true`;
+        const r = await httpGet(url);
+        if (r.status !== 200) continue;
+        const data = JSON.parse(r.data);
+        const events = data.events || [];
+        
+        for (const ev of events) {
+          const awayName = ev.teams?.away?.name || '';
+          const homeName = ev.teams?.home?.name || '';
+          const evName = `${awayName} ${homeName}`.toLowerCase();
+          // Match any team word (e.g., "Charlotte" matches "Charlotte 49ers")
+          const matched = teams.filter(t => {
+            const tl = t.toLowerCase();
+            if (evName.includes(tl)) return true;
+            // Try individual words from team name
+            return tl.split(' ').some(w => w.length > 3 && evName.includes(w));
+          });
+          if (matched.length === 0) continue;
+          
+          matchedGame = { name: `${awayName} @ ${homeName}`, start: ev.date || null, matched };
+          
+          // OddsBlaze odds are in events[].odds[] array
+          const odds = ev.odds || [];
+          for (const o of odds) {
+            const name = o.name || '';
+            const rawPrice = String(o.price || '').replace('%', '');
+            const prob = parseFloat(rawPrice) || 0;
+            if (!name || !prob) continue;
+            // price comes as "94.29%" string — parse to 0-1 range
+            const probVal = prob > 1 ? prob / 100 : prob;
+            if (!allOdds[name]) allOdds[name] = [];
+            allOdds[name].push(probVal);
+          }
+          booksQueried++;
+          break; // Found the game in this book
         }
+        await sleep(300); // Rate limit between sportsbook queries
+      } catch (e) {
+        console.error(`[ODDSBLAZE] ${book}:`, e.message);
       }
-
-      // Average across books
-      const consensus = {};
-      for (const [name, probs] of Object.entries(probabilities)) {
-        consensus[name] = +(probs.reduce((a, b) => a + b, 0) / probs.length).toFixed(4);
-      }
-
-      return {
-        source: 'oddsblaze',
-        sport: sportMatch.sport,
-        matchedTeams: matched,
-        consensus,
-        numBooks: odds.length,
-        gameTime: game.commence_time || game.start_time || null,
-      };
     }
-    return null;
+
+    if (!matchedGame || Object.keys(allOdds).length === 0) return null;
+
+    // Average across books for consensus probability
+    const consensus = {};
+    for (const [name, probs] of Object.entries(allOdds)) {
+      consensus[name] = +(probs.reduce((a, b) => a + b, 0) / probs.length).toFixed(4);
+    }
+
+    return {
+      source: 'oddsblaze',
+      sport: sportMatch.sport,
+      game: matchedGame.name,
+      matchedTeams: matchedGame.matched,
+      consensus,
+      numBooks: booksQueried,
+      gameTime: matchedGame.start,
+    };
   } catch (e) {
     console.error('[ODDSBLAZE]', e.message);
     return null;
