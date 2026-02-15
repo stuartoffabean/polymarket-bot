@@ -596,6 +596,70 @@ async function runScan() {
           `[${reasons.join(', ')}]`;
         sendTelegramAlert(msg);
       }
+
+      // ── AUTO-EXECUTE: score >= 8 AND edge >= 15% ──
+      // Score → conviction: 8=low(5%), 9=medium(10%), 10=high(15%)
+      // Sizing is done by the executor's /sizing endpoint using conviction level
+      // All risk gates (single position cap, daily budget, directional cap, cash reserve,
+      // entry quality, depth, spread, correlation) enforced by /execute-opportunity
+      if (score >= 8 && edge.edge >= 0.15 && tokenId) {
+        const conviction = score >= 10 ? 3 : score >= 9 ? 2 : 1;
+        try {
+          // Step 1: Get recommended size from executor
+          const sizingUrl = `http://localhost:3002/sizing?price=${edge.currentPrice.toFixed(4)}&conviction=${conviction}&hoursToResolution=${opp.hoursToResolution || 0}&edge=${(edge.edge*100).toFixed(0)}`;
+          const sizingResp = await httpGet(sizingUrl, 5000);
+          const sizing = JSON.parse(sizingResp.data);
+
+          if (sizing.recommendedShares <= 0) {
+            console.log(`[AUTO-EXEC] Sizing returned 0 shares for ${question.slice(0,50)} — skipping (${sizing.entryQualityGate || 'budget exhausted'})`);
+            opp.autoExecResult = { status: 'SKIPPED', reason: 'sizing_zero', detail: sizing };
+          } else {
+            console.log(`[AUTO-EXEC] ${question.slice(0,50)} — conviction ${conviction}, ${sizing.recommendedShares} shares @ ${edge.currentPrice.toFixed(2)} ($${sizing.recommendedCost})`);
+
+            // Step 2: Execute via /execute-opportunity (validates all risk gates)
+            const execBody = JSON.stringify({
+              tokenID: tokenId,
+              price: edge.currentPrice.toFixed(4),
+              size: sizing.recommendedShares,
+              side: 'BUY',
+              market: question.slice(0, 80),
+              thesis: `[AUTO] ${opp.catalyst.slice(0, 200)}`,
+              invalidation: `Edge drops below 5% or news reversal`,
+              hoursToResolution: opp.hoursToResolution || null,
+              edge: (edge.edge * 100).toFixed(0) + '%',
+              slug: market.slug || market._eventSlug || null,
+              conditionId: market.conditionId || null,
+              strategy: 'event-scanner',
+            });
+
+            const execResp = await new Promise((resolve, reject) => {
+              const req = http.request({
+                hostname: 'localhost', port: 3002, path: '/execute-opportunity',
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+              }, res => {
+                let d = ''; res.on('data', c => d += c);
+                res.on('end', () => resolve({ status: res.statusCode, data: d }));
+              });
+              req.on('error', reject);
+              req.setTimeout(30000, () => { req.destroy(); reject(new Error('timeout')); });
+              req.end(execBody);
+            });
+
+            const result = JSON.parse(execResp.data);
+            if (execResp.status === 200) {
+              console.log(`[AUTO-EXEC] ✅ EXECUTED: ${sizing.recommendedShares} shares @ ${edge.currentPrice.toFixed(2)} — ${question.slice(0,50)}`);
+              opp.autoExecResult = { status: 'EXECUTED', shares: sizing.recommendedShares, cost: sizing.recommendedCost, conviction };
+              opp.status = 'executed';
+            } else {
+              console.log(`[AUTO-EXEC] ❌ BLOCKED: ${result.error || 'unknown'} — ${question.slice(0,50)}`);
+              opp.autoExecResult = { status: 'BLOCKED', reason: result.error, detail: result.riskResult?.checks?.filter(c => c.status === 'BLOCKED') || null };
+            }
+          }
+        } catch (e) {
+          console.error(`[AUTO-EXEC] Error for ${question.slice(0,50)}:`, e.message);
+          opp.autoExecResult = { status: 'ERROR', error: e.message };
+        }
+      }
     }
 
     // Merge with existing opportunities (don't overwrite, append new)

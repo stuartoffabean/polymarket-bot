@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-02-15T04:00:24.750Z",
+  "lastUpdated": "2026-02-15T08:09:37.789Z",
   "generatedBy": "trade-reporter.js v1.0",
   "portfolio": {
-    "totalValue": 456.46613698,
-    "positionValue": 179.44075998,
-    "cashBalance": 277.025377,
+    "totalValue": 524.877677,
+    "positionValue": 195.7138,
+    "cashBalance": 329.163877,
     "trackedPositions": 21,
-    "idlePct": "60.7"
+    "idlePct": "62.7"
   },
   "summary": {
-    "totalRealizedPnl": -34.83,
-    "totalUnrealizedPnl": 18.52,
-    "totalPnl": -16.31,
-    "totalTrades": 61,
-    "totalWins": 16,
-    "totalLosses": 28,
-    "overallWinRate": 34,
-    "portfolioValue": 456.46613698,
-    "cashBalance": 277.025377,
-    "idlePct": "60.7",
+    "totalRealizedPnl": -40.09,
+    "totalUnrealizedPnl": 17.45,
+    "totalPnl": -22.64,
+    "totalTrades": 72,
+    "totalWins": 18,
+    "totalLosses": 33,
+    "overallWinRate": 33.3,
+    "portfolioValue": 524.877677,
+    "cashBalance": 329.163877,
+    "idlePct": "62.7",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
@@ -28,36 +28,65 @@
         "unfilled": 0
       },
       "resolution": {
-        "submitted": 1,
-        "filled": 1,
+        "submitted": 5,
+        "filled": 5,
         "partial": 0,
         "unfilled": 0
       },
       "arb": {
-        "submitted": 9,
+        "submitted": 13,
         "filled": 4,
         "partial": 0,
-        "unfilled": 5
+        "unfilled": 9
       }
     }
   },
   "strategies": {
+    "resolution": {
+      "status": "COMPLETED",
+      "totalTrades": 8,
+      "openPositions": 0,
+      "closedPositions": 8,
+      "wins": 4,
+      "losses": 4,
+      "winRate": "50%",
+      "realizedPnl": "$-3.78",
+      "unrealizedPnl": "$-0.91",
+      "totalPnl": "$-4.69",
+      "totalDeployed": "$98.54",
+      "currentDeployed": "$0.00",
+      "expectancy": "$-0.47",
+      "profitFactor": "0.10",
+      "avgWin": "$0.11",
+      "avgLoss": "$-1.05",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Will the highest temperature in Ankara be 13°C on February 13?",
+        "pnl": 0.16,
+        "pnlPct": "1.1"
+      },
+      "worstTrade": {
+        "market": "Will the highest temperature in New York City be between 36-37°F on February 15?",
+        "pnl": -3.3,
+        "pnlPct": "-34.0"
+      }
+    },
     "unknown": {
       "status": "ACTIVE",
-      "totalTrades": 21,
-      "openPositions": 8,
-      "closedPositions": 13,
-      "wins": 7,
+      "totalTrades": 27,
+      "openPositions": 12,
+      "closedPositions": 15,
+      "wins": 9,
       "losses": 6,
-      "winRate": "53.8%",
-      "realizedPnl": "$10.08",
-      "unrealizedPnl": "$1.54",
-      "totalPnl": "$11.62",
-      "totalDeployed": "$225.41",
-      "currentDeployed": "$14.54",
-      "expectancy": "$0.78",
-      "profitFactor": "2.02",
-      "avgWin": "$2.85",
+      "winRate": "60%",
+      "realizedPnl": "$10.88",
+      "unrealizedPnl": "$0.65",
+      "totalPnl": "$11.53",
+      "totalDeployed": "$232.33",
+      "currentDeployed": "$14.76",
+      "expectancy": "$0.73",
+      "profitFactor": "2.10",
+      "avgWin": "$2.30",
       "avgLoss": "$-1.64",
       "avgHoldHours": 0,
       "bestTrade": {
@@ -80,8 +109,8 @@
       "losses": 6,
       "winRate": "11.1%",
       "realizedPnl": "$-1.25",
-      "unrealizedPnl": "$10.00",
-      "totalPnl": "$8.75",
+      "unrealizedPnl": "$10.50",
+      "totalPnl": "$9.25",
       "totalDeployed": "$4.38",
       "currentDeployed": "$31.00",
       "expectancy": "$-0.14",
@@ -102,18 +131,18 @@
     },
     "manual": {
       "status": "ACTIVE",
-      "totalTrades": 7,
+      "totalTrades": 8,
       "openPositions": 5,
-      "closedPositions": 2,
+      "closedPositions": 3,
       "wins": 0,
-      "losses": 2,
+      "losses": 3,
       "winRate": "0%",
-      "realizedPnl": "$-9.54",
-      "unrealizedPnl": "$6.98",
-      "totalPnl": "$-2.56",
-      "totalDeployed": "$94.60",
+      "realizedPnl": "$-11.38",
+      "unrealizedPnl": "$7.21",
+      "totalPnl": "$-4.17",
+      "totalDeployed": "$168.20",
       "currentDeployed": "$48.24",
-      "expectancy": "$-4.77",
+      "expectancy": "$-3.79",
       "profitFactor": "0.00",
       "avgWin": "$0.00",
       "avgLoss": "$-4.77",
@@ -156,35 +185,6 @@
         "market": "Buenos Aires ≤27°C 2026-02-13",
         "pnl": -6.6,
         "pnlPct": "-73.3"
-      }
-    },
-    "resolution": {
-      "status": "COMPLETED",
-      "totalTrades": 4,
-      "openPositions": 0,
-      "closedPositions": 4,
-      "wins": 4,
-      "losses": 0,
-      "winRate": "100%",
-      "realizedPnl": "$0.44",
-      "unrealizedPnl": "$0.00",
-      "totalPnl": "$0.44",
-      "totalDeployed": "$59.50",
-      "currentDeployed": "$0.00",
-      "expectancy": "$0.11",
-      "profitFactor": "∞",
-      "avgWin": "$0.11",
-      "avgLoss": "$0.00",
-      "avgHoldHours": 0,
-      "bestTrade": {
-        "market": "Will the highest temperature in Ankara be 13°C on February 13?",
-        "pnl": 0.16,
-        "pnlPct": "1.1"
-      },
-      "worstTrade": {
-        "market": "Will the highest temperature in Toronto be 3°C or higher on February 13?",
-        "pnl": 0.07,
-        "pnlPct": "0.5"
       }
     }
   }
