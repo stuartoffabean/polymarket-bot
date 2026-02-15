@@ -889,10 +889,19 @@ function checkSystemReady() {
   if (pct >= 0.8) {
     // Don't mark ready until cash balance is ACTUALLY known (not just fetched)
     // cachedCashBalance === 0 after fetch likely means executor returned bad data
+    // BUT: timeout after 2 minutes — don't stay blind forever if RPC is down
     if (lastCashFetch === 0 || cachedCashBalance === 0) {
       fetchCashBalance().catch(() => {});
-      log("WARMUP", `Positions priced (${(pct * 100).toFixed(0)}%) but waiting for cash balance (current: $${cachedCashBalance.toFixed(2)})...`);
-      return false;
+      const warmupElapsed = Date.now() - (checkSystemReady._firstPricedAt || Date.now());
+      if (!checkSystemReady._firstPricedAt) checkSystemReady._firstPricedAt = Date.now();
+      if (warmupElapsed < 120000) { // 2 minute timeout
+        if (!checkSystemReady._lastCashLog || Date.now() - checkSystemReady._lastCashLog > 10000) {
+          log("WARMUP", `Positions priced (${(pct * 100).toFixed(0)}%) but waiting for cash balance (${(120000 - warmupElapsed) / 1000}s until timeout)...`);
+          checkSystemReady._lastCashLog = Date.now();
+        }
+        return false;
+      }
+      log("WARMUP", `⚠️ Cash balance timeout after 2min — proceeding with $0 cash. Stop-losses still active, circuit breaker may be inaccurate.`);
     }
     systemReady = true;
     systemReadyAt = Date.now();
