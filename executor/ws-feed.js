@@ -769,9 +769,29 @@ function checkTriggers(assetId, asset) {
 // Per-assetId sell lock — prevents duplicate sell executions
 const sellLocks = new Set();
 // Recently sold assets — prevents syncPositions from re-adding them
-// Entries expire after 5 minutes (executor needs time to process the sell)
+// Persisted to disk so they survive restarts
 const recentlySold = new Map(); // assetId -> timestamp
-const RECENTLY_SOLD_TTL = 5 * 60 * 1000; // 5 minutes
+const RECENTLY_SOLD_TTL = 30 * 60 * 1000; // 30 minutes — on-chain settlement can be slow
+const RECENTLY_SOLD_FILE = path.join(__dirname, 'recently-sold.json');
+
+// Load persisted sold assets on startup
+try {
+  if (fs.existsSync(RECENTLY_SOLD_FILE)) {
+    const saved = JSON.parse(fs.readFileSync(RECENTLY_SOLD_FILE, 'utf8'));
+    const now = Date.now();
+    for (const [id, ts] of Object.entries(saved)) {
+      if (now - ts < RECENTLY_SOLD_TTL) recentlySold.set(id, ts);
+    }
+    log("INIT", `Loaded ${recentlySold.size} recently sold assets from disk (${Object.keys(saved).length - recentlySold.size} expired)`);
+  }
+} catch (e) { log("INIT", `Failed to load recently-sold.json: ${e.message}`); }
+
+function persistRecentlySold() {
+  try {
+    const obj = Object.fromEntries(recentlySold);
+    fs.writeFileSync(RECENTLY_SOLD_FILE, JSON.stringify(obj, null, 2));
+  } catch (e) { log("EXEC", `Failed to persist recently-sold.json: ${e.message}`); }
+}
 
 async function executeSell(assetId, asset, reason) {
   // Check sell lock — only one sell per asset at a time
@@ -834,7 +854,8 @@ async function executeSell(assetId, asset, reason) {
     // ALWAYS remove sold position from tracking immediately
     subscribedAssets.delete(assetId);
     recentlySold.set(assetId, Date.now());
-    log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)} (blocked from re-sync for 5min)`);
+    persistRecentlySold();
+    log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)} (blocked from re-sync for 30min)`);
   } catch (e) {
     log("EXEC", `❌ Auto-sell FAILED: ${e.message}`);
     pushAlert("SELL_FAILED", assetId, asset, null, null, `${reason} sell failed: ${e.message}`);
