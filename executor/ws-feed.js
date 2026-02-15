@@ -62,7 +62,6 @@ function detectMarketType(question = '', slug = '') {
 // === CONFIG ===
 const WSS_URL = "wss://ws-subscriptions-clob.polymarket.com/ws/market";
 const EXECUTOR_URL = "http://localhost:3002";
-const STATE_FILE = path.join(__dirname, "..", "TRADING-STATE.json");
 const ALERTS_FILE = path.join(__dirname, "alerts.json");
 const MANUAL_POSITIONS_FILE = path.join(__dirname, "manual-positions.json");
 const FEED_PORT = parseInt(process.env.FEED_PORT || "3003");
@@ -285,11 +284,6 @@ function loadManualPositions() {
 
 function saveManualPositions(data) {
   writeFileAtomic(MANUAL_POSITIONS_FILE, data);
-}
-
-function loadTradingState() {
-  try { return JSON.parse(fs.readFileSync(STATE_FILE, "utf8")); }
-  catch (e) { return null; }
 }
 
 // === HTTP CALLS TO EXECUTOR ===
@@ -1371,7 +1365,6 @@ async function apiHandler(req, res) {
     }
 
     if (url === "/status") {
-      const state = loadTradingState();
       return send(res, 200, {
         infrastructure: {
           executor: "localhost:3002",
@@ -1522,9 +1515,8 @@ function parseBody(req) {
 // === PNL HISTORY RECORDING ===
 function recordPnlSnapshot() {
   if (currentPortfolioValue == null) return;
-  
-  const state = loadTradingState();
-  const liquid = state?.liquidBalance || 0;
+
+  const liquid = cachedCashBalance || 0;
   const totalValue = currentPortfolioValue + liquid;
   
   const snapshot = {
