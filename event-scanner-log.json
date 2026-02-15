@@ -1,0 +1,12 @@
+[
+  {
+    "scan": 1,
+    "at": "2026-02-15T05:51:51.390Z",
+    "elapsed": "89.1s",
+    "marketsScanned": 389,
+    "newsQueries": 50,
+    "opportunitiesFound": 3,
+    "newAdded": 3,
+    "totalInFile": 15
+  }
+]
