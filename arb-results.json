@@ -1,113 +1,97 @@
 {
-  "timestamp": "2026-02-15T01:25:20.307Z",
+  "timestamp": "2026-02-15T02:59:23.069Z",
   "summary": {
     "total": 100,
     "negRisk": 56,
     "flagged": 3,
-    "viable": 1
+    "viable": 0
   },
   "opportunities": [
     {
-      "event": "Real Madrid CF vs. Real Sociedad de Fútbol",
-      "slug": "lal-rea-rso-2026-02-14",
+      "event": "NBA Eastern Conference Champion ",
+      "slug": "nba-eastern-conference-champion-442",
       "type": "SHORT",
-      "outcomes": 2,
-      "midSum": 1.445,
-      "execSum": 1.879,
-      "deviation": 44.5,
-      "execDeviation": 87.9,
-      "grossProfitPer100": 87.9,
+      "outcomes": 12,
+      "midSum": 1.042,
+      "execSum": 0.985,
+      "deviation": 4.2,
+      "execDeviation": 1.5,
+      "grossProfitPer100": -1.5,
       "feesPer100": 0,
-      "profitPer100": 87.9,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will Real Madrid CF win on 2026-02-14?",
-          "mid": 0.9995,
-          "exec": 0.999,
-          "token": "18958704364538402229819960459402039015954969978725419494528765684584413517800"
-        },
-        {
-          "name": "Will Real Sociedad de Fútbol win on 2026-02-14?",
-          "mid": 0.445,
-          "exec": 0.88,
-          "token": "106792103282027326027455761937030753070225891126702976110304520119760576247645"
-        }
-      ]
-    },
-    {
-      "event": "Ethereum price on February 15?",
-      "slug": "ethereum-price-on-february-15",
-      "type": "SHORT",
-      "outcomes": 10,
-      "midSum": 1.032,
-      "execSum": 0.977,
-      "deviation": 3.2,
-      "execDeviation": 2.3,
-      "grossProfitPer100": -2.3,
-      "feesPer100": 0,
-      "profitPer100": -2.3,
+      "profitPer100": -1.5,
       "viable": false,
       "details": [
         {
-          "name": "Will the price of Ethereum be between $1,700 and $1,800 on F",
-          "mid": 0.005,
-          "exec": 0.001,
-          "token": "78089060033394829595968391003366650581637976524296367047453640774485128668054"
+          "name": "Will the Cleveland Cavaliers win the NBA Eastern Conference ",
+          "mid": 0.23,
+          "exec": 0.22,
+          "token": "26510384225806040730267502985578081313836463589753281281933174278980674429194"
         },
         {
-          "name": "Will the price of Ethereum be between $1,800 and $1,900 on F",
-          "mid": 0.006,
-          "exec": 0.002,
-          "token": "27068247500526807364221690252922629388308413907199195286669658312054829945467"
+          "name": "Will the New York Knicks win the NBA Eastern Conference Fina",
+          "mid": 0.17,
+          "exec": 0.16,
+          "token": "5252381880374485440665230178984721306055940128786215274896991682225319468348"
         },
         {
-          "name": "Will the price of Ethereum be between $2,200 and $2,300 on F",
-          "mid": 0.02,
-          "exec": 0.015,
-          "token": "78747759261826272771304712047022419476250897048220474720898706988299472226481"
+          "name": "Will the Orlando Magic win the NBA Eastern Conference Finals",
+          "mid": 0.0325,
+          "exec": 0.032,
+          "token": "36378160072890559704966692763500079412567571381443166092461911736222412577030"
         },
         {
-          "name": "Will the price of Ethereum be between $2,300 and $2,400 on F",
-          "mid": 0.008,
-          "exec": 0.007,
-          "token": "1302627859359849878309045300416430307834089624924763802154644522388006360400"
+          "name": "Will the Atlanta Hawks win the NBA Eastern Conference Finals",
+          "mid": 0.012,
+          "exec": 0.01,
+          "token": "29378510610351498292793924336050369056882113454472455899117956728534280393801"
         },
         {
-          "name": "Will the price of Ethereum be less than $1,600 on February 1",
-          "mid": 0.002,
-          "exec": 0.001,
-          "token": "2036771049233616427209656820023403517155034457067703553562248206267099207176"
+          "name": "Will the Detroit Pistons win the NBA Eastern Conference Fina",
+          "mid": 0.22,
+          "exec": 0.21,
+          "token": "108446172107941165064806998519652737542801121226691431615334275432295450338136"
         },
         {
-          "name": "Will the price of Ethereum be between $1,900 and $2,000 on F",
-          "mid": 0.061,
-          "exec": 0.06,
-          "token": "16726293482724107573093216695721451477644991781942795800869867560313755159567"
+          "name": "Will the Philadelphia 76ers win the NBA Eastern Conference F",
+          "mid": 0.069,
+          "exec": 0.068,
+          "token": "50692628443801018513325614545746863026982626993302787461752145605052144027838"
         },
         {
-          "name": "Will the price of Ethereum be between $2,400 and $2,500 on F",
-          "mid": 0.002,
-          "exec": 0,
-          "token": "48180077247891786912489939996961075799094603919337499289022018829388338114692"
+          "name": "Will the Boston Celtics win the NBA Eastern Conference Final",
+          "mid": 0.1825,
+          "exec": 0.18,
+          "token": "76284775424209240264542352208573338636556198300439966875308967535434111103074"
         },
         {
-          "name": "Will the price of Ethereum be between $1,600 and $1,700 on F",
-          "mid": 0.002,
-          "exec": 0.001,
-          "token": "68785367437519946912465198722968418201541553435720660631975435774597367365504"
+          "name": "Will the Milwaukee Bucks win the NBA Eastern Conference Fina",
+          "mid": 0.032,
+          "exec": 0.019,
+          "token": "79336858132239037705158300268603413459637933572725439146100963281670148171735"
         },
         {
-          "name": "Will the price of Ethereum be between $2,000 and $2,100 on F",
-          "mid": 0.69,
-          "exec": 0.69,
-          "token": "38438772155524797227604156147702318731495933573080859210052483248896070461765"
+          "name": "Will the Toronto Raptors win the NBA Eastern Conference Fina",
+          "mid": 0.0275,
+          "exec": 0.025,
+          "token": "46948910926280539794385431325138940193666253674995635848222141296489362188849"
         },
         {
-          "name": "Will the price of Ethereum be between $2,100 and $2,200 on F",
-          "mid": 0.235,
-          "exec": 0.2,
-          "token": "84663929970491411065730065953462357852392234012716755325752745287885388148268"
+          "name": "Will the Miami Heat win the NBA Eastern Conference Finals?",
+          "mid": 0.025,
+          "exec": 0.023,
+          "token": "91737308879086717078434227064834144626260031635826299637092532293769745981585"
+        },
+        {
+          "name": "Will the Chicago Bulls win the NBA Eastern Conference Finals",
+          "mid": 0.0045,
+          "exec": 0.004,
+          "token": "24829650463128704493019067953349695357276451577710397157073955025381074470438"
+        },
+        {
+          "name": "Will the Charlotte Hornets win the NBA Eastern Conference Fi",
+          "mid": 0.0355,
+          "exec": 0.034,
+          "token": "88202144797456094004565715683071874971451541348187754361676449702242116892606"
         }
       ]
     },
@@ -116,43 +100,43 @@
       "slug": "solana-price-on-february-15",
       "type": "SHORT",
       "outcomes": 6,
-      "midSum": 1.0305,
-      "execSum": 0.949,
-      "deviation": 3.05,
-      "execDeviation": 5.1,
-      "grossProfitPer100": -5.1,
+      "midSum": 1.0625,
+      "execSum": 0.983,
+      "deviation": 6.25,
+      "execDeviation": 1.7,
+      "grossProfitPer100": -1.7,
       "feesPer100": 0,
-      "profitPer100": -5.1,
+      "profitPer100": -1.7,
       "viable": false,
       "details": [
         {
           "name": "Will the price of Solana be between $70 and $80 on February ",
-          "mid": 0.0135,
+          "mid": 0.015,
           "exec": 0.012,
           "token": "1201652457172393595222176408089614631660302670158599055969460466520409580922"
         },
         {
           "name": "Will the price of Solana be between $80 and $90 on February ",
-          "mid": 0.825,
-          "exec": 0.79,
+          "mid": 0.84,
+          "exec": 0.81,
           "token": "93005817587756837193677769166470551981966991192262993145963601537199915644660"
         },
         {
           "name": "Will the price of Solana be between $90 and $100 on February",
-          "mid": 0.1675,
-          "exec": 0.143,
+          "mid": 0.188,
+          "exec": 0.152,
           "token": "34031820758254992803859804442973314667344212273112379288461599897450876246015"
         },
         {
           "name": "Will the price of Solana be between $60 and $70 on February ",
-          "mid": 0.0055,
-          "exec": 0.002,
+          "mid": 0.004,
+          "exec": 0.001,
           "token": "4041589306676725212214754350234225640967187610933746971905383811151582011379"
         },
         {
           "name": "Will the price of Solana be between $100 and $110 on Februar",
-          "mid": 0.0135,
-          "exec": 0.001,
+          "mid": 0.01,
+          "exec": 0.007,
           "token": "17319202521593803864115819278122279387617259027778811928491097290754227052039"
         },
         {
@@ -160,6 +144,94 @@
           "mid": 0.0025,
           "exec": 0.001,
           "token": "45389975275559493805521933835573186197410218531592213078479110681779711897538"
+        }
+      ]
+    },
+    {
+      "event": "NBA Western Conference Champion ",
+      "slug": "nba-western-conference-champion-933",
+      "type": "SHORT",
+      "outcomes": 12,
+      "midSum": 1.0285,
+      "execSum": 0.983,
+      "deviation": 2.85,
+      "execDeviation": 1.7,
+      "grossProfitPer100": -1.7,
+      "feesPer100": 0,
+      "profitPer100": -1.7,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will the Oklahoma City Thunder win the NBA Western Conferenc",
+          "mid": 0.52,
+          "exec": 0.51,
+          "token": "105874436620923713168019020245858616944322383958692280683224180064376992665538"
+        },
+        {
+          "name": "Will the Denver Nuggets win the NBA Western Conference Final",
+          "mid": 0.15,
+          "exec": 0.14,
+          "token": "108398074540970095314518325646490765619963623062982966676789014794361479719637"
+        },
+        {
+          "name": "Will the Houston Rockets win the NBA Western Conference Fina",
+          "mid": 0.0615,
+          "exec": 0.061,
+          "token": "22226004461035625319919657267129959466466585725269185478458570055870755140202"
+        },
+        {
+          "name": "Will the Los Angeles Lakers win the NBA Western Conference F",
+          "mid": 0.041,
+          "exec": 0.04,
+          "token": "92156510891798873020497715268024772851858076229893943637545856397683791106647"
+        },
+        {
+          "name": "Will the Minnesota Timberwolves win the NBA Western Conferen",
+          "mid": 0.0555,
+          "exec": 0.053,
+          "token": "80564199933198063686735983682931201091805047291421501140508185910743468318376"
+        },
+        {
+          "name": "Will the Los Angeles Clippers win the NBA Western Conference",
+          "mid": 0.0235,
+          "exec": 0.023,
+          "token": "48683147420750921052017138201270724636186430958875818497134964551306866907814"
+        },
+        {
+          "name": "Will the Dallas Mavericks win the NBA Western Conference Fin",
+          "mid": 0.0025,
+          "exec": 0.002,
+          "token": "55099493322519440967558717167222283364927814955850690659280839827209928958533"
+        },
+        {
+          "name": "Will the San Antonio Spurs win the NBA Western Conference Fi",
+          "mid": 0.1305,
+          "exec": 0.117,
+          "token": "6842047670820419171425914468337077680927367717837404858652329372722501774629"
+        },
+        {
+          "name": "Will the Phoenix Suns win the NBA Western Conference Finals?",
+          "mid": 0.02,
+          "exec": 0.019,
+          "token": "24315108267836543154857233535536136482524552716493402526894829400485516895736"
+        },
+        {
+          "name": "Will the Utah Jazz win the NBA Western Conference Finals?",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "79870685104046272701356539864336775233555053726570352166377648938896627310090"
+        },
+        {
+          "name": "Will the Portland Trail Blazers win the NBA Western Conferen",
+          "mid": 0.007,
+          "exec": 0.004,
+          "token": "77648433824716730185008177852682080573261442860361580435966309914289533557558"
+        },
+        {
+          "name": "Will the Golden State Warriors win the NBA Western Conferenc",
+          "mid": 0.014,
+          "exec": 0.013,
+          "token": "8186557467277475901094949742490854679817405006696983018588137692207963004648"
         }
       ]
     }

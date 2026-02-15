@@ -111,6 +111,10 @@ const DRAWDOWN_PAUSE_MS = 2 * 60 * 60 * 1000; // 2 hour pause
 // Ghost arb positions with corrupted avgPrice — permanently excluded from tracking.
 // These are dust positions (<0.01 shares) from failed arb fills. Sunk cost, written off.
 const IGNORED_ASSETS = new Set([
+  // Double-sold assets (Feb 15 duplicate sell bug — settlement took >30min TTL)
+  "14588689847155710140084925630833413220311051563779237763910268505586365020396",
+  "73102171968254150175441789734331062683107726947580722925006610769377018279866",
+  "8010270730382868588546130570365383621891724310853848910851331100920214793828",
   // Corrupted avgPrice ghosts
   "86069854998126295712887500512103672980330890383172698747999211918441355492422",
   "92692355295105043188084535345172617132941070537427143745066857388094591739498",
@@ -773,7 +777,7 @@ const sellLocks = new Set();
 // Recently sold assets — prevents syncPositions from re-adding them
 // Persisted to disk so they survive restarts
 const recentlySold = new Map(); // assetId -> timestamp
-const RECENTLY_SOLD_TTL = 30 * 60 * 1000; // 30 minutes — on-chain settlement can be slow
+const RECENTLY_SOLD_TTL = 2 * 60 * 60 * 1000; // 2 hours — on-chain settlement can take 30-60min, 30min TTL caused duplicate sells
 const RECENTLY_SOLD_FILE = path.join(__dirname, 'recently-sold.json');
 
 // Load persisted sold assets on startup

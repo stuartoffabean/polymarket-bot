@@ -4,37 +4,37 @@
       "assetId": "102537315715678355572271579005595737578706394759017439902058315195378509656429",
       "market": "0xbc8d0415c38d2f8ac1ec5fa568015534999b79353aa21ff6ababba7e563647e7",
       "outcome": "Yes",
-      "size": 18,
-      "avgPrice": 0.1728,
-      "totalCost": 3.11,
+      "size": 31,
+      "avgPrice": 0.169,
+      "totalCost": 5.24,
       "strategy": "unknown",
       "source": "executor-sync",
       "enteredAt": "2026-02-14T23:20:10.572Z",
-      "updatedAt": "2026-02-15T01:04:29.937Z"
+      "updatedAt": "2026-02-15T02:43:19.701Z"
     },
     "19779568221493895952676865609231089464510850574582508381986852563307884493501": {
       "assetId": "19779568221493895952676865609231089464510850574582508381986852563307884493501",
       "market": "0xcd851128a667ff4f37805ce75f9b8d9f66c6e61102e916b505ba473487c94ba7",
       "outcome": "Yes",
-      "size": 5,
-      "avgPrice": 0.3,
-      "totalCost": 1.5,
+      "size": 17.992606000000002,
+      "avgPrice": 0.3072,
+      "totalCost": 5.527708,
       "strategy": "unknown",
       "source": "executor-sync",
       "enteredAt": "2026-02-14T23:20:10.572Z",
-      "updatedAt": "2026-02-14T23:20:10.572Z"
+      "updatedAt": "2026-02-15T02:43:19.701Z"
     },
     "67918601360873742370584383150687028364915149273413445401824748975893776724907": {
       "assetId": "67918601360873742370584383150687028364915149273413445401824748975893776724907",
       "market": "0xd21f286d5f9d02e1f246eb4bf385eaf893bcb87e7cad4e1012d4db69217a5192",
       "outcome": "Yes",
-      "size": 18,
-      "avgPrice": 0.0278,
-      "totalCost": 0.501,
+      "size": 31,
+      "avgPrice": 0.0252,
+      "totalCost": 0.782,
       "strategy": "unknown",
       "source": "executor-sync",
       "enteredAt": "2026-02-14T23:20:10.572Z",
-      "updatedAt": "2026-02-15T00:49:30.019Z"
+      "updatedAt": "2026-02-15T02:03:19.087Z"
     },
     "63143918686236233928672983984129058891473353803994659201131614781821505294362": {
       "assetId": "63143918686236233928672983984129058891473353803994659201131614781821505294362",
@@ -576,29 +576,17 @@
       "enteredAt": "2026-02-15T00:49:30.019Z",
       "updatedAt": "2026-02-15T00:49:30.019Z"
     },
-    "14588689847155710140084925630833413220311051563779237763910268505586365020396": {
-      "assetId": "14588689847155710140084925630833413220311051563779237763910268505586365020396",
-      "market": "0xb9ed449e81a990c75c5b63bfb478fde4c77d200412b93b5ec07fa4c723a38317",
-      "outcome": "Yes",
-      "size": 18,
-      "avgPrice": 0.0086,
-      "totalCost": 0.15400000000000003,
-      "strategy": "unknown",
-      "source": "executor-sync",
-      "enteredAt": "2026-02-15T00:49:30.019Z",
-      "updatedAt": "2026-02-15T00:49:30.019Z"
-    },
     "73002776802776123994946750806885447862269394307070074560451323297088045954726": {
       "assetId": "73002776802776123994946750806885447862269394307070074560451323297088045954726",
       "market": "0x90bb4c9b8fdafccee5359706860565115ae3f19264469a719c696b0762ccd16c",
       "outcome": "Yes",
-      "size": 5,
-      "avgPrice": 0.073,
-      "totalCost": 0.365,
+      "size": 8,
+      "avgPrice": 0.0689,
+      "totalCost": 0.5509999999999999,
       "strategy": "unknown",
       "source": "executor-sync",
       "enteredAt": "2026-02-15T00:59:30.067Z",
-      "updatedAt": "2026-02-15T00:59:30.067Z"
+      "updatedAt": "2026-02-15T01:39:47.727Z"
     },
     "28988191769969432577061314587368990464217068010525588178919238818382176527209": {
       "assetId": "28988191769969432577061314587368990464217068010525588178919238818382176527209",
@@ -623,6 +611,42 @@
       "source": "executor-sync",
       "enteredAt": "2026-02-15T01:14:30.036Z",
       "updatedAt": "2026-02-15T01:14:30.036Z"
+    },
+    "8010270730382868588546130570365383621891724310853848910851331100920214793828": {
+      "assetId": "8010270730382868588546130570365383621891724310853848910851331100920214793828",
+      "market": "0x8e97d4425dd885462f62eeeacd212a89854f3284cc4d4dfa1518965df0e916b4",
+      "outcome": "Yes",
+      "size": 31,
+      "avgPrice": 0.002,
+      "totalCost": 0.062000000000000006,
+      "strategy": "unknown",
+      "source": "executor-sync",
+      "enteredAt": "2026-02-15T02:48:19.356Z",
+      "updatedAt": "2026-02-15T02:48:19.356Z"
+    },
+    "14588689847155710140084925630833413220311051563779237763910268505586365020396": {
+      "assetId": "14588689847155710140084925630833413220311051563779237763910268505586365020396",
+      "market": "0xb9ed449e81a990c75c5b63bfb478fde4c77d200412b93b5ec07fa4c723a38317",
+      "outcome": "Yes",
+      "size": 18,
+      "avgPrice": 0.0086,
+      "totalCost": 0.15400000000000003,
+      "strategy": "unknown",
+      "source": "executor-sync",
+      "enteredAt": "2026-02-15T02:48:19.356Z",
+      "updatedAt": "2026-02-15T02:48:19.356Z"
+    },
+    "73102171968254150175441789734331062683107726947580722925006610769377018279866": {
+      "assetId": "73102171968254150175441789734331062683107726947580722925006610769377018279866",
+      "market": "0x15eec799be53bc8fe57134b51e0ecbfa9407d8f141876aad6e5718adef9a7276",
+      "outcome": "Yes",
+      "size": 13,
+      "avgPrice": 0.003,
+      "totalCost": 0.039,
+      "strategy": "unknown",
+      "source": "executor-sync",
+      "enteredAt": "2026-02-15T02:53:19.607Z",
+      "updatedAt": "2026-02-15T02:53:19.607Z"
     }
   },
   "txLog": [
@@ -970,7 +994,199 @@
       "reason": "manual_sell",
       "source": "executor-manual",
       "timestamp": "2026-02-15T01:24:33.328Z"
+    },
+    {
+      "seq": 38,
+      "type": "sync",
+      "changes": {
+        "added": 1,
+        "updated": 0,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T01:29:30.587Z"
+    },
+    {
+      "seq": 39,
+      "type": "exit",
+      "assetId": "14588689847155710140084925630833413220311051563779237763910268505586365020396",
+      "size": 18,
+      "reason": "manual_sell",
+      "source": "executor-manual",
+      "timestamp": "2026-02-15T01:32:12.018Z"
+    },
+    {
+      "seq": 40,
+      "type": "sync",
+      "changes": {
+        "added": 1,
+        "updated": 0,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T01:34:30.037Z"
+    },
+    {
+      "seq": 41,
+      "type": "exit",
+      "assetId": "73102171968254150175441789734331062683107726947580722925006610769377018279866",
+      "size": 13,
+      "reason": "manual_sell",
+      "source": "executor-manual",
+      "timestamp": "2026-02-15T01:35:15.397Z"
+    },
+    {
+      "seq": 42,
+      "type": "exit",
+      "assetId": "14588689847155710140084925630833413220311051563779237763910268505586365020396",
+      "size": 18,
+      "reason": "manual_sell",
+      "source": "executor-manual",
+      "timestamp": "2026-02-15T01:35:19.523Z"
+    },
+    {
+      "seq": 43,
+      "type": "sync",
+      "changes": {
+        "added": 2,
+        "updated": 2,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T01:39:47.727Z"
+    },
+    {
+      "seq": 44,
+      "type": "sync",
+      "changes": {
+        "added": 0,
+        "updated": 1,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T01:58:19.090Z"
+    },
+    {
+      "seq": 45,
+      "type": "sync",
+      "changes": {
+        "added": 0,
+        "updated": 2,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T02:03:19.087Z"
+    },
+    {
+      "seq": 46,
+      "type": "sync",
+      "changes": {
+        "added": 0,
+        "updated": 1,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T02:08:19.602Z"
+    },
+    {
+      "seq": 47,
+      "type": "exit",
+      "assetId": "14588689847155710140084925630833413220311051563779237763910268505586365020396",
+      "size": 18,
+      "reason": "manual_sell",
+      "source": "executor-manual",
+      "timestamp": "2026-02-15T02:08:36.010Z"
+    },
+    {
+      "seq": 48,
+      "type": "sync",
+      "changes": {
+        "added": 1,
+        "updated": 0,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T02:13:19.784Z"
+    },
+    {
+      "seq": 49,
+      "type": "exit",
+      "assetId": "73102171968254150175441789734331062683107726947580722925006610769377018279866",
+      "size": 13,
+      "reason": "manual_sell",
+      "source": "executor-manual",
+      "timestamp": "2026-02-15T02:17:12.137Z"
+    },
+    {
+      "seq": 50,
+      "type": "sync",
+      "changes": {
+        "added": 1,
+        "updated": 0,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T02:18:19.327Z"
+    },
+    {
+      "seq": 51,
+      "type": "sync",
+      "changes": {
+        "added": 1,
+        "updated": 0,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T02:38:19.590Z"
+    },
+    {
+      "seq": 52,
+      "type": "sync",
+      "changes": {
+        "added": 0,
+        "updated": 2,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T02:43:19.701Z"
+    },
+    {
+      "seq": 53,
+      "type": "exit",
+      "assetId": "14588689847155710140084925630833413220311051563779237763910268505586365020396",
+      "size": 18,
+      "reason": "manual_sell",
+      "source": "executor-manual",
+      "timestamp": "2026-02-15T02:43:22.966Z"
+    },
+    {
+      "seq": 54,
+      "type": "exit",
+      "assetId": "8010270730382868588546130570365383621891724310853848910851331100920214793828",
+      "size": 18,
+      "reason": "manual_sell",
+      "source": "executor-manual",
+      "timestamp": "2026-02-15T02:43:59.178Z"
+    },
+    {
+      "seq": 55,
+      "type": "sync",
+      "changes": {
+        "added": 2,
+        "updated": 0,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T02:48:19.356Z"
+    },
+    {
+      "seq": 56,
+      "type": "exit",
+      "assetId": "73102171968254150175441789734331062683107726947580722925006610769377018279866",
+      "size": 13,
+      "reason": "manual_sell",
+      "source": "executor-manual",
+      "timestamp": "2026-02-15T02:48:29.927Z"
+    },
+    {
+      "seq": 57,
+      "type": "sync",
+      "changes": {
+        "added": 1,
+        "updated": 0,
+        "removed": 0
+      },
+      "timestamp": "2026-02-15T02:53:19.607Z"
     }
   ],
-  "txSeq": 37
+  "txSeq": 57
 }
