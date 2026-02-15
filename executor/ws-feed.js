@@ -1070,10 +1070,16 @@ function pushAlert(type, assetId, asset, price, pnlPct, message) {
   if (alertLog.length > 200) alertLog = alertLog.slice(-100);
 
   // Send Telegram alert for critical types
-  if (TELEGRAM_ALERT_TYPES.has(type)) {
+  // Suppress dust position alerts: skip trade-level alerts on positions with <$2 cost basis
+  const costBasis = asset?.size && asset?.avgPrice ? asset.size * asset.avgPrice : null;
+  const isDust = costBasis !== null && costBasis < 2;
+  const isSystemAlert = type.includes("EMERGENCY") || type.includes("SURVIVAL") || type.includes("CIRCUIT") || type.includes("DRAWDOWN");
+  if (TELEGRAM_ALERT_TYPES.has(type) && (!isDust || isSystemAlert)) {
     const emoji = type.includes("EMERGENCY") ? "🚨" : type.includes("SURVIVAL") ? "⚠️" : type.includes("STOP") ? "🔴" : type.includes("TAKE_PROFIT") || type.includes("SELL_EXECUTED") ? "💰" : type.includes("CIRCUIT") ? "⚡" : "📡";
     const tgText = `${emoji} <b>Stuart Bot — ${type}</b>\n${asset?.market ? `Market: ${asset.market}\n` : ""}${asset?.outcome ? `Outcome: ${asset.outcome}\n` : ""}${price ? `Price: ${price}\n` : ""}${pnlPct != null ? `P&L: ${(pnlPct * 100).toFixed(1)}%\n` : ""}${message || ""}`;
     sendTelegramAlert(tgText);
+  } else if (isDust && !isSystemAlert) {
+    log("ALERT", `Suppressed dust alert (cost $${costBasis.toFixed(2)}): ${type}`);
   }
 
   // Persist
@@ -1143,8 +1149,16 @@ async function syncPositions() {
 
       // Skip recently sold positions — executor may still report them before settlement
       if (recentlySold.has(pos.asset_id)) {
-        log("SYNC", `Skipping recently sold position: ${pos.asset_id.slice(0,20)} (sold ${((now_sync - recentlySold.get(pos.asset_id)) / 1000).toFixed(0)}s ago)`);
-        continue;
+        // If position still exists on-chain (data API returns it with size > 0),
+        // the sell likely failed — clear the stale recentlySold entry and re-track
+        if (pos._source === "data-api" && pos.size > 0.1) {
+          log("SYNC", `⚠️ Position ${pos.asset_id.slice(0,20)} in recentlySold but STILL ON-CHAIN (${pos.size} shares) — clearing stale sold flag, re-tracking`);
+          recentlySold.delete(pos.asset_id);
+          persistRecentlySold();
+        } else {
+          log("SYNC", `Skipping recently sold position: ${pos.asset_id.slice(0,20)} (sold ${((now_sync - recentlySold.get(pos.asset_id)) / 1000).toFixed(0)}s ago)`);
+          continue;
+        }
       }
       
       const existing = subscribedAssets.get(pos.asset_id) || {};

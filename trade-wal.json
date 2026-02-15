@@ -2668,5 +2668,1218 @@
       "error": null,
       "executedPrice": 0.2
     }
+  },
+  {
+    "id": "wal_1771153779071_ax27kj",
+    "status": "filled",
+    "createdAt": "2026-02-15T11:09:39.071Z",
+    "type": "market-sell",
+    "tokenID": "108414203695450233654321509441823796250883083810513177790628642579691205278305",
+    "price": 0.004,
+    "size": 29,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T11:09:39.488Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.004
+    }
+  },
+  {
+    "id": "wal_1771154079080_m9rs3c",
+    "status": "filled",
+    "createdAt": "2026-02-15T11:14:39.080Z",
+    "type": "market-sell",
+    "tokenID": "98848783495729704866663247207854429811120039014237794397112069176572118536087",
+    "price": 0.03,
+    "size": 3.18,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T11:14:39.466Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.03
+    }
+  },
+  {
+    "id": "wal_1771155091665_lnmtac",
+    "status": "filled",
+    "createdAt": "2026-02-15T11:31:31.665Z",
+    "type": "market-sell",
+    "tokenID": "47252200832793247423089215877857667425039333476763845614656878203768571431091",
+    "price": 0.023,
+    "size": 43,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T11:31:32.963Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.023
+    }
+  },
+  {
+    "id": "wal_1771155636607_w44l42",
+    "status": "filled",
+    "createdAt": "2026-02-15T11:40:36.607Z",
+    "type": "market-sell",
+    "tokenID": "75913565227378972450735776760275457690882335692941744309295567683432026622243",
+    "price": 0.08,
+    "size": 26,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T11:40:37.020Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.08
+    }
+  },
+  {
+    "id": "wal_1771155777190_u69sfq",
+    "status": "filled",
+    "createdAt": "2026-02-15T11:42:57.190Z",
+    "type": "market-sell",
+    "tokenID": "102537315715678355572271579005595737578706394759017439902058315195378509656429",
+    "price": 0.26,
+    "size": 31,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T11:42:57.586Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.26
+    }
+  },
+  {
+    "id": "wal_1771156281997_nuohqm",
+    "status": "failed",
+    "createdAt": "2026-02-15T11:51:21.997Z",
+    "type": "arb",
+    "tokenID": "664889865593+287397854519+988487834957+158467010413+641930776417+362171195677+108414203695",
+    "price": 0,
+    "size": 7,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "66488986559365740044",
+          "price": 0.001,
+          "size": 9,
+          "side": "BUY"
+        },
+        {
+          "token": "28739785451979476770",
+          "price": 0.005,
+          "size": 9,
+          "side": "BUY"
+        },
+        {
+          "token": "98848783495729704866",
+          "price": 0.03,
+          "size": 9,
+          "side": "BUY"
+        },
+        {
+          "token": "15846701041375404450",
+          "price": 0.364,
+          "size": 9,
+          "side": "BUY"
+        },
+        {
+          "token": "64193077641717555016",
+          "price": 0.22,
+          "size": 9,
+          "side": "BUY"
+        },
+        {
+          "token": "36217119567720319033",
+          "price": 0.013,
+          "size": 9,
+          "side": "BUY"
+        },
+        {
+          "token": "10841420369545023365",
+          "price": 0.004,
+          "size": 9,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T11:51:22.464Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771157169318_okscug",
+    "status": "filled",
+    "createdAt": "2026-02-15T12:06:09.318Z",
+    "type": "market-sell",
+    "tokenID": "34031820758254992803859804442973314667344212273112379288461599897450876246015",
+    "price": 0.091,
+    "size": 10,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T12:06:09.722Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.091
+    }
+  },
+  {
+    "id": "wal_1771157205624_ykq4qm",
+    "status": "failed",
+    "createdAt": "2026-02-15T12:06:45.624Z",
+    "type": "arb",
+    "tokenID": "664889865593+287397854519+988487834957+158467010413+641930776417+362171195677+108414203695",
+    "price": 0,
+    "size": 7,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "66488986559365740044",
+          "price": 0.001,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "28739785451979476770",
+          "price": 0.005,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "98848783495729704866",
+          "price": 0.03,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "15846701041375404450",
+          "price": 0.377,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "64193077641717555016",
+          "price": 0.221,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "36217119567720319033",
+          "price": 0.013,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "10841420369545023365",
+          "price": 0.004,
+          "size": 6,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T12:06:46.090Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771157680511_c57ar4",
+    "status": "filled",
+    "createdAt": "2026-02-15T12:14:40.511Z",
+    "type": "market-sell",
+    "tokenID": "3621711956772031903370283885011621778556718625615305833808787199263526929018",
+    "price": 0.013,
+    "size": 34.990862,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T12:14:40.933Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.013
+    }
+  },
+  {
+    "id": "wal_1771158071449_28zk1y",
+    "status": "failed",
+    "createdAt": "2026-02-15T12:21:11.449Z",
+    "type": "arb",
+    "tokenID": "664889865593+287397854519+988487834957+158467010413+641930776417+362171195677+108414203695",
+    "price": 0,
+    "size": 7,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "66488986559365740044",
+          "price": 0.001,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "28739785451979476770",
+          "price": 0.005,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "98848783495729704866",
+          "price": 0.051,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "15846701041375404450",
+          "price": 0.129,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "64193077641717555016",
+          "price": 0.047,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "36217119567720319033",
+          "price": 0.013,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "10841420369545023365",
+          "price": 0.004,
+          "size": 6,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T12:21:13.576Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771158280919_cm5c9f",
+    "status": "filled",
+    "createdAt": "2026-02-15T12:24:40.919Z",
+    "type": "market-sell",
+    "tokenID": "64193077641717555016262288886855608981989373839881051499533015515582758106664",
+    "price": 0.053,
+    "size": 35.00000000000001,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T12:24:42.065Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.053
+    }
+  },
+  {
+    "id": "wal_1771158579116_1w6qbe",
+    "status": "filled",
+    "createdAt": "2026-02-15T12:29:39.116Z",
+    "type": "market-sell",
+    "tokenID": "17319202521593803864115819278122279387617259027778811928491097290754227052039",
+    "price": 0.002,
+    "size": 57,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T12:29:40.297Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.002
+    }
+  },
+  {
+    "id": "wal_1771158920024_aaq3nq",
+    "status": "filled",
+    "createdAt": "2026-02-15T12:35:20.024Z",
+    "type": "market-sell",
+    "tokenID": "93005817587756837193677769166470551981966991192262993145963601537199915644660",
+    "price": 0.38,
+    "size": 10,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T12:35:21.129Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.38
+    }
+  },
+  {
+    "id": "wal_1771158971625_6pdza6",
+    "status": "failed",
+    "createdAt": "2026-02-15T12:36:11.625Z",
+    "type": "arb",
+    "tokenID": "664889865593+287397854519+988487834957+158467010413+641930776417+362171195677+108414203695",
+    "price": 0,
+    "size": 7,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "66488986559365740044",
+          "price": 0.001,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "28739785451979476770",
+          "price": 0.005,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "98848783495729704866",
+          "price": 0.054,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "15846701041375404450",
+          "price": 0.336,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "64193077641717555016",
+          "price": 0.053,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "36217119567720319033",
+          "price": 0.012,
+          "size": 6,
+          "side": "BUY"
+        },
+        {
+          "token": "10841420369545023365",
+          "price": 0.004,
+          "size": 6,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T12:36:13.773Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771159479336_s5p2i8",
+    "status": "filled",
+    "createdAt": "2026-02-15T12:44:39.336Z",
+    "type": "market-sell",
+    "tokenID": "1201652457172393595222176408089614631660302670158599055969460466520409580922",
+    "price": 0.003,
+    "size": 41.010000000000005,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T12:44:40.723Z",
+    "result": {
+      "orderID": "0x20eef0ec4549c4aa2ac926ba36ce3ccd53956424b9b665c5e2d4a8b95123037f",
+      "error": null,
+      "executedPrice": 0.003
+    }
+  },
+  {
+    "id": "wal_1771159880214_61ksu6",
+    "status": "failed",
+    "createdAt": "2026-02-15T12:51:20.214Z",
+    "type": "arb",
+    "tokenID": "120165245717+930058175877+340318207582+173192025215+404158930667",
+    "price": 0,
+    "size": 5,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "12016524571723935952",
+          "price": 0.003,
+          "size": 30,
+          "side": "BUY"
+        },
+        {
+          "token": "93005817587756837193",
+          "price": 0.39,
+          "size": 30,
+          "side": "BUY"
+        },
+        {
+          "token": "34031820758254992803",
+          "price": 0.094,
+          "size": 30,
+          "side": "BUY"
+        },
+        {
+          "token": "17319202521593803864",
+          "price": 0.002,
+          "size": 30,
+          "side": "BUY"
+        },
+        {
+          "token": "40415893066767252122",
+          "price": 0.001,
+          "size": 30,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T12:51:22.163Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771160379889_ypq4xf",
+    "status": "filled",
+    "createdAt": "2026-02-15T12:59:39.889Z",
+    "type": "market-sell",
+    "tokenID": "4041589306676725212214754350234225640967187610933746971905383811151582011379",
+    "price": 0.001,
+    "size": 15.553999999999998,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T12:59:40.290Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.001
+    }
+  },
+  {
+    "id": "wal_1771160383002_nuohq7",
+    "status": "filled",
+    "createdAt": "2026-02-15T12:59:43.002Z",
+    "type": "market-sell",
+    "tokenID": "73002776802776123994946750806885447862269394307070074560451323297088045954726",
+    "price": 0.001,
+    "size": 26,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T12:59:44.373Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.001
+    }
+  },
+  {
+    "id": "wal_1771160680763_iwl13k",
+    "status": "filled",
+    "createdAt": "2026-02-15T13:04:40.763Z",
+    "type": "market-sell",
+    "tokenID": "28988191769969432577061314587368990464217068010525588178919238818382176527209",
+    "price": 0.18,
+    "size": 18,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T13:04:42.144Z",
+    "result": {
+      "orderID": "0xdac0752edecc4e2f8c0f34eeb4a8be9219f38fb878a0acd41a1b58e96589233b",
+      "error": null,
+      "executedPrice": 0.18
+    }
+  },
+  {
+    "id": "wal_1771160779461_yirius",
+    "status": "failed",
+    "createdAt": "2026-02-15T13:06:19.461Z",
+    "type": "arb",
+    "tokenID": "120165245717+930058175877+340318207582+404158930667+173192025215",
+    "price": 0,
+    "size": 5,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "12016524571723935952",
+          "price": 0.003,
+          "size": 18,
+          "side": "BUY"
+        },
+        {
+          "token": "93005817587756837193",
+          "price": 0.46,
+          "size": 18,
+          "side": "BUY"
+        },
+        {
+          "token": "34031820758254992803",
+          "price": 0.036,
+          "size": 18,
+          "side": "BUY"
+        },
+        {
+          "token": "40415893066767252122",
+          "price": 0.001,
+          "size": 18,
+          "side": "BUY"
+        },
+        {
+          "token": "17319202521593803864",
+          "price": 0.002,
+          "size": 18,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T13:06:20.328Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771161279645_ctydxd",
+    "status": "filled",
+    "createdAt": "2026-02-15T13:14:39.646Z",
+    "type": "market-sell",
+    "tokenID": "108414203695450233654321509441823796250883083810513177790628642579691205278305",
+    "price": 0.004,
+    "size": 29,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T13:14:41.048Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.004
+    }
+  },
+  {
+    "id": "wal_1771161579614_53j84i",
+    "status": "filled",
+    "createdAt": "2026-02-15T13:19:39.614Z",
+    "type": "market-sell",
+    "tokenID": "98848783495729704866663247207854429811120039014237794397112069176572118536087",
+    "price": 0.062,
+    "size": 3.18,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T13:19:41.373Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.062
+    }
+  },
+  {
+    "id": "wal_1771161668154_givfwe",
+    "status": "failed",
+    "createdAt": "2026-02-15T13:21:08.154Z",
+    "type": "arb",
+    "tokenID": "664889865593+287397854519+988487834957+158467010413+641930776417+362171195677+108414203695",
+    "price": 0,
+    "size": 7,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "66488986559365740044",
+          "price": 0.001,
+          "size": 15,
+          "side": "BUY"
+        },
+        {
+          "token": "28739785451979476770",
+          "price": 0.006,
+          "size": 15,
+          "side": "BUY"
+        },
+        {
+          "token": "98848783495729704866",
+          "price": 0.062,
+          "size": 15,
+          "side": "BUY"
+        },
+        {
+          "token": "15846701041375404450",
+          "price": 0.337,
+          "size": 15,
+          "side": "BUY"
+        },
+        {
+          "token": "64193077641717555016",
+          "price": 0.057,
+          "size": 15,
+          "side": "BUY"
+        },
+        {
+          "token": "36217119567720319033",
+          "price": 0.012,
+          "size": 15,
+          "side": "BUY"
+        },
+        {
+          "token": "10841420369545023365",
+          "price": 0.004,
+          "size": 15,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T13:21:10.058Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771161673991_bz0vfd",
+    "status": "failed",
+    "createdAt": "2026-02-15T13:21:13.991Z",
+    "type": "arb",
+    "tokenID": "120165245717+930058175877+340318207582+404158930667+173192025215",
+    "price": 0,
+    "size": 5,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "12016524571723935952",
+          "price": 0.003,
+          "size": 5,
+          "side": "BUY"
+        },
+        {
+          "token": "93005817587756837193",
+          "price": 0.47,
+          "size": 5,
+          "side": "BUY"
+        },
+        {
+          "token": "34031820758254992803",
+          "price": 0.036,
+          "size": 5,
+          "side": "BUY"
+        },
+        {
+          "token": "40415893066767252122",
+          "price": 0.001,
+          "size": 5,
+          "side": "BUY"
+        },
+        {
+          "token": "17319202521593803864",
+          "price": 0.004,
+          "size": 5,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T13:21:14.442Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771162241598_t08znk",
+    "status": "filled",
+    "createdAt": "2026-02-15T13:30:41.598Z",
+    "type": "market-sell",
+    "tokenID": "19779568221493895952676865609231089464510850574582508381986852563307884493501",
+    "price": 0.39,
+    "size": 17.992606000000002,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T13:30:42.708Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.39
+    }
+  },
+  {
+    "id": "wal_1771162580754_tn62sw",
+    "status": "failed",
+    "createdAt": "2026-02-15T13:36:20.754Z",
+    "type": "arb",
+    "tokenID": "664889865593+287397854519+988487834957+158467010413+641930776417+362171195677+108414203695",
+    "price": 0,
+    "size": 7,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "66488986559365740044",
+          "price": 0.001,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "28739785451979476770",
+          "price": 0.006,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "98848783495729704866",
+          "price": 0.065,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "15846701041375404450",
+          "price": 0.339,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "64193077641717555016",
+          "price": 0.003,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "36217119567720319033",
+          "price": 0.004,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "10841420369545023365",
+          "price": 0.004,
+          "size": 28,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T13:36:21.206Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771162860490_3lj1di",
+    "status": "failed",
+    "createdAt": "2026-02-15T13:41:00.490Z",
+    "type": "arb",
+    "tokenID": "664889865593+287397854519+988487834957+158467010413+641930776417+362171195677+108414203695",
+    "price": 0,
+    "size": 7,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "66488986559365740044",
+          "price": 0.001,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "28739785451979476770",
+          "price": 0.006,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "98848783495729704866",
+          "price": 0.067,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "15846701041375404450",
+          "price": 0.341,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "64193077641717555016",
+          "price": 0.004,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "36217119567720319033",
+          "price": 0.004,
+          "size": 28,
+          "side": "BUY"
+        },
+        {
+          "token": "10841420369545023365",
+          "price": 0.004,
+          "size": 28,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T13:41:00.987Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
+  },
+  {
+    "id": "wal_1771163068463_loaqsq",
+    "status": "filled",
+    "createdAt": "2026-02-15T13:44:28.463Z",
+    "type": "market-sell",
+    "tokenID": "102537315715678355572271579005595737578706394759017439902058315195378509656429",
+    "price": 0.29,
+    "size": 31,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T13:44:29.511Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.29
+    }
+  },
+  {
+    "id": "wal_1771163068487_upt45p",
+    "status": "filled",
+    "createdAt": "2026-02-15T13:44:28.487Z",
+    "type": "market-sell",
+    "tokenID": "75913565227378972450735776760275457690882335692941744309295567683432026622243",
+    "price": 0.08,
+    "size": 26,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T13:44:29.813Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.08
+    }
+  },
+  {
+    "id": "wal_1771163625189_kuohvk",
+    "status": "filled",
+    "createdAt": "2026-02-15T13:53:45.189Z",
+    "type": "market-sell",
+    "tokenID": "75913565227378972450735776760275457690882335692941744309295567683432026622243",
+    "price": 0.08,
+    "size": 26,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T13:53:46.327Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.08
+    }
+  },
+  {
+    "id": "wal_1771163693448_3lkfh7",
+    "status": "filled",
+    "createdAt": "2026-02-15T13:54:53.448Z",
+    "type": "market-sell",
+    "tokenID": "5411908762045026586082240555373253166073819466238249049909159675354003997706",
+    "price": 0.002,
+    "size": 31,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T13:54:54.831Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.002
+    }
+  },
+  {
+    "id": "wal_1771164116569_hvi0ta",
+    "status": "filled",
+    "createdAt": "2026-02-15T14:01:56.569Z",
+    "type": "market-sell",
+    "tokenID": "67918601360873742370584383150687028364915149273413445401824748975893776724907",
+    "price": 0.042,
+    "size": 31,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T14:01:57.946Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.042
+    }
+  },
+  {
+    "id": "wal_1771164414094_b61860",
+    "status": "filled",
+    "createdAt": "2026-02-15T14:06:54.094Z",
+    "type": "market-sell",
+    "tokenID": "15846701041375404450584433581183486772603923130218945038298013713589052874192",
+    "price": 0.343,
+    "size": 17.78,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T14:06:55.689Z",
+    "result": {
+      "orderID": "0x71722b5df8215ab8fe08e744c1af83d1ed87e4bb229c6e80d63449d1cb8f7a02",
+      "error": null,
+      "executedPrice": 0.343
+    }
+  },
+  {
+    "id": "wal_1771164471109_ka006p",
+    "status": "filled",
+    "createdAt": "2026-02-15T14:07:51.109Z",
+    "type": "market-sell",
+    "tokenID": "34031820758254992803859804442973314667344212273112379288461599897450876246015",
+    "price": 0.035,
+    "size": 96.64,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T14:07:53.122Z",
+    "result": {
+      "orderID": "0x424040bb537e6c14c0f3f37049518ff55986290d5a74646483eea5294c5e387a",
+      "error": null,
+      "executedPrice": 0.035
+    }
+  },
+  {
+    "id": "wal_1771164544345_sl3wdf",
+    "status": "filled",
+    "createdAt": "2026-02-15T14:09:04.345Z",
+    "type": "market-sell",
+    "tokenID": "75913565227378972450735776760275457690882335692941744309295567683432026622243",
+    "price": 0.12,
+    "size": 5,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T14:09:05.791Z",
+    "result": {
+      "orderID": "0x9f9db44393a0f7fd841a17d877a343ec582b9d24e070f2fc6d47b7d808e08ac5",
+      "error": null,
+      "executedPrice": 0.12
+    }
+  },
+  {
+    "id": "wal_1771164771376_xskdvz",
+    "status": "filled",
+    "createdAt": "2026-02-15T14:12:51.376Z",
+    "type": "market-sell",
+    "tokenID": "28739785451979476770719261847282998915617845312964347243280518004151212256810",
+    "price": 0.001,
+    "size": 83,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T14:12:52.812Z",
+    "result": {
+      "orderID": "0xc08df86e83584bda4cf2b9a57084d5189efc81aa4e16f4c67a828473f5849ae4",
+      "error": null,
+      "executedPrice": 0.001
+    }
+  },
+  {
+    "id": "wal_1771165302212_429cyl",
+    "status": "filled",
+    "createdAt": "2026-02-15T14:21:42.212Z",
+    "type": "market-sell",
+    "tokenID": "3621711956772031903370283885011621778556718625615305833808787199263526929018",
+    "price": 0.004,
+    "size": 34.5208,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T14:21:43.767Z",
+    "result": {
+      "orderID": "0xabfd0573e0eb0da8202888e809fb8925d2d93f392542a44876d38829f60e0440",
+      "error": null,
+      "executedPrice": 0.004
+    }
+  },
+  {
+    "id": "wal_1771165538686_ea2kh7",
+    "status": "filled",
+    "createdAt": "2026-02-15T14:25:38.686Z",
+    "type": "market-sell",
+    "tokenID": "102537315715678355572271579005595737578706394759017439902058315195378509656429",
+    "price": 0.34,
+    "size": 1,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T14:25:40.098Z",
+    "result": {
+      "orderID": null,
+      "error": null,
+      "executedPrice": 0.34
+    }
+  },
+  {
+    "id": "wal_1771165690381_w14c56",
+    "status": "filled",
+    "createdAt": "2026-02-15T14:28:10.381Z",
+    "type": "market-sell",
+    "tokenID": "64193077641717555016262288886855608981989373839881051499533015515582758106664",
+    "price": 0.019,
+    "size": 33.84,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T14:28:12.192Z",
+    "result": {
+      "orderID": "0xa8a6470d099c6c8f994068aa42aa995f58389d767cded233ada8bf95a0a3e315",
+      "error": null,
+      "executedPrice": 0.019
+    }
+  },
+  {
+    "id": "wal_1771166012554_tb341o",
+    "status": "failed",
+    "createdAt": "2026-02-15T14:33:32.554Z",
+    "type": "arb",
+    "tokenID": "741328307341+101866985831+664281178637+370459899813+564890285495+107838777444",
+    "price": 0,
+    "size": 6,
+    "side": "ARB",
+    "strategy": "arb",
+    "source": "executor",
+    "meta": {
+      "legs": [
+        {
+          "token": "74132830734193041546",
+          "price": 0.01,
+          "size": 12,
+          "side": "BUY"
+        },
+        {
+          "token": "10186698583127661066",
+          "price": 0.41,
+          "size": 12,
+          "side": "BUY"
+        },
+        {
+          "token": "66428117863747102844",
+          "price": 0.37,
+          "size": 12,
+          "side": "BUY"
+        },
+        {
+          "token": "37045989981370646785",
+          "price": 0.13,
+          "size": 12,
+          "side": "BUY"
+        },
+        {
+          "token": "56489028549550467921",
+          "price": 0.008,
+          "size": 12,
+          "side": "BUY"
+        },
+        {
+          "token": "10783877744475063528",
+          "price": 0.001,
+          "size": 12,
+          "side": "BUY"
+        }
+      ]
+    },
+    "resolvedAt": "2026-02-15T14:33:34.340Z",
+    "result": {
+      "orderID": null,
+      "error": "All legs failed",
+      "executedPrice": null
+    }
   }
 ]

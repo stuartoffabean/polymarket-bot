@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-15T11:05:31.766Z",
+  "timestamp": "2026-02-15T14:32:50.206Z",
   "summary": {
     "totalMarkets": 200,
-    "binaryCandidates": 59,
-    "booksChecked": 10,
+    "binaryCandidates": 55,
+    "booksChecked": 14,
     "longArbs": 0,
     "shortArbs": 0,
     "viableArbs": 0

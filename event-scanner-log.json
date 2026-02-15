@@ -138,5 +138,25 @@
     "opportunitiesFound": 1,
     "newAdded": 0,
     "totalInFile": 15
+  },
+  {
+    "scan": 4,
+    "at": "2026-02-15T12:19:11.428Z",
+    "elapsed": "114.7s",
+    "marketsScanned": 487,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 5,
+    "at": "2026-02-15T14:19:13.268Z",
+    "elapsed": "116.6s",
+    "marketsScanned": 425,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
   }
 ]

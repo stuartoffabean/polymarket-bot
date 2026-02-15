@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-02-15T08:09:37.789Z",
+  "lastUpdated": "2026-02-15T14:36:53.062Z",
   "generatedBy": "trade-reporter.js v1.0",
   "portfolio": {
-    "totalValue": 524.877677,
-    "positionValue": 195.7138,
-    "cashBalance": 329.163877,
-    "trackedPositions": 21,
-    "idlePct": "62.7"
+    "totalValue": 417.523451,
+    "positionValue": 158.44481600000003,
+    "cashBalance": 259.078635,
+    "trackedPositions": 18,
+    "idlePct": "62.1"
   },
   "summary": {
-    "totalRealizedPnl": -40.09,
-    "totalUnrealizedPnl": 17.45,
-    "totalPnl": -22.64,
-    "totalTrades": 72,
+    "totalRealizedPnl": -54.86,
+    "totalUnrealizedPnl": 12.54,
+    "totalPnl": -42.32,
+    "totalTrades": 84,
     "totalWins": 18,
-    "totalLosses": 33,
-    "overallWinRate": 33.3,
-    "portfolioValue": 524.877677,
-    "cashBalance": 329.163877,
-    "idlePct": "62.7",
+    "totalLosses": 41,
+    "overallWinRate": 29,
+    "portfolioValue": 417.523451,
+    "cashBalance": 259.078635,
+    "idlePct": "62.1",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
@@ -34,14 +34,43 @@
         "unfilled": 0
       },
       "arb": {
-        "submitted": 13,
+        "submitted": 32,
         "filled": 4,
         "partial": 0,
-        "unfilled": 9
+        "unfilled": 28
       }
     }
   },
   "strategies": {
+    "unknown": {
+      "status": "ACTIVE",
+      "totalTrades": 39,
+      "openPositions": 16,
+      "closedPositions": 23,
+      "wins": 9,
+      "losses": 14,
+      "winRate": "39.1%",
+      "realizedPnl": "$-3.89",
+      "unrealizedPnl": "$-3.33",
+      "totalPnl": "$-7.22",
+      "totalDeployed": "$269.38",
+      "currentDeployed": "$68.64",
+      "expectancy": "$-0.17",
+      "profitFactor": "0.88",
+      "avgWin": "$3.05",
+      "avgLoss": "$-2.24",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Gov Shutdown Feb 14",
+        "pnl": 18.07,
+        "pnlPct": "15.7"
+      },
+      "worstTrade": {
+        "market": "0x20de601ca32d3741f47b24e2108da170d285577056e4237f05dbde04c7ae6703",
+        "pnl": -10.79,
+        "pnlPct": "-82.8"
+      }
+    },
     "resolution": {
       "status": "COMPLETED",
       "totalTrades": 8,
@@ -51,8 +80,8 @@
       "losses": 4,
       "winRate": "50%",
       "realizedPnl": "$-3.78",
-      "unrealizedPnl": "$-0.91",
-      "totalPnl": "$-4.69",
+      "unrealizedPnl": "$0.00",
+      "totalPnl": "$-3.78",
       "totalDeployed": "$98.54",
       "currentDeployed": "$0.00",
       "expectancy": "$-0.47",
@@ -71,35 +100,6 @@
         "pnlPct": "-34.0"
       }
     },
-    "unknown": {
-      "status": "ACTIVE",
-      "totalTrades": 27,
-      "openPositions": 12,
-      "closedPositions": 15,
-      "wins": 9,
-      "losses": 6,
-      "winRate": "60%",
-      "realizedPnl": "$10.88",
-      "unrealizedPnl": "$0.65",
-      "totalPnl": "$11.53",
-      "totalDeployed": "$232.33",
-      "currentDeployed": "$14.76",
-      "expectancy": "$0.73",
-      "profitFactor": "2.10",
-      "avgWin": "$2.30",
-      "avgLoss": "$-1.64",
-      "avgHoldHours": 0,
-      "bestTrade": {
-        "market": "Gov Shutdown Feb 14",
-        "pnl": 18.07,
-        "pnlPct": "15.7"
-      },
-      "worstTrade": {
-        "market": "Bad Bunny Halftime Views",
-        "pnl": -7.43,
-        "pnlPct": "-21.2"
-      }
-    },
     "arb": {
       "status": "ACTIVE",
       "totalTrades": 10,
@@ -109,8 +109,8 @@
       "losses": 6,
       "winRate": "11.1%",
       "realizedPnl": "$-1.25",
-      "unrealizedPnl": "$10.50",
-      "totalPnl": "$9.25",
+      "unrealizedPnl": "$14.50",
+      "totalPnl": "$13.25",
       "totalDeployed": "$4.38",
       "currentDeployed": "$31.00",
       "expectancy": "$-0.14",
@@ -138,8 +138,8 @@
       "losses": 3,
       "winRate": "0%",
       "realizedPnl": "$-11.38",
-      "unrealizedPnl": "$7.21",
-      "totalPnl": "$-4.17",
+      "unrealizedPnl": "$1.37",
+      "totalPnl": "$-10.01",
       "totalDeployed": "$168.20",
       "currentDeployed": "$48.24",
       "expectancy": "$-3.79",
