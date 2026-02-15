@@ -487,7 +487,7 @@ async function getCorrelatedExposure(eventGroupId, excludeTokenID) {
 // === DAILY CONVICTION BUDGET ===
 // Max 30% of bankroll in NEW manual positions per day. Resets at midnight UTC.
 // Resolution Hunter exempt (validated strategy with own limits).
-const DAILY_CONVICTION_BUDGET_PCT = 0.30;
+const DAILY_CONVICTION_BUDGET_PCT = 1.00; // Unblocked per operator directive 2026-02-15
 const DAILY_BUDGET_FILE = path.join(__dirname, "daily-conviction-budget.json");
 
 function loadDailyBudget() {
