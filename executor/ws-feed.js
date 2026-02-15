@@ -2606,13 +2606,13 @@ async function main() {
   // PnL history recording — every 5 min
   setInterval(recordPnlSnapshot, PNL_RECORD_INTERVAL);
 
-  // Arb scanner — runs every 15 min, first run after 30s startup delay
-  setTimeout(() => {
-    runArbScan();
-    setInterval(runArbScan, ARB_SCAN_INTERVAL);
-  }, 30 * 1000);
-
-  // Resolving markets scanner — runs every 30 min, first run after 60s
+  // === ARB SCANNERS — PERMANENTLY REMOVED (2026-02-15, user directive) ===
+  // NegRisk arb scanner: ALL 30+ attempts returned ALL_FAILED. FOK orders posting as GTC,
+  // creating random unhedged single-leg positions. Losses, not arb.
+  // Binary arb scanner: same FOK bug. Both removed entirely — not flagged, REMOVED.
+  // Code retained in functions below for reference but never called.
+  //
+  // Resolving markets scanner: scan-only (no execution), kept for data collection.
   setTimeout(() => {
     runResolvingScan();
     setInterval(runResolvingScan, RESOLVING_SCAN_INTERVAL);
@@ -2623,24 +2623,6 @@ async function main() {
     runResolutionHunter();
     setInterval(runResolutionHunter, RESOLUTION_HUNTER_INTERVAL);
   }, 90 * 1000);
-
-  // Binary arb scanner — runs every 5 min, first run after 45s
-  // Scans ALL binary markets (not just NegRisk) for YES ask + NO ask < $1.00
-  setTimeout(() => {
-    const runBinaryArb = () => {
-      const canExec = systemReady && !circuitBreakerTripped && !emergencyMode && !survivalMode && autoExecuteEnabled;
-      runBinaryArbScan({
-        log,
-        checkAutoCapBudget,
-        httpPost,
-        sendTelegramAlert,
-        tagStrategy,
-        canExecute: canExec,
-      }).catch(e => log("BARB", `❌ Uncaught error: ${e.message}`));
-    };
-    runBinaryArb();
-    setInterval(runBinaryArb, BINARY_ARB_SCAN_INTERVAL);
-  }, 45 * 1000);
 
   // Weather signal executor — PERMANENTLY DISABLED (2026-02-13)
   // Backtest showed NEGATIVE EDGE: 52.7% hit rate, -$234.74 simulated P&L on 129 signals.
