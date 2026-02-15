@@ -1,29 +1,335 @@
 {
-  "timestamp": "2026-02-15T02:59:23.069Z",
+  "timestamp": "2026-02-15T07:57:04.857Z",
   "summary": {
     "total": 100,
-    "negRisk": 56,
-    "flagged": 3,
-    "viable": 0
+    "negRisk": 57,
+    "flagged": 5,
+    "viable": 3
   },
   "opportunities": [
+    {
+      "event": "Solana price on February 15?",
+      "slug": "solana-price-on-february-15",
+      "type": "LONG",
+      "outcomes": 6,
+      "midSum": 0.6265,
+      "execSum": 0.175,
+      "deviation": 37.35,
+      "execDeviation": 82.5,
+      "grossProfitPer100": 82.5,
+      "feesPer100": 0,
+      "profitPer100": 82.5,
+      "viable": true,
+      "details": [
+        {
+          "name": "Will the price of Solana be between $70 and $80 on February ",
+          "mid": 0.026,
+          "exec": 0.011,
+          "token": "1201652457172393595222176408089614631660302670158599055969460466520409580922"
+        },
+        {
+          "name": "Will the price of Solana be between $80 and $90 on February ",
+          "mid": 0.245,
+          "exec": 0.06,
+          "token": "93005817587756837193677769166470551981966991192262993145963601537199915644660"
+        },
+        {
+          "name": "Will the price of Solana be between $90 and $100 on February",
+          "mid": 0.3225,
+          "exec": 0.09,
+          "token": "34031820758254992803859804442973314667344212273112379288461599897450876246015"
+        },
+        {
+          "name": "Will the price of Solana be between $60 and $70 on February ",
+          "mid": 0.008,
+          "exec": 0.001,
+          "token": "4041589306676725212214754350234225640967187610933746971905383811151582011379"
+        },
+        {
+          "name": "Will the price of Solana be between $100 and $110 on Februar",
+          "mid": 0.0185,
+          "exec": 0.011,
+          "token": "17319202521593803864115819278122279387617259027778811928491097290754227052039"
+        },
+        {
+          "name": "Will the price of Solana be between $110 and $120 on Februar",
+          "mid": 0.0035,
+          "exec": 0.002,
+          "token": "45389975275559493805521933835573186197410218531592213078479110681779711897538"
+        }
+      ]
+    },
+    {
+      "event": "Nobel Peace Prize Winner 2026",
+      "slug": "nobel-peace-prize-winner-2026-139",
+      "type": "LONG",
+      "outcomes": 20,
+      "midSum": 0.7725,
+      "execSum": 0.705,
+      "deviation": 22.75,
+      "execDeviation": 29.5,
+      "grossProfitPer100": 29.5,
+      "feesPer100": 0,
+      "profitPer100": 29.5,
+      "viable": true,
+      "details": [
+        {
+          "name": "Will Donald Trump win the Nobel Peace Prize in 2026?",
+          "mid": 0.115,
+          "exec": 0.11,
+          "token": "96308556109755835434254900303426519652053230974356832970824534225192181988516"
+        },
+        {
+          "name": "Will Yulia Navalnaya win the Nobel Peace Prize in 2026?",
+          "mid": 0.07,
+          "exec": 0.06,
+          "token": "3494130919441794744300504897798612438496650716124466384425423765833752918969"
+        },
+        {
+          "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
+          "mid": 0.0305,
+          "exec": 0.03,
+          "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
+        },
+        {
+          "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
+          "mid": 0.0605,
+          "exec": 0.06,
+          "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
+        },
+        {
+          "name": "Will António Guterres win the Nobel Peace Prize in 2026?",
+          "mid": 0.006,
+          "exec": 0.004,
+          "token": "23342261653888694132200522593527487238848562692306851598440649086435121500976"
+        },
+        {
+          "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
+          "mid": 0.1105,
+          "exec": 0.102,
+          "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
+        },
+        {
+          "name": "Will Khaled Mashal win the Nobel Peace Prize in 2026?",
+          "mid": 0.01,
+          "exec": 0.008,
+          "token": "4817558919700430121831697879056774909752184660255737582917693916506064447935"
+        },
+        {
+          "name": "Will Recep Tayyip Erdoğan win the Nobel Peace Prize in 2026?",
+          "mid": 0.0075,
+          "exec": 0.007,
+          "token": "85146181675473345857517501170400200068194836865848336579180316943778562621184"
+        },
+        {
+          "name": "Will Ahmed al-Sharaa win the Nobel Peace Prize in 2026?",
+          "mid": 0.013,
+          "exec": 0.011,
+          "token": "29384252153498040908016173010534270095096285030713208216637067996773126537603"
+        },
+        {
+          "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
+          "mid": 0.011,
+          "exec": 0.008,
+          "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
+        },
+        {
+          "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
+          "mid": 0.0515,
+          "exec": 0.043,
+          "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
+        },
+        {
+          "name": "Will Julian Assange win the Nobel Peace Prize in 2026?",
+          "mid": 0.008,
+          "exec": 0.007,
+          "token": "2514203837854735205913781359327052377275050226163878960745268210971566855346"
+        },
+        {
+          "name": "Will Elon Musk win the Nobel Peace Prize in 2026?",
+          "mid": 0.0155,
+          "exec": 0.015,
+          "token": "75607128808577269329357564425293012652006155264327001987967114873720422847762"
+        },
+        {
+          "name": "Will the International Court of Justice win the Nobel Peace ",
+          "mid": 0.0955,
+          "exec": 0.084,
+          "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
+        },
+        {
+          "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
+          "mid": 0.111,
+          "exec": 0.11,
+          "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
+        },
+        {
+          "name": "Will Vladimir Putin win the Nobel Peace Prize in 2026?",
+          "mid": 0.007,
+          "exec": 0.005,
+          "token": "3072654272549368438022392135276167382428661847959009954134234860002162565563"
+        },
+        {
+          "name": "Will Benjamin Netanyahu win the Nobel Peace Prize in 2026?",
+          "mid": 0.007,
+          "exec": 0.006,
+          "token": "8075661047254567797432306525558519998052391236898258911573171689963344650999"
+        },
+        {
+          "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
+          "mid": 0.006,
+          "exec": 0.003,
+          "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
+        },
+        {
+          "name": "Will Charlie Kirk win the Nobel Peace Prize in 2026?",
+          "mid": 0.019,
+          "exec": 0.016,
+          "token": "41901357708237118584313729261027657874621373325486663648640954008517926947624"
+        },
+        {
+          "name": "Will Narendra Modi win the Nobel Peace Prize in 2026?",
+          "mid": 0.018,
+          "exec": 0.016,
+          "token": "95036065107529622997025744213041265776694292492123977042470465876649211394600"
+        }
+      ]
+    },
+    {
+      "event": "Elon Musk # tweets February 10 - February 17, 2026?",
+      "slug": "elon-musk-of-tweets-february-10-february-17",
+      "type": "LONG",
+      "outcomes": 17,
+      "midSum": 0.9595,
+      "execSum": 0.937,
+      "deviation": 4.05,
+      "execDeviation": 6.3,
+      "grossProfitPer100": 6.3,
+      "feesPer100": 0,
+      "profitPer100": 6.3,
+      "viable": true,
+      "details": [
+        {
+          "name": "Will Elon Musk post 180-199 tweets from February 10 to Febru",
+          "mid": 0.0075,
+          "exec": 0.007,
+          "token": "80129402193926886222872648744582448109420209585695362513644908498087632880007"
+        },
+        {
+          "name": "Will Elon Musk post 200-219 tweets from February 10 to Febru",
+          "mid": 0.015,
+          "exec": 0.015,
+          "token": "64416820489790288121332102418502472550033366952379918524927111781067175558728"
+        },
+        {
+          "name": "Will Elon Musk post 220-239 tweets from February 10 to Febru",
+          "mid": 0.0735,
+          "exec": 0.071,
+          "token": "39984374655456235253656309386142440892847335410208574801160432468734235032379"
+        },
+        {
+          "name": "Will Elon Musk post 240-259 tweets from February 10 to Febru",
+          "mid": 0.1695,
+          "exec": 0.161,
+          "token": "110086312911106114856365407473141439385088061745851411040518145492635387128654"
+        },
+        {
+          "name": "Will Elon Musk post 260-279 tweets from February 10 to Febru",
+          "mid": 0.2165,
+          "exec": 0.218,
+          "token": "92804214888488286051660081845840802500960320189916628779681012160154623746659"
+        },
+        {
+          "name": "Will Elon Musk post 280-299 tweets from February 10 to Febru",
+          "mid": 0.155,
+          "exec": 0.16,
+          "token": "54690840325411903483913219455611047215123448522591285512786502451539096092975"
+        },
+        {
+          "name": "Will Elon Musk post 300-319 tweets from February 10 to Febru",
+          "mid": 0.115,
+          "exec": 0.12,
+          "token": "25467699180573493717711565751893722640385987038872615705722431610356245437254"
+        },
+        {
+          "name": "Will Elon Musk post 320-339 tweets from February 10 to Febru",
+          "mid": 0.08,
+          "exec": 0.07,
+          "token": "99041117589274216932043990005087798610474127600814514035919300325500109165784"
+        },
+        {
+          "name": "Will Elon Musk post 340-359 tweets from February 10 to Febru",
+          "mid": 0.057,
+          "exec": 0.056,
+          "token": "56642611054613403913919428582227500957548450934026978077352003466686247768324"
+        },
+        {
+          "name": "Will Elon Musk post 360-379 tweets from February 10 to Febru",
+          "mid": 0.03,
+          "exec": 0.028,
+          "token": "21547563690326420206108236709516775266934352952491095703108460557563075061478"
+        },
+        {
+          "name": "Will Elon Musk post 380-399 tweets from February 10 to Febru",
+          "mid": 0.013,
+          "exec": 0.013,
+          "token": "69334117169564710460204031249483643325085029645369125379997402163488514883717"
+        },
+        {
+          "name": "Will Elon Musk post 400-419 tweets from February 10 to Febru",
+          "mid": 0.009,
+          "exec": 0.005,
+          "token": "19712570898317104556251606569447212832197645525492704365639605030352363765250"
+        },
+        {
+          "name": "Will Elon Musk post 420-439 tweets from February 10 to Febru",
+          "mid": 0.0045,
+          "exec": 0.004,
+          "token": "95558768311819174949326480514271676170677962375548879508365985765068496694519"
+        },
+        {
+          "name": "Will Elon Musk post 440-459 tweets from February 10 to Febru",
+          "mid": 0.006,
+          "exec": 0.006,
+          "token": "83857067296720617532971946189991838378360948274195071724210433075026914341583"
+        },
+        {
+          "name": "Will Elon Musk post 460-479 tweets from February 10 to Febru",
+          "mid": 0.002,
+          "exec": 0.001,
+          "token": "75290599409857445610918404354897944196813863043273492972579674466788868679119"
+        },
+        {
+          "name": "Will Elon Musk post 480-499 tweets from February 10 to Febru",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "80738894559105633035868114894710048334173188982599421881331265333526115764714"
+        },
+        {
+          "name": "Will Elon Musk post 500-519 tweets from February 10 to Febru",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "14310481446556249018043038725450556186523312353390890852422793795299722169224"
+        }
+      ]
+    },
     {
       "event": "NBA Eastern Conference Champion ",
       "slug": "nba-eastern-conference-champion-442",
       "type": "SHORT",
       "outcomes": 12,
-      "midSum": 1.042,
-      "execSum": 0.985,
-      "deviation": 4.2,
-      "execDeviation": 1.5,
-      "grossProfitPer100": -1.5,
+      "midSum": 1.028,
+      "execSum": 0.975,
+      "deviation": 2.8,
+      "execDeviation": 2.5,
+      "grossProfitPer100": -2.5,
       "feesPer100": 0,
-      "profitPer100": -1.5,
+      "profitPer100": -2.5,
       "viable": false,
       "details": [
         {
           "name": "Will the Cleveland Cavaliers win the NBA Eastern Conference ",
-          "mid": 0.23,
+          "mid": 0.225,
           "exec": 0.22,
           "token": "26510384225806040730267502985578081313836463589753281281933174278980674429194"
         },
@@ -47,38 +353,38 @@
         },
         {
           "name": "Will the Detroit Pistons win the NBA Eastern Conference Fina",
-          "mid": 0.22,
-          "exec": 0.21,
+          "mid": 0.21,
+          "exec": 0.2,
           "token": "108446172107941165064806998519652737542801121226691431615334275432295450338136"
         },
         {
           "name": "Will the Philadelphia 76ers win the NBA Eastern Conference F",
-          "mid": 0.069,
-          "exec": 0.068,
+          "mid": 0.077,
+          "exec": 0.076,
           "token": "50692628443801018513325614545746863026982626993302787461752145605052144027838"
         },
         {
           "name": "Will the Boston Celtics win the NBA Eastern Conference Final",
-          "mid": 0.1825,
-          "exec": 0.18,
+          "mid": 0.1925,
+          "exec": 0.179,
           "token": "76284775424209240264542352208573338636556198300439966875308967535434111103074"
         },
         {
           "name": "Will the Milwaukee Bucks win the NBA Eastern Conference Fina",
-          "mid": 0.032,
-          "exec": 0.019,
+          "mid": 0.0185,
+          "exec": 0.014,
           "token": "79336858132239037705158300268603413459637933572725439146100963281670148171735"
         },
         {
           "name": "Will the Toronto Raptors win the NBA Eastern Conference Fina",
-          "mid": 0.0275,
+          "mid": 0.027,
           "exec": 0.025,
           "token": "46948910926280539794385431325138940193666253674995635848222141296489362188849"
         },
         {
           "name": "Will the Miami Heat win the NBA Eastern Conference Finals?",
-          "mid": 0.025,
-          "exec": 0.023,
+          "mid": 0.022,
+          "exec": 0.021,
           "token": "91737308879086717078434227064834144626260031635826299637092532293769745981585"
         },
         {
@@ -96,142 +402,66 @@
       ]
     },
     {
-      "event": "Solana price on February 15?",
-      "slug": "solana-price-on-february-15",
+      "event": "XRP price on February 15?",
+      "slug": "xrp-price-on-february-15",
       "type": "SHORT",
-      "outcomes": 6,
-      "midSum": 1.0625,
-      "execSum": 0.983,
-      "deviation": 6.25,
-      "execDeviation": 1.7,
-      "grossProfitPer100": -1.7,
+      "outcomes": 8,
+      "midSum": 1.0535,
+      "execSum": 0.445,
+      "deviation": 5.35,
+      "execDeviation": 55.5,
+      "grossProfitPer100": -55.5,
       "feesPer100": 0,
-      "profitPer100": -1.7,
+      "profitPer100": -55.5,
       "viable": false,
       "details": [
         {
-          "name": "Will the price of Solana be between $70 and $80 on February ",
-          "mid": 0.015,
-          "exec": 0.012,
-          "token": "1201652457172393595222176408089614631660302670158599055969460466520409580922"
-        },
-        {
-          "name": "Will the price of Solana be between $80 and $90 on February ",
-          "mid": 0.84,
-          "exec": 0.81,
-          "token": "93005817587756837193677769166470551981966991192262993145963601537199915644660"
-        },
-        {
-          "name": "Will the price of Solana be between $90 and $100 on February",
-          "mid": 0.188,
-          "exec": 0.152,
-          "token": "34031820758254992803859804442973314667344212273112379288461599897450876246015"
-        },
-        {
-          "name": "Will the price of Solana be between $60 and $70 on February ",
-          "mid": 0.004,
+          "name": "Will the price of XRP be between $1.20 and $1.30 on February",
+          "mid": 0.0155,
           "exec": 0.001,
-          "token": "4041589306676725212214754350234225640967187610933746971905383811151582011379"
+          "token": "6648898655936574004442985809763692949982309217460137876687892597824326297102"
         },
         {
-          "name": "Will the price of Solana be between $100 and $110 on Februar",
-          "mid": 0.01,
-          "exec": 0.007,
-          "token": "17319202521593803864115819278122279387617259027778811928491097290754227052039"
-        },
-        {
-          "name": "Will the price of Solana be between $110 and $120 on Februar",
-          "mid": 0.0025,
+          "name": "Will the price of XRP be between $1.30 and $1.40 on February",
+          "mid": 0.012,
           "exec": 0.001,
-          "token": "45389975275559493805521933835573186197410218531592213078479110681779711897538"
-        }
-      ]
-    },
-    {
-      "event": "NBA Western Conference Champion ",
-      "slug": "nba-western-conference-champion-933",
-      "type": "SHORT",
-      "outcomes": 12,
-      "midSum": 1.0285,
-      "execSum": 0.983,
-      "deviation": 2.85,
-      "execDeviation": 1.7,
-      "grossProfitPer100": -1.7,
-      "feesPer100": 0,
-      "profitPer100": -1.7,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will the Oklahoma City Thunder win the NBA Western Conferenc",
-          "mid": 0.52,
-          "exec": 0.51,
-          "token": "105874436620923713168019020245858616944322383958692280683224180064376992665538"
+          "token": "28739785451979476770719261847282998915617845312964347243280518004151212256810"
         },
         {
-          "name": "Will the Denver Nuggets win the NBA Western Conference Final",
-          "mid": 0.15,
-          "exec": 0.14,
-          "token": "108398074540970095314518325646490765619963623062982966676789014794361479719637"
+          "name": "Will the price of XRP be between $1.40 and $1.50 on February",
+          "mid": 0.046,
+          "exec": 0.003,
+          "token": "98848783495729704866663247207854429811120039014237794397112069176572118536087"
         },
         {
-          "name": "Will the Houston Rockets win the NBA Western Conference Fina",
-          "mid": 0.0615,
-          "exec": 0.061,
-          "token": "22226004461035625319919657267129959466466585725269185478458570055870755140202"
+          "name": "Will the price of XRP be between $1.50 and $1.60 on February",
+          "mid": 0.4415,
+          "exec": 0.063,
+          "token": "15846701041375404450584433581183486772603923130218945038298013713589052874192"
         },
         {
-          "name": "Will the Los Angeles Lakers win the NBA Western Conference F",
-          "mid": 0.041,
-          "exec": 0.04,
-          "token": "92156510891798873020497715268024772851858076229893943637545856397683791106647"
+          "name": "Will the price of XRP be between $1.60 and $1.70 on February",
+          "mid": 0.491,
+          "exec": 0.36,
+          "token": "64193077641717555016262288886855608981989373839881051499533015515582758106664"
         },
         {
-          "name": "Will the Minnesota Timberwolves win the NBA Western Conferen",
-          "mid": 0.0555,
-          "exec": 0.053,
-          "token": "80564199933198063686735983682931201091805047291421501140508185910743468318376"
-        },
-        {
-          "name": "Will the Los Angeles Clippers win the NBA Western Conference",
-          "mid": 0.0235,
-          "exec": 0.023,
-          "token": "48683147420750921052017138201270724636186430958875818497134964551306866907814"
-        },
-        {
-          "name": "Will the Dallas Mavericks win the NBA Western Conference Fin",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "55099493322519440967558717167222283364927814955850690659280839827209928958533"
-        },
-        {
-          "name": "Will the San Antonio Spurs win the NBA Western Conference Fi",
-          "mid": 0.1305,
-          "exec": 0.117,
-          "token": "6842047670820419171425914468337077680927367717837404858652329372722501774629"
-        },
-        {
-          "name": "Will the Phoenix Suns win the NBA Western Conference Finals?",
-          "mid": 0.02,
-          "exec": 0.019,
-          "token": "24315108267836543154857233535536136482524552716493402526894829400485516895736"
-        },
-        {
-          "name": "Will the Utah Jazz win the NBA Western Conference Finals?",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "79870685104046272701356539864336775233555053726570352166377648938896627310090"
-        },
-        {
-          "name": "Will the Portland Trail Blazers win the NBA Western Conferen",
-          "mid": 0.007,
-          "exec": 0.004,
-          "token": "77648433824716730185008177852682080573261442860361580435966309914289533557558"
-        },
-        {
-          "name": "Will the Golden State Warriors win the NBA Western Conferenc",
-          "mid": 0.014,
+          "name": "Will the price of XRP be between $1.70 and $1.80 on February",
+          "mid": 0.011,
           "exec": 0.013,
-          "token": "8186557467277475901094949742490854679817405006696983018588137692207963004648"
+          "token": "3621711956772031903370283885011621778556718625615305833808787199263526929018"
+        },
+        {
+          "name": "Will the price of XRP be between $1.80 and $1.90 on February",
+          "mid": 0.0045,
+          "exec": 0.004,
+          "token": "108414203695450233654321509441823796250883083810513177790628642579691205278305"
+        },
+        {
+          "name": "Will the price of XRP be greater than $1.90 on February 15?",
+          "mid": 0.0295,
+          "exec": 0,
+          "token": "9640629581591989405292846243394293301838247114047527103134115463325542344621"
         }
       ]
     }

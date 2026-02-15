@@ -3,9 +3,11 @@
  * External Data Enrichment Module for Event Scanner
  * 
  * Sources:
- * 1. OddsBlaze — sportsbook consensus odds (requires API key, $29/mo or free trial)
+ * 1. OddsBlaze — sportsbook consensus odds (requires API key, $29/mo)
  * 2. Congress.gov — bill/legislation status tracking (free, 5000 req/hr)
  * 3. LMSYS/LMArena — AI model leaderboard scraper (free, scrapes HF + arena.ai)
+ * 4. FRED — Federal Reserve Economic Data (free, 120 req/min)
+ * 5. Metaculus — Prediction market consensus (free API)
  * 
  * Each enricher: takes a market question, returns structured signal or null.
  */
@@ -421,6 +423,167 @@ async function enrichWithLMSYS(question) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// 4. FRED — Federal Reserve Economic Data
+// ═══════════════════════════════════════════════════════════════════
+
+const FRED_API_KEY = process.env.FRED_API_KEY || '';
+
+const ECON_KEYWORDS = {
+  'fed rate': 'FEDFUNDS',
+  'federal funds': 'FEDFUNDS',
+  'interest rate': 'FEDFUNDS',
+  'rate cut': 'FEDFUNDS',
+  'rate hike': 'FEDFUNDS',
+  'inflation': 'CPIAUCSL',
+  'cpi': 'CPIAUCSL',
+  'consumer price': 'CPIAUCSL',
+  'unemployment': 'UNRATE',
+  'jobless': 'UNRATE',
+  'jobs report': 'PAYEMS',
+  'nonfarm payroll': 'PAYEMS',
+  'non-farm payroll': 'PAYEMS',
+  'payrolls': 'PAYEMS',
+  'gdp': 'GDP',
+  'recession': 'GDP',
+  'economic growth': 'GDP',
+  'retail sales': 'RSAFS',
+  'consumer spending': 'PCE',
+  'pce': 'PCE',
+  'housing starts': 'HOUST',
+  'home sales': 'EXHOSLUSM495S',
+  'treasury yield': 'DGS10',
+  '10-year': 'DGS10',
+  '2-year': 'DGS2',
+  'yield curve': 'T10Y2Y',
+  'oil price': 'DCOILWTICO',
+  'crude oil': 'DCOILWTICO',
+};
+
+function detectEconSeries(question) {
+  const q = question.toLowerCase();
+  for (const [keyword, seriesId] of Object.entries(ECON_KEYWORDS)) {
+    if (q.includes(keyword)) return { keyword, seriesId };
+  }
+  return null;
+}
+
+async function enrichWithFRED(question) {
+  if (!FRED_API_KEY) return null;
+  const match = detectEconSeries(question);
+  if (!match) return null;
+
+  try {
+    // Get latest observations
+    const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${match.seriesId}&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=12`;
+    const r = await httpGet(url);
+    if (r.status !== 200) return null;
+    const data = JSON.parse(r.data);
+
+    const obs = (data.observations || []).filter(o => o.value !== '.');
+    if (obs.length === 0) return null;
+
+    const latest = parseFloat(obs[0].value);
+    const prev = obs.length > 1 ? parseFloat(obs[1].value) : null;
+    const change = prev !== null ? latest - prev : null;
+    const changePct = prev !== null && prev !== 0 ? ((latest - prev) / prev * 100) : null;
+
+    // Trend: last 6 observations
+    const recent = obs.slice(0, 6).map(o => parseFloat(o.value)).reverse();
+    const trend = recent.length >= 3
+      ? (recent[recent.length - 1] > recent[0] ? 'rising' : recent[recent.length - 1] < recent[0] ? 'falling' : 'flat')
+      : null;
+
+    return {
+      source: 'fred',
+      seriesId: match.seriesId,
+      keyword: match.keyword,
+      latest: { value: latest, date: obs[0].date },
+      previous: prev !== null ? { value: prev, date: obs[1]?.date } : null,
+      change,
+      changePct: changePct !== null ? +changePct.toFixed(2) : null,
+      trend,
+      recentValues: recent,
+    };
+  } catch (e) {
+    console.error('[FRED]', e.message);
+    return null;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// 5. METACULUS — Prediction Market Consensus
+// ═══════════════════════════════════════════════════════════════════
+
+const METACULUS_API_KEY = process.env.METACULUS_API_KEY || '';
+
+async function enrichWithMetaculus(question) {
+  if (!METACULUS_API_KEY) return null;
+
+  // Search Metaculus for similar questions (v2 API)
+  const searchTerms = question
+    .replace(/^(Will|Does|Is|Are|Has|Have|Can|Could|Should|Would)\s+/i, '')
+    .replace(/\?$/, '')
+    .slice(0, 80);
+
+  try {
+    const url = `https://www.metaculus.com/api2/questions/?search=${encodeURIComponent(searchTerms)}&limit=5&status=open&type=binary`;
+    const r = await httpGet(url, 10000, {
+      'Authorization': `Token ${METACULUS_API_KEY}`,
+    });
+    if (r.status !== 200) return null;
+    const data = JSON.parse(r.data);
+
+    const results = data.results || [];
+    if (results.length === 0) return null;
+
+    // Score relevance by title similarity (simple word overlap)
+    const qWords = new Set(question.toLowerCase().split(/\s+/).filter(w => w.length > 3));
+    const scored = results.map(q => {
+      const tWords = new Set((q.title || '').toLowerCase().split(/\s+/).filter(w => w.length > 3));
+      const overlap = [...qWords].filter(w => tWords.has(w)).length;
+      return { ...q, relevance: overlap / Math.max(qWords.size, 1) };
+    }).sort((a, b) => b.relevance - a.relevance);
+
+    const best = scored[0];
+    if (best.relevance < 0.2) return null; // Too dissimilar
+
+    // Fetch individual question for prediction data
+    let communityPred = null;
+    let numForecasters = best.nr_forecasters || best.forecasts_count || 0;
+    try {
+      const qr = await httpGet(`https://www.metaculus.com/api2/questions/${best.id}/`, 8000, {
+        'Authorization': `Token ${METACULUS_API_KEY}`,
+      });
+      if (qr.status === 200) {
+        const qData = JSON.parse(qr.data);
+        communityPred = qData.community_prediction?.full?.q2 
+          || qData.community_prediction?.q2
+          || qData.community_prediction
+          || null;
+        numForecasters = qData.nr_forecasters || qData.forecasts_count || numForecasters;
+        // Handle case where community_prediction is a direct number
+        if (typeof communityPred === 'object' && communityPred !== null) {
+          communityPred = communityPred.q2 || communityPred.median || null;
+        }
+      }
+    } catch (e) { /* individual fetch failed, proceed without prediction */ }
+
+    return {
+      source: 'metaculus',
+      matchedQuestion: best.title?.slice(0, 100),
+      metaculusId: best.id,
+      communityPrediction: communityPred,
+      numForecasters,
+      relevanceScore: +best.relevance.toFixed(2),
+      url: `https://www.metaculus.com/questions/${best.id}/`,
+    };
+  } catch (e) {
+    console.error('[METACULUS]', e.message);
+    return null;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // UNIFIED ENRICHMENT — Call all relevant sources for a market
 // ═══════════════════════════════════════════════════════════════════
 
@@ -455,6 +618,24 @@ async function enrichMarket(question) {
       enrichWithLMSYS(question)
         .then(r => { if (r) enrichments.lmsys = r; })
         .catch(e => errors.push(`lmsys: ${e.message}`))
+    );
+  }
+
+  // FRED (economic data)
+  if (FRED_API_KEY && detectEconSeries(question)) {
+    promises.push(
+      enrichWithFRED(question)
+        .then(r => { if (r) enrichments.fred = r; })
+        .catch(e => errors.push(`fred: ${e.message}`))
+    );
+  }
+
+  // Metaculus (prediction consensus)
+  if (METACULUS_API_KEY) {
+    promises.push(
+      enrichWithMetaculus(question)
+        .then(r => { if (r) enrichments.metaculus = r; })
+        .catch(e => errors.push(`metaculus: ${e.message}`))
     );
   }
 
@@ -520,6 +701,28 @@ function adjustEdgeFromEnrichment(enrichments, currentConfidence, outcome) {
     }
   }
 
+  // FRED: if economic data confirms direction
+  if (enrichments.fred) {
+    const f = enrichments.fred;
+    if (f.trend) {
+      adjustment += 0.05;
+      reasons.push(`FRED ${f.seriesId}: ${f.latest.value} (${f.trend}), change: ${f.changePct != null ? f.changePct + '%' : 'N/A'}`);
+    }
+  }
+
+  // Metaculus: cross-platform prediction consensus
+  if (enrichments.metaculus) {
+    const m = enrichments.metaculus;
+    if (m.communityPrediction != null && m.numForecasters >= 20 && m.relevanceScore >= 0.3) {
+      // If Metaculus consensus aligns with our signal direction, boost confidence
+      const metaProb = m.communityPrediction;
+      if ((outcome === 'Yes' && metaProb > 0.6) || (outcome === 'No' && metaProb < 0.4)) {
+        adjustment += 0.08;
+        reasons.push(`Metaculus consensus ${(metaProb*100).toFixed(0)}% (${m.numForecasters} forecasters, relevance ${m.relevanceScore})`);
+      }
+    }
+  }
+
   if (adjustment === 0) return null;
 
   return {
@@ -536,8 +739,11 @@ module.exports = {
   enrichWithOddsBlaze,
   enrichWithCongress,
   enrichWithLMSYS,
+  enrichWithFRED,
+  enrichWithMetaculus,
   // Detection helpers
   detectSport,
   isLegislationMarket,
   isAIModelMarket,
+  detectEconSeries,
 };

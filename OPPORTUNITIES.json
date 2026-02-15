@@ -166,5 +166,116 @@
     "recommendedSize": "$15-25 per event (3-5% bankroll)",
     "riskNote": "Sports markets can have tight spreads. Check liquidity before entry.",
     "scannedAt": "2026-02-12T05:00:00Z"
+  },
+  {
+    "id": "evt-1771134680303-ejjd",
+    "market": "0x687aed0bc6b4ba07493c86ab0927edcbe38e4db5885999b7313770ccef994b29",
+    "tokenId": "11940987541302590336595165211069479402269718009021115580167865143261902675519",
+    "question": "Will the United States win the most gold medals in the 2026 Winter Olympics?",
+    "outcome": "Yes",
+    "currentPrice": 0.0175,
+    "estimatedProb": 0.95,
+    "edge": 0.9325,
+    "score": 8,
+    "scoreBreakdown": [
+      "catalyst:confirmed(3)",
+      "time:2-7d(1)",
+      "edge:93%(3)",
+      "liquid(1)"
+    ],
+    "catalyst": "Olympic medal count: How many gold medals has Team USA won? - NBC News | Olympic medals today: What is the medal count at 2026 Winter Games on Feb.14 - USA Today",
+    "sources": [
+      "https://news.google.com/rss/articles/CBMimgFBVV95cUxNcV9YWDZjdF84VUdXQW8wb0hwa0hQdThPc1MwRGhWUngtckZhTlZ6TVdxWUVIdnN2XzJQUm1Mei12YUt0bkM3OC01OW53MzJPUFB4OEJkWWRDVEVkSnhvcXFLakkzOUoxbEg2VHZ4a19OaU5WRGViT2Yzbk85RzdkR0h4bVhFa0NoNDFWaFZ6RVFMRW04VkpvYk1n?oc=5",
+      "https://news.google.com/rss/articles/CBMisAFBVV95cUxPU2JWYmNNTU8ycXhFSVFWcEpWXzNXWmM3VERpanFCdmViclZJbmp4Z1AzVGZrakdvLWIza0ZYbXNkYlNxb0NvTkpjaElJd21tazY1VjdCN1VwWWRSUW8zSmlTZVZPZUlxSEtkdWtXcVJ2bVJMY0NWS1RCenF5dVRRck1kUl9laFNsOWRjT09RUU45MVJkeHhPWTd3MFR1Z00yUjFKTFpYSzBoSXZfYnh5Tg?oc=5",
+      "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOZktyeHVKNzJfQzUzMl92OHZrZ3hLaTVhTGY1TkVHbnp5WjRqSXF3T21UdU5YTWwzUnFGemZEaDJwcWVId0pOd0hXRkctQWR6OXIwNDliTFR0d2ZsOUc3YjBDTlJ2OU1IVThmcUxHcnVuc3k3Q1NwbGxadGtUR281N1JlN0VmRWdxTEtEWUNzM2hhNzZpb194dklTM09HeE1zejdkcllnSi0xeHhLbmRmOTNLQ1Y5ZmRQcS1SSmZWTnpScl9WMDRDaGh2QWQ5M1J5VjdxTNIB3AFBVV95cUxNbjNac1VTZzkyWjJQUXJYYzZYeVprWnhvaUJScDluU3IwREVwYlYzdktLVjNzazdxU0REQmxTMFVPb3RzSVV3cDlkd3gwTElfSFAwWFM3SWFZSmRwekxrVWoxY1U5dnh6SS1WS2sxVW9uTWJBTDNFQkNSVW9PWU11SGZvbmtCMloyNTRha3ZCTzMzU21DOGRSWUphWVZRVkJiQ000RXB6UlNXVklnbUQtX1ZtWm1UNlgtRjJzZVl1TU5QX2U2cmh1TVUtZ19ZMzJaY3FfbWZBUXRNRXVV?oc=5"
+    ],
+    "resolution": "2026-02-22T00:00:00Z",
+    "hoursToResolution": 162.2,
+    "volume24h": 151118.67021199994,
+    "eventTitle": "2026 Winter Olympics: Most Gold Medals",
+    "eventSlug": "2026-winter-olympics-most-gold-medals",
+    "scannedAt": "2026-02-15T05:51:20.303Z",
+    "status": "pending",
+    "newsStats": {
+      "totalArticles": 100,
+      "recentArticles": 52,
+      "positiveSignals": 6,
+      "negativeSignals": 0,
+      "spiking": true
+    }
+  },
+  {
+    "id": "evt-1771134693078-dsou",
+    "market": "0xdeaa7932b51ce74186dc0fb1af2c20294d58d6ace29e4c15e0f8ad13a2d5191d",
+    "tokenId": "26721641658578910850400467922902137112767338738318620899764587083396221213881",
+    "question": "Will Norway win the most medals in the 2026 Winter Olympics?",
+    "outcome": "Yes",
+    "currentPrice": 0.83,
+    "estimatedProb": 0.95,
+    "edge": 0.12,
+    "score": 6,
+    "scoreBreakdown": [
+      "catalyst:confirmed(3)",
+      "time:2-7d(1)",
+      "edge:12%(1)",
+      "liquid(1)"
+    ],
+    "catalyst": "Winter Olympics 2026: skeleton, ski jumping, Norway win 10th gold, and more – as it happened - The Guardian | Winter Olympics Medal Count Today (Feb. 14): Norway Up to 10 Gold as Brazil Makes History in Alpine - Heavy Sports",
+    "sources": [
+      "https://news.google.com/rss/articles/CBMixAFBVV95cUxOOTh6X1o3RUc4VlZjR3VWNTJmOGl0U0FPQm5NYnd2SmtJR2hjZ05GOGNRWDAxcWRXZFFxN1FiVXVtaW5ObUJnWEV5cTlVNk0wZlRaeUtHdElCTHpmTkg5NFpldFVXbzN6TjYzMlptSFpiRHh2QjU3Tm4yNHYxRFd4SERQMERqbEo0Smw2c3ZMa190bEx0emlINHpjT2lzc1FWVTlhN2V3TGtLbUZKMWUzNW1hcDBLY19QRU9DcDB0eVk3a2NZ?oc=5",
+      "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNak13X1JoblZyelNWWGZxdjJXclRNWHNRWU8zQnJtWGNEMWVVMFZmSURwbXMxMGZVY1B0ekFpR2lVaFNsMXI5ZmJGLUFqcEtzOXpRMVA3Vks0VDhfb0JpTG1TQ3dobU9rb1hoWWY3UVNucl9VVFYxZ2U5WlZHMW12bTdrOUM4M2tSbGR3cktBN0xjLVZhRFdrY1JtcFlFR3V2MnFwT2R3TTZsd1I3YjRaVE9ZUVc4M0JJRUFmVExac2RNc1ZZeDdqZw?oc=5",
+      "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VZURwN1JCZ2hiQlNGbnhMTk1hSDBtNWNLdEVjS0doUFhWVnBaaEp4X0ZyUVBkZXNLaU1wT2xfdW1hRVNVWTlRaEpQZUVnaWtES1lGYW9YcUpmbmV5UFhkalV2aHlIWEhOeUItRlVINWhBWWxQdkHSAXtBVV95cUxPTmRqZ2dlb0NEdEhOb1FKU1l5TS1uczN3MUJfQnBBSFNEbkVZZlY5VTg2UGdjWHpDNnc5Yk1SUVpWV202SkJBbjh5dk1PeF9ZNDJqazV1bjlZai1icGlFQmM0TWR2QXdFRUo4SEhPOXQteDdQUkJCMXNyRTg?oc=5"
+    ],
+    "resolution": "2026-02-22T00:00:00Z",
+    "hoursToResolution": 162.2,
+    "volume24h": 128706.73638799996,
+    "eventTitle": "2026 Winter Olympics: Most Medals",
+    "eventSlug": "2026-winter-olympics-most-medals",
+    "scannedAt": "2026-02-15T05:51:33.078Z",
+    "status": "pending",
+    "newsStats": {
+      "totalArticles": 100,
+      "recentArticles": 39,
+      "positiveSignals": 6,
+      "negativeSignals": 0,
+      "spiking": true
+    }
+  },
+  {
+    "id": "evt-1771134703662-lzyr",
+    "market": "0x9fdd3e8b8a4f433d2b127cca1c7dc0e617c078ea16eb24d3ec16300787e99419",
+    "tokenId": "17816702236900425865568306352615335050535613858611623099670723569975538116721",
+    "question": "Men's Group C - Denmark vs. Latvia",
+    "outcome": "Yes",
+    "currentPrice": 0.535,
+    "estimatedProb": 0.8,
+    "edge": 0.265,
+    "score": 9,
+    "scoreBreakdown": [
+      "catalyst:confirmed(3)",
+      "time:<24h(3)",
+      "edge:26%(2)",
+      "liquid(1)"
+    ],
+    "catalyst": "Men’s ice hockey at Winter Olympics 2026: USA still unbeaten, Slovakia wins its group despite loss, Latvia stuns Germany – daily highlights, all games &amp; results - Milano Cortina 2026 | Team USA men's hockey powers past Denmark in group play - NBC Olympics",
+    "sources": [
+      "https://news.google.com/rss/articles/CBMizAFBVV95cUxOWDhJLVdRckEwd2NyTWNtNUV3REhfalE3all3MWp4bHFEdTQwZ282RzZBajNDY1ZDaERmMWoybFY5aGhiT0J0WGFhSDNHLUFMRm01Q3NxbWlxbnZFbWpXT0xQYmEwUGx1Q0c3anM2bDNfbzRyaWtyOV9odjhkdUxkVmRwMWpVQU1xWmhSM1kzRG5kOHpaTk1lQ0VUYWJSRlBPM2N2WTNoSkNLSHpwX3pOb0R4Q2hIQjI4ZlV3bDI3ZXVoSW42S3ZwZFdqR1Q?oc=5",
+      "https://news.google.com/rss/articles/CBMijwFBVV95cUxOUFNxR0FueWJRR0tJZWc1RmNjLTRvSUtZdEpMRDZwS2FjRHpLTlR4N2gzbWhzU0tHeTRZbVhNejZDcE8xNmxBZFF1M01OU09RQ2lqRm84Yk55NUM2X05QTnpNeWJsUUhPWFl4ZmZOMmF5Q2FvVUlfSHJrU1B5a0Z1aFlhRGg3eTFWalZvamFTZw?oc=5",
+      "https://news.google.com/rss/articles/CBMisgFBVV95cUxPVmtPbERzSXlzWFRVQ1hjS09vWDRxWHVQdmk3VUhybXhpWXE4b0pZVklDNlI0YzNiUGROYWRHZC1idVVsUU9MVlRQSmhHUVBURFBqTnN3RVFMMUNON2ktRC1oUk00dnpDeFBLX0k1X0M4ZU9INE9PNE4xUFNXOGQxelJBUzlmSUhvMklmX25zcm51YU1hOGppSkM4UC1ZeVZLZDVIMlZoaUVoS2lpZFVkTHRn?oc=5"
+    ],
+    "resolution": "2026-02-15T22:59:59.999Z",
+    "hoursToResolution": 17.2,
+    "volume24h": 120083.78169100005,
+    "eventTitle": "Men's Group C - Denmark vs. Latvia",
+    "eventSlug": "mwoh-den-lat-2026-02-15",
+    "scannedAt": "2026-02-15T05:51:43.662Z",
+    "status": "pending",
+    "newsStats": {
+      "totalArticles": 47,
+      "recentArticles": 27,
+      "positiveSignals": 2,
+      "negativeSignals": 0,
+      "spiking": true
+    }
   }
 ]

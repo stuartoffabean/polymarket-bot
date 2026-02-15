@@ -1808,7 +1808,7 @@ const RH_MIN_VOLUME_24H = 1000; // min $1K 24h volume (filters illiquid junk)
 // Backtest v4: 139 markets filtered, 99.0% hit rate on remainder
 
 // Category-level skip (from Gamma API 'category' field)
-const RH_SKIP_CATEGORIES = /sports|esports|gaming|mma|boxing|wrestling|racing|motorsport/i;
+const RH_SKIP_CATEGORIES = /sports|esports|gaming|mma|boxing|wrestling|racing|motorsport|weather/i;
 
 // Slug-level skip — sports/esports patterns + league codes
 const RH_SKIP_SLUGS = new RegExp([
@@ -1856,6 +1856,9 @@ const RH_SKIP_QUESTIONS = new RegExp([
   '(tweets?|posts?) from', 'number of (tweets|posts)', 'how many (tweets|posts)',
   // Up/Down daily markets (coin flip)
   'Up or Down',
+  // Weather/temperature markets (blocked by operator directive 2026-02-15)
+  'temperature', 'highest temp', 'lowest temp', 'degrees?.*(celsius|fahrenheit|°[CF])',
+  'weather', 'rainfall', 'precipitation', 'snowfall', 'wind speed',
 ].join('|'), 'i');
 
 // Persist executed conditionIds to survive restarts

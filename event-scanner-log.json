@@ -8,5 +8,95 @@
     "opportunitiesFound": 3,
     "newAdded": 3,
     "totalInFile": 15
+  },
+  {
+    "scan": 1,
+    "at": "2026-02-15T05:55:01.913Z",
+    "elapsed": "91.7s",
+    "marketsScanned": 389,
+    "newsQueries": 50,
+    "opportunitiesFound": 3,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 2,
+    "at": "2026-02-15T06:00:33.276Z",
+    "elapsed": "79.2s",
+    "marketsScanned": 391,
+    "newsQueries": 50,
+    "opportunitiesFound": 2,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 2,
+    "at": "2026-02-15T06:00:33.281Z",
+    "elapsed": "92.0s",
+    "marketsScanned": 391,
+    "newsQueries": 50,
+    "opportunitiesFound": 2,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 2,
+    "at": "2026-02-15T06:02:14.733Z",
+    "elapsed": "76.9s",
+    "marketsScanned": 392,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 2,
+    "at": "2026-02-15T06:02:37.487Z",
+    "elapsed": "91.1s",
+    "marketsScanned": 392,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 1,
+    "at": "2026-02-15T06:53:13.979Z",
+    "elapsed": "111.6s",
+    "marketsScanned": 376,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 1,
+    "at": "2026-02-15T06:59:11.757Z",
+    "elapsed": "111.6s",
+    "marketsScanned": 376,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 1,
+    "at": "2026-02-15T07:23:18.842Z",
+    "elapsed": "110.3s",
+    "marketsScanned": 380,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 1,
+    "at": "2026-02-15T07:27:42.523Z",
+    "elapsed": "101.9s",
+    "marketsScanned": 394,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
   }
 ]

@@ -103,5 +103,19 @@
     "resolvedAt": "2026-02-14T09:22:03.164Z",
     "endDate": "2026-02-13",
     "slug": "highest-temperature-in-nyc-on-february-13-2026-44forhigher"
+  },
+  "77587680906182806497450061873126722297392583495948543397251590274471719007220": {
+    "asset_id": "77587680906182806497450061873126722297392583495948543397251590274471719007220",
+    "conditionId": "0x36f83a594b8d82801794bad2063f2861a99aebe28cf2cb55c3fd722d1a6d071b",
+    "market": "Will Bangladesh Nationalist Party win the most seats in the Bangladesh parliamentary election?",
+    "outcome": "Yes",
+    "size": 92,
+    "avgPrice": 0.8,
+    "costBasis": 73.6,
+    "payout": 0,
+    "realizedPnl": -1.84,
+    "won": false,
+    "resolvedAt": "2026-02-15T05:12:39.091Z",
+    "note": "Position was sold at $0.78 before resolution. Stop-loss misfire or manual exit. Thesis was correct (BNP won)."
   }
 }

@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-02-15T06:03:50.130Z",
+  "summary": {
+    "marketsScanned": 2,
+    "arbOpportunities": 0,
+    "avgSpread": 98
+  },
+  "opportunities": [
+    {
+      "timestamp": "2026-02-15T06:03:49.074Z",
+      "market": "Bitcoin Up or Down on February 15?",
+      "slug": "bitcoin-up-or-down-on-february-15",
+      "conditionId": "0x46120278a41b94df83348c4d8cb676e1fd1cfcca85e0f6733f82a04ed11a008a",
+      "yesToken": "48281793904512181829233085063005964533184303001351212818788764809996098102136",
+      "noToken": "73105546750542750316224219618629287223541217252187027068140822244867962262357",
+      "yesAsk": 0.99,
+      "noAsk": 0.99,
+      "askSum": 1.98,
+      "yesDepth": 340848.26,
+      "noDepth": 40425,
+      "minDepth": 40425,
+      "vol24h": 582896.7689240003,
+      "endDate": "2026-02-15T17:00:00Z",
+      "hoursToEnd": 10.9,
+      "arbOpportunity": false,
+      "spread": 98
+    },
+    {
+      "timestamp": "2026-02-15T06:03:50.130Z",
+      "market": "Ethereum Up or Down on February 15?",
+      "slug": "ethereum-up-or-down-on-february-15",
+      "conditionId": "0x50da3dd3b54c44d4e4ae3c9f4f0d7b78dd69583b56e7a0c099977039fe1b886c",
+      "yesToken": "35987720349839038177164124499468486303924436730261327891004043100645042923906",
+      "noToken": "23907074738296828832255714501995457540487038956603068233876977863271436027366",
+      "yesAsk": 0.99,
+      "noAsk": 0.99,
+      "askSum": 1.98,
+      "yesDepth": 39473.32,
+      "noDepth": 38928.22,
+      "minDepth": 38928.22,
+      "vol24h": 208421.243169,
+      "endDate": "2026-02-15T17:00:00Z",
+      "hoursToEnd": 10.9,
+      "arbOpportunity": false,
+      "spread": 98
+    }
+  ]
+}

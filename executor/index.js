@@ -146,6 +146,130 @@ async function checkResolutions() {
     req.setTimeout(15000, () => { req.destroy(); reject(new Error("timeout")); });
   });
 }
+
+/**
+ * Auto-redeem resolved positions on-chain.
+ * For NegRisk markets: CTF.redeemPositions(WCOL, 0x0, conditionId, [1,2])
+ * Then unwrap WCOL → USDC.e via WCOL.unwrap(to, amount)
+ * Runs after checkResolutions() detects redeemable positions.
+ */
+async function autoRedeem() {
+  const { ethers } = require("ethers");
+  const RPC_URLS = [
+    "https://polygon-bor-rpc.publicnode.com",
+    "https://rpc.ankr.com/polygon",
+    "https://1rpc.io/matic",
+  ];
+
+  const CTF_ADDR = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045";
+  const WCOL_ADDR = "0x3A3BD7bb9528E159577F7C2e685CC81A765002E2";
+  const USDC_E_ADDR = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
+
+  const CTF_ABI = [
+    "function redeemPositions(address collateralToken, bytes32 parentCollectionId, bytes32 conditionId, uint256[] indexSets) external",
+  ];
+  const WCOL_ABI = [
+    "function unwrap(address _to, uint256 _amount) external",
+    "function balanceOf(address) view returns (uint256)",
+  ];
+  const ERC20_ABI = ["function balanceOf(address) view returns (uint256)"];
+
+  const pk = process.env.PRIVATE_KEY;
+  if (!pk) { console.log("[REDEEM] No PRIVATE_KEY, skipping"); return { redeemed: 0 }; }
+
+  // Connect to a working RPC
+  let provider, wallet;
+  for (const url of RPC_URLS) {
+    try {
+      provider = new ethers.providers.JsonRpcProvider(url);
+      await provider.getNetwork();
+      wallet = new ethers.Wallet(pk, provider);
+      break;
+    } catch (e) { provider = null; }
+  }
+  if (!provider) { console.log("[REDEEM] All RPCs failed"); return { redeemed: 0, error: "no RPC" }; }
+
+  // Fetch redeemable positions from data API
+  const https = require("https");
+  const positions = await new Promise((resolve, reject) => {
+    const addr = OUR_ADDR || "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D".toLowerCase();
+    const req = https.get(`https://data-api.polymarket.com/positions?user=${addr}&limit=200&sizeThreshold=0`, (res) => {
+      let d = ""; res.on("data", c => d += c);
+      res.on("end", () => { try { resolve(JSON.parse(d)); } catch (e) { reject(e); } });
+    });
+    req.on("error", reject);
+    req.setTimeout(15000, () => { req.destroy(); reject(new Error("timeout")); });
+  });
+
+  if (!Array.isArray(positions)) return { redeemed: 0, error: "bad response" };
+
+  const redeemable = positions.filter(p => p.redeemable && p.size > 0 && p.negativeRisk);
+  if (redeemable.length === 0) return { redeemed: 0 };
+
+  // Group by conditionId (deduplicate)
+  const conditions = {};
+  for (const p of redeemable) {
+    if (!conditions[p.conditionId]) conditions[p.conditionId] = { title: p.title, value: 0 };
+    conditions[p.conditionId].value += (p.currentValue || 0);
+  }
+
+  console.log(`[REDEEM] Found ${Object.keys(conditions).length} redeemable conditions (${redeemable.length} positions)`);
+
+  const ctf = new ethers.Contract(CTF_ADDR, CTF_ABI, wallet);
+  const gasPrice = (await provider.getGasPrice()).mul(130).div(100);
+
+  let redeemed = 0;
+  let totalValue = 0;
+  const results = [];
+
+  for (const [condId, info] of Object.entries(conditions)) {
+    try {
+      const tx = await ctf.redeemPositions(WCOL_ADDR, ethers.constants.HashZero, condId, [1, 2], {
+        gasLimit: 300000, gasPrice, type: 0,
+      });
+      const receipt = await tx.wait(1);
+      if (receipt.status === 1) {
+        redeemed++;
+        totalValue += info.value;
+        console.log(`[REDEEM] ✅ ${info.title?.slice(0, 40)} (value: $${info.value.toFixed(2)})`);
+        results.push({ conditionId: condId, title: info.title, value: info.value, tx: tx.hash });
+      } else {
+        console.log(`[REDEEM] ❌ Reverted: ${info.title?.slice(0, 40)}`);
+      }
+      // Small delay between txs
+      await new Promise(r => setTimeout(r, 1500));
+    } catch (e) {
+      console.log(`[REDEEM] ❌ ${info.title?.slice(0, 40)}: ${e.message?.slice(0, 80)}`);
+    }
+  }
+
+  // Unwrap WCOL → USDC.e
+  if (redeemed > 0) {
+    try {
+      const wcol = new ethers.Contract(WCOL_ADDR, WCOL_ABI, wallet);
+      const wcolBal = await wcol.balanceOf(wallet.address);
+      if (wcolBal.gt(0)) {
+        const wcolAmount = ethers.utils.formatUnits(wcolBal, 6);
+        console.log(`[REDEEM] Unwrapping ${wcolAmount} WCOL → USDC.e`);
+        const tx = await wcol.unwrap(wallet.address, wcolBal, {
+          gasLimit: 100000, gasPrice, type: 0,
+        });
+        const receipt = await tx.wait(1);
+        if (receipt.status === 1) {
+          console.log(`[REDEEM] ✅ Unwrapped ${wcolAmount} WCOL → USDC.e`);
+          // Telegram alert for the total redemption
+          sendTelegramAlert(`💰 <b>AUTO-REDEEMED</b>\n${redeemed} resolved position(s)\nTotal value: $${totalValue.toFixed(2)}\nUSDC.e recovered: $${wcolAmount}`);
+        }
+      }
+    } catch (e) {
+      console.log(`[REDEEM] ⚠️ WCOL unwrap failed: ${e.message?.slice(0, 100)}`);
+      sendTelegramAlert(`⚠️ <b>REDEEM WARNING</b>\n${redeemed} positions redeemed but WCOL unwrap failed!\nManual unwrap needed for $${totalValue.toFixed(2)}`);
+    }
+  }
+
+  return { redeemed, totalValue, results };
+}
+
 /**
  * Position reconciliation: cross-check manual-positions.json against actual on-chain holdings.
  * Flags phantom positions (we think we hold shares but actually don't).
@@ -1388,6 +1512,19 @@ async function handler(req, res) {
       if (path === "/check-resolutions") {
         try {
           const result = await checkResolutions();
+          // Auto-redeem resolved positions on-chain (non-blocking)
+          autoRedeem().then(r => {
+            if (r.redeemed > 0) console.log(`[REDEEM] Auto-redeemed ${r.redeemed} positions, $${r.totalValue?.toFixed(2)} recovered`);
+          }).catch(e => console.log(`[REDEEM] Auto-redeem error: ${e.message?.slice(0, 100)}`));
+          return send(res, 200, result);
+        } catch(e) {
+          return send(res, 500, { error: e.message });
+        }
+      }
+
+      if (path === "/redeem") {
+        try {
+          const result = await autoRedeem();
           return send(res, 200, result);
         } catch(e) {
           return send(res, 500, { error: e.message });

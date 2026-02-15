@@ -1,0 +1,14 @@
+{
+  "testStarted": "2026-02-15T05:28:48.120Z",
+  "testDuration": "35 minutes",
+  "scansCompleted": 61,
+  "arbOpportunities": 0,
+  "trades": [],
+  "summary": {
+    "totalScans": 61,
+    "scansWithArbs": 0,
+    "totalPaperTrades": 0,
+    "avgProfitPerTrade": 0,
+    "totalPotentialProfit": 0
+  }
+}
