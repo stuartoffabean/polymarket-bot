@@ -1,6 +1,6 @@
 {
   "date": "2026-02-15",
-  "deployed": 93.075,
+  "deployed": 113.007,
   "trades": [
     {
       "market": "44105487671645339173",
@@ -26,6 +26,11 @@
       "market": "Men's Group C - Denmark vs. Latvia",
       "value": 54.035000000000004,
       "time": "2026-02-15T10:18:51.562Z"
+    },
+    {
+      "market": "Will the United States win the most gold medals in the 2026 Winter Olympics?",
+      "value": 19.932000000000002,
+      "time": "2026-02-15T16:19:15.145Z"
     }
   ]
 }

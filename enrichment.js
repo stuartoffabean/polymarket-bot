@@ -645,7 +645,17 @@ async function enrichMarket(question) {
     enrichments._errors = errors;
   }
 
-  return Object.keys(enrichments).length > 0 ? enrichments : null;
+  // Always log enrichment attempt for visibility
+  const sources = Object.keys(enrichments).filter(k => k !== '_errors');
+  const attempted = promises.length;
+  if (sources.length > 0) {
+    console.log(`[ENRICH] "${question.slice(0, 60)}" — ${sources.length}/${attempted} sources matched: ${sources.join(', ')}`);
+  } else if (attempted > 0) {
+    console.log(`[ENRICH] "${question.slice(0, 60)}" — 0/${attempted} sources matched`);
+  }
+  // If no enrichers were applicable, no log (expected for most markets)
+
+  return Object.keys(enrichments).filter(k => k !== '_errors').length > 0 ? enrichments : null;
 }
 
 // ═══════════════════════════════════════════════════════════════════

@@ -277,5 +277,91 @@
       "negativeSignals": 0,
       "spiking": true
     }
+  },
+  {
+    "id": "evt-1771172358355-kd7j",
+    "market": "0x8a9e31d88af7b0c085c8482e6daa2cf1034794d8b724de19c1c5673cde6d496d",
+    "tokenId": "21458388471965493789661604658497971530802154496937750511773793823692388706023",
+    "question": "Will United States win the Men's Ice Hockey gold medal at the 2026 Winter Olympics?",
+    "outcome": "Yes",
+    "currentPrice": 0.295,
+    "estimatedProb": 0.8,
+    "edge": 0.505,
+    "score": 8,
+    "scoreBreakdown": [
+      "catalyst:confirmed(3)",
+      "time:2-7d(1)",
+      "edge:50%(3)",
+      "liquid(1)"
+    ],
+    "catalyst": "Winter Olympics 2026: Team USA men's hockey survives scare, holds off pesky Denmark - Yahoo Sports | Men’s ice hockey at Winter Olympics 2026: USA still unbeaten, Slovakia wins its group despite loss, Latvia stuns Germany – daily highlights, all games &amp; results - Milano Cortina 2026",
+    "sources": [
+      "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPeDZPeDFvZ3ptdzJTSTFLZ3dSalJ3dVA4SHZQbnJWNldoX0hZNTljalJuZllGdTBYUjFmc05ndDFkV2dGQTJDQ0tuNzI0Z2FHcFhPYWJEbU5rQ1QtSVZOQV9Eem9lbG5TSzU5MXRhZkxNUnR0V0hMb0lzNWtmOFlOa2hVMzlhWERXWVk5Z3FtN0FYSlp2UGRGY1c1dEtQYWlOemdWRE9hRnZ1YmhaZlFsZXFDLTF3V05fekwtTDVxZVRPQUM5TjdJVXdYRjBsci1fcFBz?oc=5",
+      "https://news.google.com/rss/articles/CBMizAFBVV95cUxOWDhJLVdRckEwd2NyTWNtNUV3REhfalE3all3MWp4bHFEdTQwZ282RzZBajNDY1ZDaERmMWoybFY5aGhiT0J0WGFhSDNHLUFMRm01Q3NxbWlxbnZFbWpXT0xQYmEwUGx1Q0c3anM2bDNfbzRyaWtyOV9odjhkdUxkVmRwMWpVQU1xWmhSM1kzRG5kOHpaTk1lQ0VUYWJSRlBPM2N2WTNoSkNLSHpwX3pOb0R4Q2hIQjI4ZlV3bDI3ZXVoSW42S3ZwZFdqR1Q?oc=5",
+      "https://news.google.com/rss/articles/CBMisAFBVV95cUxQQmdsb0R0d0hrTGQ4S3NuZEhKX3g4QW03ZlZVU1VxS2dYZThqd0tfaDA4SkxnYk9hUlVfS3plVjlZM0NocGF6MHBQc1h2MlNyNGR4OFkwbEZDY1c3bXV2S0ZKS0YxM2VGY1cyT0Y0UVVGaFR2b1pzYlRoMXhfaW81bG42UmFJbXZaNUNpQzRHZFoxam1HU3BTX2s4X054LTVKcDhjd2JyeEFYV1RIS3FDZw?oc=5"
+    ],
+    "resolution": "2026-02-22T00:00:00Z",
+    "hoursToResolution": 151.7,
+    "volume24h": 136709.772953,
+    "eventTitle": "2026 Winter Olympics: Ice Hockey Gold Medal Winner",
+    "eventSlug": "2026-winter-olympics-ice-hockey-gold-medal-winner",
+    "scannedAt": "2026-02-15T16:19:18.355Z",
+    "status": "pending",
+    "newsStats": {
+      "totalArticles": 100,
+      "recentArticles": 60,
+      "positiveSignals": 2,
+      "negativeSignals": 0,
+      "spiking": true
+    },
+    "trends": {
+      "score": 0,
+      "rising": false
+    },
+    "enrichments": null,
+    "enrichmentBoost": null,
+    "autoExecResult": {
+      "status": "BLOCKED",
+      "reason": "Blocked by risk gates",
+      "detail": [
+        {
+          "check": "DAILY_CONVICTION_BUDGET",
+          "status": "BLOCKED",
+          "detail": "Daily budget: $113.01 deployed + $19.77 = $132.77 exceeds $119.62 (30% of portfolio). Headroom: $6.62. Trades today: 6",
+          "todaysTrades": [
+            {
+              "market": "44105487671645339173",
+              "value": 9.7,
+              "time": "2026-02-15T06:11:58.427Z"
+            },
+            {
+              "market": "61176650446302385201",
+              "value": 9.79,
+              "time": "2026-02-15T06:12:05.674Z"
+            },
+            {
+              "market": "43691810767397506200",
+              "value": 9.8,
+              "time": "2026-02-15T06:26:58.459Z"
+            },
+            {
+              "market": "90543168575913125170",
+              "value": 9.75,
+              "time": "2026-02-15T07:26:57.623Z"
+            },
+            {
+              "market": "Men's Group C - Denmark vs. Latvia",
+              "value": 54.035000000000004,
+              "time": "2026-02-15T10:18:51.562Z"
+            },
+            {
+              "market": "Will the United States win the most gold medals in the 2026 Winter Olympics?",
+              "value": 19.932000000000002,
+              "time": "2026-02-15T16:19:15.145Z"
+            }
+          ]
+        }
+      ]
+    }
   }
 ]

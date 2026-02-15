@@ -1,0 +1,15 @@
+{
+  "market": "Will the United States win the most gold medals in the 2026 Winter Olympics?",
+  "tokenID": "11940987541302590336595165211069479402269718009021115580167865143261902675519",
+  "side": "BUY",
+  "entryPrice": 0.0165,
+  "size": 1208,
+  "thesis": "[AUTO] Olympic medal count: How many gold medals has Team USA won? - NBC News | How many medals does Team USA have after Day 8 of the 2026 Winter Olympics? - NBC 5 Chicago",
+  "invalidation": "Edge drops below 5% or news reversal",
+  "hoursToResolution": 151.7,
+  "edge": "93%",
+  "slug": "will-the-united-states-win-the-most-gold-medals-in-the-2026-winter-olympics",
+  "entryTime": "2026-02-15T16:19:13.928Z",
+  "entryQualityScore": 9,
+  "status": "OPEN"
+}

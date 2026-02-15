@@ -843,12 +843,28 @@ async function executeSell(assetId, asset, reason) {
           log("EXEC", `⚠️ Failed to cancel unfilled order: ${cancelErr.message}`);
         }
       }
-      // Set a 10-minute cooldown — don't re-trigger immediately
-      asset._sellCooldownUntil = Date.now() + 10 * 60 * 1000;
+      // Track retry count — give up after 3 attempts to prevent infinite cycling
+      if (!asset._sellRetries) asset._sellRetries = 0;
+      asset._sellRetries++;
+      const MAX_SELL_RETRIES = 3;
+      if (asset._sellRetries >= MAX_SELL_RETRIES) {
+        // Exhausted retries — mark as exit_failed, stop retrying, alert operator
+        asset._exitFailed = true;
+        asset._sellCooldownUntil = Infinity; // permanent block
+        const failMsg = `${reason}: SELL PERMANENTLY FAILED after ${MAX_SELL_RETRIES} attempts (no bid liquidity). Position stuck: ${asset.size} shares @ ${asset.avgPrice}. Manual intervention needed.`;
+        log("EXEC", `🚨 ${failMsg}`);
+        pushAlert("SELL_FAILED", assetId, asset, null, null, failMsg);
+        sendTelegramAlert(`🚨 EXIT FAILED: ${asset._marketName || assetId.slice(0,20)} — ${asset.size} shares stuck after ${MAX_SELL_RETRIES} sell attempts. No bid liquidity. Needs manual exit or wait for resolution.`);
+        return;
+      }
+      // 3-minute cooldown between retries (was 10min — too slow)
+      asset._sellCooldownUntil = Date.now() + 3 * 60 * 1000;
       pushAlert("SELL_FAILED", assetId, asset, null, null, 
-        `${reason}: Order posted but NOT filled (status: ${orderStatus}). Cooldown 10min.`);
+        `${reason}: Order posted but NOT filled (status: ${orderStatus}). Retry ${asset._sellRetries}/${MAX_SELL_RETRIES}, cooldown 3min.`);
       return; // Don't remove from tracking — position still exists
     }
+    // Reset retry counter on successful fill
+    asset._sellRetries = 0;
 
     pushAlert("SELL_EXECUTED", assetId, asset, result.executedPrice, null, 
       `${reason}: Sold ${asset.size} @ ${result.executedPrice}`);
@@ -2618,11 +2634,11 @@ async function main() {
     setInterval(runResolvingScan, RESOLVING_SCAN_INTERVAL);
   }, 60 * 1000);
 
-  // Resolution hunter — runs every 15 min, first run after 90s
-  setTimeout(() => {
-    runResolutionHunter();
-    setInterval(runResolutionHunter, RESOLUTION_HUNTER_INTERVAL);
-  }, 90 * 1000);
+  // === RESOLUTION HUNTER — PERMANENTLY REMOVED (2026-02-15, user directive) ===
+  // Same execution path issues as arb scanners. Places GTC limit orders at best ask.
+  // While it has fill confirmation (60s timeout + cancel), it still deploys real capital
+  // through the same broken pipeline. Removed alongside arb scanners.
+  // Code retained in runResolutionHunter() for reference but never called.
 
   // Weather signal executor — PERMANENTLY DISABLED (2026-02-13)
   // Backtest showed NEGATIVE EDGE: 52.7% hit rate, -$234.74 simulated P&L on 129 signals.

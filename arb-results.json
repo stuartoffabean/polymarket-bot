@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-15T14:33:28.320Z",
+  "timestamp": "2026-02-15T16:02:57.380Z",
   "summary": {
     "total": 100,
     "negRisk": 59,
-    "flagged": 6,
-    "viable": 4
+    "flagged": 3,
+    "viable": 1
   },
   "opportunities": [
     {
@@ -12,13 +12,13 @@
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.7735,
-      "execSum": 0.711,
-      "deviation": 22.65,
-      "execDeviation": 28.9,
-      "grossProfitPer100": 28.9,
+      "midSum": 0.773,
+      "execSum": 0.712,
+      "deviation": 22.7,
+      "execDeviation": 28.8,
+      "grossProfitPer100": 28.8,
       "feesPer100": 0,
-      "profitPer100": 28.9,
+      "profitPer100": 28.8,
       "viable": true,
       "details": [
         {
@@ -77,8 +77,8 @@
         },
         {
           "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
-          "mid": 0.0105,
-          "exec": 0.007,
+          "mid": 0.01,
+          "exec": 0.008,
           "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
         },
         {
@@ -95,14 +95,14 @@
         },
         {
           "name": "Will Elon Musk win the Nobel Peace Prize in 2026?",
-          "mid": 0.013,
+          "mid": 0.0125,
           "exec": 0.012,
           "token": "75607128808577269329357564425293012652006155264327001987967114873720422847762"
         },
         {
           "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.097,
-          "exec": 0.086,
+          "mid": 0.0975,
+          "exec": 0.087,
           "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
         },
         {
@@ -119,13 +119,13 @@
         },
         {
           "name": "Will Benjamin Netanyahu win the Nobel Peace Prize in 2026?",
-          "mid": 0.007,
-          "exec": 0.006,
+          "mid": 0.0065,
+          "exec": 0.005,
           "token": "8075661047254567797432306525558519998052391236898258911573171689963344650999"
         },
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
-          "mid": 0.005,
+          "mid": 0.0055,
           "exec": 0.004,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
@@ -144,47 +144,99 @@
       ]
     },
     {
-      "event": "Highest temperature in London on February 15?",
-      "slug": "highest-temperature-in-london-on-february-15-2026",
-      "type": "LONG",
-      "outcomes": 6,
-      "midSum": 0.9735,
-      "execSum": 0.929,
-      "deviation": 2.65,
-      "execDeviation": 7.1,
-      "grossProfitPer100": 7.1,
+      "event": "XRP price on February 15?",
+      "slug": "xrp-price-on-february-15",
+      "type": "SHORT",
+      "outcomes": 7,
+      "midSum": 1.0295,
+      "execSum": 0.985,
+      "deviation": 2.95,
+      "execDeviation": 1.5,
+      "grossProfitPer100": -1.5,
       "feesPer100": 0,
-      "profitPer100": 7.1,
-      "viable": true,
+      "profitPer100": -1.5,
+      "viable": false,
       "details": [
         {
-          "name": "Will the highest temperature in London be 7°C on February 15",
-          "mid": 0.0145,
-          "exec": 0.01,
-          "token": "74132830734193041546875766316039289237302998245506030237936464935036412083589"
+          "name": "Will the price of XRP be between $1.20 and $1.30 on February",
+          "mid": 0.002,
+          "exec": 0,
+          "token": "6648898655936574004442985809763692949982309217460137876687892597824326297102"
         },
         {
+          "name": "Will the price of XRP be between $1.30 and $1.40 on February",
+          "mid": 0.0095,
+          "exec": 0.001,
+          "token": "28739785451979476770719261847282998915617845312964347243280518004151212256810"
+        },
+        {
+          "name": "Will the price of XRP be between $1.40 and $1.50 on February",
+          "mid": 0.04,
+          "exec": 0.018,
+          "token": "98848783495729704866663247207854429811120039014237794397112069176572118536087"
+        },
+        {
+          "name": "Will the price of XRP be between $1.50 and $1.60 on February",
+          "mid": 0.9205,
+          "exec": 0.925,
+          "token": "15846701041375404450584433581183486772603923130218945038298013713589052874192"
+        },
+        {
+          "name": "Will the price of XRP be between $1.60 and $1.70 on February",
+          "mid": 0.045,
+          "exec": 0.041,
+          "token": "64193077641717555016262288886855608981989373839881051499533015515582758106664"
+        },
+        {
+          "name": "Will the price of XRP be between $1.70 and $1.80 on February",
+          "mid": 0.008,
+          "exec": 0,
+          "token": "3621711956772031903370283885011621778556718625615305833808787199263526929018"
+        },
+        {
+          "name": "Will the price of XRP be between $1.80 and $1.90 on February",
+          "mid": 0.002,
+          "exec": 0,
+          "token": "108414203695450233654321509441823796250883083810513177790628642579691205278305"
+        }
+      ]
+    },
+    {
+      "event": "Highest temperature in London on February 15?",
+      "slug": "highest-temperature-in-london-on-february-15-2026",
+      "type": "SHORT",
+      "outcomes": 5,
+      "midSum": 1.0275,
+      "execSum": 0.982,
+      "deviation": 2.75,
+      "execDeviation": 1.8,
+      "grossProfitPer100": -1.8,
+      "feesPer100": 0,
+      "profitPer100": -1.8,
+      "viable": false,
+      "details": [
+        {
           "name": "Will the highest temperature in London be 8°C on February 15",
-          "mid": 0.42,
-          "exec": 0.41,
+          "mid": 0.31,
+          "exec": 0.3,
           "token": "101866985831276610664013320804876912535329030997498192633757087055137328160575"
         },
         {
           "name": "Will the highest temperature in London be 9°C on February 15",
-          "mid": 0.385,
-          "exec": 0.37,
+          "mid": 0.655,
+          "exec": 0.64,
           "token": "66428117863747102844220264721414851885963981506342918275396832477086386403512"
         },
         {
           "name": "Will the highest temperature in London be 10°C on February 1",
-          "mid": 0.14,
-          "exec": 0.13,
+          "mid": 0.05,
+          "exec": 0.04,
           "token": "37045989981370646785565987640302980722922490568913077517676058505553216044411"
         },
         {
           "name": "Will the highest temperature in London be 11°C on February 1",
-          "mid": 0.009,
-          "exec": 0.008,
+          "mid": 0.0075,
+          "exec": 0.001,
           "token": "56489028549550467921814118328415903635417326244285958217167410740105550859398"
         },
         {
@@ -192,280 +244,6 @@
           "mid": 0.0035,
           "exec": 0.001,
           "token": "107838777444750635283283352077415720504156169946029729253237622295164434040091"
-        }
-      ]
-    },
-    {
-      "event": "Elon Musk # tweets February 14 - February 16, 2026?",
-      "slug": "elon-musk-of-tweets-february-14-february-16",
-      "type": "LONG",
-      "outcomes": 7,
-      "midSum": 0.972,
-      "execSum": 0.941,
-      "deviation": 2.8,
-      "execDeviation": 5.9,
-      "grossProfitPer100": 5.9,
-      "feesPer100": 0,
-      "profitPer100": 5.9,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will Elon Musk post 65-89 tweets from February 14 to Februar",
-          "mid": 0.435,
-          "exec": 0.43,
-          "token": "19779568221493895952676865609231089464510850574582508381986852563307884493501"
-        },
-        {
-          "name": "Will Elon Musk post 40-64 tweets from February 14 to Februar",
-          "mid": 0.075,
-          "exec": 0.07,
-          "token": "28988191769969432577061314587368990464217068010525588178919238818382176527209"
-        },
-        {
-          "name": "Will Elon Musk post 140-164 tweets from February 14 to Febru",
-          "mid": 0.029,
-          "exec": 0.027,
-          "token": "67918601360873742370584383150687028364915149273413445401824748975893776724907"
-        },
-        {
-          "name": "Will Elon Musk post 165-189 tweets from February 14 to Febru",
-          "mid": 0.014,
-          "exec": 0.012,
-          "token": "14588689847155710140084925630833413220311051563779237763910268505586365020396"
-        },
-        {
-          "name": "Will Elon Musk post 190-214 tweets from February 14 to Febru",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "5411908762045026586082240555373253166073819466238249049909159675354003997706"
-        },
-        {
-          "name": "Will Elon Musk post 90-114 tweets from February 14 to Februa",
-          "mid": 0.34,
-          "exec": 0.33,
-          "token": "102537315715678355572271579005595737578706394759017439902058315195378509656429"
-        },
-        {
-          "name": "Will Elon Musk post 115-139 tweets from February 14 to Febru",
-          "mid": 0.075,
-          "exec": 0.07,
-          "token": "75913565227378972450735776760275457690882335692941744309295567683432026622243"
-        }
-      ]
-    },
-    {
-      "event": "How many people will Trump deport in 2025?",
-      "slug": "how-many-people-will-trump-deport-in-2025",
-      "type": "LONG",
-      "outcomes": 9,
-      "midSum": 0.975,
-      "execSum": 0.964,
-      "deviation": 2.5,
-      "execDeviation": 3.6,
-      "grossProfitPer100": 3.6,
-      "feesPer100": 0,
-      "profitPer100": 3.6,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will Trump deport less than 250,000?",
-          "mid": 0.055,
-          "exec": 0.049,
-          "token": "101676997363687199724245607342877036148401850938023978421879460310389391082353"
-        },
-        {
-          "name": "Will Trump deport 250,000-500,000 people?",
-          "mid": 0.8565,
-          "exec": 0.856,
-          "token": "13244681086321087932946246027856416106585284024824496763706748621681543444582"
-        },
-        {
-          "name": "Will Trump deport 500,000-750,000- people?",
-          "mid": 0.0265,
-          "exec": 0.026,
-          "token": "100074770378634056601572485653252702850363676459996771990439989989293515601975"
-        },
-        {
-          "name": "Will Trump deport 750,000-1,000,000 people?",
-          "mid": 0.0185,
-          "exec": 0.017,
-          "token": "49194009556504828848509244326501559253829462790583873936160989575507522044057"
-        },
-        {
-          "name": "Will Trump deport 1,000,000-1,250,000 people?",
-          "mid": 0.0065,
-          "exec": 0.006,
-          "token": "13018971792603393862521629014128024641178044618205296260525674415067194037856"
-        },
-        {
-          "name": "Will Trump deport 1,750,000-2,000,000 people?",
-          "mid": 0.0035,
-          "exec": 0.003,
-          "token": "24682525479474221428144937281315825971983904267399062415430320764754931667953"
-        },
-        {
-          "name": "Will Trump deport 1,250,000-1,500,000 people?",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "73414222381656326204771753454630063673548497164758947581648273905027617570612"
-        },
-        {
-          "name": "Will Trump deport 1,500,000-1,750,000 people?",
-          "mid": 0.0035,
-          "exec": 0.003,
-          "token": "72354723612769247426741660426331235762851940382312402276325808095604519806766"
-        },
-        {
-          "name": "Will Trump deport 2,000,000 or more people?",
-          "mid": 0.0035,
-          "exec": 0.003,
-          "token": "72012724360700510767037780555710363830014634797787940282136454146828040926557"
-        }
-      ]
-    },
-    {
-      "event": "NBA Western Conference Champion ",
-      "slug": "nba-western-conference-champion-933",
-      "type": "SHORT",
-      "outcomes": 11,
-      "midSum": 1.027,
-      "execSum": 0.988,
-      "deviation": 2.7,
-      "execDeviation": 1.2,
-      "grossProfitPer100": -1.2,
-      "feesPer100": 0,
-      "profitPer100": -1.2,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will the Oklahoma City Thunder win the NBA Western Conferenc",
-          "mid": 0.52,
-          "exec": 0.51,
-          "token": "105874436620923713168019020245858616944322383958692280683224180064376992665538"
-        },
-        {
-          "name": "Will the Denver Nuggets win the NBA Western Conference Final",
-          "mid": 0.16,
-          "exec": 0.15,
-          "token": "108398074540970095314518325646490765619963623062982966676789014794361479719637"
-        },
-        {
-          "name": "Will the Houston Rockets win the NBA Western Conference Fina",
-          "mid": 0.07,
-          "exec": 0.069,
-          "token": "22226004461035625319919657267129959466466585725269185478458570055870755140202"
-        },
-        {
-          "name": "Will the Los Angeles Lakers win the NBA Western Conference F",
-          "mid": 0.0385,
-          "exec": 0.038,
-          "token": "92156510891798873020497715268024772851858076229893943637545856397683791106647"
-        },
-        {
-          "name": "Will the Minnesota Timberwolves win the NBA Western Conferen",
-          "mid": 0.055,
-          "exec": 0.053,
-          "token": "80564199933198063686735983682931201091805047291421501140508185910743468318376"
-        },
-        {
-          "name": "Will the Los Angeles Clippers win the NBA Western Conference",
-          "mid": 0.024,
-          "exec": 0.023,
-          "token": "48683147420750921052017138201270724636186430958875818497134964551306866907814"
-        },
-        {
-          "name": "Will the Dallas Mavericks win the NBA Western Conference Fin",
-          "mid": 0.0045,
-          "exec": 0.003,
-          "token": "55099493322519440967558717167222283364927814955850690659280839827209928958533"
-        },
-        {
-          "name": "Will the San Antonio Spurs win the NBA Western Conference Fi",
-          "mid": 0.1075,
-          "exec": 0.101,
-          "token": "6842047670820419171425914468337077680927367717837404858652329372722501774629"
-        },
-        {
-          "name": "Will the Phoenix Suns win the NBA Western Conference Finals?",
-          "mid": 0.02,
-          "exec": 0.019,
-          "token": "24315108267836543154857233535536136482524552716493402526894829400485516895736"
-        },
-        {
-          "name": "Will the Golden State Warriors win the NBA Western Conferenc",
-          "mid": 0.018,
-          "exec": 0.017,
-          "token": "8186557467277475901094949742490854679817405006696983018588137692207963004648"
-        },
-        {
-          "name": "Will the Portland Trail Blazers win the NBA Western Conferen",
-          "mid": 0.007,
-          "exec": 0.005,
-          "token": "77648433824716730185008177852682080573261442860361580435966309914289533557558"
-        }
-      ]
-    },
-    {
-      "event": "XRP price on February 15?",
-      "slug": "xrp-price-on-february-15",
-      "type": "SHORT",
-      "outcomes": 8,
-      "midSum": 1.031,
-      "execSum": 0.961,
-      "deviation": 3.1,
-      "execDeviation": 3.9,
-      "grossProfitPer100": -3.9,
-      "feesPer100": 0,
-      "profitPer100": -3.9,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will the price of XRP be between $1.20 and $1.30 on February",
-          "mid": 0.003,
-          "exec": 0.001,
-          "token": "6648898655936574004442985809763692949982309217460137876687892597824326297102"
-        },
-        {
-          "name": "Will the price of XRP be between $1.30 and $1.40 on February",
-          "mid": 0.002,
-          "exec": 0.001,
-          "token": "28739785451979476770719261847282998915617845312964347243280518004151212256810"
-        },
-        {
-          "name": "Will the price of XRP be between $1.40 and $1.50 on February",
-          "mid": 0.176,
-          "exec": 0.11,
-          "token": "98848783495729704866663247207854429811120039014237794397112069176572118536087"
-        },
-        {
-          "name": "Will the price of XRP be between $1.50 and $1.60 on February",
-          "mid": 0.792,
-          "exec": 0.801,
-          "token": "15846701041375404450584433581183486772603923130218945038298013713589052874192"
-        },
-        {
-          "name": "Will the price of XRP be between $1.60 and $1.70 on February",
-          "mid": 0.028,
-          "exec": 0.039,
-          "token": "64193077641717555016262288886855608981989373839881051499533015515582758106664"
-        },
-        {
-          "name": "Will the price of XRP be between $1.70 and $1.80 on February",
-          "mid": 0.0205,
-          "exec": 0.005,
-          "token": "3621711956772031903370283885011621778556718625615305833808787199263526929018"
-        },
-        {
-          "name": "Will the price of XRP be between $1.80 and $1.90 on February",
-          "mid": 0.0065,
-          "exec": 0.004,
-          "token": "108414203695450233654321509441823796250883083810513177790628642579691205278305"
-        },
-        {
-          "name": "Will the price of XRP be greater than $1.90 on February 15?",
-          "mid": 0.0015,
-          "exec": 0,
-          "token": "9640629581591989405292846243394293301838247114047527103134115463325542344621"
         }
       ]
     }
