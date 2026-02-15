@@ -243,3 +243,42 @@ At sub-$1K scale: take profits at 80-90% of max value when thesis is intact.
 
 **Next Learner Session:**
 Check if Gov Shutdown actually resolved YES (validates thesis fully) and if Bangladesh BNP Election resolves (currently at 99.5¢ bid, likely YES).
+
+---
+
+## 2026-02-15 — RPC Single-Point-of-Failure Fix (Infrastructure)
+
+### What Happened
+After the duplicate-sell fix (commit 7341b09), the system restarted cleanly — the grace period worked, no false sells fired. But the system got stuck in warmup and could never become operational. The executor kept crashing and restarting (28+ times) because it couldn't fetch the cash balance.
+
+### Root Cause: Your Fix Didn't Cover This
+Your duplicate-sell fix (fill verification, cooldown guard, unfilled order cancellation) was **correct and solid** — that logic is good. The warmup stall was a separate, pre-existing infrastructure bug.
+
+The `/balance` endpoint in `executor/index.js` used a **single hardcoded RPC** (`https://polygon-rpc.com`) with zero fallback:
+
+```js
+// BEFORE (broken)
+const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com");
+```
+
+When that one provider went down, every `fetchCashBalance()` call from ws-feed returned `$0.00`, and `checkSystemReady()` refused to exit warmup (lines 926-936 in ws-feed.js) because it correctly treats `$0` cash as suspicious.
+
+The 2-minute timeout at line 930 *should* have eventually let the system proceed, but the executor itself kept crashing and restarting — each restart reset the warmup timer back to zero. So the timeout never got a chance to fire.
+
+**Irony:** You already had fallback RPC logic in `autoRedeem()` with 3 providers and a retry loop. But the `/balance` endpoint and the portfolio fallback function never got the same treatment.
+
+### What Was Fixed
+1. **Shared RPC fallback helper** (`getPolygonProvider()`) at the top of `executor/index.js` — cycles through 4 Polygon RPC providers (`polygon-rpc.com`, `publicnode.com`, `ankr.com`, `1rpc.io/matic`) with connectivity verification before returning
+2. **`/balance` endpoint** now uses `getPolygonProvider()` instead of hardcoded single RPC
+3. **Portfolio fallback** (the `chain+cache` path) also uses `getPolygonProvider()`
+4. **`autoRedeem()`** consolidated to use the same shared helper instead of its own local RPC list
+
+### Why This Matters
+- If the primary RPC is down, the system now automatically tries 3 alternatives before failing
+- Cash balance fetches succeed even during provider outages → warmup completes → system becomes operational
+- All on-chain RPC usage in the executor is now centralized in one place — no more scattered hardcoded URLs to forget about
+
+### Rule Change
+**INFRA-001**: Every on-chain RPC call must use a fallback provider list, never a single hardcoded URL. When adding new RPC-dependent code, use `getPolygonProvider()`.
+
+---

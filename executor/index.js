@@ -25,6 +25,30 @@ console.log(`CLOB HOST: ${HOST}`);
 const CHAIN_ID = 137;
 const PORT = parseInt(process.env.EXECUTOR_PORT || "3002");
 
+// === POLYGON RPC FALLBACK ===
+// Multiple RPC providers to avoid single-point-of-failure on balance checks.
+// If the primary is down, we cycle through alternatives before giving up.
+const POLYGON_RPC_URLS = [
+  "https://polygon-rpc.com",
+  "https://polygon-bor-rpc.publicnode.com",
+  "https://rpc.ankr.com/polygon",
+  "https://1rpc.io/matic",
+];
+const USDC_E_ADDR = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
+const ERC20_ABI = ["function balanceOf(address) view returns (uint256)"];
+
+async function getPolygonProvider() {
+  const { ethers } = require("ethers");
+  for (const url of POLYGON_RPC_URLS) {
+    try {
+      const provider = new ethers.providers.JsonRpcProvider(url);
+      await provider.getNetwork(); // verify connectivity
+      return provider;
+    } catch (e) { /* try next */ }
+  }
+  throw new Error("All Polygon RPC providers failed");
+}
+
 // === PRE-TRADE RISK GATE ===
 // Enforces position sizing limits BEFORE orders reach the CLOB.
 // This is the programmatic fix for the recurring position sizing violations
@@ -156,15 +180,9 @@ async function checkResolutions() {
  */
 async function autoRedeem() {
   const { ethers } = require("ethers");
-  const RPC_URLS = [
-    "https://polygon-bor-rpc.publicnode.com",
-    "https://rpc.ankr.com/polygon",
-    "https://1rpc.io/matic",
-  ];
 
   const CTF_ADDR = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045";
   const WCOL_ADDR = "0x3A3BD7bb9528E159577F7C2e685CC81A765002E2";
-  const USDC_E_ADDR = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
 
   const CTF_ABI = [
     "function redeemPositions(address collateralToken, bytes32 parentCollectionId, bytes32 conditionId, uint256[] indexSets) external",
@@ -173,22 +191,18 @@ async function autoRedeem() {
     "function unwrap(address _to, uint256 _amount) external",
     "function balanceOf(address) view returns (uint256)",
   ];
-  const ERC20_ABI = ["function balanceOf(address) view returns (uint256)"];
 
   const pk = process.env.PRIVATE_KEY;
   if (!pk) { console.log("[REDEEM] No PRIVATE_KEY, skipping"); return { redeemed: 0 }; }
 
-  // Connect to a working RPC
+  // Connect to a working RPC (uses shared fallback list)
   let provider, wallet;
-  for (const url of RPC_URLS) {
-    try {
-      provider = new ethers.providers.JsonRpcProvider(url);
-      await provider.getNetwork();
-      wallet = new ethers.Wallet(pk, provider);
-      break;
-    } catch (e) { provider = null; }
+  try {
+    provider = await getPolygonProvider();
+    wallet = new ethers.Wallet(pk, provider);
+  } catch (e) {
+    console.log("[REDEEM] All RPCs failed"); return { redeemed: 0, error: "no RPC" };
   }
-  if (!provider) { console.log("[REDEEM] All RPCs failed"); return { redeemed: 0, error: "no RPC" }; }
 
   // Fetch redeemable positions from data API
   const https = require("https");
@@ -563,13 +577,11 @@ async function getPortfolioValue() {
     }
   } catch (e) { /* ws-feed unavailable, fallback */ }
 
-  // Fallback: get on-chain balance + position cost basis
+  // Fallback: get on-chain balance + position cost basis (with RPC fallback)
   try {
     const { ethers } = require("ethers");
-    const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com");
-    const USDC_E = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
-    const erc20Abi = ["function balanceOf(address) view returns (uint256)"];
-    const usdc = new ethers.Contract(USDC_E, erc20Abi, provider);
+    const provider = await getPolygonProvider();
+    const usdc = new ethers.Contract(USDC_E_ADDR, ERC20_ABI, provider);
     const bal = await usdc.balanceOf(OUR_ADDR);
     const balance = parseFloat(ethers.utils.formatUnits(bal, 6));
     
@@ -1174,14 +1186,12 @@ async function handler(req, res) {
 
     if (!client) return send(res, 503, { error: "Client not initialized" });
 
-    // GET /balance — on-chain USDC balance
+    // GET /balance — on-chain USDC balance (with RPC fallback)
     if (method === "GET" && path === "/balance") {
       try {
         const { ethers } = require("ethers");
-        const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com");
-        const USDC_E = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
-        const erc20Abi = ["function balanceOf(address) view returns (uint256)"];
-        const usdc = new ethers.Contract(USDC_E, erc20Abi, provider);
+        const provider = await getPolygonProvider();
+        const usdc = new ethers.Contract(USDC_E_ADDR, ERC20_ABI, provider);
         const bal = await usdc.balanceOf("0xe693Ef449979E387C8B4B5071Af9e27a7742E18D");
         const balance = parseFloat(ethers.utils.formatUnits(bal, 6));
         return send(res, 200, { balance, currency: "USDC", wallet: "executor" });
