@@ -66,6 +66,38 @@ const RISK_MAX_TOTAL_DIRECTIONAL_PCT = 0.60; // Max 60% of bankroll in manual po
 // === FEATURE 2: ENTRY QUALITY GATE ===
 const ENTRY_MAX_PRICE_LONG_HORIZON = 0.85;   // No manual entries above 85¢ unless <24h to resolution
 
+// === SHARED: Polymarket Data API Position Fetcher ===
+// Single source of truth for all position queries. Uses data-api.polymarket.com
+// which returns ACTUAL on-chain positions (not reconstructed from trade history).
+// INFRA-001: Never reconstruct positions from getTrades() — it misses sells and creates phantoms.
+const OUR_ADDR_CHECKSUM = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D";
+let _dataApiCache = null;
+let _dataApiCacheTime = 0;
+const DATA_API_CACHE_TTL = 30_000; // 30s cache
+
+async function getDataApiPositions(forceRefresh = false) {
+  if (!forceRefresh && _dataApiCache && (Date.now() - _dataApiCacheTime) < DATA_API_CACHE_TTL) {
+    return _dataApiCache;
+  }
+  return new Promise((resolve, reject) => {
+    const url = `https://data-api.polymarket.com/positions?user=${OUR_ADDR_CHECKSUM}&limit=200&sizeThreshold=0`;
+    const req = https.get(url, (res) => {
+      let d = ""; res.on("data", c => d += c);
+      res.on("end", () => {
+        try {
+          const positions = JSON.parse(d);
+          if (!Array.isArray(positions)) return reject(new Error(`data API: non-array response: ${d.slice(0,100)}`));
+          _dataApiCache = positions;
+          _dataApiCacheTime = Date.now();
+          resolve(positions);
+        } catch (e) { reject(e); }
+      });
+    });
+    req.on("error", reject);
+    req.setTimeout(15000, () => { req.destroy(); reject(new Error("data API timeout")); });
+  });
+}
+
 /**
  * Check Polymarket data API for resolved positions.
  * Positions with redeemable=true have resolved. Records P&L and notifies.
@@ -1219,11 +1251,35 @@ async function handler(req, res) {
         return send(res, 200, { orders });
       }
       if (path === "/positions") {
+        // PRIMARY: Polymarket data API (ground truth — actual on-chain positions)
+        try {
+          const dataPositions = await getDataApiPositions();
+          const resolved = loadResolved();
+          const positions = dataPositions
+            .filter(p => p.size > 0.001 && !p.redeemable && !resolved[p.asset])
+            .map(p => ({
+              asset_id: p.asset,
+              market: p.conditionId || p.slug,
+              outcome: p.outcome,
+              size: p.size,
+              totalCost: p.initialValue || (p.size * p.avgPrice),
+              avgPrice: String(p.avgPrice),
+              _title: p.title,
+              _slug: p.slug,
+              _curPrice: p.curPrice,
+              _currentValue: p.currentValue,
+              _cashPnl: p.cashPnl,
+              _source: "data-api",
+            }));
+          return send(res, 200, { positions, source: "data-api", count: positions.length });
+        } catch (e) {
+          console.log(`[positions] Data API failed (${e.message}), falling back to trade cache`);
+        }
+        // FALLBACK: Trade history reconstruction (known to create phantoms — last resort only)
         const cached = await getCachedPositions();
-        // Filter out resolved positions so ws-feed doesn't re-sync them
         const resolved = loadResolved();
         const filtered = cached.openPositions.filter(p => !resolved[p.asset_id]);
-        return send(res, 200, { positions: filtered });
+        return send(res, 200, { positions: filtered, source: "trade-cache-FALLBACK", count: filtered.length });
       }
       if (path === "/strategy-pnl") {
         // P&L grouped by strategy tag
