@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-14T23:53:17.761Z",
+  "timestamp": "2026-02-15T01:25:20.307Z",
   "summary": {
     "total": 100,
-    "negRisk": 59,
-    "flagged": 6,
-    "viable": 2
+    "negRisk": 56,
+    "flagged": 3,
+    "viable": 1
   },
   "opportunities": [
     {
@@ -36,237 +36,13 @@
       ]
     },
     {
-      "event": "Nobel Peace Prize Winner 2026",
-      "slug": "nobel-peace-prize-winner-2026-139",
-      "type": "LONG",
-      "outcomes": 20,
-      "midSum": 0.7675,
-      "execSum": 0.703,
-      "deviation": 23.25,
-      "execDeviation": 29.7,
-      "grossProfitPer100": 29.7,
-      "feesPer100": 0,
-      "profitPer100": 29.7,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will Donald Trump win the Nobel Peace Prize in 2026?",
-          "mid": 0.115,
-          "exec": 0.11,
-          "token": "96308556109755835434254900303426519652053230974356832970824534225192181988516"
-        },
-        {
-          "name": "Will Yulia Navalnaya win the Nobel Peace Prize in 2026?",
-          "mid": 0.07,
-          "exec": 0.06,
-          "token": "3494130919441794744300504897798612438496650716124466384425423765833752918969"
-        },
-        {
-          "name": "Will Greta Thunberg win the Nobel Peace Prize in 2026?",
-          "mid": 0.0305,
-          "exec": 0.03,
-          "token": "110720206167890822616321575705807171983245849150110799188723045022216595670551"
-        },
-        {
-          "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.059,
-          "exec": 0.058,
-          "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
-        },
-        {
-          "name": "Will António Guterres win the Nobel Peace Prize in 2026?",
-          "mid": 0.006,
-          "exec": 0.004,
-          "token": "23342261653888694132200522593527487238848562692306851598440649086435121500976"
-        },
-        {
-          "name": "Will Tamim bin Hamad Al Thani win the Nobel Peace Prize in 2",
-          "mid": 0.108,
-          "exec": 0.103,
-          "token": "38629843016683821271278712298908281184814663635088376266062295059246738422381"
-        },
-        {
-          "name": "Will Khaled Mashal win the Nobel Peace Prize in 2026?",
-          "mid": 0.01,
-          "exec": 0.008,
-          "token": "4817558919700430121831697879056774909752184660255737582917693916506064447935"
-        },
-        {
-          "name": "Will Recep Tayyip Erdoğan win the Nobel Peace Prize in 2026?",
-          "mid": 0.0075,
-          "exec": 0.007,
-          "token": "85146181675473345857517501170400200068194836865848336579180316943778562621184"
-        },
-        {
-          "name": "Will Ahmed al-Sharaa win the Nobel Peace Prize in 2026?",
-          "mid": 0.013,
-          "exec": 0.011,
-          "token": "29384252153498040908016173010534270095096285030713208216637067996773126537603"
-        },
-        {
-          "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
-          "mid": 0.011,
-          "exec": 0.007,
-          "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
-        },
-        {
-          "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.0515,
-          "exec": 0.043,
-          "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
-        },
-        {
-          "name": "Will Julian Assange win the Nobel Peace Prize in 2026?",
-          "mid": 0.008,
-          "exec": 0.007,
-          "token": "2514203837854735205913781359327052377275050226163878960745268210971566855346"
-        },
-        {
-          "name": "Will Elon Musk win the Nobel Peace Prize in 2026?",
-          "mid": 0.0155,
-          "exec": 0.015,
-          "token": "75607128808577269329357564425293012652006155264327001987967114873720422847762"
-        },
-        {
-          "name": "Will the International Court of Justice win the Nobel Peace ",
-          "mid": 0.095,
-          "exec": 0.083,
-          "token": "71369127494310794272479391274205452287676771660414011081710844125846890526676"
-        },
-        {
-          "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.1115,
-          "exec": 0.11,
-          "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
-        },
-        {
-          "name": "Will Vladimir Putin win the Nobel Peace Prize in 2026?",
-          "mid": 0.007,
-          "exec": 0.005,
-          "token": "3072654272549368438022392135276167382428661847959009954134234860002162565563"
-        },
-        {
-          "name": "Will Benjamin Netanyahu win the Nobel Peace Prize in 2026?",
-          "mid": 0.007,
-          "exec": 0.006,
-          "token": "8075661047254567797432306525558519998052391236898258911573171689963344650999"
-        },
-        {
-          "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
-          "mid": 0.005,
-          "exec": 0.004,
-          "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
-        },
-        {
-          "name": "Will Charlie Kirk win the Nobel Peace Prize in 2026?",
-          "mid": 0.019,
-          "exec": 0.016,
-          "token": "41901357708237118584313729261027657874621373325486663648640954008517926947624"
-        },
-        {
-          "name": "Will Narendra Modi win the Nobel Peace Prize in 2026?",
-          "mid": 0.018,
-          "exec": 0.016,
-          "token": "95036065107529622997025744213041265776694292492123977042470465876649211394600"
-        }
-      ]
-    },
-    {
-      "event": "NBA Eastern Conference Champion ",
-      "slug": "nba-eastern-conference-champion-442",
+      "event": "Ethereum price on February 15?",
+      "slug": "ethereum-price-on-february-15",
       "type": "SHORT",
-      "outcomes": 12,
-      "midSum": 1.035,
-      "execSum": 0.979,
-      "deviation": 3.5,
-      "execDeviation": 2.1,
-      "grossProfitPer100": -2.1,
-      "feesPer100": 0,
-      "profitPer100": -2.1,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will the Cleveland Cavaliers win the NBA Eastern Conference ",
-          "mid": 0.23,
-          "exec": 0.22,
-          "token": "26510384225806040730267502985578081313836463589753281281933174278980674429194"
-        },
-        {
-          "name": "Will the New York Knicks win the NBA Eastern Conference Fina",
-          "mid": 0.17,
-          "exec": 0.16,
-          "token": "5252381880374485440665230178984721306055940128786215274896991682225319468348"
-        },
-        {
-          "name": "Will the Orlando Magic win the NBA Eastern Conference Finals",
-          "mid": 0.034,
-          "exec": 0.034,
-          "token": "36378160072890559704966692763500079412567571381443166092461911736222412577030"
-        },
-        {
-          "name": "Will the Atlanta Hawks win the NBA Eastern Conference Finals",
-          "mid": 0.012,
-          "exec": 0.01,
-          "token": "29378510610351498292793924336050369056882113454472455899117956728534280393801"
-        },
-        {
-          "name": "Will the Detroit Pistons win the NBA Eastern Conference Fina",
-          "mid": 0.225,
-          "exec": 0.21,
-          "token": "108446172107941165064806998519652737542801121226691431615334275432295450338136"
-        },
-        {
-          "name": "Will the Philadelphia 76ers win the NBA Eastern Conference F",
-          "mid": 0.062,
-          "exec": 0.062,
-          "token": "50692628443801018513325614545746863026982626993302787461752145605052144027838"
-        },
-        {
-          "name": "Will the Boston Celtics win the NBA Eastern Conference Final",
-          "mid": 0.175,
-          "exec": 0.178,
-          "token": "76284775424209240264542352208573338636556198300439966875308967535434111103074"
-        },
-        {
-          "name": "Will the Milwaukee Bucks win the NBA Eastern Conference Fina",
-          "mid": 0.0325,
-          "exec": 0.019,
-          "token": "79336858132239037705158300268603413459637933572725439146100963281670148171735"
-        },
-        {
-          "name": "Will the Toronto Raptors win the NBA Eastern Conference Fina",
-          "mid": 0.0275,
-          "exec": 0.025,
-          "token": "46948910926280539794385431325138940193666253674995635848222141296489362188849"
-        },
-        {
-          "name": "Will the Miami Heat win the NBA Eastern Conference Finals?",
-          "mid": 0.0255,
-          "exec": 0.023,
-          "token": "91737308879086717078434227064834144626260031635826299637092532293769745981585"
-        },
-        {
-          "name": "Will the Chicago Bulls win the NBA Eastern Conference Finals",
-          "mid": 0.0045,
-          "exec": 0.004,
-          "token": "24829650463128704493019067953349695357276451577710397157073955025381074470438"
-        },
-        {
-          "name": "Will the Charlotte Hornets win the NBA Eastern Conference Fi",
-          "mid": 0.0355,
-          "exec": 0.034,
-          "token": "88202144797456094004565715683071874971451541348187754361676449702242116892606"
-        }
-      ]
-    },
-    {
-      "event": "2026 ICC T20 Men’s World Cup Winner",
-      "slug": "2026-icc-t20-mens-world-cup-winner",
-      "type": "SHORT",
-      "outcomes": 12,
-      "midSum": 1.038,
+      "outcomes": 10,
+      "midSum": 1.032,
       "execSum": 0.977,
-      "deviation": 3.8,
+      "deviation": 3.2,
       "execDeviation": 2.3,
       "grossProfitPer100": -2.3,
       "feesPer100": 0,
@@ -274,185 +50,27 @@
       "viable": false,
       "details": [
         {
-          "name": "Will India win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.42,
-          "exec": 0.41,
-          "token": "36190803750786635844165995661794551716343290080007015981336350366434982775233"
-        },
-        {
-          "name": "Will Australia win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.105,
-          "exec": 0.1,
-          "token": "28877596836825284906528825532184866109967770098921566662217924845975491268438"
-        },
-        {
-          "name": "Will England win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.105,
-          "exec": 0.1,
-          "token": "109446023657991202179869549612292567035455071214919100932024261718229181547214"
-        },
-        {
-          "name": "Will South Africa win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.18,
-          "exec": 0.17,
-          "token": "54644802007454240937143078370147159297869876341797598982143095655493911125903"
-        },
-        {
-          "name": "Will Pakistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0815,
-          "exec": 0.075,
-          "token": "76190129244386305771969693888683878935433573905105493954956506404783670380035"
-        },
-        {
-          "name": "Will New Zealand win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.063,
-          "exec": 0.052,
-          "token": "65008518571572657271211632870860379070221892511688233911018004120158193148414"
-        },
-        {
-          "name": "Will West Indies win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0535,
-          "exec": 0.053,
-          "token": "95028549383885752097876461063574302577289253561522211568257489843435069990371"
-        },
-        {
-          "name": "Will Afghanistan win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0025,
-          "exec": 0.001,
-          "token": "100224797595385678276742510521942077883901127206633934091955319005396903527705"
-        },
-        {
-          "name": "Will Sri Lanka win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.017,
-          "exec": 0.012,
-          "token": "103630786762206584738662636102754367864881412668966849731168337708616533672029"
-        },
-        {
-          "name": "Will the United States win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "72610582151460304801138152928941305632024243447678281544143361919620548389053"
-        },
-        {
-          "name": "Will Zimbabwe win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0035,
-          "exec": 0.002,
-          "token": "18067098618874461124880148778379554146494289244719071744515218581410050482940"
-        },
-        {
-          "name": "Will Nepal win the 2026 ICC Men’s T20 World Cup?",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "78792456833604038191718333177273115662811031370471878743588886589717751517274"
-        }
-      ]
-    },
-    {
-      "event": "Bitcoin price on February 15?",
-      "slug": "bitcoin-price-on-february-15",
-      "type": "SHORT",
-      "outcomes": 9,
-      "midSum": 1.0315,
-      "execSum": 0.975,
-      "deviation": 3.15,
-      "execDeviation": 2.5,
-      "grossProfitPer100": -2.5,
-      "feesPer100": 0,
-      "profitPer100": -2.5,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will the price of Bitcoin be less than $62,000 on February 1",
-          "mid": 0.003,
-          "exec": 0.001,
-          "token": "27949417428573445813088695839917496968726369934584872098628951930949747990810"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $62,000 and $64,000 on ",
-          "mid": 0.0025,
-          "exec": 0.002,
-          "token": "53839636326432237178563940503741915576006662601296760661203015485164222905673"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $64,000 and $66,000 on ",
-          "mid": 0.012,
-          "exec": 0.005,
-          "token": "37577118071508707644805426614046623397085035735679293449171488353199427219779"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $66,000 and $68,000 on ",
-          "mid": 0.0655,
-          "exec": 0.06,
-          "token": "33036914367330249014378807168558153960064205626882050302014818468219372833657"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $68,000 and $70,000 on ",
-          "mid": 0.49,
-          "exec": 0.48,
-          "token": "2103636101400917288966026802743382599425237974062742810167322525539408591964"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $70,000 and $72,000 on ",
-          "mid": 0.4,
-          "exec": 0.38,
-          "token": "31496071606449467870622347283605592055318393091565793195141504351886050316606"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $76,000 and $78,000 on ",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "66519617457949135061281687875400907962543514552801505502809304373828686525654"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $72,000 and $74,000 on ",
-          "mid": 0.0425,
-          "exec": 0.033,
-          "token": "45785080051250195009325047370792023004975486607002605077181919459885541644837"
-        },
-        {
-          "name": "Will the price of Bitcoin be between $74,000 and $76,000 on ",
-          "mid": 0.0135,
-          "exec": 0.013,
-          "token": "82798009819714764204928458633507575002656124337113405934246714106475199928736"
-        }
-      ]
-    },
-    {
-      "event": "Ethereum price on February 15?",
-      "slug": "ethereum-price-on-february-15",
-      "type": "SHORT",
-      "outcomes": 10,
-      "midSum": 1.036,
-      "execSum": 0.97,
-      "deviation": 3.6,
-      "execDeviation": 3,
-      "grossProfitPer100": -3,
-      "feesPer100": 0,
-      "profitPer100": -3,
-      "viable": false,
-      "details": [
-        {
           "name": "Will the price of Ethereum be between $1,700 and $1,800 on F",
-          "mid": 0.0045,
+          "mid": 0.005,
           "exec": 0.001,
           "token": "78089060033394829595968391003366650581637976524296367047453640774485128668054"
         },
         {
           "name": "Will the price of Ethereum be between $1,800 and $1,900 on F",
-          "mid": 0.0075,
+          "mid": 0.006,
           "exec": 0.002,
           "token": "27068247500526807364221690252922629388308413907199195286669658312054829945467"
         },
         {
           "name": "Will the price of Ethereum be between $2,200 and $2,300 on F",
-          "mid": 0.03,
-          "exec": 0.021,
+          "mid": 0.02,
+          "exec": 0.015,
           "token": "78747759261826272771304712047022419476250897048220474720898706988299472226481"
         },
         {
           "name": "Will the price of Ethereum be between $2,300 and $2,400 on F",
-          "mid": 0.005,
-          "exec": 0.002,
+          "mid": 0.008,
+          "exec": 0.007,
           "token": "1302627859359849878309045300416430307834089624924763802154644522388006360400"
         },
         {
@@ -463,14 +81,14 @@
         },
         {
           "name": "Will the price of Ethereum be between $1,900 and $2,000 on F",
-          "mid": 0.0365,
-          "exec": 0.021,
+          "mid": 0.061,
+          "exec": 0.06,
           "token": "16726293482724107573093216695721451477644991781942795800869867560313755159567"
         },
         {
           "name": "Will the price of Ethereum be between $2,400 and $2,500 on F",
-          "mid": 0.0025,
-          "exec": 0.001,
+          "mid": 0.002,
+          "exec": 0,
           "token": "48180077247891786912489939996961075799094603919337499289022018829388338114692"
         },
         {
@@ -481,15 +99,67 @@
         },
         {
           "name": "Will the price of Ethereum be between $2,000 and $2,100 on F",
-          "mid": 0.555,
-          "exec": 0.55,
+          "mid": 0.69,
+          "exec": 0.69,
           "token": "38438772155524797227604156147702318731495933573080859210052483248896070461765"
         },
         {
           "name": "Will the price of Ethereum be between $2,100 and $2,200 on F",
-          "mid": 0.39,
-          "exec": 0.37,
+          "mid": 0.235,
+          "exec": 0.2,
           "token": "84663929970491411065730065953462357852392234012716755325752745287885388148268"
+        }
+      ]
+    },
+    {
+      "event": "Solana price on February 15?",
+      "slug": "solana-price-on-february-15",
+      "type": "SHORT",
+      "outcomes": 6,
+      "midSum": 1.0305,
+      "execSum": 0.949,
+      "deviation": 3.05,
+      "execDeviation": 5.1,
+      "grossProfitPer100": -5.1,
+      "feesPer100": 0,
+      "profitPer100": -5.1,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will the price of Solana be between $70 and $80 on February ",
+          "mid": 0.0135,
+          "exec": 0.012,
+          "token": "1201652457172393595222176408089614631660302670158599055969460466520409580922"
+        },
+        {
+          "name": "Will the price of Solana be between $80 and $90 on February ",
+          "mid": 0.825,
+          "exec": 0.79,
+          "token": "93005817587756837193677769166470551981966991192262993145963601537199915644660"
+        },
+        {
+          "name": "Will the price of Solana be between $90 and $100 on February",
+          "mid": 0.1675,
+          "exec": 0.143,
+          "token": "34031820758254992803859804442973314667344212273112379288461599897450876246015"
+        },
+        {
+          "name": "Will the price of Solana be between $60 and $70 on February ",
+          "mid": 0.0055,
+          "exec": 0.002,
+          "token": "4041589306676725212214754350234225640967187610933746971905383811151582011379"
+        },
+        {
+          "name": "Will the price of Solana be between $100 and $110 on Februar",
+          "mid": 0.0135,
+          "exec": 0.001,
+          "token": "17319202521593803864115819278122279387617259027778811928491097290754227052039"
+        },
+        {
+          "name": "Will the price of Solana be between $110 and $120 on Februar",
+          "mid": 0.0025,
+          "exec": 0.001,
+          "token": "45389975275559493805521933835573186197410218531592213078479110681779711897538"
         }
       ]
     }
