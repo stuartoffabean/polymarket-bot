@@ -15,6 +15,7 @@
  */
 
 const http = require("http");
+const https = require("https");
 const { ClobClient, Side } = require("@polymarket/clob-client");
 const { BuilderConfig } = require("@polymarket/builder-signing-sdk");
 const { Wallet } = require("ethers");
@@ -866,17 +867,17 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts
 // Feature 1: Calculate total directional exposure across all manual positions
 async function getTotalDirectionalExposure() {
   try {
-    const cached = await getCachedPositions();
-    // Manual positions = everything NOT tagged as resolution/arb/weather in ws-feed
-    // We check all positions and sum cost basis for non-auto strategies
-    let total = 0;
-    const manualFile = path.join(__dirname, "manual-positions.json");
-    let manualIds = new Set();
-    try { 
-      const mp = JSON.parse(fs.readFileSync(manualFile, "utf8")); 
-      manualIds = new Set(Object.keys(mp));
-    } catch {}
-    
+    // Use Polymarket data API as ground truth (not trade reconstruction which misses sells)
+    const addr = "0xe693Ef449979E387C8B4B5071Af9e27a7742E18D";
+    const positions = await new Promise((resolve, reject) => {
+      const req = https.get(`https://data-api.polymarket.com/positions?user=${addr}&limit=200&sizeThreshold=0`, (res) => {
+        let d = ""; res.on("data", c => d += c);
+        res.on("end", () => { try { resolve(JSON.parse(d)); } catch(e) { reject(e); } });
+      });
+      req.on("error", reject);
+      req.setTimeout(10000, () => { req.destroy(); reject(new Error("timeout")); });
+    });
+
     // Strategy tags from ws-feed
     let strategyTags = {};
     try {
@@ -895,18 +896,33 @@ async function getTotalDirectionalExposure() {
       }
     } catch {}
 
-    for (const pos of cached.openPositions) {
-      const shortId = pos.asset_id.slice(0, 20);
+    let total = 0;
+    for (const pos of positions) {
+      if (pos.resolved) continue; // skip resolved positions
+      const shortId = (pos.proxyWalletAssetId || pos.asset_id || "").slice(0, 20);
       const strat = strategyTags[shortId] || "unknown";
-      const isManual = manualIds.has(pos.asset_id) || strat === "manual" || strat === "unknown";
-      if (isManual) {
-        total += pos.totalCost;
+      // Auto strategies (resolution/arb/weather) don't count toward directional cap
+      const isAuto = strat === "resolution" || strat === "arb" || strat === "weather";
+      if (!isAuto) {
+        total += pos.initialValue || 0;
       }
     }
+    console.log(`[directional] Data API: ${positions.length} positions, total directional: $${total.toFixed(2)}`);
     return total;
   } catch (e) {
-    console.log(`getTotalDirectionalExposure error: ${e.message}`);
-    return 0;
+    console.log(`getTotalDirectionalExposure error (data API): ${e.message}, falling back to trade cache`);
+    // Fallback to old method if data API fails
+    try {
+      const cached = await getCachedPositions();
+      let total = 0;
+      for (const pos of cached.openPositions) {
+        total += pos.totalCost;
+      }
+      return total;
+    } catch (e2) {
+      console.log(`getTotalDirectionalExposure fallback error: ${e2.message}`);
+      return 0;
+    }
   }
 }
 
