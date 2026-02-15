@@ -22,6 +22,58 @@ const MIN_EDGE = parseFloat(process.env.EVENT_SCANNER_MIN_EDGE || '0.10');
 const MIN_SCORE = parseInt(process.env.EVENT_SCANNER_MIN_SCORE || '6');
 const ALERT_SCORE = parseInt(process.env.EVENT_SCANNER_ALERT_SCORE || '7');
 
+// Google Trends integration
+const TRENDS_ENABLED = true;
+const TRENDS_EXPLORE = 'https://trends.google.com/trends/api/dailytrends?hl=en-US&tz=420&geo=US&ns=15';
+
+async function fetchGoogleTrends(query) {
+  try {
+    // Use Google Trends "Related queries" via the explore widget JSON endpoint
+    const encoded = encodeURIComponent(query);
+    const url = `https://trends.google.com/trends/api/explore?hl=en-US&tz=420&req=${encodeURIComponent(JSON.stringify({comparisonItem:[{keyword:query,geo:'US',time:'now 1-d'}],category:0,property:''}))}`;
+    const r = await httpGet(url, 10000);
+    if (r.status !== 200) return { score: 0, rising: false };
+    // Trends API returns ")]}'\n" prefix — strip it
+    const clean = r.data.replace(/^\)\]\}',?\n/, '');
+    const json = JSON.parse(clean);
+    // Extract the interest-over-time token if available
+    const widgets = json.widgets || [];
+    const iotWidget = widgets.find(w => w.id === 'TIMESERIES');
+    if (!iotWidget || !iotWidget.token) return { score: 0, rising: false };
+
+    // Fetch the actual timeseries
+    const tsUrl = `https://trends.google.com/trends/api/widgetdata/multiline?hl=en-US&tz=420&req=${encodeURIComponent(JSON.stringify(iotWidget.request))}&token=${iotWidget.token}`;
+    await sleep(500);
+    const tsR = await httpGet(tsUrl, 10000);
+    if (tsR.status !== 200) return { score: 0, rising: false };
+    const tsClean = tsR.data.replace(/^\)\]\}',?\n/, '');
+    const tsJson = JSON.parse(tsClean);
+    const points = tsJson?.default?.timelineData || [];
+    if (points.length < 4) return { score: 0, rising: false };
+
+    // Get last 6 hours vs previous 6 hours
+    const values = points.map(p => (p.value || [0])[0]);
+    const recent = values.slice(-6);
+    const prior = values.slice(-12, -6);
+    const recentAvg = recent.reduce((a, b) => a + b, 0) / recent.length;
+    const priorAvg = prior.length ? prior.reduce((a, b) => a + b, 0) / prior.length : 0;
+    const spike = priorAvg > 0 ? recentAvg / priorAvg : (recentAvg > 20 ? 3 : 1);
+    const peak = Math.max(...values);
+
+    return {
+      score: peak,              // 0-100 relative interest
+      recentAvg: Math.round(recentAvg),
+      priorAvg: Math.round(priorAvg),
+      spikeRatio: +spike.toFixed(2),  // >2 = significant spike
+      rising: spike >= 1.5 && recentAvg >= 20,
+      breakout: spike >= 3 && recentAvg >= 40,
+    };
+  } catch (e) {
+    console.error(`[TRENDS] Failed for "${query}":`, e.message);
+    return { score: 0, rising: false };
+  }
+}
+
 // Sentiment keywords
 const POSITIVE_SIGNALS = ['confirmed', 'approved', 'passed', 'signed', 'won', 'elected', 'achieved',
   'completed', 'resolved', 'agreed', 'breakthrough', 'victory', 'success', 'announces', 'officially',
@@ -396,6 +448,14 @@ function scoreOpportunity(market, news, edge) {
     score += 1; reasons.push('liquid(1)');
   }
 
+  // Google Trends momentum: 0-2
+  const trends = news._trends || {};
+  if (trends.breakout) {
+    score += 2; reasons.push(`trends:breakout(2) spike=${trends.spikeRatio}x`);
+  } else if (trends.rising) {
+    score += 1; reasons.push(`trends:rising(1) spike=${trends.spikeRatio}x`);
+  }
+
   return { score, reasons };
 }
 
@@ -435,6 +495,16 @@ async function runScan() {
       if (articles.length === 0) continue;
 
       const news = analyzeNews(articles, question);
+
+      // Google Trends enrichment
+      let trends = { score: 0, rising: false };
+      if (TRENDS_ENABLED && news.recentArticles >= 2) {
+        // Only query trends if we already have some news signal (saves rate limit)
+        await sleep(1000);
+        trends = await fetchGoogleTrends(terms);
+        if (trends.rising) console.log(`[TRENDS] 📈 "${terms}" — spike ${trends.spikeRatio}x, score ${trends.score}`);
+      }
+      news._trends = trends;
       
       // Step 3: Edge detection
       const edge = detectEdge(market, news);
@@ -482,6 +552,7 @@ async function runScan() {
           negativeSignals: news.negativeSignals,
           spiking: news.spiking,
         },
+        trends: news._trends || null,
       };
 
       newOpportunities.push(opp);
