@@ -1,0 +1,15 @@
+{
+  "market": "Men's Group C - Denmark vs. Latvia",
+  "tokenID": "17816702236900425865568306352615335050535613858611623099670723569975538116721",
+  "side": "BUY",
+  "entryPrice": 0.535,
+  "size": 101,
+  "thesis": "[AUTO] Team USA men's hockey powers past Denmark in group play - NBC Olympics | 2026 Milano Cortina Olympics On Tap: Switzerland, Czechia battle for quarterfinal bid - NHL.com",
+  "invalidation": "Edge drops below 5% or news reversal",
+  "hoursToResolution": 12.7,
+  "edge": "26%",
+  "slug": "mwoh-den-lat-2026-02-15",
+  "entryTime": "2026-02-15T10:18:50.153Z",
+  "entryQualityScore": 9,
+  "status": "OPEN"
+}

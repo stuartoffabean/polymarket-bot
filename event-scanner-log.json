@@ -108,5 +108,35 @@
     "opportunitiesFound": 1,
     "newAdded": 0,
     "totalInFile": 15
+  },
+  {
+    "scan": 1,
+    "at": "2026-02-15T08:17:16.697Z",
+    "elapsed": "113.1s",
+    "marketsScanned": 450,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 2,
+    "at": "2026-02-15T08:23:03.873Z",
+    "elapsed": "112.7s",
+    "marketsScanned": 449,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
+  },
+  {
+    "scan": 3,
+    "at": "2026-02-15T10:19:13.771Z",
+    "elapsed": "117.1s",
+    "marketsScanned": 481,
+    "newsQueries": 50,
+    "opportunitiesFound": 1,
+    "newAdded": 0,
+    "totalInFile": 15
   }
 ]

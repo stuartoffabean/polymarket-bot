@@ -2,7 +2,9 @@
  * Crypto Binary Scanner — Daily "Up or Down" Markets
  * 
  * SCOPE: This scanner targets DAILY crypto binary markets (BTC, ETH, SOL, XRP).
- * NOTE: 5-minute and 15-minute crypto binaries DO NOT EXIST on Polymarket.
+ * NOTE: 15-minute crypto binaries DO exist (series_id=10192, slug btc-updown-15m-*).
+ *       Launched Jan 15, 2026. See binary-arb-scanner.js for scanning all binaries.
+ *       Taker arb on 15m markets is nonviable due to 1.56% fee overhead (2026-02-15 analysis).
  * 
  * Strategy: Monitor daily crypto "Up or Down" markets for:
  *   - Rebalancing arb (YES ask + NO ask < $0.98)

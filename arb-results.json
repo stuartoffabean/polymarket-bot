@@ -1,24 +1,88 @@
 {
-  "timestamp": "2026-02-15T08:06:08.498Z",
+  "timestamp": "2026-02-15T11:06:08.559Z",
   "summary": {
     "total": 100,
     "negRisk": 57,
     "flagged": 5,
-    "viable": 3
+    "viable": 2
   },
   "opportunities": [
+    {
+      "event": "XRP price on February 15?",
+      "slug": "xrp-price-on-february-15",
+      "type": "LONG",
+      "outcomes": 8,
+      "midSum": 0.9165,
+      "execSum": 0.314,
+      "deviation": 8.35,
+      "execDeviation": 68.6,
+      "grossProfitPer100": 68.6,
+      "feesPer100": 0,
+      "profitPer100": 68.6,
+      "viable": true,
+      "details": [
+        {
+          "name": "Will the price of XRP be between $1.20 and $1.30 on February",
+          "mid": 0.0105,
+          "exec": 0.001,
+          "token": "6648898655936574004442985809763692949982309217460137876687892597824326297102"
+        },
+        {
+          "name": "Will the price of XRP be between $1.30 and $1.40 on February",
+          "mid": 0.0105,
+          "exec": 0.005,
+          "token": "28739785451979476770719261847282998915617845312964347243280518004151212256810"
+        },
+        {
+          "name": "Will the price of XRP be between $1.40 and $1.50 on February",
+          "mid": 0.067,
+          "exec": 0.03,
+          "token": "98848783495729704866663247207854429811120039014237794397112069176572118536087"
+        },
+        {
+          "name": "Will the price of XRP be between $1.50 and $1.60 on February",
+          "mid": 0.428,
+          "exec": 0.196,
+          "token": "15846701041375404450584433581183486772603923130218945038298013713589052874192"
+        },
+        {
+          "name": "Will the price of XRP be between $1.60 and $1.70 on February",
+          "mid": 0.3655,
+          "exec": 0.065,
+          "token": "64193077641717555016262288886855608981989373839881051499533015515582758106664"
+        },
+        {
+          "name": "Will the price of XRP be between $1.70 and $1.80 on February",
+          "mid": 0.0255,
+          "exec": 0.013,
+          "token": "3621711956772031903370283885011621778556718625615305833808787199263526929018"
+        },
+        {
+          "name": "Will the price of XRP be between $1.80 and $1.90 on February",
+          "mid": 0.0065,
+          "exec": 0.004,
+          "token": "108414203695450233654321509441823796250883083810513177790628642579691205278305"
+        },
+        {
+          "name": "Will the price of XRP be greater than $1.90 on February 15?",
+          "mid": 0.0015,
+          "exec": 0,
+          "token": "9640629581591989405292846243394293301838247114047527103134115463325542344621"
+        }
+      ]
+    },
     {
       "event": "Nobel Peace Prize Winner 2026",
       "slug": "nobel-peace-prize-winner-2026-139",
       "type": "LONG",
       "outcomes": 20,
-      "midSum": 0.7715,
-      "execSum": 0.705,
-      "deviation": 22.85,
-      "execDeviation": 29.5,
-      "grossProfitPer100": 29.5,
+      "midSum": 0.771,
+      "execSum": 0.717,
+      "deviation": 22.9,
+      "execDeviation": 28.3,
+      "grossProfitPer100": 28.3,
       "feesPer100": 0,
-      "profitPer100": 29.5,
+      "profitPer100": 28.3,
       "viable": true,
       "details": [
         {
@@ -30,7 +94,7 @@
         {
           "name": "Will Yulia Navalnaya win the Nobel Peace Prize in 2026?",
           "mid": 0.07,
-          "exec": 0.06,
+          "exec": 0.07,
           "token": "3494130919441794744300504897798612438496650716124466384425423765833752918969"
         },
         {
@@ -41,8 +105,8 @@
         },
         {
           "name": "Will UNRWA win the Nobel Peace Prize in 2026?",
-          "mid": 0.0605,
-          "exec": 0.059,
+          "mid": 0.06,
+          "exec": 0.06,
           "token": "44648805494496128018486302258584216672381875589441286537181971476979030040822"
         },
         {
@@ -59,8 +123,8 @@
         },
         {
           "name": "Will Khaled Mashal win the Nobel Peace Prize in 2026?",
-          "mid": 0.01,
-          "exec": 0.008,
+          "mid": 0.008,
+          "exec": 0.007,
           "token": "4817558919700430121831697879056774909752184660255737582917693916506064447935"
         },
         {
@@ -77,20 +141,20 @@
         },
         {
           "name": "Will Mohammed bin Salman win the Nobel Peace Prize in 2026?",
-          "mid": 0.011,
-          "exec": 0.008,
+          "mid": 0.0105,
+          "exec": 0.007,
           "token": "99055846750090671053174250706531692511641252423756205459914574198871664904532"
         },
         {
           "name": "Will Pope Leo XIV win the Nobel Peace Prize in 2026?",
-          "mid": 0.0515,
-          "exec": 0.043,
+          "mid": 0.053,
+          "exec": 0.046,
           "token": "113237755645921715758233944722306063215233909018006486973579082721270649678448"
         },
         {
           "name": "Will Julian Assange win the Nobel Peace Prize in 2026?",
           "mid": 0.008,
-          "exec": 0.007,
+          "exec": 0.008,
           "token": "2514203837854735205913781359327052377275050226163878960745268210971566855346"
         },
         {
@@ -107,7 +171,7 @@
         },
         {
           "name": "Will Volodymyr Zelenskyy win the Nobel Peace Prize in 2026?",
-          "mid": 0.111,
+          "mid": 0.1115,
           "exec": 0.11,
           "token": "69233785052194635705851216099911823720821171641039286350179421202360326472771"
         },
@@ -125,8 +189,8 @@
         },
         {
           "name": "Will Xi Jinping win the Nobel Peace Prize in 2026?",
-          "mid": 0.005,
-          "exec": 0.004,
+          "mid": 0.0055,
+          "exec": 0.003,
           "token": "43017540324415003826064618020596028072344969424808059974990020921868559630137"
         },
         {
@@ -144,221 +208,35 @@
       ]
     },
     {
-      "event": "Solana price on February 15?",
-      "slug": "solana-price-on-february-15",
-      "type": "LONG",
-      "outcomes": 6,
-      "midSum": 0.952,
-      "execSum": 0.924,
-      "deviation": 4.8,
-      "execDeviation": 7.6,
-      "grossProfitPer100": 7.6,
-      "feesPer100": 0,
-      "profitPer100": 7.6,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will the price of Solana be between $70 and $80 on February ",
-          "mid": 0.026,
-          "exec": 0.01,
-          "token": "1201652457172393595222176408089614631660302670158599055969460466520409580922"
-        },
-        {
-          "name": "Will the price of Solana be between $80 and $90 on February ",
-          "mid": 0.31,
-          "exec": 0.22,
-          "token": "93005817587756837193677769166470551981966991192262993145963601537199915644660"
-        },
-        {
-          "name": "Will the price of Solana be between $90 and $100 on February",
-          "mid": 0.58,
-          "exec": 0.679,
-          "token": "34031820758254992803859804442973314667344212273112379288461599897450876246015"
-        },
-        {
-          "name": "Will the price of Solana be between $60 and $70 on February ",
-          "mid": 0.008,
-          "exec": 0.001,
-          "token": "4041589306676725212214754350234225640967187610933746971905383811151582011379"
-        },
-        {
-          "name": "Will the price of Solana be between $100 and $110 on Februar",
-          "mid": 0.021,
-          "exec": 0.011,
-          "token": "17319202521593803864115819278122279387617259027778811928491097290754227052039"
-        },
-        {
-          "name": "Will the price of Solana be between $110 and $120 on Februar",
-          "mid": 0.004,
-          "exec": 0.003,
-          "token": "45389975275559493805521933835573186197410218531592213078479110681779711897538"
-        }
-      ]
-    },
-    {
-      "event": "XRP price on February 15?",
-      "slug": "xrp-price-on-february-15",
-      "type": "LONG",
-      "outcomes": 8,
-      "midSum": 0.885,
-      "execSum": 0.975,
-      "deviation": 11.5,
-      "execDeviation": 2.5,
-      "grossProfitPer100": 2.5,
-      "feesPer100": 0,
-      "profitPer100": 2.5,
-      "viable": true,
-      "details": [
-        {
-          "name": "Will the price of XRP be between $1.20 and $1.30 on February",
-          "mid": 0.011,
-          "exec": 0.001,
-          "token": "6648898655936574004442985809763692949982309217460137876687892597824326297102"
-        },
-        {
-          "name": "Will the price of XRP be between $1.30 and $1.40 on February",
-          "mid": 0.008,
-          "exec": 0.001,
-          "token": "28739785451979476770719261847282998915617845312964347243280518004151212256810"
-        },
-        {
-          "name": "Will the price of XRP be between $1.40 and $1.50 on February",
-          "mid": 0.0365,
-          "exec": 0.001,
-          "token": "98848783495729704866663247207854429811120039014237794397112069176572118536087"
-        },
-        {
-          "name": "Will the price of XRP be between $1.50 and $1.60 on February",
-          "mid": 0.023,
-          "exec": 0.032,
-          "token": "15846701041375404450584433581183486772603923130218945038298013713589052874192"
-        },
-        {
-          "name": "Will the price of XRP be between $1.60 and $1.70 on February",
-          "mid": 0.6075,
-          "exec": 0.738,
-          "token": "64193077641717555016262288886855608981989373839881051499533015515582758106664"
-        },
-        {
-          "name": "Will the price of XRP be between $1.70 and $1.80 on February",
-          "mid": 0.1405,
-          "exec": 0.124,
-          "token": "3621711956772031903370283885011621778556718625615305833808787199263526929018"
-        },
-        {
-          "name": "Will the price of XRP be between $1.80 and $1.90 on February",
-          "mid": 0.0385,
-          "exec": 0.078,
-          "token": "108414203695450233654321509441823796250883083810513177790628642579691205278305"
-        },
-        {
-          "name": "Will the price of XRP be greater than $1.90 on February 15?",
-          "mid": 0.0185,
-          "exec": 0,
-          "token": "9640629581591989405292846243394293301838247114047527103134115463325542344621"
-        }
-      ]
-    },
-    {
-      "event": "Elon Musk # tweets February 14 - February 16, 2026?",
-      "slug": "elon-musk-of-tweets-february-14-february-16",
-      "type": "SHORT",
-      "outcomes": 9,
-      "midSum": 1.029,
-      "execSum": 0.989,
-      "deviation": 2.9,
-      "execDeviation": 1.1,
-      "grossProfitPer100": -1.1,
-      "feesPer100": 0,
-      "profitPer100": -1.1,
-      "viable": false,
-      "details": [
-        {
-          "name": "Will Elon Musk post <40 tweets from February 14 to February ",
-          "mid": 0.003,
-          "exec": 0.002,
-          "token": "73002776802776123994946750806885447862269394307070074560451323297088045954726"
-        },
-        {
-          "name": "Will Elon Musk post 65-89 tweets from February 14 to Februar",
-          "mid": 0.41,
-          "exec": 0.4,
-          "token": "19779568221493895952676865609231089464510850574582508381986852563307884493501"
-        },
-        {
-          "name": "Will Elon Musk post 40-64 tweets from February 14 to Februar",
-          "mid": 0.235,
-          "exec": 0.28,
-          "token": "28988191769969432577061314587368990464217068010525588178919238818382176527209"
-        },
-        {
-          "name": "Will Elon Musk post 140-164 tweets from February 14 to Febru",
-          "mid": 0.033,
-          "exec": 0.024,
-          "token": "67918601360873742370584383150687028364915149273413445401824748975893776724907"
-        },
-        {
-          "name": "Will Elon Musk post 165-189 tweets from February 14 to Febru",
-          "mid": 0.017,
-          "exec": 0.01,
-          "token": "14588689847155710140084925630833413220311051563779237763910268505586365020396"
-        },
-        {
-          "name": "Will Elon Musk post 190-214 tweets from February 14 to Febru",
-          "mid": 0.004,
-          "exec": 0.002,
-          "token": "5411908762045026586082240555373253166073819466238249049909159675354003997706"
-        },
-        {
-          "name": "Will Elon Musk post 215-239 tweets from February 14 to Febru",
-          "mid": 0.0015,
-          "exec": 0.001,
-          "token": "73102171968254150175441789734331062683107726947580722925006610769377018279866"
-        },
-        {
-          "name": "Will Elon Musk post 90-114 tweets from February 14 to Februa",
-          "mid": 0.23,
-          "exec": 0.2,
-          "token": "102537315715678355572271579005595737578706394759017439902058315195378509656429"
-        },
-        {
-          "name": "Will Elon Musk post 115-139 tweets from February 14 to Febru",
-          "mid": 0.095,
-          "exec": 0.07,
-          "token": "75913565227378972450735776760275457690882335692941744309295567683432026622243"
-        }
-      ]
-    },
-    {
       "event": "NBA Eastern Conference Champion ",
       "slug": "nba-eastern-conference-champion-442",
       "type": "SHORT",
       "outcomes": 12,
-      "midSum": 1.028,
-      "execSum": 0.975,
-      "deviation": 2.8,
-      "execDeviation": 2.5,
-      "grossProfitPer100": -2.5,
+      "midSum": 1.0255,
+      "execSum": 0.997,
+      "deviation": 2.55,
+      "execDeviation": 0.3,
+      "grossProfitPer100": -0.3,
       "feesPer100": 0,
-      "profitPer100": -2.5,
+      "profitPer100": -0.3,
       "viable": false,
       "details": [
         {
           "name": "Will the Cleveland Cavaliers win the NBA Eastern Conference ",
-          "mid": 0.225,
-          "exec": 0.22,
+          "mid": 0.235,
+          "exec": 0.23,
           "token": "26510384225806040730267502985578081313836463589753281281933174278980674429194"
         },
         {
           "name": "Will the New York Knicks win the NBA Eastern Conference Fina",
-          "mid": 0.17,
+          "mid": 0.165,
           "exec": 0.16,
           "token": "5252381880374485440665230178984721306055940128786215274896991682225319468348"
         },
         {
           "name": "Will the Orlando Magic win the NBA Eastern Conference Finals",
-          "mid": 0.0325,
-          "exec": 0.032,
+          "mid": 0.035,
+          "exec": 0.034,
           "token": "36378160072890559704966692763500079412567571381443166092461911736222412577030"
         },
         {
@@ -369,25 +247,25 @@
         },
         {
           "name": "Will the Detroit Pistons win the NBA Eastern Conference Fina",
-          "mid": 0.21,
+          "mid": 0.205,
           "exec": 0.2,
           "token": "108446172107941165064806998519652737542801121226691431615334275432295450338136"
         },
         {
-          "name": "Will the Philadelphia 76ers win the NBA Eastern Conference F",
-          "mid": 0.077,
-          "exec": 0.076,
-          "token": "50692628443801018513325614545746863026982626993302787461752145605052144027838"
-        },
-        {
           "name": "Will the Boston Celtics win the NBA Eastern Conference Final",
-          "mid": 0.1925,
+          "mid": 0.1805,
           "exec": 0.179,
           "token": "76284775424209240264542352208573338636556198300439966875308967535434111103074"
         },
         {
+          "name": "Will the Philadelphia 76ers win the NBA Eastern Conference F",
+          "mid": 0.087,
+          "exec": 0.086,
+          "token": "50692628443801018513325614545746863026982626993302787461752145605052144027838"
+        },
+        {
           "name": "Will the Milwaukee Bucks win the NBA Eastern Conference Fina",
-          "mid": 0.0185,
+          "mid": 0.0155,
           "exec": 0.014,
           "token": "79336858132239037705158300268603413459637933572725439146100963281670148171735"
         },
@@ -414,6 +292,134 @@
           "mid": 0.0355,
           "exec": 0.034,
           "token": "88202144797456094004565715683071874971451541348187754361676449702242116892606"
+        }
+      ]
+    },
+    {
+      "event": "Highest temperature in London on February 15?",
+      "slug": "highest-temperature-in-london-on-february-15-2026",
+      "type": "SHORT",
+      "outcomes": 9,
+      "midSum": 1.099,
+      "execSum": 0.963,
+      "deviation": 9.9,
+      "execDeviation": 3.7,
+      "grossProfitPer100": -3.7,
+      "feesPer100": 0,
+      "profitPer100": -3.7,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will the highest temperature in London be 4°C or below on Fe",
+          "mid": 0.0015,
+          "exec": 0.001,
+          "token": "5757178865475863701429620569973183787527102342100910453135208801854055141070"
+        },
+        {
+          "name": "Will the highest temperature in London be 5°C on February 15",
+          "mid": 0.006,
+          "exec": 0.003,
+          "token": "77233048694225423967524455949719929463599243137648995016459179961137576840906"
+        },
+        {
+          "name": "Will the highest temperature in London be 6°C on February 15",
+          "mid": 0.0475,
+          "exec": 0.017,
+          "token": "66858964205171465754545313828914685067766611693905622474462650637307777519152"
+        },
+        {
+          "name": "Will the highest temperature in London be 7°C on February 15",
+          "mid": 0.1275,
+          "exec": 0.096,
+          "token": "74132830734193041546875766316039289237302998245506030237936464935036412083589"
+        },
+        {
+          "name": "Will the highest temperature in London be 8°C on February 15",
+          "mid": 0.37,
+          "exec": 0.36,
+          "token": "101866985831276610664013320804876912535329030997498192633757087055137328160575"
+        },
+        {
+          "name": "Will the highest temperature in London be 9°C on February 15",
+          "mid": 0.39,
+          "exec": 0.36,
+          "token": "66428117863747102844220264721414851885963981506342918275396832477086386403512"
+        },
+        {
+          "name": "Will the highest temperature in London be 10°C on February 1",
+          "mid": 0.14,
+          "exec": 0.12,
+          "token": "37045989981370646785565987640302980722922490568913077517676058505553216044411"
+        },
+        {
+          "name": "Will the highest temperature in London be 11°C on February 1",
+          "mid": 0.006,
+          "exec": 0.005,
+          "token": "56489028549550467921814118328415903635417326244285958217167410740105550859398"
+        },
+        {
+          "name": "Will the highest temperature in London be 12°C or higher on ",
+          "mid": 0.0105,
+          "exec": 0.001,
+          "token": "107838777444750635283283352077415720504156169946029729253237622295164434040091"
+        }
+      ]
+    },
+    {
+      "event": "Solana price on February 15?",
+      "slug": "solana-price-on-february-15",
+      "type": "SHORT",
+      "outcomes": 7,
+      "midSum": 1.0625,
+      "execSum": 0.55,
+      "deviation": 6.25,
+      "execDeviation": 45,
+      "grossProfitPer100": -45,
+      "feesPer100": 0,
+      "profitPer100": -45,
+      "viable": false,
+      "details": [
+        {
+          "name": "Will the price of Solana be between $70 and $80 on February ",
+          "mid": 0.006,
+          "exec": 0.003,
+          "token": "1201652457172393595222176408089614631660302670158599055969460466520409580922"
+        },
+        {
+          "name": "Will the price of Solana be between $80 and $90 on February ",
+          "mid": 0.61,
+          "exec": 0.29,
+          "token": "93005817587756837193677769166470551981966991192262993145963601537199915644660"
+        },
+        {
+          "name": "Will the price of Solana be between $90 and $100 on February",
+          "mid": 0.4285,
+          "exec": 0.254,
+          "token": "34031820758254992803859804442973314667344212273112379288461599897450876246015"
+        },
+        {
+          "name": "Will the price of Solana be between $40 and $50 on February ",
+          "mid": 0.002,
+          "exec": 0,
+          "token": "56855675589647281938100881375297528949916140998643918787930156162478163579744"
+        },
+        {
+          "name": "Will the price of Solana be between $50 and $60 on February ",
+          "mid": 0.0025,
+          "exec": 0,
+          "token": "96056737241459852464668495438249705146982084684639300055750446226975465960678"
+        },
+        {
+          "name": "Will the price of Solana be between $60 and $70 on February ",
+          "mid": 0.008,
+          "exec": 0.001,
+          "token": "4041589306676725212214754350234225640967187610933746971905383811151582011379"
+        },
+        {
+          "name": "Will the price of Solana be between $100 and $110 on Februar",
+          "mid": 0.003,
+          "exec": 0.002,
+          "token": "17319202521593803864115819278122279387617259027778811928491097290754227052039"
         }
       ]
     }
