@@ -876,8 +876,8 @@ async function executeSell(assetId, asset, reason) {
     // ── FILL VERIFICATION ──
     // v4: executor now returns fillStatus directly, but also check order status
     const isFilled = result.fillStatus === "filled" || 
-      (result.status || "").toLowerCase() === "matched" || 
-      (result.status || "").toLowerCase() === "filled";
+      String(result.status || "").toLowerCase() === "matched" || 
+      String(result.status || "").toLowerCase() === "filled";
 
     if (!isFilled) {
       // FOK order was killed (no fill) — no dangling orders to cancel
