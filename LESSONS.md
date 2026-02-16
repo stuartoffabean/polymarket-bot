@@ -282,3 +282,37 @@ The 2-minute timeout at line 930 *should* have eventually let the system proceed
 **INFRA-001**: Every on-chain RPC call must use a fallback provider list, never a single hardcoded URL. When adding new RPC-dependent code, use `getPolygonProvider()`.
 
 ---
+
+## 2026-02-16 — Phantom Sell Fix (Crime 101 Incident)
+
+### What Happened
+Crime 101 position: cron auto-bought 75 shares @ 49¢, price dropped to 35.8¢ in 60 seconds, stop-loss fired. The sell was logged as `SELL_EXECUTED` and the position was removed from tracking — but 45 shares were still on-chain. This is the "phantom sell" bug.
+
+### Root Causes Found (2 bugs)
+
+**Bug 1 — Executor `/market-sell`: ledger writes could crash the response.**
+After the CLOB order was submitted and filled, the executor ran `logExit()` and `positionLedger.recordExit()` — both do disk I/O — *without* try/catch. If either threw (disk error, JSON parse failure, etc.), the HTTP response was never sent back to ws-feed. ws-feed's `httpPost` would see a broken connection, treat it as a network error, and **retry the sell** — but the original order already went through on-chain. This is how you get a phantom sell: the CLOB fills the order, the response never reaches ws-feed, ws-feed retries, the second attempt either fails (shares already sold) or sells more.
+
+The same bug existed in the generic `/order` endpoint and in the WAL (write-ahead log): `resolveIntent(walId, "filled", ...)` was called BEFORE checking the CLOB's `status` field, so the audit trail always logged "filled" even for unfilled orders.
+
+**Bug 2 — No post-sell verification.**
+ws-feed blindly trusted the executor's `fillStatus: "filled"` response and immediately removed the position from tracking + blocked re-sync for 2 hours via `recentlySold`. If the CLOB returned "matched" but the fill didn't actually settle (which Polymarket's CLOB is known to do), the position became invisible to the bot while still existing on-chain.
+
+### What Was Fixed
+
+1. **Ledger writes wrapped in try/catch** — `logExit()`, `positionLedger.recordExit()`, `invalidateTradeCache()` in `/market-sell` are now inside try/catch. If they throw, the error is logged but the HTTP response (with correct `fillStatus`) is always sent back to ws-feed. Same fix applied to `/order` endpoint.
+
+2. **WAL `resolveIntent` moved after fill check** — both `/market-sell` and `/order` now check the CLOB's actual `status` field before logging the intent resolution. No more premature "filled" entries in the audit trail.
+
+3. **Phantom sell detection** — after ws-feed receives a "filled" sell response and removes the position, a 15-second delayed verification fires. It queries the executor's `/positions` endpoint (which uses the Polymarket data API as ground truth). If the position still exists on-chain with > 0.1 shares:
+   - Clears the `recentlySold` entry
+   - Re-adds the position to tracking with stop-loss reset
+   - Sets a 1-minute cooldown before allowing re-triggers
+   - Fires a `PHANTOM_SELL` Telegram alert
+
+### Rule Changes
+**EXEC-001**: Every HTTP endpoint that submits orders to the CLOB must have all post-order I/O (ledger writes, cache invalidation) in try/catch blocks. The HTTP response to the caller must ALWAYS be sent, regardless of logging failures.
+
+**EXEC-002**: Never trust CLOB fill status alone. Always verify on-chain state after a "filled" sell before considering a position fully closed.
+
+---

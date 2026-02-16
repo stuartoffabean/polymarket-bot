@@ -81,6 +81,7 @@ const TELEGRAM_ALERT_TYPES = new Set([
   "CIRCUIT_BREAKER", "CIRCUIT_BREAKER_RESUMED",
   "SURVIVAL_MODE", "EMERGENCY_MODE",
   "WS_DISCONNECT", "SINGLE_TRADE_LOSS",
+  "PHANTOM_SELL",
 ]);
 
 // PnL history
@@ -965,6 +966,39 @@ async function executeSell(assetId, asset, reason) {
       log("EXEC", `Cleared exit-failed for ${assetId.slice(0,20)} — sell finally succeeded`);
     }
     log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)} (blocked from re-sync for 2h)`);
+
+    // PHANTOM SELL DETECTION — verify on-chain after a delay
+    // The CLOB can return "matched" but the fill may not settle on-chain.
+    // After 15s, check the data API. If shares still exist, re-track the position.
+    const verifyAssetId = assetId;
+    const verifyAsset = { ...asset }; // snapshot current state
+    setTimeout(async () => {
+      try {
+        const { positions } = await httpGet("/positions");
+        const stillOnChain = positions.find(p => p.asset_id === verifyAssetId && p.size > 0.1);
+        if (stillOnChain) {
+          log("EXEC", `🚨 PHANTOM SELL DETECTED: ${verifyAssetId.slice(0,20)} still on-chain with ${stillOnChain.size} shares after "filled" sell!`);
+          // Remove from recentlySold so syncPositions can re-add it
+          recentlySold.delete(verifyAssetId);
+          persistRecentlySold();
+          // Re-add to tracking immediately with fresh data
+          subscribedAssets.set(verifyAssetId, {
+            ...verifyAsset,
+            size: stillOnChain.size,
+            _stopLossTriggered: false, // allow stop-loss to re-fire
+            _takeProfitTriggered: false,
+            _sellRetries: 0,
+            _sellCooldownUntil: Date.now() + 60 * 1000, // 1-min cooldown before re-triggering
+          });
+          pushAlert("PHANTOM_SELL", verifyAssetId, verifyAsset, null, null,
+            `Sell reported as filled but ${stillOnChain.size} shares still on-chain. Position re-tracked.`);
+        } else {
+          log("EXEC", `✅ Sell verified: ${verifyAssetId.slice(0,20)} confirmed gone from data API`);
+        }
+      } catch (e) {
+        log("EXEC", `⚠️ Post-sell verification failed (non-fatal): ${e.message}`);
+      }
+    }, 15000);
   } catch (e) {
     log("EXEC", `❌ Auto-sell FAILED: ${e.message}`);
     // Network/API errors: use same retry/cooldown logic

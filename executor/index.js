@@ -2053,19 +2053,31 @@ async function handler(req, res) {
       let order;
       try {
         order = await client.createAndPostOrder(orderOpts, undefined, orderType, false, postOnly);
-        resolveIntent(walId, "filled", { orderID: order.orderID || order.id });
       } catch (e) {
         resolveIntent(walId, "failed", { error: e.message });
         throw e;
       }
-      invalidateTradeCache();
-      triggerSnapshotPush();
 
-      // Record to position ledger
-      if (side === "BUY") {
-        positionLedger.recordEntry({ assetId: tokenID, market: body.market, outcome: body.outcome, size: parseFloat(size), avgPrice: parseFloat(price), strategy: body.strategy || "manual", source: "executor" });
-      } else {
-        positionLedger.recordExit({ assetId: tokenID, size: parseFloat(size), reason: "manual_sell", source: "executor" });
+      // Check fill status before resolving WAL intent
+      const orderStatusField = order.status || order.orderStatus || order.order_status || "";
+      const orderStatusStr = typeof orderStatusField === "string" ? orderStatusField.toLowerCase() : String(orderStatusField).toLowerCase();
+      const orderIsFilled = orderStatusStr === "matched" || orderStatusStr === "filled" ||
+        (order.takingAmount && order.takingAmount !== "" && order.takingAmount !== "0");
+      resolveIntent(walId, orderIsFilled ? "filled" : "posted", { orderID: order.orderID || order.id });
+
+      // Ledger writes in try/catch — failures must not prevent the HTTP response
+      try {
+        invalidateTradeCache();
+        triggerSnapshotPush();
+
+        // Record to position ledger
+        if (side === "BUY") {
+          positionLedger.recordEntry({ assetId: tokenID, market: body.market, outcome: body.outcome, size: parseFloat(size), avgPrice: parseFloat(price), strategy: body.strategy || "manual", source: "executor" });
+        } else {
+          positionLedger.recordExit({ assetId: tokenID, size: parseFloat(size), reason: "manual_sell", source: "executor" });
+        }
+      } catch (ledgerErr) {
+        console.log(`⚠️ ORDER: Ledger write failed (non-fatal): ${ledgerErr.message}`);
       }
 
       console.log(`Order result:`, JSON.stringify(order));
@@ -2169,7 +2181,6 @@ async function handler(req, res) {
           size: sellSize,
           side: Side.SELL,
         }, undefined, orderType);
-        resolveIntent(walId, "filled", { orderID: order.orderID || order.id, executedPrice: fillPrice });
       } catch (e) {
         resolveIntent(walId, "failed", { error: e.message });
         throw e;
@@ -2183,37 +2194,50 @@ async function handler(req, res) {
       const isFilled = orderStatus === "matched" || orderStatus === "filled" ||
         (order.takingAmount && order.takingAmount !== "" && order.takingAmount !== "0");
 
-      // EXIT LEDGER — log the sell (even if unfilled, for audit trail)
-      const cachedData = await getCachedPositions().catch(() => null);
-      const cachedPos = cachedData?.openPositions || [];
-      const pos = cachedPos.find(p => p.asset_id === tokenID);
-      const entryPrice = pos ? parseFloat(pos.avgPrice) : 0;
-      const costBasis = sellSize * entryPrice;
-      const proceeds = sellSize * fillPrice;
+      // Resolve WAL intent AFTER fill check (was previously resolving as "filled" unconditionally)
+      resolveIntent(walId, isFilled ? "filled" : "unfilled", {
+        orderID: order.orderID || order.id,
+        executedPrice: fillPrice,
+        fillStatus: isFilled ? "filled" : "unfilled",
+      });
 
+      // EXIT LEDGER — log the sell (even if unfilled, for audit trail)
+      // CRITICAL: wrapped in try/catch so ledger failures never prevent the HTTP response.
+      // If this throws without the try/catch, ws-feed gets a broken connection, treats it as
+      // a network error, and retries — but the CLOB order already went through on-chain.
       if (isFilled) {
-        logExit({
-          assetId: tokenID,
-          market: getMarketName(tokenID) || (pos?.market) || `Asset ${tokenID.slice(0,20)}...`,
-          outcome: pos?.outcome || body.outcome || "Unknown",
-          reason: body.reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS
-                : body.reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT
-                : body.reason === "TIME_STOP" ? EXIT_REASONS.TIME_STOP
-                : body.reason === "EMERGENCY" ? EXIT_REASONS.EMERGENCY
-                : EXIT_REASONS.MANUAL_SELL,
-          triggerSource: body.source || "executor-manual",
-          entryPrice,
-          exitPrice: fillPrice,
-          size: sellSize,
-          costBasis,
-          proceeds,
-          realizedPnl: proceeds - costBasis,
-          strategy: pos?.strategy || body.strategy || "unknown",
-          notes: body.notes || `${orderType} fill @ ${fillPrice} (walked=${walkPrice}, slip=${(slippagePct*100).toFixed(1)}%)`,
-        });
-        positionLedger.recordExit({ assetId: tokenID, size: sellSize, reason: body.reason || "manual_sell", source: body.source || "executor-manual" });
-        invalidateTradeCache();
-        triggerSnapshotPush();
+        try {
+          const cachedData = await getCachedPositions().catch(() => null);
+          const cachedPos = cachedData?.openPositions || [];
+          const pos = cachedPos.find(p => p.asset_id === tokenID);
+          const entryPrice = pos ? parseFloat(pos.avgPrice) : 0;
+          const costBasis = sellSize * entryPrice;
+          const proceeds = sellSize * fillPrice;
+          logExit({
+            assetId: tokenID,
+            market: getMarketName(tokenID) || (pos?.market) || `Asset ${tokenID.slice(0,20)}...`,
+            outcome: pos?.outcome || body.outcome || "Unknown",
+            reason: body.reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS
+                  : body.reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT
+                  : body.reason === "TIME_STOP" ? EXIT_REASONS.TIME_STOP
+                  : body.reason === "EMERGENCY" ? EXIT_REASONS.EMERGENCY
+                  : EXIT_REASONS.MANUAL_SELL,
+            triggerSource: body.source || "executor-manual",
+            entryPrice,
+            exitPrice: fillPrice,
+            size: sellSize,
+            costBasis,
+            proceeds,
+            realizedPnl: proceeds - costBasis,
+            strategy: pos?.strategy || body.strategy || "unknown",
+            notes: body.notes || `${orderType} fill @ ${fillPrice} (walked=${walkPrice}, slip=${(slippagePct*100).toFixed(1)}%)`,
+          });
+          positionLedger.recordExit({ assetId: tokenID, size: sellSize, reason: body.reason || "manual_sell", source: body.source || "executor-manual" });
+          invalidateTradeCache();
+          triggerSnapshotPush();
+        } catch (ledgerErr) {
+          console.log(`⚠️ MARKET-SELL: Ledger write failed (non-fatal, sell DID fill): ${ledgerErr.message}`);
+        }
       } else {
         // Cancel unfilled FOK order (shouldn't be needed for true FOK, but belt-and-suspenders)
         const orderId = order.orderID || order.id || order.order_id;
@@ -2222,8 +2246,8 @@ async function handler(req, res) {
         }
       }
 
-      return send(res, 200, { 
-        ...order, 
+      return send(res, 200, {
+        ...order,
         executedPrice: fillPrice,
         fillStatus: isFilled ? "filled" : "unfilled",
         orderType,
