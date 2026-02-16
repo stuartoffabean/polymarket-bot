@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-16T13:00:10.725Z",
+  "timestamp": "2026-02-16T13:02:07.884Z",
   "portfolio": {
     "trackedPositions": 2,
-    "portfolioValue": 348.689474,
-    "positionValue": 49.635200000000005,
-    "cashBalance": 299.054274,
+    "portfolioValue": 335.66807400000005,
+    "positionValue": 36.6138,
+    "cashBalance": 316.033274,
     "dailyStartValue": 358.269074
   },
   "risk": {
@@ -25,7 +25,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 9190.101975262
+    "uptime": 9307.84376705
   },
   "positions": [
     {
@@ -34,12 +34,12 @@
       "outcome": "No",
       "size": 18.93,
       "avgPrice": 0.61,
-      "currentBid": 0.64,
+      "currentBid": 0.66,
       "currentAsk": 0.68,
       "costBasis": "11.55",
-      "currentValue": "12.12",
-      "pnl": "0.57",
-      "pnlPct": "4.9%",
+      "currentValue": "12.49",
+      "pnl": "0.95",
+      "pnlPct": "8.2%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -49,12 +49,12 @@
       "outcome": "Yes",
       "size": 268,
       "avgPrice": 0.1785,
-      "currentBid": 0.14,
+      "currentBid": 0.09,
       "currentAsk": 0.19,
       "costBasis": "47.84",
-      "currentValue": "37.52",
-      "pnl": "-10.32",
-      "pnlPct": "-21.6%",
+      "currentValue": "24.12",
+      "pnl": "-23.72",
+      "pnlPct": "-49.6%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     }
@@ -62,20 +62,7 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-16T13:00:10.724Z",
-      "market": "0x09f8cfc1b63764098e89aa4fd67ae81fb2fd62462367984273bcaca915af4245",
-      "outcome": "Yes",
-      "side": "buy",
-      "price": 0.1785,
-      "size": 47.8567,
-      "shares": 268,
-      "currentPrice": 0.14,
-      "pnl": -10.32,
-      "pnlPct": "-21.6%",
-      "tokenId": "7254119805749405043075086996189775032073326999242529987613874019318007343089"
-    },
-    {
-      "timestamp": "2026-02-16T13:00:10.725Z",
+      "timestamp": "2026-02-16T13:02:07.883Z",
       "market": "0x15eec799be53bc8fe57134b51e0ecbfa9407d8f141876aad6e5718adef9a7276",
       "outcome": "Yes",
       "side": "buy",
@@ -88,20 +75,20 @@
       "tokenId": "73102171968254150175441789734331062683107726947580722925006610769377018279866"
     },
     {
-      "timestamp": "2026-02-16T13:00:10.725Z",
+      "timestamp": "2026-02-16T13:02:07.884Z",
       "market": "0x16c036867a41041beccacb0ffe187cd0d34dcb6ad697b7ec6e06ae00c25f5021",
       "outcome": "No",
       "side": "buy",
       "price": 0.61,
       "size": 11.5473,
       "shares": 18.93,
-      "currentPrice": 0.64,
-      "pnl": 0.57,
-      "pnlPct": "4.9%",
+      "currentPrice": 0.66,
+      "pnl": 0.95,
+      "pnlPct": "8.2%",
       "tokenId": "42401308709751649714325038223881912887265599020415816822370809393965059941956"
     },
     {
-      "timestamp": "2026-02-16T13:00:10.725Z",
+      "timestamp": "2026-02-16T13:02:07.884Z",
       "market": "0x8e97d4425dd885462f62eeeacd212a89854f3284cc4d4dfa1518965df0e916b4",
       "outcome": "Yes",
       "side": "buy",
@@ -114,7 +101,7 @@
       "tokenId": "8010270730382868588546130570365383621891724310853848910851331100920214793828"
     },
     {
-      "timestamp": "2026-02-16T13:00:10.725Z",
+      "timestamp": "2026-02-16T13:02:07.884Z",
       "market": "0xb9ed449e81a990c75c5b63bfb478fde4c77d200412b93b5ec07fa4c723a38317",
       "outcome": "Yes",
       "side": "buy",
@@ -130,8 +117,8 @@
   "strategies": [
     {
       "name": "Speculative",
-      "trades": 4,
-      "pnl": -10.32,
+      "trades": 3,
+      "pnl": 0,
       "wins": 0,
       "enabled": true,
       "winRate": 0
@@ -139,28 +126,35 @@
     {
       "name": "Event-Driven",
       "trades": 1,
-      "pnl": 0.57,
+      "pnl": 0.95,
       "wins": 1,
       "enabled": true,
       "winRate": 1
     }
   ],
-  "activity": [],
-  "cash": 299.054274,
+  "activity": [
+    {
+      "time": "2026-02-16T13:01:17.101Z",
+      "type": "SINGLE_TRADE_LOSS",
+      "message": "Loss $39.80 exceeds 5% of bankroll",
+      "outcome": "Yes"
+    },
+    {
+      "time": "2026-02-16T13:01:17.111Z",
+      "type": "STOP_LOSS",
+      "message": "AUTO-SELLING [unknown]",
+      "outcome": "Yes"
+    },
+    {
+      "time": "2026-02-16T13:01:17.942Z",
+      "type": "SELL_FAILED",
+      "message": "STOP_LOSS sell error: (result.status || \"\").toLowerCase is not a function. Retry 1/3",
+      "outcome": "Yes"
+    }
+  ],
+  "cash": 316.033274,
   "ledger": {
     "openPositions": [
-      {
-        "asset_id": "7254119805749405043075086996189775032073326999242529987613874019318007343089",
-        "market": "0x09f8cfc1b63764098e89aa4fd67ae81fb2fd62462367984273bcaca915af4245",
-        "outcome": "Yes",
-        "size": 268,
-        "avgPrice": "0.1800",
-        "costBasis": "48.24",
-        "totalBought": 268,
-        "totalSold": 0,
-        "realizedPnl": "0.00",
-        "status": "OPEN"
-      },
       {
         "asset_id": "42401308709751649714325038223881912887265599020415816822370809393965059941956",
         "market": "0x16c036867a41041beccacb0ffe187cd0d34dcb6ad697b7ec6e06ae00c25f5021",
@@ -223,6 +217,20 @@
       }
     ],
     "closedPositions": [
+      {
+        "asset_id": "7254119805749405043075086996189775032073326999242529987613874019318007343089",
+        "market": "0x09f8cfc1b63764098e89aa4fd67ae81fb2fd62462367984273bcaca915af4245",
+        "outcome": "Yes",
+        "totalBought": 268,
+        "totalSold": 268,
+        "avgBuyPrice": "0.1800",
+        "avgSellPrice": "0.0600",
+        "totalCost": "48.24",
+        "totalProceeds": "16.08",
+        "realizedPnl": "-32.16",
+        "realizedPnlPct": "-66.7",
+        "status": "CLOSED"
+      },
       {
         "asset_id": "73768610008619570600930429495180540710817177537162503586781057110775077618432",
         "market": "Jokic NBA MVP 2025-26",
@@ -288,7 +296,7 @@
         "avgBuyPrice": "0.4888",
         "avgSellPrice": "0.3322",
         "totalCost": "36.66",
-        "totalProceeds": "24.92",
+        "totalProceeds": "24.91",
         "realizedPnl": "-11.74",
         "realizedPnlPct": "-32.0",
         "status": "CLOSED"
@@ -1179,7 +1187,7 @@
         "asset_id": "87034544787508362600520628155582601877854843596079024073643613177448200402413",
         "market": "New York City ≤33°F 2026-02-13",
         "outcome": "Yes",
-        "totalBought": 271.83200000000005,
+        "totalBought": 271.832,
         "totalSold": 271.82818100000003,
         "avgBuyPrice": "0.0069",
         "avgSellPrice": "0.0101",
@@ -1498,9 +1506,17 @@
         "status": "CLOSED"
       }
     ],
-    "totalRealizedPnl": "-84.67",
-    "tradeCount": 494,
+    "totalRealizedPnl": "-116.83",
+    "tradeCount": 495,
     "tradeLog": [
+      {
+        "asset_id": "7254119805749405043075086996189775032073326999242529987613874019318007343089",
+        "market": "0x09f8cfc1b63764098e89aa4fd67ae81fb2fd62462367984273bcaca915af4245",
+        "outcome": "Yes",
+        "side": "SELL",
+        "size": 268,
+        "price": 0.06
+      },
       {
         "asset_id": "7254119805749405043075086996189775032073326999242529987613874019318007343089",
         "market": "0x09f8cfc1b63764098e89aa4fd67ae81fb2fd62462367984273bcaca915af4245",
@@ -1570,6 +1586,14 @@
         "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
         "outcome": "Yes",
         "side": "SELL",
+        "size": 0.25,
+        "price": 0.358
+      },
+      {
+        "asset_id": "74129731289724233287703952971717358119264795312748391113149010332592475652114",
+        "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
+        "outcome": "Yes",
+        "side": "SELL",
         "size": 2.75,
         "price": 0.358
       },
@@ -1579,14 +1603,6 @@
         "outcome": "Yes",
         "side": "SELL",
         "size": 27,
-        "price": 0.358
-      },
-      {
-        "asset_id": "74129731289724233287703952971717358119264795312748391113149010332592475652114",
-        "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
-        "outcome": "Yes",
-        "side": "SELL",
-        "size": 0.25,
         "price": 0.358
       },
       {
@@ -1652,34 +1668,14 @@
         "side": "SELL",
         "size": 101,
         "price": 0.27
-      },
-      {
-        "asset_id": "101866985831276610664013320804876912535329030997498192633757087055137328160575",
-        "market": "0xcedf057e8da4c1139199f82cdb5e8b86c208e56a5eff3a22e8fa4bee32b415d1",
-        "outcome": "Yes",
-        "side": "SELL",
-        "size": 18,
-        "price": 0.59
       }
     ]
   },
   "tradeHistory": {
     "openPositions": [
       {
-        "asset_id": "7254119805749405043075086996189775032073326999242529987613874019318007343089",
-        "market": "Will the highest temperature in Dallas be between 70-71°F on February 16?",
-        "outcome": "Yes",
-        "size": 268,
-        "avgPrice": "0.1786",
-        "costBasis": "47.86",
-        "totalBought": 268,
-        "totalSold": 0,
-        "realizedPnl": "0.00",
-        "status": "OPEN"
-      },
-      {
         "asset_id": "42401308709751649714325038223881912887265599020415816822370809393965059941956",
-        "market": "Will the highest temperature in Dallas be 74��F or higher on February 16?",
+        "market": "Will the highest temperature in Dallas be 74°F or higher on February 16?",
         "outcome": "No",
         "size": 18.93,
         "avgPrice": "0.6100",
@@ -1907,6 +1903,20 @@
       }
     ],
     "closedPositions": [
+      {
+        "asset_id": "7254119805749405043075086996189775032073326999242529987613874019318007343089",
+        "market": "Will the highest temperature in Dallas be between 70-71°F on February 16?",
+        "outcome": "Yes",
+        "totalBought": 268,
+        "totalSold": 268,
+        "avgBuyPrice": "0.1786",
+        "avgSellPrice": "0.0634",
+        "totalCost": "47.86",
+        "totalProceeds": "16.98",
+        "realizedPnl": "-30.88",
+        "realizedPnlPct": "-64.5",
+        "status": "CLOSED"
+      },
       {
         "asset_id": "73768610008619570600930429495180540710817177537162503586781057110775077618432",
         "market": "Will Nikola Jokic win the 2025–2026 NBA MVP?",
@@ -2958,8 +2968,8 @@
         "status": "CLOSED"
       }
     ],
-    "totalRealizedPnl": "-81.99",
-    "totalTrades": 494,
+    "totalRealizedPnl": "-112.87",
+    "totalTrades": 495,
     "source": "data-api"
   },
   "circuitBreakerTripped": false,
