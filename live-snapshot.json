@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-16T22:30:11.332Z",
+  "timestamp": "2026-02-16T22:45:11.014Z",
   "portfolio": {
     "trackedPositions": 0,
     "portfolioValue": null,
@@ -25,7 +25,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 1470.713879273
+    "uptime": 2370.011831807
   },
   "positions": [],
   "orders": [],
@@ -54,6 +54,21 @@
     },
     {
       "time": "2026-02-16T22:26:50.433Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
+    },
+    {
+      "time": "2026-02-16T22:32:02.147Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
+    },
+    {
+      "time": "2026-02-16T22:37:13.773Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
+    },
+    {
+      "time": "2026-02-16T22:42:25.404Z",
       "type": "WS_DISCONNECT",
       "message": "Cancelled all open orders on disconnect"
     }
@@ -1841,7 +1856,7 @@
       },
       {
         "asset_id": "18423128025607650370255365819345064527950959098585299362802520788185787389322",
-        "market": "Will the highest temperature in Seattle be between 40-41°F on February 16?",
+        "market": "Will the highest temperature in Seattle be between 40-41��F on February 16?",
         "outcome": "Yes",
         "totalBought": 12,
         "totalSold": 12,
