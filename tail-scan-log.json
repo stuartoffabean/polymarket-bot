@@ -13605,5 +13605,35 @@
       }
     ],
     "tailAlertsUnder10c": []
+  },
+  {
+    "timestamp": "2026-02-16T03:01:00.498Z",
+    "scanSource": "cron-hourly",
+    "prices": {},
+    "marketsScanned": 3,
+    "tailAlertsUnder10c": 0,
+    "summary": {
+      "bitcoin-2026-02-17": {
+        "totalBuckets": 11,
+        "tailBuckets": 8,
+        "cheapTailsUnder10c": 0,
+        "minTailAsk": 0.999,
+        "hoursToResolution": 37.9911975
+      },
+      "ethereum-2026-02-17": {
+        "totalBuckets": 11,
+        "tailBuckets": 8,
+        "cheapTailsUnder10c": 0,
+        "minTailAsk": 0.999,
+        "hoursToResolution": 37.990181944444444
+      },
+      "solana-2026-02-17": {
+        "totalBuckets": 11,
+        "tailBuckets": 8,
+        "cheapTailsUnder10c": 0,
+        "minTailAsk": 0.999,
+        "hoursToResolution": 37.989195555555554
+      }
+    }
   }
 ]

@@ -207,5 +207,20 @@
     "resolvedAt": "2026-02-15T21:16:53.913Z",
     "endDate": "2026-02-15",
     "slug": "will-the-price-of-solana-be-between-90-100-on-february-15"
+  },
+  "107838777444750635283283352077415720504156169946029729253237622295164434040091": {
+    "asset_id": "107838777444750635283283352077415720504156169946029729253237622295164434040091",
+    "conditionId": "0x3596ca28f942b239a1deec55e9a5d3f6cc044e44fae8f3e5a0ae83f507b55b14",
+    "market": "Will the highest temperature in London be 12°C or higher on February 15?",
+    "outcome": "Yes",
+    "size": 18,
+    "avgPrice": 0.001,
+    "costBasis": 0.018,
+    "payout": 0,
+    "realizedPnl": -0.018,
+    "won": false,
+    "resolvedAt": "2026-02-16T03:57:00.373Z",
+    "endDate": "2026-02-15",
+    "slug": "highest-temperature-in-london-on-february-15-2026-12corhigher"
   }
 }

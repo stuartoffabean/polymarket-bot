@@ -598,6 +598,8 @@ function connect() {
 }
 
 // v3 §7: WebSocket disconnects → cancel all open maker orders
+let lastDisconnectAlertMs = 0;
+const DISCONNECT_ALERT_COOLDOWN = 300000; // 5 minutes between disconnect alerts
 async function handleDisconnect() {
   if (pingTimer) clearInterval(pingTimer);
   if (wsSilentCheckTimer) clearInterval(wsSilentCheckTimer);
@@ -605,7 +607,13 @@ async function handleDisconnect() {
   try {
     const result = await httpDelete("/orders");
     log("WS", `Cancel all orders result: ${JSON.stringify(result)}`);
-    pushAlert("WS_DISCONNECT", null, null, null, null, "Cancelled all open orders on disconnect");
+    const now = Date.now();
+    if (now - lastDisconnectAlertMs > DISCONNECT_ALERT_COOLDOWN) {
+      pushAlert("WS_DISCONNECT", null, null, null, null, "Cancelled all open orders on disconnect");
+      lastDisconnectAlertMs = now;
+    } else {
+      log("WS", "(disconnect alert suppressed — cooldown active)");
+    }
   } catch (e) {
     log("WS", `Failed to cancel orders: ${e.message}`);
   }

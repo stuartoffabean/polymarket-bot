@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-02-16T00:05:01.920Z",
+  "lastUpdated": "2026-02-16T01:37:01.852Z",
   "generatedBy": "trade-reporter.js v1.0",
   "portfolio": {
-    "totalValue": 370.169174,
-    "positionValue": 49.511199999999995,
-    "cashBalance": 320.657974,
-    "trackedPositions": 5,
-    "idlePct": "86.6"
+    "totalValue": 0,
+    "positionValue": 0,
+    "cashBalance": 358.458374,
+    "trackedPositions": 1,
+    "idlePct": "?"
   },
   "summary": {
-    "totalRealizedPnl": -76.1,
-    "totalUnrealizedPnl": 1.29,
-    "totalPnl": -74.81,
-    "totalTrades": 93,
-    "totalWins": 23,
-    "totalLosses": 58,
-    "overallWinRate": 27.4,
-    "portfolioValue": 370.169174,
-    "cashBalance": 320.657974,
-    "idlePct": "86.6",
+    "totalRealizedPnl": -86.52,
+    "totalUnrealizedPnl": 0,
+    "totalPnl": -86.52,
+    "totalTrades": 94,
+    "totalWins": 26,
+    "totalLosses": 60,
+    "overallWinRate": 29.2,
+    "portfolioValue": 0,
+    "cashBalance": 358.458374,
+    "idlePct": "?",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
@@ -42,6 +42,35 @@
     }
   },
   "strategies": {
+    "manual": {
+      "status": "ACTIVE",
+      "totalTrades": 10,
+      "openPositions": 1,
+      "closedPositions": 9,
+      "wins": 4,
+      "losses": 5,
+      "winRate": "44.4%",
+      "realizedPnl": "$-6.80",
+      "unrealizedPnl": "$0.00",
+      "totalPnl": "$-6.80",
+      "totalDeployed": "$284.09",
+      "currentDeployed": "$0.01",
+      "expectancy": "$-0.76",
+      "profitFactor": "0.77",
+      "avgWin": "$4.09",
+      "avgLoss": "$-5.33",
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Norway Most Total Medals Winter Olympics",
+        "pnl": 15,
+        "pnlPct": "48.4"
+      },
+      "worstTrade": {
+        "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
+        "pnl": -11.74,
+        "pnlPct": "-32.0"
+      }
+    },
     "unknown": {
       "status": "ACTIVE",
       "totalTrades": 48,
@@ -69,35 +98,6 @@
         "market": "0x9fdd3e8b8a4f433d2b127cca1c7dc0e617c078ea16eb24d3ec16300787e99419",
         "pnl": -27.27,
         "pnlPct": "-50.0"
-      }
-    },
-    "manual": {
-      "status": "ACTIVE",
-      "totalTrades": 9,
-      "openPositions": 5,
-      "closedPositions": 4,
-      "wins": 1,
-      "losses": 3,
-      "winRate": "25%",
-      "realizedPnl": "$3.62",
-      "unrealizedPnl": "$1.29",
-      "totalPnl": "$4.91",
-      "totalDeployed": "$199.20",
-      "currentDeployed": "$48.24",
-      "expectancy": "$0.91",
-      "profitFactor": "1.57",
-      "avgWin": "$15.00",
-      "avgLoss": "$-4.77",
-      "avgHoldHours": 0,
-      "bestTrade": {
-        "market": "Norway Most Total Medals Winter Olympics",
-        "pnl": 15,
-        "pnlPct": "48.4"
-      },
-      "worstTrade": {
-        "market": "0xb572085e24472c1039ea8d5a06eaaca249f1d5459b7b09a0d71a89628708924c",
-        "pnl": -7.7,
-        "pnlPct": "-36.7"
       }
     },
     "resolution": {

@@ -1,0 +1,15 @@
+{
+  "market": "Crime 101 Opening Weekend Box Office $17-20M",
+  "tokenID": "74129731289724233287703952971717358119264795312748391113149010332592475652114",
+  "side": "BUY",
+  "entryPrice": 0.49,
+  "size": 75,
+  "thesis": "Deadline Sunday AM revised 4-day estimate is $17.8M (up from $15M pre-release). 87% RT score, +75% Saturday surge, Valentine Day catalyst. Presidents Day Monday will add to total. High confidence in $17-20M bucket.",
+  "invalidation": "Final 4-day box office from The-Numbers comes in below $17M despite Deadline revised estimate. Would require Sunday+Monday significantly underperforming Saturday.",
+  "hoursToResolution": 36,
+  "edge": 15,
+  "slug": "crime-101-opening-weekend-box-office",
+  "entryTime": "2026-02-16T00:44:39.087Z",
+  "entryQualityScore": 8,
+  "status": "OPEN"
+}

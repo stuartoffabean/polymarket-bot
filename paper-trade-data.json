@@ -3095,6 +3095,2070 @@
           ]
         }
       }
+    },
+    {
+      "timestamp": "2026-02-16T03:00:31.644Z",
+      "prices": {},
+      "markets": {
+        "bitcoin-2026-02-17": {
+          "asset": "bitcoin",
+          "date": "2026-02-17",
+          "label": "February 17",
+          "endDate": "2026-02-17T17:00:00Z",
+          "hoursToResolution": 37.9911975,
+          "centerIdx": 5,
+          "buckets": [
+            {
+              "question": "Will the price of Bitcoin be less than $60,000 on February 17?",
+              "conditionId": "0x182f76e6d6fac1d501128e6bb30553c7ff50ac24522d266a6ecb790019e2ef96",
+              "tokenId": "67568438763601610729831023256910933987242052537121118642143709840881218761985",
+              "range": {
+                "low": 0,
+                "high": 60000,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11068.34,
+              "depthNearBest": 101567.9,
+              "totalAskDepth": 101567.9,
+              "currentPrice": 0.012,
+              "distanceFromCenter": 5,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $60,000 and $62,000 on February 17?",
+              "conditionId": "0x0e6ea7db1c49fad3554e465c5ec470035f54ee538d73e1a1326b8b2e9d593788",
+              "tokenId": "1700578643604282036848741560856893435856321484103650226600475921344750771512",
+              "range": {
+                "low": 60000,
+                "high": 62000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11094.38,
+              "depthNearBest": 97533.63,
+              "totalAskDepth": 97533.63,
+              "currentPrice": 0.017,
+              "distanceFromCenter": 4,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $62,000 and $64,000 on February 17?",
+              "conditionId": "0xef45f9bc99335e2347775b880b9c9dd4d1bdc30bef2aa5db262a3853bdea3e3c",
+              "tokenId": "103368713025908072175127244199147769975461553352546259488747963007703915139943",
+              "range": {
+                "low": 62000,
+                "high": 64000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 12256.03,
+              "depthNearBest": 97736.02,
+              "totalAskDepth": 97736.02,
+              "currentPrice": 0.036,
+              "distanceFromCenter": 3,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $64,000 and $66,000 on February 17?",
+              "conditionId": "0x168f50327d0f5fa8f1f5454f70e2e22a11f93c865df428c83e7bf4862087cc1e",
+              "tokenId": "13972255024078345788967694412107273928387262150703629914143831633306676535663",
+              "range": {
+                "low": 64000,
+                "high": 66000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10260.71,
+              "depthNearBest": 92239.18,
+              "totalAskDepth": 92239.18,
+              "currentPrice": 0.1175,
+              "distanceFromCenter": 2,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $66,000 and $68,000 on February 17?",
+              "conditionId": "0x7a18be0d1be14bad6ca79febca18316f4eb11c9d0da4254f9dad7b633ad86b17",
+              "tokenId": "93726229367256251398964054875937310463397871130006973622713451898322286634936",
+              "range": {
+                "low": 66000,
+                "high": 68000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37287.98,
+              "depthNearBest": 78893.98000000001,
+              "totalAskDepth": 78893.98000000001,
+              "currentPrice": 0.28,
+              "distanceFromCenter": 1,
+              "side": "left",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Bitcoin be between $68,000 and $70,000 on February 17?",
+              "conditionId": "0x0b4039b0abf50607b8da6c51a7b28d231fda1a21a6375291e21c327837fca885",
+              "tokenId": "103649707892738139545693660702183186294565045687220548982152043849596406766995",
+              "range": {
+                "low": 68000,
+                "high": 70000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37296.07,
+              "depthNearBest": 78388.85,
+              "totalAskDepth": 78388.85,
+              "currentPrice": 0.335,
+              "distanceFromCenter": 0,
+              "side": "center",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Bitcoin be between $70,000 and $72,000 on February 17?",
+              "conditionId": "0x181ec1a23636896e84e38de3a3a6d8995ae00eb491fef80a4fb9694e018dc628",
+              "tokenId": "33234357781649469978383333618335448482197198938366713853365079258394292804028",
+              "range": {
+                "low": 70000,
+                "high": 72000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37296.07,
+              "depthNearBest": 82399.54000000001,
+              "totalAskDepth": 82399.54000000001,
+              "currentPrice": 0.185,
+              "distanceFromCenter": 1,
+              "side": "right",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Bitcoin be between $72,000 and $74,000 on February 17?",
+              "conditionId": "0xd928929a77442b67944b6b38f4ab7b4d01a6178a75f6b1ecbabec94d3e4e2d5f",
+              "tokenId": "16107690245201822604781909780272892560274118505648157983612845142061296806422",
+              "range": {
+                "low": 72000,
+                "high": 74000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 12329.24,
+              "depthNearBest": 98824.1,
+              "totalAskDepth": 98824.1,
+              "currentPrice": 0.054,
+              "distanceFromCenter": 2,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $74,000 and $76,000 on February 17?",
+              "conditionId": "0x1efddc15263956be3c932981d688e23d8bd5638618c7070113d22e51f82308f9",
+              "tokenId": "17106716455217178034381863619719159044071939329053068663149405443391568514895",
+              "range": {
+                "low": 74000,
+                "high": 76000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 14203.57,
+              "depthNearBest": 100968.48,
+              "totalAskDepth": 100968.48,
+              "currentPrice": 0.017,
+              "distanceFromCenter": 3,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $76,000 and $78,000 on February 17?",
+              "conditionId": "0xac29d5a4d24e05f259f709fc6ce5d8c128f8fba695fff65171d59fc37cfdff27",
+              "tokenId": "95839567508065981436606343398069614478085453503581989011853453425082243464746",
+              "range": {
+                "low": 76000,
+                "high": 78000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10858.68,
+              "depthNearBest": 97737.08999999998,
+              "totalAskDepth": 97737.08999999998,
+              "currentPrice": 0.0055,
+              "distanceFromCenter": 4,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be greater than $78,000 on February 17?",
+              "conditionId": "0xe147cb61874c256c673cb015493e78fdc975266c340cc5a1538b73c62230f587",
+              "tokenId": "108066451224594208355386850718891533704713401937579196135973611323615526879907",
+              "range": {
+                "low": 78000,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11121.13,
+              "depthNearBest": 104696.72000000002,
+              "totalAskDepth": 104696.72000000002,
+              "currentPrice": 0.0005,
+              "distanceFromCenter": 5,
+              "side": "right",
+              "isTail": true
+            }
+          ],
+          "tailBuckets": [
+            {
+              "question": "Will the price of Bitcoin be less than $60,000 on February 17?",
+              "conditionId": "0x182f76e6d6fac1d501128e6bb30553c7ff50ac24522d266a6ecb790019e2ef96",
+              "tokenId": "67568438763601610729831023256910933987242052537121118642143709840881218761985",
+              "range": {
+                "low": 0,
+                "high": 60000,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "distanceFromCenter": 5,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 11068.34,
+              "depthNearBest": 101567.9,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $60,000 and $62,000 on February 17?",
+              "conditionId": "0x0e6ea7db1c49fad3554e465c5ec470035f54ee538d73e1a1326b8b2e9d593788",
+              "tokenId": "1700578643604282036848741560856893435856321484103650226600475921344750771512",
+              "range": {
+                "low": 60000,
+                "high": 62000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 11094.38,
+              "depthNearBest": 97533.63,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $62,000 and $64,000 on February 17?",
+              "conditionId": "0xef45f9bc99335e2347775b880b9c9dd4d1bdc30bef2aa5db262a3853bdea3e3c",
+              "tokenId": "103368713025908072175127244199147769975461553352546259488747963007703915139943",
+              "range": {
+                "low": 62000,
+                "high": 64000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 12256.03,
+              "depthNearBest": 97736.02,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $64,000 and $66,000 on February 17?",
+              "conditionId": "0x168f50327d0f5fa8f1f5454f70e2e22a11f93c865df428c83e7bf4862087cc1e",
+              "tokenId": "13972255024078345788967694412107273928387262150703629914143831633306676535663",
+              "range": {
+                "low": 64000,
+                "high": 66000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 10260.71,
+              "depthNearBest": 92239.18,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $72,000 and $74,000 on February 17?",
+              "conditionId": "0xd928929a77442b67944b6b38f4ab7b4d01a6178a75f6b1ecbabec94d3e4e2d5f",
+              "tokenId": "16107690245201822604781909780272892560274118505648157983612845142061296806422",
+              "range": {
+                "low": 72000,
+                "high": 74000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 12329.24,
+              "depthNearBest": 98824.1,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $74,000 and $76,000 on February 17?",
+              "conditionId": "0x1efddc15263956be3c932981d688e23d8bd5638618c7070113d22e51f82308f9",
+              "tokenId": "17106716455217178034381863619719159044071939329053068663149405443391568514895",
+              "range": {
+                "low": 74000,
+                "high": 76000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 14203.57,
+              "depthNearBest": 100968.48,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $76,000 and $78,000 on February 17?",
+              "conditionId": "0xac29d5a4d24e05f259f709fc6ce5d8c128f8fba695fff65171d59fc37cfdff27",
+              "tokenId": "95839567508065981436606343398069614478085453503581989011853453425082243464746",
+              "range": {
+                "low": 76000,
+                "high": 78000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 10858.68,
+              "depthNearBest": 97737.08999999998,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be greater than $78,000 on February 17?",
+              "conditionId": "0xe147cb61874c256c673cb015493e78fdc975266c340cc5a1538b73c62230f587",
+              "tokenId": "108066451224594208355386850718891533704713401937579196135973611323615526879907",
+              "range": {
+                "low": 78000,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "distanceFromCenter": 5,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 11121.13,
+              "depthNearBest": 104696.72000000002,
+              "paperTrade": null
+            }
+          ]
+        },
+        "ethereum-2026-02-17": {
+          "asset": "ethereum",
+          "date": "2026-02-17",
+          "label": "February 17",
+          "endDate": "2026-02-17T17:00:00Z",
+          "hoursToResolution": 37.990181944444444,
+          "centerIdx": 5,
+          "buckets": [
+            {
+              "question": "Will the price of Ethereum be less than $1,600 on February 17?",
+              "conditionId": "0xce21659543b5a4a3ee8bb449cbe9e546946ed0a2b6a3c447d1d1049a041c488f",
+              "tokenId": "112246934783897952482307415455558369039959875082439973528482051068487176286886",
+              "range": {
+                "low": 0,
+                "high": 1600,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10186.85,
+              "depthNearBest": 96625.2,
+              "totalAskDepth": 96625.2,
+              "currentPrice": 0.0095,
+              "distanceFromCenter": 5,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,600 and $1,700 on February 17?",
+              "conditionId": "0x462fdbc5d555cee966e3f4fda3c071840c45c63833cbf6697e6d63a14ee9fce3",
+              "tokenId": "26912964185702565373383047088593506372643357052623227972640138975944099490827",
+              "range": {
+                "low": 1600,
+                "high": 1700,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10187.35,
+              "depthNearBest": 92947.86,
+              "totalAskDepth": 92947.86,
+              "currentPrice": 0.0125,
+              "distanceFromCenter": 4,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,700 and $1,800 on February 17?",
+              "conditionId": "0xc2f7a7bb64598d32d3446ecdfa2b13ba526b50f735e7edae9cb8734644f4147a",
+              "tokenId": "91674723247557596977820486412895713364058946003753200141356526585708732582249",
+              "range": {
+                "low": 1700,
+                "high": 1800,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11257.7,
+              "depthNearBest": 97957.23,
+              "totalAskDepth": 97957.23,
+              "currentPrice": 0.0405,
+              "distanceFromCenter": 3,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,800 and $1,900 on February 17?",
+              "conditionId": "0xaebe00e14f80ce91dac6c8a007c370723324f24138ba17f8ce169721bf6b7031",
+              "tokenId": "52031955773212869160389031152447322786960184144561682943473339839803506675395",
+              "range": {
+                "low": 1800,
+                "high": 1900,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10621.17,
+              "depthNearBest": 90216.66,
+              "totalAskDepth": 90216.66,
+              "currentPrice": 0.2105,
+              "distanceFromCenter": 2,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,900 and $2,000 on February 17?",
+              "conditionId": "0x2ed619a5594181acd19ec72a6c286c1199e1db6718cd074e8c8306fafd66d3ba",
+              "tokenId": "107676357847692351035005456900419186376191166432402621267402078373715202880459",
+              "range": {
+                "low": 1900,
+                "high": 2000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37296.23,
+              "depthNearBest": 77221.03000000001,
+              "totalAskDepth": 77221.03000000001,
+              "currentPrice": 0.43,
+              "distanceFromCenter": 1,
+              "side": "left",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,000 and $2,100 on February 17?",
+              "conditionId": "0x61cabbff48d61503d2d3e0f273f8fc3f5e7ec0085334a04b5961a30a2ffee47b",
+              "tokenId": "52323399800285685211199905115311034598296659715773646880890162761122510404982",
+              "range": {
+                "low": 2000,
+                "high": 2100,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37301.09,
+              "depthNearBest": 79298.62,
+              "totalAskDepth": 79298.62,
+              "currentPrice": 0.235,
+              "distanceFromCenter": 0,
+              "side": "center",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,100 and $2,200 on February 17?",
+              "conditionId": "0x65503a70f261c38c53c08f193b8ae28bdbe2514ed123a657eaf7901fb076c6f4",
+              "tokenId": "5720380894533788945329256178921595188757487757983800996873966404313406778256",
+              "range": {
+                "low": 2100,
+                "high": 2200,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37296.23,
+              "depthNearBest": 81307.26000000001,
+              "totalAskDepth": 81307.26000000001,
+              "currentPrice": 0.055,
+              "distanceFromCenter": 1,
+              "side": "right",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,200 and $2,300 on February 17?",
+              "conditionId": "0x14ca229cea2160d69cea4563043c8aac7e7064eb2e7afa2484b71df07a5b4093",
+              "tokenId": "56907441627212742441461084014318537601353383681764578092456985045524054119264",
+              "range": {
+                "low": 2200,
+                "high": 2300,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11929.28,
+              "depthNearBest": 94078.65999999999,
+              "totalAskDepth": 94078.65999999999,
+              "currentPrice": 0.013,
+              "distanceFromCenter": 2,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,300 and $2,400 on February 17?",
+              "conditionId": "0x096703598a3531f51c02c590c81c1cf9aa10ad221d123bca1491e573b1339ec1",
+              "tokenId": "86617494889159378533167665575546454665845346424904920641702107846461764846505",
+              "range": {
+                "low": 2300,
+                "high": 2400,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 9859.63,
+              "depthNearBest": 91632.81999999999,
+              "totalAskDepth": 91632.81999999999,
+              "currentPrice": 0.0035,
+              "distanceFromCenter": 3,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,400 and $2,500 on February 17?",
+              "conditionId": "0x2c3fc0d508f192d0551cbe422417866b9dc57e5d5f0445ebe215a83131f3a26c",
+              "tokenId": "7001316403166638579335078589472018327661782823833640210176395782418215046405",
+              "range": {
+                "low": 2400,
+                "high": 2500,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10216.84,
+              "depthNearBest": 93683.83,
+              "totalAskDepth": 93683.83,
+              "currentPrice": 0.0045,
+              "distanceFromCenter": 4,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be greater than $2,500 on February 17?",
+              "conditionId": "0x535605f830510644680c7b4d521641cd86474d3860cc5af4dab24d70ebcfa92f",
+              "tokenId": "86755748298057617392369332582005015833801921191908187431250608455183379707717",
+              "range": {
+                "low": 2500,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10188.74,
+              "depthNearBest": 93851.05,
+              "totalAskDepth": 93851.05,
+              "currentPrice": 0.0035,
+              "distanceFromCenter": 5,
+              "side": "right",
+              "isTail": true
+            }
+          ],
+          "tailBuckets": [
+            {
+              "question": "Will the price of Ethereum be less than $1,600 on February 17?",
+              "conditionId": "0xce21659543b5a4a3ee8bb449cbe9e546946ed0a2b6a3c447d1d1049a041c488f",
+              "tokenId": "112246934783897952482307415455558369039959875082439973528482051068487176286886",
+              "range": {
+                "low": 0,
+                "high": 1600,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "distanceFromCenter": 5,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 10186.85,
+              "depthNearBest": 96625.2,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,600 and $1,700 on February 17?",
+              "conditionId": "0x462fdbc5d555cee966e3f4fda3c071840c45c63833cbf6697e6d63a14ee9fce3",
+              "tokenId": "26912964185702565373383047088593506372643357052623227972640138975944099490827",
+              "range": {
+                "low": 1600,
+                "high": 1700,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 10187.35,
+              "depthNearBest": 92947.86,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,700 and $1,800 on February 17?",
+              "conditionId": "0xc2f7a7bb64598d32d3446ecdfa2b13ba526b50f735e7edae9cb8734644f4147a",
+              "tokenId": "91674723247557596977820486412895713364058946003753200141356526585708732582249",
+              "range": {
+                "low": 1700,
+                "high": 1800,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 11257.7,
+              "depthNearBest": 97957.23,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,800 and $1,900 on February 17?",
+              "conditionId": "0xaebe00e14f80ce91dac6c8a007c370723324f24138ba17f8ce169721bf6b7031",
+              "tokenId": "52031955773212869160389031152447322786960184144561682943473339839803506675395",
+              "range": {
+                "low": 1800,
+                "high": 1900,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 10621.17,
+              "depthNearBest": 90216.66,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,200 and $2,300 on February 17?",
+              "conditionId": "0x14ca229cea2160d69cea4563043c8aac7e7064eb2e7afa2484b71df07a5b4093",
+              "tokenId": "56907441627212742441461084014318537601353383681764578092456985045524054119264",
+              "range": {
+                "low": 2200,
+                "high": 2300,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 11929.28,
+              "depthNearBest": 94078.65999999999,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,300 and $2,400 on February 17?",
+              "conditionId": "0x096703598a3531f51c02c590c81c1cf9aa10ad221d123bca1491e573b1339ec1",
+              "tokenId": "86617494889159378533167665575546454665845346424904920641702107846461764846505",
+              "range": {
+                "low": 2300,
+                "high": 2400,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 9859.63,
+              "depthNearBest": 91632.81999999999,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,400 and $2,500 on February 17?",
+              "conditionId": "0x2c3fc0d508f192d0551cbe422417866b9dc57e5d5f0445ebe215a83131f3a26c",
+              "tokenId": "7001316403166638579335078589472018327661782823833640210176395782418215046405",
+              "range": {
+                "low": 2400,
+                "high": 2500,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 10216.84,
+              "depthNearBest": 93683.83,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be greater than $2,500 on February 17?",
+              "conditionId": "0x535605f830510644680c7b4d521641cd86474d3860cc5af4dab24d70ebcfa92f",
+              "tokenId": "86755748298057617392369332582005015833801921191908187431250608455183379707717",
+              "range": {
+                "low": 2500,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "distanceFromCenter": 5,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 10188.74,
+              "depthNearBest": 93851.05,
+              "paperTrade": null
+            }
+          ]
+        },
+        "solana-2026-02-17": {
+          "asset": "solana",
+          "date": "2026-02-17",
+          "label": "February 17",
+          "endDate": "2026-02-17T17:00:00Z",
+          "hoursToResolution": 37.989195555555554,
+          "centerIdx": 5,
+          "buckets": [
+            {
+              "question": "Will the price of Solana be less than $40 on February 17?",
+              "conditionId": "0x494d868dcdbcfbdd101feac2c33b0a9ca9acefe7acd9103917ffda266865102b",
+              "tokenId": "34629672177023649116475950503504503431228255142594009253432546290943351302836",
+              "range": {
+                "low": 0,
+                "high": 40,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4163.79,
+              "depthNearBest": 90189.81000000001,
+              "totalAskDepth": 90189.81000000001,
+              "currentPrice": 0.0035,
+              "distanceFromCenter": 5,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $40 and $50 on February 17?",
+              "conditionId": "0x162d59197d924f77fc310cc597618f7b4f4da16705b5b00afb18a079e5c34af7",
+              "tokenId": "7007889366805918518750052862591576202048089838257397154018757173676521719893",
+              "range": {
+                "low": 40,
+                "high": 50,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4186.92,
+              "depthNearBest": 90017.49,
+              "totalAskDepth": 90017.49,
+              "currentPrice": 0.004,
+              "distanceFromCenter": 4,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $50 and $60 on February 17?",
+              "conditionId": "0xe997215375411bb49d386adccf9397ce3da1b4def98bdf209f80a9675ece7e53",
+              "tokenId": "37494435882343639331691167640688305104537340007143738851795604775221072420149",
+              "range": {
+                "low": 50,
+                "high": 60,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4177.77,
+              "depthNearBest": 85168.9,
+              "totalAskDepth": 85168.9,
+              "currentPrice": 0.009,
+              "distanceFromCenter": 3,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $60 and $70 on February 17?",
+              "conditionId": "0xad13d54fc16fed4d031fd4ebbb09eba423fea677e5997f261312e3c095b80021",
+              "tokenId": "84547172715137398660497512258128404486109593472966075777458238010581440290892",
+              "range": {
+                "low": 60,
+                "high": 70,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 6274.4,
+              "depthNearBest": 85954.65,
+              "totalAskDepth": 85954.65,
+              "currentPrice": 0.015,
+              "distanceFromCenter": 2,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $70 and $80 on February 17?",
+              "conditionId": "0x303260b6decd5310b1e3efaae3d128bf90b3964f212d927687aad146ea9d34fd",
+              "tokenId": "9308567598216985160734292561337663989046468374295917001196779554237865493270",
+              "range": {
+                "low": 70,
+                "high": 80,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37296.12,
+              "depthNearBest": 77687.12,
+              "totalAskDepth": 77687.12,
+              "currentPrice": 0.105,
+              "distanceFromCenter": 1,
+              "side": "left",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Solana be between $80 and $90 on February 17?",
+              "conditionId": "0xdb082b399f091b3c33b2672be03f6cedb49ab83599ed1f4f5047d5f7451490a6",
+              "tokenId": "56300877874264881913600237298769530678769208254331392493452369598119112790444",
+              "range": {
+                "low": 80,
+                "high": 90,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 36276,
+              "depthNearBest": 61736.6,
+              "totalAskDepth": 61736.6,
+              "currentPrice": 0.695,
+              "distanceFromCenter": 0,
+              "side": "center",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Solana be between $90 and $100 on February 17?",
+              "conditionId": "0xc5eba58ccbdc86efccf38e594352850f5a86d3f098cfbff75aef6ff445836091",
+              "tokenId": "48486423003873718777152593270647174049977914921433123566329263190864338584924",
+              "range": {
+                "low": 90,
+                "high": 100,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37276,
+              "depthNearBest": 78274,
+              "totalAskDepth": 78274,
+              "currentPrice": 0.16,
+              "distanceFromCenter": 1,
+              "side": "right",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Solana be between $100 and $110 on February 17?",
+              "conditionId": "0x60a1b19ec3282f61d7c78e56778af039179199dc3d5ed5309cfff7ce061d3516",
+              "tokenId": "88106511569191864681737366133029211608541219983068577514347787759890617905771",
+              "range": {
+                "low": 100,
+                "high": 110,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 6162.98,
+              "depthNearBest": 86146.77,
+              "totalAskDepth": 86146.77,
+              "currentPrice": 0.02,
+              "distanceFromCenter": 2,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $110 and $120 on February 17?",
+              "conditionId": "0x07a7b728c704efb66ae7536a4e3d8e8ecbfebb6ffdc5a7489f0d14669acf5a22",
+              "tokenId": "98638348215756589346863863559508921682277746322724731942410893016566604023534",
+              "range": {
+                "low": 110,
+                "high": 120,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4185.79,
+              "depthNearBest": 84415.23000000001,
+              "totalAskDepth": 84415.23000000001,
+              "currentPrice": 0.003,
+              "distanceFromCenter": 3,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $120 and $130 on February 17?",
+              "conditionId": "0xa60eb8a58ae763cd36fe2f517c4a6be0c03675ef7e5b80d902d64ddefe4cbae9",
+              "tokenId": "103566082492867308381062325739406648903507139712692477228905940797498126109625",
+              "range": {
+                "low": 120,
+                "high": 130,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4281.75,
+              "depthNearBest": 84192.2,
+              "totalAskDepth": 84192.2,
+              "currentPrice": 0.003,
+              "distanceFromCenter": 4,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be greater than $130 on February 17?",
+              "conditionId": "0xfaa71b7abe4feaa005e4785e2769aa481f0b7e1be535422f6a32f55a01ff79e6",
+              "tokenId": "63479249601277472574837826748158327176285238148728769879764445830638177935237",
+              "range": {
+                "low": 130,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4174.79,
+              "depthNearBest": 85146.93999999999,
+              "totalAskDepth": 85146.93999999999,
+              "currentPrice": 0.003,
+              "distanceFromCenter": 5,
+              "side": "right",
+              "isTail": true
+            }
+          ],
+          "tailBuckets": [
+            {
+              "question": "Will the price of Solana be less than $40 on February 17?",
+              "conditionId": "0x494d868dcdbcfbdd101feac2c33b0a9ca9acefe7acd9103917ffda266865102b",
+              "tokenId": "34629672177023649116475950503504503431228255142594009253432546290943351302836",
+              "range": {
+                "low": 0,
+                "high": 40,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "distanceFromCenter": 5,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 4163.79,
+              "depthNearBest": 90189.81000000001,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $40 and $50 on February 17?",
+              "conditionId": "0x162d59197d924f77fc310cc597618f7b4f4da16705b5b00afb18a079e5c34af7",
+              "tokenId": "7007889366805918518750052862591576202048089838257397154018757173676521719893",
+              "range": {
+                "low": 40,
+                "high": 50,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 4186.92,
+              "depthNearBest": 90017.49,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $50 and $60 on February 17?",
+              "conditionId": "0xe997215375411bb49d386adccf9397ce3da1b4def98bdf209f80a9675ece7e53",
+              "tokenId": "37494435882343639331691167640688305104537340007143738851795604775221072420149",
+              "range": {
+                "low": 50,
+                "high": 60,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 4177.77,
+              "depthNearBest": 85168.9,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $60 and $70 on February 17?",
+              "conditionId": "0xad13d54fc16fed4d031fd4ebbb09eba423fea677e5997f261312e3c095b80021",
+              "tokenId": "84547172715137398660497512258128404486109593472966075777458238010581440290892",
+              "range": {
+                "low": 60,
+                "high": 70,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 6274.4,
+              "depthNearBest": 85954.65,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $100 and $110 on February 17?",
+              "conditionId": "0x60a1b19ec3282f61d7c78e56778af039179199dc3d5ed5309cfff7ce061d3516",
+              "tokenId": "88106511569191864681737366133029211608541219983068577514347787759890617905771",
+              "range": {
+                "low": 100,
+                "high": 110,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 6162.98,
+              "depthNearBest": 86146.77,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $110 and $120 on February 17?",
+              "conditionId": "0x07a7b728c704efb66ae7536a4e3d8e8ecbfebb6ffdc5a7489f0d14669acf5a22",
+              "tokenId": "98638348215756589346863863559508921682277746322724731942410893016566604023534",
+              "range": {
+                "low": 110,
+                "high": 120,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 4185.79,
+              "depthNearBest": 84415.23000000001,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $120 and $130 on February 17?",
+              "conditionId": "0xa60eb8a58ae763cd36fe2f517c4a6be0c03675ef7e5b80d902d64ddefe4cbae9",
+              "tokenId": "103566082492867308381062325739406648903507139712692477228905940797498126109625",
+              "range": {
+                "low": 120,
+                "high": 130,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 4281.75,
+              "depthNearBest": 84192.2,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be greater than $130 on February 17?",
+              "conditionId": "0xfaa71b7abe4feaa005e4785e2769aa481f0b7e1be535422f6a32f55a01ff79e6",
+              "tokenId": "63479249601277472574837826748158327176285238148728769879764445830638177935237",
+              "range": {
+                "low": 130,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "distanceFromCenter": 5,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 4174.79,
+              "depthNearBest": 85146.93999999999,
+              "paperTrade": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "timestamp": "2026-02-16T04:07:53.443Z",
+      "prices": {},
+      "markets": {
+        "bitcoin-2026-02-17": {
+          "asset": "bitcoin",
+          "date": "2026-02-17",
+          "label": "February 17",
+          "endDate": "2026-02-17T17:00:00Z",
+          "hoursToResolution": 36.8684325,
+          "centerIdx": 5,
+          "buckets": [
+            {
+              "question": "Will the price of Bitcoin be less than $60,000 on February 17?",
+              "conditionId": "0x182f76e6d6fac1d501128e6bb30553c7ff50ac24522d266a6ecb790019e2ef96",
+              "tokenId": "67568438763601610729831023256910933987242052537121118642143709840881218761985",
+              "range": {
+                "low": 0,
+                "high": 60000,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11065.4,
+              "depthNearBest": 101649.16,
+              "totalAskDepth": 101649.16,
+              "currentPrice": 0.013,
+              "distanceFromCenter": 5,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $60,000 and $62,000 on February 17?",
+              "conditionId": "0x0e6ea7db1c49fad3554e465c5ec470035f54ee538d73e1a1326b8b2e9d593788",
+              "tokenId": "1700578643604282036848741560856893435856321484103650226600475921344750771512",
+              "range": {
+                "low": 60000,
+                "high": 62000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11093.49,
+              "depthNearBest": 97948.98999999999,
+              "totalAskDepth": 97948.98999999999,
+              "currentPrice": 0.0145,
+              "distanceFromCenter": 4,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $62,000 and $64,000 on February 17?",
+              "conditionId": "0xef45f9bc99335e2347775b880b9c9dd4d1bdc30bef2aa5db262a3853bdea3e3c",
+              "tokenId": "103368713025908072175127244199147769975461553352546259488747963007703915139943",
+              "range": {
+                "low": 62000,
+                "high": 64000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 12256.03,
+              "depthNearBest": 98582.12,
+              "totalAskDepth": 98582.12,
+              "currentPrice": 0.0385,
+              "distanceFromCenter": 3,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $64,000 and $66,000 on February 17?",
+              "conditionId": "0x168f50327d0f5fa8f1f5454f70e2e22a11f93c865df428c83e7bf4862087cc1e",
+              "tokenId": "13972255024078345788967694412107273928387262150703629914143831633306676535663",
+              "range": {
+                "low": 64000,
+                "high": 66000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10261.36,
+              "depthNearBest": 92937.65,
+              "totalAskDepth": 92937.65,
+              "currentPrice": 0.108,
+              "distanceFromCenter": 2,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $66,000 and $68,000 on February 17?",
+              "conditionId": "0x7a18be0d1be14bad6ca79febca18316f4eb11c9d0da4254f9dad7b633ad86b17",
+              "tokenId": "93726229367256251398964054875937310463397871130006973622713451898322286634936",
+              "range": {
+                "low": 66000,
+                "high": 68000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37299.53,
+              "depthNearBest": 82432.53,
+              "totalAskDepth": 82432.53,
+              "currentPrice": 0.27,
+              "distanceFromCenter": 1,
+              "side": "left",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Bitcoin be between $68,000 and $70,000 on February 17?",
+              "conditionId": "0x0b4039b0abf50607b8da6c51a7b28d231fda1a21a6375291e21c327837fca885",
+              "tokenId": "103649707892738139545693660702183186294565045687220548982152043849596406766995",
+              "range": {
+                "low": 68000,
+                "high": 70000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37294.56,
+              "depthNearBest": 78270.36,
+              "totalAskDepth": 78270.36,
+              "currentPrice": 0.33,
+              "distanceFromCenter": 0,
+              "side": "center",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Bitcoin be between $70,000 and $72,000 on February 17?",
+              "conditionId": "0x181ec1a23636896e84e38de3a3a6d8995ae00eb491fef80a4fb9694e018dc628",
+              "tokenId": "33234357781649469978383333618335448482197198938366713853365079258394292804028",
+              "range": {
+                "low": 70000,
+                "high": 72000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37294.52,
+              "depthNearBest": 82696.26,
+              "totalAskDepth": 82696.26,
+              "currentPrice": 0.185,
+              "distanceFromCenter": 1,
+              "side": "right",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Bitcoin be between $72,000 and $74,000 on February 17?",
+              "conditionId": "0xd928929a77442b67944b6b38f4ab7b4d01a6178a75f6b1ecbabec94d3e4e2d5f",
+              "tokenId": "16107690245201822604781909780272892560274118505648157983612845142061296806422",
+              "range": {
+                "low": 72000,
+                "high": 74000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 12325.56,
+              "depthNearBest": 99205.62,
+              "totalAskDepth": 99205.62,
+              "currentPrice": 0.054,
+              "distanceFromCenter": 2,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $74,000 and $76,000 on February 17?",
+              "conditionId": "0x1efddc15263956be3c932981d688e23d8bd5638618c7070113d22e51f82308f9",
+              "tokenId": "17106716455217178034381863619719159044071939329053068663149405443391568514895",
+              "range": {
+                "low": 74000,
+                "high": 76000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 14203.57,
+              "depthNearBest": 100892.82,
+              "totalAskDepth": 100892.82,
+              "currentPrice": 0.018,
+              "distanceFromCenter": 3,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be between $76,000 and $78,000 on February 17?",
+              "conditionId": "0xac29d5a4d24e05f259f709fc6ce5d8c128f8fba695fff65171d59fc37cfdff27",
+              "tokenId": "95839567508065981436606343398069614478085453503581989011853453425082243464746",
+              "range": {
+                "low": 76000,
+                "high": 78000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10858.68,
+              "depthNearBest": 99079.97000000002,
+              "totalAskDepth": 99079.97000000002,
+              "currentPrice": 0.003,
+              "distanceFromCenter": 4,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Bitcoin be greater than $78,000 on February 17?",
+              "conditionId": "0xe147cb61874c256c673cb015493e78fdc975266c340cc5a1538b73c62230f587",
+              "tokenId": "108066451224594208355386850718891533704713401937579196135973611323615526879907",
+              "range": {
+                "low": 78000,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11105.64,
+              "depthNearBest": 103893.23000000001,
+              "totalAskDepth": 103893.23000000001,
+              "currentPrice": 0.0005,
+              "distanceFromCenter": 5,
+              "side": "right",
+              "isTail": true
+            }
+          ],
+          "tailBuckets": [
+            {
+              "question": "Will the price of Bitcoin be less than $60,000 on February 17?",
+              "conditionId": "0x182f76e6d6fac1d501128e6bb30553c7ff50ac24522d266a6ecb790019e2ef96",
+              "tokenId": "67568438763601610729831023256910933987242052537121118642143709840881218761985",
+              "range": {
+                "low": 0,
+                "high": 60000,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "distanceFromCenter": 5,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 11065.4,
+              "depthNearBest": 101649.16,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $60,000 and $62,000 on February 17?",
+              "conditionId": "0x0e6ea7db1c49fad3554e465c5ec470035f54ee538d73e1a1326b8b2e9d593788",
+              "tokenId": "1700578643604282036848741560856893435856321484103650226600475921344750771512",
+              "range": {
+                "low": 60000,
+                "high": 62000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 11093.49,
+              "depthNearBest": 97948.98999999999,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $62,000 and $64,000 on February 17?",
+              "conditionId": "0xef45f9bc99335e2347775b880b9c9dd4d1bdc30bef2aa5db262a3853bdea3e3c",
+              "tokenId": "103368713025908072175127244199147769975461553352546259488747963007703915139943",
+              "range": {
+                "low": 62000,
+                "high": 64000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 12256.03,
+              "depthNearBest": 98582.12,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $64,000 and $66,000 on February 17?",
+              "conditionId": "0x168f50327d0f5fa8f1f5454f70e2e22a11f93c865df428c83e7bf4862087cc1e",
+              "tokenId": "13972255024078345788967694412107273928387262150703629914143831633306676535663",
+              "range": {
+                "low": 64000,
+                "high": 66000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 10261.36,
+              "depthNearBest": 92937.65,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $72,000 and $74,000 on February 17?",
+              "conditionId": "0xd928929a77442b67944b6b38f4ab7b4d01a6178a75f6b1ecbabec94d3e4e2d5f",
+              "tokenId": "16107690245201822604781909780272892560274118505648157983612845142061296806422",
+              "range": {
+                "low": 72000,
+                "high": 74000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 12325.56,
+              "depthNearBest": 99205.62,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $74,000 and $76,000 on February 17?",
+              "conditionId": "0x1efddc15263956be3c932981d688e23d8bd5638618c7070113d22e51f82308f9",
+              "tokenId": "17106716455217178034381863619719159044071939329053068663149405443391568514895",
+              "range": {
+                "low": 74000,
+                "high": 76000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 14203.57,
+              "depthNearBest": 100892.82,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be between $76,000 and $78,000 on February 17?",
+              "conditionId": "0xac29d5a4d24e05f259f709fc6ce5d8c128f8fba695fff65171d59fc37cfdff27",
+              "tokenId": "95839567508065981436606343398069614478085453503581989011853453425082243464746",
+              "range": {
+                "low": 76000,
+                "high": 78000,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 10858.68,
+              "depthNearBest": 99079.97000000002,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Bitcoin be greater than $78,000 on February 17?",
+              "conditionId": "0xe147cb61874c256c673cb015493e78fdc975266c340cc5a1538b73c62230f587",
+              "tokenId": "108066451224594208355386850718891533704713401937579196135973611323615526879907",
+              "range": {
+                "low": 78000,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "distanceFromCenter": 5,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 11105.64,
+              "depthNearBest": 103893.23000000001,
+              "paperTrade": null
+            }
+          ]
+        },
+        "ethereum-2026-02-17": {
+          "asset": "ethereum",
+          "date": "2026-02-17",
+          "label": "February 17",
+          "endDate": "2026-02-17T17:00:00Z",
+          "hoursToResolution": 36.86738472222222,
+          "centerIdx": 5,
+          "buckets": [
+            {
+              "question": "Will the price of Ethereum be less than $1,600 on February 17?",
+              "conditionId": "0xce21659543b5a4a3ee8bb449cbe9e546946ed0a2b6a3c447d1d1049a041c488f",
+              "tokenId": "112246934783897952482307415455558369039959875082439973528482051068487176286886",
+              "range": {
+                "low": 0,
+                "high": 1600,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10186.85,
+              "depthNearBest": 97885.23,
+              "totalAskDepth": 97885.23,
+              "currentPrice": 0.0095,
+              "distanceFromCenter": 5,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,600 and $1,700 on February 17?",
+              "conditionId": "0x462fdbc5d555cee966e3f4fda3c071840c45c63833cbf6697e6d63a14ee9fce3",
+              "tokenId": "26912964185702565373383047088593506372643357052623227972640138975944099490827",
+              "range": {
+                "low": 1600,
+                "high": 1700,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10187.35,
+              "depthNearBest": 92914.86,
+              "totalAskDepth": 92914.86,
+              "currentPrice": 0.0125,
+              "distanceFromCenter": 4,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,700 and $1,800 on February 17?",
+              "conditionId": "0xc2f7a7bb64598d32d3446ecdfa2b13ba526b50f735e7edae9cb8734644f4147a",
+              "tokenId": "91674723247557596977820486412895713364058946003753200141356526585708732582249",
+              "range": {
+                "low": 1700,
+                "high": 1800,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11257.7,
+              "depthNearBest": 93492.05,
+              "totalAskDepth": 93492.05,
+              "currentPrice": 0.038,
+              "distanceFromCenter": 3,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,800 and $1,900 on February 17?",
+              "conditionId": "0xaebe00e14f80ce91dac6c8a007c370723324f24138ba17f8ce169721bf6b7031",
+              "tokenId": "52031955773212869160389031152447322786960184144561682943473339839803506675395",
+              "range": {
+                "low": 1800,
+                "high": 1900,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10597.47,
+              "depthNearBest": 91076.32,
+              "totalAskDepth": 91076.32,
+              "currentPrice": 0.218,
+              "distanceFromCenter": 2,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,900 and $2,000 on February 17?",
+              "conditionId": "0x2ed619a5594181acd19ec72a6c286c1199e1db6718cd074e8c8306fafd66d3ba",
+              "tokenId": "107676357847692351035005456900419186376191166432402621267402078373715202880459",
+              "range": {
+                "low": 1900,
+                "high": 2000,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37294.57,
+              "depthNearBest": 76641.34000000001,
+              "totalAskDepth": 76641.34000000001,
+              "currentPrice": 0.425,
+              "distanceFromCenter": 1,
+              "side": "left",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,000 and $2,100 on February 17?",
+              "conditionId": "0x61cabbff48d61503d2d3e0f273f8fc3f5e7ec0085334a04b5961a30a2ffee47b",
+              "tokenId": "52323399800285685211199905115311034598296659715773646880890162761122510404982",
+              "range": {
+                "low": 2000,
+                "high": 2100,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37299.57,
+              "depthNearBest": 77887.57,
+              "totalAskDepth": 77887.57,
+              "currentPrice": 0.25,
+              "distanceFromCenter": 0,
+              "side": "center",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,100 and $2,200 on February 17?",
+              "conditionId": "0x65503a70f261c38c53c08f193b8ae28bdbe2514ed123a657eaf7901fb076c6f4",
+              "tokenId": "5720380894533788945329256178921595188757487757983800996873966404313406778256",
+              "range": {
+                "low": 2100,
+                "high": 2200,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37294.57,
+              "depthNearBest": 80083.61000000002,
+              "totalAskDepth": 80083.61000000002,
+              "currentPrice": 0.055,
+              "distanceFromCenter": 1,
+              "side": "right",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,200 and $2,300 on February 17?",
+              "conditionId": "0x14ca229cea2160d69cea4563043c8aac7e7064eb2e7afa2484b71df07a5b4093",
+              "tokenId": "56907441627212742441461084014318537601353383681764578092456985045524054119264",
+              "range": {
+                "low": 2200,
+                "high": 2300,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 11908.21,
+              "depthNearBest": 94765.33,
+              "totalAskDepth": 94765.33,
+              "currentPrice": 0.013,
+              "distanceFromCenter": 2,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,300 and $2,400 on February 17?",
+              "conditionId": "0x096703598a3531f51c02c590c81c1cf9aa10ad221d123bca1491e573b1339ec1",
+              "tokenId": "86617494889159378533167665575546454665845346424904920641702107846461764846505",
+              "range": {
+                "low": 2300,
+                "high": 2400,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 9859.63,
+              "depthNearBest": 92401.09999999999,
+              "totalAskDepth": 92401.09999999999,
+              "currentPrice": 0.0035,
+              "distanceFromCenter": 3,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,400 and $2,500 on February 17?",
+              "conditionId": "0x2c3fc0d508f192d0551cbe422417866b9dc57e5d5f0445ebe215a83131f3a26c",
+              "tokenId": "7001316403166638579335078589472018327661782823833640210176395782418215046405",
+              "range": {
+                "low": 2400,
+                "high": 2500,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10187.65,
+              "depthNearBest": 94113,
+              "totalAskDepth": 94113,
+              "currentPrice": 0.0055,
+              "distanceFromCenter": 4,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Ethereum be greater than $2,500 on February 17?",
+              "conditionId": "0x535605f830510644680c7b4d521641cd86474d3860cc5af4dab24d70ebcfa92f",
+              "tokenId": "86755748298057617392369332582005015833801921191908187431250608455183379707717",
+              "range": {
+                "low": 2500,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 10190.19,
+              "depthNearBest": 94574.63,
+              "totalAskDepth": 94574.63,
+              "currentPrice": 0.003,
+              "distanceFromCenter": 5,
+              "side": "right",
+              "isTail": true
+            }
+          ],
+          "tailBuckets": [
+            {
+              "question": "Will the price of Ethereum be less than $1,600 on February 17?",
+              "conditionId": "0xce21659543b5a4a3ee8bb449cbe9e546946ed0a2b6a3c447d1d1049a041c488f",
+              "tokenId": "112246934783897952482307415455558369039959875082439973528482051068487176286886",
+              "range": {
+                "low": 0,
+                "high": 1600,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "distanceFromCenter": 5,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 10186.85,
+              "depthNearBest": 97885.23,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,600 and $1,700 on February 17?",
+              "conditionId": "0x462fdbc5d555cee966e3f4fda3c071840c45c63833cbf6697e6d63a14ee9fce3",
+              "tokenId": "26912964185702565373383047088593506372643357052623227972640138975944099490827",
+              "range": {
+                "low": 1600,
+                "high": 1700,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 10187.35,
+              "depthNearBest": 92914.86,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,700 and $1,800 on February 17?",
+              "conditionId": "0xc2f7a7bb64598d32d3446ecdfa2b13ba526b50f735e7edae9cb8734644f4147a",
+              "tokenId": "91674723247557596977820486412895713364058946003753200141356526585708732582249",
+              "range": {
+                "low": 1700,
+                "high": 1800,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 11257.7,
+              "depthNearBest": 93492.05,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $1,800 and $1,900 on February 17?",
+              "conditionId": "0xaebe00e14f80ce91dac6c8a007c370723324f24138ba17f8ce169721bf6b7031",
+              "tokenId": "52031955773212869160389031152447322786960184144561682943473339839803506675395",
+              "range": {
+                "low": 1800,
+                "high": 1900,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 10597.47,
+              "depthNearBest": 91076.32,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,200 and $2,300 on February 17?",
+              "conditionId": "0x14ca229cea2160d69cea4563043c8aac7e7064eb2e7afa2484b71df07a5b4093",
+              "tokenId": "56907441627212742441461084014318537601353383681764578092456985045524054119264",
+              "range": {
+                "low": 2200,
+                "high": 2300,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 11908.21,
+              "depthNearBest": 94765.33,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,300 and $2,400 on February 17?",
+              "conditionId": "0x096703598a3531f51c02c590c81c1cf9aa10ad221d123bca1491e573b1339ec1",
+              "tokenId": "86617494889159378533167665575546454665845346424904920641702107846461764846505",
+              "range": {
+                "low": 2300,
+                "high": 2400,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 9859.63,
+              "depthNearBest": 92401.09999999999,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be between $2,400 and $2,500 on February 17?",
+              "conditionId": "0x2c3fc0d508f192d0551cbe422417866b9dc57e5d5f0445ebe215a83131f3a26c",
+              "tokenId": "7001316403166638579335078589472018327661782823833640210176395782418215046405",
+              "range": {
+                "low": 2400,
+                "high": 2500,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 10187.65,
+              "depthNearBest": 94113,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Ethereum be greater than $2,500 on February 17?",
+              "conditionId": "0x535605f830510644680c7b4d521641cd86474d3860cc5af4dab24d70ebcfa92f",
+              "tokenId": "86755748298057617392369332582005015833801921191908187431250608455183379707717",
+              "range": {
+                "low": 2500,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "distanceFromCenter": 5,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 10190.19,
+              "depthNearBest": 94574.63,
+              "paperTrade": null
+            }
+          ]
+        },
+        "solana-2026-02-17": {
+          "asset": "solana",
+          "date": "2026-02-17",
+          "label": "February 17",
+          "endDate": "2026-02-17T17:00:00Z",
+          "hoursToResolution": 36.866389444444444,
+          "centerIdx": 5,
+          "buckets": [
+            {
+              "question": "Will the price of Solana be less than $40 on February 17?",
+              "conditionId": "0x494d868dcdbcfbdd101feac2c33b0a9ca9acefe7acd9103917ffda266865102b",
+              "tokenId": "34629672177023649116475950503504503431228255142594009253432546290943351302836",
+              "range": {
+                "low": 0,
+                "high": 40,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4165.01,
+              "depthNearBest": 82010.36,
+              "totalAskDepth": 82010.36,
+              "currentPrice": 0.0035,
+              "distanceFromCenter": 5,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $40 and $50 on February 17?",
+              "conditionId": "0x162d59197d924f77fc310cc597618f7b4f4da16705b5b00afb18a079e5c34af7",
+              "tokenId": "7007889366805918518750052862591576202048089838257397154018757173676521719893",
+              "range": {
+                "low": 40,
+                "high": 50,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4186.92,
+              "depthNearBest": 83064.92,
+              "totalAskDepth": 83064.92,
+              "currentPrice": 0.004,
+              "distanceFromCenter": 4,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $50 and $60 on February 17?",
+              "conditionId": "0xe997215375411bb49d386adccf9397ce3da1b4def98bdf209f80a9675ece7e53",
+              "tokenId": "37494435882343639331691167640688305104537340007143738851795604775221072420149",
+              "range": {
+                "low": 50,
+                "high": 60,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4177.77,
+              "depthNearBest": 83159.1,
+              "totalAskDepth": 83159.1,
+              "currentPrice": 0.008,
+              "distanceFromCenter": 3,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $60 and $70 on February 17?",
+              "conditionId": "0xad13d54fc16fed4d031fd4ebbb09eba423fea677e5997f261312e3c095b80021",
+              "tokenId": "84547172715137398660497512258128404486109593472966075777458238010581440290892",
+              "range": {
+                "low": 60,
+                "high": 70,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 6274.4,
+              "depthNearBest": 86797.85,
+              "totalAskDepth": 86797.85,
+              "currentPrice": 0.015,
+              "distanceFromCenter": 2,
+              "side": "left",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $70 and $80 on February 17?",
+              "conditionId": "0x303260b6decd5310b1e3efaae3d128bf90b3964f212d927687aad146ea9d34fd",
+              "tokenId": "9308567598216985160734292561337663989046468374295917001196779554237865493270",
+              "range": {
+                "low": 70,
+                "high": 80,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37294.56,
+              "depthNearBest": 78985.56,
+              "totalAskDepth": 78985.56,
+              "currentPrice": 0.13,
+              "distanceFromCenter": 1,
+              "side": "left",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Solana be between $80 and $90 on February 17?",
+              "conditionId": "0xdb082b399f091b3c33b2672be03f6cedb49ab83599ed1f4f5047d5f7451490a6",
+              "tokenId": "56300877874264881913600237298769530678769208254331392493452369598119112790444",
+              "range": {
+                "low": 80,
+                "high": 90,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 36276,
+              "depthNearBest": 61729.46,
+              "totalAskDepth": 61729.46,
+              "currentPrice": 0.71,
+              "distanceFromCenter": 0,
+              "side": "center",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Solana be between $90 and $100 on February 17?",
+              "conditionId": "0xc5eba58ccbdc86efccf38e594352850f5a86d3f098cfbff75aef6ff445836091",
+              "tokenId": "48486423003873718777152593270647174049977914921433123566329263190864338584924",
+              "range": {
+                "low": 90,
+                "high": 100,
+                "isExtreme": false
+              },
+              "bestAsk": 0.99,
+              "bestAskSize": 37294.56,
+              "depthNearBest": 78986.56,
+              "totalAskDepth": 78986.56,
+              "currentPrice": 0.16,
+              "distanceFromCenter": 1,
+              "side": "right",
+              "isTail": false
+            },
+            {
+              "question": "Will the price of Solana be between $100 and $110 on February 17?",
+              "conditionId": "0x60a1b19ec3282f61d7c78e56778af039179199dc3d5ed5309cfff7ce061d3516",
+              "tokenId": "88106511569191864681737366133029211608541219983068577514347787759890617905771",
+              "range": {
+                "low": 100,
+                "high": 110,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 6162.98,
+              "depthNearBest": 86208.54000000001,
+              "totalAskDepth": 86208.54000000001,
+              "currentPrice": 0.02,
+              "distanceFromCenter": 2,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $110 and $120 on February 17?",
+              "conditionId": "0x07a7b728c704efb66ae7536a4e3d8e8ecbfebb6ffdc5a7489f0d14669acf5a22",
+              "tokenId": "98638348215756589346863863559508921682277746322724731942410893016566604023534",
+              "range": {
+                "low": 110,
+                "high": 120,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4187,
+              "depthNearBest": 84717.75000000001,
+              "totalAskDepth": 84717.75000000001,
+              "currentPrice": 0.003,
+              "distanceFromCenter": 3,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be between $120 and $130 on February 17?",
+              "conditionId": "0xa60eb8a58ae763cd36fe2f517c4a6be0c03675ef7e5b80d902d64ddefe4cbae9",
+              "tokenId": "103566082492867308381062325739406648903507139712692477228905940797498126109625",
+              "range": {
+                "low": 120,
+                "high": 130,
+                "isExtreme": false
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4278.91,
+              "depthNearBest": 84968.95,
+              "totalAskDepth": 84968.95,
+              "currentPrice": 0.003,
+              "distanceFromCenter": 4,
+              "side": "right",
+              "isTail": true
+            },
+            {
+              "question": "Will the price of Solana be greater than $130 on February 17?",
+              "conditionId": "0xfaa71b7abe4feaa005e4785e2769aa481f0b7e1be535422f6a32f55a01ff79e6",
+              "tokenId": "63479249601277472574837826748158327176285238148728769879764445830638177935237",
+              "range": {
+                "low": 130,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "bestAsk": 0.999,
+              "bestAskSize": 4176.02,
+              "depthNearBest": 84207.3,
+              "totalAskDepth": 84207.3,
+              "currentPrice": 0.005,
+              "distanceFromCenter": 5,
+              "side": "right",
+              "isTail": true
+            }
+          ],
+          "tailBuckets": [
+            {
+              "question": "Will the price of Solana be less than $40 on February 17?",
+              "conditionId": "0x494d868dcdbcfbdd101feac2c33b0a9ca9acefe7acd9103917ffda266865102b",
+              "tokenId": "34629672177023649116475950503504503431228255142594009253432546290943351302836",
+              "range": {
+                "low": 0,
+                "high": 40,
+                "isExtreme": true,
+                "side": "low"
+              },
+              "distanceFromCenter": 5,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 4165.01,
+              "depthNearBest": 82010.36,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $40 and $50 on February 17?",
+              "conditionId": "0x162d59197d924f77fc310cc597618f7b4f4da16705b5b00afb18a079e5c34af7",
+              "tokenId": "7007889366805918518750052862591576202048089838257397154018757173676521719893",
+              "range": {
+                "low": 40,
+                "high": 50,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 4186.92,
+              "depthNearBest": 83064.92,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $50 and $60 on February 17?",
+              "conditionId": "0xe997215375411bb49d386adccf9397ce3da1b4def98bdf209f80a9675ece7e53",
+              "tokenId": "37494435882343639331691167640688305104537340007143738851795604775221072420149",
+              "range": {
+                "low": 50,
+                "high": 60,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 4177.77,
+              "depthNearBest": 83159.1,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $60 and $70 on February 17?",
+              "conditionId": "0xad13d54fc16fed4d031fd4ebbb09eba423fea677e5997f261312e3c095b80021",
+              "tokenId": "84547172715137398660497512258128404486109593472966075777458238010581440290892",
+              "range": {
+                "low": 60,
+                "high": 70,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "left",
+              "bestAsk": 0.999,
+              "bestAskSize": 6274.4,
+              "depthNearBest": 86797.85,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $100 and $110 on February 17?",
+              "conditionId": "0x60a1b19ec3282f61d7c78e56778af039179199dc3d5ed5309cfff7ce061d3516",
+              "tokenId": "88106511569191864681737366133029211608541219983068577514347787759890617905771",
+              "range": {
+                "low": 100,
+                "high": 110,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 2,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 6162.98,
+              "depthNearBest": 86208.54000000001,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $110 and $120 on February 17?",
+              "conditionId": "0x07a7b728c704efb66ae7536a4e3d8e8ecbfebb6ffdc5a7489f0d14669acf5a22",
+              "tokenId": "98638348215756589346863863559508921682277746322724731942410893016566604023534",
+              "range": {
+                "low": 110,
+                "high": 120,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 3,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 4187,
+              "depthNearBest": 84717.75000000001,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be between $120 and $130 on February 17?",
+              "conditionId": "0xa60eb8a58ae763cd36fe2f517c4a6be0c03675ef7e5b80d902d64ddefe4cbae9",
+              "tokenId": "103566082492867308381062325739406648903507139712692477228905940797498126109625",
+              "range": {
+                "low": 120,
+                "high": 130,
+                "isExtreme": false
+              },
+              "distanceFromCenter": 4,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 4278.91,
+              "depthNearBest": 84968.95,
+              "paperTrade": null
+            },
+            {
+              "question": "Will the price of Solana be greater than $130 on February 17?",
+              "conditionId": "0xfaa71b7abe4feaa005e4785e2769aa481f0b7e1be535422f6a32f55a01ff79e6",
+              "tokenId": "63479249601277472574837826748158327176285238148728769879764445830638177935237",
+              "range": {
+                "low": 130,
+                "high": null,
+                "isExtreme": true,
+                "side": "high"
+              },
+              "distanceFromCenter": 5,
+              "side": "right",
+              "bestAsk": 0.999,
+              "bestAskSize": 4176.02,
+              "depthNearBest": 84207.3,
+              "paperTrade": null
+            }
+          ]
+        }
+      }
     }
   ],
   "trades": [],
