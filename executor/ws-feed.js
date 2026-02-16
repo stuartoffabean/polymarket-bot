@@ -832,13 +832,17 @@ function persistExitFailed() {
   } catch (e) { log("EXEC", `Failed to persist exit-failed.json: ${e.message}`); }
 }
 
-// v4: Escalating slippage table for auto-sell retries
+// v5: Escalating slippage table for auto-sell retries
 // Each retry accepts worse fill prices to increase fill probability
-// Retry 0: walk the book (0% extra slippage) with FOK
-// Retry 1: 5% slippage below walked price, 30s cooldown
-// Retry 2: 15% slippage (desperate exit), 30s cooldown
-const SELL_RETRY_SLIPPAGE = [0, 0.05, 0.15];
-const SELL_RETRY_COOLDOWN_MS = 30 * 1000; // 30 seconds between retries (was 3 minutes)
+// Retry 0: 3% slippage (realistic starting point for thin markets)
+// Retry 1: 10% slippage, 15s cooldown
+// Retry 2: 25% slippage (aggressive exit), 15s cooldown
+// Retry 3: 40% slippage (nuclear — last resort before permanent fail), 15s cooldown
+// v5: Start at 3% (0% always fails in thin/moving markets, wastes 30s).
+// 4 levels: 3% → 10% → 25% → 40% (nuclear). 15s cooldown (was 30s).
+// Total retry cycle: 45s (was 90s). Gets to aggressive slippage faster.
+const SELL_RETRY_SLIPPAGE = [0.03, 0.10, 0.25, 0.40];
+const SELL_RETRY_COOLDOWN_MS = 15 * 1000; // 15s between retries (was 30s — too slow when capital at risk)
 const MAX_SELL_RETRIES = SELL_RETRY_SLIPPAGE.length;
 
 async function executeSell(assetId, asset, reason) {
@@ -2828,23 +2832,40 @@ async function main() {
     setInterval(pollStalePrices, REST_POLL_INTERVAL);
   }, 15 * 1000); // first poll after 15s startup
 
-  // Fee change detection (v3 §7)
+  // Fee change detection (v5: text-only hashing to avoid dynamic HTML false positives)
   let lastKnownFees = null;
+  let lastFeeAlertAt = 0;
+  const FEE_ALERT_COOLDOWN = 24 * 60 * 60 * 1000; // suppress duplicate alerts for 24h
   async function checkFees() {
     try {
       const https = require("https");
       const feeData = await new Promise((resolve, reject) => {
-        https.get("https://docs.polymarket.com/polymarket-learn/trading/maker-rebates-program", (res) => {
+        https.get("https://docs.polymarket.com/polymarket-learn/trading/fees", (res) => {
           let data = "";
           res.on("data", (c) => data += c);
           res.on("end", () => resolve(data));
         }).on("error", reject);
       });
-      const feeHash = require("crypto").createHash("md5").update(feeData).digest("hex");
+      // v5: Strip HTML tags, normalize whitespace, extract ONLY text content.
+      // Prevents false positives from dynamic script hashes, CSS fingerprints,
+      // analytics tags, and timestamps that change every request.
+      const textOnly = feeData
+        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      const feeHash = require("crypto").createHash("md5").update(textOnly).digest("hex");
       if (lastKnownFees && feeHash !== lastKnownFees) {
-        pushAlert("FEE_CHANGE_DETECTED", null, null, null, null, 
-          "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies.");
-        log("FEES", "🚨 Fee structure change detected!");
+        if (Date.now() - lastFeeAlertAt > FEE_ALERT_COOLDOWN) {
+          pushAlert("FEE_CHANGE_DETECTED", null, null, null, null, 
+            "⚠️ Fee structure content changed \u2014 review https://docs.polymarket.com/polymarket-learn/trading/fees");
+          log("FEES", "🚨 Fee structure change detected!");
+          sendTelegramAlert("⚠️ Fee structure page content changed \u2014 review and update FEE_RATES in ws-feed.js if needed.");
+          lastFeeAlertAt = Date.now();
+        } else {
+          log("FEES", `Fee hash changed but alert suppressed (cooldown, next in ${((FEE_ALERT_COOLDOWN - (Date.now() - lastFeeAlertAt)) / 3600000).toFixed(1)}h)`);
+        }
       }
       lastKnownFees = feeHash;
     } catch (e) {
