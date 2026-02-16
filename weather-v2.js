@@ -432,12 +432,33 @@ async function scanWeatherMarkets() {
       const prices = JSON.parse(market.outcomePrices || '[]');
       const tokens = JSON.parse(market.clobTokenIds || '[]');
       
-      bucket.yesPrice = parseFloat(prices[0] || '0');
+      bucket.yesPrice = parseFloat(prices[0] || '0');  // Gamma mid/last — used as fallback only
       bucket.noPrice = parseFloat(prices[1] || '0');
       bucket.yesToken = tokens[0] || '';
       bucket.noToken = tokens[1] || '';
       bucket.marketId = market.id;
       bucket.question = market.question;
+
+      // Fetch ACTUAL executable prices from orderbook (best ask for YES, best ask for NO)
+      try {
+        if (!bucket.yesToken) throw new Error('no token');
+        const bookUrl = `https://clob.polymarket.com/book?token_id=${encodeURIComponent(bucket.yesToken)}`;
+        const book = await httpGet(bookUrl, 5000);
+        const asks = (book.asks || []).sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        const bids = (book.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        if (asks.length > 0) {
+          bucket.yesAsk = parseFloat(asks[0].price);
+          bucket.yesAskDepth = parseFloat(asks[0].size);
+        }
+        if (bids.length > 0) {
+          bucket.yesBid = parseFloat(bids[0].price);
+        }
+        // NO executable price = 1 - YES bid (buying NO = selling YES)
+        bucket.noAsk = bids.length > 0 ? 1 - parseFloat(bids[0].price) : null;
+        await sleep(100); // rate limit CLOB
+      } catch (e) {
+        console.log(`   ⚠️  Orderbook fetch failed for ${bucket.key}: ${e.message}`);
+      }
       buckets.push(bucket);
     }
     
@@ -446,22 +467,39 @@ async function scanWeatherMarkets() {
       forecast.highTemp, buckets, forecast.unit, hoursUntil
     );
     
-    // 7. Compare forecast vs market prices → find edges
+    // 7. Compare forecast vs EXECUTABLE market prices → find edges
     console.log(`   Buckets:`);
     for (const bucket of buckets) {
       const forecastProb = probs[bucket.key] || 0;
-      const marketPrice = bucket.yesPrice;
-      const edge = forecastProb - marketPrice;
       
-      const edgeStr = edge >= 0 ? `+${(edge * 100).toFixed(1)}%` : `${(edge * 100).toFixed(1)}%`;
-      const marker = Math.abs(edge) >= MIN_EDGE ? '🎯' : '  ';
-      console.log(`   ${marker} ${bucket.key}${forecast.unit}: forecast=${(forecastProb * 100).toFixed(1)}% market=${(marketPrice * 100).toFixed(1)}% edge=${edgeStr}`);
+      // Use executable ask price (what we'd actually pay), fallback to Gamma mid
+      const yesExecPrice = bucket.yesAsk || bucket.yesPrice;
+      const noExecPrice = bucket.noAsk || (1 - bucket.yesPrice);
+      const gammaMid = bucket.yesPrice;
+      
+      // Edge for BUY_YES: forecast - ask price (what we'd pay)
+      const yesEdge = forecastProb - yesExecPrice;
+      // Edge for BUY_NO: (1 - forecast) - noAsk
+      const noEdge = (1 - forecastProb) - noExecPrice;
+      
+      const bestEdge = Math.max(yesEdge, noEdge);
+      const edgeStr = yesEdge >= 0 ? `+${(yesEdge * 100).toFixed(1)}%` : `${(yesEdge * 100).toFixed(1)}%`;
+      const marker = Math.abs(bestEdge) >= MIN_EDGE ? '🎯' : '  ';
+      const bookTag = bucket.yesAsk ? `ask=${(yesExecPrice * 100).toFixed(1)}¢` : 'no-book';
+      console.log(`   ${marker} ${bucket.key}${forecast.unit}: forecast=${(forecastProb * 100).toFixed(1)}% mid=${(gammaMid * 100).toFixed(1)}% ${bookTag} edge=${edgeStr}`);
       
       const analysis = {
         city, date, bucket: bucket.key, unit: forecast.unit,
         forecastHigh: forecast.highTemp,
         forecastProb: Math.round(forecastProb * 1000) / 1000,
-        marketPrice, edge: Math.round(edge * 1000) / 1000,
+        marketPrice: gammaMid,
+        execPrice: yesExecPrice,
+        execPriceNo: noExecPrice,
+        yesAsk: bucket.yesAsk || null,
+        yesBid: bucket.yesBid || null,
+        yesAskDepth: bucket.yesAskDepth || null,
+        edge: Math.round(yesEdge * 1000) / 1000,
+        execEdge: Math.round(yesEdge * 1000) / 1000, // edge vs executable price
         hoursUntil: Math.round(hoursUntil),
         yesToken: bucket.yesToken,
         noToken: bucket.noToken,
@@ -470,22 +508,23 @@ async function scanWeatherMarkets() {
       };
       allAnalysis.push(analysis);
       
-      // Buy YES if forecast prob >> market price (underpriced YES)
-      if (edge >= MIN_EDGE && marketPrice < 0.85) {
+      // Buy YES if forecast prob >> executable ask (real edge after slippage)
+      if (yesEdge >= MIN_EDGE && yesExecPrice < 0.85) {
         opportunities.push({
           ...analysis,
           action: 'BUY_YES',
-          reason: `Forecast ${(forecastProb * 100).toFixed(0)}% vs market ${(marketPrice * 100).toFixed(0)}% = ${(edge * 100).toFixed(0)}% edge`,
+          edge: Math.round(yesEdge * 1000) / 1000,
+          reason: `Forecast ${(forecastProb * 100).toFixed(0)}% vs ask ${(yesExecPrice * 100).toFixed(0)}¢ = ${(yesEdge * 100).toFixed(0)}% edge (mid was ${(gammaMid * 100).toFixed(0)}¢)`,
         });
       }
       
-      // Buy NO if market overprices YES (forecast prob << market price)
-      if (edge <= -MIN_EDGE && marketPrice > 0.15) {
+      // Buy NO if YES overpriced vs executable NO price
+      if (noEdge >= MIN_EDGE && noExecPrice < 0.85) {
         opportunities.push({
           ...analysis,
           action: 'BUY_NO',
-          edge: -edge, // flip to positive for NO side
-          reason: `YES overpriced: forecast ${(forecastProb * 100).toFixed(0)}% vs market ${(marketPrice * 100).toFixed(0)}% = ${(-edge * 100).toFixed(0)}% NO edge`,
+          edge: Math.round(noEdge * 1000) / 1000,
+          reason: `NO forecast ${((1 - forecastProb) * 100).toFixed(0)}% vs NO ask ${(noExecPrice * 100).toFixed(0)}¢ = ${(noEdge * 100).toFixed(0)}% edge (mid was ${((1 - gammaMid) * 100).toFixed(0)}¢)`,
         });
       }
     }
