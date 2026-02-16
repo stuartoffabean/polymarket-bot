@@ -823,6 +823,15 @@ function persistExitFailed() {
   } catch (e) { log("EXEC", `Failed to persist exit-failed.json: ${e.message}`); }
 }
 
+// v4: Escalating slippage table for auto-sell retries
+// Each retry accepts worse fill prices to increase fill probability
+// Retry 0: walk the book (0% extra slippage) with FOK
+// Retry 1: 5% slippage below walked price, 30s cooldown
+// Retry 2: 15% slippage (desperate exit), 30s cooldown
+const SELL_RETRY_SLIPPAGE = [0, 0.05, 0.15];
+const SELL_RETRY_COOLDOWN_MS = 30 * 1000; // 30 seconds between retries (was 3 minutes)
+const MAX_SELL_RETRIES = SELL_RETRY_SLIPPAGE.length;
+
 async function executeSell(assetId, asset, reason) {
   // STARTUP GRACE PERIOD — don't auto-execute for 60s after system becomes ready
   // This prevents false triggers from stale positions that get re-synced on restart
@@ -837,43 +846,38 @@ async function executeSell(assetId, asset, reason) {
   }
   sellLocks.add(assetId);
 
-  log("EXEC", `🚨 AUTO-SELL: ${asset.outcome} ${asset.size} shares (${reason})`);
+  // Determine current retry attempt and slippage
+  if (!asset._sellRetries) asset._sellRetries = 0;
+  const attempt = asset._sellRetries;
+  const slippagePct = SELL_RETRY_SLIPPAGE[Math.min(attempt, SELL_RETRY_SLIPPAGE.length - 1)];
+  
+  log("EXEC", `🚨 AUTO-SELL: ${asset.outcome} ${asset.size} shares (${reason}) — attempt ${attempt + 1}/${MAX_SELL_RETRIES}, slippage ${(slippagePct * 100).toFixed(0)}%, FOK`);
   try {
     const result = await httpPost("/market-sell", {
       tokenID: assetId,
       size: asset.size,
+      orderType: "FOK",
+      slippagePct: slippagePct,
+      reason: reason,
+      source: "ws-feed-auto",
+      strategy: getStrategy(assetId),
     });
     log("EXEC", `Sell result: ${JSON.stringify(result)}`);
 
     // ── FILL VERIFICATION ──
-    // The executor posts a limit order at best bid. CLOB returns status:
-    //   "matched" = filled, "live" = posted but unfilled, others = failed
-    // Only treat as sold if the order actually filled.
-    const statusField = result.status || result.orderStatus || result.order_status || "";
-    const orderStatus = typeof statusField === "string" ? statusField.toLowerCase() : String(statusField).toLowerCase();
-    const isFilled = orderStatus === "matched" || orderStatus === "filled";
+    // v4: executor now returns fillStatus directly, but also check order status
+    const isFilled = result.fillStatus === "filled" || 
+      (result.status || "").toLowerCase() === "matched" || 
+      (result.status || "").toLowerCase() === "filled";
 
     if (!isFilled) {
-      // Order posted but NOT filled — cancel it and set a cooldown
-      log("EXEC", `⚠️ SELL NOT FILLED (status: ${orderStatus}) for ${assetId.slice(0,20)} — cancelling unfilled order`);
-      const orderId = result.orderID || result.id || result.order_id;
-      if (orderId) {
-        try {
-          await httpPost("/cancel-order", { orderID: orderId });
-          log("EXEC", `Cancelled unfilled sell order ${orderId} for ${assetId.slice(0,20)}`);
-        } catch (cancelErr) {
-          log("EXEC", `⚠️ Failed to cancel unfilled order: ${cancelErr.message}`);
-        }
-      }
-      // Track retry count — give up after 3 attempts to prevent infinite cycling
-      if (!asset._sellRetries) asset._sellRetries = 0;
+      // FOK order was killed (no fill) — no dangling orders to cancel
       asset._sellRetries++;
-      const MAX_SELL_RETRIES = 3;
+      
       if (asset._sellRetries >= MAX_SELL_RETRIES) {
-        // Exhausted retries — mark as exit_failed, stop retrying, alert operator
-        // PERSISTED TO DISK — survives restarts (fixes duplicate stop-loss bug)
+        // Exhausted all retry levels — mark as exit_failed permanently
         asset._exitFailed = true;
-        asset._sellCooldownUntil = Infinity; // permanent block (in-memory backup)
+        asset._sellCooldownUntil = Infinity;
         exitFailed.set(assetId, {
           timestamp: Date.now(),
           isoTime: new Date().toISOString(),
@@ -883,25 +887,32 @@ async function executeSell(assetId, asset, reason) {
           outcome: asset.outcome,
           size: asset.size,
           avgPrice: asset.avgPrice,
+          lastSlippage: slippagePct,
+          walkPrice: result.walkPrice,
+          bestBid: result.bestBid,
         });
         persistExitFailed();
-        const failMsg = `${reason}: SELL PERMANENTLY FAILED after ${MAX_SELL_RETRIES} attempts (no bid liquidity). Position stuck: ${asset.size} shares @ ${asset.avgPrice}. Manual intervention needed.`;
+        const failMsg = `${reason}: SELL PERMANENTLY FAILED after ${MAX_SELL_RETRIES} attempts (slippage up to ${(slippagePct*100).toFixed(0)}%). Position stuck: ${asset.size} shares @ ${asset.avgPrice}. bestBid=${result.bestBid}, depth=${result.availableDepth}. Manual intervention needed.`;
         log("EXEC", `🚨 ${failMsg}`);
         pushAlert("SELL_FAILED", assetId, asset, null, null, failMsg);
-        sendTelegramAlert(`🚨 EXIT FAILED: ${asset._marketName || assetId.slice(0,20)} — ${asset.size} shares stuck after ${MAX_SELL_RETRIES} sell attempts. No bid liquidity. Needs manual exit or wait for resolution.`);
+        sendTelegramAlert(`🚨 EXIT FAILED: ${asset._marketName || assetId.slice(0,20)} — ${asset.size} shares stuck after ${MAX_SELL_RETRIES} sell attempts (up to ${(slippagePct*100).toFixed(0)}% slippage). bestBid=${result.bestBid}. Needs manual exit or wait for resolution.`);
         return;
       }
-      // 3-minute cooldown between retries (was 10min — too slow)
-      asset._sellCooldownUntil = Date.now() + 3 * 60 * 1000;
+      
+      // Short cooldown (30s) before next attempt with higher slippage
+      const nextSlippage = SELL_RETRY_SLIPPAGE[Math.min(asset._sellRetries, SELL_RETRY_SLIPPAGE.length - 1)];
+      asset._sellCooldownUntil = Date.now() + SELL_RETRY_COOLDOWN_MS;
       pushAlert("SELL_FAILED", assetId, asset, null, null, 
-        `${reason}: Order posted but NOT filled (status: ${orderStatus}). Retry ${asset._sellRetries}/${MAX_SELL_RETRIES}, cooldown 3min.`);
-      return; // Don't remove from tracking — position still exists
+        `${reason}: FOK not filled (bestBid=${result.bestBid}, walked=${result.walkPrice}, slip=${(slippagePct*100).toFixed(0)}%). ` +
+        `Retry ${asset._sellRetries}/${MAX_SELL_RETRIES} in 30s with ${(nextSlippage*100).toFixed(0)}% slippage.`);
+      return;
     }
-    // Reset retry counter on successful fill
+    
+    // ── FILLED SUCCESSFULLY ──
     asset._sellRetries = 0;
 
     pushAlert("SELL_EXECUTED", assetId, asset, result.executedPrice, null, 
-      `${reason}: Sold ${asset.size} @ ${result.executedPrice}`);
+      `${reason}: Sold ${asset.size} @ ${result.executedPrice} (FOK, slip=${(slippagePct*100).toFixed(0)}%)`);
     
     // EXIT LEDGER — log every exit with full context
     // Wrapped in its own try/catch so logging failures NEVER prevent position cleanup
@@ -928,8 +939,8 @@ async function executeSell(assetId, asset, reason) {
         realizedPnl: proceeds - costBasis,
         strategy: getStrategy(assetId),
         notes: reason === "TRAILING_STOP" 
-          ? `TrailingFloor=${asset._trailingFloor?.toFixed(4)}, HWM=+${(asset._highWaterPnlPct*100)?.toFixed(1)}%, Entry=${asset.avgPrice}`
-          : `SL=${stopLossVal}, TP=${takeProfitVal}, Entry=${asset.avgPrice}`,
+          ? `FOK fill, slip=${(slippagePct*100).toFixed(0)}%, TrailingFloor=${asset._trailingFloor?.toFixed(4)}, HWM=+${(asset._highWaterPnlPct*100)?.toFixed(1)}%, Entry=${asset.avgPrice}`
+          : `FOK fill, slip=${(slippagePct*100).toFixed(0)}%, SL=${stopLossVal}, TP=${takeProfitVal}, Entry=${asset.avgPrice}`,
       });
     } catch (logErr) {
       log("EXEC", `⚠️ Exit ledger logging failed (non-fatal): ${logErr.message}`);
@@ -956,7 +967,28 @@ async function executeSell(assetId, asset, reason) {
     log("EXEC", `Removed sold position from tracking: ${assetId.slice(0,20)} (blocked from re-sync for 2h)`);
   } catch (e) {
     log("EXEC", `❌ Auto-sell FAILED: ${e.message}`);
-    pushAlert("SELL_FAILED", assetId, asset, null, null, `${reason} sell failed: ${e.message}`);
+    // Network/API errors: use same retry/cooldown logic
+    asset._sellRetries = (asset._sellRetries || 0) + 1;
+    if (asset._sellRetries >= MAX_SELL_RETRIES) {
+      asset._exitFailed = true;
+      asset._sellCooldownUntil = Infinity;
+      exitFailed.set(assetId, {
+        timestamp: Date.now(),
+        isoTime: new Date().toISOString(),
+        retries: MAX_SELL_RETRIES,
+        reason,
+        market: asset._marketName || asset._market || asset.market || `Asset ${assetId.slice(0,20)}`,
+        outcome: asset.outcome,
+        size: asset.size,
+        avgPrice: asset.avgPrice,
+        error: e.message,
+      });
+      persistExitFailed();
+      sendTelegramAlert(`🚨 EXIT FAILED (error): ${asset._marketName || assetId.slice(0,20)} — ${e.message}. Manual intervention needed.`);
+    } else {
+      asset._sellCooldownUntil = Date.now() + SELL_RETRY_COOLDOWN_MS;
+    }
+    pushAlert("SELL_FAILED", assetId, asset, null, null, `${reason} sell error: ${e.message}. Retry ${asset._sellRetries}/${MAX_SELL_RETRIES}`);
   } finally {
     // Clear lock after sell completes (success or failure)
     sellLocks.delete(assetId);
