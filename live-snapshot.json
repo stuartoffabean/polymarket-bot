@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-16T21:15:41.644Z",
+  "timestamp": "2026-02-16T21:30:09.325Z",
   "portfolio": {
     "trackedPositions": 0,
     "portfolioValue": 336.18627399999997,
@@ -25,7 +25,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 22858.563251053
+    "uptime": 23727.15617507
   },
   "positions": [],
   "orders": [],
@@ -1866,7 +1866,7 @@
       },
       {
         "asset_id": "18423128025607650370255365819345064527950959098585299362802520788185787389322",
-        "market": "Will the highest temperature in Seattle be between 40-41°F on February 16?",
+        "market": "Will the highest temperature in Seattle be between 40-41��F on February 16?",
         "outcome": "Yes",
         "totalBought": 12,
         "totalSold": 12,
