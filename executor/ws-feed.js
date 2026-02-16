@@ -607,6 +607,12 @@ async function handleDisconnect() {
   try {
     const result = await httpDelete("/orders");
     log("WS", `Cancel all orders result: ${JSON.stringify(result)}`);
+    // v6: Clear tracked trailing limit order IDs (all orders just got cancelled)
+    for (const [, asset] of subscribedAssets) {
+      if (asset._trailingOrderId) {
+        asset._trailingOrderId = null;
+      }
+    }
     const now = Date.now();
     if (now - lastDisconnectAlertMs > DISCONNECT_ALERT_COOLDOWN) {
       pushAlert("WS_DISCONNECT", null, null, null, null, "Cancelled all open orders on disconnect");
@@ -700,6 +706,8 @@ function checkTriggers(assetId, asset) {
   // ── TRAILING STOP ──
   // When position reaches +20% unrealized, ratchet stop-loss to breakeven.
   // Stop trails 20 points below the high water mark and never goes back down.
+  // v6: Pre-places GTC limit sell at floor price on CLOB. If price crashes through
+  // faster than our WS can react, the order is already on the book and fills.
   const TRAILING_ACTIVATION = 0.20;  // activate at +20%
   const TRAILING_DISTANCE  = 0.20;   // trail 20 points below HWM
   
@@ -713,9 +721,6 @@ function checkTriggers(assetId, asset) {
     // Calculate trailing stop as a loss percentage from entry
     // HWM=0.20 → trailStop=0 (breakeven), HWM=0.40 → trailStop=0.20 (lock +20%)
     const trailStopPnl = asset._highWaterPnlPct - TRAILING_DISTANCE;
-    // Convert P&L threshold to a stop-loss value (stopLoss is a positive loss %)
-    // If trailStopPnl=0 → stopLoss=0 (sell if ANY loss), trailStopPnl=0.20 → stopLoss=-0.20 (sell if drops below +20%)
-    // We express this as a price floor instead
     const trailFloorPrice = asset.avgPrice * (1 + trailStopPnl);
     
     // Only ratchet UP, never down
@@ -730,6 +735,21 @@ function checkTriggers(assetId, asset) {
       } else if (trailFloorPrice > oldFloor * 1.02) { // only log if floor moved >2% to avoid spam
         log("TRAIL", `📈 TRAILING STOP RATCHETED: ${asset.market || assetId.slice(0,20)} — floor=${trailFloorPrice.toFixed(4)} (was ${oldFloor.toFixed(4)}) at +${(pnlPct*100).toFixed(1)}%`);
       }
+      
+      // v6: Pre-place GTC limit sell at floor price on CLOB
+      // This order sits on the book and fills even if our WS lags or crashes
+      if (autoExecuteEnabled && !circuitBreakerTripped && asset.size > 0) {
+        placeTrailingLimitOrder(assetId, asset, trailFloorPrice, oldFloor);
+      }
+    }
+    
+    // v6: Re-place trailing limit order if floor exists but order was lost (disconnect/restart)
+    if (asset._trailingFloor && !asset._trailingOrderId && !asset._trailingStopTriggered 
+        && !asset._trailingOrderPending && autoExecuteEnabled && !circuitBreakerTripped && asset.size > 0) {
+      asset._trailingOrderPending = true; // prevent duplicate placement from rapid ticks
+      placeTrailingLimitOrder(assetId, asset, asset._trailingFloor, null).finally(() => {
+        asset._trailingOrderPending = false;
+      });
     }
     
     // Check if price has fallen through the trailing floor
@@ -740,6 +760,12 @@ function checkTriggers(assetId, asset) {
       pushAlert("TRAILING_STOP", assetId, asset, currentPrice, pnlPct,
         `AUTO-SELLING [${strat}] — Floor $${asset._trailingFloor.toFixed(4)} breached. Locked +${lockedPnl}% from HWM +${(asset._highWaterPnlPct*100).toFixed(1)}%`);
       if (autoExecuteEnabled && !circuitBreakerTripped) {
+        // v6: Cancel pre-placed limit order before FOK market sell
+        // (limit order may have already filled — cancel is best-effort)
+        if (asset._trailingOrderId) {
+          httpPost("/cancel-order", { orderID: asset._trailingOrderId }).catch(() => {});
+          asset._trailingOrderId = null;
+        }
         executeSell(assetId, asset, "TRAILING_STOP");
         return; // don't check other triggers after trailing stop fires
       }
@@ -830,6 +856,58 @@ function persistExitFailed() {
     const obj = Object.fromEntries(exitFailed);
     fs.writeFileSync(EXIT_FAILED_FILE, JSON.stringify(obj, null, 2));
   } catch (e) { log("EXEC", `Failed to persist exit-failed.json: ${e.message}`); }
+}
+
+// v6: Pre-place GTC limit sell at trailing stop floor price
+// When trailing stop activates/ratchets, we place a GTC SELL limit order at the floor price.
+// This order sits on the CLOB order book. If price crashes through the floor faster than
+// our WS feed can detect + react, the order fills passively against incoming bids.
+// Eliminates the detection→execution latency that cost us on the Dallas position
+// (76¢ → 53¢ in 38s, sell attempted at 53¢ instead of floor 63.8¢).
+async function placeTrailingLimitOrder(assetId, asset, floorPrice, oldFloor) {
+  try {
+    // Cancel previous trailing limit order if it exists
+    if (asset._trailingOrderId) {
+      try {
+        await httpPost("/cancel-order", { orderID: asset._trailingOrderId });
+        log("TRAIL", `Cancelled old trailing limit order ${asset._trailingOrderId.slice(0,16)}`);
+      } catch (e) {
+        log("TRAIL", `Failed to cancel old trailing order: ${e.message} (may have filled or expired)`);
+      }
+      asset._trailingOrderId = null;
+    }
+
+    // Round floor price to valid tick size (0.01 or 0.001)
+    // Use 0.01 as default — Polymarket standard tick
+    const tickSize = 0.01;
+    const roundedFloor = Math.floor(floorPrice / tickSize) * tickSize;
+    
+    if (roundedFloor <= 0 || roundedFloor >= 1) {
+      log("TRAIL", `⚠️ Invalid trailing floor price ${roundedFloor} — skipping limit order`);
+      return;
+    }
+
+    const result = await httpPost("/order", {
+      tokenID: assetId,
+      price: roundedFloor,
+      size: asset.size,
+      side: "SELL",
+      orderType: "GTC",
+      skipRiskCheck: true,  // ws-feed internal — bypass risk gates
+      strategy: getStrategy(assetId) || "trailing-stop",
+    });
+
+    const orderID = result.orderID || result.order_id || result.id;
+    if (orderID) {
+      asset._trailingOrderId = orderID;
+      log("TRAIL", `📋 PRE-PLACED trailing limit sell: ${asset.size} shares @ ${roundedFloor.toFixed(4)} (orderID=${orderID.slice(0,16)})`);
+    } else {
+      log("TRAIL", `⚠️ Trailing limit order placed but no orderID returned: ${JSON.stringify(result).slice(0,200)}`);
+    }
+  } catch (e) {
+    log("TRAIL", `⚠️ Failed to place trailing limit order: ${e.message}`);
+    // Non-fatal — the reactive FOK sell still works as backup
+  }
 }
 
 // v5: Escalating slippage table for auto-sell retries
@@ -1389,6 +1467,7 @@ async function apiHandler(req, res) {
           stopLoss: asset.stopLoss || DEFAULT_STOP_LOSS,
           takeProfit: asset.takeProfit || DEFAULT_TAKE_PROFIT,
           trailingFloor: asset._trailingFloor || null,
+          trailingOrderId: asset._trailingOrderId || null,
           highWaterPnl: asset._highWaterPnlPct ? (asset._highWaterPnlPct * 100).toFixed(1) + "%" : null,
           lastUpdate: asset.lastUpdate,
         };
