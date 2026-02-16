@@ -562,8 +562,13 @@ async function scanWeatherMarkets() {
       unit: opp.unit,
       action: opp.action,
       forecastProb: opp.forecastProb,
-      marketPrice: opp.marketPrice,
-      edge: opp.edge,
+      marketPrice: opp.marketPrice,       // Gamma mid/last (reference only)
+      execPrice: opp.execPrice || null,    // Actual orderbook ask (what we'd pay)
+      execPriceNo: opp.execPriceNo || null,
+      yesAsk: opp.yesAsk || null,
+      yesBid: opp.yesBid || null,
+      yesAskDepth: opp.yesAskDepth || null,
+      edge: opp.edge,                     // Edge vs executable price
       forecastHigh: opp.forecastHigh,
       hoursUntil: opp.hoursUntil,
       yesToken: opp.yesToken,
