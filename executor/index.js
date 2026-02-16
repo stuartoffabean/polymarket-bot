@@ -66,6 +66,17 @@ const RISK_MAX_TOTAL_DIRECTIONAL_PCT = 0.60; // Max 60% of bankroll in manual po
 // === FEATURE 2: ENTRY QUALITY GATE ===
 const ENTRY_MAX_PRICE_LONG_HORIZON = 0.85;   // No manual entries above 85¢ unless <24h to resolution
 
+// === FEATURE 4: THESIS REQUIRED GATE (2026-02-16 Meta-Analysis Fix) ===
+// Root cause: $43 of $86 total losses from scanner-generated trades with ZERO research.
+// Fix: No BUY order executes without a thesis on file. Forces research before capital deployment.
+const THESIS_REQUIRED = true;
+
+// === FEATURE 5: LOTTERY TICKET BAN (2026-02-16 Meta-Analysis Fix) ===
+// Root cause: Spray-and-pray lottery tickets (<5¢) create false confidence from lucky wins.
+// At our accuracy level, <5% implied probability events are pure gambling.
+const LOTTERY_MIN_PRICE = 0.05;            // Block entries below 5¢
+const MIN_ORDER_VALUE = 2.00;              // Block orders under $2 (execution cycle waste at current scale)
+
 // === SHARED: Polymarket Data API Position Fetcher ===
 // Single source of truth for all position queries. Uses data-api.polymarket.com
 // which returns ACTUAL on-chain positions (not reconstructed from trade history).
@@ -782,6 +793,59 @@ async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts
       });
     } else {
       checks.push({ check: "DAILY_CONVICTION_BUDGET", status: "OK", deployed: `$${budget.deployed.toFixed(2)}/$${budgetLimit.toFixed(2)}`, remaining: `$${(budgetLimit - budget.deployed - orderValue).toFixed(2)}` });
+    }
+  }
+
+  // === CHECK 3.6: Lottery ticket ban (no entries < 5¢) ===
+  // Rationale: <5¢ = <5% implied probability. Our scanners cannot predict these.
+  // XRP +$10.37 and SOL $50-60 +$12.03 were LUCK, not edge. See LESSONS.md 2026-02-16.
+  if (!isAutoStrategy && price < LOTTERY_MIN_PRICE) {
+    blocked = true;
+    checks.push({
+      check: "LOTTERY_BAN",
+      status: "BLOCKED",
+      detail: `Entry price ${price.toFixed(4)} is below ${LOTTERY_MIN_PRICE} (${(LOTTERY_MIN_PRICE * 100).toFixed(0)}¢). Lottery tickets banned — our models lack precision for <5% probability events. Build a quantitative model first.`,
+    });
+  } else if (!isAutoStrategy) {
+    checks.push({ check: "LOTTERY_BAN", status: "OK", price: price });
+  }
+
+  // === CHECK 3.7: Minimum order value ($2 floor) ===
+  // Rationale: At $358 scale, sub-$2 trades are execution cycle waste.
+  // 19 weather trades averaging $5.45 each proved that many small bad trades = death by a thousand cuts.
+  if (!isAutoStrategy && orderValue < MIN_ORDER_VALUE) {
+    blocked = true;
+    checks.push({
+      check: "MIN_ORDER_VALUE",
+      status: "BLOCKED",
+      detail: `Order value $${orderValue.toFixed(2)} is below minimum $${MIN_ORDER_VALUE.toFixed(2)}. At current scale, sub-$2 trades waste execution cycles. Size up or skip.`,
+    });
+  } else if (!isAutoStrategy) {
+    checks.push({ check: "MIN_ORDER_VALUE", status: "OK", orderValue: "$" + orderValue.toFixed(2) });
+  }
+
+  // === CHECK 3.8: Thesis required (no thesis = no trade) ===
+  // THE #1 meta-failure: scanner output treated as trade signal without verification.
+  // $43 of $86 total realized losses trace to trades with ZERO independent research.
+  // This gate forces: write a thesis (POST /thesis) BEFORE placing a BUY order.
+  // Exception: if opts.thesis is provided inline (e.g., from /execute-opportunity fast path),
+  // that satisfies the requirement — the caller already validated thesis presence.
+  if (THESIS_REQUIRED && !isAutoStrategy) {
+    const savedThesis = loadThesis(tokenID);
+    const inlineThesis = opts.thesis || null; // Fast-path passes thesis inline
+    if (!savedThesis && !inlineThesis) {
+      blocked = true;
+      checks.push({
+        check: "THESIS_REQUIRED",
+        status: "BLOCKED",
+        detail: `No thesis found for token ${tokenID.slice(0, 20)}. Every trade must answer: "Why is the market wrong and I'm right?" Submit thesis via POST /thesis first, then retry order. Scanner output is RESEARCH INPUT, not a trade signal.`,
+        howToFix: "POST /thesis with { tokenID, market, thesis, invalidationConditions, expectedResolution, catalyst }",
+      });
+    } else {
+      const source = savedThesis ? "saved" : "inline";
+      const thesisText = savedThesis?.thesis || inlineThesis;
+      const ageHours = savedThesis ? Math.round((Date.now() - new Date(savedThesis.timestamp).getTime()) / 3600000) : 0;
+      checks.push({ check: "THESIS_REQUIRED", status: "OK", source, thesis: thesisText?.slice(0, 80), ageHours });
     }
   }
 
@@ -1913,6 +1977,7 @@ async function handler(req, res) {
         hoursToResolution: hoursToResolution != null ? parseFloat(hoursToResolution) : null,
         conditionId: body.conditionId || null,
         slug: slug || null,
+        thesis: thesis, // Pass inline thesis so THESIS_REQUIRED gate accepts it
       };
       const riskResult = await preTradeRiskCheck(tokenID, parseFloat(price), parseFloat(size), side, false, riskOpts);
       
