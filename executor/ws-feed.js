@@ -1292,6 +1292,11 @@ async function syncPositions() {
       }
       
       const existing = subscribedAssets.get(pos.asset_id) || {};
+      // Determine if TP was explicitly set (not default)
+      const persistedTP = alerts.positions?.[pos.asset_id]?.takeProfit;
+      const effectiveTP = persistedTP || existing.takeProfit || DEFAULT_TAKE_PROFIT;
+      const tpWasSet = existing._tpExplicitlySet || (persistedTP != null && persistedTP !== DEFAULT_TAKE_PROFIT);
+      
       subscribedAssets.set(pos.asset_id, {
         ...existing,
         market: pos.market,
@@ -1300,10 +1305,12 @@ async function syncPositions() {
         size: pos.size,
         totalCost: pos.totalCost,
         stopLoss: alerts.positions?.[pos.asset_id]?.stopLoss || existing.stopLoss || DEFAULT_STOP_LOSS,
-        takeProfit: alerts.positions?.[pos.asset_id]?.takeProfit || existing.takeProfit || DEFAULT_TAKE_PROFIT,
+        takeProfit: effectiveTP,
         _stopLossTriggered: existing._stopLossTriggered || false,
         _takeProfitTriggered: existing._takeProfitTriggered || false,
         _singleLossAlerted: existing._singleLossAlerted || false,
+        _trackedSince: existing._trackedSince || Date.now(),  // TP enforcement: when position was first seen
+        _tpExplicitlySet: tpWasSet,                           // TP enforcement: was TP consciously set?
         // Restore exit-failed state from persisted file (survives restarts)
         _exitFailed: existing._exitFailed || exitFailed.has(pos.asset_id),
         _sellCooldownUntil: existing._sellCooldownUntil || (exitFailed.has(pos.asset_id) ? Infinity : undefined),
@@ -1541,7 +1548,10 @@ async function apiHandler(req, res) {
         const asset = subscribedAssets.get(body.assetId);
         if (!asset) return send(res, 404, { error: "Asset not tracked" });
         if (body.stopLoss !== undefined) asset.stopLoss = parseFloat(body.stopLoss);
-        if (body.takeProfit !== undefined) asset.takeProfit = parseFloat(body.takeProfit);
+        if (body.takeProfit !== undefined) {
+          asset.takeProfit = parseFloat(body.takeProfit);
+          asset._tpExplicitlySet = true; // TP enforcement: mark as consciously set
+        }
         // Reset trigger flags if thresholds changed
         asset._stopLossTriggered = false;
         asset._takeProfitTriggered = false;
@@ -1572,6 +1582,8 @@ async function apiHandler(req, res) {
           stopLoss: stopLoss ? parseFloat(stopLoss) : DEFAULT_STOP_LOSS,
           takeProfit: takeProfit ? parseFloat(takeProfit) : DEFAULT_TAKE_PROFIT,
           _manual: true,
+          _trackedSince: Date.now(),
+          _tpExplicitlySet: !!takeProfit, // TP enforcement: set if caller provided explicit TP
           addedAt: new Date().toISOString(),
         };
 
@@ -2619,6 +2631,44 @@ async function pollStalePrices() {
   }
 }
 
+// === TAKE-PROFIT MANDATORY ENFORCEMENT ===
+// Pattern 3 from LESSONS.md: TP treated as optional → Bad Bunny rode +22% back to -31%.
+// Every 2 minutes, check all non-auto positions. If TP still at default 2min after
+// position was first tracked, alert Telegram once. Forces conscious TP setting on every trade.
+const TP_CHECK_INTERVAL = 2 * 60 * 1000;    // check every 2 min
+const TP_GRACE_PERIOD = 2 * 60 * 1000;      // 2 min grace after first tracking
+const TP_AUTO_STRATEGIES = new Set(["weather", "resolution", "arb"]); // auto-strategies exempt (use defaults by design)
+const tpAlerted = new Set(); // assetIds already alerted (prevent spam)
+
+function checkTakeProfitEnforcement() {
+  if (!systemReady) return;
+  const now = Date.now();
+  
+  for (const [assetId, asset] of subscribedAssets) {
+    // Skip auto-strategy positions — they use defaults by design
+    const strat = getStrategy(assetId);
+    if (TP_AUTO_STRATEGIES.has(strat)) continue;
+    
+    // Skip if already alerted
+    if (tpAlerted.has(assetId)) continue;
+    
+    // Skip if position hasn't been tracked long enough
+    if (!asset._trackedSince || (now - asset._trackedSince) < TP_GRACE_PERIOD) continue;
+    
+    // Check if TP is still at default (never explicitly set)
+    if (!asset._tpExplicitlySet) {
+      const tp = asset.takeProfit || DEFAULT_TAKE_PROFIT;
+      if (tp === DEFAULT_TAKE_PROFIT) {
+        tpAlerted.add(assetId);
+        const market = asset.market || asset._marketName || `Asset ${assetId.slice(0, 20)}`;
+        const msg = `⚠️ <b>TAKE-PROFIT NOT SET</b>\n\nMarket: ${market}\nOutcome: ${asset.outcome || "?"}\nEntry: $${asset.avgPrice?.toFixed(4)}\nSize: ${asset.size} shares\nStrategy: ${strat}\n\nUsing default TP: +${(DEFAULT_TAKE_PROFIT * 100).toFixed(0)}%. Set explicit TP via /set-trigger or pm_trigger.`;
+        log("TP-CHECK", `⚠️ No explicit TP on ${market} (${strat}) — alerting`);
+        sendTelegramAlert(msg);
+      }
+    }
+  }
+}
+
 // === DAILY RESET ===
 function scheduleDailyReset() {
   const now = new Date();
@@ -2741,7 +2791,7 @@ async function main() {
   log("INIT", `Daily drawdown limit: ${MAX_DAILY_DRAWDOWN * 100}%`);
   log("INIT", `Survival: <$${SURVIVAL_FLOOR} | Emergency: <$${EMERGENCY_FLOOR}`);
   log("INIT", `Auto-execute: ${autoExecuteEnabled}${!safetyOk ? " (DISABLED by safety test)" : ""}`);
-  log("INIT", `Arb scanner: every ${ARB_SCAN_INTERVAL / 60000}min | Resolving: every ${RESOLVING_SCAN_INTERVAL / 60000}min | Resolution hunter: every ${RESOLUTION_HUNTER_INTERVAL / 60000}min | Weather executor: every ${WEATHER_EXECUTOR_INTERVAL / 60000}min`);
+  log("INIT", `Arb scanner: every ${ARB_SCAN_INTERVAL / 60000}min | Resolving: every ${RESOLVING_SCAN_INTERVAL / 60000}min | Resolution hunter: every ${RESOLUTION_HUNTER_INTERVAL / 60000}min | Weather executor: every ${WEATHER_EXECUTOR_INTERVAL / 60000}min | TP enforcement: every ${TP_CHECK_INTERVAL / 60000}min`);
   log("INIT", `Telegram alerts: ${TELEGRAM_BOT_TOKEN ? "ENABLED" : "DISABLED (set TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID)"}`);
   log("INIT", `PnL history: every ${PNL_RECORD_INTERVAL / 60000}min → ${PNL_HISTORY_FILE}`);
   console.log();
@@ -2806,6 +2856,11 @@ async function main() {
 
   // PnL history recording — every 5 min
   setInterval(recordPnlSnapshot, PNL_RECORD_INTERVAL);
+
+  // Take-profit enforcement — alert if non-auto positions lack explicit TP
+  setTimeout(() => {
+    setInterval(checkTakeProfitEnforcement, TP_CHECK_INTERVAL);
+  }, TP_GRACE_PERIOD + 10000); // first check after grace period + 10s buffer
 
   // === ARB SCANNER — RE-ENABLED FOR DATA COLLECTION (2026-02-16, mechanic session) ===
   // Auto-execution gated by ARB_DISABLED file flag (present since 2026-02-13).
