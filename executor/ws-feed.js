@@ -1845,7 +1845,13 @@ async function runArbScan() {
     log("ARB", `✅ Scan complete — Flagged: ${opportunities.length} | Viable: ${output.summary.viable} → ${ARB_RESULTS_FILE}`);
 
     // === ARB AUTO-EXECUTION ===
-    if (systemReady && !circuitBreakerTripped && !emergencyMode && !survivalMode && autoExecuteEnabled) {
+    // Gated by ARB_DISABLED file flag (created 2026-02-13, kept after 2026-02-15 removal).
+    // Scan data collection always runs; auto-execution only runs if flag file is absent.
+    const arbAutoDisabled = fs.existsSync(path.join(__dirname, '..', 'ARB_DISABLED'));
+    if (arbAutoDisabled) {
+      log("ARB", "Auto-execution DISABLED (ARB_DISABLED file present). Scan-only mode.");
+    }
+    if (!arbAutoDisabled && systemReady && !circuitBreakerTripped && !emergencyMode && !survivalMode && autoExecuteEnabled) {
       const ARB_MIN_PROFIT = 5;     // min 5% profit per $100
       const ARB_MAX_OUTCOMES = 10;  // max 10 legs
       const ARB_MAX_SPEND = 20;     // max $20 per arb
@@ -2801,12 +2807,15 @@ async function main() {
   // PnL history recording — every 5 min
   setInterval(recordPnlSnapshot, PNL_RECORD_INTERVAL);
 
-  // === ARB SCANNERS — PERMANENTLY REMOVED (2026-02-15, user directive) ===
-  // NegRisk arb scanner: ALL 30+ attempts returned ALL_FAILED. FOK orders posting as GTC,
-  // creating random unhedged single-leg positions. Losses, not arb.
-  // Binary arb scanner: same FOK bug. Both removed entirely — not flagged, REMOVED.
-  // Code retained in functions below for reference but never called.
-  //
+  // === ARB SCANNER — RE-ENABLED FOR DATA COLLECTION (2026-02-16, mechanic session) ===
+  // Auto-execution gated by ARB_DISABLED file flag (present since 2026-02-13).
+  // Scan runs every 15 min for fresh arb-results.json data (consumed by pm_scanners).
+  // Binary arb scanner remains removed (same FOK→GTC bug, no separate data need).
+  setTimeout(() => {
+    runArbScan().catch(e => log("ARB", `❌ Uncaught error: ${e.message}`));
+    setInterval(() => runArbScan().catch(e => log("ARB", `❌ Uncaught error: ${e.message}`)), ARB_SCAN_INTERVAL);
+  }, 30 * 1000); // first scan 30s after startup
+
   // Resolving markets scanner: scan-only (no execution), kept for data collection.
   setTimeout(() => {
     runResolvingScan();
