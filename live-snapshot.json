@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-02-16T22:00:10.665Z",
+  "timestamp": "2026-02-16T22:15:51.894Z",
   "portfolio": {
     "trackedPositions": 0,
-    "portfolioValue": 336.18627399999997,
+    "portfolioValue": null,
     "positionValue": 0,
     "cashBalance": 325.396174,
-    "dailyStartValue": 327.580574
+    "dailyStartValue": null
   },
   "risk": {
     "circuitBreakerTripped": false,
@@ -25,7 +25,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 25527.481693031
+    "uptime": 610.973198822
   },
   "positions": [],
   "orders": [],
@@ -33,69 +33,14 @@
   "strategies": [],
   "activity": [
     {
-      "time": "2026-02-16T18:54:39.162Z",
-      "type": "FEE_CHANGE_DETECTED",
-      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies."
+      "time": "2026-02-16T22:06:03.702Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
     },
     {
-      "time": "2026-02-16T19:18:59.079Z",
-      "type": "STOP_LOSS",
-      "message": "AUTO-SELLING [unknown]",
-      "outcome": "Yes"
-    },
-    {
-      "time": "2026-02-16T19:19:01.568Z",
-      "type": "SELL_FAILED",
-      "message": "STOP_LOSS: FOK not filled (bestBid=0.13, walked=0.13, slip=0%). Retry 1/3 in 30s with 5% slippage.",
-      "outcome": "Yes"
-    },
-    {
-      "time": "2026-02-16T20:22:06.104Z",
-      "type": "TRAILING_STOP_ACTIVATED",
-      "message": "Trailing stop engaged. Floor: $0.6380 (breakeven). HWM: +24.6%",
-      "outcome": "No"
-    },
-    {
-      "time": "2026-02-16T20:22:44.090Z",
-      "type": "TRAILING_STOP",
-      "message": "AUTO-SELLING [unknown] — Floor $0.6380 breached. Locked +4.6% from HWM +24.6%",
-      "outcome": "No"
-    },
-    {
-      "time": "2026-02-16T20:22:46.360Z",
-      "type": "SELL_FAILED",
-      "message": "TRAILING_STOP: FOK not filled (bestBid=0.53, walked=0.53, slip=0%). Retry 1/3 in 30s with 5% slippage.",
-      "outcome": "No"
-    },
-    {
-      "time": "2026-02-16T20:47:06.634Z",
-      "type": "TICK_SIZE_CHANGE",
-      "message": "0.01 -> 0.001"
-    },
-    {
-      "time": "2026-02-16T20:47:06.641Z",
-      "type": "TICK_SIZE_CHANGE",
-      "message": "0.001 -> 0.001"
-    },
-    {
-      "time": "2026-02-16T20:54:39.152Z",
-      "type": "FEE_CHANGE_DETECTED",
-      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies."
-    },
-    {
-      "time": "2026-02-16T21:51:33.488Z",
-      "type": "TICK_SIZE_CHANGE",
-      "message": "0.01 -> 0.001"
-    },
-    {
-      "time": "2026-02-16T21:51:33.495Z",
-      "type": "TICK_SIZE_CHANGE",
-      "message": "0.001 -> 0.001"
-    },
-    {
-      "time": "2026-02-16T21:54:39.151Z",
-      "type": "FEE_CHANGE_DETECTED",
-      "message": "⚠️ Fee structure page changed — review immediately. Halting fee-sensitive strategies."
+      "time": "2026-02-16T22:11:14.929Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
     }
   ],
   "cash": 325.396174,
