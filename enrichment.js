@@ -15,6 +15,7 @@
 
 const https = require('https');
 const http = require('http');
+const { smartFetch } = require('./lib/clawpod-fetch');
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -37,6 +38,19 @@ function httpGet(url, timeoutMs = 10000, headers = {}) {
     req.on('error', reject);
     req.setTimeout(timeoutMs, () => { req.destroy(); reject(new Error('timeout')); });
   });
+}
+
+// Wrapper to maintain backward compatibility with httpGet interface
+async function smartHttpGet(url, timeoutMs = 10000, headers = {}) {
+  try {
+    const result = await smartFetch(url, { timeout: timeoutMs });
+    return {
+      status: result.status || (result.ok ? 200 : 500),
+      data: result.data || '',
+    };
+  } catch (error) {
+    throw error;
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -305,7 +319,7 @@ async function scrapeLMSYSLeaderboard() {
   try {
     // Scrape from the HuggingFace static page (the leaderboard embeds data)
     // First try the rankings page which has the table
-    const r = await httpGet('https://lmarena-ai.github.io/chatbot-arena-leaderboard/leaderboard_table_20250901.csv', 8000);
+    const r = await smartHttpGet('https://lmarena-ai.github.io/chatbot-arena-leaderboard/leaderboard_table_20250901.csv', 8000);
     if (r.status === 200 && r.data.includes(',')) {
       const lines = r.data.trim().split('\n');
       const headers = lines[0].split(',');
@@ -330,7 +344,7 @@ async function scrapeLMSYSLeaderboard() {
 
   // Fallback: scrape the arena.ai page via their Next.js page data
   try {
-    const r = await httpGet('https://arena.ai/leaderboard', 10000);
+    const r = await smartHttpGet('https://arena.ai/leaderboard', 10000);
     if (r.status !== 200) return null;
     
     // Extract model data from script tags (Next.js embeds it)
