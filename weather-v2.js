@@ -596,20 +596,32 @@ function loadPaperLog() {
 // ═══════════════════════════════════════════════════════════════
 
 if (require.main === module) {
-  scanWeatherMarkets()
-    .then(opps => {
+  (async () => {
+    // 1. Resolve any past paper trades first
+    try {
+      console.log('📋 Checking for resolvable paper trades...');
+      const { execSync } = require('child_process');
+      const out = execSync('node resolve-weather-paper.js', { cwd: __dirname, timeout: 60000 }).toString();
+      console.log(out);
+    } catch (e) {
+      console.log('⚠️ Resolution check failed (non-fatal):', e.message?.slice(0, 100));
+    }
+
+    // 2. Scan for new opportunities
+    try {
+      const opps = await scanWeatherMarkets();
       if (opps.length === 0) {
         console.log('\n✅ No actionable opportunities found.');
       } else {
         console.log(`\n🎯 ${opps.length} opportunities ready for thesis evaluation.`);
         console.log('   (Paper trade only — no orders placed)');
       }
-      process.exit(0);
-    })
-    .catch(err => {
+    } catch (err) {
       console.error('❌ Fatal error:', err);
       process.exit(1);
-    });
+    }
+    process.exit(0);
+  })();
 }
 
 module.exports = { scanWeatherMarkets, fetchForecast, fetchNOAAForecast, getBestForecast, computeBucketProbabilities, CITIES };
