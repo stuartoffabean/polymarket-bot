@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-16T00:47:17.560Z",
+  "timestamp": "2026-02-16T01:00:10.954Z",
   "portfolio": {
     "trackedPositions": 5,
-    "portfolioValue": 344.271374,
-    "positionValue": 49.533399999999986,
-    "cashBalance": 294.737974,
+    "portfolioValue": 358.496374,
+    "positionValue": 49.5834,
+    "cashBalance": 308.912974,
     "dailyStartValue": 370.144174
   },
   "risk": {
@@ -23,7 +23,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 29722.006519556
+    "uptime": 30494.644067737
   },
   "positions": [
     {
@@ -32,12 +32,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.9399,
-      "currentBid": 0.952,
+      "currentBid": 0.953,
       "currentAsk": 0.955,
       "costBasis": "23.50",
-      "currentValue": "23.80",
-      "pnl": "0.30",
-      "pnlPct": "1.3%",
+      "currentValue": "23.82",
+      "pnl": "0.33",
+      "pnlPct": "1.4%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -47,12 +47,12 @@
       "outcome": "No",
       "size": 25,
       "avgPrice": 0.92,
-      "currentBid": 0.959,
-      "currentAsk": 0.962,
+      "currentBid": 0.96,
+      "currentAsk": 0.963,
       "costBasis": "23.00",
-      "currentValue": "23.97",
-      "pnl": "0.97",
-      "pnlPct": "4.2%",
+      "currentValue": "24.00",
+      "pnl": "1.00",
+      "pnlPct": "4.3%",
       "stopLoss": 0.3,
       "takeProfit": 0.5
     },
@@ -104,46 +104,33 @@
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-16T00:47:17.559Z",
-      "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
-      "outcome": "Yes",
-      "side": "buy",
-      "price": 0.4888,
-      "size": 21.996,
-      "shares": 45,
-      "currentPrice": null,
-      "pnl": 0,
-      "pnlPct": "0.0%",
-      "tokenId": "74129731289724233287703952971717358119264795312748391113149010332592475652114"
-    },
-    {
-      "timestamp": "2026-02-16T00:47:17.560Z",
+      "timestamp": "2026-02-16T01:00:10.953Z",
       "market": "BTC $85K Feb",
       "outcome": "No",
       "side": "buy",
       "price": 0.9399,
       "size": 23.4999,
       "shares": 25,
-      "currentPrice": 0.952,
-      "pnl": 0.3,
-      "pnlPct": "1.3%",
+      "currentPrice": 0.953,
+      "pnl": 0.33,
+      "pnlPct": "1.4%",
       "tokenId": "33054682002199540688068637861453447841161181160056075050144022025869914494787"
     },
     {
-      "timestamp": "2026-02-16T00:47:17.560Z",
+      "timestamp": "2026-02-16T01:00:10.953Z",
       "market": "BTC $50K Feb",
       "outcome": "No",
       "side": "buy",
       "price": 0.92,
       "size": 23,
       "shares": 25,
-      "currentPrice": 0.959,
-      "pnl": 0.97,
-      "pnlPct": "4.2%",
+      "currentPrice": 0.96,
+      "pnl": 1,
+      "pnlPct": "4.3%",
       "tokenId": "98962310013708175438981041248552227092865649064538992475816299839295243294252"
     },
     {
-      "timestamp": "2026-02-16T00:47:17.560Z",
+      "timestamp": "2026-02-16T01:00:10.953Z",
       "market": "0x15eec799be53bc8fe57134b51e0ecbfa9407d8f141876aad6e5718adef9a7276",
       "outcome": "Yes",
       "side": "buy",
@@ -156,7 +143,7 @@
       "tokenId": "73102171968254150175441789734331062683107726947580722925006610769377018279866"
     },
     {
-      "timestamp": "2026-02-16T00:47:17.560Z",
+      "timestamp": "2026-02-16T01:00:10.953Z",
       "market": "Doncic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -169,7 +156,7 @@
       "tokenId": "89110596788673536475065853727140488937259064164063660201050220270400840228269"
     },
     {
-      "timestamp": "2026-02-16T00:47:17.560Z",
+      "timestamp": "2026-02-16T01:00:10.953Z",
       "market": "0x3596ca28f942b239a1deec55e9a5d3f6cc044e44fae8f3e5a0ae83f507b55b14",
       "outcome": "Yes",
       "side": "buy",
@@ -182,7 +169,7 @@
       "tokenId": "107838777444750635283283352077415720504156169946029729253237622295164434040091"
     },
     {
-      "timestamp": "2026-02-16T00:47:17.560Z",
+      "timestamp": "2026-02-16T01:00:10.953Z",
       "market": "0x8e97d4425dd885462f62eeeacd212a89854f3284cc4d4dfa1518965df0e916b4",
       "outcome": "Yes",
       "side": "buy",
@@ -195,7 +182,7 @@
       "tokenId": "8010270730382868588546130570365383621891724310853848910851331100920214793828"
     },
     {
-      "timestamp": "2026-02-16T00:47:17.560Z",
+      "timestamp": "2026-02-16T01:00:10.953Z",
       "market": "0xb9ed449e81a990c75c5b63bfb478fde4c77d200412b93b5ec07fa4c723a38317",
       "outcome": "Yes",
       "side": "buy",
@@ -208,7 +195,7 @@
       "tokenId": "14588689847155710140084925630833413220311051563779237763910268505586365020396"
     },
     {
-      "timestamp": "2026-02-16T00:47:17.560Z",
+      "timestamp": "2026-02-16T01:00:10.954Z",
       "market": "Jokic NBA MVP 2025-26",
       "outcome": "Yes",
       "side": "buy",
@@ -223,20 +210,20 @@
   ],
   "strategies": [
     {
-      "name": "Speculative",
-      "trades": 7,
-      "pnl": 0.03,
-      "wins": 1,
-      "enabled": true,
-      "winRate": 0.14285714285714285
-    },
-    {
       "name": "Safe Yield",
       "trades": 2,
-      "pnl": 1.27,
+      "pnl": 1.33,
       "wins": 2,
       "enabled": true,
       "winRate": 1
+    },
+    {
+      "name": "Speculative",
+      "trades": 6,
+      "pnl": 0.03,
+      "wins": 1,
+      "enabled": true,
+      "winRate": 0.16666666666666666
     }
   ],
   "activity": [
@@ -1678,7 +1665,7 @@
         "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
         "outcome": "Yes",
         "side": "SELL",
-        "size": 10,
+        "size": 35,
         "price": 0.315
       },
       {
@@ -1686,7 +1673,7 @@
         "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
         "outcome": "Yes",
         "side": "SELL",
-        "size": 35,
+        "size": 10,
         "price": 0.315
       },
       {
