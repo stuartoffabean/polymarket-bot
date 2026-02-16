@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-02-16T10:26:35.858Z",
+  "timestamp": "2026-02-16T10:30:08.775Z",
   "portfolio": {
-    "trackedPositions": 0,
-    "portfolioValue": null,
-    "positionValue": 0,
-    "cashBalance": 358.458374,
-    "dailyStartValue": null
+    "trackedPositions": 1,
+    "portfolioValue": 358.269074,
+    "positionValue": 11.357999999999999,
+    "cashBalance": 346.911074,
+    "dailyStartValue": 358.269074
   },
   "risk": {
     "circuitBreakerTripped": false,
@@ -25,23 +25,29 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 18716.366625623
+    "uptime": 189.691092845
   },
-  "positions": [],
-  "orders": [
+  "positions": [
     {
-      "id": "0xdd41d4f23e32c188d0efbe0789f7f24e4fa0817da637b952d172a0062320b41e",
-      "asset_id": "42401308709751649714325038223881912887265599020415816822370809393965059941956",
-      "side": "BUY",
-      "price": "0.61",
-      "original_size": "199",
-      "size_matched": "18.93",
-      "status": "LIVE"
+      "id": "42401308709751649714",
+      "fullAssetId": "42401308709751649714325038223881912887265599020415816822370809393965059941956",
+      "outcome": "No",
+      "size": 18.93,
+      "avgPrice": 0.61,
+      "currentBid": 0.6,
+      "currentAsk": 0.62,
+      "costBasis": "11.55",
+      "currentValue": "11.36",
+      "pnl": "-0.19",
+      "pnlPct": "-1.6%",
+      "stopLoss": 0.3,
+      "takeProfit": 0.5
     }
   ],
+  "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-16T10:26:35.857Z",
+      "timestamp": "2026-02-16T10:30:08.774Z",
       "market": "0x15eec799be53bc8fe57134b51e0ecbfa9407d8f141876aad6e5718adef9a7276",
       "outcome": "Yes",
       "side": "buy",
@@ -54,7 +60,20 @@
       "tokenId": "73102171968254150175441789734331062683107726947580722925006610769377018279866"
     },
     {
-      "timestamp": "2026-02-16T10:26:35.858Z",
+      "timestamp": "2026-02-16T10:30:08.775Z",
+      "market": "0x16c036867a41041beccacb0ffe187cd0d34dcb6ad697b7ec6e06ae00c25f5021",
+      "outcome": "No",
+      "side": "buy",
+      "price": 0.61,
+      "size": 11.5473,
+      "shares": 18.93,
+      "currentPrice": 0.6,
+      "pnl": -0.19,
+      "pnlPct": "-1.6%",
+      "tokenId": "42401308709751649714325038223881912887265599020415816822370809393965059941956"
+    },
+    {
+      "timestamp": "2026-02-16T10:30:08.775Z",
       "market": "0x8e97d4425dd885462f62eeeacd212a89854f3284cc4d4dfa1518965df0e916b4",
       "outcome": "Yes",
       "side": "buy",
@@ -67,7 +86,7 @@
       "tokenId": "8010270730382868588546130570365383621891724310853848910851331100920214793828"
     },
     {
-      "timestamp": "2026-02-16T10:26:35.858Z",
+      "timestamp": "2026-02-16T10:30:08.775Z",
       "market": "0xb9ed449e81a990c75c5b63bfb478fde4c77d200412b93b5ec07fa4c723a38317",
       "outcome": "Yes",
       "side": "buy",
@@ -88,110 +107,17 @@
       "wins": 0,
       "enabled": true,
       "winRate": 0
+    },
+    {
+      "name": "Event-Driven",
+      "trades": 1,
+      "pnl": -0.19,
+      "wins": 0,
+      "enabled": true,
+      "winRate": 0
     }
   ],
-  "activity": [
-    {
-      "time": "2026-02-16T08:42:43.841Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T08:47:55.227Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T08:53:06.840Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T08:58:18.578Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:03:29.762Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:08:41.070Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:13:52.698Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:19:04.390Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:24:15.906Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:29:27.521Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:34:39.333Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:39:51.191Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:45:02.601Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:50:14.137Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T09:55:25.750Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T10:00:37.231Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T10:05:48.745Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T10:11:00.479Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T10:16:12.277Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    },
-    {
-      "time": "2026-02-16T10:21:23.856Z",
-      "type": "WS_DISCONNECT",
-      "message": "Cancelled all open orders on disconnect"
-    }
-  ],
+  "activity": [],
   "cash": 346.911074,
   "ledger": {
     "openPositions": [
@@ -1700,6 +1626,18 @@
   "tradeHistory": {
     "openPositions": [
       {
+        "asset_id": "42401308709751649714325038223881912887265599020415816822370809393965059941956",
+        "market": "Will the highest temperature in Dallas be 74°F or higher on February 16?",
+        "outcome": "No",
+        "size": 18.93,
+        "avgPrice": "0.6100",
+        "costBasis": "11.55",
+        "totalBought": 18.93,
+        "totalSold": 0,
+        "realizedPnl": "0.00",
+        "status": "OPEN"
+      },
+      {
         "asset_id": "107838777444750635283283352077415720504156169946029729253237622295164434040091",
         "market": "Will the highest temperature in London be 12°C or higher on February 15?",
         "outcome": "Yes",
@@ -2969,7 +2907,7 @@
       }
     ],
     "totalRealizedPnl": "-81.99",
-    "totalTrades": 492,
+    "totalTrades": 493,
     "source": "data-api"
   },
   "circuitBreakerTripped": false,
