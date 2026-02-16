@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-02-16T04:33:00.205Z",
-  "windowStart": "2026-02-16T10:32:59.912Z",
-  "windowEnd": "2026-02-16T16:32:59.912Z",
+  "timestamp": "2026-02-16T04:57:02.764Z",
+  "windowStart": "2026-02-16T10:57:02.068Z",
+  "windowEnd": "2026-02-16T16:57:02.068Z",
   "count": 100,
   "markets": [
     {
@@ -10,9 +10,9 @@
       "yesPrice": 0.405,
       "noPrice": 0.595,
       "endDate": "2026-02-16T14:00:00Z",
-      "volume": 73776.945014,
+      "volume": 85491.983982,
       "volume24hr": 18763.401961999996,
-      "liquidity": 56017.636,
+      "liquidity": 54523.6236,
       "conditionId": "0xe9f092afc1435a523e3a30818cce1bd9fa4f726f94a3d3210a10ca5cb0946ad3"
     },
     {
@@ -23,7 +23,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 43366.61785,
       "volume24hr": 38324.22097200002,
-      "liquidity": 12918.87599,
+      "liquidity": 12611.10022,
       "conditionId": "0x2638bc901c5afe1ee0867b42e5246aeb18b454f7a4b67d9efd1431dbee309a01"
     },
     {
@@ -45,7 +45,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 32168.140632,
       "volume24hr": 8275.581734,
-      "liquidity": 27223.35521,
+      "liquidity": 27583.10263,
       "conditionId": "0xde22682fd6e2492e955f95193ce9fd7b0b10e2f3523be33a213e6ad858231781"
     },
     {
@@ -56,18 +56,18 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 9871.57855,
       "volume24hr": 4038.648,
-      "liquidity": 3568.66105,
+      "liquidity": 3995.07965,
       "conditionId": "0x6a795d46eb6ff187d9f23201673c589864c59e851e0f182598eb00bc2bc1c093"
     },
     {
       "slug": "highest-temperature-in-london-on-february-16-2026-12corhigher",
       "question": "Will the highest temperature in London be 12°C or higher on February 16?",
-      "yesPrice": 0.0125,
-      "noPrice": 0.9875,
+      "yesPrice": 0.009,
+      "noPrice": 0.991,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 9506.815565,
+      "volume": 9507.915565,
       "volume24hr": 7518.763879999998,
-      "liquidity": 1928.79671,
+      "liquidity": 1900.24982,
       "conditionId": "0xbd4902e29713951bd30eb9b9b3a8c6d91097e9aebd80ffb58c665719ed19e148"
     },
     {
@@ -78,19 +78,8 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 9290.398673,
       "volume24hr": 5610.741611,
-      "liquidity": 9477.06916,
+      "liquidity": 9988.87776,
       "conditionId": "0xb9e52348de6a7e34ab8517c2168d77b21aa6b62ee2779d81faf7c16359b0aeab"
-    },
-    {
-      "slug": "highest-temperature-in-nyc-on-february-16-2026-34-35f",
-      "question": "Will the highest temperature in New York City be between 34-35°F on February 16?",
-      "yesPrice": 0.0255,
-      "noPrice": 0.9745,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 9259.21635,
-      "volume24hr": 7566.325812999999,
-      "liquidity": 4202.5125,
-      "conditionId": "0xafb051fee2e7c5d68d14fa77bf26c5746ba503de47434e8392ac3cd7eb7bd26b"
     },
     {
       "slug": "highest-temperature-in-dallas-on-february-16-2026-64-65f",
@@ -100,18 +89,18 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 9190.564514,
       "volume24hr": 7150.842093,
-      "liquidity": 4473.08315,
+      "liquidity": 4471.97398,
       "conditionId": "0xce270a9a01e2c2d4b459514605ae3ff946635338924ed3635dd1437c86bd751f"
     },
     {
       "slug": "highest-temperature-in-seoul-on-february-16-2026-7corhigher",
       "question": "Will the highest temperature in Seoul be 7°C or higher on February 16?",
-      "yesPrice": 0.055,
-      "noPrice": 0.945,
+      "yesPrice": 0.061,
+      "noPrice": 0.939,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 8595.837462,
+      "volume": 8843.580994,
       "volume24hr": 6935.834066999999,
-      "liquidity": 511.15154,
+      "liquidity": 485.20235,
       "conditionId": "0xf283ac6b2c2c2b55cd375e69557a1f4938ce0f9f3cfcb6fc2805de206761a939"
     },
     {
@@ -120,9 +109,9 @@
       "yesPrice": 0.105,
       "noPrice": 0.895,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 8228.65056,
+      "volume": 8238.852578,
       "volume24hr": 5502.9393089999985,
-      "liquidity": 1158.0707,
+      "liquidity": 1268.8249,
       "conditionId": "0x395fc5e17ab10c7be4470bc70d3a20ee5a2ef2d719e386ffe3c3241adf6b1e32"
     },
     {
@@ -133,7 +122,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 7958.964601,
       "volume24hr": 2885.7908869999997,
-      "liquidity": 2033.88867,
+      "liquidity": 2044.01867,
       "conditionId": "0x2eb58f3e62731b5a62e3c464f5614375de4ce70ac41a4c8fa3480517054e165b"
     },
     {
@@ -144,18 +133,18 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 7922.986432,
       "volume24hr": 4086.997321,
-      "liquidity": 1630.74062,
+      "liquidity": 1628.51622,
       "conditionId": "0x97d16952fcbd792728a77f98e034416f13ac398a47fb6c42d3827c92b1d3f891"
     },
     {
       "slug": "highest-temperature-in-london-on-february-16-2026-10c",
       "question": "Will the highest temperature in London be 10°C on February 16?",
-      "yesPrice": 0.4,
-      "noPrice": 0.6,
+      "yesPrice": 0.41,
+      "noPrice": 0.59,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 7658.971717,
+      "volume": 7708.691424,
       "volume24hr": 5080.771112,
-      "liquidity": 952.0003,
+      "liquidity": 921.177,
       "conditionId": "0xd45dd2f291008f38d29c79e566bfeec08f41f973f16a95f22b63514187ed9fb0"
     },
     {
@@ -164,9 +153,9 @@
       "yesPrice": 0.0035,
       "noPrice": 0.9965,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 7209.679543,
+      "volume": 7243.199543,
       "volume24hr": 2614.859292,
-      "liquidity": 1003.69339,
+      "liquidity": 996.81433,
       "conditionId": "0x08a268ebe43087b58caf1de81f83247698011d2cf5c4af5461b5c1c98b49c92a"
     },
     {
@@ -177,29 +166,29 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 7134.872,
       "volume24hr": 2325.722,
-      "liquidity": 2871.46834,
+      "liquidity": 2871.76834,
       "conditionId": "0x1ebc0e7e79857d93630ebdd6011dc1a74cbc8ffe16008b0237a44544ef33390c"
     },
     {
       "slug": "highest-temperature-in-london-on-february-16-2026-9c",
       "question": "Will the highest temperature in London be 9°C on February 16?",
-      "yesPrice": 0.47,
-      "noPrice": 0.53,
+      "yesPrice": 0.455,
+      "noPrice": 0.545,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 7087.395951,
+      "volume": 7089.479283,
       "volume24hr": 5515.958231000001,
-      "liquidity": 709.9231,
+      "liquidity": 742.9794,
       "conditionId": "0x9f3109849e026b4ba12154e3a65171c27db40d58f516e15b263053b01adc5e72"
     },
     {
       "slug": "highest-temperature-in-atlanta-on-february-16-2026-58-59f",
       "question": "Will the highest temperature in Atlanta be between 58-59°F on February 16?",
-      "yesPrice": 0.0025,
-      "noPrice": 0.9975,
+      "yesPrice": 0.002,
+      "noPrice": 0.998,
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 6803.472095,
       "volume24hr": 3715.7387239999994,
-      "liquidity": 1018.72889,
+      "liquidity": 1020.31733,
       "conditionId": "0xfa02c27cc8be7b7f1bed8a898fd8d9b627dc8568c13def3ad75fd63f458b269f"
     },
     {
@@ -210,51 +199,51 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 6593.102545,
       "volume24hr": 4907.446899,
-      "liquidity": 1401.23236,
+      "liquidity": 1426.28662,
       "conditionId": "0x196b7f4a497c4434b71daa90a669f3ef1088c03f4260d1bd84e0d42590fbc908"
     },
     {
       "slug": "highest-temperature-in-dallas-on-february-16-2026-59forbelow",
       "question": "Will the highest temperature in Dallas be 59°F or below on February 16?",
-      "yesPrice": 0.0015,
-      "noPrice": 0.9985,
+      "yesPrice": 0.0025,
+      "noPrice": 0.9975,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 6476.376681,
+      "volume": 6487.026681,
       "volume24hr": 3128.472016,
-      "liquidity": 4407.82075,
+      "liquidity": 4004.0888,
       "conditionId": "0x3412188a26a5ededae284f3671a4c0446cd0ac0d627bb26078e914d1980b1f2b"
-    },
-    {
-      "slug": "highest-temperature-in-atlanta-on-february-16-2026-60-61f",
-      "question": "Will the highest temperature in Atlanta be between 60-61°F on February 16?",
-      "yesPrice": 0.014,
-      "noPrice": 0.986,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 6047.662038,
-      "volume24hr": 3195.477154,
-      "liquidity": 4786.43126,
-      "conditionId": "0xf4a0d1039b537cf371af29092857a82a48569f7c18257be6aab08c01c71fb209"
     },
     {
       "slug": "highest-temperature-in-atlanta-on-february-16-2026-64forhigher",
       "question": "Will the highest temperature in Atlanta be 64°F or higher on February 16?",
-      "yesPrice": 0.88,
-      "noPrice": 0.12,
+      "yesPrice": 0.91,
+      "noPrice": 0.09,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 5923.659169,
+      "volume": 6313.02326,
       "volume24hr": 4008.379633,
-      "liquidity": 678.4618,
+      "liquidity": 1062.8752,
       "conditionId": "0x83c8010df984315ea4e2916ef7c04c7b3ea83631af21fdded0770598aaf7f2db"
+    },
+    {
+      "slug": "highest-temperature-in-atlanta-on-february-16-2026-60-61f",
+      "question": "Will the highest temperature in Atlanta be between 60-61°F on February 16?",
+      "yesPrice": 0.007,
+      "noPrice": 0.993,
+      "endDate": "2026-02-16T12:00:00Z",
+      "volume": 6299.582038,
+      "volume24hr": 3195.477154,
+      "liquidity": 4284.59255,
+      "conditionId": "0xf4a0d1039b537cf371af29092857a82a48569f7c18257be6aab08c01c71fb209"
     },
     {
       "slug": "highest-temperature-in-seattle-on-february-16-2026-37forbelow",
       "question": "Will the highest temperature in Seattle be 37°F or below on February 16?",
-      "yesPrice": 0.0185,
-      "noPrice": 0.9815,
+      "yesPrice": 0.0175,
+      "noPrice": 0.9825,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 5915.930255,
+      "volume": 5982.850255,
       "volume24hr": 3648.5721820000012,
-      "liquidity": 1331.41723,
+      "liquidity": 1324.1451,
       "conditionId": "0x6f2fe10e3fb8847c9b94c11e5caeabd6d93c7341e3f4f78c73f6134b7ceff215"
     },
     {
@@ -269,14 +258,25 @@
       "conditionId": "0x062c1df7e5543d6bc38244e41ebea3af251c0594ac98b3e6a4f38a06c5d05ea4"
     },
     {
+      "slug": "highest-temperature-in-dallas-on-february-16-2026-68-69f",
+      "question": "Will the highest temperature in Dallas be between 68-69°F on February 16?",
+      "yesPrice": 0.058,
+      "noPrice": 0.942,
+      "endDate": "2026-02-16T12:00:00Z",
+      "volume": 5565.033858,
+      "volume24hr": 3383.570799,
+      "liquidity": 1227.04035,
+      "conditionId": "0xae1291163396de1de79457d12b8e90323f643bebab31b48a2af08e41a90aa2d7"
+    },
+    {
       "slug": "highest-temperature-in-seattle-on-february-16-2026-48-49f",
       "question": "Will the highest temperature in Seattle be between 48-49°F on February 16?",
-      "yesPrice": 0.011,
-      "noPrice": 0.989,
+      "yesPrice": 0.012,
+      "noPrice": 0.988,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 5430.518332,
+      "volume": 5465.148332,
       "volume24hr": 4072.52219,
-      "liquidity": 848.00616,
+      "liquidity": 976.47871,
       "conditionId": "0xb865c25de60dfb58d319b594bc21e0aaecfc49f7ad2ed42a251e2d840be3c85a"
     },
     {
@@ -287,19 +287,8 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 5230.443398,
       "volume24hr": 4469.870984,
-      "liquidity": 3706.43309,
+      "liquidity": 3510.54434,
       "conditionId": "0xb737a3a9492f1bcb9050ac4cdee15ed08fe9fc08b1811a3a15ba029477bd049e"
-    },
-    {
-      "slug": "highest-temperature-in-dallas-on-february-16-2026-68-69f",
-      "question": "Will the highest temperature in Dallas be between 68-69°F on February 16?",
-      "yesPrice": 0.0575,
-      "noPrice": 0.9425,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 5173.82523,
-      "volume24hr": 3383.570799,
-      "liquidity": 1040.04831,
-      "conditionId": "0xae1291163396de1de79457d12b8e90323f643bebab31b48a2af08e41a90aa2d7"
     },
     {
       "slug": "highest-temperature-in-miami-on-february-16-2026-96forhigher",
@@ -309,7 +298,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 5002.691736,
       "volume24hr": 3841.229836,
-      "liquidity": 1985.05167,
+      "liquidity": 2074.64962,
       "conditionId": "0x7bf427b4ba5be7165f25339e9d8bf856d537bcf2f56ec6f3b1549caaf55e1291"
     },
     {
@@ -326,12 +315,12 @@
     {
       "slug": "highest-temperature-in-dallas-on-february-16-2026-66-67f",
       "question": "Will the highest temperature in Dallas be between 66-67°F on February 16?",
-      "yesPrice": 0.02,
-      "noPrice": 0.98,
+      "yesPrice": 0.0185,
+      "noPrice": 0.9815,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 4868.093286,
+      "volume": 4878.123286,
       "volume24hr": 2957.4558479999996,
-      "liquidity": 838.0171,
+      "liquidity": 947.67633,
       "conditionId": "0xe83fa59258db5d82d8a22e5ac0fd7e9f7788e732b366b0ce4c28cb86b262232f"
     },
     {
@@ -342,18 +331,18 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 4524.304962,
       "volume24hr": 3069.260877,
-      "liquidity": 1697.84832,
+      "liquidity": 1812.26332,
       "conditionId": "0xc56aee18db4b06045278a39fa474c98435c3ea5190305ddd9b26a23270a3b22b"
     },
     {
       "slug": "highest-temperature-in-nyc-on-february-16-2026-44-45f",
       "question": "Will the highest temperature in New York City be between 44-45°F on February 16?",
-      "yesPrice": 0.0215,
-      "noPrice": 0.9785,
+      "yesPrice": 0.0355,
+      "noPrice": 0.9645,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 4278.103315,
+      "volume": 4337.303315,
       "volume24hr": 3220.0857500000006,
-      "liquidity": 1208.73706,
+      "liquidity": 1239.81187,
       "conditionId": "0x23c3870eb5f98d11174a0b7060fea8feea500a81e939ab0c8b83aec589e299d5"
     },
     {
@@ -364,40 +353,40 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 4224.202797,
       "volume24hr": 1552.3893329999999,
-      "liquidity": 4356.18833,
+      "liquidity": 4421.48845,
       "conditionId": "0xf392d54c611eb6a370136ee555333719ac01a29a2f1d11829d0a9b9471408a28"
     },
     {
       "slug": "highest-temperature-in-atlanta-on-february-16-2026-56-57f",
       "question": "Will the highest temperature in Atlanta be between 56-57°F on February 16?",
-      "yesPrice": 0.003,
-      "noPrice": 0.997,
+      "yesPrice": 0.0035,
+      "noPrice": 0.9965,
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 4157.431775,
       "volume24hr": 1364.9702300000001,
-      "liquidity": 3847.74379,
+      "liquidity": 3689.25878,
       "conditionId": "0x752c567fad4b95dcb08c550682231aa11c8e9242188830c9264eb906503a5fd4"
     },
     {
       "slug": "highest-temperature-in-seoul-on-february-16-2026-6c",
       "question": "Will the highest temperature in Seoul be 6°C on February 16?",
-      "yesPrice": 0.085,
-      "noPrice": 0.915,
+      "yesPrice": 0.11,
+      "noPrice": 0.89,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 3832.70927,
+      "volume": 3931.433032,
       "volume24hr": 2437.0051710000007,
-      "liquidity": 529.2749,
+      "liquidity": 543.8753,
       "conditionId": "0x06dd1b6ba517aeef68b9c2bd3fd622f20c92c73083f59c8cd0c1d7349ff44061"
     },
     {
       "slug": "highest-temperature-in-nyc-on-february-16-2026-42-43f",
       "question": "Will the highest temperature in New York City be between 42-43°F on February 16?",
-      "yesPrice": 0.0665,
-      "noPrice": 0.9335,
+      "yesPrice": 0.0905,
+      "noPrice": 0.9095,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 3720.767129,
+      "volume": 3791.01524,
       "volume24hr": 2691.793057,
-      "liquidity": 1266.41024,
+      "liquidity": 1174.79763,
       "conditionId": "0x5dcd033194124321df39f5af87c516dfceccd556164a06b90a6019abf1c98855"
     },
     {
@@ -408,7 +397,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 3683.830077,
       "volume24hr": 2006.0877770000002,
-      "liquidity": 1851.41958,
+      "liquidity": 1833.65558,
       "conditionId": "0xf24729ecc52229c11b2fd94a9a3493447a0ab56e69ea74f7a3a3f36bae952755"
     },
     {
@@ -419,7 +408,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 3682.409312,
       "volume24hr": 2530.420712,
-      "liquidity": 610.71954,
+      "liquidity": 851.32358,
       "conditionId": "0x5b64ea609cf74c89847d9b37eb9533c0878411d657d669585ee8c39f50513520"
     },
     {
@@ -430,7 +419,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 3656.348535,
       "volume24hr": 2109.972528,
-      "liquidity": 2476.46491,
+      "liquidity": 2516.25837,
       "conditionId": "0x86c249463fc21ae95a2d724803472600611a3472c65299ce36ff780f1e1b6f47"
     },
     {
@@ -439,10 +428,21 @@
       "yesPrice": 0.012,
       "noPrice": 0.988,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 3622.611087,
+      "volume": 3656.131087,
       "volume24hr": 1666.1845109999997,
-      "liquidity": 664.37889,
+      "liquidity": 624.11189,
       "conditionId": "0xd5b0a372cb147b0036f57db0817c4ec7e3fe9d15326d8b57f914d6122f880332"
+    },
+    {
+      "slug": "highest-temperature-in-atlanta-on-february-16-2026-62-63f",
+      "question": "Will the highest temperature in Atlanta be between 62-63°F on February 16?",
+      "yesPrice": 0.105,
+      "noPrice": 0.895,
+      "endDate": "2026-02-16T12:00:00Z",
+      "volume": 3588.897781,
+      "volume24hr": 2335.4595029999987,
+      "liquidity": 968.8212,
+      "conditionId": "0xe79d8a6511daaf0cf4a2f324e2a4965fc3ab4e8b428d24ab88938c90232bf9ef"
     },
     {
       "slug": "highest-temperature-in-wellington-on-february-16-2026-15c",
@@ -452,19 +452,8 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 3523.386905,
       "volume24hr": 579.966795,
-      "liquidity": 24536.12446,
+      "liquidity": 24525.4389,
       "conditionId": "0xacf96049fbbb98bfbf7c05c2cab52d10aad6d583d0c3c159d6143e9de4e3999e"
-    },
-    {
-      "slug": "highest-temperature-in-atlanta-on-february-16-2026-62-63f",
-      "question": "Will the highest temperature in Atlanta be between 62-63°F on February 16?",
-      "yesPrice": 0.1,
-      "noPrice": 0.9,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 3502.573339,
-      "volume24hr": 2335.4595029999987,
-      "liquidity": 987.2884,
-      "conditionId": "0xe79d8a6511daaf0cf4a2f324e2a4965fc3ab4e8b428d24ab88938c90232bf9ef"
     },
     {
       "slug": "highest-temperature-in-wellington-on-february-16-2026-20c",
@@ -472,9 +461,9 @@
       "yesPrice": 0.0015,
       "noPrice": 0.9985,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 3485.470309,
+      "volume": 3515.470309,
       "volume24hr": 2472.7359069999993,
-      "liquidity": 1026.95971,
+      "liquidity": 1019.92503,
       "conditionId": "0x8bb0cf095feb26dd25868ba0988f1fc95a2c867886f3ce1b4b0586db6b29e059"
     },
     {
@@ -485,19 +474,30 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 3475.720881,
       "volume24hr": 2300.0698669999997,
-      "liquidity": 971.11398,
+      "liquidity": 1191.04252,
       "conditionId": "0xf28d8a56c7b04a48d3c3a39d05b8990377da5f4ea788be992ca51b8d2231a84a"
     },
     {
-      "slug": "highest-temperature-in-toronto-on-february-16-2026-neg-3corbelow",
-      "question": "Will the highest temperature in Toronto be -3°C or below on February 16?",
-      "yesPrice": 0.0065,
-      "noPrice": 0.9935,
+      "slug": "highest-temperature-in-seoul-on-february-16-2026-5c",
+      "question": "Will the highest temperature in Seoul be 5°C on February 16?",
+      "yesPrice": 0.335,
+      "noPrice": 0.665,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 3474.276112,
-      "volume24hr": 1654.9091120000003,
-      "liquidity": 1233.18418,
-      "conditionId": "0x9855b672050218f98ce328486bab3e5371367e62e0813235d4e77e9cd9f78445"
+      "volume": 3398.848228,
+      "volume24hr": 2064.2539429999993,
+      "liquidity": 448.6655,
+      "conditionId": "0x0be45fbf9f801e1680bdb5d71f903bbd0fdaa51003c1b64ef8515efeed2283f6"
+    },
+    {
+      "slug": "highest-temperature-in-nyc-on-february-16-2026-36-37f",
+      "question": "Will the highest temperature in New York City be between 36-37°F on February 16?",
+      "yesPrice": 0.13,
+      "noPrice": 0.87,
+      "endDate": "2026-02-16T12:00:00Z",
+      "volume": 3398.179563,
+      "volume24hr": 2312.7719710000006,
+      "liquidity": 959.2371,
+      "conditionId": "0xe79ed1718f4a7459f4c79a7e0036ba078a0966c40d323c823e735f87a6e2bf1a"
     },
     {
       "slug": "highest-temperature-in-miami-on-february-16-2026-88-89f",
@@ -507,41 +507,19 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 3246.175706,
       "volume24hr": 2646.63,
-      "liquidity": 734.1698,
+      "liquidity": 734.1898,
       "conditionId": "0x25406f87d907562e41524a7e3b2ac4002d874c49dca28dd5eb6410879994191f"
-    },
-    {
-      "slug": "highest-temperature-in-nyc-on-february-16-2026-36-37f",
-      "question": "Will the highest temperature in New York City be between 36-37°F on February 16?",
-      "yesPrice": 0.135,
-      "noPrice": 0.865,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 3222.276707,
-      "volume24hr": 2312.7719710000006,
-      "liquidity": 1017.5611,
-      "conditionId": "0xe79ed1718f4a7459f4c79a7e0036ba078a0966c40d323c823e735f87a6e2bf1a"
     },
     {
       "slug": "highest-temperature-in-miami-on-february-16-2026-86-87f",
       "question": "Will the highest temperature in Miami be between 86-87°F on February 16?",
-      "yesPrice": 0.0285,
-      "noPrice": 0.9715,
+      "yesPrice": 0.0295,
+      "noPrice": 0.9705,
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 3170.77618,
       "volume24hr": 2562.4331890000003,
-      "liquidity": 687.3028,
+      "liquidity": 789.7868,
       "conditionId": "0x0983eca4c346b615ffd67059ef668a7ea048ddd5e743bff6a8dcdac4dbe19e0f"
-    },
-    {
-      "slug": "highest-temperature-in-wellington-on-february-16-2026-16c",
-      "question": "Will the highest temperature in Wellington be 16°C on February 16?",
-      "yesPrice": 0.765,
-      "noPrice": 0.235,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 987.104139,
-      "volume24hr": 385.727702,
-      "liquidity": 75.6986,
-      "conditionId": "0x39a70d3bae59a130dcecf9ae89bde29922c3786e54dcd2652a1a32f9bb971cf4"
     },
     {
       "slug": "highest-temperature-in-toronto-on-february-16-2026-2c",
@@ -549,21 +527,32 @@
       "yesPrice": 0.29,
       "noPrice": 0.71,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 898.593507,
+      "volume": 901.819312,
       "volume24hr": 469.67208500000004,
-      "liquidity": 520.1674,
+      "liquidity": 500.1267,
       "conditionId": "0x0fc7c1beb159af623f4e76d7efe40fd62d049f1ed74bc3ead1bc5f5fab973ec6"
     },
     {
       "slug": "highest-temperature-in-sao-paulo-on-february-16-2026-34c",
       "question": "Will the highest temperature in Sao Paulo be 34°C on February 16?",
-      "yesPrice": 0.375,
-      "noPrice": 0.625,
+      "yesPrice": 0.385,
+      "noPrice": 0.615,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 888.93018,
+      "volume": 893.93018,
       "volume24hr": 204.68088600000002,
-      "liquidity": 234.5012,
+      "liquidity": 233.5013,
       "conditionId": "0x9c614b4b815372c8e9687911e2f420b08c17922af1fe2f62247e96c1306eab77"
+    },
+    {
+      "slug": "highest-temperature-in-sao-paulo-on-february-16-2026-29c",
+      "question": "Will the highest temperature in Sao Paulo be 29°C on February 16?",
+      "yesPrice": 0.0305,
+      "noPrice": 0.9695,
+      "endDate": "2026-02-16T12:00:00Z",
+      "volume": 825.938298,
+      "volume24hr": 673.420916,
+      "liquidity": 422.42874,
+      "conditionId": "0x43ffab0343f0be4741606f3ed075ada12b318624eb083d344c5efe3376f20c8c"
     },
     {
       "slug": "highest-temperature-in-sao-paulo-on-february-16-2026-30c",
@@ -573,29 +562,18 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 760.640253,
       "volume24hr": 705.3323589999998,
-      "liquidity": 220.03415,
+      "liquidity": 224.31395,
       "conditionId": "0x01cef406a4adbf3e5527209a4934e5104f5dbdb1ead6da5c5c527c708eaa8804"
-    },
-    {
-      "slug": "highest-temperature-in-sao-paulo-on-february-16-2026-29c",
-      "question": "Will the highest temperature in Sao Paulo be 29°C on February 16?",
-      "yesPrice": 0.0305,
-      "noPrice": 0.9695,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 757.182026,
-      "volume24hr": 673.420916,
-      "liquidity": 418.08603,
-      "conditionId": "0x43ffab0343f0be4741606f3ed075ada12b318624eb083d344c5efe3376f20c8c"
     },
     {
       "slug": "highest-temperature-in-sao-paulo-on-february-16-2026-36corhigher",
       "question": "Will the highest temperature in Sao Paulo be 36°C or higher on February 16?",
-      "yesPrice": 0.04,
-      "noPrice": 0.96,
+      "yesPrice": 0.0405,
+      "noPrice": 0.9595,
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 719.2504,
       "volume24hr": 706.9104,
-      "liquidity": 460.60357,
+      "liquidity": 469.81791,
       "conditionId": "0xf7d708e6338fdacbed5c0b9b27c2e88e10661eaba9860d18da9a9ab5cad30f5c"
     },
     {
@@ -606,7 +584,7 @@
       "endDate": "2026-02-16T15:00:00Z",
       "volume": 706.28568,
       "volume24hr": 577.0699999999999,
-      "liquidity": 14520.5158,
+      "liquidity": 19669.8726,
       "conditionId": "0x07c14fb935c5380a1612915fb42e29e9ecde61345bc5645493f5e3d3a6119b26"
     },
     {
@@ -615,10 +593,21 @@
       "yesPrice": 0.71,
       "noPrice": 0.29,
       "endDate": "2026-02-16T15:00:00Z",
-      "volume": 643.138635,
+      "volume": 649.590246,
       "volume24hr": 152.602735,
-      "liquidity": 1629.8324,
+      "liquidity": 1624.9805,
       "conditionId": "0x88b0383f5d855d2ec6687ad28938abdb7c94193e8d9630c9b03d2155e5da8d65"
+    },
+    {
+      "slug": "highest-temperature-in-wellington-on-february-16-2026-17c",
+      "question": "Will the highest temperature in Wellington be 17°C on February 16?",
+      "yesPrice": 0.19,
+      "noPrice": 0.81,
+      "endDate": "2026-02-16T12:00:00Z",
+      "volume": 641.94833,
+      "volume24hr": 108.72097400000001,
+      "liquidity": 184.0011,
+      "conditionId": "0x097def72b3de379918345a94ae532a37216ed8868dfa86a8974fa985a24f9076"
     },
     {
       "slug": "btc-updown-5m-1771251900",
@@ -628,19 +617,8 @@
       "endDate": "2026-02-16T14:30:00Z",
       "volume": 636.428896,
       "volume24hr": 636.428896,
-      "liquidity": 3523.0883,
+      "liquidity": 5141.4441,
       "conditionId": "0x6aff357f4a3f97030267d2074e00f8a68285bb0a944128fefe8403479f861e8e"
-    },
-    {
-      "slug": "highest-temperature-in-wellington-on-february-16-2026-17c",
-      "question": "Will the highest temperature in Wellington be 17°C on February 16?",
-      "yesPrice": 0.235,
-      "noPrice": 0.765,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 586.21833,
-      "volume24hr": 108.72097400000001,
-      "liquidity": 160.923,
-      "conditionId": "0x097def72b3de379918345a94ae532a37216ed8868dfa86a8974fa985a24f9076"
     },
     {
       "slug": "highest-temperature-in-paris-on-february-16-2026-8c",
@@ -648,9 +626,9 @@
       "yesPrice": 0.135,
       "noPrice": 0.865,
       "endDate": "2026-02-16T12:00:00Z",
-      "volume": 578.170763,
+      "volume": 579.307121,
       "volume24hr": 503.6363820000001,
-      "liquidity": 332.6136,
+      "liquidity": 391.7083,
       "conditionId": "0x5843be30cd94a0546885fb432b3eea8358949deaa19e37bd049414c100fab21e"
     },
     {
@@ -659,9 +637,9 @@
       "yesPrice": 0.585,
       "noPrice": 0.415,
       "endDate": "2026-02-16T16:30:00Z",
-      "volume": 547.166096,
+      "volume": 552.250839,
       "volume24hr": 353.5,
-      "liquidity": 2568.3691,
+      "liquidity": 2556.8429,
       "conditionId": "0xf88da23a57084bc7c8020949a4c5c034d89a99719fdff81f980ab55a12dd6b48"
     },
     {
@@ -672,7 +650,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 534.674858,
       "volume24hr": 315.73111,
-      "liquidity": 669.34728,
+      "liquidity": 646.71276,
       "conditionId": "0xde8f837e3f56df1d7d2e38561d793c3c6b359a1f47b787ccac301f4be86f91c1"
     },
     {
@@ -683,19 +661,41 @@
       "endDate": "2026-02-16T15:55:00Z",
       "volume": 530.937632,
       "volume24hr": 530.937632,
-      "liquidity": 3475.7396,
+      "liquidity": 3467.7414,
       "conditionId": "0xce1ed968a061c4ce33c389bb591cf65befaa2590752549ce09f5dafdbd9fc87c"
+    },
+    {
+      "slug": "cs2-faze-prv-2026-02-16-game1",
+      "question": "Counter-Strike: FaZe vs PARIVISION - Map 1 Winner",
+      "yesPrice": 0.405,
+      "noPrice": 0.595,
+      "endDate": "2026-02-16T12:00:00Z",
+      "volume": 490.111238,
+      "volume24hr": 0,
+      "liquidity": 8489.6916,
+      "conditionId": "0x8b5fb8d5ae554d6010a8fdf8b1aadf31211d39a07ba4bb5560ff61612f98fb11"
     },
     {
       "slug": "highest-temperature-in-paris-on-february-16-2026-9c",
       "question": "Will the highest temperature in Paris be 9°C on February 16?",
-      "yesPrice": 0.505,
-      "noPrice": 0.495,
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 438.796002,
       "volume24hr": 424.031088,
-      "liquidity": 650.0331,
+      "liquidity": 656.7057,
       "conditionId": "0x88c61dac48b0173a3c028f7c6d964396d2ba24d50593c8be0d52a51e83abe3a9"
+    },
+    {
+      "slug": "highest-temperature-in-sao-paulo-on-february-16-2026-31c",
+      "question": "Will the highest temperature in Sao Paulo be 31°C on February 16?",
+      "yesPrice": 0.13,
+      "noPrice": 0.87,
+      "endDate": "2026-02-16T12:00:00Z",
+      "volume": 404.662168,
+      "volume24hr": 326.181176,
+      "liquidity": 171.841,
+      "conditionId": "0x9106febd890a627f6ebb2ef0eccc959f85f04ad44c6c92bdf11e0bbadc3ad74c"
     },
     {
       "slug": "highest-temperature-in-paris-on-february-16-2026-10c",
@@ -705,7 +705,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 399.647211,
       "volume24hr": 347.967761,
-      "liquidity": 388.9547,
+      "liquidity": 409.2547,
       "conditionId": "0x3d01ceb2c747b4cafda21fc8aba3ae2139feae36e0a298079eeb9449e1c58a65"
     },
     {
@@ -716,7 +716,7 @@
       "endDate": "2026-02-16T13:00:00Z",
       "volume": 398.03921,
       "volume24hr": 174.03921,
-      "liquidity": 1675.6456,
+      "liquidity": 1675.6458,
       "conditionId": "0x02856210b2063bac8d2c96e24f65ab32fad07cc30a1055edffbb48f1a70f554c"
     },
     {
@@ -727,7 +727,7 @@
       "endDate": "2026-02-16T15:15:00Z",
       "volume": 395.303524,
       "volume24hr": 395.303524,
-      "liquidity": 3512.6696,
+      "liquidity": 3506.7705,
       "conditionId": "0x49b1c18d97165a65af32ef98a303c2d6037b3bb192849a1d66dd452a972cc607"
     },
     {
@@ -738,7 +738,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 395.063535,
       "volume24hr": 308.319143,
-      "liquidity": 290.2067,
+      "liquidity": 283.3579,
       "conditionId": "0x8658134706d85a4cf517534cd7e4954df40d3b885375f8c4d14471a8d422979a"
     },
     {
@@ -749,19 +749,8 @@
       "endDate": "2026-02-16T15:15:00Z",
       "volume": 392.187842,
       "volume24hr": 372.58,
-      "liquidity": 14363.4514,
+      "liquidity": 14349.8514,
       "conditionId": "0x1fff216f6276a06ea54e07ab34e4f898ef16a5f2d5894b2823e0b2dc68aaddcc"
-    },
-    {
-      "slug": "highest-temperature-in-sao-paulo-on-february-16-2026-31c",
-      "question": "Will the highest temperature in Sao Paulo be 31°C on February 16?",
-      "yesPrice": 0.1,
-      "noPrice": 0.9,
-      "endDate": "2026-02-16T12:00:00Z",
-      "volume": 391.585246,
-      "volume24hr": 326.181176,
-      "liquidity": 189.2711,
-      "conditionId": "0x9106febd890a627f6ebb2ef0eccc959f85f04ad44c6c92bdf11e0bbadc3ad74c"
     },
     {
       "slug": "sol-updown-15m-1771254000",
@@ -775,6 +764,17 @@
       "conditionId": "0x8f16fe3773ac31ee5393d77e91ec4176096a11545096f321ec00d8bc7093855b"
     },
     {
+      "slug": "btc-updown-4h-1771232400",
+      "question": "Bitcoin Up or Down - February 16, 4:00AM-8:00AM ET",
+      "yesPrice": 0.505,
+      "noPrice": 0.495,
+      "endDate": "2026-02-16T13:00:00Z",
+      "volume": 353,
+      "volume24hr": 201,
+      "liquidity": 5761.096,
+      "conditionId": "0x6a32170e67a051832e836b9bcf91ea9de821a3b73a3f1657d9995a81f155e32d"
+    },
+    {
       "slug": "btc-updown-5m-1771255500",
       "question": "Bitcoin Up or Down - February 16, 10:25AM-10:30AM ET",
       "yesPrice": 0.495,
@@ -782,18 +782,18 @@
       "endDate": "2026-02-16T15:30:00Z",
       "volume": 350.834702,
       "volume24hr": 350.834702,
-      "liquidity": 3498.4105,
+      "liquidity": 3490.4129,
       "conditionId": "0x0324c514fc0cb3db8ea0fdb2583a421dca7867a859028afdf5661c68887fd3f8"
     },
     {
       "slug": "highest-temperature-in-sao-paulo-on-february-16-2026-35c",
       "question": "Will the highest temperature in Sao Paulo be 35°C on February 16?",
-      "yesPrice": 0.065,
-      "noPrice": 0.935,
+      "yesPrice": 0.07,
+      "noPrice": 0.93,
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 86.3707,
       "volume24hr": 69.9903,
-      "liquidity": 186.67471,
+      "liquidity": 191.76473,
       "conditionId": "0xae5a0f704779278e93da5504a3566cbcb2afee1bb029b19738ec48d7d020463d"
     },
     {
@@ -804,7 +804,7 @@
       "endDate": "2026-02-16T14:00:00Z",
       "volume": 81.703702,
       "volume24hr": 78,
-      "liquidity": 1708.6508,
+      "liquidity": 1708.2508,
       "conditionId": "0x8c1a07d51f0f4b6d25d04248ab1a8165b1e70d5e40a236b498e9adc10ccc6877"
     },
     {
@@ -826,7 +826,7 @@
       "endDate": "2026-02-16T14:00:00Z",
       "volume": 74.007842,
       "volume24hr": 74.007842,
-      "liquidity": 19229.8959,
+      "liquidity": 19216.2959,
       "conditionId": "0xf6c714f1152219576ae6bf57063d3e42d487fb99a75998dc69ce68e60172ead9"
     },
     {
@@ -837,19 +837,8 @@
       "endDate": "2026-02-16T16:00:00Z",
       "volume": 72.14,
       "volume24hr": 6,
-      "liquidity": 119.5266,
+      "liquidity": 107.0866,
       "conditionId": "0xbc1c0051ba6a5467c03c3aea046f0dde1d6a2cfbf603f8498b4a32dc742505d9"
-    },
-    {
-      "slug": "btc-updown-5m-1771245000",
-      "question": "Bitcoin Up or Down - February 16, 7:30AM-7:35AM ET",
-      "yesPrice": 0.505,
-      "noPrice": 0.495,
-      "endDate": "2026-02-16T12:35:00Z",
-      "volume": 70.737057,
-      "volume24hr": 70.737057,
-      "liquidity": 5981.784,
-      "conditionId": "0x6f53b2b45ddaa64f959d71136e16ef2993a1e19242291c45d2c70d9fcc4031fa"
     },
     {
       "slug": "btc-updown-5m-1771245300",
@@ -859,8 +848,19 @@
       "endDate": "2026-02-16T12:40:00Z",
       "volume": 70.737057,
       "volume24hr": 70.737057,
-      "liquidity": 5971.3328,
+      "liquidity": 5965.7328,
       "conditionId": "0x23ba9568dea52f9568e411c902fee0d4cca10bb37bda07c088d04a0f7590cc0c"
+    },
+    {
+      "slug": "btc-updown-5m-1771245000",
+      "question": "Bitcoin Up or Down - February 16, 7:30AM-7:35AM ET",
+      "yesPrice": 0.505,
+      "noPrice": 0.495,
+      "endDate": "2026-02-16T12:35:00Z",
+      "volume": 70.737057,
+      "volume24hr": 70.737057,
+      "liquidity": 5976.184,
+      "conditionId": "0x6f53b2b45ddaa64f959d71136e16ef2993a1e19242291c45d2c70d9fcc4031fa"
     },
     {
       "slug": "btc-updown-5m-1771256400",
@@ -870,7 +870,7 @@
       "endDate": "2026-02-16T15:45:00Z",
       "volume": 60.488624,
       "volume24hr": 60.488624,
-      "liquidity": 3712.7301,
+      "liquidity": 3704.7305,
       "conditionId": "0x962a2b7f4353a4972223b5e39ee6308a1b8a8c6bc46caa075d062c0f6ab0f1e6"
     },
     {
@@ -881,7 +881,7 @@
       "endDate": "2026-02-16T16:00:00Z",
       "volume": 59.137248,
       "volume24hr": 59.137248,
-      "liquidity": 3464.1555,
+      "liquidity": 3456.1573,
       "conditionId": "0x2441273160db274e68f7ead14de5905433da1628e9132b5bf7d255c648dbbd8a"
     },
     {
@@ -892,18 +892,18 @@
       "endDate": "2026-02-16T15:30:00Z",
       "volume": 54.94,
       "volume24hr": 52.94,
-      "liquidity": 8140.3405,
+      "liquidity": 8140.3438,
       "conditionId": "0x454dcc64b6189fb7e2fb3ae670c895ce09dc0967cb2af88a821a538d0cdc1ef9"
     },
     {
       "slug": "cs2-navi-aur1-2026-02-16-map-handicap-away-1pt5",
       "question": "Map Handicap: NAVI (-1.5) vs Aurora Gaming (+1.5)",
-      "yesPrice": 0.355,
-      "noPrice": 0.645,
+      "yesPrice": 0.345,
+      "noPrice": 0.655,
       "endDate": "2026-02-16T14:00:00Z",
       "volume": 43.496269,
       "volume24hr": 29.411763,
-      "liquidity": 48.4731,
+      "liquidity": 164.7371,
       "conditionId": "0x865d0cd84ee6abbb5f13cfa8e89003d9d7c0090bfb931cd5db96c82634a51651"
     },
     {
@@ -925,18 +925,29 @@
       "endDate": "2026-02-16T15:40:00Z",
       "volume": 35.947646,
       "volume24hr": 35.947646,
-      "liquidity": 3725.4806,
+      "liquidity": 3717.483,
       "conditionId": "0x828804cd35973ce13734e79e3269b1e3fe10328af95af2c827215147f1e4fd5c"
+    },
+    {
+      "slug": "btc-updown-5m-1771260000",
+      "question": "Bitcoin Up or Down - February 16, 11:40AM-11:45AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-16T16:45:00Z",
+      "volume": 34.92,
+      "volume24hr": 34.92,
+      "liquidity": 3373.0518,
+      "conditionId": "0xed8cb87240ab6d027685287c8322636f561a3e49d01b7797b24c711141ed0025"
     },
     {
       "slug": "cs2-navi-aur1-2026-02-16-game1",
       "question": "Counter-Strike: Natus Vincere vs Aurora Gaming - Map 1 Winner",
-      "yesPrice": 0.535,
-      "noPrice": 0.465,
+      "yesPrice": 0.53,
+      "noPrice": 0.47,
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 34.532158,
       "volume24hr": 27.777775,
-      "liquidity": 4511.5989,
+      "liquidity": 7166.5629,
       "conditionId": "0x1424dfedd82c4004ad4c1666fb241ce2d67c9b1a3e41905230d23010199aad34"
     },
     {
@@ -947,7 +958,7 @@
       "endDate": "2026-02-16T14:55:00Z",
       "volume": 32.74,
       "volume24hr": 32.739999999999995,
-      "liquidity": 3799.5962,
+      "liquidity": 5417.5462,
       "conditionId": "0xdb1b12d30cffc10470c2c16ff4a4bea70ad8296e839320c6c39c00ba39d87468"
     },
     {
@@ -958,7 +969,7 @@
       "endDate": "2026-02-16T12:30:00Z",
       "volume": 31.960783,
       "volume24hr": 31.960783,
-      "liquidity": 20074.4736,
+      "liquidity": 20056.7257,
       "conditionId": "0x91c87ccf243f7652b7c6421915bebfef8d2a0ea008bae6834cf8a15f35e2bd20"
     },
     {
@@ -969,7 +980,7 @@
       "endDate": "2026-02-16T16:05:00Z",
       "volume": 9.784312,
       "volume24hr": 9.784312,
-      "liquidity": 3389.7927,
+      "liquidity": 3381.6925,
       "conditionId": "0xd70b182ce6ec23dd7a41c8bdd8a4b44804b961073d242885325177e77a69b425"
     },
     {
@@ -980,7 +991,7 @@
       "endDate": "2026-02-16T16:30:00Z",
       "volume": 7.781567,
       "volume24hr": 7.781567,
-      "liquidity": 3396.1348,
+      "liquidity": 3370.0367,
       "conditionId": "0x5509ecddf95eaa64901c0823e314677edb55f8142fbb2390eb5b397cb31a9c7b"
     },
     {
@@ -991,7 +1002,7 @@
       "endDate": "2026-02-16T16:30:00Z",
       "volume": 7.781566,
       "volume24hr": 7.781566,
-      "liquidity": 7305.844,
+      "liquidity": 7292.2468,
       "conditionId": "0x40e8e1616b9192574a9d1464ed3730f07ca7bb7150b50592a80fda1649eb998c"
     },
     {
@@ -1002,8 +1013,19 @@
       "endDate": "2026-02-16T14:15:00Z",
       "volume": 6.8,
       "volume24hr": 6.8,
-      "liquidity": 19500.4388,
+      "liquidity": 19486.8388,
       "conditionId": "0xb734b84d58179b9d838ca972238d689fe921282b77acca0fde2604b0a63951e7"
+    },
+    {
+      "slug": "sol-updown-15m-1771239600",
+      "question": "Solana Up or Down - February 16, 6:00AM-6:15AM ET",
+      "yesPrice": 0.5,
+      "noPrice": 0.5,
+      "endDate": "2026-02-16T11:15:00Z",
+      "volume": 6.06,
+      "volume24hr": 6.06,
+      "liquidity": 7578.3829,
+      "conditionId": "0x3a35fc45f7141942da4f9f499530e2d31b00e64eaf59f26868195d2fa4495af2"
     },
     {
       "slug": "sol-updown-15m-1771240500",
@@ -1013,7 +1035,7 @@
       "endDate": "2026-02-16T11:30:00Z",
       "volume": 6.06,
       "volume24hr": 6.06,
-      "liquidity": 7146.2321,
+      "liquidity": 7144.9321,
       "conditionId": "0xeb4f40e64f7d740a911813c12587397fadf8c3170238830ecfd6d5cf93b19c45"
     },
     {
@@ -1024,30 +1046,8 @@
       "endDate": "2026-02-16T11:45:00Z",
       "volume": 6.06,
       "volume24hr": 6.06,
-      "liquidity": 7573.9822,
+      "liquidity": 7572.6822,
       "conditionId": "0x17653b4b1cbb1668dd63b093865240e7a7cb17c8c4c1035f74ebaff8a06b070d"
-    },
-    {
-      "slug": "sol-updown-15m-1771239600",
-      "question": "Solana Up or Down - February 16, 6:00AM-6:15AM ET",
-      "yesPrice": 0.5,
-      "noPrice": 0.5,
-      "endDate": "2026-02-16T11:15:00Z",
-      "volume": 6.06,
-      "volume24hr": 6.06,
-      "liquidity": 7579.6829,
-      "conditionId": "0x3a35fc45f7141942da4f9f499530e2d31b00e64eaf59f26868195d2fa4495af2"
-    },
-    {
-      "slug": "btc-updown-5m-1771237800",
-      "question": "Bitcoin Up or Down - February 16, 5:30AM-5:35AM ET",
-      "yesPrice": 0.505,
-      "noPrice": 0.495,
-      "endDate": "2026-02-16T10:35:00Z",
-      "volume": 5,
-      "volume24hr": 5,
-      "liquidity": 5925.5984,
-      "conditionId": "0x28bb0023f387fb5fa7908b468eb1e74b25d8cd1d9d27f73c6da85623cfcc4162"
     },
     {
       "slug": "dota2-lynx-strong-2026-02-16-game1",
@@ -1057,7 +1057,7 @@
       "endDate": "2026-02-16T14:00:00Z",
       "volume": 4.310338,
       "volume24hr": 4.310338,
-      "liquidity": 753.0396,
+      "liquidity": 752.6396,
       "conditionId": "0x771901d7fb141d28a656a4367ea72b749f424c839b4c02255955441f431bed52"
     },
     {
@@ -1068,7 +1068,7 @@
       "endDate": "2026-02-16T11:55:00Z",
       "volume": 4.276861,
       "volume24hr": 4.276861,
-      "liquidity": 5999.2694,
+      "liquidity": 5993.6694,
       "conditionId": "0x6345b42a8b0ce4cae0b0e4c9161a71710dd5006dd314c876432a9d6ede2f2288"
     },
     {
@@ -1079,7 +1079,7 @@
       "endDate": "2026-02-16T12:00:00Z",
       "volume": 4,
       "volume24hr": 4,
-      "liquidity": 7582.0663,
+      "liquidity": 7581.3663,
       "conditionId": "0x3f0583c604f145fddbd3ddd9cb3d5f6e2a131d3a8dc37ee449fbb9c0a73a8d5c"
     },
     {
@@ -1090,7 +1090,7 @@
       "endDate": "2026-02-16T13:25:00Z",
       "volume": 4,
       "volume24hr": 4,
-      "liquidity": 5770.8679,
+      "liquidity": 5765.2667,
       "conditionId": "0x506a7747651c0bad4147ad75690ad36b6074b7481333ba8b5069285fa6c4e97a"
     },
     {
@@ -1101,7 +1101,7 @@
       "endDate": "2026-02-16T15:15:00Z",
       "volume": 3.2,
       "volume24hr": 3.2,
-      "liquidity": 5594.3668,
+      "liquidity": 5630.3636,
       "conditionId": "0x5839dc01bda01cf6291e6a80e05e405e5b3d30f8d6795b2a39e6f9091227da1a"
     }
   ]

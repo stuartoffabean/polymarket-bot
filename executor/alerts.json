@@ -8522,6 +8522,34 @@
       "pnlPct": null,
       "message": "Cancelled all open orders on disconnect",
       "timestamp": "2026-02-16T04:56:12.977Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-16T05:01:24.941Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-16T05:06:36.135Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-16T05:11:47.940Z"
+    },
+    {
+      "type": "WS_DISCONNECT",
+      "price": null,
+      "pnlPct": null,
+      "message": "Cancelled all open orders on disconnect",
+      "timestamp": "2026-02-16T05:14:02.592Z"
     }
   ],
   "circuitBreakerTripped": false,

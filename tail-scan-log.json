@@ -7444,8 +7444,8 @@
       "btc_center": "$70,000-72,000",
       "eth_center": "$2,000-2,100",
       "sol_center": "$80-90",
-      "cheapest_tail_ask": "99.0¢",
-      "alerts": "NONE - all tail asks ≥ 99¢"
+      "cheapest_tail_ask": "99.0\u00a2",
+      "alerts": "NONE - all tail asks \u2265 99\u00a2"
     }
   },
   {
@@ -13635,5 +13635,246 @@
         "hoursToResolution": 37.989195555555554
       }
     }
+  },
+  {
+    "timestamp": "2026-02-16T05:03:00Z",
+    "btcPrice": "~$68,800 (inferred from market pricing)",
+    "ethPrice": "~$1,950 (inferred from market pricing)",
+    "solPrice": "~$85 (inferred from market pricing)",
+    "markets_scanned": 27,
+    "tail_buckets": [
+      {
+        "market": "BTC $64K-$66K Feb16",
+        "bestAsk": 0.034,
+        "bestBid": 0.027,
+        "askDepth": "63.7@0.034, 5177@0.04, 200@0.044",
+        "bidDepth": "50@0.027, 75@0.022, 28@0.02, 300@0.016",
+        "bookNote": "Deep asks start at 4\u00a2, massive 5177 size wall"
+      },
+      {
+        "market": "BTC $72K-$74K Feb16",
+        "bestAsk": 0.023,
+        "bestBid": 0.011,
+        "askDepth": "10.77@0.023, 60@0.024, 439@0.025, 115@0.026, 200@0.028, 5175@0.029",
+        "bidDepth": "359@0.011, 370@0.01, 14@0.009, 600@0.008",
+        "bookNote": "Best ask 2.3\u00a2, 5175-size wall at 2.9\u00a2"
+      },
+      {
+        "market": "BTC $74K-$76K Feb16",
+        "bestAsk": 0.003,
+        "bestBid": 0.001,
+        "askDepth": "thin at 0.3\u00a2",
+        "bidDepth": "thin",
+        "bookNote": "Very far OTM"
+      },
+      {
+        "market": "BTC $76K-$78K Feb16",
+        "bestAsk": 0.001,
+        "bestBid": null,
+        "askDepth": "1 tick ask only",
+        "bidDepth": "no bids",
+        "bookNote": "Dead market"
+      },
+      {
+        "market": "BTC $78K-$80K Feb16",
+        "bestAsk": 0.001,
+        "bestBid": null,
+        "askDepth": "1 tick",
+        "bidDepth": "no bids",
+        "bookNote": "Dead market"
+      },
+      {
+        "market": "BTC >$80K Feb16",
+        "bestAsk": 0.001,
+        "bestBid": null,
+        "askDepth": "1 tick",
+        "bidDepth": "no bids",
+        "bookNote": "Dead"
+      },
+      {
+        "market": "BTC <$62K Feb16",
+        "bestAsk": 0.009,
+        "bestBid": 0.003,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Downside tail"
+      },
+      {
+        "market": "BTC $62K-$64K Feb16",
+        "bestAsk": 0.01,
+        "bestBid": 0.004,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Downside tail"
+      },
+      {
+        "market": "BTC >$72K Feb16",
+        "bestAsk": 0.018,
+        "bestBid": 0.013,
+        "askDepth": "thin sub-2\u00a2",
+        "bidDepth": "thin",
+        "bookNote": "Upside tail"
+      },
+      {
+        "market": "BTC >$74K Feb16",
+        "bestAsk": 0.002,
+        "bestBid": 0.001,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Very far OTM"
+      },
+      {
+        "market": "BTC >$76K Feb16",
+        "bestAsk": 0.001,
+        "bestBid": null,
+        "askDepth": "1 tick",
+        "bidDepth": "none",
+        "bookNote": "Dead"
+      },
+      {
+        "market": "BTC >$74K Feb17",
+        "bestAsk": 0.027,
+        "bestBid": 0.025,
+        "askDepth": "388@0.027, 400@0.026 (descending from 0.999 wall)",
+        "bidDepth": "14@0.024, 19@0.023, 651@0.021, 100@0.02",
+        "bookNote": "INTERESTING - tight spread 2.5-2.7\u00a2, reasonable depth. Resolves tomorrow."
+      },
+      {
+        "market": "BTC >$72K Feb17",
+        "bestAsk": 0.1,
+        "bestBid": 0.09,
+        "askDepth": "not scanned (at 10\u00a2 boundary)",
+        "bidDepth": "not scanned",
+        "bookNote": "Right at threshold"
+      },
+      {
+        "market": "BTC >$76K Feb17",
+        "bestAsk": 0.005,
+        "bestBid": 0.004,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Far OTM"
+      },
+      {
+        "market": "ETH $1700-$1800 Feb16",
+        "bestAsk": 0.008,
+        "bestBid": 0.007,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Downside tail"
+      },
+      {
+        "market": "ETH $1800-$1900 Feb16",
+        "bestAsk": 0.092,
+        "bestBid": 0.065,
+        "askDepth": "3654@0.091, 50@0.118, 400@0.301",
+        "bidDepth": "37@0.065, 200@0.064, 185@0.062, 3654@0.057",
+        "bookNote": "Wide spread 6.5-9.2\u00a2, decent depth on both sides. Near-money tail."
+      },
+      {
+        "market": "ETH $2000-$2100 Feb16",
+        "bestAsk": 0.29,
+        "bestBid": 0.25,
+        "askDepth": "not scanned (>10\u00a2)",
+        "bidDepth": "not scanned",
+        "bookNote": "Near-money, not tail"
+      },
+      {
+        "market": "ETH $2100-$2200 Feb16",
+        "bestAsk": 0.029,
+        "bestBid": 0.01,
+        "askDepth": "3660@0.029, 200@0.032, 50@0.039, 5.38@0.072",
+        "bidDepth": "850@0.01, 3654@0.002",
+        "bookNote": "Wide spread 1-2.9\u00a2, massive ask wall at 2.9\u00a2"
+      },
+      {
+        "market": "ETH $2200-$2300 Feb16",
+        "bestAsk": 0.003,
+        "bestBid": 0.002,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Far OTM"
+      },
+      {
+        "market": "ETH $2300-$2400 Feb16",
+        "bestAsk": 0.005,
+        "bestBid": 0.001,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Far OTM"
+      },
+      {
+        "market": "ETH <$1600 Feb16",
+        "bestAsk": 0.003,
+        "bestBid": 0.001,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Extreme downside"
+      },
+      {
+        "market": "ETH $1600-$1700 Feb16",
+        "bestAsk": 0.009,
+        "bestBid": 0.002,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Downside tail"
+      },
+      {
+        "market": "ETH >$2100 Feb16",
+        "bestAsk": 0.017,
+        "bestBid": 0.013,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Upside tail"
+      },
+      {
+        "market": "ETH >$2200 Feb16",
+        "bestAsk": 0.008,
+        "bestBid": 0.003,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Far OTM"
+      },
+      {
+        "market": "ETH >$2300 Feb16",
+        "bestAsk": 0.003,
+        "bestBid": 0.002,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Very far OTM"
+      },
+      {
+        "market": "SOL >$90 Feb16",
+        "bestAsk": 0.07,
+        "bestBid": 0.04,
+        "askDepth": "2690@0.07, 5050@0.08, 60@0.10, 7@0.13",
+        "bidDepth": "76@0.04, 17@0.03, 2707@0.02",
+        "bookNote": "Wide spread 4-7\u00a2, heavy ask walls at 7-8\u00a2"
+      },
+      {
+        "market": "SOL >$100 Feb16",
+        "bestAsk": 0.004,
+        "bestBid": 0.001,
+        "askDepth": "thin",
+        "bidDepth": "thin",
+        "bookNote": "Far OTM"
+      },
+      {
+        "market": "SOL >$110 Feb16",
+        "bestAsk": 0.002,
+        "bestBid": null,
+        "askDepth": "thin",
+        "bidDepth": "none",
+        "bookNote": "Dead"
+      }
+    ],
+    "alerts_under_10c": 26,
+    "notable": [
+      "BTC $72K-$74K Feb16: 2.3\u00a2 ask, wall at 2.9\u00a2 (5175 shares)",
+      "BTC >$74K Feb17: 2.5-2.7\u00a2 tight spread, decent depth - resolves tomorrow",
+      "ETH $1800-$1900 Feb16: 9.2\u00a2 ask, 3654-share wall at 9.1\u00a2 - near-money tail",
+      "ETH $2100-$2200 Feb16: 2.9\u00a2 ask, 3660-share wall",
+      "SOL >$90 Feb16: 7\u00a2 ask, 2690+5050 share walls at 7-8\u00a2"
+    ]
   }
 ]

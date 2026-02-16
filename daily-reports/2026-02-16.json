@@ -1,29 +1,59 @@
 {
-  "timestamp": "2026-02-16T00:05:01.920Z",
+  "timestamp": "2026-02-16T05:01:59.925Z",
   "portfolio": {
-    "totalValue": 370.169174,
-    "positionValue": 49.511199999999995,
-    "cashBalance": 320.657974,
-    "trackedPositions": 5,
-    "idlePct": "86.6"
+    "totalValue": 0,
+    "positionValue": 0,
+    "cashBalance": 358.458374,
+    "trackedPositions": 0,
+    "idlePct": "?"
   },
   "strategies": {
+    "manual": {
+      "name": "manual",
+      "totalTrades": 10,
+      "openPositions": 1,
+      "closedPositions": 9,
+      "wins": 4,
+      "losses": 5,
+      "breakeven": 0,
+      "totalDeployed": 284.09,
+      "currentDeployed": 0.01,
+      "realizedPnl": -6.8,
+      "unrealizedPnl": 0,
+      "totalPnl": -6.8,
+      "winRate": 44.4,
+      "avgWin": 4.09,
+      "avgLoss": -5.33,
+      "avgHoldHours": 0,
+      "bestTrade": {
+        "market": "Norway Most Total Medals Winter Olympics",
+        "pnl": 15,
+        "pnlPct": "48.4"
+      },
+      "worstTrade": {
+        "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
+        "pnl": -11.74,
+        "pnlPct": "-32.0"
+      },
+      "expectancy": -0.76,
+      "profitFactor": 0.77
+    },
     "unknown": {
       "name": "unknown",
       "totalTrades": 48,
-      "openPositions": 4,
-      "closedPositions": 44,
+      "openPositions": 3,
+      "closedPositions": 45,
       "wins": 13,
-      "losses": 31,
+      "losses": 32,
       "breakeven": 0,
-      "totalDeployed": 434.91,
-      "currentDeployed": 0.16,
-      "realizedPnl": -40.13,
+      "totalDeployed": 434.93,
+      "currentDeployed": 0.14,
+      "realizedPnl": -40.15,
       "unrealizedPnl": 0,
-      "totalPnl": -40.13,
-      "winRate": 29.5,
+      "totalPnl": -40.15,
+      "winRate": 28.9,
       "avgWin": 4.17,
-      "avgLoss": -3.04,
+      "avgLoss": -2.95,
       "avgHoldHours": 0,
       "bestTrade": {
         "market": "Gov Shutdown Feb 14",
@@ -35,38 +65,8 @@
         "pnl": -27.27,
         "pnlPct": "-50.0"
       },
-      "expectancy": -0.91,
+      "expectancy": -0.89,
       "profitFactor": 0.57
-    },
-    "manual": {
-      "name": "manual",
-      "totalTrades": 9,
-      "openPositions": 5,
-      "closedPositions": 4,
-      "wins": 1,
-      "losses": 3,
-      "breakeven": 0,
-      "totalDeployed": 199.2,
-      "currentDeployed": 48.24,
-      "realizedPnl": 3.62,
-      "unrealizedPnl": 1.29,
-      "totalPnl": 4.91,
-      "winRate": 25,
-      "avgWin": 15,
-      "avgLoss": -4.77,
-      "avgHoldHours": 0,
-      "bestTrade": {
-        "market": "Norway Most Total Medals Winter Olympics",
-        "pnl": 15,
-        "pnlPct": "48.4"
-      },
-      "worstTrade": {
-        "market": "0xb572085e24472c1039ea8d5a06eaaca249f1d5459b7b09a0d71a89628708924c",
-        "pnl": -7.7,
-        "pnlPct": "-36.7"
-      },
-      "expectancy": 0.91,
-      "profitFactor": 1.57
     },
     "resolution": {
       "name": "resolution",
@@ -159,68 +159,73 @@
       "profitFactor": 0.11
     }
   },
-  "openPositions": [
+  "openPositions": [],
+  "closedPositions": [
     {
-      "market": "BTC $85K Feb NO",
-      "outcome": "No",
+      "market": "Jokic NBA MVP 2025-26",
+      "outcome": "Yes",
       "strategy": "manual",
-      "size": 25,
-      "avgPrice": 0.9399,
-      "currentBid": 0.953,
-      "costBasis": "23.50",
-      "currentValue": "23.82",
-      "pnl": "0.33",
-      "pnlPct": "1.4%"
-    },
-    {
-      "market": "BTC $50K Feb NO",
-      "outcome": "No",
-      "strategy": "manual",
-      "size": 25,
-      "avgPrice": 0.92,
-      "currentBid": 0.957,
-      "costBasis": "23.00",
-      "currentValue": "23.93",
-      "pnl": "0.93",
-      "pnlPct": "4.0%"
+      "size": 2.8,
+      "avgBuyPrice": "0.2420",
+      "avgSellPrice": "0.2530",
+      "costBasis": "0.68",
+      "proceeds": "0.71",
+      "realizedPnl": "0.03",
+      "realizedPnlPct": "4.5",
+      "status": "CLOSED"
     },
     {
       "market": "Doncic NBA MVP 2025-26",
       "outcome": "Yes",
       "strategy": "manual",
       "size": 21,
-      "avgPrice": 0.0499,
-      "currentBid": 0.05,
+      "avgBuyPrice": "0.0500",
+      "avgSellPrice": "0.0470",
       "costBasis": "1.05",
-      "currentValue": "1.05",
-      "pnl": "0.00",
-      "pnlPct": "0.2%"
+      "proceeds": "0.99",
+      "realizedPnl": "-0.06",
+      "realizedPnlPct": "-6.0",
+      "status": "CLOSED"
     },
     {
-      "market": "Jokic NBA MVP 2025-26",
+      "market": "BTC $50K Feb",
+      "outcome": "No",
+      "strategy": "manual",
+      "size": 25,
+      "avgBuyPrice": "0.9200",
+      "avgSellPrice": "0.9600",
+      "costBasis": "23.00",
+      "proceeds": "24.00",
+      "realizedPnl": "1.00",
+      "realizedPnlPct": "4.3",
+      "status": "CLOSED"
+    },
+    {
+      "market": "BTC $85K Feb",
+      "outcome": "No",
+      "strategy": "manual",
+      "size": 25,
+      "avgBuyPrice": "0.9400",
+      "avgSellPrice": "0.9540",
+      "costBasis": "23.50",
+      "proceeds": "23.85",
+      "realizedPnl": "0.35",
+      "realizedPnlPct": "1.5",
+      "status": "CLOSED"
+    },
+    {
+      "market": "0x89f6353c47b0a348034e0817912bd2b33206eef3b3d57392509e4c440ca8a8cc",
       "outcome": "Yes",
       "strategy": "manual",
-      "size": 2.8,
-      "avgPrice": 0.242,
-      "currentBid": 0.254,
-      "costBasis": "0.68",
-      "currentValue": "0.71",
-      "pnl": "0.03",
-      "pnlPct": "5.0%"
+      "size": 75,
+      "avgBuyPrice": "0.4888",
+      "avgSellPrice": "0.3322",
+      "costBasis": "36.66",
+      "proceeds": "24.92",
+      "realizedPnl": "-11.74",
+      "realizedPnlPct": "-32.0",
+      "status": "CLOSED"
     },
-    {
-      "market": "Yes @ 0.001",
-      "outcome": "Yes",
-      "strategy": "unknown",
-      "size": 18,
-      "avgPrice": 0.001,
-      "currentBid": 0,
-      "costBasis": "0.02",
-      "pnl": null,
-      "pnlPct": null
-    }
-  ],
-  "closedPositions": [
     {
       "market": "0x687aed0bc6b4ba07493c86ab0927edcbe38e4db5885999b7313770ccef994b29",
       "outcome": "Yes",
@@ -298,6 +303,20 @@
       "realizedPnl": "-3.42",
       "realizedPnlPct": "-34.5",
       "status": "CLOSED"
+    },
+    {
+      "market": "Will the highest temperature in London be 12°C or higher on February 15?",
+      "outcome": "Yes",
+      "strategy": "unknown",
+      "size": 18,
+      "avgBuyPrice": "0.0010",
+      "avgSellPrice": "0.0000",
+      "costBasis": "0.02",
+      "proceeds": "0.00",
+      "realizedPnl": "-0.02",
+      "realizedPnlPct": "-100.0",
+      "status": "RESOLVED_LOST",
+      "lastTrade": "2026-02-16T03:57:00.373Z"
     },
     {
       "market": "0xc2c24e3b9967b6cc92d413e38264dbe07f3cc57286b64c4fc54d6cce1b694b56",
@@ -1340,16 +1359,16 @@
     }
   },
   "summary": {
-    "totalRealizedPnl": -76.1,
-    "totalUnrealizedPnl": 1.29,
-    "totalPnl": -74.81,
-    "totalTrades": 93,
-    "totalWins": 23,
-    "totalLosses": 58,
-    "overallWinRate": 27.4,
-    "portfolioValue": 370.169174,
-    "cashBalance": 320.657974,
-    "idlePct": "86.6",
+    "totalRealizedPnl": -86.54,
+    "totalUnrealizedPnl": 0,
+    "totalPnl": -86.54,
+    "totalTrades": 94,
+    "totalWins": 26,
+    "totalLosses": 61,
+    "overallWinRate": 28.9,
+    "portfolioValue": 0,
+    "cashBalance": 358.458374,
+    "idlePct": "?",
     "activeStrategies": 5,
     "fillStats": {
       "weather": {
