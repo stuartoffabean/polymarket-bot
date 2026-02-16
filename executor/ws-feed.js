@@ -761,12 +761,13 @@ function checkTriggers(assetId, asset) {
         `AUTO-SELLING [${strat}] — Floor $${asset._trailingFloor.toFixed(4)} breached. Locked +${lockedPnl}% from HWM +${(asset._highWaterPnlPct*100).toFixed(1)}%`);
       if (autoExecuteEnabled && !circuitBreakerTripped) {
         // v6: Cancel pre-placed limit order before FOK market sell
-        // (limit order may have already filled — cancel is best-effort)
+        // CRITICAL: Must check if the GTC limit order already filled before firing
+        // the FOK backup. If we skip this, we sell shares we no longer own (double-sell).
         if (asset._trailingOrderId) {
-          httpPost("/cancel-order", { orderID: asset._trailingOrderId }).catch(() => {});
-          asset._trailingOrderId = null;
+          cancelTrailingAndSell(assetId, asset, "TRAILING_STOP");
+        } else {
+          executeSell(assetId, asset, "TRAILING_STOP");
         }
-        executeSell(assetId, asset, "TRAILING_STOP");
         return; // don't check other triggers after trailing stop fires
       }
     }
@@ -908,6 +909,45 @@ async function placeTrailingLimitOrder(assetId, asset, floorPrice, oldFloor) {
     log("TRAIL", `⚠️ Failed to place trailing limit order: ${e.message}`);
     // Non-fatal — the reactive FOK sell still works as backup
   }
+}
+
+// v6: Cancel pre-placed GTC limit order, then check if it already filled before
+// firing the FOK backup sell. Prevents double-sell when the GTC fills during the
+// crash and ws-feed also fires a FOK sell for the same shares.
+async function cancelTrailingAndSell(assetId, asset, reason) {
+  const orderId = asset._trailingOrderId;
+  asset._trailingOrderId = null;
+
+  try {
+    await httpPost("/cancel-order", { orderID: orderId });
+    log("TRAIL", `Cancelled trailing limit order ${orderId.slice(0,16)} — firing FOK backup`);
+  } catch (e) {
+    // Cancel failed — order likely already filled or expired.
+    // Check on-chain before firing another sell.
+    log("TRAIL", `Cancel trailing order failed: ${e.message} — verifying on-chain before FOK sell`);
+    try {
+      const { positions } = await httpGet("/positions");
+      const stillHeld = positions.find(p => p.asset_id === assetId && p.size > 0.1);
+      if (!stillHeld) {
+        // Position is gone — the GTC limit order already filled. Don't double-sell.
+        log("TRAIL", `✅ GTC limit order already filled — position gone from data API. Skipping FOK sell.`);
+        subscribedAssets.delete(assetId);
+        recentlySold.set(assetId, Date.now());
+        persistRecentlySold();
+        pushAlert("SELL_EXECUTED", assetId, asset, asset._trailingFloor, null,
+          `${reason}: GTC limit order filled at floor ~$${asset._trailingFloor?.toFixed(4)}. No FOK needed.`);
+        return;
+      }
+      // Position still exists — GTC didn't fill (or only partially). Proceed with FOK.
+      log("TRAIL", `Position still on-chain (${stillHeld.size} shares) — proceeding with FOK sell`);
+      asset.size = stillHeld.size; // update to actual remaining size
+    } catch (verifyErr) {
+      // Can't verify — proceed with FOK as safety fallback
+      log("TRAIL", `⚠️ On-chain verification failed: ${verifyErr.message} — proceeding with FOK sell anyway`);
+    }
+  }
+
+  executeSell(assetId, asset, reason);
 }
 
 // v5: Escalating slippage table for auto-sell retries
