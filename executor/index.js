@@ -1955,7 +1955,24 @@ async function handler(req, res) {
         return send(res, 400, { error: "Thesis required for directional trades" });
       }
 
-      console.log(`⚡ FAST-PATH EXECUTION: ${market || tokenID.slice(0, 20)}`);
+      // ── STRATEGY ALLOWLIST GATE ──
+      // Only validated strategies can execute. To promote a strategy from paper → live,
+      // add it to this list. Prevents cron sessions from trading unvalidated signals.
+      const LIVE_STRATEGIES = ["event-scanner", "manual", "resolution"];
+      const strategy = body.strategy || "unknown";
+      if (!LIVE_STRATEGIES.includes(strategy)) {
+        console.log(`🚫 STRATEGY BLOCKED: "${strategy}" is not in LIVE_STRATEGIES [${LIVE_STRATEGIES.join(", ")}] — ${market || tokenID.slice(0, 20)}`);
+        sendTelegramAlert(
+          `🚫 <b>STRATEGY BLOCKED</b>\n\n` +
+          `<b>Market:</b> ${market || tokenID.slice(0, 20)}\n` +
+          `<b>Strategy:</b> ${strategy}\n` +
+          `<b>Allowed:</b> ${LIVE_STRATEGIES.join(", ")}\n` +
+          `<b>Action:</b> Add "${strategy}" to LIVE_STRATEGIES in executor to enable`
+        );
+        return send(res, 403, { error: `Strategy "${strategy}" not in LIVE_STRATEGIES allowlist`, allowedStrategies: LIVE_STRATEGIES });
+      }
+
+      console.log(`⚡ FAST-PATH EXECUTION: ${market || tokenID.slice(0, 20)} [strategy: ${strategy}]`);
 
       // Step 0: Validate market exists with liquidity
       const validation = await validateOpportunity({ tokenID, slug, market, side });
