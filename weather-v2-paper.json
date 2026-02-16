@@ -1730,6 +1730,710 @@
           "reason": "YES overpriced: forecast 0% vs market 92% = 92% NO edge"
         }
       ]
+    },
+    {
+      "timestamp": "2026-02-16T00:22:41.731Z",
+      "marketsScanned": 14,
+      "forecastsChecked": 44,
+      "opportunities": 2,
+      "analysis": [
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "≤31",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.001,
+          "marketPrice": 0.0035,
+          "edge": -0.002,
+          "hoursUntil": 24,
+          "yesToken": "77196891661897048721292874057057537184209874825097074160188740574884986072981",
+          "noToken": "61134283242945235196896123526275571331627159744352298206719653752861404189197",
+          "marketId": "1376605",
+          "question": "Will the highest temperature in New York City be 31°F or below on February 16?"
+        },
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "32-33",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.009,
+          "marketPrice": 0.0075,
+          "edge": 0.001,
+          "hoursUntil": 24,
+          "yesToken": "16095049670288213332477988735476123202726220045587988582460465503789789551143",
+          "noToken": "9491250279297654171455416807283638295961711427875479220495391917663117899874",
+          "marketId": "1376606",
+          "question": "Will the highest temperature in New York City be between 32-33°F on February 16?"
+        },
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "34-35",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.039,
+          "marketPrice": 0.086,
+          "edge": -0.047,
+          "hoursUntil": 24,
+          "yesToken": "76914612154918405876307028942777481845552330707266744333580022062938381698469",
+          "noToken": "110826455230099143798656416776045824592531955366272015201118474373955693362790",
+          "marketId": "1376607",
+          "question": "Will the highest temperature in New York City be between 34-35°F on February 16?"
+        },
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "36-37",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.113,
+          "marketPrice": 0.215,
+          "edge": -0.102,
+          "hoursUntil": 24,
+          "yesToken": "97226226021944486860832520651462524853891671711060437832264008428408169494984",
+          "noToken": "68278228626098586113860794506149443040948311439195034862614614435562288584457",
+          "marketId": "1376608",
+          "question": "Will the highest temperature in New York City be between 36-37°F on February 16?"
+        },
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "38-39",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.213,
+          "marketPrice": 0.395,
+          "edge": -0.182,
+          "hoursUntil": 24,
+          "yesToken": "85410876747811301969534587878976750011930033258702621196569697207775667475620",
+          "noToken": "30555542060653909850967779491023472287261739951412190381984229533635969316786",
+          "marketId": "1376609",
+          "question": "Will the highest temperature in New York City be between 38-39°F on February 16?"
+        },
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "40-41",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.261,
+          "marketPrice": 0.27,
+          "edge": -0.009,
+          "hoursUntil": 24,
+          "yesToken": "61498510382836163439450385460951998387220671534821991070327948310576356937827",
+          "noToken": "20898696763643231399504133641284652180994367228571655733689161822916924849942",
+          "marketId": "1376610",
+          "question": "Will the highest temperature in New York City be between 40-41°F on February 16?"
+        },
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "42-43",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.209,
+          "marketPrice": 0.0685,
+          "edge": 0.14,
+          "hoursUntil": 24,
+          "yesToken": "75903101721932183166082034071062204201155915193520199735883500579783841736074",
+          "noToken": "63553598505919459305109948086714775165796560988955206397254347063109040409098",
+          "marketId": "1376611",
+          "question": "Will the highest temperature in New York City be between 42-43°F on February 16?"
+        },
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "44-45",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.109,
+          "marketPrice": 0.02,
+          "edge": 0.089,
+          "hoursUntil": 24,
+          "yesToken": "50232939185333620816418910405789377496820453952417951170294162688046586731537",
+          "noToken": "46234793372201189953156147677907434203456359107276322067621007829711723581931",
+          "marketId": "1376612",
+          "question": "Will the highest temperature in New York City be between 44-45°F on February 16?"
+        },
+        {
+          "city": "New York City",
+          "date": "2026-02-16",
+          "bucket": "≥46",
+          "unit": "°F",
+          "forecastHigh": 40.95,
+          "forecastProb": 0.046,
+          "marketPrice": 0.0035,
+          "edge": 0.043,
+          "hoursUntil": 24,
+          "yesToken": "15144401643030463431266393157104493951149645163440533745240826637458784682166",
+          "noToken": "35584108434607956188711286868029338427606347277402570124878235626831998911358",
+          "marketId": "1376613",
+          "question": "Will the highest temperature in New York City be 46°F or higher on February 16?"
+        },
+        {
+          "city": "Seoul",
+          "date": "2026-02-16",
+          "bucket": "0",
+          "unit": "°C",
+          "forecastHigh": 5.9,
+          "forecastProb": 0.001,
+          "marketPrice": 0.0055,
+          "edge": -0.005,
+          "hoursUntil": 24,
+          "yesToken": "35144694120711205857329818203942422540118500924589781441817773624463945499903",
+          "noToken": "55136138830516150660952533324222693195969002877155703851406573595027234765721",
+          "marketId": "1376579",
+          "question": "Will the highest temperature in Seoul be 0°C on February 16?"
+        },
+        {
+          "city": "Seoul",
+          "date": "2026-02-16",
+          "bucket": "1",
+          "unit": "°C",
+          "forecastHigh": 5.9,
+          "forecastProb": 0.004,
+          "marketPrice": 0.003,
+          "edge": 0.001,
+          "hoursUntil": 24,
+          "yesToken": "76384915873782656322211378341362832382253516173338899803350981480559725343478",
+          "noToken": "35060976897972039554082566939009910577637095139058283099764455618826173458448",
+          "marketId": "1376580",
+          "question": "Will the highest temperature in Seoul be 1°C on February 16?"
+        },
+        {
+          "city": "Seoul",
+          "date": "2026-02-16",
+          "bucket": "2",
+          "unit": "°C",
+          "forecastHigh": 5.9,
+          "forecastProb": 0.022,
+          "marketPrice": 0.013,
+          "edge": 0.009,
+          "hoursUntil": 24,
+          "yesToken": "17691915266552344988795204352535667347512360255697936544687249352549774360720",
+          "noToken": "85457801445430055439481980066966198267626144593379194584542075398287356725796",
+          "marketId": "1376581",
+          "question": "Will the highest temperature in Seoul be 2°C on February 16?"
+        },
+        {
+          "city": "Seoul",
+          "date": "2026-02-16",
+          "bucket": "3",
+          "unit": "°C",
+          "forecastHigh": 5.9,
+          "forecastProb": 0.076,
+          "marketPrice": 0.0545,
+          "edge": 0.022,
+          "hoursUntil": 24,
+          "yesToken": "29911093374324437528763394603232129568693798366539819378670555919266936673904",
+          "noToken": "78918574378606025082347840370597816752603889217558259977640941960357653948262",
+          "marketId": "1376582",
+          "question": "Will the highest temperature in Seoul be 3°C on February 16?"
+        },
+        {
+          "city": "Seoul",
+          "date": "2026-02-16",
+          "bucket": "4",
+          "unit": "°C",
+          "forecastHigh": 5.9,
+          "forecastProb": 0.172,
+          "marketPrice": 0.135,
+          "edge": 0.037,
+          "hoursUntil": 24,
+          "yesToken": "111205740444048989705459483835562140274047529641082799366745747754306174200891",
+          "noToken": "24374524388052718670949240484842667712717411051772811672738301233944801693474",
+          "marketId": "1376583",
+          "question": "Will the highest temperature in Seoul be 4°C on February 16?"
+        },
+        {
+          "city": "Seoul",
+          "date": "2026-02-16",
+          "bucket": "5",
+          "unit": "°C",
+          "forecastHigh": 5.9,
+          "forecastProb": 0.252,
+          "marketPrice": 0.325,
+          "edge": -0.073,
+          "hoursUntil": 24,
+          "yesToken": "110045691282477050224541912095700519685077546678550652280827601062380389559049",
+          "noToken": "90403278670023792825730768830236402505098619909361241098635356551964731874439",
+          "marketId": "1376584",
+          "question": "Will the highest temperature in Seoul be 5°C on February 16?"
+        },
+        {
+          "city": "Seoul",
+          "date": "2026-02-16",
+          "bucket": "6",
+          "unit": "°C",
+          "forecastHigh": 5.9,
+          "forecastProb": 0.242,
+          "marketPrice": 0.24,
+          "edge": 0.002,
+          "hoursUntil": 24,
+          "yesToken": "33666130131449186413265020592688510484199950784891097326773102126875692007512",
+          "noToken": "92941670713718102036475705221531653094898417492604922668626025653465529006566",
+          "marketId": "1376585",
+          "question": "Will the highest temperature in Seoul be 6°C on February 16?"
+        },
+        {
+          "city": "Seoul",
+          "date": "2026-02-16",
+          "bucket": "≥7",
+          "unit": "°C",
+          "forecastHigh": 5.9,
+          "forecastProb": 0.232,
+          "marketPrice": 0.19,
+          "edge": 0.042,
+          "hoursUntil": 24,
+          "yesToken": "67501115336935130221486852883325907789125376410284613981749795985881051137036",
+          "noToken": "2103975403185986665717319824003678464252076703859723171747286598640542180635",
+          "marketId": "1376586",
+          "question": "Will the highest temperature in Seoul be 7°C or higher on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "≤4",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.001,
+          "marketPrice": 0.0005,
+          "edge": 0,
+          "hoursUntil": 24,
+          "yesToken": "16798616297176372975263904771215046013001950046282289807511451036934438423944",
+          "noToken": "20398866528386855966684552523941100645439576311785752264051316075999233025419",
+          "marketId": "1376524",
+          "question": "Will the highest temperature in London be 4°C or below on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "5",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.005,
+          "marketPrice": 0.0015,
+          "edge": 0.003,
+          "hoursUntil": 24,
+          "yesToken": "93977960968180854724873474327206357113388247507343591356177498268338469010624",
+          "noToken": "47554064282221616209210269764225393691733720068287003027140349610089079405672",
+          "marketId": "1376526",
+          "question": "Will the highest temperature in London be 5°C on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "6",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.025,
+          "marketPrice": 0.002,
+          "edge": 0.023,
+          "hoursUntil": 24,
+          "yesToken": "40484361806532333543529582477543955056553473721476762889240931574335846407386",
+          "noToken": "99793123159119749711150611462596314303192093478265917817758518520808023927661",
+          "marketId": "1376527",
+          "question": "Will the highest temperature in London be 6°C on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "7",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.084,
+          "marketPrice": 0.0105,
+          "edge": 0.074,
+          "hoursUntil": 24,
+          "yesToken": "36681656041675087558210187622940940566784511940256592479473424994040420505065",
+          "noToken": "49248130524340161273088924995286743459836107316078410224955185019244750486092",
+          "marketId": "1376528",
+          "question": "Will the highest temperature in London be 7°C on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "8",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.182,
+          "marketPrice": 0.155,
+          "edge": 0.027,
+          "hoursUntil": 24,
+          "yesToken": "101118903696721852234403677010928308569036882588361814573683615704692442798434",
+          "noToken": "55965003073560550302002853480302899773718686079454673512647132011813620072464",
+          "marketId": "1376529",
+          "question": "Will the highest temperature in London be 8°C on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "9",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.256,
+          "marketPrice": 0.45,
+          "edge": -0.194,
+          "hoursUntil": 24,
+          "yesToken": "99754419267366391312613291977791928924427930829267254072382079343871747454268",
+          "noToken": "106747054186701787343720840039933659635728445737525528016867145308054159165968",
+          "marketId": "1376530",
+          "question": "Will the highest temperature in London be 9°C on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "10",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.235,
+          "marketPrice": 0.37,
+          "edge": -0.135,
+          "hoursUntil": 24,
+          "yesToken": "27234594522717713858776352668762581913217192825281727138292200983222590835574",
+          "noToken": "106241731901650031576851217362840570695024666778378406465485808826532839186115",
+          "marketId": "1376531",
+          "question": "Will the highest temperature in London be 10°C on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "11",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.141,
+          "marketPrice": 0.035,
+          "edge": 0.106,
+          "hoursUntil": 24,
+          "yesToken": "2120078471868035034577752753792362926097420418290827368884743530618075081092",
+          "noToken": "78598603366983272277817812350341912902226148409138387085800094159941747313964",
+          "marketId": "1376532",
+          "question": "Will the highest temperature in London be 11°C on February 16?"
+        },
+        {
+          "city": "London",
+          "date": "2026-02-16",
+          "bucket": "≥12",
+          "unit": "°C",
+          "forecastHigh": 9.8,
+          "forecastProb": 0.071,
+          "marketPrice": 0.0055,
+          "edge": 0.066,
+          "hoursUntil": 24,
+          "yesToken": "36519850055837119085719408179594549108654997286683474479683537793927748741672",
+          "noToken": "45591788872124686500024874826499092491125900999361826039627328258153219142201",
+          "marketId": "1376533",
+          "question": "Will the highest temperature in London be 12°C or higher on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "≤37",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0,
+          "marketPrice": 0.0005,
+          "edge": 0,
+          "hoursUntil": 24,
+          "yesToken": "65613402696142700123787652764199414513345097535858417948652122397663558542836",
+          "noToken": "23049034137145271489275627952649676755379824078938310959654346034991421153948",
+          "marketId": "1376641",
+          "question": "Will the highest temperature in Chicago be 37°F or below on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "38-39",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0,
+          "marketPrice": 0.0005,
+          "edge": 0,
+          "hoursUntil": 24,
+          "yesToken": "52234919472965073266165411890946263614402974782388120036037714685826113874582",
+          "noToken": "92246224484014575650547107489085426605906936152221550825937276838299799436182",
+          "marketId": "1376642",
+          "question": "Will the highest temperature in Chicago be between 38-39°F on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "40-41",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0,
+          "marketPrice": 0.0025,
+          "edge": -0.002,
+          "hoursUntil": 24,
+          "yesToken": "6205325151940768158350641239700874160882967909803290636088049601590884780581",
+          "noToken": "82346065913734371027541975082603876794105543549149562636962043387710245622006",
+          "marketId": "1376643",
+          "question": "Will the highest temperature in Chicago be between 40-41°F on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "42-43",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0,
+          "marketPrice": 0.003,
+          "edge": -0.003,
+          "hoursUntil": 24,
+          "yesToken": "92236351638522639700427577676040521168266574365666674271740934289400992396627",
+          "noToken": "30682270204514830491192427082531106984690829989835050346126803500749778555379",
+          "marketId": "1376644",
+          "question": "Will the highest temperature in Chicago be between 42-43°F on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "44-45",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0,
+          "marketPrice": 0.003,
+          "edge": -0.003,
+          "hoursUntil": 24,
+          "yesToken": "64408467426689751381537806300903243513516164045164630933384621001133255868130",
+          "noToken": "88417650580800154480741435878503014742796738516185960915240136184127555676389",
+          "marketId": "1376645",
+          "question": "Will the highest temperature in Chicago be between 44-45°F on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "46-47",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0,
+          "marketPrice": 0.0035,
+          "edge": -0.003,
+          "hoursUntil": 24,
+          "yesToken": "97557033211771248237987705628493364194605686394248511266314511420678485234168",
+          "noToken": "55779892291709078782383189509844224017397734644999909086647976768396883553154",
+          "marketId": "1376646",
+          "question": "Will the highest temperature in Chicago be between 46-47°F on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "48-49",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0,
+          "marketPrice": 0.003,
+          "edge": -0.003,
+          "hoursUntil": 24,
+          "yesToken": "25803807297247318040981576109826670504482288227848678721421317466738486603709",
+          "noToken": "24845899956236603890198863246651210165187879286478387964041455297166777326146",
+          "marketId": "1376647",
+          "question": "Will the highest temperature in Chicago be between 48-49°F on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "50-51",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0.002,
+          "marketPrice": 0.003,
+          "edge": -0.001,
+          "hoursUntil": 24,
+          "yesToken": "101622914109807279868965886050397953966966619613071316742221094462246852703593",
+          "noToken": "41899495011276358054021240874862696178241059322928066231026536868108199808603",
+          "marketId": "1376648",
+          "question": "Will the highest temperature in Chicago be between 50-51°F on February 16?"
+        },
+        {
+          "city": "Chicago",
+          "date": "2026-02-16",
+          "bucket": "≥52",
+          "unit": "°F",
+          "forecastHigh": 60.4,
+          "forecastProb": 0.997,
+          "marketPrice": 0.992,
+          "edge": 0.005,
+          "hoursUntil": 24,
+          "yesToken": "27078866528801706585536723997325947479003698587915396646164217905768513485217",
+          "noToken": "79296832178476513186771471028699555326763017524064242633931046207986508740692",
+          "marketId": "1376649",
+          "question": "Will the highest temperature in Chicago be 52°F or higher on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "≤49",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0,
+          "marketPrice": 0.002,
+          "edge": -0.002,
+          "hoursUntil": 24,
+          "yesToken": "96349786679615270011468313865109099922503191487590792124525116289495642886406",
+          "noToken": "94013697314478632246713132031203091195268104757442768632524815794812329866481",
+          "marketId": "1376623",
+          "question": "Will the highest temperature in Atlanta be 49°F or below on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "50-51",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0,
+          "marketPrice": 0.002,
+          "edge": -0.002,
+          "hoursUntil": 24,
+          "yesToken": "45697656239661836564167505973114372925433725524171552717462629393000150435605",
+          "noToken": "93629319874260441187871179461182616926484464690628615390647068984251739498523",
+          "marketId": "1376624",
+          "question": "Will the highest temperature in Atlanta be between 50-51°F on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "52-53",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.003,
+          "marketPrice": 0.004,
+          "edge": -0.001,
+          "hoursUntil": 24,
+          "yesToken": "5459046218071811369633513845498528696192545923787943060074097613196166125016",
+          "noToken": "77845684447039872116809687247818197085594242889897205098305178593842532970663",
+          "marketId": "1376625",
+          "question": "Will the highest temperature in Atlanta be between 52-53°F on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "54-55",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.016,
+          "marketPrice": 0.0035,
+          "edge": 0.013,
+          "hoursUntil": 24,
+          "yesToken": "104494848120764287108492556292658531964176267951048858743766018162446709722953",
+          "noToken": "53041982705855669418422585977866238822969898520878887773965730965934791693816",
+          "marketId": "1376626",
+          "question": "Will the highest temperature in Atlanta be between 54-55°F on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "56-57",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.061,
+          "marketPrice": 0.007,
+          "edge": 0.054,
+          "hoursUntil": 24,
+          "yesToken": "63822041519988071593935619105040941500977165260990797417857171986406487922721",
+          "noToken": "72092713883324654399715616591960427413051604947873818721631719469101833869367",
+          "marketId": "1376627",
+          "question": "Will the highest temperature in Atlanta be between 56-57°F on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "58-59",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.151,
+          "marketPrice": 0.015,
+          "edge": 0.136,
+          "hoursUntil": 24,
+          "yesToken": "9270146705756714311751861386665749783980052364903408896605557921391971002067",
+          "noToken": "3665918881223229136621481336595074558619165379686994345094545267819302944886",
+          "marketId": "1376628",
+          "question": "Will the highest temperature in Atlanta be between 58-59°F on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "60-61",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.242,
+          "marketPrice": 0.0305,
+          "edge": 0.211,
+          "hoursUntil": 24,
+          "yesToken": "78720660928595882924358875533884021425618682904579887219634439588060071073791",
+          "noToken": "112698256794683946260128787460306726853632279814071077406898972557796196296879",
+          "marketId": "1376629",
+          "question": "Will the highest temperature in Atlanta be between 60-61°F on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "62-63",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.252,
+          "marketPrice": 0.125,
+          "edge": 0.127,
+          "hoursUntil": 24,
+          "yesToken": "16828752110441999373066184089278542771610124989216445271386999244367601398571",
+          "noToken": "35403130796267161140266864772933770087908136215715216259974075810594569836794",
+          "marketId": "1376630",
+          "question": "Will the highest temperature in Atlanta be between 62-63°F on February 16?"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "≥64",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.274,
+          "marketPrice": 0.79,
+          "edge": -0.516,
+          "hoursUntil": 24,
+          "yesToken": "108599079858049967773109327514328150180656417189133465827456864183428542033558",
+          "noToken": "107266833187295199121309008070996315309983004738968925649008939015509639572162",
+          "marketId": "1376631",
+          "question": "Will the highest temperature in Atlanta be 64°F or higher on February 16?"
+        }
+      ],
+      "recommendations": [
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "60-61",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.242,
+          "marketPrice": 0.0305,
+          "edge": 0.211,
+          "hoursUntil": 24,
+          "yesToken": "78720660928595882924358875533884021425618682904579887219634439588060071073791",
+          "noToken": "112698256794683946260128787460306726853632279814071077406898972557796196296879",
+          "marketId": "1376629",
+          "question": "Will the highest temperature in Atlanta be between 60-61°F on February 16?",
+          "action": "BUY_YES",
+          "reason": "Forecast 24% vs market 3% = 21% edge"
+        },
+        {
+          "city": "Atlanta",
+          "date": "2026-02-16",
+          "bucket": "≥64",
+          "unit": "°F",
+          "forecastHigh": 62.2,
+          "forecastProb": 0.274,
+          "marketPrice": 0.79,
+          "edge": 0.5157469302488151,
+          "hoursUntil": 24,
+          "yesToken": "108599079858049967773109327514328150180656417189133465827456864183428542033558",
+          "noToken": "107266833187295199121309008070996315309983004738968925649008939015509639572162",
+          "marketId": "1376631",
+          "question": "Will the highest temperature in Atlanta be 64°F or higher on February 16?",
+          "action": "BUY_NO",
+          "reason": "YES overpriced: forecast 27% vs market 79% = 52% NO edge"
+        }
+      ]
     }
   ],
   "paperTrades": [
@@ -1747,7 +2451,10 @@
       "hoursUntil": 4,
       "yesToken": "101866985831276610664013320804876912535329030997498192633757087055137328160575",
       "noToken": "11739384259721969531137280028252693467343565625445402590238597749725329632144",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 8.1,
+      "wonBucket": "8",
+      "pl": 0.9995
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1763,7 +2470,10 @@
       "hoursUntil": 4,
       "yesToken": "66428117863747102844220264721414851885963981506342918275396832477086386403512",
       "noToken": "36199297195219238278513603763433345264852909587200567377249843341712071709580",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 8.1,
+      "wonBucket": "8",
+      "pl": 0.0024999999999999467
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1779,7 +2489,10 @@
       "hoursUntil": 4,
       "yesToken": "37045989981370646785565987640302980722922490568913077517676058505553216044411",
       "noToken": "45297883882105736801104530974186118485092124246759174485556693725695113758247",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 8.1,
+      "wonBucket": "8",
+      "pl": -0.0015
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1795,7 +2508,10 @@
       "hoursUntil": 4,
       "yesToken": "69230444156235357098960802466190889060582334966166083240230879214617973984760",
       "noToken": "20704078538755869753158701584241263780420585165914811020123346505411589794868",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 15.2,
+      "wonBucket": "15",
+      "pl": 0.0024999999999999467
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1811,7 +2527,10 @@
       "hoursUntil": 4,
       "yesToken": "26665174141687180499618803246541438830127124917661858032795236231844895220656",
       "noToken": "40010973403114414697654999012870506744078920058737900121921086901443821203391",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 15.2,
+      "wonBucket": "15",
+      "pl": 0.9975
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1827,7 +2546,10 @@
       "hoursUntil": 4,
       "yesToken": "103453150823107025551383416403853135885513633484051714703149961997012274216948",
       "noToken": "93143180485401348139891140761364816845232413999608916006996653464711146249666",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 15.2,
+      "wonBucket": "15",
+      "pl": -0.0005
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1843,7 +2565,10 @@
       "hoursUntil": 4,
       "yesToken": "112174950059029297678694753597349848123641102236127113461161111856893605075580",
       "noToken": "44105487671645339173359308005624911254141915709846743814377086883129562053010",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 36.5,
+      "wonBucket": "36-37",
+      "pl": -0.61
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1859,7 +2584,10 @@
       "hoursUntil": 4,
       "yesToken": "24254400109042473852157996196102659124892289394737862456786112457136747192193",
       "noToken": "53600337977728957545655637325076165966985020003737384608545808045698386029061",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 36.5,
+      "wonBucket": "36-37",
+      "pl": 0.6
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1875,7 +2603,10 @@
       "hoursUntil": 4,
       "yesToken": "20491719991167480401050421732389839398939029604806961143514686219837013221110",
       "noToken": "71850383886863322079203330262791468933195566569307088021012734851522083640303",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 36.5,
+      "wonBucket": "36-37",
+      "pl": -0.0405
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1891,7 +2622,10 @@
       "hoursUntil": 4,
       "yesToken": "52229908046966590673097432396353124522168059608928114717211508701162545286516",
       "noToken": "46301192465120319438618851842055978024750135169367025322345619017742940004664",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 36.5,
+      "wonBucket": "36-37",
+      "pl": -0.0055
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1907,7 +2641,10 @@
       "hoursUntil": 4,
       "yesToken": "4311767508289302134631685315427119870772394538671055471011453216363697226614",
       "noToken": "82702264579088771595306598484554580153625569649333303453103482361220973794879",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 76,
+      "wonBucket": "74-75",
+      "pl": -0.0005
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1923,7 +2660,10 @@
       "hoursUntil": 4,
       "yesToken": "93371634401597674732044973784091936010376310517566240071399668574412019880182",
       "noToken": "46711628030644970387054292106192919730809487291047039758045319060780875434886",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 76,
+      "wonBucket": "74-75",
+      "pl": 0.04500000000000004
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1939,7 +2679,10 @@
       "hoursUntil": 4,
       "yesToken": "10497667058679651447826344245483758424851222140306088846273863056449103376870",
       "noToken": "1505353874057770646762984431982273277389402601555350155844942793150780587839",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 59.8,
+      "wonBucket": "58-59",
+      "pl": -0.0045
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1955,7 +2698,10 @@
       "hoursUntil": 4,
       "yesToken": "111151938402407460126110409502775393868540912840803756131938605574448304015882",
       "noToken": "61176650446302385201029696533044432621693136257583170813099493745612781327080",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 59.8,
+      "wonBucket": "58-59",
+      "pl": 0.35650000000000004
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1971,7 +2717,10 @@
       "hoursUntil": 4,
       "yesToken": "55644802429481271853955858340602330162249603358662835346501781414662107688465",
       "noToken": "97990115150548279683904746278859499083274261701930845056531657387450955281222",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 59.8,
+      "wonBucket": "58-59",
+      "pl": -0.345
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -1987,7 +2736,10 @@
       "hoursUntil": 4,
       "yesToken": "108911503702427116490344823499696155406610742514878366894083564074549553449259",
       "noToken": "89778179190837119347754799566837852664589730717650872142619815207148229102021",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": -0.9,
+      "wonBucket": "-1",
+      "pl": -0.0005
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2003,7 +2755,10 @@
       "hoursUntil": 4,
       "yesToken": "96055043524547202769136011388689089509023887459295960202956086578222602230389",
       "noToken": "8901050284125658381971498451369223766582982411746082970811934442978194532906",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": -0.9,
+      "wonBucket": "-1",
+      "pl": 0.13
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2035,7 +2790,10 @@
       "hoursUntil": 4,
       "yesToken": "23323879415876090602578616909193210375030679876446545415985421847287063304308",
       "noToken": "97192697680704044694394263980440217769577919497365084022241139755686766202057",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 28.3,
+      "wonBucket": "28",
+      "pl": 0.9995
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2051,7 +2809,10 @@
       "hoursUntil": 4,
       "yesToken": "20333026556396322059401332173206476369563237710090301793433328194476092774089",
       "noToken": "31077376689048811817041670856494282173496950484358356826399812683163508334867",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 28.3,
+      "wonBucket": "28",
+      "pl": -0.0005
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2067,7 +2828,10 @@
       "hoursUntil": 4,
       "yesToken": "12685209322862714241255964170238266248730334030308154119854913625197279501358",
       "noToken": "74099264939064837467273019786116852155341725055368592422548861596363854406510",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 28.3,
+      "wonBucket": "28",
+      "pl": 0.012499999999999956
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2083,7 +2847,10 @@
       "hoursUntil": 4,
       "yesToken": "111714105508141580611938373044552546210237957087173680306290466854244088800588",
       "noToken": "30708675457448011384943728997661852533761970932851877415936746065709040047600",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 45.7,
+      "wonBucket": "44-45",
+      "pl": 0.86
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2099,7 +2866,10 @@
       "hoursUntil": 4,
       "yesToken": "39247970890550993889526607576331573139217221180191817918906766632363853000522",
       "noToken": "14859044025273145042638822974128941852485390247774583021906537639748690892931",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 45.7,
+      "wonBucket": "44-45",
+      "pl": 0.45499999999999996
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2115,7 +2885,10 @@
       "hoursUntil": 4,
       "yesToken": "21471422389040212285281561776996417121751841098608303106093300063098907991445",
       "noToken": "9874423301640502196459526329413028103618171383457755183848897020792462399377",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 45.7,
+      "wonBucket": "44-45",
+      "pl": 0.61
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2147,7 +2920,10 @@
       "hoursUntil": 4,
       "yesToken": "32718972528532755647139309118277239894239512750256847075749658937984952679997",
       "noToken": "17913490140146616358421106057920816452826007530517916021962079455536665776427",
-      "resolution": null
+      "resolution": "LOSS",
+      "actualTemp": 64.7,
+      "wonBucket": "64-65",
+      "pl": -0.002
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2163,7 +2939,10 @@
       "hoursUntil": 4,
       "yesToken": "99768998506168763825963884034061548485533834410592076750853534493201528836036",
       "noToken": "15653825800919002706809234140470968463048018387570478785353445741139796699711",
-      "resolution": null
+      "resolution": "WIN",
+      "actualTemp": 64.7,
+      "wonBucket": "64-65",
+      "pl": 0.9995
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -2179,6 +2958,71 @@
       "hoursUntil": 4,
       "yesToken": "79078141715834022332972536155414192669400407049001729363637261684137706553729",
       "noToken": "62336002768956642270603734892563596588760758494914505664372496269029611450604",
+      "resolution": "WIN",
+      "actualTemp": 64.7,
+      "wonBucket": "64-65",
+      "pl": 0.07999999999999996
+    },
+    {
+      "timestamp": "2026-02-16T00:22:41.731Z",
+      "city": "Atlanta",
+      "date": "2026-02-16",
+      "bucket": "60-61",
+      "unit": "°F",
+      "action": "BUY_YES",
+      "forecastProb": 0.242,
+      "marketPrice": 0.0305,
+      "edge": 0.211,
+      "forecastHigh": 62.2,
+      "hoursUntil": 24,
+      "yesToken": "78720660928595882924358875533884021425618682904579887219634439588060071073791",
+      "noToken": "112698256794683946260128787460306726853632279814071077406898972557796196296879",
+      "resolution": null
+    },
+    {
+      "timestamp": "2026-02-16T00:22:41.731Z",
+      "city": "Atlanta",
+      "date": "2026-02-16",
+      "bucket": "≥64",
+      "unit": "°F",
+      "action": "BUY_NO",
+      "forecastProb": 0.274,
+      "marketPrice": 0.79,
+      "edge": 0.5157469302488151,
+      "forecastHigh": 62.2,
+      "hoursUntil": 24,
+      "yesToken": "108599079858049967773109327514328150180656417189133465827456864183428542033558",
+      "noToken": "107266833187295199121309008070996315309983004738968925649008939015509639572162",
+      "resolution": null
+    },
+    {
+      "timestamp": "2026-02-16T00:24:26.154Z",
+      "city": "Atlanta",
+      "date": "2026-02-16",
+      "bucket": "60-61",
+      "unit": "°F",
+      "action": "BUY_YES",
+      "forecastProb": 0.242,
+      "marketPrice": 0.03,
+      "edge": 0.211,
+      "forecastHigh": 62.2,
+      "hoursUntil": 24,
+      "reason": "NOAA/Open-Meteo disagree (spread=5.6°F) - PAPER ONLY",
+      "resolution": null
+    },
+    {
+      "timestamp": "2026-02-16T00:24:26.154Z",
+      "city": "Atlanta",
+      "date": "2026-02-16",
+      "bucket": "≥64",
+      "unit": "°F",
+      "action": "BUY_NO",
+      "forecastProb": 0.274,
+      "marketPrice": 0.79,
+      "edge": 0.516,
+      "forecastHigh": 62.2,
+      "hoursUntil": 24,
+      "reason": "NOAA/Open-Meteo disagree (spread=5.6°F) - PAPER ONLY",
       "resolution": null
     }
   ]

@@ -4596,5 +4596,43 @@
       "error": null,
       "executedPrice": 0.52
     }
+  },
+  {
+    "id": "wal_1771184038782_zjhr3d",
+    "status": "filled",
+    "createdAt": "2026-02-15T19:33:58.782Z",
+    "type": "market-sell",
+    "tokenID": "26721641658578910850400467922902137112767338738318620899764587083396221213881",
+    "price": 0.92,
+    "size": 50,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T19:34:00.703Z",
+    "result": {
+      "orderID": "0x65653e7fe43ea957d7e0f29b94bd11bd6cca909128cdb790cf339a006289e418",
+      "error": null,
+      "executedPrice": 0.92
+    }
+  },
+  {
+    "id": "wal_1771184857392_2yqcmk",
+    "status": "filled",
+    "createdAt": "2026-02-15T19:47:37.392Z",
+    "type": "market-sell",
+    "tokenID": "11940987541302590336595165211069479402269718009021115580167865143261902675519",
+    "price": 0.011,
+    "size": 1207.9815,
+    "side": "SELL",
+    "strategy": "manual",
+    "source": "executor-manual",
+    "meta": {},
+    "resolvedAt": "2026-02-15T19:47:38.954Z",
+    "result": {
+      "orderID": "0xd1b6f66547b6f13c93e1a235c2e7b5bd0e3cde0ab360234aa53636a53fb9e727",
+      "error": null,
+      "executedPrice": 0.011
+    }
   }
 ]

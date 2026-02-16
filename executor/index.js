@@ -2096,75 +2096,142 @@ async function handler(req, res) {
       return send(res, 200, order);
     }
 
-    // POST /market-sell — sell position at best bid (emergency exit)
+    // POST /market-sell — sell position at market (emergency exit)
+    // v4: Uses FOK (fill-or-kill) + book-walking price + slippage tolerance
+    // Params: tokenID, size, slippagePct (0-1, default 0), orderType (default "FOK")
+    // FOK = atomic fill-or-cancel. No more dangling "live"/"delayed" orders.
     if (method === "POST" && path === "/market-sell") {
       const body = await parseBody(req);
       const { tokenID, size } = body;
       if (!tokenID || !size) return send(res, 400, { error: "Missing tokenID or size" });
 
-      // Get current best bid
+      const slippagePct = parseFloat(body.slippagePct || 0); // 0 = best bid, 0.05 = 5% below walked price
+      const orderType = body.orderType || "FOK"; // FOK by default for emergency sells
+
+      // Get current order book
       const book = await client.getOrderBook(tokenID);
-      // CLOB REST API returns bids ascending (lowest first, best/highest last)
-      const bestBid = book.bids && book.bids.length > 0 
-        ? parseFloat(book.bids[book.bids.length - 1].price) 
-        : null;
-      
-      if (!bestBid) return send(res, 400, { error: "No bids available" });
+      const bids = book.bids || [];
+      if (bids.length === 0) return send(res, 400, { error: "No bids available", tokenID: tokenID.slice(0, 20) });
 
-      console.log(`🚨 MARKET SELL: ${size} @ ${bestBid} (best bid) on ${tokenID.slice(0, 20)}...`);
+      // Walk the book to find the price where we can fill the full order
+      // Bids are ascending (lowest first, best/highest last) — walk from highest down
+      const sellSize = parseFloat(size);
+      let cumSize = 0;
+      let walkPrice = null;
+      let availableDepth = 0;
+      for (let i = bids.length - 1; i >= 0; i--) {
+        const levelPrice = parseFloat(bids[i].price);
+        const levelSize = parseFloat(bids[i].size);
+        cumSize += levelSize;
+        availableDepth += levelSize * levelPrice;
+        if (cumSize >= sellSize) {
+          walkPrice = levelPrice;
+          break;
+        }
+      }
 
-      const walId = logIntent({ type: "market-sell", tokenID, price: bestBid, size: parseFloat(size), side: "SELL", strategy: body.strategy || "manual", source: body.source || "executor-manual", meta: { reason: body.reason } });
+      // Best bid is always the highest bid for reference
+      const bestBid = parseFloat(bids[bids.length - 1].price);
+
+      // If book doesn't have enough depth, use lowest available bid (for GTC fallback)
+      // For FOK, this means the order will fail — but we report clearly why
+      if (!walkPrice) {
+        if (orderType === "FOK") {
+          return send(res, 400, { 
+            error: "Insufficient depth for FOK fill", 
+            tokenID: tokenID.slice(0, 20),
+            requestedSize: sellSize,
+            availableSize: cumSize,
+            bestBid,
+            availableDepth: availableDepth.toFixed(2),
+          });
+        }
+        walkPrice = parseFloat(bids[0].price); // lowest bid for GTC
+      }
+
+      // Apply slippage tolerance — lower the price to increase fill probability
+      // walkPrice already accounts for depth; slippage goes below that
+      const tickSize = walkPrice >= 0.1 ? 0.01 : 0.001;
+      let fillPrice = walkPrice * (1 - slippagePct);
+      // Round DOWN to nearest tick (must be valid CLOB price)
+      fillPrice = Math.floor(fillPrice / tickSize) * tickSize;
+      // Clamp to minimum valid price
+      fillPrice = Math.max(fillPrice, tickSize);
+
+      console.log(`🚨 MARKET SELL (${orderType}): ${sellSize} @ ${fillPrice} (walked=${walkPrice}, best=${bestBid}, slip=${(slippagePct*100).toFixed(1)}%) on ${tokenID.slice(0, 20)}...`);
+
+      const walId = logIntent({ type: "market-sell", tokenID, price: fillPrice, size: sellSize, side: "SELL", strategy: body.strategy || "manual", source: body.source || "executor-manual", meta: { reason: body.reason, orderType, slippagePct, walkPrice, bestBid } });
       let order;
       try {
         order = await client.createAndPostOrder({
           tokenID,
-          price: bestBid,
-          size: parseFloat(size),
+          price: fillPrice,
+          size: sellSize,
           side: Side.SELL,
-        });
-        resolveIntent(walId, "filled", { orderID: order.orderID || order.id, executedPrice: bestBid });
+        }, undefined, orderType);
+        resolveIntent(walId, "filled", { orderID: order.orderID || order.id, executedPrice: fillPrice });
       } catch (e) {
         resolveIntent(walId, "failed", { error: e.message });
         throw e;
       }
 
       console.log(`Sell result:`, JSON.stringify(order));
-      
-      // EXIT LEDGER — log the manual sell
-      // Try to find entry price from cached positions
+
+      // Check fill status for FOK orders
+      const statusField = order.status || order.orderStatus || order.order_status || "";
+      const orderStatus = typeof statusField === "string" ? statusField.toLowerCase() : String(statusField).toLowerCase();
+      const isFilled = orderStatus === "matched" || orderStatus === "filled" ||
+        (order.takingAmount && order.takingAmount !== "" && order.takingAmount !== "0");
+
+      // EXIT LEDGER — log the sell (even if unfilled, for audit trail)
       const cachedData = await getCachedPositions().catch(() => null);
       const cachedPos = cachedData?.openPositions || [];
       const pos = cachedPos.find(p => p.asset_id === tokenID);
       const entryPrice = pos ? parseFloat(pos.avgPrice) : 0;
-      const sellSize = parseFloat(size);
       const costBasis = sellSize * entryPrice;
-      const proceeds = sellSize * bestBid;
-      logExit({
-        assetId: tokenID,
-        market: getMarketName(tokenID) || (pos?.market) || `Asset ${tokenID.slice(0,20)}...`,
-        outcome: pos?.outcome || body.outcome || "Unknown",
-        reason: body.reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS
-              : body.reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT
-              : body.reason === "TIME_STOP" ? EXIT_REASONS.TIME_STOP
-              : body.reason === "EMERGENCY" ? EXIT_REASONS.EMERGENCY
-              : EXIT_REASONS.MANUAL_SELL,
-        triggerSource: body.source || "executor-manual",
-        entryPrice,
-        exitPrice: bestBid,
-        size: sellSize,
-        costBasis,
-        proceeds,
-        realizedPnl: proceeds - costBasis,
-        strategy: pos?.strategy || body.strategy || "unknown",
-        notes: body.notes || "",
+      const proceeds = sellSize * fillPrice;
+
+      if (isFilled) {
+        logExit({
+          assetId: tokenID,
+          market: getMarketName(tokenID) || (pos?.market) || `Asset ${tokenID.slice(0,20)}...`,
+          outcome: pos?.outcome || body.outcome || "Unknown",
+          reason: body.reason === "STOP_LOSS" ? EXIT_REASONS.STOP_LOSS
+                : body.reason === "TAKE_PROFIT" ? EXIT_REASONS.TAKE_PROFIT
+                : body.reason === "TIME_STOP" ? EXIT_REASONS.TIME_STOP
+                : body.reason === "EMERGENCY" ? EXIT_REASONS.EMERGENCY
+                : EXIT_REASONS.MANUAL_SELL,
+          triggerSource: body.source || "executor-manual",
+          entryPrice,
+          exitPrice: fillPrice,
+          size: sellSize,
+          costBasis,
+          proceeds,
+          realizedPnl: proceeds - costBasis,
+          strategy: pos?.strategy || body.strategy || "unknown",
+          notes: body.notes || `${orderType} fill @ ${fillPrice} (walked=${walkPrice}, slip=${(slippagePct*100).toFixed(1)}%)`,
+        });
+        positionLedger.recordExit({ assetId: tokenID, size: sellSize, reason: body.reason || "manual_sell", source: body.source || "executor-manual" });
+        invalidateTradeCache();
+        triggerSnapshotPush();
+      } else {
+        // Cancel unfilled FOK order (shouldn't be needed for true FOK, but belt-and-suspenders)
+        const orderId = order.orderID || order.id || order.order_id;
+        if (orderId) {
+          try { await client.cancelOrder(orderId); } catch (_) {}
+        }
+      }
+
+      return send(res, 200, { 
+        ...order, 
+        executedPrice: fillPrice,
+        fillStatus: isFilled ? "filled" : "unfilled",
+        orderType,
+        walkPrice,
+        bestBid,
+        slippagePct,
+        availableDepth: cumSize,
       });
-
-      // Record exit in position ledger
-      positionLedger.recordExit({ assetId: tokenID, size: sellSize, reason: body.reason || "manual_sell", source: body.source || "executor-manual" });
-
-      invalidateTradeCache();
-      triggerSnapshotPush();
-      return send(res, 200, { ...order, executedPrice: bestBid });
     }
 
     // POST /batch-orders — submit multiple orders concurrently (v3 §4: speed)

@@ -8242,6 +8242,91 @@
       "avgPrice": 0.4199,
       "message": "TRAILING_STOP: Sold 5.0026 @ 0.52",
       "timestamp": "2026-02-15T19:05:18.574Z"
+    },
+    {
+      "type": "TAKE_PROFIT",
+      "assetId": "26721641658578910850",
+      "outcome": "Yes",
+      "market": "0xdeaa7932b51ce74186dc0fb1af2c20294d58d6ace29e4c15e0f8ad13a2d5191d",
+      "price": 0.93,
+      "pnlPct": "50.0%",
+      "size": 50,
+      "avgPrice": 0.6199,
+      "message": "AUTO-SELLING [manual]",
+      "timestamp": "2026-02-15T19:33:58.337Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "26721641658578910850",
+      "outcome": "Yes",
+      "market": "0xdeaa7932b51ce74186dc0fb1af2c20294d58d6ace29e4c15e0f8ad13a2d5191d",
+      "price": 0.92,
+      "pnlPct": null,
+      "size": 50,
+      "avgPrice": 0.6199,
+      "message": "TAKE_PROFIT: Sold 50 @ 0.92",
+      "timestamp": "2026-02-15T19:34:02.131Z"
+    },
+    {
+      "type": "CIRCUIT_BREAKER",
+      "price": null,
+      "pnlPct": "-15.7%",
+      "message": "Daily drawdown 15.7% exceeds 15% — PAUSED for 2 hours",
+      "timestamp": "2026-02-15T19:34:04.694Z"
+    },
+    {
+      "type": "CIRCUIT_BREAKER_RESUMED",
+      "price": null,
+      "pnlPct": null,
+      "message": "Manual reset via API",
+      "timestamp": "2026-02-15T19:40:40.949Z"
+    },
+    {
+      "type": "STOP_LOSS",
+      "assetId": "11940987541302590336",
+      "outcome": "Yes",
+      "market": "0x687aed0bc6b4ba07493c86ab0927edcbe38e4db5885999b7313770ccef994b29",
+      "price": 0.011,
+      "pnlPct": "-35.3%",
+      "size": 1207.9815,
+      "avgPrice": 0.017,
+      "message": "AUTO-SELLING [unknown]",
+      "timestamp": "2026-02-15T19:47:36.963Z"
+    },
+    {
+      "type": "SELL_EXECUTED",
+      "assetId": "11940987541302590336",
+      "outcome": "Yes",
+      "market": "0x687aed0bc6b4ba07493c86ab0927edcbe38e4db5885999b7313770ccef994b29",
+      "price": 0.011,
+      "pnlPct": null,
+      "size": 1207.9815,
+      "avgPrice": 0.017,
+      "message": "STOP_LOSS: Sold 1207.9815 @ 0.011",
+      "timestamp": "2026-02-15T19:47:40.228Z"
+    },
+    {
+      "type": "TICK_SIZE_CHANGE",
+      "assetId": "17816702236900425865",
+      "price": null,
+      "pnlPct": null,
+      "message": "0.01 -> 0.001",
+      "timestamp": "2026-02-15T20:33:38.305Z"
+    },
+    {
+      "type": "TICK_SIZE_CHANGE",
+      "assetId": "17816702236900425865",
+      "price": null,
+      "pnlPct": null,
+      "message": "0.001 -> 0.001",
+      "timestamp": "2026-02-15T20:33:38.310Z"
+    },
+    {
+      "type": "CIRCUIT_BREAKER_RESUMED",
+      "price": null,
+      "pnlPct": null,
+      "message": "2 hour pause complete",
+      "timestamp": "2026-02-15T21:34:04.701Z"
     }
   ],
   "circuitBreakerTripped": false,
