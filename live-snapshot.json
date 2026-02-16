@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-02-16T03:45:08.019Z",
+  "timestamp": "2026-02-16T04:00:08.235Z",
   "portfolio": {
-    "trackedPositions": 1,
+    "trackedPositions": 0,
     "portfolioValue": null,
     "positionValue": 0,
     "cashBalance": 358.458374,
@@ -25,28 +25,13 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 7988.816261644
+    "uptime": 8888.475984779
   },
-  "positions": [
-    {
-      "id": "10783877744475063528",
-      "fullAssetId": "107838777444750635283283352077415720504156169946029729253237622295164434040091",
-      "outcome": "Yes",
-      "size": 18,
-      "avgPrice": 0.001,
-      "currentBid": 0,
-      "currentAsk": 0.001,
-      "costBasis": "0.02",
-      "pnl": null,
-      "pnlPct": null,
-      "stopLoss": 0.3,
-      "takeProfit": 0.5
-    }
-  ],
+  "positions": [],
   "orders": [],
   "trades": [
     {
-      "timestamp": "2026-02-16T03:45:08.019Z",
+      "timestamp": "2026-02-16T04:00:08.234Z",
       "market": "0x15eec799be53bc8fe57134b51e0ecbfa9407d8f141876aad6e5718adef9a7276",
       "outcome": "Yes",
       "side": "buy",
@@ -59,20 +44,7 @@
       "tokenId": "73102171968254150175441789734331062683107726947580722925006610769377018279866"
     },
     {
-      "timestamp": "2026-02-16T03:45:08.019Z",
-      "market": "0x3596ca28f942b239a1deec55e9a5d3f6cc044e44fae8f3e5a0ae83f507b55b14",
-      "outcome": "Yes",
-      "side": "buy",
-      "price": 0.001,
-      "size": 0.018,
-      "shares": 18,
-      "currentPrice": null,
-      "pnl": 0,
-      "pnlPct": "0.0%",
-      "tokenId": "107838777444750635283283352077415720504156169946029729253237622295164434040091"
-    },
-    {
-      "timestamp": "2026-02-16T03:45:08.019Z",
+      "timestamp": "2026-02-16T04:00:08.234Z",
       "market": "0x8e97d4425dd885462f62eeeacd212a89854f3284cc4d4dfa1518965df0e916b4",
       "outcome": "Yes",
       "side": "buy",
@@ -85,7 +57,7 @@
       "tokenId": "8010270730382868588546130570365383621891724310853848910851331100920214793828"
     },
     {
-      "timestamp": "2026-02-16T03:45:08.019Z",
+      "timestamp": "2026-02-16T04:00:08.234Z",
       "market": "0xb9ed449e81a990c75c5b63bfb478fde4c77d200412b93b5ec07fa4c723a38317",
       "outcome": "Yes",
       "side": "buy",
@@ -101,7 +73,7 @@
   "strategies": [
     {
       "name": "Speculative",
-      "trades": 4,
+      "trades": 3,
       "pnl": 0,
       "wins": 0,
       "enabled": true,
@@ -112,18 +84,6 @@
   "cash": 358.458374,
   "ledger": {
     "openPositions": [
-      {
-        "asset_id": "107838777444750635283283352077415720504156169946029729253237622295164434040091",
-        "market": "0x3596ca28f942b239a1deec55e9a5d3f6cc044e44fae8f3e5a0ae83f507b55b14",
-        "outcome": "Yes",
-        "size": 18,
-        "avgPrice": "0.0010",
-        "costBasis": "0.02",
-        "totalBought": 18,
-        "totalSold": 0,
-        "realizedPnl": "0.00",
-        "status": "OPEN"
-      },
       {
         "asset_id": "73102171968254150175441789734331062683107726947580722925006610769377018279866",
         "market": "0x15eec799be53bc8fe57134b51e0ecbfa9407d8f141876aad6e5718adef9a7276",
@@ -327,6 +287,22 @@
         "realizedPnl": "-3.42",
         "realizedPnlPct": "-34.5",
         "status": "CLOSED"
+      },
+      {
+        "asset_id": "107838777444750635283283352077415720504156169946029729253237622295164434040091",
+        "market": "Will the highest temperature in London be 12°C or higher on February 15?",
+        "outcome": "Yes",
+        "totalBought": 18,
+        "totalSold": 18,
+        "avgBuyPrice": "0.0010",
+        "avgSellPrice": "0.0000",
+        "totalCost": "0.02",
+        "totalProceeds": "0.00",
+        "realizedPnl": "-0.02",
+        "realizedPnlPct": "-100.0",
+        "status": "RESOLVED_LOST",
+        "resolvedAt": "2026-02-16T03:57:00.373Z",
+        "lastTrade": "2026-02-16T03:57:00.373Z"
       },
       {
         "asset_id": "56489028549550467921814118328415903635417326244285958217167410740105550859398",
@@ -1433,7 +1409,7 @@
         "status": "CLOSED"
       }
     ],
-    "totalRealizedPnl": "-84.66",
+    "totalRealizedPnl": "-84.67",
     "tradeCount": 492,
     "tradeLog": [
       {
