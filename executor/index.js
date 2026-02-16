@@ -71,6 +71,12 @@ const ENTRY_MAX_PRICE_LONG_HORIZON = 0.85;   // No manual entries above 85¢ unl
 // Fix: No BUY order executes without a thesis on file. Forces research before capital deployment.
 const THESIS_REQUIRED = true;
 
+// === TRADING HALT ===
+// Master kill switch: blocks ALL new BUY orders on every endpoint (/order, /execute-opportunity, etc.)
+// Set to true when operator halts real-money entries. SELL orders always allowed (exiting risk).
+// Toggle via: POST /trading-halt { enabled: true/false }
+let TRADING_HALTED = true; // DEFAULT: halted per operator directive 2026-02-16
+
 // === FEATURE 5: LOTTERY TICKET BAN (2026-02-16 Meta-Analysis Fix) ===
 // Root cause: Spray-and-pray lottery tickets (<5¢) create false confidence from lucky wins.
 // At our accuracy level, <5% implied probability events are pure gambling.
@@ -662,6 +668,17 @@ async function getExistingExposure(tokenID) {
 async function preTradeRiskCheck(tokenID, price, size, side, force = false, opts = {}) {
   // Only validate BUY orders (SELL is always allowed — exiting risk)
   if (side === "SELL") return { allowed: true, reason: "sell_always_allowed" };
+
+  // === TRADING HALT: Master kill switch ===
+  if (TRADING_HALTED) {
+    console.log(`🛑 TRADING HALTED: BUY ${size} @ ${price} on ${tokenID.slice(0, 20)}... REJECTED (master halt active)`);
+    return {
+      allowed: false,
+      blocked: true,
+      reason: "trading_halted",
+      checks: [{ check: "TRADING_HALT", status: "BLOCKED", detail: "All new BUY orders halted by operator. Use POST /trading-halt {enabled:false} to resume." }],
+    };
+  }
 
   const orderValue = price * size;
   const portfolio = await getPortfolioValue();
@@ -1878,6 +1895,24 @@ async function handler(req, res) {
           timestamp: new Date().toISOString()
         });
       }
+    }
+
+    // POST /trading-halt — toggle master trading halt
+    if (method === "POST" && path === "/trading-halt") {
+      const body = await parseBody(req);
+      const enabled = body.enabled;
+      if (typeof enabled !== "boolean") {
+        return send(res, 400, { error: "Required: { enabled: true|false }" });
+      }
+      const prev = TRADING_HALTED;
+      TRADING_HALTED = enabled;
+      console.log(`${enabled ? "🛑" : "✅"} TRADING HALT ${enabled ? "ENABLED" : "DISABLED"} (was: ${prev})`);
+      return send(res, 200, { tradingHalted: TRADING_HALTED, previous: prev });
+    }
+
+    // GET /trading-halt — check halt status
+    if (method === "GET" && path === "/trading-halt") {
+      return send(res, 200, { tradingHalted: TRADING_HALTED });
     }
 
     // POST /thesis — save a structured thesis for a position
