@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-16T22:15:51.894Z",
+  "timestamp": "2026-02-16T22:30:11.332Z",
   "portfolio": {
     "trackedPositions": 0,
     "portfolioValue": null,
@@ -25,7 +25,7 @@
     "executor": "localhost:3002",
     "wsFeed": "localhost:3003",
     "wsConnected": true,
-    "uptime": 610.973198822
+    "uptime": 1470.713879273
   },
   "positions": [],
   "orders": [],
@@ -39,6 +39,21 @@
     },
     {
       "time": "2026-02-16T22:11:14.929Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
+    },
+    {
+      "time": "2026-02-16T22:16:26.978Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
+    },
+    {
+      "time": "2026-02-16T22:21:38.815Z",
+      "type": "WS_DISCONNECT",
+      "message": "Cancelled all open orders on disconnect"
+    },
+    {
+      "time": "2026-02-16T22:26:50.433Z",
       "type": "WS_DISCONNECT",
       "message": "Cancelled all open orders on disconnect"
     }
