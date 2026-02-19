@@ -1,0 +1,383 @@
+{
+  "scanTime": "2026-02-19T05:27:12.285Z",
+  "totalMarkets": 65,
+  "candidates": 8,
+  "markets": [
+    {
+      "question": "Will Canada win the Men's Ice Hockey gold medal at the 2026 Winter Olympics?",
+      "eventTitle": "2026 Winter Olympics: Ice Hockey Gold Medal Winner",
+      "conditionId": "0x06b611865074cab0ee2991b62be17149ea4912e9cbde167639f2ee882ce28428",
+      "slug": "2026-winter-olympics-ice-hockey-gold-medal-winner",
+      "hoursToResolution": 67,
+      "endDate": "2026-02-22T00:00:00Z",
+      "volume24h": 445211.5106689999,
+      "gammaMid": 0.495,
+      "orderbook": {
+        "yesAsk": 0.5,
+        "yesBid": 0.49,
+        "noAsk": 0.51,
+        "noBid": 0.5,
+        "yesDepth": 33477.97,
+        "noDepth": 2279.26
+      },
+      "yesToken": "88928613609571999516722032493167167478639979186333413756961110063095984150168",
+      "noToken": "114797858481849022567602082237680413725572065963309327765486542577142613475787",
+      "research": {
+        "sources": [
+          "newsapi",
+          "bing-news",
+          "polymarket-page"
+        ],
+        "headlines": [
+          "[2026-02-18] 2026 Winter Olympics men's hockey odds, predictions: Wednesday quarterfinals picks from expert on 26-12 roll",
+          "[2026-02-17] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.17",
+          "[2026-02-17] 2026 Winter Olympics men's hockey odds, predictions: Tuesday playoff picks from expert on 26-12 roll",
+          "[2026-02-17] Who will USA play next in hockey? Explaining 2026 Olympic bracket opponent for quarterfinals",
+          "[2026-02-16] From the Sports Desk: Worth its wait in gold"
+        ],
+        "articles": [
+          {
+            "title": "2026 Winter Olympics men's hockey odds, predictions: Wednesday quarterfinals picks from expert on 26-12 roll",
+            "text": "Matt Severance reveals his best bets for Wednesday's men's hockey quarterfinals at the 2026 Winter Olympics from Milano Cortina, Italy",
+            "source": "CBS Sports"
+          },
+          {
+            "title": "Olympic medals today: What is the medal count at 2026 Winter Games on Feb.17",
+            "text": "Keep up with all the medals handed out during the 2026 Milano Cortina games.",
+            "source": "USA Today"
+          },
+          {
+            "title": "2026 Winter Olympics men's hockey odds, predictions: Tuesday playoff picks from expert on 26-12 roll",
+            "text": "Matt Severance reveals his best bets for Tuesday's men's hockey playoff round at the 2026 Winter Olympics from Milano Cortina, Italy",
+            "source": "CBS Sports"
+          }
+        ],
+        "sportsbookOdds": null,
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_8TiKf2kJtX8TzsscTHnAQK4Hop8f)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+      }
+    },
+    {
+      "question": "Rockets vs. Hornets",
+      "eventTitle": "Rockets vs. Hornets",
+      "conditionId": "0x251414e69496afa38de1dea0c56f84f81d166cff3fff3f73f081a60617a9ecb4",
+      "slug": "nba-hou-cha-2026-02-19",
+      "hoursToResolution": 19,
+      "endDate": "2026-02-20T00:00:00Z",
+      "volume24h": 278749.8432459999,
+      "gammaMid": 0.625,
+      "orderbook": {
+        "yesAsk": 0.63,
+        "yesBid": 0.62,
+        "noAsk": 0.38,
+        "noBid": 0.37,
+        "yesDepth": 32769.31,
+        "noDepth": 37676.2
+      },
+      "yesToken": "67568137424141056250558274728822395908557717387256327310879509847670732094952",
+      "noToken": "10599643190255192024044776781168410347261456754642891590933490200810319300204",
+      "research": {
+        "sources": [
+          "newsapi",
+          "bing-news",
+          "polymarket-page"
+        ],
+        "headlines": [
+          "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+          "[2026-02-14] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
+          "[2026-02-13] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
+          "[2026-02-12] NBA All-Star Weekend 2026: How to watch, full events schedule, where to stream free and more",
+          "[2026-02-12] Cooper Flagg, Alex Sarr out; Ace Bailey, Bub Carrington in for All-Star Friday Rising Stars game"
+        ],
+        "articles": [
+          {
+            "title": "NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+            "text": "With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
+            "source": "CBS Sports"
+          },
+          {
+            "title": "2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
+            "text": "SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars game 2026",
+            "source": "CBS Sports"
+          },
+          {
+            "title": "2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
+            "text": "SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars 2026",
+            "source": "CBS Sports"
+          }
+        ],
+        "sportsbookOdds": null,
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_8TiKf2kJtX8TzsscTHnAQK4Hop8f)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+      }
+    },
+    {
+      "question": "Hawks vs. 76ers",
+      "eventTitle": "Hawks vs. 76ers",
+      "conditionId": "0x1d130965d0047c043938aaabd3d0e27f09f758848b85430379e3634f9c7dc0f2",
+      "slug": "nba-atl-phi-2026-02-19",
+      "hoursToResolution": 19,
+      "endDate": "2026-02-20T00:00:00Z",
+      "volume24h": 271293.25520099985,
+      "gammaMid": 0.485,
+      "orderbook": {
+        "yesAsk": 0.49,
+        "yesBid": 0.48,
+        "noAsk": 0.52,
+        "noBid": 0.51,
+        "yesDepth": 4673.67,
+        "noDepth": 11495.8
+      },
+      "yesToken": "3228397389195359318702126719108319144474627397417082516428270503025154789162",
+      "noToken": "42619626747995833512162402433208082393317535138677723905088946565533202041896",
+      "research": {
+        "sources": [
+          "newsapi",
+          "bing-news",
+          "polymarket-page"
+        ],
+        "headlines": [
+          "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+          "[2026-02-15] NBA All-Star Game 2026: How to Watch Team USA vs. the World Online for Free",
+          "[2026-02-15] How to Watch the 2026 NBA All-Star Game",
+          "[2026-02-15] Complete 2026 NBA All-Star game rosters: Where is 76ers' Tyrese Maxey?",
+          "[2026-02-15] The NBA All-Star Game Is Back With a New Format: Here’s How to Watch"
+        ],
+        "articles": [
+          {
+            "title": "NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+            "text": "With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
+            "source": "CBS Sports"
+          },
+          {
+            "title": "NBA All-Star Game 2026: How to Watch Team USA vs. the World Online for Free",
+            "text": "The All-Star game tips off Sunday, Feb. 15, at 5 p.m. ET.",
+            "source": "Billboard"
+          },
+          {
+            "title": "How to Watch the 2026 NBA All-Star Game",
+            "text": "Three teams, four games, one winner. See all the national and global stars competing for the win\nThe post How to Watch the 2026 NBA All-Star Game appeared first on TheWrap.",
+            "source": "TheWrap"
+          }
+        ],
+        "sportsbookOdds": null,
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_8TiKf2kJtX8TzsscTHnAQK4Hop8f)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+      }
+    },
+    {
+      "question": "Will Elon Musk post 240-259 tweets from February 13 to February 20, 2026?",
+      "eventTitle": "Elon Musk # tweets February 13 - February 20, 2026?",
+      "conditionId": "0xea0f617bdce3b71d67cdddd440296c02bce98c6db76f485c7c05669260291e0f",
+      "slug": "elon-musk-of-tweets-february-13-february-20",
+      "hoursToResolution": 36,
+      "endDate": "2026-02-20T17:00:00Z",
+      "volume24h": 227235.133723,
+      "gammaMid": 0.0665,
+      "orderbook": {
+        "yesAsk": 0.078,
+        "yesBid": 0.071,
+        "noAsk": 0.929,
+        "noBid": 0.922,
+        "yesDepth": 336,
+        "noDepth": 30
+      },
+      "yesToken": "7174608542736277131043950724391761461362676603474060227727322953118858133400",
+      "noToken": "29812498937239911025258916398337231651746740797846276049666115942342357461341",
+      "research": {
+        "sources": [
+          "bing-news-primary",
+          "polymarket-page"
+        ],
+        "headlines": [
+          "* [All](/search?q=Will+Elon+Musk+post+240-259+tweets+from+February+13+to+Febru&FORM=HDRSC1)",
+          "* [Search](/copilotsearch?q=Will+Elon+Musk+post+240-259+tweets+from+February+13+to+Febru&FORM=CSSCOP)",
+          "* [Images](/images/search?q=Will+Elon+Musk+post+240-259+tweets+from+February+13+to+Febru&FORM=HDRSC3)",
+          "* [Videos](/videos/search?q=Will+Elon+Musk+post+240-259+tweets+from+February+13+to+Febru&FORM=HDRSC4)",
+          "* [Maps](/maps?q=Will+Elon+Musk+post+240-259+tweets+from+February+13+to+Febru&FORM=HDRSC6)",
+          "* [News](/news/search?q=Top+stories&FORM=HDRSC7)",
+          "* [Copilot](/chat?prompt=Will+Elon+Musk+post+240-259+tweets+from+February+13+to+Febru&sendquery=1&FORM=SCCODX)",
+          "* [More](javascript:void%280%29;)",
+          "* [Shopping](/shop?q=Will+Elon+Musk+post+240-259+tweets+from+February+13+to+Febru&FORM=SHOPTB)",
+          "* [Flights](/travel/search?q=Will+Elon+Musk+post+240-259+tweets+from+February+13+to+Febru&m=flights&FORM=FBSCOP)"
+        ],
+        "articles": [],
+        "sportsbookOdds": null,
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_8TiKf2kJtX8TzsscTHnAQK4Hop8f)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+      }
+    },
+    {
+      "question": "Will United States win the Men's Ice Hockey gold medal at the 2026 Winter Olympics?",
+      "eventTitle": "2026 Winter Olympics: Ice Hockey Gold Medal Winner",
+      "conditionId": "0x8a9e31d88af7b0c085c8482e6daa2cf1034794d8b724de19c1c5673cde6d496d",
+      "slug": "2026-winter-olympics-ice-hockey-gold-medal-winner",
+      "hoursToResolution": 67,
+      "endDate": "2026-02-22T00:00:00Z",
+      "volume24h": 222692.98867500003,
+      "gammaMid": 0.425,
+      "orderbook": {
+        "yesAsk": 0.43,
+        "yesBid": 0.42,
+        "noAsk": 0.58,
+        "noBid": 0.57,
+        "yesDepth": 554.09,
+        "noDepth": 39695.38
+      },
+      "yesToken": "21458388471965493789661604658497971530802154496937750511773793823692388706023",
+      "noToken": "20451944447577875889695314888786861914178280183565267699671533375745589925341",
+      "research": {
+        "sources": [
+          "bing-news-primary",
+          "polymarket-page"
+        ],
+        "headlines": [
+          "* [All](/search?q=Will+United+States+win+the+Men%27s+Ice+Hockey+gold+medal+at+th&FORM=HDRSC1)",
+          "* [Search](/copilotsearch?q=Will+United+States+win+the+Men%27s+Ice+Hockey+gold+medal+at+th&FORM=CSSCOP)",
+          "* [Images](/images/search?q=Will+United+States+win+the+Men%27s+Ice+Hockey+gold+medal+at+th&FORM=HDRSC3)",
+          "* [Videos](/videos/search?q=Will+United+States+win+the+Men%27s+Ice+Hockey+gold+medal+at+th&FORM=HDRSC4)",
+          "* [Maps](/maps?q=Will+United+States+win+the+Men%27s+Ice+Hockey+gold+medal+at+th&FORM=HDRSC6)",
+          "* [News](/news/search?q=Top+stories&FORM=HDRSC7)",
+          "* [Copilot](/chat?prompt=Will+United+States+win+the+Men%27s+Ice+Hockey+gold+medal+at+th&sendquery=1&FORM=SCCODX)",
+          "* [More](javascript:void%280%29;)",
+          "* [Shopping](/shop?q=Will+United+States+win+the+Men%27s+Ice+Hockey+gold+medal+at+th&FORM=SHOPTB)",
+          "* [Flights](/travel/search?q=Will+United+States+win+the+Men%27s+Ice+Hockey+gold+medal+at+th&m=flights&FORM=FBSCOP)"
+        ],
+        "articles": [],
+        "sportsbookOdds": null,
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_8TiKf2kJtX8TzsscTHnAQK4Hop8f)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+      }
+    },
+    {
+      "question": "Will the price of Bitcoin be above $66,000 on February 19?",
+      "eventTitle": "Bitcoin above ___ on February 19?",
+      "conditionId": "0xf972542880343e9bb9fc75aec332b34d1becf0e0b8a7aee37b3c6f43f694ce7a",
+      "slug": "bitcoin-above-on-february-19",
+      "hoursToResolution": 12,
+      "endDate": "2026-02-19T17:00:00Z",
+      "volume24h": 220144.65902600015,
+      "gammaMid": 0.755,
+      "orderbook": {
+        "yesAsk": 0.75,
+        "yesBid": 0.73,
+        "noAsk": 0.27,
+        "noBid": 0.25,
+        "yesDepth": 6013.08,
+        "noDepth": 673
+      },
+      "yesToken": "45442090861283347285012595833377035239872952558521549204230188898220802803962",
+      "noToken": "13782806396532337415223495923112396320408845236943005630162193384909857078881",
+      "research": {
+        "sources": [
+          "bing-news-primary",
+          "polymarket-page"
+        ],
+        "headlines": [
+          "* [All](/search?q=Will+the+price+of+Bitcoin+be+above+%2466%2c000+on+February+19&FORM=HDRSC1)",
+          "* [Search](/copilotsearch?q=Will+the+price+of+Bitcoin+be+above+%2466%2c000+on+February+19&FORM=CSSCOP)",
+          "* [Images](/images/search?q=Will+the+price+of+Bitcoin+be+above+%2466%2c000+on+February+19&FORM=HDRSC3)",
+          "* [Videos](/videos/search?q=Will+the+price+of+Bitcoin+be+above+%2466%2c000+on+February+19&FORM=HDRSC4)",
+          "* [Maps](/maps?q=Will+the+price+of+Bitcoin+be+above+%2466%2c000+on+February+19&FORM=HDRSC6)",
+          "* [News](/news/search?q=Top+stories&FORM=HDRSC7)",
+          "* [Copilot](/chat?prompt=Will+the+price+of+Bitcoin+be+above+%2466%2c000+on+February+19&sendquery=1&FORM=SCCODX)",
+          "* [More](javascript:void%280%29;)",
+          "* [Shopping](/shop?q=Will+the+price+of+Bitcoin+be+above+%2466%2c000+on+February+19&FORM=SHOPTB)",
+          "* [Flights](/travel/search?q=Will+the+price+of+Bitcoin+be+above+%2466%2c000+on+February+19&m=flights&FORM=FBSCOP)"
+        ],
+        "articles": [],
+        "sportsbookOdds": null,
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_8TiKf2kJtX8TzsscTHnAQK4Hop8f)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+      }
+    },
+    {
+      "question": "LoL: DN Freecs vs DRX (BO5) - LCK Cup Playoffs",
+      "eventTitle": "LoL: DN Freecs vs DRX (BO5) - LCK Cup Playoffs",
+      "conditionId": "0xae639bd5c16cdfaad317d8ebbb2029b33948b70ce5565b0ee858e8e6a6faa671",
+      "slug": "lol-dnf-drx-2026-02-19",
+      "hoursToResolution": 9,
+      "endDate": "2026-02-19T14:00:00Z",
+      "volume24h": 213943.256969,
+      "gammaMid": 0.485,
+      "orderbook": {
+        "yesAsk": 0.49,
+        "yesBid": 0.48,
+        "noAsk": 0.52,
+        "noBid": 0.51,
+        "yesDepth": 11721.14,
+        "noDepth": 65318.91
+      },
+      "yesToken": "109557386421276134028110153404210560641608960502368659189081312680592364891768",
+      "noToken": "57816286713968425953922355395362452057405058364519929695791028408441207790243",
+      "research": {
+        "sources": [
+          "bing-news-primary",
+          "polymarket-page"
+        ],
+        "headlines": [
+          "* [All](/search?q=LoL%3a+DN+Freecs+vs+DRX+%28BO5%29+-+LCK+Cup+Playoffs&FORM=HDRSC1)",
+          "* [Search](/copilotsearch?q=LoL%3a+DN+Freecs+vs+DRX+%28BO5%29+-+LCK+Cup+Playoffs&FORM=CSSCOP)",
+          "* [Images](/images/search?q=LoL%3a+DN+Freecs+vs+DRX+%28BO5%29+-+LCK+Cup+Playoffs&FORM=HDRSC3)",
+          "* [Videos](/videos/search?q=LoL%3a+DN+Freecs+vs+DRX+%28BO5%29+-+LCK+Cup+Playoffs&FORM=HDRSC4)",
+          "* [Maps](/maps?q=LoL%3a+DN+Freecs+vs+DRX+%28BO5%29+-+LCK+Cup+Playoffs&FORM=HDRSC6)",
+          "* [News](/news/search?q=Top+stories&FORM=HDRSC7)",
+          "* [Copilot](/chat?prompt=LoL%3a+DN+Freecs+vs+DRX+%28BO5%29+-+LCK+Cup+Playoffs&sendquery=1&FORM=SCCODX)",
+          "* [More](javascript:void%280%29;)",
+          "* [Shopping](/shop?q=LoL%3a+DN+Freecs+vs+DRX+%28BO5%29+-+LCK+Cup+Playoffs&FORM=SHOPTB)",
+          "* [Flights](/travel/search?q=LoL%3a+DN+Freecs+vs+DRX+%28BO5%29+-+LCK+Cup+Playoffs&m=flights&FORM=FBSCOP)"
+        ],
+        "articles": [],
+        "sportsbookOdds": null,
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_8TiKf2kJtX8TzsscTHnAQK4Hop8f)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+      }
+    },
+    {
+      "question": "Will Finland win the Men's Ice Hockey gold medal at the 2026 Winter Olympics?",
+      "eventTitle": "2026 Winter Olympics: Ice Hockey Gold Medal Winner",
+      "conditionId": "0x203be6b7dd7135f5313688151c9bd6a35afa92e0210b6c018f04dd243265b58c",
+      "slug": "2026-winter-olympics-ice-hockey-gold-medal-winner",
+      "hoursToResolution": 67,
+      "endDate": "2026-02-22T00:00:00Z",
+      "volume24h": 209985.55117300004,
+      "gammaMid": 0.0665,
+      "orderbook": {
+        "yesAsk": 0.069,
+        "yesBid": 0.064,
+        "noAsk": 0.936,
+        "noBid": 0.931,
+        "yesDepth": 233.66,
+        "noDepth": 70
+      },
+      "yesToken": "84663716428128875731696111233468519456926636824574147762553742766617560071939",
+      "noToken": "15645750714119804299653169165131654512381271483368604700963528629349949253478",
+      "research": {
+        "sources": [
+          "newsapi",
+          "bing-news",
+          "polymarket-page"
+        ],
+        "headlines": [
+          "[2026-02-18] 2026 Winter Olympics men's hockey odds, predictions: Wednesday quarterfinals picks from expert on 26-12 roll",
+          "[2026-02-17] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.17",
+          "[2026-02-17] Who will USA play next in hockey? Explaining 2026 Olympic bracket opponent for quarterfinals",
+          "[2026-02-16] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.16",
+          "[2026-02-16] 2026 Olympic men’s hockey bracket for Knockout Round set, Team USA path to gold"
+        ],
+        "articles": [
+          {
+            "title": "2026 Winter Olympics men's hockey odds, predictions: Wednesday quarterfinals picks from expert on 26-12 roll",
+            "text": "Matt Severance reveals his best bets for Wednesday's men's hockey quarterfinals at the 2026 Winter Olympics from Milano Cortina, Italy",
+            "source": "CBS Sports"
+          },
+          {
+            "title": "Olympic medals today: What is the medal count at 2026 Winter Games on Feb.17",
+            "text": "Keep up with all the medals handed out during the 2026 Milano Cortina games.",
+            "source": "USA Today"
+          },
+          {
+            "title": "Who will USA play next in hockey? Explaining 2026 Olympic bracket opponent for quarterfinals",
+            "text": "Here's who Team USA will play in the Olympic quarterfinals.",
+            "source": "Sporting News"
+          }
+        ],
+        "sportsbookOdds": null,
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_8TiKf2kJtX8TzsscTHnAQK4Hop8f)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+      }
+    }
+  ]
+}

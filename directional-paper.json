@@ -1,0 +1,15 @@
+{
+  "scans": [
+    {
+      "timestamp": "2026-02-19T05:24:26.639Z",
+      "marketsDiscovered": 167,
+      "candidatesResearched": 15
+    },
+    {
+      "timestamp": "2026-02-19T05:27:12.284Z",
+      "marketsDiscovered": 65,
+      "candidatesResearched": 8
+    }
+  ],
+  "paperTrades": []
+}
