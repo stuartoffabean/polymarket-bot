@@ -447,8 +447,8 @@ async function runScan() {
 
   const markets = await discoverMarkets();
   
-  // Limit deep research to top 20 by volume (ClawPod credits are limited)
-  const researchLimit = Math.min(markets.length, 20);
+  // Limit deep research to top 10 by volume (ClawPod credits + cron timeout)
+  const researchLimit = Math.min(markets.length, 10);
   const candidates = [];
 
   for (let i = 0; i < researchLimit; i++) {
