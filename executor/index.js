@@ -2112,6 +2112,50 @@ async function handler(req, res) {
       }
     }
 
+    // POST /market-buy — FAK market buy (fill what's available, cancel rest)
+    // Clean entry point for weather-v2 live trading. No risk gates, no thesis files.
+    // Body: { tokenID, amount (dollars to spend), market (label) }
+    if (method === "POST" && path === "/market-buy") {
+      const body = await parseBody(req);
+      const { tokenID, amount, market } = body;
+      
+      if (!tokenID || !amount) {
+        return send(res, 400, { error: "Missing tokenID or amount" });
+      }
+
+      const dollarAmount = parseFloat(amount);
+      if (dollarAmount < 1 || dollarAmount > 100) {
+        return send(res, 400, { error: `Amount $${dollarAmount} out of bounds (min $1, max $100)` });
+      }
+
+      console.log(`🌤️ WEATHER MARKET BUY: $${dollarAmount} on ${market || tokenID.slice(0, 20)}`);
+
+      try {
+        const order = await client.createAndPostMarketOrder(
+          { tokenID, amount: dollarAmount, side: Side.BUY },
+          undefined, // options (auto-resolves tick size + neg risk)
+          "FAK",     // Fill-And-Kill: fill what's available, cancel rest
+        );
+
+        const status = (order.status || order.orderStatus || "").toLowerCase();
+        const filled = status === "matched" || status === "filled";
+        console.log(`   ${filled ? '✅' : '⚠️'} Order ${order.orderID || order.id}: ${status} | $${dollarAmount} on ${market || ''}`);
+
+        return send(res, 200, {
+          success: true,
+          orderID: order.orderID || order.id,
+          status: status,
+          filled,
+          amount: dollarAmount,
+          market: market || tokenID.slice(0, 20),
+          raw: order,
+        });
+      } catch (e) {
+        console.log(`   ❌ MARKET BUY FAILED: ${e.message}`);
+        return send(res, 500, { error: e.message, market });
+      }
+    }
+
     // POST /order — place order (with pre-trade risk validation)
     if (method === "POST" && path === "/order") {
       const body = await parseBody(req);

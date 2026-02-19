@@ -756,23 +756,20 @@ async function scanWeatherMarkets() {
       if (liveShares > 0 && entryPrice >= 0.40) {
         // Determine which token to buy
         const tokenID = opp.action === 'BUY_YES' ? opp.yesToken : opp.noToken;
-        const side = 'BUY';
 
         try {
+          // FAK market buy: specify dollar amount, CLOB walks the book,
+          // fills what's available at best prices, cancels the rest.
+          // No dangling orders, partial fills OK.
           const postData = JSON.stringify({
             tokenID,
-            price: entryPrice,
-            size: liveShares,
-            side,
-            skipRiskCheck: true,
-            orderType: 'FOK',
-            strategy: 'weather-v2',
+            amount: liveSize,  // Dollar amount to spend
             market: `${opp.city} ${opp.bucket}${opp.unit} ${opp.date}`,
           });
           
           const resp = await new Promise((resolve, reject) => {
             const req = http.request({
-              hostname: 'localhost', port: 3002, path: '/order', method: 'POST',
+              hostname: 'localhost', port: 3002, path: '/market-buy', method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Content-Length': postData.length },
               timeout: 15000,
             }, (res) => {
@@ -789,10 +786,12 @@ async function scanWeatherMarkets() {
             req.end();
           });
 
-          if (resp.status === 200 || resp.status === 201) {
-            console.log(`   💰 LIVE ORDER PLACED: ${opp.action} ${opp.city} ${opp.bucket} — ${liveShares} shares @ ${entryPrice} ($${(liveShares * entryPrice).toFixed(2)})`);
+          if (resp.status === 200 && resp.body?.filled) {
+            console.log(`   💰 LIVE ORDER FILLED: ${opp.action} ${opp.city} ${opp.bucket} — $${liveSize} (FAK, order ${resp.body.orderID})`);
+          } else if (resp.status === 200) {
+            console.log(`   ⚠️ LIVE ORDER PARTIAL/PENDING: ${opp.city} ${opp.bucket} — status: ${resp.body?.status} (FAK fills what's available)`);
           } else {
-            console.log(`   ⚠️ LIVE ORDER FAILED (${resp.status}): ${JSON.stringify(resp.body).slice(0, 200)}`);
+            console.log(`   ❌ LIVE ORDER FAILED (${resp.status}): ${JSON.stringify(resp.body).slice(0, 200)}`);
           }
         } catch (e) {
           console.log(`   ⚠️ LIVE ORDER ERROR: ${e.message} (executor may be down)`);
