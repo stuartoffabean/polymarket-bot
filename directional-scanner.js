@@ -61,8 +61,19 @@ try {
   console.log(`[INIT] Research memory not available: ${e.message}`);
 }
 
-// Categories to SKIP (we have separate scanners for these)
-const SKIP_CATEGORIES = ['weather', 'temperature', 'highest temp', 'crypto binary', 'bitcoin up or down', 'ethereum up or down'];
+// Categories to SKIP (separate scanners or no research edge)
+const SKIP_CATEGORIES = [
+  // Weather (separate scanner)
+  'weather', 'temperature', 'highest temp',
+  // Crypto binary / price thresholds (need exchange data, not news research)
+  'crypto binary', 'bitcoin up or down', 'ethereum up or down',
+  'price of bitcoin', 'price of ethereum', 'price of solana', 'price of xrp',
+  'btc above', 'btc below', 'eth above', 'eth below',
+  // Elon tweet counts (unpredictable, no research edge)
+  'elon musk post', 'elon musk tweet', 'how many tweets',
+  // Generic social media counts
+  'how many followers', 'subscriber count',
+];
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -266,6 +277,11 @@ async function researchMarket(question, eventTitle, slug) {
   return research;
 }
 
+function isMajorSport(q) {
+  const lower = q.toLowerCase();
+  return /\b(nba|nfl|mlb|nhl|olympics|olympic|super bowl|world series|stanley cup|champions league|premier league|ufc)\b/.test(lower);
+}
+
 function detectCategory(q) {
   const lower = q.toLowerCase();
   if (isSportsQuestion(lower)) return 'sports';
@@ -347,8 +363,12 @@ async function discoverMarkets() {
   const filtered = unique.filter(m => {
     const q = (m.question || m.groupItemTitle || '').toLowerCase();
     
-    // Skip categories we handle separately
+    // Skip categories we handle separately or have no edge in
     if (SKIP_CATEGORIES.some(cat => q.includes(cat))) return false;
+    
+    // Skip generic "will X win on date" soccer/esports without team context
+    // (keep NBA, NFL, Olympics — those have better data coverage)
+    if (/\bwin on 2026-\d{2}-\d{2}\b/i.test(q) && !isMajorSport(q)) return false;
     
     // Must have a question
     if (!q || q.length < 10) return false;
