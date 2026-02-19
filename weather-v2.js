@@ -647,7 +647,22 @@ async function scanWeatherMarkets() {
     return BASE_SIZE;                          // $10 — base
   }
 
+  // Build set of open positions to prevent duplicate entries
+  const openPositions = new Set();
+  for (const t of paperLog.paperTrades) {
+    if (!t.resolution && t.dollarPnl === null) {
+      openPositions.add(`${t.city}|${t.bucket}|${t.action}`);
+    }
+  }
+
   for (const opp of opportunities) {
+    // Dedupe: skip if we already have an open position in this exact market+bucket+direction
+    const posKey = `${opp.city}|${opp.bucket}|${opp.action}`;
+    if (openPositions.has(posKey)) {
+      console.log(`   ⏭️ Already holding ${opp.city} ${opp.bucket} ${opp.action}, skipping duplicate`);
+      continue;
+    }
+
     // Determine actual entry price based on action
     let entryPrice;
     if (opp.action === 'BUY_YES') {
