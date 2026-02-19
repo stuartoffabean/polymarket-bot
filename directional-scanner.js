@@ -679,8 +679,8 @@ async function runScan() {
   const output = {
     scanTime: new Date().toISOString(),
     totalMarkets: markets.length,
-    candidates: candidates.length,
-    markets: candidates,
+    candidateCount: candidates.length,
+    candidates: candidates,
   };
 
   // Write candidates to file for cron agent
