@@ -69,6 +69,8 @@ const SKIP_CATEGORIES = [
   'crypto binary', 'bitcoin up or down', 'ethereum up or down',
   'price of bitcoin', 'price of ethereum', 'price of solana', 'price of xrp',
   'btc above', 'btc below', 'eth above', 'eth below',
+  'bitcoin reach', 'bitcoin dip', 'ethereum reach', 'ethereum dip',
+  'solana reach', 'solana dip', 'xrp reach', 'xrp dip',
   // Elon tweet counts (unpredictable, no research edge)
   'elon musk post', 'elon musk tweet', 'how many tweets',
   // Generic social media counts
