@@ -647,10 +647,20 @@ async function scanWeatherMarkets() {
     } else { // BUY_NO
       entryPrice = opp.noAsk || opp.execPriceNo || (1 - opp.marketPrice);
     }
-    // Calculate shares we'd get for $PAPER_TRADE_SIZE
-    const shares = entryPrice > 0 ? Math.floor(PAPER_TRADE_SIZE / entryPrice) : 0;
+    // Calculate shares — cap by available depth (can't buy more than what's on the book)
+    const availableDepth = opp.action === 'BUY_YES' ? (opp.yesAskDepth || Infinity) : (opp.noAskDepth || Infinity);
+    const maxSharesByDepth = Math.floor(availableDepth);
+    const maxSharesByBudget = entryPrice > 0 ? Math.floor(PAPER_TRADE_SIZE / entryPrice) : 0;
+    const shares = Math.min(maxSharesByBudget, maxSharesByDepth);
     const totalCost = shares * entryPrice;
+    const depthLimited = maxSharesByDepth < maxSharesByBudget;
     
+    // Skip if shares = 0 (can't fill) or entry < 1¢ (dust, no real liquidity)
+    if (shares <= 0 || entryPrice < 0.01 || totalCost < 0.50) {
+      console.log(`   ⏭️ Skipping paper trade: ${opp.city} ${opp.bucket} — ${shares <= 0 ? 'no depth' : entryPrice < 0.01 ? 'dust price' : 'cost too low'}`);
+      continue;
+    }
+
     paperLog.paperTrades.push({
       timestamp: new Date().toISOString(),
       city: opp.city,
@@ -662,6 +672,9 @@ async function scanWeatherMarkets() {
       gammaMid: opp.marketPrice,          // Gamma mid (reference only, NOT entry price)
       entryPrice: Math.round(entryPrice * 10000) / 10000,  // Actual entry price (ask from orderbook)
       entrySource: opp.yesAsk || opp.noAsk ? 'orderbook' : 'gamma-mid-fallback',
+      depthLimited: depthLimited,
+      availableDepth: availableDepth === Infinity ? null : availableDepth,
+      spread: opp.yesAsk && opp.yesBid ? Math.round((opp.yesAsk - opp.yesBid) * 10000) / 10000 : null,
       shares: shares,
       totalCost: Math.round(totalCost * 100) / 100,
       paperTradeSize: PAPER_TRADE_SIZE,
