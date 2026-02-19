@@ -309,23 +309,35 @@ async function main() {
         }
       }
       
-      const pl = won ? (1 - (trade.execPrice || trade.marketPrice)) : -(trade.execPrice || trade.marketPrice);
+      // Calculate P&L properly based on trade type
+      // entryPrice = what we actually paid per share (from orderbook ask)
+      const entryPrice = trade.entryPrice || trade.execPrice || trade.marketPrice;
+      const shares = trade.shares || 1;  // backwards compat: old trades = 1 share
+      const totalCost = trade.totalCost || entryPrice;
+      
+      // Per-share P&L: WIN pays $1/share, LOSS pays $0/share
+      const perSharePl = won ? (1 - entryPrice) : -entryPrice;
+      // Dollar P&L = per-share * shares
+      const dollarPl = perSharePl * shares;
       
       trade.resolution = won ? 'WIN' : 'LOSS';
       trade.actualTemp = unit === '°C' ? actualTemp.tempC : actualTemp.tempF;
       trade.tempSource = actualTemp.source;
       trade.wonBucket = wonBucket;
-      trade.pl = pl;
+      trade.pl = perSharePl;              // per-share (backwards compat)
+      trade.dollarPnl = Math.round(dollarPl * 100) / 100;
+      trade.entryPrice = entryPrice;      // backfill if missing
       trade.crossValidated = crossValidated;
       trade.polymarketResolution = polyResult;
       
       if (won) wins++;
       else losses++;
-      totalPl += pl;
+      totalPl += dollarPl;
       resolved++;
       
       const cvTag = crossValidated ? ' ✓PM' : '';
-      console.log(`   ${won ? '🟢' : '🔴'} ${trade.bucket} ${unit} → ${trade.resolution}${cvTag} | P/L: ${pl >= 0 ? '+' : ''}${pl.toFixed(4)} | edge: ${(trade.edge * 100).toFixed(1)}%`);
+      const sizeTag = shares > 1 ? ` (${shares}sh × ${entryPrice.toFixed(2)})` : '';
+      console.log(`   ${won ? '🟢' : '🔴'} ${trade.bucket} ${unit} → ${trade.resolution}${cvTag} | $${dollarPl >= 0 ? '+' : ''}${dollarPl.toFixed(2)}${sizeTag} | edge: ${(trade.edge * 100).toFixed(1)}%`);
     }
     
     await sleep(500); // Rate limit between cities
@@ -334,7 +346,7 @@ async function main() {
   console.log(`\n📊 Resolution Summary:`);
   console.log(`  Resolved: ${resolved} | Skipped: ${skipped}`);
   console.log(`  Wins: ${wins} | Losses: ${losses} | Win rate: ${resolved > 0 ? (wins/resolved*100).toFixed(1) : 'N/A'}%`);
-  console.log(`  Total P/L: ${totalPl >= 0 ? '+' : ''}${totalPl.toFixed(4)}`);
+  console.log(`  Total P/L: $${totalPl >= 0 ? '+' : ''}${totalPl.toFixed(2)}`);
   console.log(`  Polymarket cross-validated: ${resolved - skipped} | Mismatches: ${polymarketMismatches}`);
   console.log(`  Previously resolved: ${alreadyResolved.length} (${alreadyResolved.filter(t=>t.resolution==='WIN').length}W/${alreadyResolved.filter(t=>t.resolution==='LOSS').length}L)`);
   

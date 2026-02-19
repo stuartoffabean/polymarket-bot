@@ -439,23 +439,37 @@ async function scanWeatherMarkets() {
       bucket.marketId = market.id;
       bucket.question = market.question;
 
-      // Fetch ACTUAL executable prices from orderbook (best ask for YES, best ask for NO)
+      // Fetch ACTUAL executable prices from orderbook (YES book + NO book)
       try {
         if (!bucket.yesToken) throw new Error('no token');
-        const bookUrl = `https://clob.polymarket.com/book?token_id=${encodeURIComponent(bucket.yesToken)}`;
-        const book = await httpGet(bookUrl, 5000);
-        const asks = (book.asks || []).sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-        const bids = (book.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-        if (asks.length > 0) {
-          bucket.yesAsk = parseFloat(asks[0].price);
-          bucket.yesAskDepth = parseFloat(asks[0].size);
+        // YES orderbook
+        const yesBookUrl = `https://clob.polymarket.com/book?token_id=${encodeURIComponent(bucket.yesToken)}`;
+        const yesBook = await httpGet(yesBookUrl, 5000);
+        const yesAsks = (yesBook.asks || []).sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        const yesBids = (yesBook.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        if (yesAsks.length > 0) {
+          bucket.yesAsk = parseFloat(yesAsks[0].price);
+          bucket.yesAskDepth = parseFloat(yesAsks[0].size);
         }
-        if (bids.length > 0) {
-          bucket.yesBid = parseFloat(bids[0].price);
+        if (yesBids.length > 0) {
+          bucket.yesBid = parseFloat(yesBids[0].price);
         }
-        // NO executable price = 1 - YES bid (buying NO = selling YES)
-        bucket.noAsk = bids.length > 0 ? 1 - parseFloat(bids[0].price) : null;
         await sleep(100); // rate limit CLOB
+        // NO orderbook (separate token, separate book)
+        if (bucket.noToken) {
+          const noBookUrl = `https://clob.polymarket.com/book?token_id=${encodeURIComponent(bucket.noToken)}`;
+          const noBook = await httpGet(noBookUrl, 5000);
+          const noAsks = (noBook.asks || []).sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+          const noBids = (noBook.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+          if (noAsks.length > 0) {
+            bucket.noAsk = parseFloat(noAsks[0].price);
+            bucket.noAskDepth = parseFloat(noAsks[0].size);
+          }
+          if (noBids.length > 0) {
+            bucket.noBid = parseFloat(noBids[0].price);
+          }
+          await sleep(100); // rate limit CLOB
+        }
       } catch (e) {
         console.log(`   ⚠️  Orderbook fetch failed for ${bucket.key}: ${e.message}`);
       }
@@ -474,7 +488,7 @@ async function scanWeatherMarkets() {
       
       // Use executable ask price (what we'd actually pay), fallback to Gamma mid
       const yesExecPrice = bucket.yesAsk || bucket.yesPrice;
-      const noExecPrice = bucket.noAsk || (1 - bucket.yesPrice);
+      const noExecPrice = bucket.noAsk || (1 - (bucket.yesBid || bucket.yesPrice));
       const gammaMid = bucket.yesPrice;
       
       // Edge for BUY_YES: forecast - ask price (what we'd pay)
@@ -498,6 +512,9 @@ async function scanWeatherMarkets() {
         yesAsk: bucket.yesAsk || null,
         yesBid: bucket.yesBid || null,
         yesAskDepth: bucket.yesAskDepth || null,
+        noAsk: bucket.noAsk || null,
+        noBid: bucket.noBid || null,
+        noAskDepth: bucket.noAskDepth || null,
         edge: Math.round(yesEdge * 1000) / 1000,
         execEdge: Math.round(yesEdge * 1000) / 1000, // edge vs executable price
         hoursUntil: Math.round(hoursUntil),
@@ -552,8 +569,20 @@ async function scanWeatherMarkets() {
   };
   paperLog.runs.push(entry);
   
-  // Track paper trades (what we WOULD buy)
+  // Track paper trades (what we WOULD buy) — realistic paper trading
+  const PAPER_TRADE_SIZE = parseFloat(process.env.PAPER_TRADE_SIZE || '10'); // $10 per trade
   for (const opp of opportunities) {
+    // Determine actual entry price based on action
+    let entryPrice;
+    if (opp.action === 'BUY_YES') {
+      entryPrice = opp.yesAsk || opp.execPrice || opp.marketPrice;
+    } else { // BUY_NO
+      entryPrice = opp.noAsk || opp.execPriceNo || (1 - opp.marketPrice);
+    }
+    // Calculate shares we'd get for $PAPER_TRADE_SIZE
+    const shares = entryPrice > 0 ? Math.floor(PAPER_TRADE_SIZE / entryPrice) : 0;
+    const totalCost = shares * entryPrice;
+    
     paperLog.paperTrades.push({
       timestamp: new Date().toISOString(),
       city: opp.city,
@@ -562,18 +591,25 @@ async function scanWeatherMarkets() {
       unit: opp.unit,
       action: opp.action,
       forecastProb: opp.forecastProb,
-      marketPrice: opp.marketPrice,       // Gamma mid/last (reference only)
-      execPrice: opp.execPrice || null,    // Actual orderbook ask (what we'd pay)
-      execPriceNo: opp.execPriceNo || null,
+      gammaMid: opp.marketPrice,          // Gamma mid (reference only, NOT entry price)
+      entryPrice: Math.round(entryPrice * 10000) / 10000,  // Actual entry price (ask from orderbook)
+      entrySource: opp.yesAsk || opp.noAsk ? 'orderbook' : 'gamma-mid-fallback',
+      shares: shares,
+      totalCost: Math.round(totalCost * 100) / 100,
+      paperTradeSize: PAPER_TRADE_SIZE,
       yesAsk: opp.yesAsk || null,
       yesBid: opp.yesBid || null,
+      noAsk: opp.noAsk || null,
+      noBid: opp.noBid || null,
       yesAskDepth: opp.yesAskDepth || null,
+      noAskDepth: opp.noAskDepth || null,
       edge: opp.edge,                     // Edge vs executable price
       forecastHigh: opp.forecastHigh,
       hoursUntil: opp.hoursUntil,
       yesToken: opp.yesToken,
       noToken: opp.noToken,
-      resolution: null, // to be filled on resolution
+      resolution: null,      // WIN or LOSS
+      dollarPnl: null,       // Actual dollar P&L when resolved
     });
   }
   
