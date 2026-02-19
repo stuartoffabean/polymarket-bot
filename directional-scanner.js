@@ -409,39 +409,105 @@ async function discoverMarkets() {
 // ORDERBOOK PRICES
 // ═══════════════════════════════════════════════════════════════
 
-async function fetchOrderbook(market) {
-  let yesToken = null, noToken = null;
-  try {
-    const tokens = typeof market.clobTokenIds === 'string' ? JSON.parse(market.clobTokenIds) : market.clobTokenIds;
-    yesToken = tokens?.[0];
-    noToken = tokens?.[1];
-  } catch { }
+/**
+ * Batch fetch orderbooks for multiple markets in one POST to /books
+ * Falls back to individual fetches on failure.
+ */
+async function fetchOrderbooksBatch(markets) {
+  const results = new Map(); // conditionId -> orderbook result
   
-  if (!yesToken) return null;
-
-  const book = { yesAsk: null, yesBid: null, noAsk: null, noBid: null, yesDepth: 0, noDepth: 0 };
+  // Collect all token IDs
+  const tokenRequests = []; // { token_id, marketIdx, side }
+  const marketTokens = []; // { yesToken, noToken } per market
   
-  try {
-    const yesBook = await httpGetJson(`${CLOB}/book?token_id=${encodeURIComponent(yesToken)}`, 5000);
-    const asks = (yesBook.asks || []).sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-    const bids = (yesBook.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-    if (asks.length > 0) { book.yesAsk = parseFloat(asks[0].price); book.yesDepth = parseFloat(asks[0].size); }
-    if (bids.length > 0) { book.yesBid = parseFloat(bids[0].price); }
-  } catch { }
-
-  await sleep(100);
-
-  if (noToken) {
+  for (let i = 0; i < markets.length; i++) {
+    const market = markets[i];
+    let yesToken = null, noToken = null;
     try {
-      const noBook = await httpGetJson(`${CLOB}/book?token_id=${encodeURIComponent(noToken)}`, 5000);
+      const tokens = typeof market.clobTokenIds === 'string' ? JSON.parse(market.clobTokenIds) : market.clobTokenIds;
+      yesToken = tokens?.[0];
+      noToken = tokens?.[1];
+    } catch { }
+    marketTokens[i] = { yesToken, noToken };
+    if (yesToken) tokenRequests.push({ token_id: yesToken, _idx: i, _side: 'yes' });
+    if (noToken) tokenRequests.push({ token_id: noToken, _idx: i, _side: 'no' });
+  }
+
+  if (tokenRequests.length === 0) return results;
+
+  // Batch fetch via POST /books
+  let batchResults = null;
+  try {
+    const postData = JSON.stringify(tokenRequests.map(t => ({ token_id: t.token_id })));
+    batchResults = await new Promise((resolve, reject) => {
+      const req = https.request({
+        hostname: 'clob.polymarket.com',
+        path: '/books',
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'User-Agent': 'DirectionalScanner/2.1' },
+      }, res => {
+        let d = '';
+        res.on('data', c => d += c);
+        res.on('end', () => { try { resolve(JSON.parse(d)); } catch { reject(new Error('batch parse fail')); } });
+      });
+      req.on('error', reject);
+      req.setTimeout(10000, () => { req.destroy(); reject(new Error('batch timeout')); });
+      req.write(postData);
+      req.end();
+    });
+    console.log(`   📦 Batch orderbook: ${batchResults.length || 0} books in 1 request (was ${tokenRequests.length} individual calls)`);
+  } catch (e) {
+    console.log(`   ⚠️ Batch orderbook failed (${e.message}), falling back to individual fetches`);
+  }
+
+  // Parse batch results into a map by asset_id
+  const bookByAsset = new Map();
+  if (Array.isArray(batchResults)) {
+    for (const book of batchResults) {
+      if (book.asset_id) bookByAsset.set(book.asset_id, book);
+    }
+  }
+
+  // Build results per market
+  for (let i = 0; i < markets.length; i++) {
+    const { yesToken, noToken } = marketTokens[i];
+    if (!yesToken) continue;
+
+    const book = { yesAsk: null, yesBid: null, noAsk: null, noBid: null, yesDepth: 0, noDepth: 0 };
+    
+    // Try batch result first, fall back to individual fetch
+    let yesBook = bookByAsset.get(yesToken);
+    if (!yesBook) {
+      try { yesBook = await httpGetJson(`${CLOB}/book?token_id=${encodeURIComponent(yesToken)}`, 5000); } catch { }
+    }
+    if (yesBook) {
+      const asks = (yesBook.asks || []).sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+      const bids = (yesBook.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+      if (asks.length > 0) { book.yesAsk = parseFloat(asks[0].price); book.yesDepth = parseFloat(asks[0].size); }
+      if (bids.length > 0) { book.yesBid = parseFloat(bids[0].price); }
+    }
+
+    let noBook = noToken ? bookByAsset.get(noToken) : null;
+    if (noToken && !noBook) {
+      try { noBook = await httpGetJson(`${CLOB}/book?token_id=${encodeURIComponent(noToken)}`, 5000); } catch { }
+    }
+    if (noBook) {
       const asks = (noBook.asks || []).sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
       const bids = (noBook.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
       if (asks.length > 0) { book.noAsk = parseFloat(asks[0].price); book.noDepth = parseFloat(asks[0].size); }
       if (bids.length > 0) { book.noBid = parseFloat(bids[0].price); }
-    } catch { }
+    }
+
+    results.set(i, { ...book, yesToken, noToken });
   }
 
-  return { ...book, yesToken, noToken };
+  return results;
+}
+
+// Legacy single-market fetch (used by stop-loss checker)
+async function fetchOrderbook(market) {
+  const batch = await fetchOrderbooksBatch([market]);
+  return batch.get(0) || null;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -473,6 +539,11 @@ async function runScan() {
   const researchLimit = Math.min(markets.length, 10);
   const candidates = [];
 
+  // Batch-fetch all orderbooks in one request (was 10+ individual calls)
+  const researchMarkets = markets.slice(0, researchLimit);
+  console.log(`\n📦 Batch-fetching ${researchMarkets.length} orderbooks...`);
+  const orderbookMap = await fetchOrderbooksBatch(researchMarkets);
+
   for (let i = 0; i < researchLimit; i++) {
     const market = markets[i];
     const question = market.question || market.groupItemTitle || '';
@@ -499,8 +570,8 @@ async function runScan() {
       }
     }
 
-    // Fetch real orderbook
-    const orderbook = await fetchOrderbook(market);
+    // Get orderbook from batch results
+    const orderbook = orderbookMap.get(i);
     if (!orderbook || (!orderbook.yesAsk && !orderbook.yesBid)) {
       console.log('   ⏭️ No orderbook data, skipping');
       continue;
