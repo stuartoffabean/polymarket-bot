@@ -75,11 +75,23 @@ const SPORT_KEYWORDS = {
   'baseball': 'mlb', 'soccer': 'epl',
 };
 
+// Team names → sport mapping for games like "Nets vs. Cavaliers" with no sport keyword
+const NBA_TEAMS = ['lakers','celtics','warriors','76ers','sixers','hawks','pacers','wizards','nets','cavaliers','cavs','rockets','hornets','knicks','bulls','heat','suns','bucks','nuggets','clippers','mavericks','mavs','grizzlies','pelicans','pistons','raptors','kings','spurs','timberwolves','wolves','blazers','thunder','jazz','magic','trail blazers'];
+const NFL_TEAMS = ['chiefs','eagles','cowboys','49ers','niners','bills','ravens','bengals','dolphins','jets','patriots','steelers','packers','lions','bears','vikings','rams','chargers','broncos','raiders','commanders','texans','colts','jaguars','titans','saints','falcons','panthers','buccaneers','bucs','cardinals','seahawks','giants'];
+const NHL_TEAMS = ['bruins','maple leafs','leafs','canadiens','habs','rangers','islanders','devils','flyers','penguins','capitals','caps','hurricanes','blue jackets','panthers','lightning','red wings','sabres','senators','blackhawks','wild','jets','avalanche','stars','predators','blues','flames','oilers','canucks','kraken','golden knights','coyotes','sharks','ducks','kings'];
+const MLB_TEAMS = ['yankees','red sox','mets','dodgers','cubs','white sox','astros','braves','phillies','padres','guardians','orioles','rays','mariners','blue jays','twins','brewers','cardinals','reds','giants','diamondbacks','rockies','pirates','royals','tigers','athletics','nationals','marlins','angels','rangers'];
+
 function detectSport(question) {
   const q = question.toLowerCase();
+  // Check explicit sport keywords first
   for (const [keyword, sport] of Object.entries(SPORT_KEYWORDS)) {
     if (q.includes(keyword)) return { keyword, sport };
   }
+  // Check team names
+  if (NBA_TEAMS.some(t => q.includes(t))) return { keyword: 'nba-team', sport: 'nba' };
+  if (NFL_TEAMS.some(t => q.includes(t))) return { keyword: 'nfl-team', sport: 'nfl' };
+  if (NHL_TEAMS.some(t => q.includes(t))) return { keyword: 'nhl-team', sport: 'nhl' };
+  if (MLB_TEAMS.some(t => q.includes(t))) return { keyword: 'mlb-team', sport: 'mlb' };
   return null;
 }
 
