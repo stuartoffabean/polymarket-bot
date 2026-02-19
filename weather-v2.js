@@ -639,12 +639,12 @@ async function scanWeatherMarkets() {
   
   // Track paper trades (what we WOULD buy) — realistic paper trading
   // Tiered sizing based on edge: higher confidence = bigger position
-  const BASE_SIZE = parseFloat(process.env.PAPER_TRADE_SIZE || '10');
+  const BASE_SIZE = parseFloat(process.env.PAPER_TRADE_SIZE || '30');
   function getTradeSize(edge) {
-    if (edge >= 0.80) return BASE_SIZE * 5;   // $50 — near-certain
-    if (edge >= 0.60) return BASE_SIZE * 4;   // $40 — very strong
-    if (edge >= 0.40) return BASE_SIZE * 2.5; // $25 — strong
-    return BASE_SIZE;                          // $10 — base
+    if (edge >= 0.80) return BASE_SIZE * 5;   // $150 — near-certain
+    if (edge >= 0.60) return BASE_SIZE * 4;   // $120 — very strong
+    if (edge >= 0.40) return BASE_SIZE * 2.5; // $75 — strong
+    return BASE_SIZE;                          // $30 — base
   }
 
   // Build set of open positions to prevent duplicate entries

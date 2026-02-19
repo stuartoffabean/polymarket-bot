@@ -65,7 +65,8 @@
       ],
       "endDate": "2026-02-20T00:00:00Z",
       "dollarPnl": null,
-      "category": "sports"
+      "category": "sports",
+      "_synced": true
     },
     {
       "timestamp": "2026-02-19T12:31:03.229Z",
@@ -85,7 +86,8 @@
       ],
       "endDate": "2026-02-20T00:00:00Z",
       "dollarPnl": null,
-      "category": "sports"
+      "category": "sports",
+      "_synced": true
     }
   ]
 }

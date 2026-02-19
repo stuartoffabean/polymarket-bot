@@ -29,7 +29,7 @@ const GAMMA = 'https://gamma-api.polymarket.com';
 const CLOB = 'https://clob.polymarket.com';
 const MIN_VOLUME = parseInt(process.env.MIN_VOLUME || '1000');
 const MAX_HOURS = parseInt(process.env.MAX_HOURS || '72');
-const PAPER_TRADE_SIZE = parseFloat(process.env.PAPER_TRADE_SIZE || '10');
+const PAPER_TRADE_SIZE = parseFloat(process.env.PAPER_TRADE_SIZE || '30');
 
 // ClawPod / Massive Unblocker
 const MASSIVE_TOKEN = process.env.MASSIVE_UNBLOCKER_TOKEN || '';
