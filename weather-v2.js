@@ -79,9 +79,10 @@ function httpGet(url, timeoutMs = 15000) {
  * Fetch hourly temperature forecast for a city.
  * Returns { date: '2026-02-16', hourlyTemps: [temp0, temp1, ...temp23], highTemp, unit }
  */
-async function fetchForecast(cityName, cityConfig, targetDate) {
+async function fetchForecast(cityName, cityConfig, targetDate, model = null) {
   const unit = cityConfig.unit;
-  const url = `${OPEN_METEO_API}?latitude=${cityConfig.lat}&longitude=${cityConfig.lon}&hourly=temperature_2m&temperature_unit=${unit}&forecast_days=3&timezone=auto`;
+  let url = `${OPEN_METEO_API}?latitude=${cityConfig.lat}&longitude=${cityConfig.lon}&hourly=temperature_2m&temperature_unit=${unit}&forecast_days=3&timezone=auto`;
+  if (model) url += `&models=${model}`;
   
   const data = await httpGet(url);
   const times = data.hourly.time;
@@ -108,6 +109,7 @@ async function fetchForecast(cityName, cityConfig, targetDate) {
     hourlyTemps: dayTemps,
     highTemp,
     unit: unit === 'fahrenheit' ? '°F' : '°C',
+    source: model || 'best_match',
   };
 }
 
@@ -188,35 +190,55 @@ async function fetchNOAAForecast(cityName, cityConfig, targetDate) {
  * averages them for higher confidence. Falls back to Open-Meteo only for intl.
  */
 async function getBestForecast(cityName, cityConfig, targetDate) {
-  const openMeteo = await fetchForecast(cityName, cityConfig, targetDate);
-  
-  if (!US_CITIES.has(cityName)) {
-    if (openMeteo) openMeteo.source = 'Open-Meteo';
-    return openMeteo;
+  if (US_CITIES.has(cityName)) {
+    // US cities: NOAA API + Open-Meteo default (original approach)
+    const openMeteo = await fetchForecast(cityName, cityConfig, targetDate);
+    await sleep(300);
+    const noaa = await fetchNOAAForecast(cityName, cityConfig, targetDate);
+    
+    if (!openMeteo && !noaa) return null;
+    if (!noaa) { openMeteo.source = 'Open-Meteo'; return openMeteo; }
+    if (!openMeteo) return noaa;
+    
+    const avgHigh = (openMeteo.highTemp + noaa.highTemp) / 2;
+    const spread = Math.abs(openMeteo.highTemp - noaa.highTemp);
+    
+    console.log(`   🔀 Ensemble: Open-Meteo=${openMeteo.highTemp.toFixed(1)} NOAA=${noaa.highTemp.toFixed(1)} → avg=${avgHigh.toFixed(1)} spread=${spread.toFixed(1)}`);
+    
+    return {
+      city: cityName, date: targetDate,
+      hourlyTemps: openMeteo.hourlyTemps,
+      highTemp: avgHigh,
+      unit: openMeteo.unit,
+      source: 'Ensemble(NOAA+Open-Meteo)',
+      source1: 'Open-Meteo', source1High: openMeteo.highTemp,
+      source2: 'NOAA', source2High: noaa.highTemp,
+      spread,
+    };
   }
   
-  await sleep(300);
-  const noaa = await fetchNOAAForecast(cityName, cityConfig, targetDate);
+  // International cities: GFS (NOAA model) + ECMWF via Open-Meteo (both free, global)
+  const gfs = await fetchForecast(cityName, cityConfig, targetDate, 'gfs_seamless');
+  await sleep(200);
+  const ecmwf = await fetchForecast(cityName, cityConfig, targetDate, 'ecmwf_ifs025');
   
-  if (!openMeteo && !noaa) return null;
-  if (!noaa) { openMeteo.source = 'Open-Meteo'; return openMeteo; }
-  if (!openMeteo) return noaa;
+  if (!gfs && !ecmwf) return null;
+  if (!ecmwf) { gfs.source = 'GFS'; return gfs; }
+  if (!gfs) { ecmwf.source = 'ECMWF'; return ecmwf; }
   
-  // Both available — average the high temps, reduce uncertainty
-  const avgHigh = (openMeteo.highTemp + noaa.highTemp) / 2;
-  const spread = Math.abs(openMeteo.highTemp - noaa.highTemp);
+  const avgHigh = (gfs.highTemp + ecmwf.highTemp) / 2;
+  const spread = Math.abs(gfs.highTemp - ecmwf.highTemp);
   
-  console.log(`   🔀 Ensemble: Open-Meteo=${openMeteo.highTemp.toFixed(1)} NOAA=${noaa.highTemp.toFixed(1)} → avg=${avgHigh.toFixed(1)} spread=${spread.toFixed(1)}`);
+  console.log(`   🔀 Ensemble: GFS=${gfs.highTemp.toFixed(1)} ECMWF=${ecmwf.highTemp.toFixed(1)} → avg=${avgHigh.toFixed(1)} spread=${spread.toFixed(1)}`);
   
   return {
-    city: cityName,
-    date: targetDate,
-    hourlyTemps: openMeteo.hourlyTemps,
+    city: cityName, date: targetDate,
+    hourlyTemps: gfs.hourlyTemps,
     highTemp: avgHigh,
-    unit: openMeteo.unit,
-    source: 'Ensemble(NOAA+Open-Meteo)',
-    noaaHigh: noaa.highTemp,
-    openMeteoHigh: openMeteo.highTemp,
+    unit: gfs.unit,
+    source: 'Ensemble(GFS+ECMWF)',
+    source1: 'GFS', source1High: gfs.highTemp,
+    source2: 'ECMWF', source2High: ecmwf.highTemp,
     spread,
   };
 }
