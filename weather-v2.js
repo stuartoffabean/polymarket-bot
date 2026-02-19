@@ -22,7 +22,7 @@ const path = require('path');
 const GAMMA_API = 'https://gamma-api.polymarket.com';
 const OPEN_METEO_API = 'https://api.open-meteo.com/v1/forecast';
 const PAPER_FILE = path.join(__dirname, 'weather-v2-paper.json');
-const MIN_EDGE = parseFloat(process.env.MIN_EDGE || '0.20'); // 20% minimum edge
+const MIN_EDGE = parseFloat(process.env.MIN_EDGE || '0.35'); // 35% minimum edge (data shows <35% is ~coin flip)
 
 // Known city configs (cached, used as fallback if geocoding fails)
 const KNOWN_CITIES = {
