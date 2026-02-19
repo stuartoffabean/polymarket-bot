@@ -517,7 +517,14 @@ async function scanWeatherMarkets() {
         const yesBids = (yesBook.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
         if (yesAsks.length > 0) {
           bucket.yesAsk = parseFloat(yesAsks[0].price);
-          bucket.yesAskDepth = parseFloat(yesAsks[0].size);
+          // Walk full book depth within 5% of best ask (realistic fill zone)
+          const bestYesAsk = parseFloat(yesAsks[0].price);
+          let yesTotalDepth = 0;
+          for (const level of yesAsks) {
+            if (parseFloat(level.price) > bestYesAsk * 1.05) break; // 5% slippage max
+            yesTotalDepth += parseFloat(level.size);
+          }
+          bucket.yesAskDepth = yesTotalDepth;
         }
         if (yesBids.length > 0) {
           bucket.yesBid = parseFloat(yesBids[0].price);
@@ -531,7 +538,13 @@ async function scanWeatherMarkets() {
           const noBids = (noBook.bids || []).sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
           if (noAsks.length > 0) {
             bucket.noAsk = parseFloat(noAsks[0].price);
-            bucket.noAskDepth = parseFloat(noAsks[0].size);
+            const bestNoAsk = parseFloat(noAsks[0].price);
+            let noTotalDepth = 0;
+            for (const level of noAsks) {
+              if (parseFloat(level.price) > bestNoAsk * 1.05) break;
+              noTotalDepth += parseFloat(level.size);
+            }
+            bucket.noAskDepth = noTotalDepth;
           }
           if (noBids.length > 0) {
             bucket.noBid = parseFloat(noBids[0].price);
@@ -674,7 +687,13 @@ async function scanWeatherMarkets() {
     const PAPER_TRADE_SIZE = getTradeSize(opp.edge);
 
     // Calculate shares — cap by available depth (can't buy more than what's on the book)
-    const availableDepth = opp.action === 'BUY_YES' ? (opp.yesAskDepth || Infinity) : (opp.noAskDepth || Infinity);
+    // No depth data = skip (don't assume infinite liquidity)
+    const rawDepth = opp.action === 'BUY_YES' ? opp.yesAskDepth : opp.noAskDepth;
+    if (!rawDepth || rawDepth <= 0) {
+      console.log(`   ⏭️ Skipping paper trade: ${opp.city} ${opp.bucket} — no orderbook depth data`);
+      continue;
+    }
+    const availableDepth = rawDepth;
     const maxSharesByDepth = Math.floor(availableDepth);
     const maxSharesByBudget = entryPrice > 0 ? Math.floor(PAPER_TRADE_SIZE / entryPrice) : 0;
     const shares = Math.min(maxSharesByBudget, maxSharesByDepth);
