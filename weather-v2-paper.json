@@ -12769,9 +12769,9 @@
       "resolution": null,
       "dollarPnl": null,
       "_stopState": {
-        "highWaterMark": 0.99,
+        "highWaterMark": 0.999,
         "trailingActive": true,
-        "trailingFloor": 0.79
+        "trailingFloor": 0.7989999999999999
       },
       "category": "other"
     },
@@ -12879,7 +12879,12 @@
       "noToken": "52721951397793788412073754841862017142158669031299367449195246293105117250337",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.001,
+        "trailingActive": false,
+        "trailingFloor": null
+      }
     },
     {
       "timestamp": "2026-02-19T12:01:11.147Z",
@@ -12911,7 +12916,12 @@
       "noToken": "31918504343308701986864827682625963278155414347952155162143513919298540485283",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.001,
+        "trailingActive": false,
+        "trailingFloor": null
+      }
     },
     {
       "timestamp": "2026-02-19T12:01:11.147Z",
@@ -13055,9 +13065,9 @@
       "resolution": null,
       "dollarPnl": null,
       "_stopState": {
-        "highWaterMark": 0.99,
+        "highWaterMark": 0.999,
         "trailingActive": true,
-        "trailingFloor": 0.79
+        "trailingFloor": 0.7989999999999999
       },
       "category": "other"
     },
@@ -13091,7 +13101,12 @@
       "noToken": "63871120639970035446582251797045648773201298623085817682005337566909885628244",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.001,
+        "trailingActive": false,
+        "trailingFloor": null
+      }
     },
     {
       "timestamp": "2026-02-19T12:01:11.147Z",
@@ -13234,7 +13249,12 @@
       "noToken": "52721951397793788412073754841862017142158669031299367449195246293105117250337",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.001,
+        "trailingActive": false,
+        "trailingFloor": null
+      }
     },
     {
       "timestamp": "2026-02-19T14:00:49.662Z",
@@ -13266,7 +13286,12 @@
       "noToken": "31918504343308701986864827682625963278155414347952155162143513919298540485283",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.001,
+        "trailingActive": false,
+        "trailingFloor": null
+      }
     },
     {
       "timestamp": "2026-02-19T14:00:49.662Z",
@@ -13373,9 +13398,9 @@
       "resolution": null,
       "dollarPnl": null,
       "_stopState": {
-        "highWaterMark": 0.99,
+        "highWaterMark": 0.999,
         "trailingActive": true,
-        "trailingFloor": 0.79
+        "trailingFloor": 0.7989999999999999
       },
       "category": "other"
     },
@@ -13409,7 +13434,12 @@
       "noToken": "63871120639970035446582251797045648773201298623085817682005337566909885628244",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.001,
+        "trailingActive": false,
+        "trailingFloor": null
+      }
     },
     {
       "timestamp": "2026-02-19T14:00:49.662Z",
@@ -13515,7 +13545,12 @@
       "noToken": "52721951397793788412073754841862017142158669031299367449195246293105117250337",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.001,
+        "trailingActive": false,
+        "trailingFloor": null
+      }
     },
     {
       "timestamp": "2026-02-19T16:00:59.101Z",
@@ -13547,7 +13582,12 @@
       "noToken": "23990907869952858459591455977083575130366156811107994766043706649647675661591",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.99,
+        "trailingActive": true,
+        "trailingFloor": 0.79
+      }
     },
     {
       "timestamp": "2026-02-19T16:00:59.101Z",
@@ -13579,7 +13619,12 @@
       "noToken": "46321874398832827940283985369816044846490195324641430423874977331689248028332",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.999,
+        "trailingActive": true,
+        "trailingFloor": 0.7989999999999999
+      }
     },
     {
       "timestamp": "2026-02-19T16:00:59.101Z",
@@ -13611,7 +13656,12 @@
       "noToken": "7783223628794133149076975383875843376922304167889784483317651890549407873742",
       "resolution": null,
       "dollarPnl": null,
-      "category": "weather"
+      "category": "weather",
+      "_stopState": {
+        "highWaterMark": 0.99,
+        "trailingActive": true,
+        "trailingFloor": 0.79
+      }
     }
   ]
 }
