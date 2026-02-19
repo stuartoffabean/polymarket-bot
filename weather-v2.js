@@ -638,7 +638,15 @@ async function scanWeatherMarkets() {
   paperLog.runs.push(entry);
   
   // Track paper trades (what we WOULD buy) — realistic paper trading
-  const PAPER_TRADE_SIZE = parseFloat(process.env.PAPER_TRADE_SIZE || '10'); // $10 per trade
+  // Tiered sizing based on edge: higher confidence = bigger position
+  const BASE_SIZE = parseFloat(process.env.PAPER_TRADE_SIZE || '10');
+  function getTradeSize(edge) {
+    if (edge >= 0.80) return BASE_SIZE * 5;   // $50 — near-certain
+    if (edge >= 0.60) return BASE_SIZE * 4;   // $40 — very strong
+    if (edge >= 0.40) return BASE_SIZE * 2.5; // $25 — strong
+    return BASE_SIZE;                          // $10 — base
+  }
+
   for (const opp of opportunities) {
     // Determine actual entry price based on action
     let entryPrice;
@@ -647,6 +655,9 @@ async function scanWeatherMarkets() {
     } else { // BUY_NO
       entryPrice = opp.noAsk || opp.execPriceNo || (1 - opp.marketPrice);
     }
+
+    const PAPER_TRADE_SIZE = getTradeSize(opp.edge);
+
     // Calculate shares — cap by available depth (can't buy more than what's on the book)
     const availableDepth = opp.action === 'BUY_YES' ? (opp.yesAskDepth || Infinity) : (opp.noAskDepth || Infinity);
     const maxSharesByDepth = Math.floor(availableDepth);
