@@ -11,6 +11,7 @@
  * Usage: node weather-v2.js [--dry-run] [--city NYC] [--min-edge 0.20]
  */
 
+const http = require('http');
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
@@ -734,6 +735,70 @@ async function scanWeatherMarkets() {
       resolution: null,      // WIN or LOSS
       dollarPnl: null,       // Actual dollar P&L when resolved
     });
+
+    // ═══════════════════════════════════════════════════════════
+    // LIVE TRADING — same filters, proportional sizing for real wallet
+    // ═══════════════════════════════════════════════════════════
+    if (process.env.LIVE_TRADING === 'true') {
+      const LIVE_BASE = parseFloat(process.env.LIVE_BASE_SIZE || '10');
+      function getLiveSize(edge) {
+        if (edge >= 0.80) return LIVE_BASE * 5;   // $50
+        if (edge >= 0.60) return LIVE_BASE * 4;   // $40
+        if (edge >= 0.40) return LIVE_BASE * 2.5; // $25
+        return LIVE_BASE;                          // $10
+      }
+      const liveSize = getLiveSize(opp.edge);
+      const liveShares = Math.min(
+        Math.floor(liveSize / entryPrice),
+        maxSharesByDepth
+      );
+
+      if (liveShares > 0 && entryPrice >= 0.40) {
+        // Determine which token to buy
+        const tokenID = opp.action === 'BUY_YES' ? opp.yesToken : opp.noToken;
+        const side = 'BUY';
+
+        try {
+          const postData = JSON.stringify({
+            tokenID,
+            price: entryPrice,
+            size: liveShares,
+            side,
+            skipRiskCheck: true,
+            orderType: 'FOK',
+            strategy: 'weather-v2',
+            market: `${opp.city} ${opp.bucket}${opp.unit} ${opp.date}`,
+          });
+          
+          const resp = await new Promise((resolve, reject) => {
+            const req = http.request({
+              hostname: 'localhost', port: 3002, path: '/order', method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Content-Length': postData.length },
+              timeout: 15000,
+            }, (res) => {
+              let data = '';
+              res.on('data', c => data += c);
+              res.on('end', () => {
+                try { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
+                catch { resolve({ status: res.statusCode, body: data }); }
+              });
+            });
+            req.on('error', reject);
+            req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
+            req.write(postData);
+            req.end();
+          });
+
+          if (resp.status === 200 || resp.status === 201) {
+            console.log(`   💰 LIVE ORDER PLACED: ${opp.action} ${opp.city} ${opp.bucket} — ${liveShares} shares @ ${entryPrice} ($${(liveShares * entryPrice).toFixed(2)})`);
+          } else {
+            console.log(`   ⚠️ LIVE ORDER FAILED (${resp.status}): ${JSON.stringify(resp.body).slice(0, 200)}`);
+          }
+        } catch (e) {
+          console.log(`   ⚠️ LIVE ORDER ERROR: ${e.message} (executor may be down)`);
+        }
+      }
+    }
   }
   
   fs.writeFileSync(PAPER_FILE, JSON.stringify(paperLog, null, 2));
