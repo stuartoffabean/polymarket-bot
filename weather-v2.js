@@ -606,18 +606,13 @@ async function scanWeatherMarkets() {
       };
       allAnalysis.push(analysis);
       
-      // Buy YES if forecast prob >> executable ask (real edge after slippage)
-      if (yesEdge >= MIN_EDGE && yesExecPrice < 0.85) {
-        opportunities.push({
-          ...analysis,
-          action: 'BUY_YES',
-          edge: Math.round(yesEdge * 1000) / 1000,
-          reason: `Forecast ${(forecastProb * 100).toFixed(0)}% vs ask ${(yesExecPrice * 100).toFixed(0)}¢ = ${(yesEdge * 100).toFixed(0)}% edge (mid was ${(gammaMid * 100).toFixed(0)}¢)`,
-        });
-      }
+      // BUY_YES KILLED — 0/11 win rate in paper trading. Forecast model overestimates
+      // specific bucket probabilities. Only BUY_NO is profitable (8W/4L +$28.39).
+      // See memory/2026-02-19.md diagnosis for full analysis.
       
       // Buy NO if YES overpriced vs executable NO price
-      if (noEdge >= MIN_EDGE && noExecPrice < 0.85) {
+      // Require: forecast ≥90% NO confidence (i.e. forecastProb ≤ 0.10 for YES)
+      if (noEdge >= MIN_EDGE && noExecPrice < 0.85 && forecastProb <= 0.10) {
         opportunities.push({
           ...analysis,
           action: 'BUY_NO',
@@ -700,9 +695,10 @@ async function scanWeatherMarkets() {
     const totalCost = shares * entryPrice;
     const depthLimited = maxSharesByDepth < maxSharesByBudget;
     
-    // Skip if shares = 0 (can't fill) or entry < 1¢ (dust, no real liquidity)
-    if (shares <= 0 || entryPrice < 0.02 || totalCost < 0.50) {
-      console.log(`   ⏭️ Skipping paper trade: ${opp.city} ${opp.bucket} — ${shares <= 0 ? 'no depth' : entryPrice < 0.02 ? 'dust price (<2¢)' : 'cost too low'}`);
+    // Skip if shares = 0 (can't fill), entry < 40¢ (proven losing zone), or cost too low
+    if (shares <= 0 || entryPrice < 0.40 || totalCost < 0.50) {
+      const reason = shares <= 0 ? 'no depth' : entryPrice < 0.40 ? `entry ${(entryPrice*100).toFixed(0)}¢ < 40¢ min` : 'cost too low';
+      console.log(`   ⏭️ Skipping paper trade: ${opp.city} ${opp.bucket} — ${reason}`);
       continue;
     }
 
