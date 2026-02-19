@@ -24,25 +24,71 @@ const OPEN_METEO_API = 'https://api.open-meteo.com/v1/forecast';
 const PAPER_FILE = path.join(__dirname, 'weather-v2-paper.json');
 const MIN_EDGE = parseFloat(process.env.MIN_EDGE || '0.20'); // 20% minimum edge
 
-// City configs: name variations Polymarket uses → coordinates + temp unit
-const CITIES = {
-  'New York City': { lat: 40.7128, lon: -74.0060, unit: 'fahrenheit', aliases: ['NYC', 'New York'] },
-  'Miami':         { lat: 25.7617, lon: -80.1918, unit: 'fahrenheit', aliases: [] },
-  'Chicago':       { lat: 41.8781, lon: -87.6298, unit: 'fahrenheit', aliases: [] },
-  'Atlanta':       { lat: 33.7490, lon: -84.3880, unit: 'fahrenheit', aliases: [] },
-  'Dallas':        { lat: 32.7767, lon: -96.7970, unit: 'fahrenheit', aliases: [] },
-  'Seattle':       { lat: 47.6062, lon: -122.3321, unit: 'fahrenheit', aliases: [] },
-  'Toronto':       { lat: 43.6532, lon: -79.3832, unit: 'celsius', aliases: [] },
-  'London':        { lat: 51.5074, lon: -0.1278, unit: 'celsius', aliases: [] },
-  'Seoul':         { lat: 37.5665, lon: 126.9780, unit: 'celsius', aliases: [] },
-  'Buenos Aires':  { lat: -34.6037, lon: -58.3816, unit: 'celsius', aliases: [] },
-  'Ankara':        { lat: 39.9334, lon: 32.8597, unit: 'celsius', aliases: [] },
-  'Wellington':    { lat: -41.2865, lon: 174.7762, unit: 'celsius', aliases: [] },
-  'São Paulo':     { lat: -23.5505, lon: -46.6333, unit: 'celsius', aliases: ['Sao Paulo'] },
+// Known city configs (cached, used as fallback if geocoding fails)
+const KNOWN_CITIES = {
+  'New York City': { lat: 40.7128, lon: -74.0060, unit: 'fahrenheit', country: 'US', aliases: ['NYC', 'New York'] },
+  'Miami':         { lat: 25.7617, lon: -80.1918, unit: 'fahrenheit', country: 'US', aliases: [] },
+  'Chicago':       { lat: 41.8781, lon: -87.6298, unit: 'fahrenheit', country: 'US', aliases: [] },
+  'Atlanta':       { lat: 33.7490, lon: -84.3880, unit: 'fahrenheit', country: 'US', aliases: [] },
+  'Dallas':        { lat: 32.7767, lon: -96.7970, unit: 'fahrenheit', country: 'US', aliases: [] },
+  'Seattle':       { lat: 47.6062, lon: -122.3321, unit: 'fahrenheit', country: 'US', aliases: [] },
+  'Toronto':       { lat: 43.6532, lon: -79.3832, unit: 'celsius', country: 'CA', aliases: [] },
+  'London':        { lat: 51.5074, lon: -0.1278, unit: 'celsius', country: 'GB', aliases: [] },
+  'Seoul':         { lat: 37.5665, lon: 126.9780, unit: 'celsius', country: 'KR', aliases: [] },
+  'Buenos Aires':  { lat: -34.6037, lon: -58.3816, unit: 'celsius', country: 'AR', aliases: [] },
+  'Ankara':        { lat: 39.9334, lon: 32.8597, unit: 'celsius', country: 'TR', aliases: [] },
+  'Wellington':    { lat: -41.2865, lon: 174.7762, unit: 'celsius', country: 'NZ', aliases: [] },
+  'São Paulo':     { lat: -23.5505, lon: -46.6333, unit: 'celsius', country: 'BR', aliases: ['Sao Paulo'] },
 };
 
-// US cities eligible for NOAA forecasts
-const US_CITIES = new Set(['New York City', 'Miami', 'Chicago', 'Atlanta', 'Dallas', 'Seattle']);
+// Dynamic city config cache (populated at runtime via geocoding)
+const CITIES = { ...KNOWN_CITIES };
+
+// US country code for NOAA eligibility
+const US_COUNTRY = 'US';
+const US_CITIES = new Set(Object.entries(KNOWN_CITIES).filter(([_, c]) => c.country === US_COUNTRY).map(([name]) => name));
+
+const GEOCODE_API = 'https://geocoding-api.open-meteo.com/v1/search';
+
+/**
+ * Dynamically resolve a city name to coordinates + unit.
+ * Uses cached KNOWN_CITIES first, falls back to Open-Meteo geocoding API.
+ */
+async function resolveCityConfig(cityName) {
+  // Check known cities (exact + alias match)
+  if (CITIES[cityName]) return CITIES[cityName];
+  for (const [name, config] of Object.entries(CITIES)) {
+    if (config.aliases && config.aliases.some(a => a.toLowerCase() === cityName.toLowerCase())) {
+      CITIES[cityName] = config; // cache alias
+      return config;
+    }
+  }
+  
+  // Geocode via Open-Meteo
+  try {
+    const data = await httpGet(`${GEOCODE_API}?name=${encodeURIComponent(cityName)}&count=1&language=en`);
+    if (data.results && data.results.length > 0) {
+      const r = data.results[0];
+      const isUS = r.country_code === 'US';
+      const config = {
+        lat: r.latitude,
+        lon: r.longitude,
+        unit: isUS ? 'fahrenheit' : 'celsius',
+        country: r.country_code,
+        aliases: [],
+        geocoded: true, // flag that this was dynamically resolved
+      };
+      CITIES[cityName] = config;
+      if (isUS) US_CITIES.add(cityName);
+      console.log(`   🌐 Geocoded "${cityName}" → ${r.latitude.toFixed(2)}, ${r.longitude.toFixed(2)} (${r.country_code}) ${isUS ? '[NOAA eligible]' : ''}`);
+      return config;
+    }
+  } catch (e) {
+    console.log(`   ⚠️  Geocoding failed for "${cityName}": ${e.message}`);
+  }
+  
+  return null;
+}
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -404,9 +450,9 @@ async function scanWeatherMarkets() {
       continue;
     }
     
-    const cityConfig = CITIES[city];
+    const cityConfig = await resolveCityConfig(city);
     if (!cityConfig) {
-      console.log(`⚠️  Skipping "${city}" — no city config`);
+      console.log(`⚠️  Skipping "${city}" — could not resolve coordinates`);
       continue;
     }
     
