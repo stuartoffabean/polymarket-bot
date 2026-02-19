@@ -39,6 +39,16 @@ const UNBLOCKER_API = 'https://unblocker.joinmassive.com/browser';
 const NEWSAPI_KEY = process.env.NEWSAPI_KEY || '';
 const ODDSBLAZE_KEY = process.env.ODDSBLAZE_KEY || '';
 
+// Import enrichment module (OddsBlaze, Congress, LMSYS, FRED, Metaculus)
+let enrichMarket = null;
+try {
+  const enrichment = require('./enrichment');
+  enrichMarket = enrichment.enrichMarket;
+  console.log('[INIT] Enrichment module loaded (OddsBlaze, Congress, LMSYS, FRED, Metaculus)');
+} catch (e) {
+  console.log(`[INIT] Enrichment module not available: ${e.message}`);
+}
+
 // Categories to SKIP (we have separate scanners for these)
 const SKIP_CATEGORIES = ['weather', 'temperature', 'highest temp', 'crypto binary', 'bitcoin up or down', 'ethereum up or down'];
 
@@ -202,23 +212,42 @@ async function researchMarket(question, eventTitle, slug) {
     await sleep(500);
   }
 
-  // 5. OddsBlaze for sports markets
-  if (ODDSBLAZE_KEY && isSportsQuestion(question)) {
+  // 5. Enrichment module: OddsBlaze, Congress.gov, LMSYS, FRED, Metaculus
+  // Auto-detects which sources apply based on market question
+  if (enrichMarket) {
     try {
-      const sport = detectSport(question);
-      if (sport) {
-        const oddsUrl = `https://api.oddsblaze.com/v1/odds/${sport}?key=${ODDSBLAZE_KEY}&market=moneyline&limit=20`;
-        const oddsResp = await httpGetJson(oddsUrl, 10000);
-        if (oddsResp.events) {
+      const enrichments = await enrichMarket(question);
+      if (enrichments) {
+        if (enrichments.odds) {
           research.sources.push('oddsblaze');
-          research.sportsbookOdds = oddsResp.events.slice(0, 5).map(e => ({
-            name: e.name,
-            odds: (e.odds || []).slice(0, 3).map(o => ({ book: o.sportsbook, team: o.name, prob: o.implied_probability }))
-          }));
+          research.sportsbookOdds = enrichments.odds;
+        }
+        if (enrichments.congress) {
+          research.sources.push('congress.gov');
+          research.congressData = enrichments.congress;
+        }
+        if (enrichments.lmsys) {
+          research.sources.push('lmsys');
+          research.lmsysData = enrichments.lmsys;
+        }
+        if (enrichments.fred) {
+          research.sources.push('fred');
+          research.fredData = enrichments.fred;
+        }
+        if (enrichments.metaculus) {
+          research.sources.push('metaculus');
+          research.metaculusData = enrichments.metaculus;
+        }
+        if (enrichments.news) {
+          research.sources.push('newsapi-enrichment');
+          // Merge any extra headlines from enrichment NewsAPI
+          if (enrichments.news.headlines) {
+            research.newsHeadlines.push(...enrichments.news.headlines.slice(0, 5));
+          }
         }
       }
     } catch (e) {
-      console.log(`   ⚠️ OddsBlaze failed: ${e.message}`);
+      console.log(`   ⚠️ Enrichment module failed: ${e.message}`);
     }
   }
 
@@ -448,6 +477,10 @@ async function runScan() {
         headlines: research.newsHeadlines.slice(0, 10),
         articles: research.fullArticles.slice(0, 3),
         sportsbookOdds: research.sportsbookOdds,
+        congressData: research.congressData || null,
+        lmsysData: research.lmsysData || null,
+        fredData: research.fredData || null,
+        metaculusData: research.metaculusData || null,
         polymarketContext: research.polymarketContext ? research.polymarketContext.slice(0, 500) : null,
       },
     });
