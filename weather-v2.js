@@ -760,11 +760,21 @@ function loadPaperLog() {
 
 if (require.main === module) {
   (async () => {
-    // 1. Resolve any past paper trades first
+    // 1a. Run stop-loss checks on open trades
+    try {
+      console.log('🛡️ Running stop-loss checks...');
+      const { execSync } = require('child_process');
+      const slOut = execSync('node stop-loss.js check', { cwd: __dirname, timeout: 30000 }).toString();
+      console.log(slOut);
+    } catch (e) {
+      console.log('⚠️ Stop-loss check failed (non-fatal):', e.message?.slice(0, 100));
+    }
+
+    // 1b. Resolve any settled paper trades
     try {
       console.log('📋 Checking for resolvable paper trades...');
       const { execSync } = require('child_process');
-      const out = execSync('node resolve-weather-paper.js', { cwd: __dirname, timeout: 60000 }).toString();
+      const out = execSync('node resolve-paper.js', { cwd: __dirname, timeout: 60000 }).toString();
       console.log(out);
     } catch (e) {
       console.log('⚠️ Resolution check failed (non-fatal):', e.message?.slice(0, 100));
