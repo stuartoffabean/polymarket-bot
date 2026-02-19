@@ -682,8 +682,8 @@ async function scanWeatherMarkets() {
     const depthLimited = maxSharesByDepth < maxSharesByBudget;
     
     // Skip if shares = 0 (can't fill) or entry < 1¢ (dust, no real liquidity)
-    if (shares <= 0 || entryPrice < 0.01 || totalCost < 0.50) {
-      console.log(`   ⏭️ Skipping paper trade: ${opp.city} ${opp.bucket} — ${shares <= 0 ? 'no depth' : entryPrice < 0.01 ? 'dust price' : 'cost too low'}`);
+    if (shares <= 0 || entryPrice < 0.02 || totalCost < 0.50) {
+      console.log(`   ⏭️ Skipping paper trade: ${opp.city} ${opp.bucket} — ${shares <= 0 ? 'no depth' : entryPrice < 0.02 ? 'dust price (<2¢)' : 'cost too low'}`);
       continue;
     }
 
