@@ -49,6 +49,18 @@ try {
   console.log(`[INIT] Enrichment module not available: ${e.message}`);
 }
 
+// Import research memory (vector-backed knowledge store)
+let ResearchMemory = null;
+let researchMemory = null;
+try {
+  ResearchMemory = require('./research-memory').ResearchMemory;
+  researchMemory = new ResearchMemory();
+  const stats = researchMemory.stats();
+  console.log(`[INIT] Research memory loaded (${stats.totalEntries} entries, ${stats.activeEntries} active)`);
+} catch (e) {
+  console.log(`[INIT] Research memory not available: ${e.message}`);
+}
+
 // Categories to SKIP (we have separate scanners for these)
 const SKIP_CATEGORIES = ['weather', 'temperature', 'highest temp', 'crypto binary', 'bitcoin up or down', 'ethereum up or down'];
 
@@ -254,6 +266,16 @@ async function researchMarket(question, eventTitle, slug) {
   return research;
 }
 
+function detectCategory(q) {
+  const lower = q.toLowerCase();
+  if (isSportsQuestion(lower)) return 'sports';
+  if (/\b(congress|senate|house|bill|legislation|government|shutdown|impeach|election|vote|democrat|republican)\b/i.test(q)) return 'politics';
+  if (/\b(bitcoin|btc|ethereum|eth|crypto|solana|sol|xrp)\b/i.test(q)) return 'crypto';
+  if (/\b(gpt|claude|gemini|llama|ai model|lmsys|chatbot|anthropic|openai)\b/i.test(q)) return 'ai';
+  if (/\b(gdp|cpi|inflation|fed|interest rate|unemployment|jobs|payroll)\b/i.test(q)) return 'economics';
+  return 'other';
+}
+
 function isSportsQuestion(q) {
   const sports = ['nba', 'nfl', 'mlb', 'nhl', 'soccer', 'football', 'basketball', 'baseball', 'hockey', 
     'tennis', 'golf', 'ufc', 'boxing', 'f1', 'formula', 'premier league', 'champions league',
@@ -436,6 +458,25 @@ async function runScan() {
 
     console.log(`\n[${i+1}/${researchLimit}] ${question.slice(0, 70)}...`);
     
+    // Check research memory for prior context on this market
+    let priorResearch = [];
+    if (researchMemory) {
+      try {
+        const category = detectCategory(question);
+        priorResearch = await researchMemory.retrieve(question, {
+          maxResults: 3,
+          maxAgeHours: 48,
+          marketId: market.conditionId,
+          category,
+        });
+        if (priorResearch.length > 0) {
+          console.log(`   🧠 Prior research: ${priorResearch.length} entries (newest ${priorResearch[0].hoursAgo}h ago)`);
+        }
+      } catch (e) {
+        console.log(`   ⚠️ Memory retrieval failed: ${e.message}`);
+      }
+    }
+
     // Fetch real orderbook
     const orderbook = await fetchOrderbook(market);
     if (!orderbook || (!orderbook.yesAsk && !orderbook.yesBid)) {
@@ -483,7 +524,51 @@ async function runScan() {
         metaculusData: research.metaculusData || null,
         polymarketContext: research.polymarketContext ? research.polymarketContext.slice(0, 500) : null,
       },
+      // Prior research from memory (context from previous scans)
+      priorResearch: priorResearch.map(pr => ({
+        hoursAgo: pr.hoursAgo,
+        facts: pr.facts,
+        sources: pr.sources,
+        pricesAtTime: pr.prices,
+        score: pr.score,
+      })),
     });
+
+    // Store research in memory for future scans
+    if (researchMemory && research.sources.length > 0) {
+      try {
+        // Extract clean facts from headlines + articles (raw data only, no theses)
+        const facts = [
+          ...research.newsHeadlines.filter(h => h.length > 20).slice(0, 5),
+          ...research.fullArticles.map(a => `${a.source}: ${a.text.slice(0, 200)}`).slice(0, 3),
+        ];
+        if (research.sportsbookOdds) facts.push(`Sportsbook odds: ${JSON.stringify(research.sportsbookOdds).slice(0, 200)}`);
+        if (research.congressData) facts.push(`Congress: ${JSON.stringify(research.congressData).slice(0, 200)}`);
+        if (research.lmsysData) facts.push(`LMSYS: ${JSON.stringify(research.lmsysData).slice(0, 200)}`);
+        if (research.fredData) facts.push(`FRED: ${JSON.stringify(research.fredData).slice(0, 200)}`);
+        
+        if (facts.length > 0) {
+          await researchMemory.store({
+            marketId: market.conditionId,
+            question,
+            category: detectCategory(question),
+            facts,
+            sources: research.sources,
+            complete: research.sources.length >= 2,
+            prices: {
+              yesAsk: orderbook.yesAsk,
+              noAsk: orderbook.noAsk,
+              gammaMid,
+            },
+            hoursToResolution: Math.round(market._hoursToResolution || 0),
+            endDate: market.endDate || null,
+          });
+          console.log(`   💾 Stored ${facts.length} facts in research memory`);
+        }
+      } catch (e) {
+        console.log(`   ⚠️ Memory store failed: ${e.message}`);
+      }
+    }
 
     await sleep(300);
   }
@@ -512,6 +597,10 @@ async function runScan() {
   console.log(`📋 SCAN COMPLETE: ${candidates.length} candidates with research`);
   console.log(`   Markets discovered: ${markets.length}`);
   console.log(`   Research sources used: ${[...new Set(candidates.flatMap(c => c.research.sources))].join(', ')}`);
+  if (researchMemory) {
+    const mstats = researchMemory.stats();
+    console.log(`   Research memory: ${mstats.totalEntries} entries (${mstats.activeEntries} active, ${mstats.resolvedEntries} resolved)`);
+  }
   console.log(`   Output: directional-candidates.json`);
   
   // Print summary of each candidate
