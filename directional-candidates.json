@@ -1,24 +1,24 @@
 {
-  "scanTime": "2026-02-19T16:32:45.211Z",
-  "totalMarkets": 85,
-  "candidates": 6,
-  "markets": [
+  "scanTime": "2026-02-19T18:31:29.327Z",
+  "totalMarkets": 73,
+  "candidateCount": 6,
+  "candidates": [
     {
       "question": "Nets vs. Cavaliers",
       "eventTitle": "Nets vs. Cavaliers",
       "conditionId": "0xf034c3a089a0b1e64ec70e530d3f46a502b464f3c398ee960061eeeb2b828723",
       "slug": "nba-bkn-cle-2026-02-19",
-      "hoursToResolution": 7,
+      "hoursToResolution": 5,
       "endDate": "2026-02-20T00:00:00Z",
       "volume24h": 508595.92753700033,
       "gammaMid": 0.105,
       "orderbook": {
-        "yesAsk": 0.12,
-        "yesBid": 0.11,
-        "noAsk": 0.89,
-        "noBid": 0.88,
-        "yesDepth": 62444.33,
-        "noDepth": 1512.2
+        "yesAsk": 0.11,
+        "yesBid": 0.1,
+        "noAsk": 0.9,
+        "noBid": 0.89,
+        "yesDepth": 26684.27,
+        "noDepth": 250123.08
       },
       "yesToken": "97239946354817810501756204985579330450734950171422879067092888547555665531259",
       "noToken": "49836335133945532867872621610530866119739657928935523218392527003284167223015",
@@ -27,6 +27,7 @@
           "newsapi",
           "bing-news",
           "polymarket-page",
+          "oddsblaze",
           "newsapi-enrichment"
         ],
         "headlines": [
@@ -53,16 +54,31 @@
             "source": "CBS Sports"
           }
         ],
-        "sportsbookOdds": null,
+        "sportsbookOdds": {
+          "source": "oddsblaze",
+          "sport": "nba",
+          "game": "Houston Rockets @ Charlotte Hornets",
+          "matchedTeams": [
+            "Nets"
+          ],
+          "consensus": {
+            "Brooklyn Nets": 0.125,
+            "Cleveland Cavaliers": 0.9167,
+            "Houston Rockets": 0.6516,
+            "Charlotte Hornets": 0.3937
+          },
+          "numBooks": 3,
+          "gameTime": "2026-02-20T00:00:00.000Z"
+        },
         "congressData": null,
         "lmsysData": null,
         "fredData": null,
         "metaculusData": null,
-        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_67yAC4obfjataPGm8z1FwtyxwDK6)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_N4FmBMzf7vEsFgF6pRiPiui2bKMH)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
       },
       "priorResearch": [
         {
-          "hoursAgo": 0,
+          "hoursAgo": 2,
           "facts": [
             "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
             "[2026-02-14] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
@@ -84,7 +100,7 @@
             "noAsk": 0.89,
             "gammaMid": 0.105
           },
-          "score": 1.624
+          "score": 1.534
         },
         {
           "hoursAgo": 2,
@@ -107,9 +123,9 @@
           "pricesAtTime": {
             "yesAsk": 0.12,
             "noAsk": 0.89,
-            "gammaMid": 0.115
+            "gammaMid": 0.105
           },
-          "score": 1.53
+          "score": 1.532
         },
         {
           "hoursAgo": 4,
@@ -134,7 +150,7 @@
             "noAsk": 0.89,
             "gammaMid": 0.115
           },
-          "score": 1.444
+          "score": 1.445
         }
       ]
     },
@@ -143,17 +159,17 @@
       "eventTitle": "Rockets vs. Hornets",
       "conditionId": "0x251414e69496afa38de1dea0c56f84f81d166cff3fff3f73f081a60617a9ecb4",
       "slug": "nba-hou-cha-2026-02-19",
-      "hoursToResolution": 7,
+      "hoursToResolution": 5,
       "endDate": "2026-02-20T00:00:00Z",
       "volume24h": 483133.85256200016,
-      "gammaMid": 0.635,
+      "gammaMid": 0.625,
       "orderbook": {
-        "yesAsk": 0.64,
-        "yesBid": 0.63,
-        "noAsk": 0.37,
-        "noBid": 0.36,
-        "yesDepth": 32698.77,
-        "noDepth": 2752.72
+        "yesAsk": 0.63,
+        "yesBid": 0.62,
+        "noAsk": 0.38,
+        "noBid": 0.37,
+        "yesDepth": 388139.01,
+        "noDepth": 19410.66
       },
       "yesToken": "67568137424141056250558274728822395908557717387256327310879509847670732094952",
       "noToken": "10599643190255192024044776781168410347261456754642891590933490200810319300204",
@@ -162,6 +178,7 @@
           "newsapi",
           "bing-news",
           "polymarket-page",
+          "oddsblaze",
           "newsapi-enrichment"
         ],
         "headlines": [
@@ -188,16 +205,30 @@
             "source": "CBS Sports"
           }
         ],
-        "sportsbookOdds": null,
+        "sportsbookOdds": {
+          "source": "oddsblaze",
+          "sport": "nba",
+          "game": "Houston Rockets @ Charlotte Hornets",
+          "matchedTeams": [
+            "Rockets",
+            "Hornets"
+          ],
+          "consensus": {
+            "Houston Rockets": 0.6535,
+            "Charlotte Hornets": 0.3907
+          },
+          "numBooks": 3,
+          "gameTime": "2026-02-20T00:00:00.000Z"
+        },
         "congressData": null,
         "lmsysData": null,
         "fredData": null,
         "metaculusData": null,
-        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_67yAC4obfjataPGm8z1FwtyxwDK6)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_N4FmBMzf7vEsFgF6pRiPiui2bKMH)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
       },
       "priorResearch": [
         {
-          "hoursAgo": 0,
+          "hoursAgo": 2,
           "facts": [
             "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
             "[2026-02-14] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
@@ -219,10 +250,35 @@
             "noAsk": 0.37,
             "gammaMid": 0.635
           },
-          "score": 1.621
+          "score": 1.532
         },
         {
           "hoursAgo": 2,
+          "facts": [
+            "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+            "[2026-02-14] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
+            "[2026-02-13] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
+            "[2026-02-12] NBA All-Star Weekend 2026: How to watch, full events schedule, where to stream free and more",
+            "[2026-02-12] Cooper Flagg, Alex Sarr out; Ace Bailey, Bub Carrington in for All-Star Friday Rising Stars game",
+            "CBS Sports: With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
+            "CBS Sports: SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars game 2026",
+            "CBS Sports: SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars 2026"
+          ],
+          "sources": [
+            "newsapi",
+            "bing-news",
+            "polymarket-page",
+            "newsapi-enrichment"
+          ],
+          "pricesAtTime": {
+            "yesAsk": 0.64,
+            "noAsk": 0.37,
+            "gammaMid": 0.635
+          },
+          "score": 1.531
+        },
+        {
+          "hoursAgo": 4,
           "facts": [
             "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
             "[2026-02-14] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
@@ -244,32 +300,7 @@
             "noAsk": 0.38,
             "gammaMid": 0.625
           },
-          "score": 1.53
-        },
-        {
-          "hoursAgo": 4,
-          "facts": [
-            "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
-            "[2026-02-14] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
-            "[2026-02-13] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
-            "[2026-02-12] NBA All-Star Weekend 2026: How to watch, full events schedule, where to stream free and more",
-            "[2026-02-12] Cooper Flagg, Alex Sarr out; Ace Bailey, Bub Carrington in for All-Star Friday Rising Stars game",
-            "CBS Sports: With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
-            "CBS Sports: SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars game 2026",
-            "CBS Sports: SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars 2026"
-          ],
-          "sources": [
-            "newsapi",
-            "bing-news",
-            "polymarket-page",
-            "newsapi-enrichment"
-          ],
-          "pricesAtTime": {
-            "yesAsk": 0.62,
-            "noAsk": 0.39,
-            "gammaMid": 0.615
-          },
-          "score": 1.444
+          "score": 1.445
         }
       ]
     },
@@ -278,17 +309,17 @@
       "eventTitle": "Hawks vs. 76ers",
       "conditionId": "0x1d130965d0047c043938aaabd3d0e27f09f758848b85430379e3634f9c7dc0f2",
       "slug": "nba-atl-phi-2026-02-19",
-      "hoursToResolution": 7,
+      "hoursToResolution": 5,
       "endDate": "2026-02-20T00:00:00Z",
       "volume24h": 424710.8779920002,
-      "gammaMid": 0.475,
+      "gammaMid": 0.485,
       "orderbook": {
-        "yesAsk": 0.48,
-        "yesBid": 0.47,
-        "noAsk": 0.53,
-        "noBid": 0.52,
-        "yesDepth": 28439.06,
-        "noDepth": 28365.14
+        "yesAsk": 0.49,
+        "yesBid": 0.48,
+        "noAsk": 0.52,
+        "noBid": 0.51,
+        "yesDepth": 20561.26,
+        "noDepth": 25041.59
       },
       "yesToken": "3228397389195359318702126719108319144474627397417082516428270503025154789162",
       "noToken": "42619626747995833512162402433208082393317535138677723905088946565533202041896",
@@ -297,6 +328,7 @@
           "newsapi",
           "bing-news",
           "polymarket-page",
+          "oddsblaze",
           "newsapi-enrichment"
         ],
         "headlines": [
@@ -323,16 +355,29 @@
             "source": "Billboard"
           }
         ],
-        "sportsbookOdds": null,
+        "sportsbookOdds": {
+          "source": "oddsblaze",
+          "sport": "nba",
+          "game": "Atlanta Hawks @ Philadelphia 76ers",
+          "matchedTeams": [
+            "Hawks"
+          ],
+          "consensus": {
+            "Atlanta Hawks": 0.5114,
+            "Philadelphia 76ers": 0.5327
+          },
+          "numBooks": 3,
+          "gameTime": "2026-02-20T00:00:00.000Z"
+        },
         "congressData": null,
         "lmsysData": null,
         "fredData": null,
         "metaculusData": null,
-        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_67yAC4obfjataPGm8z1FwtyxwDK6)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_N4FmBMzf7vEsFgF6pRiPiui2bKMH)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
       },
       "priorResearch": [
         {
-          "hoursAgo": 0,
+          "hoursAgo": 2,
           "facts": [
             "[2026-02-18] Atlanta takes on Philadelphia, seeks to halt 3-game slide",
             "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
@@ -354,7 +399,7 @@
             "noAsk": 0.53,
             "gammaMid": 0.475
           },
-          "score": 1.623
+          "score": 1.534
         },
         {
           "hoursAgo": 2,
@@ -379,7 +424,7 @@
             "noAsk": 0.53,
             "gammaMid": 0.475
           },
-          "score": 1.532
+          "score": 1.533
         },
         {
           "hoursAgo": 4,
@@ -404,7 +449,7 @@
             "noAsk": 0.53,
             "gammaMid": 0.475
           },
-          "score": 1.446
+          "score": 1.447
         }
       ]
     },
@@ -413,17 +458,17 @@
       "eventTitle": "Pacers vs. Wizards",
       "conditionId": "0xc32e7183097fe04a68462a739a84cb70d25e83d01d8995ad55f9e34a1ccaef33",
       "slug": "nba-ind-was-2026-02-19",
-      "hoursToResolution": 7,
+      "hoursToResolution": 5,
       "endDate": "2026-02-20T00:00:00Z",
       "volume24h": 411145.42750899977,
-      "gammaMid": 0.555,
+      "gammaMid": 0.545,
       "orderbook": {
-        "yesAsk": 0.56,
-        "yesBid": 0.55,
-        "noAsk": 0.45,
-        "noBid": 0.44,
-        "yesDepth": 43357.84,
-        "noDepth": 1961
+        "yesAsk": 0.55,
+        "yesBid": 0.54,
+        "noAsk": 0.46,
+        "noBid": 0.45,
+        "yesDepth": 500,
+        "noDepth": 16897.61
       },
       "yesToken": "97178397708137167091831326190168187248758496445230699369400716513866776976319",
       "noToken": "34377673053135065020911645842397720195922236256705677538350811933290361093220",
@@ -432,6 +477,7 @@
           "newsapi",
           "bing-news",
           "polymarket-page",
+          "oddsblaze",
           "newsapi-enrichment"
         ],
         "headlines": [
@@ -458,16 +504,30 @@
             "source": "The Indianapolis Star"
           }
         ],
-        "sportsbookOdds": null,
+        "sportsbookOdds": {
+          "source": "oddsblaze",
+          "sport": "nba",
+          "game": "Indiana Pacers @ Washington Wizards",
+          "matchedTeams": [
+            "Pacers",
+            "Wizards"
+          ],
+          "consensus": {
+            "Indiana Pacers": 0.5657,
+            "Washington Wizards": 0.4777
+          },
+          "numBooks": 3,
+          "gameTime": "2026-02-20T00:00:00.000Z"
+        },
         "congressData": null,
         "lmsysData": null,
         "fredData": null,
         "metaculusData": null,
-        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_67yAC4obfjataPGm8z1FwtyxwDK6)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_N4FmBMzf7vEsFgF6pRiPiui2bKMH)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
       },
       "priorResearch": [
         {
-          "hoursAgo": 0,
+          "hoursAgo": 2,
           "facts": [
             "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
             "[2026-02-11] The tanking crisis in the NBA: The dilemma of losing to win",
@@ -489,10 +549,35 @@
             "noAsk": 0.45,
             "gammaMid": 0.555
           },
-          "score": 1.634
+          "score": 1.544
         },
         {
           "hoursAgo": 2,
+          "facts": [
+            "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+            "[2026-02-11] The tanking crisis in the NBA: The dilemma of losing to win",
+            "[2026-02-09] When will Ivica Zubac play for the Pacers?",
+            "[2026-02-09] Fantasy Basketball Schedule: How to take advantage of Week 17's extended scoring period",
+            "[2026-02-06] Today's top games to watch, best bets, odds: Knicks at Pistons, No. 3 UConn at No. 22 St. John's and more",
+            "CBS Sports: With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
+            "Marca: The 2026 NBA is submerged in a controversial strategy has gone from being an open secret to becoming a crisis of integrity: tanking. This phenomenon occurs when franchises delibera",
+            "The Indianapolis Star: The Pacers traded for Ivica Zubac on Thursday but he hasn't appeared in a game yet. He is questionable for Tuesday vs Knicks"
+          ],
+          "sources": [
+            "newsapi",
+            "bing-news",
+            "polymarket-page",
+            "newsapi-enrichment"
+          ],
+          "pricesAtTime": {
+            "yesAsk": 0.56,
+            "noAsk": 0.45,
+            "gammaMid": 0.555
+          },
+          "score": 1.543
+        },
+        {
+          "hoursAgo": 4,
           "facts": [
             "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
             "[2026-02-11] The tanking crisis in the NBA: The dilemma of losing to win",
@@ -514,41 +599,16 @@
             "noAsk": 0.46,
             "gammaMid": 0.545
           },
-          "score": 1.545
-        },
-        {
-          "hoursAgo": 4,
-          "facts": [
-            "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
-            "[2026-02-11] The tanking crisis in the NBA: The dilemma of losing to win",
-            "[2026-02-09] When will Ivica Zubac play for the Pacers?",
-            "[2026-02-09] Fantasy Basketball Schedule: How to take advantage of Week 17's extended scoring period",
-            "[2026-02-06] Today's top games to watch, best bets, odds: Knicks at Pistons, No. 3 UConn at No. 22 St. John's and more",
-            "CBS Sports: With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
-            "Marca: The 2026 NBA is submerged in a controversial strategy has gone from being an open secret to becoming a crisis of integrity: tanking. This phenomenon occurs when franchises delibera",
-            "The Indianapolis Star: The Pacers traded for Ivica Zubac on Thursday but he hasn't appeared in a game yet. He is questionable for Tuesday vs Knicks"
-          ],
-          "sources": [
-            "newsapi",
-            "bing-news",
-            "polymarket-page",
-            "newsapi-enrichment"
-          ],
-          "pricesAtTime": {
-            "yesAsk": 0.57,
-            "noAsk": 0.44,
-            "gammaMid": 0.565
-          },
-          "score": 1.456
+          "score": 1.46
         }
       ]
     },
     {
       "question": "Will Canada win the Men's Ice Hockey gold medal at the 2026 Winter Olympics?",
-      "eventTitle": "2026 Winter Olympics: Ice Hockey Gold Medal Winner",
+      "eventTitle": "Winter Games 2026: Ice Hockey Gold Medal Winner ",
       "conditionId": "0x06b611865074cab0ee2991b62be17149ea4912e9cbde167639f2ee882ce28428",
-      "slug": "2026-winter-olympics-ice-hockey-gold-medal-winner",
-      "hoursToResolution": 55,
+      "slug": "winter-games-2026-ice-hockey-gold-medal-winner",
+      "hoursToResolution": 53,
       "endDate": "2026-02-22T00:00:00Z",
       "volume24h": 377879.41420700034,
       "gammaMid": 0.475,
@@ -557,8 +617,8 @@
         "yesBid": 0.47,
         "noAsk": 0.53,
         "noBid": 0.52,
-        "yesDepth": 204,
-        "noDepth": 41473.18
+        "yesDepth": 6919.28,
+        "noDepth": 40932.57
       },
       "yesToken": "88928613609571999516722032493167167478639979186333413756961110063095984150168",
       "noToken": "114797858481849022567602082237680413725572065963309327765486542577142613475787",
@@ -570,13 +630,18 @@
           "newsapi-enrichment"
         ],
         "headlines": [
+          "[2026-02-18] Will Donald Trump fly to Milan for Olympic men’s hockey gold-medal game?",
           "[2026-02-18] Curling fans, rejoice! A pro league is coming soon",
           "[2026-02-18] Last 10 Winter Olympics men’s ice hockey gold medal winners",
           "[2026-02-18] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.18",
-          "[2026-02-18] 2026 Winter Olympics men's hockey odds, predictions: Wednesday quarterfinals picks from expert on 26-12 roll",
-          "[2026-02-17] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.17"
+          "[2026-02-18] 2026 Winter Olympics men's hockey odds, predictions: Wednesday quarterfinals picks from expert on 26-12 roll"
         ],
         "articles": [
+          {
+            "title": "Will Donald Trump fly to Milan for Olympic men’s hockey gold-medal game?",
+            "text": "Donald Trump reportedly will fly to 2026 Winter Games in Milano-Cortina if Team USA makes the men's hockey final.",
+            "source": "National Post"
+          },
           {
             "title": "Curling fans, rejoice! A pro league is coming soon",
             "text": "In today's edition: Pro curling league coming soon, MLBPA director Tony Clark resigns, the age of realignment, Why We Love Sports, and more.",
@@ -586,11 +651,6 @@
             "title": "Last 10 Winter Olympics men’s ice hockey gold medal winners",
             "text": "Olympic men's ice hockey remains the undisputed crown jewel of the Winter Games, a high-stakes theater where national pride is forged on the blade of a skate. Over the last several decades, the tournament has evolved from a battleground of amateur \"miracles\" …",
             "source": "The Big Lead"
-          },
-          {
-            "title": "Olympic medals today: What is the medal count at 2026 Winter Games on Feb.18",
-            "text": "Keep up with all the medals handed out during the 2026 Milano Cortina games.",
-            "source": "USA Today"
           }
         ],
         "sportsbookOdds": null,
@@ -598,11 +658,11 @@
         "lmsysData": null,
         "fredData": null,
         "metaculusData": null,
-        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_67yAC4obfjataPGm8z1FwtyxwDK6)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_N4FmBMzf7vEsFgF6pRiPiui2bKMH)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
       },
       "priorResearch": [
         {
-          "hoursAgo": 0,
+          "hoursAgo": 2,
           "facts": [
             "[2026-02-18] Curling fans, rejoice! A pro league is coming soon",
             "[2026-02-18] Last 10 Winter Olympics men’s ice hockey gold medal winners",
@@ -624,10 +684,35 @@
             "noAsk": 0.53,
             "gammaMid": 0.475
           },
-          "score": 1.736
+          "score": 1.386
         },
         {
           "hoursAgo": 2,
+          "facts": [
+            "[2026-02-18] Curling fans, rejoice! A pro league is coming soon",
+            "[2026-02-18] Last 10 Winter Olympics men’s ice hockey gold medal winners",
+            "[2026-02-18] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.18",
+            "[2026-02-18] 2026 Winter Olympics men's hockey odds, predictions: Wednesday quarterfinals picks from expert on 26-12 roll",
+            "[2026-02-17] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.17",
+            "Yahoo Entertainment: In today's edition: Pro curling league coming soon, MLBPA director Tony Clark resigns, the age of realignment, Why We Love Sports, and more.",
+            "The Big Lead: Olympic men's ice hockey remains the undisputed crown jewel of the Winter Games, a high-stakes theater where national pride is forged on the blade of a skate. Over the last several decades, the tourna",
+            "USA Today: Keep up with all the medals handed out during the 2026 Milano Cortina games."
+          ],
+          "sources": [
+            "newsapi",
+            "bing-news",
+            "polymarket-page",
+            "newsapi-enrichment"
+          ],
+          "pricesAtTime": {
+            "yesAsk": 0.48,
+            "noAsk": 0.53,
+            "gammaMid": 0.475
+          },
+          "score": 1.381
+        },
+        {
+          "hoursAgo": 4,
           "facts": [
             "[2026-02-18] Last 10 Winter Olympics men’s ice hockey gold medal winners",
             "[2026-02-18] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.18",
@@ -649,111 +734,93 @@
             "noAsk": 0.53,
             "gammaMid": 0.475
           },
-          "score": 1.417
-        },
-        {
-          "hoursAgo": 4,
-          "facts": [
-            "[2026-02-18] 2026 Winter Olympics men's hockey odds, predictions: Wednesday quarterfinals picks from expert on 26-12 roll",
-            "[2026-02-17] Olympic medals today: What is the medal count at 2026 Winter Games on Feb.17",
-            "[2026-02-17] 2026 Winter Olympics men's hockey odds, predictions: Tuesday playoff picks from expert on 26-12 roll",
-            "[2026-02-17] Who will USA play next in hockey? Explaining 2026 Olympic bracket opponent for quarterfinals",
-            "[2026-02-16] From the Sports Desk: Worth its wait in gold",
-            "CBS Sports: Matt Severance reveals his best bets for Wednesday's men's hockey quarterfinals at the 2026 Winter Olympics from Milano Cortina, Italy",
-            "USA Today: Keep up with all the medals handed out during the 2026 Milano Cortina games.",
-            "CBS Sports: Matt Severance reveals his best bets for Tuesday's men's hockey playoff round at the 2026 Winter Olympics from Milano Cortina, Italy"
-          ],
-          "sources": [
-            "newsapi",
-            "bing-news",
-            "polymarket-page",
-            "newsapi-enrichment"
-          ],
-          "pricesAtTime": {
-            "yesAsk": 0.48,
-            "noAsk": 0.54,
-            "gammaMid": 0.47
-          },
-          "score": 1.146
+          "score": 1.128
         }
       ]
     },
     {
-      "question": "Fenerbahçe SK vs. Nottingham Forest FC: O/U 2.5",
-      "eventTitle": "Fenerbahçe SK vs. Nottingham Forest FC - More Markets",
-      "conditionId": "0xc6d04723b99ae04380d4b7a0568eb0466d6030dce8849117dcfae2e45bdbaf14",
-      "slug": "uel-fen1-not-2026-02-19-more-markets",
-      "hoursToResolution": 1,
-      "endDate": "2026-02-19T17:45:00Z",
-      "volume24h": 361465.3266499998,
-      "gammaMid": 0.445,
+      "question": "Celtics vs. Warriors",
+      "eventTitle": "Celtics vs. Warriors",
+      "conditionId": "0xf41aa11b28905d96cae731de5e1119e53a51e96c470a6f2042f73128fa6ebf20",
+      "slug": "nba-bos-gsw-2026-02-19",
+      "hoursToResolution": 8,
+      "endDate": "2026-02-20T03:00:00Z",
+      "volume24h": 350721.73130200047,
+      "gammaMid": 0.665,
       "orderbook": {
-        "yesAsk": 0.45,
-        "yesBid": 0.44,
-        "noAsk": 0.56,
-        "noBid": 0.55,
-        "yesDepth": 1418.15,
-        "noDepth": 6757.42
+        "yesAsk": 0.67,
+        "yesBid": 0.66,
+        "noAsk": 0.34,
+        "noBid": 0.33,
+        "yesDepth": 117437.93,
+        "noDepth": 42993.67
       },
-      "yesToken": "3561321453020696875857611668437461848288242628337750124806771558537044481589",
-      "noToken": "71540857483687746998872846390795081154105105189977999292172748591422045227422",
+      "yesToken": "34488754660743973785163117528849782088109689425152468962781085374918372307154",
+      "noToken": "115160822571427045277088993586326610566567955010569070461544005430257256899456",
       "research": {
         "sources": [
-          "bing-news-primary",
-          "polymarket-page"
+          "newsapi",
+          "bing-news",
+          "polymarket-page",
+          "oddsblaze"
         ],
         "headlines": [
-          "* [All](/search?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=HDRSC1)",
-          "* [Search](/copilotsearch?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=CSSCOP)",
-          "* [Images](/images/search?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=HDRSC3)",
-          "* [Videos](/videos/search?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=HDRSC4)",
-          "* [Maps](/maps?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=HDRSC6)",
-          "* [News](/news/search?q=Top+stories&FORM=HDRSC7)",
-          "* [Copilot](/chat?prompt=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&sendquery=1&FORM=SCCODX)",
-          "* [More](javascript:void%280%29;)",
-          "* [Shopping](/shop?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=SHOPTB)",
-          "* [Flights](/travel/search?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&m=flights&FORM=FBSCOP)"
+          "[2026-02-17] How To Bet This Week in the NBA: Pistons-Knicks, Celtics-Lakers, More",
+          "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+          "[2026-02-16] Fantasy Basketball Waiver Wire: Nets' Day'Ron Sharpe offers late-season lottery appeal",
+          "[2026-02-15] NBA All-Star Game 2026: How to Watch Team USA vs. the World Online for Free",
+          "[2026-02-15] Complete 2026 NBA All-Star game rosters: Where is 76ers' Tyrese Maxey?"
         ],
-        "articles": [],
-        "sportsbookOdds": null,
+        "articles": [
+          {
+            "title": "How To Bet This Week in the NBA: Pistons-Knicks, Celtics-Lakers, More",
+            "text": "Check out what to know about the best games from this week's NBA slate, including Pistons-Knicks and Celtics-Lakers.",
+            "source": "Fox Sports"
+          },
+          {
+            "title": "NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+            "text": "With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
+            "source": "CBS Sports"
+          },
+          {
+            "title": "Fantasy Basketball Waiver Wire: Nets' Day'Ron Sharpe offers late-season lottery appeal",
+            "text": "Day'Ron Sharpe has been excellent when given increased run for Brooklyn, and he could see that down the stretch of the 2025-26 campaign.",
+            "source": "NBCSports.com"
+          }
+        ],
+        "sportsbookOdds": {
+          "source": "oddsblaze",
+          "sport": "nba",
+          "game": "Boston Celtics @ Golden State Warriors",
+          "matchedTeams": [
+            "Celtics",
+            "Warriors"
+          ],
+          "consensus": {
+            "Boston Celtics": 0.6937,
+            "Golden State Warriors": 0.3489
+          },
+          "numBooks": 3,
+          "gameTime": "2026-02-20T03:00:00.000Z"
+        },
         "congressData": null,
         "lmsysData": null,
         "fredData": null,
         "metaculusData": null,
-        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_67yAC4obfjataPGm8z1FwtyxwDK6)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
+        "polymarketContext": "[Polymarket](/)\n\nBrowse\n\n[New](/search?%5Fsort=newest)[Trending](/search)[Popular](/search?%5Fsort=volume)[Liquid](/search?%5Fsort=liquidity)[Ending Soon](/search?%5Fsort=ending%5Fsoon)[Competitive](/search?%5Fsort=competitive)\n\nTopics\n\n[![Live Crypto](https://polymarket.com/_next/image?url=%2Fimages%2Fnav-live-crypto.png&w=1024&q=75&dpl=dpl_N4FmBMzf7vEsFgF6pRiPiui2bKMH)Live Crypto](/event/bitcoin-up-or-down-august-22-9pm-et/live)[![Politics](https://polymarket.com/_next/image?url=%2Fimages%2Fna"
       },
       "priorResearch": [
         {
-          "hoursAgo": 0,
+          "hoursAgo": 4,
           "facts": [
-            "* [All](/search?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=HDRSC1)",
-            "* [Search](/copilotsearch?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=CSSCOP)",
-            "* [Images](/images/search?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=HDRSC3)",
-            "* [Videos](/videos/search?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=HDRSC4)",
-            "* [Maps](/maps?q=Fenerbah%c3%a7e+SK+vs.+Nottingham+Forest+FC%3a+O%2fU+2.5&FORM=HDRSC6)"
-          ],
-          "sources": [
-            "bing-news-primary",
-            "polymarket-page"
-          ],
-          "pricesAtTime": {
-            "yesAsk": 0.45,
-            "noAsk": 0.56,
-            "gammaMid": 0.445
-          },
-          "score": 1.774
-        },
-        {
-          "hoursAgo": 0,
-          "facts": [
+            "[2026-02-17] How To Bet This Week in the NBA: Pistons-Knicks, Celtics-Lakers, More",
             "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
-            "[2026-02-14] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
-            "[2026-02-13] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
-            "[2026-02-12] NBA All-Star Weekend 2026: How to watch, full events schedule, where to stream free and more",
-            "[2026-02-12] Cooper Flagg, Alex Sarr out; Ace Bailey, Bub Carrington in for All-Star Friday Rising Stars game",
+            "[2026-02-16] Fantasy Basketball Waiver Wire: Nets' Day'Ron Sharpe offers late-season lottery appeal",
+            "[2026-02-15] NBA All-Star Game 2026: How to Watch Team USA vs. the World Online for Free",
+            "[2026-02-15] Complete 2026 NBA All-Star game rosters: Where is 76ers' Tyrese Maxey?",
+            "Fox Sports: Check out what to know about the best games from this week's NBA slate, including Pistons-Knicks and Celtics-Lakers.",
             "CBS Sports: With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
-            "CBS Sports: SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars game 2026",
-            "CBS Sports: SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars 2026"
+            "NBCSports.com: Day'Ron Sharpe has been excellent when given increased run for Brooklyn, and he could see that down the stretch of the 2025-26 campaign."
           ],
           "sources": [
             "newsapi",
@@ -762,23 +829,23 @@
             "newsapi-enrichment"
           ],
           "pricesAtTime": {
-            "yesAsk": 0.64,
-            "noAsk": 0.37,
-            "gammaMid": 0.635
+            "yesAsk": 0.67,
+            "noAsk": 0.34,
+            "gammaMid": 0.665
           },
-          "score": 0.6
+          "score": 1.395
         },
         {
-          "hoursAgo": 0,
+          "hoursAgo": 6,
           "facts": [
+            "[2026-02-17] How To Bet This Week in the NBA: Pistons-Knicks, Celtics-Lakers, More",
             "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
-            "[2026-02-14] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
-            "[2026-02-13] 2026 NBA Rising Stars odds, predictions, format, start time: Picks by expert on 40-17 run",
-            "[2026-02-12] NBA All-Star Weekend 2026: How to watch, full events schedule, where to stream free and more",
-            "[2026-02-12] Cooper Flagg, Alex Sarr out; Ace Bailey, Bub Carrington in for All-Star Friday Rising Stars game",
+            "[2026-02-16] Fantasy Basketball Waiver Wire: Nets' Day'Ron Sharpe offers late-season lottery appeal",
+            "[2026-02-15] NBA All-Star Game 2026: How to Watch Team USA vs. the World Online for Free",
+            "[2026-02-15] Complete 2026 NBA All-Star game rosters: Where is 76ers' Tyrese Maxey?",
+            "Fox Sports: Check out what to know about the best games from this week's NBA slate, including Pistons-Knicks and Celtics-Lakers.",
             "CBS Sports: With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
-            "CBS Sports: SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars game 2026",
-            "CBS Sports: SportsLine expert Mike Barner just revealed his NBA picks and best bets for Friday's NBA Rising Stars 2026"
+            "NBCSports.com: Day'Ron Sharpe has been excellent when given increased run for Brooklyn, and he could see that down the stretch of the 2025-26 campaign."
           ],
           "sources": [
             "newsapi",
@@ -787,11 +854,36 @@
             "newsapi-enrichment"
           ],
           "pricesAtTime": {
-            "yesAsk": 0.64,
-            "noAsk": 0.37,
-            "gammaMid": 0.635
+            "yesAsk": 0.67,
+            "noAsk": 0.34,
+            "gammaMid": 0.665
           },
-          "score": 0.599
+          "score": 1.317
+        },
+        {
+          "hoursAgo": 7,
+          "facts": [
+            "[2026-02-17] How To Bet This Week in the NBA: Pistons-Knicks, Celtics-Lakers, More",
+            "[2026-02-17] NBA front office rankings: Lakers fall, Hornets rise in post-trade deadline check-in, OKC, Boston still on top",
+            "[2026-02-16] Fantasy Basketball Waiver Wire: Nets' Day'Ron Sharpe offers late-season lottery appeal",
+            "[2026-02-15] NBA All-Star Game 2026: How to Watch Team USA vs. the World Online for Free",
+            "[2026-02-15] Complete 2026 NBA All-Star game rosters: Where is 76ers' Tyrese Maxey?",
+            "Fox Sports: Check out what to know about the best games from this week's NBA slate, including Pistons-Knicks and Celtics-Lakers.",
+            "CBS Sports: With another transaction cycle behind us, here's a look at where all 30 NBA front offices currently stand",
+            "NBCSports.com: Day'Ron Sharpe has been excellent when given increased run for Brooklyn, and he could see that down the stretch of the 2025-26 campaign."
+          ],
+          "sources": [
+            "newsapi",
+            "bing-news",
+            "polymarket-page",
+            "newsapi-enrichment"
+          ],
+          "pricesAtTime": {
+            "yesAsk": 0.67,
+            "noAsk": 0.34,
+            "gammaMid": 0.665
+          },
+          "score": 1.281
         }
       ]
     }

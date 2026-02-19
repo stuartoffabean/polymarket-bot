@@ -994,9 +994,16 @@ async function executeSell(assetId, asset, reason) {
   
   log("EXEC", `🚨 AUTO-SELL: ${asset.outcome} ${asset.size} shares (${reason}) — attempt ${attempt + 1}/${MAX_SELL_RETRIES}, slippage ${(slippagePct * 100).toFixed(0)}%, FOK`);
   try {
+    // Floor size to avoid fractional share rejection (fees cause buy N → receive N-ε)
+    const safeSellSize = Math.floor(asset.size * 100) / 100;
+    if (safeSellSize <= 0) {
+      log("EXEC", `⚠️ DUST POSITION: ${assetId.slice(0,20)} has ${asset.size} shares — too small to sell after flooring`);
+      sellLocks.delete(assetId);
+      return;
+    }
     const result = await httpPost("/market-sell", {
       tokenID: assetId,
-      size: asset.size,
+      size: safeSellSize,
       orderType: "FOK",
       slippagePct: slippagePct,
       reason: reason,

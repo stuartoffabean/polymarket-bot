@@ -2244,7 +2244,9 @@ async function handler(req, res) {
 
       // Walk the book to find the price where we can fill the full order
       // Bids are ascending (lowest first, best/highest last) — walk from highest down
-      const sellSize = parseFloat(size);
+      // IMPORTANT: Floor to 2 decimal places to avoid fractional share rejection
+      // (fees can cause buy 6 → receive 5.97, selling 6 would reject)
+      const sellSize = Math.floor(parseFloat(size) * 100) / 100;
       let cumSize = 0;
       let walkPrice = null;
       let availableDepth = 0;

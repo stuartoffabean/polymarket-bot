@@ -14368,14 +14368,17 @@
       "hoursUntil": 12,
       "yesToken": "104896628574604693103712276771804141046347285077562217828745718138652230966726",
       "noToken": "7783223628794133149076975383875843376922304167889784483317651890549407873742",
-      "resolution": null,
-      "dollarPnl": null,
+      "resolution": "STOPPED",
+      "dollarPnl": 0.6,
       "_stopState": {
         "highWaterMark": 0.99,
         "trailingActive": true,
         "trailingFloor": 0.79
       },
-      "category": "other"
+      "category": "other",
+      "exitPrice": 0.79,
+      "exitReason": "TRAILING_STOP",
+      "exitTimestamp": "2026-02-19T18:30:11.194Z"
     },
     {
       "timestamp": "2026-02-19T12:01:11.148Z",
@@ -14704,14 +14707,17 @@
       "hoursUntil": 10,
       "yesToken": "104896628574604693103712276771804141046347285077562217828745718138652230966726",
       "noToken": "7783223628794133149076975383875843376922304167889784483317651890549407873742",
-      "resolution": null,
-      "dollarPnl": null,
+      "resolution": "STOPPED",
+      "dollarPnl": 0.65,
       "_stopState": {
         "highWaterMark": 0.99,
         "trailingActive": true,
         "trailingFloor": 0.79
       },
-      "category": "other"
+      "category": "other",
+      "exitPrice": 0.79,
+      "exitReason": "TRAILING_STOP",
+      "exitTimestamp": "2026-02-19T18:30:12.523Z"
     },
     {
       "timestamp": "2026-02-19T14:00:49.662Z",
@@ -14889,14 +14895,17 @@
       "hoursUntil": 8,
       "yesToken": "104896628574604693103712276771804141046347285077562217828745718138652230966726",
       "noToken": "7783223628794133149076975383875843376922304167889784483317651890549407873742",
-      "resolution": null,
-      "dollarPnl": null,
+      "resolution": "STOPPED",
+      "dollarPnl": 0.78,
       "category": "weather",
       "_stopState": {
         "highWaterMark": 0.99,
         "trailingActive": true,
         "trailingFloor": 0.79
-      }
+      },
+      "exitPrice": 0.79,
+      "exitReason": "TRAILING_STOP",
+      "exitTimestamp": "2026-02-19T18:30:13.353Z"
     }
   ]
 }
