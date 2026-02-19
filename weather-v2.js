@@ -663,6 +663,7 @@ async function scanWeatherMarkets() {
 
     paperLog.paperTrades.push({
       timestamp: new Date().toISOString(),
+      category: 'weather',
       city: opp.city,
       date: opp.date,
       bucket: opp.bucket,

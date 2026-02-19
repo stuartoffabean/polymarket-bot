@@ -24,6 +24,11 @@
       "timestamp": "2026-02-19T12:31:03.229Z",
       "marketsDiscovered": 40,
       "candidatesResearched": 6
+    },
+    {
+      "timestamp": "2026-02-19T14:31:06.001Z",
+      "marketsDiscovered": 40,
+      "candidatesResearched": 6
     }
   ],
   "paperTrades": [
@@ -34,24 +39,38 @@
       "thesis": "Hawks are 26-30 with 3-game losing streak while 76ers are 6th in East with strong defense (115.9 PPG, 47.1% FG%). Market favors struggling Hawks at 48¢ despite inferior form and record.",
       "entryPrice": 0.53,
       "shares": 18.87,
-      "totalCost": 10.0,
+      "totalCost": 10,
       "entrySource": "orderbook",
-      "researchSources": ["newsapi", "bing-news", "polymarket-page", "newsapi-enrichment", "espn-standings"],
+      "researchSources": [
+        "newsapi",
+        "bing-news",
+        "polymarket-page",
+        "newsapi-enrichment",
+        "espn-standings"
+      ],
       "endDate": "2026-02-20T00:00:00Z",
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "sports"
     },
     {
-      "timestamp": "2026-02-19T12:31:03.229Z", 
+      "timestamp": "2026-02-19T12:31:03.229Z",
       "question": "Pacers vs. Wizards",
       "action": "BUY_NO",
       "thesis": "Pacers (15-40) vs Wizards (14-39) have nearly identical terrible records, yet Pacers priced at 57¢. With Wizards actively tanking and records essentially equal, value exists backing Wizards.",
       "entryPrice": 0.44,
       "shares": 22.73,
-      "totalCost": 10.0,
-      "entrySource": "orderbook", 
-      "researchSources": ["newsapi", "bing-news", "polymarket-page", "newsapi-enrichment", "espn-standings"],
+      "totalCost": 10,
+      "entrySource": "orderbook",
+      "researchSources": [
+        "newsapi",
+        "bing-news",
+        "polymarket-page",
+        "newsapi-enrichment",
+        "espn-standings"
+      ],
       "endDate": "2026-02-20T00:00:00Z",
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "sports"
     }
   ]
 }

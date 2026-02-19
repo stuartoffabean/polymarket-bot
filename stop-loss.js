@@ -101,9 +101,8 @@ const TRAILING_DISTANCE = 0.20;    // Trail 20 points below high water mark
  * @returns {Object} { triggered, reason, exitPrice, pnl, category, stopState }
  */
 function check(trade, currentPrice) {
-  // Build detection string: combine available fields for better category matching
   const detectStr = trade.question || [trade.city, trade.bucket, trade.unit].filter(Boolean).join(' ') || '';
-  const category = trade.category || (trade.city ? 'weather' : detectCategory(detectStr));
+  const category = trade.category || detectCategory(detectStr);
   const entry = trade.entryPrice;
   const shares = trade.shares || 0;
   

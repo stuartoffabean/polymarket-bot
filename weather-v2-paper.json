@@ -11423,7 +11423,8 @@
       "resolution": "WIN",
       "actualTemp": 8.1,
       "wonBucket": "8",
-      "pl": 0.9995
+      "pl": 0.9995,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11442,7 +11443,8 @@
       "resolution": "WIN",
       "actualTemp": 8.1,
       "wonBucket": "8",
-      "pl": 0.0024999999999999467
+      "pl": 0.0024999999999999467,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11461,7 +11463,8 @@
       "resolution": "LOSS",
       "actualTemp": 8.1,
       "wonBucket": "8",
-      "pl": -0.0015
+      "pl": -0.0015,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11480,7 +11483,8 @@
       "resolution": "WIN",
       "actualTemp": 15.2,
       "wonBucket": "15",
-      "pl": 0.0024999999999999467
+      "pl": 0.0024999999999999467,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11499,7 +11503,8 @@
       "resolution": "WIN",
       "actualTemp": 15.2,
       "wonBucket": "15",
-      "pl": 0.9975
+      "pl": 0.9975,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11518,7 +11523,8 @@
       "resolution": "LOSS",
       "actualTemp": 15.2,
       "wonBucket": "15",
-      "pl": -0.0005
+      "pl": -0.0005,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11537,7 +11543,8 @@
       "resolution": "LOSS",
       "actualTemp": 36.5,
       "wonBucket": "36-37",
-      "pl": -0.61
+      "pl": -0.61,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11556,7 +11563,8 @@
       "resolution": "WIN",
       "actualTemp": 36.5,
       "wonBucket": "36-37",
-      "pl": 0.6
+      "pl": 0.6,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11575,7 +11583,8 @@
       "resolution": "LOSS",
       "actualTemp": 36.5,
       "wonBucket": "36-37",
-      "pl": -0.0405
+      "pl": -0.0405,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11594,7 +11603,8 @@
       "resolution": "LOSS",
       "actualTemp": 36.5,
       "wonBucket": "36-37",
-      "pl": -0.0055
+      "pl": -0.0055,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11613,7 +11623,8 @@
       "resolution": "LOSS",
       "actualTemp": 76,
       "wonBucket": "74-75",
-      "pl": -0.0005
+      "pl": -0.0005,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11632,7 +11643,8 @@
       "resolution": "WIN",
       "actualTemp": 76,
       "wonBucket": "74-75",
-      "pl": 0.04500000000000004
+      "pl": 0.04500000000000004,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11651,7 +11663,8 @@
       "resolution": "LOSS",
       "actualTemp": 59.8,
       "wonBucket": "58-59",
-      "pl": -0.0045
+      "pl": -0.0045,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11670,7 +11683,8 @@
       "resolution": "WIN",
       "actualTemp": 59.8,
       "wonBucket": "58-59",
-      "pl": 0.35650000000000004
+      "pl": 0.35650000000000004,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11689,7 +11703,8 @@
       "resolution": "LOSS",
       "actualTemp": 59.8,
       "wonBucket": "58-59",
-      "pl": -0.345
+      "pl": -0.345,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11708,7 +11723,8 @@
       "resolution": "LOSS",
       "actualTemp": -0.9,
       "wonBucket": "-1",
-      "pl": -0.0005
+      "pl": -0.0005,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11727,7 +11743,8 @@
       "resolution": "WIN",
       "actualTemp": -0.9,
       "wonBucket": "-1",
-      "pl": 0.13
+      "pl": 0.13,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11749,7 +11766,8 @@
       "wonBucket": null,
       "pl": -0.0445,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11768,7 +11786,8 @@
       "resolution": "WIN",
       "actualTemp": 28.3,
       "wonBucket": "28",
-      "pl": 0.9995
+      "pl": 0.9995,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11787,7 +11806,8 @@
       "resolution": "LOSS",
       "actualTemp": 28.3,
       "wonBucket": "28",
-      "pl": -0.0005
+      "pl": -0.0005,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11806,7 +11826,8 @@
       "resolution": "WIN",
       "actualTemp": 28.3,
       "wonBucket": "28",
-      "pl": 0.012499999999999956
+      "pl": 0.012499999999999956,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11825,7 +11846,8 @@
       "resolution": "WIN",
       "actualTemp": 45.7,
       "wonBucket": "44-45",
-      "pl": 0.86
+      "pl": 0.86,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11844,7 +11866,8 @@
       "resolution": "WIN",
       "actualTemp": 45.7,
       "wonBucket": "44-45",
-      "pl": 0.45499999999999996
+      "pl": 0.45499999999999996,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11863,7 +11886,8 @@
       "resolution": "WIN",
       "actualTemp": 45.7,
       "wonBucket": "44-45",
-      "pl": 0.61
+      "pl": 0.61,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11885,7 +11909,8 @@
       "wonBucket": "9",
       "pl": 0.5349999999999999,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11904,7 +11929,8 @@
       "resolution": "LOSS",
       "actualTemp": 64.7,
       "wonBucket": "64-65",
-      "pl": -0.002
+      "pl": -0.002,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11923,7 +11949,8 @@
       "resolution": "WIN",
       "actualTemp": 64.7,
       "wonBucket": "64-65",
-      "pl": 0.9995
+      "pl": 0.9995,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-15T20:18:25.894Z",
@@ -11942,7 +11969,8 @@
       "resolution": "WIN",
       "actualTemp": 64.7,
       "wonBucket": "64-65",
-      "pl": 0.07999999999999996
+      "pl": 0.07999999999999996,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-16T00:22:41.731Z",
@@ -11964,7 +11992,8 @@
       "wonBucket": "≥64",
       "pl": -0.0305,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-16T00:22:41.731Z",
@@ -11986,7 +12015,8 @@
       "wonBucket": "≥64",
       "pl": 0.20999999999999996,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-16T00:24:26.154Z",
@@ -12007,7 +12037,8 @@
       "wonBucket": "≥64",
       "pl": -0.03,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-16T00:24:26.154Z",
@@ -12028,7 +12059,8 @@
       "wonBucket": "≥64",
       "pl": 0.20999999999999996,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-16T04:24:55.301Z",
@@ -12050,7 +12082,8 @@
       "wonBucket": null,
       "pl": -0.455,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-16T04:24:55.301Z",
@@ -12072,7 +12105,8 @@
       "wonBucket": "9",
       "pl": -0.42,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-16T04:24:55.301Z",
@@ -12094,7 +12128,8 @@
       "wonBucket": "≥64",
       "pl": -0.014,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-16T04:24:55.301Z",
@@ -12116,7 +12151,8 @@
       "wonBucket": "≥64",
       "pl": 0.13,
       "crossValidated": false,
-      "polymarketResolution": null
+      "polymarketResolution": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T04:58:24.849Z",
@@ -12144,7 +12180,8 @@
       "yesToken": "52979941230827082312413169661026041994806055333799634449303851330262543567476",
       "noToken": "29107946920940581569812616564475861510401528342479565453695969613861602202612",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T04:58:24.849Z",
@@ -12172,7 +12209,8 @@
       "yesToken": "11762552412567098422479299763423413177907861703112012415136961399254355490866",
       "noToken": "83716718956527999518121168032624157684506502019735736272863578632787515851248",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T04:58:24.849Z",
@@ -12268,7 +12306,8 @@
       "yesToken": "52979941230827082312413169661026041994806055333799634449303851330262543567476",
       "noToken": "29107946920940581569812616564475861510401528342479565453695969613861602202612",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T05:04:11.114Z",
@@ -12296,7 +12335,8 @@
       "yesToken": "11762552412567098422479299763423413177907861703112012415136961399254355490866",
       "noToken": "83716718956527999518121168032624157684506502019735736272863578632787515851248",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T05:04:11.114Z",
@@ -12358,7 +12398,8 @@
       "yesToken": "85021050207667228638669973151216933245728924039359347539530001874975719889908",
       "noToken": "100798914921692754302521361445325982214368438091434868786789519177966950679552",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T05:04:11.114Z",
@@ -12420,7 +12461,8 @@
       "yesToken": "52979941230827082312413169661026041994806055333799634449303851330262543567476",
       "noToken": "29107946920940581569812616564475861510401528342479565453695969613861602202612",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T05:07:12.626Z",
@@ -12448,7 +12490,8 @@
       "yesToken": "11762552412567098422479299763423413177907861703112012415136961399254355490866",
       "noToken": "83716718956527999518121168032624157684506502019735736272863578632787515851248",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T05:07:12.626Z",
@@ -12510,7 +12553,8 @@
       "yesToken": "85021050207667228638669973151216933245728924039359347539530001874975719889908",
       "noToken": "100798914921692754302521361445325982214368438091434868786789519177966950679552",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T05:07:12.626Z",
@@ -13470,7 +13514,8 @@
       "yesToken": "113343554640903197086842354461111085576260315927691788173841418167169372285893",
       "noToken": "52721951397793788412073754841862017142158669031299367449195246293105117250337",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T16:00:59.101Z",
@@ -13501,7 +13546,8 @@
       "yesToken": "91552882241820624358501380338255812537434464049433570118252263634685921937823",
       "noToken": "23990907869952858459591455977083575130366156811107994766043706649647675661591",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T16:00:59.101Z",
@@ -13532,7 +13578,8 @@
       "yesToken": "70743812752788569799840277970079466714306149500389003458456963415791476041078",
       "noToken": "46321874398832827940283985369816044846490195324641430423874977331689248028332",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     },
     {
       "timestamp": "2026-02-19T16:00:59.101Z",
@@ -13563,7 +13610,8 @@
       "yesToken": "104896628574604693103712276771804141046347285077562217828745718138652230966726",
       "noToken": "7783223628794133149076975383875843376922304167889784483317651890549407873742",
       "resolution": null,
-      "dollarPnl": null
+      "dollarPnl": null,
+      "category": "weather"
     }
   ]
 }
