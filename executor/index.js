@@ -465,6 +465,32 @@ async function getEventGroup(conditionId) {
   return null;
 }
 
+// === MARKET OPTIONS CACHE: tokenId → { tickSize, negRisk } ===
+// Required for ALL createAndPostOrder calls. Without negRisk, orders route to wrong exchange contract.
+// Without tickSize, price validation may fail on the CLOB.
+const marketOptionsCache = {};
+
+async function getMarketOptions(tokenId) {
+  if (marketOptionsCache[tokenId]) return marketOptionsCache[tokenId];
+  
+  try {
+    // Try CLOB getOrderBook which includes neg_risk and minimum_tick_size
+    const book = await client.getOrderBook(tokenId);
+    const negRisk = book.neg_risk === true;
+    const tickSize = book.minimum_tick_size ? String(book.minimum_tick_size) : "0.01";
+    const opts = { tickSize, negRisk };
+    marketOptionsCache[tokenId] = opts;
+    console.log(`[MARKET-OPTS] ${tokenId.slice(0,20)}: negRisk=${negRisk}, tickSize=${tickSize}`);
+    return opts;
+  } catch (e) {
+    console.log(`[MARKET-OPTS] Failed to fetch for ${tokenId.slice(0,20)}: ${e.message}`);
+    // Default: assume negRisk=true for safety (weather markets are ALL negRisk)
+    // Wrong negRisk=true on a non-negRisk market will fail with a clear error
+    // Wrong negRisk=false on a negRisk market silently routes to wrong contract → "not enough balance"
+    return { tickSize: "0.01", negRisk: true };
+  }
+}
+
 // Register a conditionId → eventGroupId mapping (called on trade execution)
 function registerEventMapping(conditionId, eventGroupId) {
   if (!conditionId || !eventGroupId) return;
@@ -2074,7 +2100,8 @@ async function handler(req, res) {
       
       const walId = logIntent({ type: "buy", tokenID, price: parseFloat(price), size: parseFloat(size), side, strategy: "fast-path", source: "executor", meta: { market } });
       try {
-        const order = await client.createAndPostOrder(orderOpts, undefined, "GTC");
+        const mktOpts = await getMarketOptions(tokenID);
+        const order = await client.createAndPostOrder(orderOpts, mktOpts, "GTC");
         resolveIntent(walId, "filled", { orderID: order.orderID || order.id });
         invalidateTradeCache();
         triggerSnapshotPush();
@@ -2213,7 +2240,8 @@ async function handler(req, res) {
       const walId = logIntent({ type: side.toLowerCase(), tokenID, price: parseFloat(price), size: parseFloat(size), side, strategy: body.strategy || "manual", source: "executor", meta: { market: body.market } });
       let order;
       try {
-        order = await client.createAndPostOrder(orderOpts, undefined, orderType, false, postOnly);
+        const mktOpts2 = await getMarketOptions(tokenID);
+        order = await client.createAndPostOrder(orderOpts, mktOpts2, orderType, false, postOnly);
       } catch (e) {
         resolveIntent(walId, "failed", { error: e.message });
         throw e;
@@ -2338,12 +2366,13 @@ async function handler(req, res) {
       const walId = logIntent({ type: "market-sell", tokenID, price: fillPrice, size: sellSize, side: "SELL", strategy: body.strategy || "manual", source: body.source || "executor-manual", meta: { reason: body.reason, orderType, slippagePct, walkPrice, bestBid } });
       let order;
       try {
+        const mktOptsSell = await getMarketOptions(tokenID);
         order = await client.createAndPostOrder({
           tokenID,
           price: fillPrice,
           size: sellSize,
           side: Side.SELL,
-        }, undefined, orderType);
+        }, mktOptsSell, orderType);
       } catch (e) {
         resolveIntent(walId, "failed", { error: e.message });
         throw e;
@@ -2429,13 +2458,16 @@ async function handler(req, res) {
 
       console.log(`⚡ BATCH: Submitting ${orderList.length} orders concurrently`);
       const results = await Promise.allSettled(
-        orderList.map(o => client.createAndPostOrder({
-          tokenID: o.tokenID,
-          price: parseFloat(o.price),
-          size: parseFloat(o.size),
-          side: o.side === "BUY" ? Side.BUY : Side.SELL,
-          ...(o.orderType === "FOK" ? { orderType: "FOK" } : {}),
-        }))
+        orderList.map(async (o) => {
+          const mktOptsBatch = await getMarketOptions(o.tokenID);
+          return client.createAndPostOrder({
+            tokenID: o.tokenID,
+            price: parseFloat(o.price),
+            size: parseFloat(o.size),
+            side: o.side === "BUY" ? Side.BUY : Side.SELL,
+            ...(o.orderType === "FOK" ? { orderType: "FOK" } : {}),
+          }, mktOptsBatch);
+        })
       );
 
       const summary = results.map((r, i) => ({
@@ -2462,15 +2494,16 @@ async function handler(req, res) {
 
       const arbWalId = logIntent({ type: "arb", tokenID: legs.map(l => l.tokenID.slice(0, 12)).join("+"), price: 0, size: legs.length, side: "ARB", strategy: "arb", source: "executor", meta: { legs: legs.map(l => ({ token: l.tokenID.slice(0, 20), price: l.price, size: l.size, side: l.side })) } });
       const results = await Promise.allSettled(
-        legs.map(leg =>
-          client.createAndPostOrder({
+        legs.map(async (leg) => {
+          const mktOptsArb = await getMarketOptions(leg.tokenID);
+          return client.createAndPostOrder({
             tokenID: leg.tokenID,
             price: parseFloat(leg.price),
             size: parseFloat(leg.size),
             side: leg.side === "BUY" ? Side.BUY : Side.SELL,
             orderType: "FOK",
-          })
-        )
+          }, mktOptsArb);
+        })
       );
 
       const filled = [];
@@ -2517,12 +2550,13 @@ async function handler(req, res) {
               : (sortedAsks.length > 0 ? sortedAsks[0] : null);
             
             if (unwindPrice) {
+              const mktOptsUnwind = await getMarketOptions(leg.tokenID);
               const unwind = await client.createAndPostOrder({
                 tokenID: leg.tokenID,
                 price: unwindPrice,
                 size: parseFloat(leg.size),
                 side: unwindSide,
-              });
+              }, mktOptsUnwind);
               unwindResults.push({ leg: f.leg, price: unwindPrice, result: unwind });
             }
           } catch (e) {
